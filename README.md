@@ -10,11 +10,11 @@
 <a href="https://api.whatsapp.com/send/?phone=+51927238856&text=Hola 👋 soporte de Shadow Bot &type=phone_number&app_absent=0" target="blank"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp" /></a>
  <a href="http://www.instagram.com/usxr.crxxs" target="blank"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram" /></a>
 
-<a href="https://github.com/Izumi-kzx/Genesis-AI/watchers"><img title="espectadores" src="https://img.shields.io/github/watchers/Izumi-kzx/Genesis-AI?label=Espectadores&style=social"></a>
+<a href="https://github.com/CrxstianEscobar/ShadowBot-MDv3/watchers"><img title="espectadores" src="https://img.shields.io/github/watchers/CrxstianEscobar/ShadowBot-MDv3?label=Espectadores&style=social"></a>
 </p>
 
 </p>
-<p align="center"><img src="https://profile-counter.glitch.me/{Genesis-AI}/count.svg" alt="Izumi-kzx:: Visitor's Count" /></p>
+<p align="center"><img src="https://profile-counter.glitch.me/{ShadowBot-MDv3}/count.svg" alt="CrxstianEscobar:: Visitor's Count" /></p>
 
 </p>
 
