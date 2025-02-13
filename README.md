@@ -1,4 +1,4 @@
-<h1 align="center">ׅ꯱hׁׅ֮ɑׁׅժׁׅ݊ᨵׁׅׅᨰׁׅ ֮ϐׁᨵׁׅׅtׁׅ ☕</h1>
+<h1 align="center">ׅShadow Bot - MD ☕</h1>
  <p align="center">🌙 WhatsApp Bot Node-Js.</p>
 </p>
 
