@@ -3,7 +3,7 @@
 </p>
 
   [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00FFFF&lines=Bienvenido+al+Repositorio+Oficial;Shadow+Bot-MD;Creado+por+Criss+Escobar+☕)](https://git.io/typing-svg)
-![img](https://files.catbox.moe/oa0k5b.jpg)
+![img](https://files.catbox.moe/e4qg5o.jpg)
 
 [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20grupo-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX) [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y)
 
