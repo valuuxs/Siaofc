@@ -32,37 +32,37 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 //let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
 
 //creador y otros
-global.creador = 'Wa.me/50557865603'
+global.creador = 'Wa.me/51927238856'
 global.botreal = `${(conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bot')}`
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
-global.asistencia = 'Wa.me/50557865603'
-global.namech = '˙˒𖥻˚𝐂𝐫𝐨𝐰𝐁𝐨𝐭 - 𝐂𝐡𝐚𝐧𝐧𝐞𝐥﹋꥟'
-global.namechannel2 = '『✯ 𝗧𝗲𝗮𝗺 𝗖𝗼𝗺𝘂𝗻𝗶𝘁𝘆 𝗖𝗿𝗼𝘄 ✯』'
-global.namegrupo = 'シ︎ 𝗖𝗿𝗼𝘄𝗕𝗼𝘁-𝗠𝗗 💛'
-global.namecomu = '『𝗚𝗿𝘂𝗽𝗼 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 𝗖𝗿𝗼𝘄𝗕𝗼𝘁✯』'
-global.namecomu2 = '𝗧𝗵𝗲𝗖𝗿𝗼𝘄𝗕𝗼𝘁'
+global.asistencia = 'Wa.me/51927238856'
+global.namech = '𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫'
+global.namechannel2 = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡'
+global.namegrupo = 'Group Shadow Oficial'
+global.namecomu = 'Heavenly Team Community'
+global.namecomu2 = '☕ Heavenly Team Community'
 
 //Reacciones De Comandos.!
 global.rwait = '🕒'
 global.done = '✅'
 global.error = '✖️'
 
-//Emojis determinado de CrowBot
-global.emoji = '🚩'
-global.emoji2 = '💛'
-global.emoji3 = '🌠'
-global.emoji4 = '🍭'
-global.emoji5 = '🔱'
+//Emojis determinado de Shados
+global.emoji = '🌷'
+global.emoji2 = '🤍'
+global.emoji3 = '☕'
+global.emoji4 = '🍨'
+global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //mensaje en espera
-global.wait = '🕒 *𝗘𝘀𝗽𝗲𝗿𝗮 𝗨𝗻 𝗠𝗼𝗺𝗲𝗻𝘁𝗼, 𝗦𝗼𝘆 𝗟𝗲𝗻𝘁𝗼 ...*';
+global.wait = '[ ⏳ ] *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ...*';
 
 //Enlaces
-var grupo = 'https://chat.whatsapp.com/B7POPrlJiZf7UWHJKvzVkx'  
-var github = 'https://github.com/WillZek/CrowBot-ST' 
-var web = 'https://crow-bot-dashboard.vercel.app/' 
-let instagram = 'https://www.instagram.com/crowbot_wa'
+var grupo = ''  
+var github = 'https://github.com/CrxstianEscobar/ShadowBot-MD' 
+var web = 'https://shadow-bot.vercel.app/' 
+let instagram = 'https://www.instagram.com/shadowbot.md'
 
 global.redes = [grupo, github, web, instagram].getRandom()
 
