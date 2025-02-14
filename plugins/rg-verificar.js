@@ -42,16 +42,14 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `*REGISTRO - SHADOW*\n`
-    regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
-    regbot += `*Nombre:* ${name}\n`
-    regbot += `*Edad:* ${age} años\n`
-    regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
-    regbot += `*RECOMPENSAS*\n> `
-    regbot += `• 15 Coins 🪙\n> `
-    regbot += `• 245 Exp 💸\n> `
-    regbot += `• 12 Tokens 💰\n\n`
-    regbot += `☕ Verifica Tu Registro Aqui 👇🏻`
+    let regbot = `*`.･:｡REGISTRO COMPLETO.•:｡`*\n\n`
+    regbot += `- *Nombre:* ${name}\n`
+    regbot += `- *Edad:* ${age} años\n\n`
+    regbot += `*RECOMPENSAS*\n\n> `
+    regbot += `🪙 15 Coins\n> `
+    regbot += `✳️ 245 Xp\n> `
+    regbot += `🎫 12 Tokens\n\n`
+    regbot += `> ᥴ᥆ᥣ᥆ᥴᥲ *.profile* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.\n> ᥎ᥱrі𝖿іᥴᥲ 𝗍ᥙ rᥱgіs𝗍r᥆ ᥲ𝗊ᥙі 👇🏻`
 
     await m.react('💌')
     await conn.sendMessage(m.chat, {
