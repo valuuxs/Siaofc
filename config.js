@@ -47,7 +47,7 @@ global.imagen3 = fs.readFileSync('./media/menus/Menu3.jpg')
 global.welcome = fs.readFileSync('./media/welcome.jpg')
 global.adios = fs.readFileSync('./media/adios.jpg')
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
-global.crowurl = fs.readFileSync('./media/crowurl.jpg')
+global.shadowurl = fs.readFileSync('./media/shadowurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 global.repobot = 'https://github.com/CrxstianEscobar/ShadowBot-MD'
