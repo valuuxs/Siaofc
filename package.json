@@ -1,8 +1,8 @@
 {
-"name": "CrowBot-ST",
-"version": "2.1.0",
+"name": "ShadowBot-MD",
+"version": "3.0.0",
 "description": "Simple WhatsApp Bot Multi Device",
-"main": "starcore.js",
+"main": "heavenly.js",
 "type": "module",
 "directories": {
 "lib": "lib",
@@ -10,24 +10,24 @@
 "plugins": "plugins"
 },
 "scripts": {
-"start": "node starcore.js",
-"qr": "node starcore.js qr",
-"code": "node starcore.js code",
+"start": "node heavenly.js",
+"qr": "node heavenly.js qr",
+"code": "node heavenly.js code",
 "test": "node test.js",
-"test2": "nodemon starcore.js",
+"test2": "nodemon heavenly.js",
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/WillZek/CrowBot-ST",
+"homepage": "https://github.com/CrxstianEscobar/ShadowBot-MD",
 "author": {
-"name": "WillZek"
+"name": "Cristian Escobar"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/WillZek/CrowBot-ST.git"
+"url": "git+https://github.com/CrxstianEscobar/ShadowBot-MD.git"
 },
 "bugs": {
-"url": "https://github.com/WillZek/CrowBot-ST/issues"
+"url": "https://github.com/CrxstianEscobar/ShadowBot-MD/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
