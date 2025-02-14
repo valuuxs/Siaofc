@@ -19,13 +19,13 @@ let tags = {
   'grupo': '「GRUPOS」🍨',
   'nable': '「ON / OFF」', 
   'descargas': '「DESCARGAS」🍨',
-  'tools': '「HERRAMIENTAS」🍨',
+  'herramientas': '「HERRAMIENTAS」🍨',
   'info': '「INFORMACIÓN」🍨',
   'owner': '「CREADOR」🍨',
   'logos': '「EDICION LOGOS」🍨', 
 }
 
-const vid = ['https://files.catbox.moe/07lnqw.mp4', 'https://files.catbox.moe/07lnqw.mp4', 'https://files.catbox.moe/z23r5g.mp4']
+const vid = ['https://files.catbox.moe/7ha109.mp4', 'https://files.catbox.moe/7ha109.mp4']
 
 const defaultMenu = {
   before: `*•:•:•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•*
