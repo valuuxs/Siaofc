@@ -1,4 +1,4 @@
-<h1 align="center">ׅShadow Bot - MD ☕</h1>
+<h1 align="center">ׅʙᴏᴛ sʜᴀᴅᴏᴡ</h1>
  <p align="center">Node-Js.</p>
 </p>
 
