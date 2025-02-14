@@ -86,7 +86,7 @@ export async function handler(chatUpdate) {
                 if (!('isBanned' in chat))
                     chat.isBanned = false
                 if (!('welcome' in chat))
-                    chat.welcome = true
+                    chat.welcome = false
                 if (!('audios' in chat))
                     chat.audios = false
                 if (!('detect' in chat))
@@ -98,7 +98,7 @@ chat.antiLink2 = false
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
                 if (!('nsfw' in chat))
-                    chat.nsfw = false
+                    chat.nsfw = true
                 if (!('autoAceptar' in chat)) chat.autoAceptar = false                   
                 if (!('reaction' in chat))
                     chat.reaction = false
@@ -116,7 +116,7 @@ chat.antiBot2 = false
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
-                    welcome: true,
+                    welcome: false,
                     delete: false,
                     audios: false,
                     detect: true,
@@ -127,7 +127,7 @@ chat.antiBot2 = false
                     autolevelup: false,
                     antiBot2: false,
                     antiver: false,
-                    nsfw: false, 
+                    nsfw: true, 
                     autoAceptar: false,
                     reaction: false,
                     expired: 0, 
@@ -136,8 +136,8 @@ chat.antiBot2 = false
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                if (!('self' in settings)) settings.self = false
-               if (!('restrict' in settings)) settings.restrict = false
-                if (!('jadibotmd' in settings)) settings.jadibotmd = true
+               if (!('restrict' in settings)) settings.restrict = true
+                if (!('jadibotmd' in settings)) settings.jadibotmd = false
                if (!('autobio' in settings)) settings.autobio = false
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
                 if (!('autoread' in settings)) settings.autoread = false
@@ -145,8 +145,8 @@ chat.antiBot2 = false
                 if (!('antiSpam' in settings)) settings.antiSpam = false
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
-                restrict: false,
-                jadibotmd: true,
+                restrict: true,
+                jadibotmd: false,
                 autobio: false,
                 antiPrivate: false,
                 autoread: false,
@@ -286,8 +286,8 @@ if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner
 if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned && !isROwner) return 
 if (m.text && user.banned && !isROwner) {
 if (user.antispam > 2) return
-m.reply(`🚫 Está baneado(a), no puede usar los comandos de este bot!\n\n${user.bannedReason ? `\n💌 *Motivo:* 
-${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si este bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puede exponer su caso en:*\n\n❤️‍🔥 ${asistencia}`)
+m.reply(`*🚫 Está baneado(a), no puede usar los comandos de este bot!*\n\n${user.bannedReason ? `\n💌 *Motivo:* 
+${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que es un error contacte con mi creador:*\n- Wa.me/51927238856`)
 user.antispam++        
 return
 }
@@ -355,7 +355,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                 else
                     m.exp += xp
                 if (!isPrems && plugin.estrellas && global.db.data.users[m.sender].estrellas < plugin.estrellas * 1) {
-                    conn.reply(m.chat, `Se agotaron tus *Estrellas* 🌟`, m, fake)
+                    conn.reply(m.chat, `Se agotaron tus *Coins* 🪙`, m, fake)
                     continue
                 }
                 let extra = {
@@ -403,7 +403,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                         }
                     }
                     if (m.estrellas)
-                        conn.reply(m.chat, `Utilizaste *${+m.estrellas}* ⭐️`, m, fake)
+                        conn.reply(m.chat, `Utilizaste *${+m.estrellas}* 🪙`, m, fake)
                 }
                 break
             }
@@ -460,7 +460,7 @@ global.db.data.users[m.sender].spam = new Date * 1
       if (opts['autoread']) await this.readMessages([m.key])
       if (settingsREAD.autoread2) await this.readMessages([m.key])  
 
-     if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|Crow|a|s)/gi)) {
+     if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|adow|a|s)/gi)) {
          let emot = pickRandom(["🚩", "🍟", "✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
        if (!m.fromMe) return this.sendMessage(m.chat, { react: { text: emot, key: m.key }})
        }
@@ -491,16 +491,16 @@ console.error(e)
 
 global.dfail = (type, m, conn) => {
 const msg = {
-rowner: '「💛」 *Esta función solo puede ser usada por mi creador*', 
-owner: '「💛」 *Esta función solo puede ser usada por mi desarrollador.*', 
-mods: '「💛」 *Esta función solo puede ser usada los moderadores del bot*', 
-premium: '「💛」 *Esta función solo es para usuarios Premium.*', 
-group: '「💛」 *Esta funcion solo puede ser ejecutada en grupos.*', 
-private: '「💛」 *Esta función solo puede ser usada en chat privado.*', 
-admin: '「💛」 *Este comando solo puede ser usado por admins.*', 
-botAdmin: '「💛」 *Para usar esta función debo ser admin.*',
-unreg: `「💛」 *No te encuentras registrado, registrese para usar esta función*\n\n*/reg nombre.edad*\n\n*Ejemplo* : */reg Crow.18*`,
-restrict: '「💛」 *Esta característica esta desactivada.*'
+rowner: '*[ ℹ️ ] Esta función solo puede ser usada por mi Creador.*', 
+owner: '*[ ℹ️ ] Esta función solo puede ser usada por mi desarrollador.*', 
+mods: '*[ ℹ️ ] Esta función solo puede ser usada los moderadores del bot.*', 
+premium: '*[ ℹ️ ] Esta función solo es para usuarios Premium.*', 
+group: '*[ ℹ️ ] Esta funcion solo puede ser ejecutada en grupos.*', 
+private: '*[ ℹ️ ] Esta función solo puede ser usada en chat privado.*', 
+admin: '*[ ℹ️ ] Este comando solo puede ser usado por admins.*', 
+botAdmin: '*[ ℹ️ ] Para usar esta función debo ser admin.*',
+unreg: `*[ ℹ️ ] No te encuentras registrado, registrese para usar esta función*\n\n*/reg nombre.edad*\n\n*[ 💡 ] Ejemplo* : /reg Shadow.18`,
+restrict: '*[ ℹ️ ] Esta característica esta desactivada.*'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
 
