@@ -99,17 +99,17 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 //Id Channel
 global.idchannel = '120363357231409846@newsletter'
 global.canalIdM = ["120363357231409846@newsletter", "120363357231409846@newsletter", "120363357231409846@newsletter"]
-global.canalNombreM = ["⏤͟͟͞͞Shadow۵࿐", "✯ 𝐂𝐫𝐨𝐰𝐁𝐨𝐭 - 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ✯", "⏤͟͟͞͞☆ Shadow Test"]
+global.canalNombreM = ["⏤͟͟͞͞Shadow۵࿐", "✯ SB - Chanel ✯", "⏤͟͟͞͞☆ Shadow Test"]
 global.channelRD = await getRandomChannel()
 // global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "3876577197-120363302285079181@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: `${packname}`, orderTitle: 'Bang', thumbnail: icons, sellerJid: '0@s.whatsapp.net'}}}
 
-global.icono = [ 
-'https://files.catbox.moe/n2zm6e.jpg',
-'https://files.catbox.moe/1rb6am.jpg',
-'https://files.catbox.moe/2yfz2e.jpg',
-'https://files.catbox.moe/sk7gv5.jpg',
-'https://files.catbox.moe/m5y6ns.jpg',
-'https://files.catbox.moe/y0sazu.jpg',
+global.icono = [
+'https://files.catbox.moe/uho7vk.jpg',
+'https://files.catbox.moe/u1sgph.jpg',
+'https://files.catbox.moe/pk3xxk.jpg',
+'https://files.catbox.moe/yljhz1.jpg',
+'https://files.catbox.moe/qze4u2.jpg',
+'https://files.catbox.moe/gc6b94.jpg',
 ].getRandom()
 
 global.urls = [
