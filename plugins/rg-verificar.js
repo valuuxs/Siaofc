@@ -42,7 +42,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `*`.･:｡REGISTRO COMPLETO.•:｡`*\n\n`
+    let regbot = `*\`.･:｡REGISTRO COMPLETO.•:｡\`*\n\n`
     regbot += `- *Nombre:* ${name}\n`
     regbot += `- *Edad:* ${age} años\n\n`
     regbot += `*RECOMPENSAS*\n\n> `
