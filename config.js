@@ -51,10 +51,10 @@ global.crowurl = fs.readFileSync('./media/crowurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 global.repobot = 'https://github.com/CrxstianEscobar/ShadowBot-MD'
-global.grupo = 'https://chat.whatsapp.com/B7POPrlJiZf7UWHJKvzVkx'
-global.comu = 'https://chat.whatsapp.com/Bgfb6Ag13BDCvwzOtldlCm'
-global.channel = 'https://whatsapp.com/channel/0029Vb1AFK6HbFV9kaB3b13W'
-global.insta = 'https://www.instagram.com/crowbot-wa'
+global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
+global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
+global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
+global.insta = 'https://www.instagram.com/shadowbot.md'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "543876577197-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '👑【✫𝚃𝙴𝙰𝙼  乂 𝚂𝚃𝙰𝚁𝙲𝙾𝚁𝙴✫】🎩', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
