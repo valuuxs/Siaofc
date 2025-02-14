@@ -59,7 +59,7 @@ global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 global.wait = '[ ⏳ ] *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ...*';
 
 //Enlaces
-var grupo = ''  
+var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
 var github = 'https://github.com/CrxstianEscobar/ShadowBot-MD' 
 var web = 'https://shadow-bot.vercel.app/' 
 let instagram = 'https://www.instagram.com/shadowbot.md'
