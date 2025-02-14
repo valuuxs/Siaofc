@@ -14,7 +14,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         return m.reply(`*[ ℹ️ ] Ya te encuentras registrado.*\n\n*¿Quieres volver a registrarte?*\n\n*Use este comando para eliminar su registro*\n*\`${usedPrefix}unreg\`*`)
     }
 
-    if (!Reg.test(text)) return m.reply(`*[ ℹ️ ] Ingresa tu nombre y edad para registrarte en mi base de datos.*\n\n*${usedPrefix + command} <nombre.edad>*\n*[ 💡 ] Ejemplo:*\n*${usedPrefix + command} ${name2}.18*`)
+    if (!Reg.test(text)) return m.reply(`*[ ℹ️ ] Ingresa tu nombre y edad para registrarte en mi base de datos.*\n\n*${usedPrefix + command} <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} ${name2}.18`)
 
     let [_, name, splitter, age] = text.match(Reg)
     if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
