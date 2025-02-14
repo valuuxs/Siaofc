@@ -490,6 +490,9 @@ console.error(e)
 }}
 
 global.dfail = (type, m, conn) => {
+
+let user2 = m.pushName || 'Anónimo'
+
 const msg = {
 rowner: '*[ ℹ️ ] Esta función solo puede ser usada por mi Creador.*', 
 owner: '*[ ℹ️ ] Esta función solo puede ser usada por mi desarrollador.*', 
@@ -499,7 +502,7 @@ group: '*[ ℹ️ ] Esta funcion solo puede ser ejecutada en grupos.*',
 private: '*[ ℹ️ ] Esta función solo puede ser usada en chat privado.*', 
 admin: '*[ ℹ️ ] Este comando solo puede ser usado por admins.*', 
 botAdmin: '*[ ℹ️ ] Para usar esta función debo ser admin.*',
-unreg: `*[ ℹ️ ] No te encuentras registrado, registrese para usar esta función*\n\n*/reg nombre.edad*\n\n*[ 💡 ] Ejemplo* : /reg Shadow.18`,
+unreg: `*[ ℹ️ ] No te encuentras registrado, registrese para usar esta función*\n\n*.reg <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n> .reg ${user2}.18`,
 restrict: '*[ ℹ️ ] Esta característica esta desactivada.*'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
