@@ -17,13 +17,13 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     if (!Reg.test(text)) return m.reply(`Eʟ ғᴏʀᴍᴀᴛᴏ ɪɴɢʀᴇsᴀᴅᴏ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴏ\n\nUsᴏ ᴅᴇʟ ᴄᴏᴍᴀɴᴅᴏ: ${usedPrefix + command} 𝗻𝗼𝗺𝗯𝗿𝗲.𝗲𝗱𝗮𝗱\nEᴊᴇᴍᴘʟᴏ : *${usedPrefix + command} ${name2}.14*`)
 
     let [_, name, splitter, age] = text.match(Reg)
-    if (!name) return m.reply('💛 Eʟ ɴᴏʍ𝗯𝗿𝗲 ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪᴏ.')
-    if (!age) return m.reply('💛 Lᴀ ᴇᴅᴀᴅ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪ́ᴀ.')
-    if (name.length >= 100) return m.reply('💛 El nombre es demasiado largo.')
+    if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
+    if (!age) return m.reply('*[ ⚠️ ] La edad no puede estar vacía.*')
+    if (name.length >= 100) return m.reply('*[ ⚠️ ] El nombre es demasiado largo.*')
 
     age = parseInt(age)
-    if (age > 1000) return m.reply('*ʟᴀ ᴇᴅᴀᴅ ɪɴɢʀᴇsᴀᴅᴀ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴀ*')
-    if (age < 5) return m.reply('*ʟᴀ ᴇᴅᴀᴅ ɪɴɢʀᴇsᴀᴅᴀ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴀ*')
+    if (age > 1000) return m.reply('*❌ Lᴀ Eᴅᴀᴅ Iɴɢʀᴇsᴀᴅᴀ ᴇs Iɴᴄᴏʀʀᴇᴄᴛᴀ*')
+    if (age < 5) return m.reply('*❌ Lᴀ Eᴅᴀᴅ Iɴɢʀᴇsᴀᴅᴀ ᴇs Iɴᴄᴏʀʀᴇᴄᴛᴀ*')
 
     user.name = name.trim()
     user.age = age
@@ -42,27 +42,23 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `┏━━━━━━━━━━━━━━━━━━⬣
-┃⋄ *🎩 REGISTRO - SHADOW*
-┗━━━━━━━━━━━━━━━━━━⬣\n`
+    let regbot = `*REGISTRO - SHADOW*\n`
     regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
-    regbot += `*「💛」𝐍𝐨𝐦𝐛𝐫𝐞:* ${name}\n`
-    regbot += `*「💛」𝐄𝐝𝐚𝐝:* ${age} años\n`
+    regbot += `*Nombre:* ${name}\n`
+    regbot += `*Edad:* ${age} años\n`
     regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
-    regbot += `*「💝」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*\n> `
-    regbot += `• 15 Estrellas 🌟\n> `
-    regbot += `• 5 Coins 🪙\n> `
-    regbot += `• 245 Experiencia 💸\n> `
-    regbot += `• 12 Tokens 💰\n`
-    regbot += `꒷꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒷꒦꒷\n> `
-    regbot += `🍭 Verifica Tu Registro Aqui 👇🏻`
+    regbot += `*RECOMPENSAS*\n> `
+    regbot += `• 15 Coins 🪙\n> `
+    regbot += `• 245 Exp 💸\n> `
+    regbot += `• 12 Tokens 💰\n\n`
+    regbot += `☕ Verifica Tu Registro Aqui 👇🏻`
 
-    await m.react('📪')
+    await m.react('💌')
     await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
+                title: '⊱『💚𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥💚』⊰',
                 body: dev,
                 thumbnailUrl: 'https://files.catbox.moe/nwqdwh.jpg',
                 sourceUrl: 'https://whatsapp.com/channel/0029Vb1X1TDElah1FEQ4xm0K',
@@ -73,11 +69,11 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         }
     }, { quoted: m });
 
-let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
-🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
-🍨 *𝙴𝚍𝚊𝚍* » ${user.age} años
-⌨️ *𝙳𝚎𝚜𝚌𝚛𝚒𝚙𝚌𝚒𝚘𝚗* » ${user.descripcion}
-🍭 *𝙽𝚞𝚖𝚎𝚛𝚘 𝚍𝚎 𝚛𝚎𝚐𝚒𝚜𝚝𝚛𝚘* »
+let chtxt = `👤 *Usᴇʀ:* ${m.pushName || 'Anónimo'}
+🗂 *Rᴇɢɪsᴛʀᴏ:* ${user.name}
+🍨 *Eᴅᴀᴅ:* ${user.age} años
+⌨️ *Dᴇsᴄ:* ${user.descripcion}
+🍭 *Sᴇʀɪᴇ:*
 ⤷ ${sn}`;
 
     let channelID = '120363384854309225@newsletter';
@@ -85,8 +81,8 @@ let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
         text: chtxt,
         contextInfo: {
             externalAdReply: {
-                title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 𝐃𝐄 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 🔔 】",
-                body: '🥳 ¡𝚄𝚗 𝚞𝚜𝚞𝚊𝚛𝚒𝚘 𝚗𝚞𝚎𝚟𝚘 𝚎𝚗 𝚖𝚒 𝚋𝚊𝚜𝚎 𝚍𝚎 𝚍𝚊𝚝𝚘𝚜!',
+                title: "☕ 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 - 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎",
+                body: '🥳 ¡ᥙᥒ ᥙsᥙᥲrі᥆ ᥒᥙᥱ᥎᥆ ᥱᥒ mі ᑲᥲsᥱ ძᥱ ძᥲ𝗍᥆s!',
                 thumbnailUrl: perfil,
                 sourceUrl: redes,
                 mediaType: 1,
