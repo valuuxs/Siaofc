@@ -20,7 +20,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         await conn.reply(m.chat, `🚩 El usuario no está registrado.`, m);
     }
 };
-handler.help = ['unbanuser <@tag>'];
+handler.help = ['unbanuser *<@tag>*'];
 handler.command = ['unbanuser'];
 handler.tags = ['owner'];
 handler.prems = true;
