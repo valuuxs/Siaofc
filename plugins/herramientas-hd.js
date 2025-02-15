@@ -28,12 +28,10 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   }
 }
 
-handler.help = ['hd', 'remini']
-handler.tags = ['ai']
+handler.help = ['hd *<img>*', 'remini *<img>*']
+handler.tags = ['herramientas']
 handler.command = /^(hd|remini)$/i
-
 handler.register = true
-handler.disable = false
 
 export default handler
 
