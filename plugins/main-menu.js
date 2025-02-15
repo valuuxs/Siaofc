@@ -4,25 +4,25 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
 let tags = {
-  'shadow': '👑「 *`MENUS SHADOWBOT`* 」👑',
-  'main': '「INFO」🍨',
-  'teclado': '「TECLADO CROWBOT」🍨',
-  'buscador': '「BUSQUEDAS」🍨',
-  'fun': '「JUEGOS」🍨',
-  'serbot': '「SUB BOTS」🍨',
-  'rpg': '「RPG」🍨',
-  'gacha': '「ROLLWAIFUS」🍨',
-  'rg': '「REGISTRO」🍨',
-  'sticker': '「STICKERS」🍨',
-  'emox': '「ANIMES」🍨',
-  'database': '「DATABASE」🍨',
-  'grupo': '「GRUPOS」🍨',
+  'shadow': '👑「 *`MENU LIST`* 」👑',
+  'main': '「INFO」👨🏻‍💻',
+  'teclado': '「TECLADO CROWBOT」⌨️',
+  'buscador': '「BUSQUEDAS」🔎',
+  'fun': '「JUEGOS」🎮',
+  'serbot': '「SUB BOTS」🤖',
+  'rpg': '「RPG」💸',
+  'gacha': '「ROLLWAIFUS」🫦',
+  'rg': '「REGISTRO」📝',
+  'sticker': '「STICKERS」😸',
+  'emox': '「ANIMES」☕',
+  'database': '「DATABASE」📂',
+  'grupo': '「GRUPOS」🍦',
   'nable': '「ON / OFF」', 
-  'descargas': '「DESCARGAS」🍨',
-  'herramientas': '「HERRAMIENTAS」🍨',
-  'info': '「INFORMACIÓN」🍨',
-  'owner': '「CREADOR」🍨',
-  'logos': '「EDICION LOGOS」🍨', 
+  'descargas': '「DESCARGAS」📥',
+  'herramientas': '「HERRAMIENTAS」🛠️',
+  'info': '「INFORMACIÓN」📩',
+  'owner': '「CREADOR」📧',
+  'logos': '「EDICION LOGOS」🔮', 
 }
 
 const vid = ['https://files.catbox.moe/7ha109.mp4', 'https://files.catbox.moe/7ha109.mp4']
@@ -50,7 +50,7 @@ const defaultMenu = {
 
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 `.trimStart(),
-  header: '︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊➳ %category \n︶︶︶︶︶︶︶︶︶  ✧*̥˚',
+  header: 'ㅤ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n⌇➳ %category \nㅤ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
   body: '┊⪩ %cmd',
   footer: '╰──────────── ·\n',
   after: `> ${dev}`,
