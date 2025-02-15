@@ -6,7 +6,7 @@ import { xpRange } from '../lib/levelling.js'
 let tags = {
   'shadow': '👑「 *`MENU LIST`* 」👑',
   'main': '「INFO」👨🏻‍💻',
-  'teclado': '「TECLADO CROWBOT」⌨️',
+  'teclado': '「TECLADO」⌨️',
   'buscador': '「BUSQUEDAS」🔎',
   'fun': '「JUEGOS」🎮',
   'serbot': '「SUB BOTS」🤖',
