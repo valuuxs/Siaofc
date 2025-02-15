@@ -43,13 +43,12 @@ const defaultMenu = {
 *🪙 Coins:* %estrellas
 *🔆 Nivel:* %level
 *💫 Rango:* %role
-
+%readmore
 *⏰ Tiempo:* %muptime
 *👥 Usuarios: %totalreg
 *🆙 Versión:* 3.0.0
-%readmore
 
-\t*ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
+ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 `.trimStart(),
   header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊➳ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
   body: '*┃⏤͟͟͞͞🍭➤›* %cmd',
