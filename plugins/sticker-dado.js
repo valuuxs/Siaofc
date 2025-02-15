@@ -9,5 +9,7 @@ let stickdados = [
 ]
 let url = stickdados[Math.floor(Math.random() * stickdados.length)]
 conn.sendFile(m.chat, url, 'error.webp', null, m, { asSticker: true })}
-handler.command = ['dado', 'dados', 'dadu'] 
+handler.help = ['dado'];
+handler.tags = ['sticker'];
+handler.command = ['dado', 'dados', 'dadu'];
 export default handler;
