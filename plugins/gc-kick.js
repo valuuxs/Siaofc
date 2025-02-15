@@ -15,12 +15,12 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
     }
 
     await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
-    m.reply(`*Usuario eliminado.*`)
+    m.reply(`*El usuario fue expulsado con éxito.*`)
 }
 
-handler.help = ['kick *@user*']
+handler.help = ['kick *<@tag>*']
 handler.tags = ['gc']
-handler.command = ['kick', 'expulsar', 'ban'] 
+handler.command = ['kick', 'expulsar', 'ban', 'rip'] 
 handler.admin = true
 handler.group = true
 handler.botAdmin = true
