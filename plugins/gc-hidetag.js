@@ -33,6 +33,8 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
     }
   }
 };
+handler.help =
+handler.tags =
 handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet)$/i;
 handler.group = true;
 handler.admin = true;
