@@ -30,11 +30,11 @@ const handler = async (m, {conn, usedPrefix, text}) => {
   }
 };
 
-handler.help = ['*593xxx*', '*@usuario*', '*responder chat*'].map((v) => 'demote ' + v);
-handler.tags = ['group'];
+handler.help = ['*<@tag>*'].map((v) => 'demote ' + v);
+handler.tags = ['gc'];
 handler.command = /^(demote|quitarpoder|quitaradmin)$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
-handler.fail = null;
+//handler.fail = null;
 export default handler;
