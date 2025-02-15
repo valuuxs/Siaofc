@@ -25,8 +25,8 @@ const handler = async (m, {conn, usedPrefix, text}) => {
     conn.reply(m.chat, `*[ ✅ ] Ordenes recibidas.*`, m);
   }
 };
-handler.help = ['*593xxx*', '*@usuario*', '*responder chat*'].map((v) => 'promote ' + v);
-handler.tags = ['group'];
+handler.help = ['*<@tag>*'].map((v) => 'promote ' + v);
+handler.tags = ['gc'];
 handler.command = /^(promote|daradmin|darpoder)$/i;
 handler.group = true;
 handler.admin = true;
