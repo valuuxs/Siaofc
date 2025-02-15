@@ -55,11 +55,12 @@ Sof02s32inf14.1e100.net
 *MODEM JUMPS:* 64`;
   m.reply(doxeo, null, {mentions: conn.parseMention(doxeo)});
 };
-handler.help = ['doxear <nombre> | <@tag>'];
+handler.help = ['doxear *<@tag>*'];
 handler.tags = ['fun'];
 handler.command = /^Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame/i;
-handler.rowner = false
-handler.estrellas = 2;
+handler.group = true;
+handler.register = true;
+
 export default handler;
 
 function pickRandom(list) {
