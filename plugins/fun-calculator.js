@@ -1,5 +1,5 @@
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) return conn.reply(m.chat, `💜 Mensiona a un Usuario.`, m, rcanal, );
+  if (!text) return conn.reply(m.chat, `*[ ☕ ] Menciona algún usuario.`, m, rcanal, );
   const percentages = (500).getRandom();
   let emoji = '';
   let description = '';
@@ -109,10 +109,10 @@ var hawemod = [
  }
 loading()    
 };
-handler.help = ['gay <@tag> | <nombre>', 'lesbiana <@tag> | <nombre>', 'pajero <@tag> | <nombre>', 'pajera <@tag> | <nombre>', 'puto <@tag> | <nombre>', 'puta <@tag> | <nombre>', 'manco <@tag> | <nombre>', 'manca <@tag> | <nombre>', 'rata <@tag> | <nombre>', 'prostituta <@tag> | <nombre>', 'prostituto <@tag> | <nombre>'];
-handler.tags = ['fun'];
+handler.help = ['gay *<@tag>*', 'lesbiana *<@tag>*', 'pajero *<@tag>*', 'pajera *<@tag>*', 'puto *<@tag>*', 'puta *<@tag>*', 'manco *<@tag>*', 'manca *<@tag>*', 'rata *<@tag>*', 'prostituta *<@tag>*', 'prostituto *<@tag>*'];
+handler.tags = ['juegos'];
 handler.register = true;
 handler.group = true;
 handler.command = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituta', 'prostituto'];
-//handler.estrellas = 5;
+
 export default handler;
