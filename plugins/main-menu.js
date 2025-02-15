@@ -45,14 +45,14 @@ const defaultMenu = {
 *💫 Rango:* %role
 %readmore
 *⏰ Tiempo:* %muptime
-*👥 Usuarios: %totalreg
+*👥 Usuarios:* %totalreg
 *🆙 Versión:* 3.0.0
 
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 `.trimStart(),
   header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊➳ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
-  body: '*┃⏤͟͟͞͞🍭➤›* %cmd',
-  footer: '*┗━*\n',
+  body: '┃⪩ %cmd',
+  footer: '┗━\n',
   after: `> ${dev}`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
