@@ -40,7 +40,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['fb *<link>*'];
+handler.help = ['facebook *<link>*'];
 handler.tags = ['descargas']
 handler.command = /^(fb|facebook|fbdl)$/i;
 handler.register = true;
