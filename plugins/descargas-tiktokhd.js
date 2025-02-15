@@ -28,8 +28,8 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
     }
 };
 
-handler.help = ['tiktokhd *<url>*'];
-handler.tags = ['downloader'];
+handler.help = ['tiktokhd *<link>*'];
+handler.tags = ['descargas'];
 handler.command = /^(tiktokhd|tthd|tt3)$/i;
 handler.register = true;
 
