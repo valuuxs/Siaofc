@@ -29,7 +29,7 @@ const vid = ['https://files.catbox.moe/7ha109.mp4', 'https://files.catbox.moe/7h
 
 const defaultMenu = {
   before: `🌷 ¡Hᴏʟᴀ! ¿Cᴏ́ᴍᴏ Esᴛᴀs Hᴏʏ?
-*%name* Sᴏʏ Sʜᴀᴅᴏᴡ
+\`%name\` Sᴏʏ Sʜᴀᴅᴏᴡ
 %greeting
 
 *˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
@@ -41,16 +41,15 @@ const defaultMenu = {
 *🪀 Numero:* +51927238856
 *✳️ Exp:* %exp
 *🪙 Coins:* %estrellas
-*🆙 Nivel:* %level
-*💫 Rango: %role
+*🔆 Nivel:* %level
+*💫 Rango:* %role
 
 *⏰ Tiempo:* %muptime
 *👥 Usuarios: %totalreg
 *🆙 Versión:* 3.0.0
 %readmore
-*✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧*\n\n> Para Ser Un Sub Bots Usa #code para codigo de 8 dígitos y #qr para codigo qr.
 
-\t*(✰◠‿◠) 𝐂 𝐨 𝐦 𝐚 𝐧 𝐝 𝐨 𝐬*   
+\t*ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 `.trimStart(),
   header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊➳ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
   body: '*┃⏤͟͟͞͞🍭➤›* %cmd',
