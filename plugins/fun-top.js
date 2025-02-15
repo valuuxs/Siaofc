@@ -36,6 +36,7 @@ handler.help = ['top *<texto>*']
 handler.command = ['top']
 handler.tags = ['fun']
 handler.group = true
+handler.register = true
 export default handler
 function pickRandom(list) {
 return list[Math.floor(Math.random() * list.length)]}
