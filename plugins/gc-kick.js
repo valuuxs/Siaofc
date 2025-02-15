@@ -15,7 +15,7 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
     }
 
     await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
-    m.reply(`*[ ℹ️ ] El participante @${m.messageStubParameters[0].split('@')[0]} fue eliminado.*`)
+    m.reply(`*[ ℹ️ ] El participante fue eliminado.*`)
 }
 
 handler.help = ['kick *<@tag>*']
