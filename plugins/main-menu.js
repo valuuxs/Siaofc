@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
 let tags = {
-  'crow': '👑「 *`MENUS SHADOWBOT`* 」👑',
+  'shadow': '👑「 *`MENUS SHADOWBOT`* 」👑',
   'main': '「INFO」🍨',
   'teclado': '「TECLADO CROWBOT」🍨',
   'buscador': '「BUSQUEDAS」🍨',
@@ -28,25 +28,25 @@ let tags = {
 const vid = ['https://files.catbox.moe/7ha109.mp4', 'https://files.catbox.moe/7ha109.mp4']
 
 const defaultMenu = {
-  before: `*•:•:•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•*
+  before: `🌷 ¡Hᴏʟᴀ! ¿Cᴏ́ᴍᴏ Esᴛᴀs Hᴏʏ?
+*%name* Sᴏʏ Sʜᴀᴅᴏᴡ
+%greeting
 
-"*「💛」 ¡Hola! %name soy ${nombrebot}*, *%greeting* ❒"
+*˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
+*╭╌┈╼◈ ╰ 3.0.0 ╯◈╾┈╌★*
+*│*
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
 
-╔━━━━━ *⊱𝐈𝐍𝐅𝐎 - 𝐁𝐎𝐓⊰*
-✦  👤 *Cliente:* %name
-✧  ❤️‍🔥 *Exp:* %exp
-✦  🌟 *Estrellas:* %estrellas
-✧  👑 *Nivel:* %level
-✦  🌠 *Rango:* %role
-╚━━━━━━━━━━━━━━
-%readmore
-╔━━━━━ *⊱𝐈𝐍𝐅𝐎 - 𝐔𝐒𝐄𝐑⊰*
-✧  🤖 *Bot:* CrowBot-ST
-✦  🔱 *Modo:* Privado VIP 
-✧  ✨ *Baileys:* Multi Device
-✦  🪐 *Tiempo Activo:* %muptime
-✧  💫 *Usuarios:* %totalreg 
-╚━━━━━━━━━━━━━━
+*☕ Creador:* Cristian Escobar
+*🪀 Numero:* +51927238856
+*✳️ Exp:* %exp
+*🪙 Coins:* %estrellas
+*🆙 Nivel:* %level
+*💫 Rango: %role
+
+*⏰ Tiempo:* %muptime
+*👥 Usuarios: %totalreg
+*🆙 Versión:* 3.0.0
 %readmore
 *✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧*\n\n> Para Ser Un Sub Bots Usa #code para codigo de 8 dígitos y #qr para codigo qr.
 
