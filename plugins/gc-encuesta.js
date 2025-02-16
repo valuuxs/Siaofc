@@ -11,7 +11,7 @@ a.push([b[c]])
                         return conn.sendPoll(m.chat, `${wm}`, a, m)
 }
 handler.help = ['encuesta *<text|text2>*']
-handler.tags = ['grupo'] 
+handler.tags = ['gc'] 
 handler.command = ['poll', 'encuesta'] 
 handler.group = true
 
