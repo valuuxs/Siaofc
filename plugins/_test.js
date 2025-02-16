@@ -47,6 +47,6 @@ const handler = async (m, { conn, args, participants, usedPrefix, command, isBot
   }
 };
 
-handler.command = /^kicknum2$/i;
+handler.command = /^(kicknum2)$/i;
 handler.group = handler.botAdmin = handler.admin = true;
 export default handler;
