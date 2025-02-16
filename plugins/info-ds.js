@@ -1,6 +1,6 @@
 
 /* Codigo hecho por @Fabri115 y mejorado por BrunoSobrino */
-
+/*
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 
@@ -43,4 +43,4 @@ handler.command = /^(fixmsgespera|ds)$/i
 handler.estrellas = 5;
 handler.register = true
 
-export default handler
+export default handler*/
