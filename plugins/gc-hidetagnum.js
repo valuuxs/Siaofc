@@ -29,7 +29,7 @@ const handler = async (m, {conn, args, groupMetadata, participants, usedPrefix, 
   }
 };
 handler.help = ['notifynum *<prefix>*'];
-handler.command = /^(notifynum|nnum|hidetagnum)$/i;
+handler.command = /^(hidnum|nnum|hidetagnum)$/i;
 handler.group = handler.botAdmin = handler.admin = true;
 handler.fail = null;
 export default handler;
