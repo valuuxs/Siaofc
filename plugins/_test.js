@@ -1,4 +1,4 @@
-const handler = async (m, { conn, args, participants, isBotAdmin }) => {
+const handler = async (m, { conn, args, groupMetadata, participants, isBotAdmin }) => {
   if (!args[0]) return m.reply('*📍 Ingrese un prefijo de país. Ejemplo: !kicknum 52*');
   if (isNaN(args[0])) return m.reply('*📍 Ingrese un prefijo válido. Ejemplo: !kicknum 52*');
 
@@ -11,17 +11,15 @@ const handler = async (m, { conn, args, participants, isBotAdmin }) => {
   // Lista de administradores
   const adminList = participants.filter(p => p.admin).map(p => p.id);
 
-  // Creador del bot (global.owner en formato @s.whatsapp.net)
-  const ownerBot = (global.owner || []).map(num => num.replace(/[^\d]/g, '') + '@s.whatsapp.net');
+  // Creador del grupo
+  const ownerGroup = groupMetadata.owner || '';
 
-  // Filtrar usuarios con el prefijo, excluyendo administradores y el dueño del bot
+  // Creador del bot (reemplaza 'TU_NUMERO_AQUI' con el número real)
+  const ownerBot = 'TU_NUMERO_AQUI@s.whatsapp.net';
+
+  // Filtrar usuarios con el prefijo, excluyendo administradores, el creador del grupo y el creador del bot
   const usersToKick = participants
-    .filter(p => 
-      p.id.startsWith(prefix) && 
-      p.id !== conn.user.jid &&  // No eliminar al bot
-      !ownerBot.includes(p.id) && // No eliminar al dueño del bot
-      !adminList.includes(p.id)   // No eliminar administradores (incluye al creador si es admin)
-    )
+    .filter(p => p.id.startsWith(prefix) && p.id !== conn.user.jid && p.id !== ownerGroup && p.id !== ownerBot && !adminList.includes(p.id))
     .map(p => p.id);
 
   if (usersToKick.length === 0) return m.reply(`*📍 No hay usuarios con el prefijo +${prefix} que puedan ser eliminados*`);
@@ -43,7 +41,7 @@ const handler = async (m, { conn, args, participants, isBotAdmin }) => {
   m.reply('*✅ Eliminación completada.*');
 };
 
-handler.command = /^kicknumw$/i;
+handler.command = /^kicknum2$/i;
 handler.group = true;
 handler.botAdmin = true;
 handler.admin = true;
