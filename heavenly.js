@@ -303,7 +303,7 @@ console.log(chalk.bold.greenBright(`🤍 Todos los Sub-Bots se conectaron con é
 (async () => {
 global.conns = [];
 
-const mainBotAuthFile = 'ShadowwSession';
+const mainBotAuthFile = 'ShadowSession';
 try {
 const mainBot = await connectionUpdate(mainBotAuthFile);
 global.conns.push(mainBot);
