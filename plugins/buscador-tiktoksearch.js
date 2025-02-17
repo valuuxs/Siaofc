@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
@@ -67,4 +67,4 @@ handler.register = true;
 handler.tags = ['buscador'];
 handler.command = ['tiktoksearch', 'ttss', 'ttsearch'];
 
-export default handler;
+export default handler;*/
