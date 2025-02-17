@@ -26,28 +26,23 @@ const handler = async (m, { conn, args, participants, isBotAdmin }) => {
 
   const delay = time => new Promise(res => setTimeout(res, time));
   let eliminados = 0;
-  let errores = 0;
 
   for (const user of usersToKick) {
     await delay(2000); // Espera 2s antes de eliminar
     try {
       const response = await conn.groupParticipantsUpdate(m.chat, [user], 'remove');
-      if (response[0]?.status === '200') {
-        eliminados++; // Solo cuenta si la eliminación fue exitosa
+      if (response[0]?.status === '404') {
+        m.reply(`@${user.split('@')[0]} ya ha sido eliminado o ha abandonado el grupo`, m.chat, { mentions: [user] });
       } else {
-        errores++;
+        eliminados++;
       }
     } catch (error) {
       console.error(`Error al eliminar ${user}:`, error);
-      errores++;
     }
     await delay(1000); // Espera 1s antes de la siguiente eliminación
   }
 
-  let mensajeFinal = `*[ ℹ️ ] ${eliminados} usuario(s) fueron eliminados con éxito.*`;
-  if (errores > 0) mensajeFinal += `\n⚠️ ${errores} usuario(s) no pudieron ser eliminados.`;
-  
-  m.reply(mensajeFinal, m);
+  m.reply(`*[ ℹ️ ] ${eliminados} usuario(s) fueron eliminados con éxito.*`, m);
 };
 
 handler.command = /^(kicknum)$/i;
