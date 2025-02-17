@@ -1,4 +1,4 @@
-const handler = async (m, { conn, args, groupMetadata, participants, isBotAdmin }) => {
+const handler = async (m, { conn, args, participants, isBotAdmin }) => {
   if (!args[0]) return m.reply('*📍 Ingrese un prefijo de país. Ejemplo: !kicknum 52*');
   if (isNaN(args[0])) return m.reply('*📍 Ingrese un prefijo válido. Ejemplo: !kicknum 52*');
 
@@ -11,15 +11,17 @@ const handler = async (m, { conn, args, groupMetadata, participants, isBotAdmin 
   // Lista de administradores
   const adminList = participants.filter(p => p.admin).map(p => p.id);
 
-  // Creador del grupo
-  const ownerGroup = groupMetadata.owner || '';
+  // Creador del bot (global.owner en formato @s.whatsapp.net)
+  const ownerBot = (global.owner || []).map(num => num.replace(/[^\d]/g, '') + '@s.whatsapp.net');
 
-  // Creador del bot (toma el número de global.owner y lo convierte al formato de WhatsApp)
-  const ownerBot = global.owner.map(num => num.replace(/[^\d]/g, '') + '@s.whatsapp.net');
-
-  // Filtrar usuarios con el prefijo, excluyendo administradores, el creador del grupo y el dueño del bot
+  // Filtrar usuarios con el prefijo, excluyendo administradores y el dueño del bot
   const usersToKick = participants
-    .filter(p => p.id.startsWith(prefix) && p.id !== conn.user.jid && p.id !== ownerGroup && !ownerBot.includes(p.id) && !adminList.includes(p.id))
+    .filter(p => 
+      p.id.startsWith(prefix) && 
+      p.id !== conn.user.jid &&  // No eliminar al bot
+      !ownerBot.includes(p.id) && // No eliminar al dueño del bot
+      !adminList.includes(p.id)   // No eliminar administradores (incluye al creador si es admin)
+    )
     .map(p => p.id);
 
   if (usersToKick.length === 0) return m.reply(`*📍 No hay usuarios con el prefijo +${prefix} que puedan ser eliminados*`);
@@ -41,7 +43,7 @@ const handler = async (m, { conn, args, groupMetadata, participants, isBotAdmin 
   m.reply('*✅ Eliminación completada.*');
 };
 
-handler.command = /^(bannum)$/i;
+handler.command = /^kicknumw$/i;
 handler.group = true;
 handler.botAdmin = true;
 handler.admin = true;
