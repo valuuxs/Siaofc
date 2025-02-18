@@ -1,4 +1,4 @@
-/* RuletaBan By WillZek - Modificado para parecer una ruleta */
+/* RuletaBan By Criss - Modificado para parecer una ruleta */
 
 let handler = async (m, { conn, text, participants }) => {
 
