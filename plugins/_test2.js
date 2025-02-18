@@ -39,28 +39,27 @@ const handler = async (m, { conn }) => {
   if (!canLevelUp(user.level, user.exp, global.multiplier)) {
     const { min, xp, max } = xpRange(user.level, global.multiplier);
     const message = `
-🏰 *Gremio de Aventureros*
+*[ 🏰 ] Gremio de Aventureros*
 *¡Bienvenido, ${usertag}!*
 
-*◉ Nivel actual:* ${user.level}
-*◉ Rango actual:* ${user.role}
-*◉ Puntos de Experiencia:* ${user.exp - min}/${xp}
+- *Nivel actual:* ${user.level}
+- *Rango actual:* ${user.role}
+- *Puntos de Exp:* ${user.exp - min}/${xp}
 
-*—◉ Para ascender de nivel necesitas obtener ${max - user.exp} puntos de experiencia más. Sigue interactuando con el Bot!.*`.trim();
+> ⍴ᥲrᥲ ᥲsᥴᥱᥒძᥱr ძᥱ ᥒі᥎ᥱᥣ ᥒᥱᥴᥱsі𝗍ᥲs ᥆ᑲ𝗍ᥱᥒᥱs \`${max - user.exp}\` ⍴ᥙᥒ𝗍᥆s ძᥱ ᥱ᥊⍴ᥱrіᥱᥒᥴіᥲ mᥲ́s. sіgᥙᥱ іᥒ𝗍ᥱrᥲᥴ𝗍ᥙᥲᥒძ᥆ ᥴ᥆ᥒ ᥱᥣ ᑲ᥆𝗍.`.trim();
     return conn.sendMessage(m.chat, {text: message, mentions: [m.sender]}, {quoted: m});
   }
   const before = user.level * 1;
   while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
   if (before !== user.level) {
     const levelUpMessage = `🎉 ¡Felicidades, ${name}! Has subido de nivel a ${user.level}`;
-    const levelUpDetails = `
-🚀 *Nuevo Nivel Alcanzado*
+    const levelUpDetails = `*[ 🚀 ] Nuevo Nivel Alcanzado*
 
-*◉ Nivel anterior:* ${before}
-*◉ Nuevo nivel:* ${user.level}
-*◉ Rango actual:* ${user.role}
+- *Nivel anterior:* ${before}
+- *Nuevo nivel:* ${user.level}
+- *Rango actual:* ${user.role}
 
-*—◉ Continúa explorando y realizando misiones para alcanzar nuevas alturas en el Gremio de Aventureros. Sigue interactuando con el Bot!.*`.trim();
+> ᥴ᥆ᥒ𝗍іᥒᥙ́ᥲ ᥱ᥊⍴ᥣ᥆rᥲᥒძ᥆ ᥡ rᥱᥲᥣіzᥲᥒძ᥆ mіsі᥆ᥒᥱs ⍴ᥲrᥲ ᥲᥣᥴᥲᥒzᥲr ᥒᥙᥱ᥎ᥲs ᥲᥣ𝗍ᥙrᥲs ᥱᥒ ᥱᥣ grᥱmі᥆ ძᥱ ᥲ᥎ᥱᥒ𝗍ᥙrᥱr᥆s. ¡sіgᥙᥱ іᥒ𝗍ᥱrᥲᥴ𝗍ᥙᥲᥒძ᥆ ᥴ᥆ᥒ ᥱᥣ ᑲ᥆𝗍!.`.trim();
     try {
       const levelUpImage = await levelup(levelUpMessage, user.level);
       conn.sendFile(m.chat, levelUpImage, 'levelup.jpg', levelUpDetails, m);
