@@ -6,7 +6,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
     }
 
     if (!text.includes('|')) {
-        conn.reply(m.chat, `*[ ⚠️ ] Separe las opciones de la encuesta con \`|\`\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} *texto|texto2*`, m);
+        conn.reply(m.chat, `*[ ⚠️ ] Separe las opciones de la encuesta con \`|\`*\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} *texto|texto2*`, m);
         return;
     }
 
