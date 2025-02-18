@@ -33,7 +33,7 @@ const roles = {
 'Gran Maestro \`\`\`IV\`\`\` 🧙🏻‍♂️': 62,
 'Gran Maestro \`\`\`III\`\`\` 🧙🏻‍♂️': 64,
 'Gran Maestro \`\`\`II\`\`\` 🧙🏻‍♂️': 66,
-'Superior \`\`\`I\`\`\` 🧙🏻‍♂️': 68,
+'Grab Maestro \`\`\`I\`\`\` 🧙🏻‍♂️': 68,
 'Experto del Bot V* 🌐': 70,
 'Experto del Bot IV* 🌐': 72,
 'Experto del Bot III* 🌐': 74,
