@@ -52,7 +52,6 @@ handler.botAdmin = true;
 
 export default handler;*/
 
-
 /* RuletaBan By WillZek - Ruleta con edición solo en cuenta regresiva */
 
 let handler = async (m, { conn, participants }) => {
@@ -69,11 +68,14 @@ let handler = async (m, { conn, participants }) => {
         return m.reply('*⚠️ No hay usuarios disponibles para eliminar.*');
     }
 
-    // Crear mensaje inicial para edición
-    let msg = await conn.reply(m.chat, '🎰 *La ruleta está girando...*', m);
+    // Enviar primer mensaje normal
+    await conn.reply(m.chat, '🎰 *La ruleta está girando...*', m);
+
+    // Enviar mensaje inicial para edición de cuenta regresiva
+    let msg = await conn.reply(m.chat, '🔄 *3...*', m);
 
     // Cuenta regresiva con edición del mensaje
-    const countdown = ['\`\`\`🔄 3\`\`\`', '\`\`\`🔄 2\`\`\`', '\`\`\`🔄 1\`\`\`'];
+    const countdown = ['🔄 *2...*', '🔄 *1...*'];
     for (let i = 0; i < countdown.length; i++) {
         await new Promise(resolve => setTimeout(resolve, 1500));
         await conn.sendMessage(m.chat, { text: countdown[i], edit: msg.key });
@@ -102,7 +104,7 @@ let handler = async (m, { conn, participants }) => {
 
 handler.help = ['ruletaban']
 handler.tags = ['grupo']
-handler.command = /^(ruletaban3|rban3)$/i;
+handler.command = /^(kickrandom|ruletaban|rban)$/i;
 handler.group = true;
 handler.botAdmin = true;
 
