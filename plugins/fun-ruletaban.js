@@ -51,5 +51,6 @@ handler.tags = ['fun']
 handler.command = /^(ruletaban|rban)$/i;
 handler.group = true;
 handler.botAdmin = true;
+handler.admin = true;
 
 export default handler;
