@@ -47,7 +47,7 @@ let handler = async (m, { conn, participants }) => {
 
 handler.help = ['ruletaban']
 handler.tags = ['grupo']
-handler.command = /^(ruletaban5|rban5)$/i;
+handler.command = /^(ruletaban2|rban2)$/i;
 handler.group = true;
 handler.botAdmin = true;
 
