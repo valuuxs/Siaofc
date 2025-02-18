@@ -25,7 +25,7 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
                 showAdAttribution: true,
                 title: 'һ᥆ᥣᥲ s᥆ᥡ ᥱᥣ ᥴrᥱᥲძ᥆r ძᥱ sһᥲძ᥆ᥕ ᑲ᥆𝗍',
                 body: dev,
-                thumbnailUrl: '',
+                thumbnailUrl: 'https://files.catbox.moe/8an9fs.jpg',
                 sourceUrl: 'https://wa.me/51927238856?text=Vengo+Del+Comando+.owner',
                 mediaType: 1,
                 renderLargerThumbnail: true
