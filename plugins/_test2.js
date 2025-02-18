@@ -16,13 +16,13 @@ let handler = async (m, { conn, participants }) => {
 
     // Cuenta regresiva con edición del mensaje (cada 3 segundos)
     await new Promise(resolve => setTimeout(resolve, 1500));
-    await conn.sendMessage(m.chat, { text: '🔄 *3...*', edit: msg.key });
+    await conn.sendMessage(m.chat, { text: '\`\`\`🔄 10%\`\`\`', edit: msg.key });
 
     await new Promise(resolve => setTimeout(resolve, 1500));
-    await conn.sendMessage(m.chat, { text: '🔄 *2...*', edit: msg.key });
+    await conn.sendMessage(m.chat, { text: '\`\`\`🔄 50%\`\`\`', edit: msg.key });
 
     await new Promise(resolve => setTimeout(resolve, 1500));
-    await conn.sendMessage(m.chat, { text: '🔄 *1...*', edit: msg.key });
+    await conn.sendMessage(m.chat, { text: '\`\`\`🔄 99%\`\`\`', edit: msg.key });
 
     // Elegir usuario aleatorio
     const randomUser = gNoAdmins[Math.floor(Math.random() * gNoAdmins.length)];
