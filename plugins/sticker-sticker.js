@@ -45,7 +45,7 @@ else return conn.reply(m.chat, `*[ ℹ️ ] La conversión ah fallado, responde 
 
 
 }}
-handler.help = ['sticker <img>', 's <url>']
+handler.help = ['sticker *<img>*', 's *<url>*']
 handler.tags = ['sticker']
 handler.command = ['s', 'sticker', 'stiker']
 handler.register = true
