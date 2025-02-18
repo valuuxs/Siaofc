@@ -1,19 +1,29 @@
-const handler = async (m, { args }) => {
-  const q = args.join(' ');
-/*
-  if (!q || !args[0]) throw '*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*';
+/* HTML WEB By WillZek 
+- Free Codes Titan
+- https://whatsapp.com/channel/0029ValMlRS6buMFL9d0iQ0S
 */
 
-if (!q || !args[0]) {
-    return m.reply('*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*');
-  }
-  // Simula un pequeño retraso para hacerlo más creíble
-  await new Promise(resolve => setTimeout(resolve, 2000));
+// [🕵️] 𝗛𝗧𝗠𝗟 𝗪𝗘𝗕
 
-  // Mensaje falso de éxito
-  m.reply(`##- WhatsApp Support -##\n\nHola,\n\nGracias por tu mensaje.\n\nHemos desactivado tu cuenta de WhatsApp. Esto significa que su cuenta está deshabilitada temporalmente y se eliminará automáticamente en 30 días si no vuelve a registrar la cuenta.\n\nSi tiene alguna otra pregunta o inquietud, no dude en ponerse en contacto con nosotros. ¡Estaremos encantados de ayudar!`);
+import fetch from 'node-fetch';
+
+let handler = async(m, { conn, args, usedPrefix, command }) => {
+
+if (!args[0]) return m.reply('*[ ☕ ] Ingresa un link de alguna web que deseas sacar html*');
+m.react('🕑');
+
+let api = `https://delirius-apiofc.vercel.app/tools/htmlextract?url=${args[0]}`;
+let titan = await fetch(api);
+let json = await titan.json();
+let data = json.html;
+
+let xd = 'https://files.catbox.moe/trd8vu.jpg';
+let html = `*[ 👨🏻‍💻 ] HTML EXTRAÍDO DE LA WEB:*\n${data}*`
+
+m.react('✅');
+conn.sendMessage(m.chat, { image: { url: xd }, caption: html }, { quoted: m});
 };
 
-handler.command = /^(soporte2)$/i;
+handler.command = ['htmlweb', 'hweb'];
 
 export default handler;
