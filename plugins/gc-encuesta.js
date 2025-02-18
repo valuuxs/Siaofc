@@ -10,7 +10,12 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
         return;
     }
 
-    let opciones = text.split('|').map(opcion => [opcion]); 
+    let opciones = [...new Set(text.split('|'))].map(opcion => [opcion]); // Elimina duplicados
+
+    if (opciones.length < 2) {
+        conn.reply(m.chat, `⚠️️ *_Debe haber al menos dos opciones diferentes en la encuesta._*`, m);
+        return;
+    }
 
     return conn.sendPoll(m.chat, `📊 Encuesta:`, opciones, m);
 };
