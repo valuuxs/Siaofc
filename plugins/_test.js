@@ -1,7 +1,12 @@
 const handler = async (m, { args }) => {
   const q = args.join(' ');
+/*
   if (!q || !args[0]) throw '*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*';
+*/
 
+if (!q || !args[0]) {
+    return m.reply('*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*');
+  }
   // Simula un pequeño retraso para hacerlo más creíble
   await new Promise(resolve => setTimeout(resolve, 2000));
 
