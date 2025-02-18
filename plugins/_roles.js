@@ -34,7 +34,7 @@ const roles = {
 'Gran Maestro \`\`\`III\`\`\` 🧙🏻‍♂️': 64,
 'Gran Maestro \`\`\`II\`\`\` 🧙🏻‍♂️': 66,
 'Gran Maestro \`\`\`I\`\`\` 🧙🏻‍♂️': 68,
-'Experto del Bot V* 🌐': 70,
+' V* 🌐': 70,
 'Experto del Bot IV* 🌐': 72,
 'Experto del Bot III* 🌐': 74,
 'Experto del Bot II* 🌐': 76,
@@ -74,11 +74,12 @@ const roles = {
 '*𝗣𝗿𝗲𝗺𝗶𝘂𝗺 III* 🏆': 150,
 '*𝗣𝗿𝗲𝗺𝗶𝘂𝗺 II* 🏆': 155,
 '*𝗣𝗿𝗲𝗺𝗶𝘂𝗺 I* 🏆': 160,
-'*Rey Dragón Ultra V* 👑': 170,
-'*Rey Dragón Ultra IV* 👑': 185,
-'*Rey Dragón Ultra III* 👑': 200,
-'*Rey Dragón Ultra II* 👑': 250,
-'*Rey Dragón Ultra* 👑': 300
+'Titán \`\`\`V\`\`\` ⚜️': 165
+'Titán \`\`\`IV\`\`\` ⚜️': 170,
+'Titán \`\`\`III\`\`\` ⚜️': 185,
+'Titán \`\`\`II\`\`\` ⚜️': 200,
+'Titán \`\`\`I\`\`\` ⚜️': 250,
+'\`Dragón Rey Estrella\` 🐉👑': 300
 }
 
 let handler = m => m
