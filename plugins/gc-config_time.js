@@ -15,7 +15,7 @@ const handler = async (m, {conn, isAdmin, isOwner, args, usedPrefix, command}) =
   }[(args[0] || '')];
   if (isClose === undefined) {
           const caption = `
-*[ ℹ️ ] Coloca la opción y el número de horas lo cual se mantendrá el grupo abierto o cerrado.*
+*[ ℹ️ ] Ingresa una opción válida seguido del número de horas.*
 
 *[ 💡 ] Ejemplo:*
 ${usedPrefix + command} *open 1*
@@ -33,7 +33,7 @@ ${usedPrefix + command} *close 1*
   if (args[1]) {
          setTimeout(async () => {
       await conn.groupSettingUpdate(m.chat, `${isClose == 'announcement' ? 'not_announcement' : 'announcement'}`).then(async (_)=>{
-                    conn.reply(m.chat, `${isClose == 'not_announcement' ? '*[ ℹ️ ] El comando ah sido activado, es hora de cerrar.*' : '*[ ℹ️ ] La hora ah finalizado, el grupo será abierto.*'}!`);
+                    conn.reply(m.chat, `${isClose == 'not_announcement' ? '*[ ℹ️ ] Función activada con éxito*' : '*[ ℹ️ ] Función finalizada el grupo se abrió con éxito*'}!`);
             });
     }, timeoutset);
   }
