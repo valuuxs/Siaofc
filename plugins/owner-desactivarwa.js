@@ -8,7 +8,7 @@ const handler = async (m, {conn, isOwner, usedPrefix, command, args}) => {
 */
 
 if (!q || !args[0]) {
-    return m.reply('*[❗] INGRESE EL NÚMERO QUE DESEA DESACTIVAR EN FORMATO INTERNACIONAL, EJEMPLO: +1 (450) 555-555*');
+    return m.reply('*[ ℹ️ ] Ingrese el número que desee desactivar en formato internacional.*\n\n[ 💡 ] Ejemplo:* .soporte +1 (450) 555-555');
 
   const ntah = await axios.get('https://www.whatsapp.com/contact/noclient/');
   const email = await axios.get('https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=10');
