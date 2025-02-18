@@ -1,3 +1,7 @@
+/*MEJORADO POR CRISS
+github.com/CrxstianEscobar
+Shadow Code*/
+
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
     if (!args[0]) {
