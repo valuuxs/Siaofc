@@ -18,8 +18,19 @@ const handler = async (m, { conn }) => {
 > ⍴ᥲrᥲ ᥲsᥴᥱᥒძᥱr ძᥱ ᥒі᥎ᥱᥣ ᥒᥱᥴᥱsі𝗍ᥲs ᥆ᑲ𝗍ᥱᥒᥱs \`${max - user.exp}\` ⍴ᥙᥒ𝗍᥆s ძᥱ ᥱ᥊⍴ᥱrіᥱᥒᥴіᥲ mᥲ́s. sіgᥙᥱ іᥒ𝗍ᥱrᥲᥴ𝗍ᥙᥲᥒძ᥆ ᥴ᥆ᥒ ᥱᥣ ᑲ᥆𝗍.`.trim();
     return conn.sendMessage(m.chat, {text: message, mentions: [m.sender]}, {quoted: m});
   }
+/*
   const before = user.level * 1;
   while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
+*/
+
+const before = user.level * 1;
+let safetyCounter = 0;
+while (canLevelUp(user.level, user.exp, global.multiplier) && safetyCounter < 100) {
+  user.level++;
+  safetyCounter++;
+}
+if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir de nivel.");
+
   if (before !== user.level) {
     const levelUpMessage = `🎉 ¡Felicidades, ${name}! Has subido de nivel a ${user.level}`;
     const levelUpDetails = `*[ 🚀 ] Nuevo Nivel Alcanzado*
