@@ -1,4 +1,4 @@
-/* RuletaBan By Criss - Modificado para parecer una ruleta */
+/* RuletaBan By Criss - Modificado para parecer una ruleta 
 
 let handler = async (m, { conn, text, participants }) => {
 
@@ -50,4 +50,4 @@ handler.command = /^(ruletaban2|rban2)$/i;
 handler.group = true;
 handler.botAdmin = true;
 
-export default handler;
+export default handler;*/
