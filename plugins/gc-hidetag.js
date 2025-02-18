@@ -35,7 +35,7 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
 };
 handler.help = ['notify *<txt>*'];
 handler.tags = ['gc'];
-handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet)$/i;
+handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet|viso)$/i;
 handler.customPrefix = /a|A/i;
 handler.group = true;
 handler.admin = true;
