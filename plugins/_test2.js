@@ -62,7 +62,7 @@ const handler = async (m, { conn }) => {
 > ᥴ᥆ᥒ𝗍іᥒᥙ́ᥲ ᥱ᥊⍴ᥣ᥆rᥲᥒძ᥆ ᥡ rᥱᥲᥣіzᥲᥒძ᥆ mіsі᥆ᥒᥱs ⍴ᥲrᥲ ᥲᥣᥴᥲᥒzᥲr ᥒᥙᥱ᥎ᥲs ᥲᥣ𝗍ᥙrᥲs ᥱᥒ ᥱᥣ grᥱmі᥆ ძᥱ ᥲ᥎ᥱᥒ𝗍ᥙrᥱr᥆s. ¡sіgᥙᥱ іᥒ𝗍ᥱrᥲᥴ𝗍ᥙᥲᥒძ᥆ ᥴ᥆ᥒ ᥱᥣ ᑲ᥆𝗍!.`.trim();
     try {
       const levelUpImage = await levelup(levelUpMessage, user.level);
-      conn.sendFile(m.chat, levelUpImage, 'levelup.jpg', levelUpDetails, m);
+      conn.sendFile(m.chat, levelUpImage, 'Menu.jpg', levelUpDetails, m);
     } catch (e) {
       conn.sendMessage(m.chat, {text: levelUpDetails, mentions: [m.sender]}, {quoted: m});
     }
