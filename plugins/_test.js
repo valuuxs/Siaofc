@@ -5,6 +5,13 @@ import axios from "axios";
 const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
 const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
 
+// Variables definidas
+const emoji = '🎵';
+const emoji2 = '⚠️';
+const msm = '❌';
+const packname = 'YouTube Downloader';
+const dev = 'Crow’s Club';
+
 const ddownr = {
   download: async (url, format) => {
     if (!formatAudio.includes(format) && !formatVideo.includes(format)) {
@@ -33,6 +40,7 @@ const ddownr = {
       throw error;
     }
   },
+
   cekProgress: async (id) => {
     const config = {
       method: 'GET',
@@ -60,19 +68,18 @@ const ddownr = {
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `${emoji} ingresa el nombre de la música a descargar.`, m);
+      return conn.reply(m.chat, `${emoji} Ingresa el nombre de la música a descargar.`, m);
     }
 
     const search = await yts(text);
     if (!search.all || search.all.length === 0) {
-      return m.reply('No se encontraron resultados para tu búsqueda.');
+      return conn.reply(m.chat, 'No se encontraron resultados para tu búsqueda.', m);
     }
 
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
     const infoMessage = `♡ Título: *${title}*\n> ♡ Duración: *${timestamp}*\n> ♡ Vistas: *${vistas}*\n> ♡ Canal: *${videoInfo.author.name || 'Desconocido'}*\n> ♡ Publicado: *${ago}*\n> ♡ Enlace: ${url}\n> Powered By Crow's Club`;
-    const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
       contextInfo: {
@@ -83,7 +90,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           previewType: 0,
           mediaUrl: url,
           sourceUrl: url,
-          thumbnail: thumb,
           renderLargerThumbnail: true,
         },
       },
@@ -127,29 +133,29 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             document: { url: validUrl },
             fileName: `${title}.mp4`,
             mimetype: 'video/mp4',
-            caption: `${emoji} Aqui tienes ฅ^•ﻌ•^ฅ.`,
-            thumbnail: thumb
+            caption: `${emoji} Aquí tienes ฅ^•ﻌ•^ฅ.`
           }, { quoted: m });
         } else {
-          return m.reply(`${emoji2} *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
+          return conn.reply(m.chat, `${emoji2} *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`, m);
         }
       } catch (error) {
         console.error('Error al obtener las URL de descarga:', error);
-        return m.reply(`${msm} Error al intentar descargar el video: ${error.message}`);
+        return conn.reply(m.chat, `${msm} Error al intentar descargar el video: ${error.message}`, m);
       }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-    return m.reply(`${msm} Ocurrió un error: ${error.message}`);
+    return conn.reply(m.chat, `${msm} Ocurrió un error: ${error.message}`, m);
   }
 };
 
-handler.command = handler.help = ['pdoc', 'pdoc2', 'ytmp4doc', 'ytmp3doc'];
+handler.command = handler.help = ['playdoc', 'playdoc2', 'ytmp4doc', 'ytmp3doc'];
 handler.tags = ['descargas'];
 
 export default handler;
 
+// Función para formatear vistas
 function formatViews(views) {
   if (views >= 1000) {
     return (views / 1000).toFixed(1) + 'k (' + views.toLocaleString() + ')';
