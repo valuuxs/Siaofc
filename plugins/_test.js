@@ -104,7 +104,7 @@ let handler = async (m, { conn, participants }) => {
 
 handler.help = ['ruletaban']
 handler.tags = ['grupo']
-handler.command = /^(kickrandom|ruletaban|rban)$/i;
+handler.command = /^(ruletaban3|rban3)$/i;
 handler.group = true;
 handler.botAdmin = true;
 
