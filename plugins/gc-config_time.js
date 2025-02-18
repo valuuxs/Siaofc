@@ -42,6 +42,7 @@ handler.help = ['grouptime *<open/close>* *<num>*'];
 handler.tags = ['gc'];
 handler.command = /^(grouptime|gctime)$/i;
 handler.botAdmin = true;
+handler.admin = true;
 handler.group = true;
 
 export default handler;
