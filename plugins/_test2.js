@@ -51,4 +51,5 @@ if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir d
 handler.help = ['levelup'];
 handler.tags = ['xp'];
 handler.command = ['nivel', 'lvl', 'levelup', 'level'];
+handler.register = true;
 export default handler;
