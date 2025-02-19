@@ -3,12 +3,12 @@ const handler = async (m, {conn, command, usedPrefix}) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 return m.reply('*[ ℹ️ ] Estos comandos están desactivados*');
 }
-conn.reply(m.chat, `🚩 Enviando el *${command}*`, m, {
+/*conn.reply(m.chat, `🚩 Enviando el *${command}*`, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
 title: packname,
 body: wm,
 previewType: 0, thumbnail: icons,
-sourceUrl: channel }}})
+sourceUrl: channel }}})*/
    switch (command) {
     case 'pack':
       const url = await pack[Math.floor(Math.random() * pack.length)];
