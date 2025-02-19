@@ -1,4 +1,4 @@
-/*import yts from 'yt-search';
+import yts from 'yt-search';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
@@ -47,8 +47,8 @@ handler.help = ['playlist *<texto>*'];
 handler.tags = ['search'];
 handler.command = /^(playlist|playlist2)$/i;
 
-export default handler;*/
-
+export default handler;
+/*
 import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import fs from 'fs';
@@ -91,4 +91,4 @@ handler.help = ['audio *<texto>*'];
 handler.tags = ['downloader'];
 handler.command = /^audio$/i;
 
-export default handler;
+export default handler;*/
