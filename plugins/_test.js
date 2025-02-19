@@ -1,7 +1,7 @@
 import yts from 'yt-search';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `${emoji} Por favor ingresa la música que deseas descargar.`;
+  if (!text) throw ` Por favor ingresa la música que deseas descargar.`;
 
   const isVideo = /vid|2|mp4|v$/.test(command);
   const search = await yts(text);
@@ -34,7 +34,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       ],
       viewOnce: true,
       headerType: 4,
-    }, { quoted: fkontak });
+    }, { quoted: m });
     m.react('🕒');
 
   } else if (command === 'yta' || command === 'ytmp3') {
@@ -52,10 +52,10 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (!audio.data || !audio.data.url) throw "No se pudo obtener el audio.";
     conn.sendFile(m.chat, audio.data.url, videoInfo.title, '', m, null, { mimetype: "audio/mpeg", asDocument: false });
-    m.react(done);
+    m.react(🍋);
 
   } else if (command === 'ytv' || command === 'ytmp4') {
-    m.react(rwait);
+    m.react(🎭);
     let video;
     try {
       video = await (await fetch(`https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`)).json();
