@@ -63,6 +63,6 @@ let handler = async (m, { conn, text }) => {
   }
 };
 
-handler.command = /^(yta)$/i;
+handler.command = /^(yta2)$/i;
 
 export default handler;
