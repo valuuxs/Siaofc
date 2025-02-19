@@ -1,37 +1,37 @@
-const handler = async (m, { conn, text }) => {
-  if (!text) {
-    return conn.reply(m.chat, '🔥 Por favor ingresa un texto.', m);
+const handler = async (m, { conn, text, command }) => {
+  if (command === 'tocar') {
+    if (!text) {
+      return conn.reply(m.chat, '🔥 Por favor ingresa un texto.', m);
+    }
+
+    const body = `SELECCIONA UNA OPCIÓN`;
+
+    await conn.sendMessage(m.chat, {
+      image: { url: 'https://files.catbox.moe/2mdbm7.jpg' },
+      caption: body,
+      footer: 'Prueba de botones',
+      buttons: [
+        {
+          buttonId: '.tocar1',
+          buttonText: { displayText: 'Tocar1' },
+          type: 1
+        },
+        {
+          buttonId: '.tocar2',
+          buttonText: { displayText: 'Tocar2' },
+          type: 1
+        }
+      ],
+      viewOnce: true,
+      headerType: 4,
+    }, { quoted: m });
+  } else if (command === 'tocar1') {
+    await conn.reply(m.chat, 'Hola', m);
+  } else if (command === 'tocar2') {
+    await conn.reply(m.chat, 'Bye', m);
   }
-
-  const body = `SELECCIONA UNA OPCIÓN`;
-
-  const templateButtons = [
-    { index: 1, quickReplyButton: { displayText: 'Tocar1', id: '.tocar1' } },
-    { index: 2, quickReplyButton: { displayText: 'Tocar2', id: '.tocar2' } },
-  ];
-
-  const buttonMessage = {
-    text: body,
-    footer: 'Opciones disponibles',
-    templateButtons: templateButtons,
-    headerType: 1,
-  };
-
-  await conn.sendMessage(m.chat, buttonMessage);
 };
 
-handler.command = ['tocar'];
+handler.command = ['tocar', 'tocar1', 'tocar2'];
+
 export default handler;
-
-// Manejadores de respuestas a los botones
-const tocar1Handler = async (m, { conn }) => {
-  await conn.reply(m.chat, 'Hola', m);
-};
-const tocar2Handler = async (m, { conn }) => {
-  await conn.reply(m.chat, 'Bye', m);
-};
-
-tocar1Handler.command = ['tocar1'];
-tocar2Handler.command = ['tocar2'];
-
-export { tocar1Handler, tocar2Handler };
