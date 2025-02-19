@@ -62,14 +62,15 @@ function pickRandom(list) {
 
 // Lista de trabajos con la variable {usuario} para reemplazar con un usuario aleatorio
 const trabajo = [
-    "Tuviste sexo con tu vecino y por tu excelente servicio te dio",
+    /*"Tuviste sexo con tu vecino y por tu excelente servicio te dio",
     "Te dejaste romper el culø y recibiste",
     "Te dedicas a ser un/a seductor/a, Te Prostituyes y ganas",
     "Eres un experto en prostitución y recibes",
-    "Trabajas en la industria del romance y te Prostituyes con los trabajadores y ganas",
+    "Trabajas en la industria del romance y te Prostituyes con los trabajadores y ganas",*/
     "Se la chupaste a {usuario} por 20 monedas y lo dejaste bien seco, obtienes",
+/*
     "Te dedicas a hacer felices a los demás y ganas",
     "Eres un/a experto/a moviendo esas nalgas y recibes",
-    "Le Diste Unos Sentones a mi creador y ganas",
+    "Le Diste Unos Sentones a mi creador y ganas",*/
     "Te Acostaste Con Tu Jefe Y Obtuviste",
 ]
