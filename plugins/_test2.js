@@ -21,17 +21,15 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     // Creamos el mensaje con la lista de canciones
     let teks = `*[❗] Elige una canción con:*  *${usedPrefix}audio <número>*\n\n`;
-    teks += results.all
-      .slice(0, 5) // Solo mostramos los primeros 5 resultados
-      .map((v, i) => {
-        return `[${i + 1}] ${v.title}
-↳ 🕒 *_Duración:_* ${v.timestamp}
-↳ 📥 *_Subido:_* ${v.ago}
-↳ 👁 *_Vistas:_* ${v.views}`;
-      })
-      .join('\n\n');
+    results.all.slice(0, 5).forEach((v, i) => {
+      teks += `*[${i + 1}]* *${v.title}*\n`;
+      teks += `↳ 🕒 *_Duración:_* ${v.timestamp}\n`;
+      teks += `↳ 📥 *_Subido:_* ${v.ago}\n`;
+      teks += `↳ 👁 *_Vistas:_* ${v.views}\n\n`;
+    });
 
-    await conn.sendMessage(m.chat, { text: teks });
+    // Enviar el mensaje correctamente según la versión de Baileys
+    await conn.sendMessage(m.chat, { text: teks }, { quoted: m });
 
   } catch (err) {
     console.error('Error al buscar canciones:', err);
@@ -41,7 +39,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
 handler.help = ['playlist *<texto>*'];
 handler.tags = ['search'];
-handler.command = /^playlist$/i;
+handler.command = /^(playlist)$/i;
 
 export default handler;
 
@@ -72,7 +70,7 @@ const downloadHandler = async (m, { conn, text, usedPrefix }) => {
       await conn.sendMessage(m.chat, { 
         audio: fs.readFileSync(filePath), 
         mimetype: 'audio/mp4' 
-      });
+      }, { quoted: m });
       fs.unlinkSync(filePath); // Elimina el archivo después de enviarlo
     });
 
@@ -84,6 +82,6 @@ const downloadHandler = async (m, { conn, text, usedPrefix }) => {
 
 downloadHandler.help = ['audio *<número>*'];
 downloadHandler.tags = ['downloader'];
-downloadHandler.command = /^audio$/i;
+downloadHandler.command = /^(audio)$/i;
 
 export default downloadHandler;
