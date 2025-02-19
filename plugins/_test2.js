@@ -21,7 +21,7 @@ return m.reply('*[ ℹ️ ] Estos comandos están desactivados*');
       await conn.sendMessage(m.chat, {video: {url: url4}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ 🥵*`}, {quoted: m});
       break;
     case 'videoxxxlesbi': case 'vídeoxxxlesbi': 
-      const url5 = await videosxxxc2[Math.floor(Math.random() * videosxxxc2.length)];
+      const url5 = videosxxxc2[Math.floor(Math.random() * videosxxxc2.length)];
       await conn.sendMessage(m.chat, {video: {url: url5}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ Lb 🥵*`}, {quoted: m});
       break;
   }
