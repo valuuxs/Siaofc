@@ -14,7 +14,7 @@ let handler = async (_0x10bd40, {
     return _0x9c7141.reply(_0x10bd40.chat, ` Por favor, ingresa lo que deseas buscar en pinterest.`, _0x10bd40);
   }
     await _0x10bd40.react(rwait);
- _0x9c7141.reply(_0x10bd40.chat, `${emoji2} Descargando su imagen, espere un momento...`, _0x10bd40)
+ _0x9c7141.reply(_0x10bd40.chat, `Descargando su imagen, espere un momento...`, _0x10bd40)
   async function _0x3f3fc7(_0x5f4723) {
     const {
       imageMessage: _0x14a396
