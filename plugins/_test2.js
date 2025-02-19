@@ -71,10 +71,10 @@ const downloadHandler = async (m, { conn, text, usedPrefix }) => {
 
 handler.help = ['playlist <texto>'];
 handler.tags = ['search'];
-handler.command = /^playlist$/i;
+handler.command = /^(playlist)$/i;
 
 downloadHandler.help = ['audio <número>'];
 downloadHandler.tags = ['downloader'];
-downloadHandler.command = /^audio$/i;
+downloadHandler.command = /^(audio)$/i;
 
 export { handler, downloadHandler };
