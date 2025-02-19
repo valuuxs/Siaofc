@@ -96,9 +96,9 @@ import fetch from 'node-fetch';
 
 const pendingRequests = new Map();
 
-const handler = async (m, { conn, text, command }) => {
+const handler = async (m, { conn, text }) => {
     if (!text) {
-        return conn.reply(m.chat, 'Por favor ingresa el nombre de la música que deseas descargar.', m);
+        return conn.reply(m.chat, 'Por favor ingresa la música que deseas descargar.', m);
     }
 
     const search = await yts(text);
@@ -113,7 +113,7 @@ const handler = async (m, { conn, text, command }) => {
         `> ⏳ Duración » *${videoInfo.timestamp}*\n` +
         `> 📅 Publicado » *${videoInfo.ago}*\n` +
         `> 🔗 Link » ${videoInfo.url}\n\n` +
-        `Responde con *1* para descargar en 🎵 *MP3* o *2* para 🎥 *MP4*`;
+        `Responde con:\n*1* para 🎵 *MP3*\n*2* para 🎥 *MP4*`;
 
     conn.reply(m.chat, body, m);
     pendingRequests.set(m.sender, { videoInfo, chat: m.chat });
@@ -124,39 +124,42 @@ const processResponse = async (m, { conn }) => {
     if (!request) return;
 
     const { videoInfo, chat } = request;
+
     if (m.text === '1') {
         m.react('🎶');
-        const audio = await fetchWithFallback([
-            `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp3&apikey=Gata-Dios`,
-            `https://delirius-apiofc.vercel.app/download/ytmp3?url=${videoInfo.url}`,
-            `https://api.vreden.my.id/api/ytmp3?url=${videoInfo.url}`
-        ]);
-
-        if (audio) {
-            conn.sendFile(chat, audio.data.url, `${videoInfo.title}.mp3`, '', m, null, { mimetype: "audio/mpeg" });
-        } else {
-            conn.reply(chat, "No se pudo obtener el archivo de audio.", m);
-        }
+        await downloadMedia(conn, chat, videoInfo, 'mp3', m);
     } else if (m.text === '2') {
         m.react('📹');
-        const video = await fetchWithFallback([
-            `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`,
-            `https://delirius-apiofc.vercel.app/download/ytmp4?url=${videoInfo.url}`,
-            `https://api.vreden.my.id/api/ytmp4?url=${videoInfo.url}`
-        ]);
-
-        if (video) {
-            conn.sendMessage(chat, {
-                video: { url: video.data.url },
-                mimetype: "video/mp4",
-                caption: '',
-            }, { quoted: m });
-        } else {
-            conn.reply(chat, "No se pudo obtener el archivo de video.", m);
-        }
+        await downloadMedia(conn, chat, videoInfo, 'mp4', m);
     }
 
     pendingRequests.delete(m.sender);
+};
+
+const downloadMedia = async (conn, chat, videoInfo, type, m) => {
+    const apiUrls = {
+        mp3: [
+            `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp3&apikey=Gata-Dios`,
+            `https://delirius-apiofc.vercel.app/download/ytmp3?url=${videoInfo.url}`,
+            `https://api.vreden.my.id/api/ytmp3?url=${videoInfo.url}`
+        ],
+        mp4: [
+            `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`,
+            `https://delirius-apiofc.vercel.app/download/ytmp4?url=${videoInfo.url}`,
+            `https://api.vreden.my.id/api/ytmp4?url=${videoInfo.url}`
+        ]
+    };
+
+    const file = await fetchWithFallback(apiUrls[type]);
+    if (!file) {
+        return conn.reply(chat, `No se pudo obtener el archivo de ${type.toUpperCase()}.`, m);
+    }
+
+    if (type === 'mp3') {
+        conn.sendFile(chat, file.data.url, `${videoInfo.title}.mp3`, '', m, null, { mimetype: "audio/mpeg" });
+    } else {
+        conn.sendMessage(chat, { video: { url: file.data.url }, mimetype: "video/mp4", caption: '' }, { quoted: m });
+    }
 };
 
 handler.help = ['play'];
@@ -179,7 +182,6 @@ const fetchWithFallback = async (urls) => {
     return null;
 };
 
-// Manejador para procesar las respuestas del usuario
 const responseHandler = async (m, args) => {
     if (m.text === '1' || m.text === '2') {
         await processResponse(m, args);
