@@ -1,53 +1,87 @@
-import syntaxerror from 'syntax-error'
-import { format } from 'util'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-import { createRequire } from 'module'
+const { prepareWAMessageMedia, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
+// const { prepareWAMessageMedia, generateWAMessageFromContent } = await import("@whiskeysockets/baileys");
+const { randomBytes } = await import("crypto");
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(__dirname)
+const handler = async (m, { conn }) => {
+    try {
 
-let handler = async (m, _2) => {
-  let { conn, usedPrefix, noPrefix, args, groupMetadata } = _2
-  let _return
-  let _syntax = ''
-  let _text = (/^=/.test(usedPrefix) ? 'return ' : '') + noPrefix
-  let old = m.exp * 1
-  try {
-    let i = 15
-    let f = {
-      exports: {}
+        const { imageMessage } = await prepareWAMessageMedia({
+            image: { url: "https://i.pinimg.com/736x/1c/b9/dc/1cb9dce731c1544b0bd018b02567fd1f.jpg" }
+        }, { upload: conn.waUploadToServer });
+
+        const sections = [
+            {
+                title: "Tags Relacionados",
+                rows: [
+                    {
+                        title: 'Example',
+                        highlight_label: "test",
+                        description: "Example description",
+                        id: ".play",
+                    },
+                ],
+            },
+        ];
+
+        const messageContent = {
+            interactiveMessage: {
+                body: { text: '...' },
+                footer: { text: '...' },
+                header: {
+                    title: 'Example Title',
+                    subtitle: 'Example Subtitle',
+                    hasMediaAttachment: true,
+                    documentMessage: {
+                        ...imageMessage,
+                        pageCount: 1,
+                        fileLength: 99999999999,
+                        fileName: 'example_file',
+                        jpegThumbnail: imageMessage.jpegThumbnail
+                    },
+                },
+                nativeFlowMessage: {
+                    buttons: [
+                        {
+                            buttonParamsJson: "{\"display_text\":\"Example Button 2\",\"id\":\"example_id_2\"}",
+                            name: "quick_reply"
+                        },
+                        {
+                            buttonParamsJson: JSON.stringify({
+                                display_text: 'Example Button 3',
+                                id: 'example_id_3',
+                                copy_code: 'Example copy code'
+                            }),
+                            name: "cta_copy"
+                        },
+                        {
+                            buttonParamsJson: "{\"display_text\":\"Example Button 4\",\"phone_number\":\"1234567890\"}",
+                            name: "cta_call"
+                        },
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "Example Section",
+                                sections: sections,
+                            }),
+                        }
+                    ],
+                    messageParamsJson: "{}",
+                    messageVersion: 1
+                }
+            },
+            messageContextInfo: {
+                messageSecret: randomBytes(32)
+            }
+        };
+
+        const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: conn.user.id });
+        await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
+
+    } catch (error) {
+        console.error("Error al enviar el mensaje interactivo:", error);
     }
-    let exec = new (async () => { }).constructor('print', 'm', 'handler', 'require', 'conn', 'Array', 'process', 'args', 'groupMetadata', 'module', 'exports', 'argument', _text)
-    _return = await exec.call(conn, (...args) => {
-      if (--i < 1) return
-      console.log(...args)
-      return conn.reply(m.chat, format(...args), m)
-    }, m, handler, require, conn, CustomArray, process, args, groupMetadata, f, f.exports, [conn, _2])
-  } catch (e) {
-    let err = syntaxerror(_text, 'Execution Function', {
-      allowReturnOutsideFunction: true,
-      allowAwaitOutsideFunction: true,
-        sourceType: 'module'
-    })
-    if (err) _syntax = '```' + err + '```\n\n'
-    _return = e
-  } finally {
-    conn.reply(m.chat, _syntax + format(_return), m)
-    m.exp = old
-  }
-}
-handler.help = ['> ', '=> ']
-handler.tags = ['owner']
-handler.customPrefix = /^=?> /
-handler.command = /(?:)/i
-handler.rowner = true
+};
 
-export default handler
+handler.command = ["tes"];
 
-class CustomArray extends Array {
-  constructor(...args) {
-    if (typeof args[0] == 'number') return super(Math.min(args[0], 10000))
-    else return super(...args)
-  }
-}
+export default handler;
