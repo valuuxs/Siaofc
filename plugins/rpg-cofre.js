@@ -14,15 +14,15 @@ const handler = async (m, {isPrems, conn}) => {
   global.db.data.users[m.sender].exp += expp;
 
   const texto = `
-╭━〔 ${global.namebot} 〕⬣
+╭━〔 ${global.botname} 〕⬣
 ┃🧰 *Obtienes Un Cofre*
 ┃ ${saludo}
 ╰━━━━━━━━━━━━⬣
 
-╭━〔 ${global.namebot} 〕⬣
+╭━〔 ${global.botname} 〕⬣
 ┃ *${dia} Cookies* 🍪
 ┃ *${tok} Tokens* 💰
-┃ *${ai} CrowCoins* 🪙
+┃ *${ai} Coins* 🪙
 ┃ *${expp} Exp* ⚡
 ╰━━━━━━━━━━━━⬣`;
 
@@ -49,7 +49,6 @@ handler.help = ['cofre'];
 handler.tags = ['rpg'];
 handler.command = ['coffer', 'cofre', 'abrircofre', 'cofreabrir'];
 handler.level = 5;
-handler.group = false;
 handler.register = true
 export default handler;
 
