@@ -1,4 +1,4 @@
-import yts from 'yt-search';
+/*import yts from 'yt-search';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
@@ -46,5 +46,49 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['playlist *<texto>*'];
 handler.tags = ['search'];
 handler.command = /^(playlist|playlist2)$/i;
+
+export default handler;*/
+
+import yts from 'yt-search';
+import ytdl from 'ytdl-core';
+import fs from 'fs';
+
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) {
+    throw `*[❗] Nombre de la canción faltante. Ingresa el comando más el nombre de la canción.*\n\n*Ejemplo:*\n*${usedPrefix + command} Begin You*`;
+  }
+
+  try {
+    const results = await yts(text);
+
+    if (!results || results.all.length === 0) {
+      throw '*[❗] No se encontraron resultados. Intenta con otro título.*';
+    }
+
+    const video = results.all[0]; // Toma el primer resultado
+    const audioStream = ytdl(video.url, { filter: 'audioonly' });
+
+    const filePath = `./tmp/${Date.now()}.mp3`;
+    const writeStream = fs.createWriteStream(filePath);
+
+    audioStream.pipe(writeStream);
+
+    writeStream.on('finish', async () => {
+      await conn.sendMessage(m.chat, { 
+        audio: fs.readFileSync(filePath), 
+        mimetype: 'audio/mp4' 
+      });
+      fs.unlinkSync(filePath); // Elimina el archivo después de enviarlo
+    });
+
+  } catch (err) {
+    console.error('Error al obtener audio de YouTube:', err);
+    await m.reply('*[❗] Error al descargar el audio. Inténtalo de nuevo.*');
+  }
+};
+
+handler.help = ['audio *<texto>*'];
+handler.tags = ['downloader'];
+handler.command = /^audio$/i;
 
 export default handler;
