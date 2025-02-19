@@ -1,7 +1,7 @@
 const handler = async (m, { conn }) => {
-  // Verifica si los audios están activados en el chat
+  /*// Verifica si los audios están activados en el chat
   if (!db.data.chats[m.chat].audios) return;
-  if (!db.data.settings[conn.user.jid].audios_bot && !m.isGroup) return;
+  if (!db.data.settings[conn.user.jid].audios_bot && !m.isGroup) return;*/
 
   const audioUrl = 'https://files.catbox.moe/u9lir2.opus'; // Enlace del audio
 
