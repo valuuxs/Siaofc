@@ -132,7 +132,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(m.chat, 'Por favor ingresa la música que deseas descargar.', m);
+    return conn.reply(m.chat, '🪙Por favor ingresa la música que deseas descargar.', m);
   }
 
   const search = await yts(text);
