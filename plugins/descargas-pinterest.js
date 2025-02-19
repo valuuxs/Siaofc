@@ -1,4 +1,4 @@
-import _0x36ae01 from 'axios';
+/*import _0x36ae01 from 'axios';
 const {
   generateWAMessageContent,
   generateWAMessageFromContent,
@@ -100,4 +100,4 @@ handler.group = true;
 handler.register = true
 handler.command = ['pinterest', 'pin'];
 
-export default handler;
+export default handler;*/
