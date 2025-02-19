@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 const handler = async (m, {conn, command, usedPrefix}) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 return m.reply('*[ ℹ️ ] Estos comandos están desactivados*');
@@ -150,4 +150,71 @@ global.videosxxxc2 = [
 "https://telegra.ph/file/9ed60b18e79fcfebcd76c.mp4",
 "https://telegra.ph/file/d58096000ad5eaef0b05e.mp4",
 "https://telegra.ph/file/60b4c8ebeadebb7e0da06.mp4"
+];*/
+
+import fetch from 'node-fetch';
+
+const handler = async (m, { conn, command }) => {
+    if (m.isGroup && !db.data.chats[m.chat]?.nsfw) {
+        return m.reply('*[ ℹ️ ] Estos comandos están desactivados*');
+    }
+
+    // Mapeo de comandos a sus respectivas listas de contenido
+    const packs = {
+        pack: globalThis.pack,
+        pack2: globalThis.packgirl,
+        pack3: globalThis.packmen,
+        videoxxx: globalThis.videosxxxc,
+        vídeoxxx: globalThis.videosxxxc,
+        videoxxxlesbi: globalThis.videosxxxc2,
+        vídeoxxxlesbi: globalThis.videosxxxc2
+    };
+
+    if (packs[command]) {
+        const lista = packs[command];
+        const url = lista[Math.floor(Math.random() * lista.length)];
+        const type = command.includes('video') ? 'video' : 'image';
+        const caption = command.includes('video') ? `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ 🥵*` : `_🥵 Pack 🥵_`;
+
+        await conn.sendMessage(m.chat, { [type]: { url }, caption }, { quoted: m });
+    }
+};
+
+handler.command = ['pack', 'pack2', 'pack3', 'videoxxx', 'vídeoxxx', 'videoxxxlesbi', 'vídeoxxxlesbi'];
+export default handler;
+
+// Definición de listas de imágenes y videos
+globalThis.pack = [
+    'https://telegra.ph/file/957fe4031132ef90b66ec.jpg',
+    'https://telegra.ph/file/c4b85bd53030cb648382f.jpg',
+    'https://telegra.ph/file/df56f8a76145df9c923ad.jpg',
+    'https://telegra.ph/file/d5d1c2c710c4b5ee8bc6c.jpg'
+];
+
+globalThis.packgirl = [
+    'https://telegra.ph/file/c0da7289bee2d97048feb.jpg',
+    'https://telegra.ph/file/b8564166f9cac4d843db3.jpg',
+    'https://telegra.ph/file/fdefd621a17712be15e0e.jpg',
+    'https://telegra.ph/file/6e1a6dcf1c91bf62d3945.jpg'
+];
+
+globalThis.packmen = [
+    'https://telegra.ph/file/bf303b19b9834f90e9617.jpg',
+    'https://telegra.ph/file/36ef2b807251dfccd17c2.jpg',
+    'https://telegra.ph/file/bcc34403d16de829ea5d2.jpg',
+    'https://telegra.ph/file/5c6b7615662fb53a39e53.jpg'
+];
+
+globalThis.videosxxxc = [
+    'https://telegra.ph/file/4a270d9945ac46f42d95c.mp4',
+    'https://telegra.ph/file/958c11e84d271e783ea3f.mp4',
+    'https://telegra.ph/file/f753759342337c4012b3f.mp4',
+    'https://telegra.ph/file/379cee56c908dd536dd33.mp4'
+];
+
+globalThis.videosxxxc2 = [
+    'https://telegra.ph/file/2dfb1ad0cab22951e30d1.mp4',
+    'https://telegra.ph/file/c430651857023968d3a76.mp4',
+    'https://telegra.ph/file/1ba17f6230dd1ea2de48c.mp4',
+    'https://telegra.ph/file/e04b802f12aafee3d314e.mp4'
 ];
