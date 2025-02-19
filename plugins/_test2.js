@@ -18,11 +18,11 @@ return m.reply('*[ ℹ️ ] Estos comandos están desactivados*');
       break;
     case 'videoxxx': case 'vídeoxxx':
       const url4 = videosxxxc[Math.floor(Math.random() * videosxxxc.length)];
-      await conn.sendMessage(m.chat, {video: {url: url4}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ 🥵*`}, {quoted: m});
+      conn.sendMessage(m.chat, {video: {url: url4}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ 🥵*`}, {quoted: m});
       break;
     case 'videoxxxlesbi': case 'vídeoxxxlesbi': 
       const url5 = videosxxxc2[Math.floor(Math.random() * videosxxxc2.length)];
-      await conn.sendMessage(m.chat, {video: {url: url5}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ Lb 🥵*`}, {quoted: m});
+      conn.sendMessage(m.chat, {video: {url: url5}, caption: `*Dɪsғʀᴜᴛᴀ ᴅᴇʟ ᴠɪᴅᴇᴏ Lb 🥵*`}, {quoted: m});
       break;
   }
 };
