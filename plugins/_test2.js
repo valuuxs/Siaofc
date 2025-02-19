@@ -6,7 +6,7 @@ let searchResults = {}; // Guarda los resultados por usuario
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    throw `*[❗] Ingresa el nombre de la canción.*\n\n*Ejemplo:*\n*${usedPrefix + command} Begin You*`;
+    throw `*[❗] Ingresa el nombre de la canción.*\n\n*Ejemplo:*\n*${usedPrefix + command} Bad Bunny*`;
   }
 
   try {
@@ -16,19 +16,19 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       throw '*[❗] No se encontraron resultados. Intenta con otro título.*';
     }
 
-    // Guardamos los resultados en la variable global usando el ID del usuario
-    searchResults[m.sender] = results.all.slice(0, 5); // Guarda los primeros 5 resultados
+    // Guarda los primeros 5 resultados de la búsqueda en memoria para el usuario
+    searchResults[m.sender] = results.all.slice(0, 5);
 
-    // Creamos el mensaje con la lista de canciones
-    let teks = `*[❗] Elige una canción con:*  *${usedPrefix}audio <número>*\n\n`;
+    let teks = `*[🎵 Lista de canciones encontradas]*\n\n`;
+    teks += `🔎 *Escribe:*  *${usedPrefix}audio <número>*  *para descargar*\n\n`;
+
     results.all.slice(0, 5).forEach((v, i) => {
       teks += `*[${i + 1}]* *${v.title}*\n`;
-      teks += `↳ 🕒 *_Duración:_* ${v.timestamp}\n`;
-      teks += `↳ 📥 *_Subido:_* ${v.ago}\n`;
-      teks += `↳ 👁 *_Vistas:_* ${v.views}\n\n`;
+      teks += `🕒 *Duración:* ${v.timestamp}\n`;
+      teks += `📅 *Subido:* ${v.ago}\n`;
+      teks += `👁 *Vistas:* ${v.views}\n\n`;
     });
 
-    // Enviar el mensaje correctamente según la versión de Baileys
     await conn.sendMessage(m.chat, { text: teks }, { quoted: m });
 
   } catch (err) {
@@ -82,6 +82,6 @@ const downloadHandler = async (m, { conn, text, usedPrefix }) => {
 
 downloadHandler.help = ['audio *<número>*'];
 downloadHandler.tags = ['downloader'];
-downloadHandler.command = /^(audio)$/i;
+downloadHandler.command = /^audio$/i;
 
 export default downloadHandler;
