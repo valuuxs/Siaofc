@@ -1,37 +1,53 @@
-const handler = async (m, { conn, text, command }) => {
-  if (command === 'tocar') {
-    if (!text) {
-      return conn.reply(m.chat, '🔥 Por favor ingresa un texto.', m);
+import syntaxerror from 'syntax-error'
+import { format } from 'util'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import { createRequire } from 'module'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const require = createRequire(__dirname)
+
+let handler = async (m, _2) => {
+  let { conn, usedPrefix, noPrefix, args, groupMetadata } = _2
+  let _return
+  let _syntax = ''
+  let _text = (/^=/.test(usedPrefix) ? 'return ' : '') + noPrefix
+  let old = m.exp * 1
+  try {
+    let i = 15
+    let f = {
+      exports: {}
     }
-
-    const body = `SELECCIONA UNA OPCIÓN`;
-
-    await conn.sendMessage(m.chat, {
-      image: { url: 'https://files.catbox.moe/2mdbm7.jpg' },
-      caption: body,
-      footer: 'Prueba de botones',
-      buttons: [
-        {
-          buttonId: '.tocar1',
-          buttonText: { displayText: 'Tocar1' },
-          type: 1
-        },
-        {
-          buttonId: '.tocar2',
-          buttonText: { displayText: 'Tocar2' },
-          type: 1
-        }
-      ],
-      viewOnce: true,
-      headerType: 4,
-    }, { quoted: m });
-  } else if (command === 'tocar1') {
-    await conn.reply(m.chat, 'Hola', m);
-  } else if (command === 'tocar2') {
-    await conn.reply(m.chat, 'Bye', m);
+    let exec = new (async () => { }).constructor('print', 'm', 'handler', 'require', 'conn', 'Array', 'process', 'args', 'groupMetadata', 'module', 'exports', 'argument', _text)
+    _return = await exec.call(conn, (...args) => {
+      if (--i < 1) return
+      console.log(...args)
+      return conn.reply(m.chat, format(...args), m)
+    }, m, handler, require, conn, CustomArray, process, args, groupMetadata, f, f.exports, [conn, _2])
+  } catch (e) {
+    let err = syntaxerror(_text, 'Execution Function', {
+      allowReturnOutsideFunction: true,
+      allowAwaitOutsideFunction: true,
+        sourceType: 'module'
+    })
+    if (err) _syntax = '```' + err + '```\n\n'
+    _return = e
+  } finally {
+    conn.reply(m.chat, _syntax + format(_return), m)
+    m.exp = old
   }
-};
+}
+handler.help = ['> ', '=> ']
+handler.tags = ['owner']
+handler.customPrefix = /^=?> /
+handler.command = /(?:)/i
+handler.rowner = true
 
-handler.command = ['tocar', 'tocar1', 'tocar2'];
+export default handler
 
-export default handler;
+class CustomArray extends Array {
+  constructor(...args) {
+    if (typeof args[0] == 'number') return super(Math.min(args[0], 10000))
+    else return super(...args)
+  }
+}
