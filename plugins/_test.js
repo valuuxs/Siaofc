@@ -1,4 +1,5 @@
 import yts from 'yt-search';
+import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
  /* if (!text) throw ` Por favor ingresa la música que deseas descargar.`;
@@ -56,10 +57,10 @@ if (!text) {
 
     if (!audio.data || !audio.data.url) throw "No se pudo obtener el audio.";
     conn.sendFile(m.chat, audio.data.url, videoInfo.title, '', m, null, { mimetype: "audio/mpeg", asDocument: false });
-    m.react(🍋);
+    m.react('🍋');
 
   } else if (command === 'ytv' || command === 'ytmp4') {
-    m.react(🎭);
+    m.react('🎭');
     let video;
     try {
       video = await (await fetch(`https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`)).json();
