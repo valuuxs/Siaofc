@@ -91,7 +91,7 @@ handler.register = true;
 export default handler;
 
 const getVideoId = (url) => {
-  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
+  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})./;
   const match = url.match(regex);
   if (match) {
     return match[1];
