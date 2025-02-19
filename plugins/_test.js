@@ -1,7 +1,11 @@
 import yts from 'yt-search';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw ` Por favor ingresa la música que deseas descargar.`;
+ /* if (!text) throw ` Por favor ingresa la música que deseas descargar.`;
+*/
+if (!text) {
+  return conn.reply(m.chat, 'Por favor ingresa la música que deseas descargar.', m);
+}
 
   const isVideo = /vid|2|mp4|v$/.test(command);
   const search = await yts(text);
