@@ -2,7 +2,7 @@ import axios from 'axios';
 const handler = async (m, {command, conn, usedPrefix}) => {
 import fetch from 'node-fetch';
 const handler = async (m, {conn, command, usedPrefix}) => {
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw '🚩 *¡Estos comandos están desactivados!*';
+  if (!db.data.chats[m.chat].nsfw && m.isGroup) throw '🚩 *¡Estos comandos están desactivados!*';
 
    switch (command) {
     case 'pack':
