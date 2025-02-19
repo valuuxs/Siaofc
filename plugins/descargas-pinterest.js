@@ -101,3 +101,45 @@ handler.register = true
 handler.command = ['pinterest', 'pin'];
 
 export default handler;*/
+
+
+import yts from 'yt-search';
+
+const handler = async (m, { conn, text, command }) => {
+    if (!text) {
+        return conn.reply(m.chat, '⚠️ Por favor ingresa el nombre de la canción.', m);
+    }
+
+    const search = await yts(text);
+    if (!search.all || search.all.length === 0) {
+        return conn.reply(m.chat, '❌ No se encontraron resultados.', m);
+    }
+
+    const videoInfo = search.all[0];
+
+    const body = `🎵 *Título:* ${videoInfo.title}\n`
+        + `📺 *Canal:* ${videoInfo.author.name || 'Desconocido'}\n`
+        + `👁️ *Vistas:* ${videoInfo.views}\n`
+        + `⏳ *Duración:* ${videoInfo.timestamp}\n`
+        + `📅 *Publicado hace:* ${videoInfo.ago}\n`
+        + `🔗 *Link:* ${videoInfo.url}`;
+
+    if (command === 'tocar') {
+        await conn.sendMessage(m.chat, {
+            image: { url: videoInfo.thumbnail },
+            caption: body,
+            footer: "📥 Prueba de Botones",
+            buttons: [
+                { buttonId: `.audio ${videoInfo.url}`, buttonText: { displayText: '🎵 Audio' }, type: 1 },
+                { buttonId: `.video ${videoInfo.url}`, buttonText: { displayText: '🎥 Video' }, type: 1 },
+            ],
+            headerType: 1
+        }, { quoted: m });
+        return;
+    }
+
+    return conn.reply(m.chat, '❌ Comando no reconocido.', m);
+};
+
+handler.command = ['tocar'];
+export default handler;
