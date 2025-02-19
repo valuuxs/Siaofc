@@ -1,8 +1,12 @@
 import yts from 'yt-search';
+import ytdl from 'ytdl-core';
+import fs from 'fs';
+
+let searchResults = {}; // Guarda los resultados por usuario
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    throw `*[❗] Nombre de la canción faltante. Por favor, ingrese el comando más el nombre/título de una canción.*\n\n*—◉ Ejemplo:*\n*${usedPrefix + command} Begin You*`;
+    throw `*[❗] Ingresa el nombre de la canción.*\n\n*Ejemplo:*\n*${usedPrefix + command} Begin You*`;
   }
 
   try {
@@ -12,60 +16,51 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       throw '*[❗] No se encontraron resultados. Intenta con otro título.*';
     }
 
-    const textoInfo = `*[❗] Puedes descargar el video que quieras de la siguiente forma:*
-◉ ${usedPrefix}audio <número>
-◉ ${usedPrefix}video <número> 
+    // Guardamos los resultados en la variable global usando el ID del usuario
+    searchResults[m.sender] = results.all.slice(0, 5); // Guarda los primeros 5 resultados
 
-*—◉ Ejemplos:*
-*◉ ${usedPrefix}audio 5*
-*◉ ${usedPrefix}video 8*`;
-
-    const teks = results.all
+    // Creamos el mensaje con la lista de canciones
+    let teks = `*[❗] Elige una canción con:*  *${usedPrefix}audio <número>*\n\n`;
+    teks += results.all
+      .slice(0, 5) // Solo mostramos los primeros 5 resultados
       .map((v, i) => {
         return `[${i + 1}] ${v.title}
-↳ 🫐 *_Link :_* ${v.url}
-↳ 🕒 *_Duración :_* ${v.timestamp}
-↳ 📥 *_Subido :_* ${v.ago}
-↳ 👁 *_Vistas :_* ${v.views}`;
+↳ 🕒 *_Duración:_* ${v.timestamp}
+↳ 📥 *_Subido:_* ${v.ago}
+↳ 👁 *_Vistas:_* ${v.views}`;
       })
-      .join('\n\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦\n\n');
+      .join('\n\n');
 
-    const thumbnail = results.all[0]?.thumbnail || null;
+    await conn.sendMessage(m.chat, { text: teks });
 
-    if (thumbnail) {
-      await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: textoInfo + '\n\n' + teks });
-    } else {
-      await conn.sendMessage(m.chat, { text: textoInfo + '\n\n' + teks });
-    }
   } catch (err) {
-    console.error('Error en la búsqueda de YouTube:', err);
-    await m.reply('*[❗] Error al buscar la canción. Inténtalo nuevamente con otro título.*');
+    console.error('Error al buscar canciones:', err);
+    await m.reply('*[❗] Error al buscar la canción. Inténtalo de nuevo.*');
   }
 };
 
 handler.help = ['playlist *<texto>*'];
 handler.tags = ['search'];
-handler.command = /^(playlist|playlist2)$/i;
+handler.command = /^playlist$/i;
 
 export default handler;
-/*
-import yts from 'yt-search';
-import ytdl from 'ytdl-core';
-import fs from 'fs';
 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) {
-    throw `*[❗] Nombre de la canción faltante. Ingresa el comando más el nombre de la canción.*\n\n*Ejemplo:*\n*${usedPrefix + command} Begin You*`;
+// ================== HANDLER PARA DESCARGAR LA CANCIÓN ==================
+
+const downloadHandler = async (m, { conn, text, usedPrefix }) => {
+  if (!text || isNaN(text)) {
+    throw `*[❗] Debes escribir el número de la canción.*\n\n*Ejemplo:*\n*${usedPrefix}audio 2*`;
+  }
+
+  const index = parseInt(text) - 1;
+  const userResults = searchResults[m.sender];
+
+  if (!userResults || !userResults[index]) {
+    throw '*[❗] No tienes una búsqueda activa o el número es inválido.*';
   }
 
   try {
-    const results = await yts(text);
-
-    if (!results || results.all.length === 0) {
-      throw '*[❗] No se encontraron resultados. Intenta con otro título.*';
-    }
-
-    const video = results.all[0]; // Toma el primer resultado
+    const video = userResults[index]; // Obtiene la canción elegida
     const audioStream = ytdl(video.url, { filter: 'audioonly' });
 
     const filePath = `./tmp/${Date.now()}.mp3`;
@@ -82,13 +77,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     });
 
   } catch (err) {
-    console.error('Error al obtener audio de YouTube:', err);
+    console.error('Error al descargar audio:', err);
     await m.reply('*[❗] Error al descargar el audio. Inténtalo de nuevo.*');
   }
 };
 
-handler.help = ['audio *<texto>*'];
-handler.tags = ['downloader'];
-handler.command = /^audio$/i;
+downloadHandler.help = ['audio *<número>*'];
+downloadHandler.tags = ['downloader'];
+downloadHandler.command = /^audio$/i;
 
-export default handler;*/
+export default downloadHandler;
