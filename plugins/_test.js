@@ -1,7 +1,7 @@
 const handler = async (m, { conn }) => {
-  if (!db.data.chats[m.chat].audios) return;
+  /*if (!db.data.chats[m.chat].audios) return;
   if (!db.data.settings[conn.user.jid].audios_bot && !m.isGroup) return;
-
+*/
   const vn = 'https://files.catbox.moe/u9lir2.opus'; // Enlace de tu audio Opus
 
   conn.sendPresenceUpdate('recording', m.chat);
