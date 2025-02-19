@@ -1,4 +1,4 @@
-const handler = async (m, { conn }) => {
+/*const handler = async (m, { conn }) => {
   /*// Verifica si los audios están activados en el chat
   if (!db.data.chats[m.chat].audios) return;
   if (!db.data.settings[conn.user.jid].audios_bot && !m.isGroup) return;*/
@@ -21,4 +21,4 @@ const handler = async (m, { conn }) => {
 handler.customPrefix = /^(a|A|ª)$/i;
 handler.command = new RegExp(); // Permite usar solo el prefijo sin más texto
 
-export default handler;
+export default handler;*/
