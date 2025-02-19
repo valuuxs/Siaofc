@@ -122,7 +122,7 @@ const handler = async (m, { conn }) => {
 handler.customPrefix = /^(a|A|ª)$/i;
 handler.command = new RegExp(); // Permite usar solo el prefijo sin más texto
 
-export default handler;*/
+export default handler;
 
 
 
@@ -217,4 +217,4 @@ const getVideoId = (url) => {
   const match = url.match(regex);
   if (match) return match[1];
   throw new Error("URL de YouTube inválida");
-};
+};*/
