@@ -1,4 +1,4 @@
-import yts from 'yt-search';
+/*import yts from 'yt-search';
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, command }) => {
@@ -88,4 +88,4 @@ const getVideoId = (url) => {
     const match = url.match(regex);
     if (match) return match[1];
     throw new Error("URL de YouTube inválida");
-};
+};*/
