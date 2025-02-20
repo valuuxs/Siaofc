@@ -43,7 +43,7 @@ const handler = async (m, { conn, text, command }) => {
 
         let fileUrl;
         if (command === 'play') {
-            m.react('🎶');
+            m.react('🎧');
             fileUrl = await fetchWithFallback(urls.mp3);
             await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '', m, null, { mimetype: "audio/mpeg" });
         } else if (command === 'play2') {
