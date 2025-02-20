@@ -30,12 +30,10 @@ const handler = async (m, { conn, text, command }) => {
         const videoInfo = search.all[0];
         const urls = {
             mp3: [
-                `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp3&apikey=Gata-Dios`,
                 `https://delirius-apiofc.vercel.app/download/ytmp3?url=${videoInfo.url}`,
                 `https://api.vreden.my.id/api/ytmp3?url=${videoInfo.url}`
             ],
             mp4: [
-                `https://api.alyachan.dev/api/youtube?url=${videoInfo.url}&type=mp4&apikey=Gata-Dios`,
                 `https://delirius-apiofc.vercel.app/download/ytmp4?url=${videoInfo.url}`,
                 `https://api.vreden.my.id/api/ytmp4?url=${videoInfo.url}`
             ]
