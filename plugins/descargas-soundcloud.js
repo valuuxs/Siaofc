@@ -19,8 +19,8 @@ let audio = await getBuffer(dl_url);
 
 let txt = `> ${json[0].title}\n`;
     //txt += `  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━◉───── 06:10`
-    txt += `▢ *Calidad:* ${quality}\n`;
-    txt += `▢ *Url:* ${url}\n\n`;
+    txt += `- *Calidad:* ${quality}\n`;
+    txt += `${url}\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
 
 //await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null);
