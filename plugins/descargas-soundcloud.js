@@ -24,8 +24,8 @@ let txt = `*${json[0].title}*\n`;
     txt += `> *[ ℹ️ ]* sᥱ ᥱs𝗍ᥲ́ ᥱᥒ᥎іᥲᥒძ᥆ ᥱᥣ ᥲᥙძі᥆ ᥱs⍴ᥱrᥱ ᥙᥒ m᥆mᥱᥒ𝗍᥆...\n> sі ᥒ᥆ sᥱ ᥱᥒ᥎іᥲ ⍴rᥙᥱᑲᥱ ᥴ᥆ᥒ ᥱᥣ ᥴ᥆mᥲᥒძ᥆ *aplay* ⍴ᥲrᥲ ᥲsᥱgᥙrᥲr ᥣᥲ ძᥱsᥴᥲrgᥲ.`
 
 //await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null);
-await conn.reply(m.chat, txt, m);
-await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: fkontak })
+await conn.reply(m.chat, txt, fkontak, m);
+await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 
 //await m.react('⌛');
 } catch {
