@@ -1,4 +1,4 @@
-import yts from 'yt-search';
+/*import yts from 'yt-search';
 import fetch from 'node-fetch';
 
 const fetchWithFallback = async (urls) => {
@@ -61,4 +61,4 @@ handler.command = ['play', 'play2'];
 handler.tags = ['descargas'];
 handler.register = true;
 
-export default handler;
+export default handler;*/
