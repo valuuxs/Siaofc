@@ -34,7 +34,7 @@ await m.react('❌');
 
 handler.help = ['play *<txt>*']
 handler.tags = ['descargas']
-handler.command = ['soundcloud', 'playx']
+handler.command = ['soundcloud', 'play']
 
 export default handler
 
