@@ -90,7 +90,7 @@ const handler = async (m, { conn, text, command }) => {
             const msg = (command === 'play') 
                 ? '*[ 🎧 ] Ingresa el nombre o título de una canción de YouTube.*' 
                 : '*[ 📽️ ] Ingresa el nombre o título de un vídeo de YouTube.*';
-            return conn.reply(m.chat, msg, m, { quoted: fkontak });
+            return conn.reply(m.chat, msg, fkontak, m);
         }
 
         const search = await yts(text);
@@ -112,16 +112,16 @@ const handler = async (m, { conn, text, command }) => {
         if (command === 'play') {
             m.react('🎧');
             fileUrl = await fetchWithFallback(urls.mp3);
-            await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '', m, { quoted: fkontak, mimetype: "audio/mpeg" });
+            await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '', fkontak, m, null, { mimetype: "audio/mpeg" });
         } else if (command === 'play2') {
             m.react('📹');
             fileUrl = await fetchWithFallback(urls.mp4);
-            await conn.sendMessage(m.chat, { video: { url: fileUrl }, mimetype: "video/mp4" }, { quoted: m, contextInfo: { mentionedJid: [fkontak.key.participant] } });
+            await conn.sendMessage(m.chat, { video: { url: fileUrl }, mimetype: "video/mp4" }, { quoted: fkontak });
         } else {
             throw "Comando no reconocido.";
         }
     } catch (error) {
-        conn.reply(m.chat, `⚠️ Error: ${error}`, m, { quoted: fkontak });
+        conn.reply(m.chat, `⚠️ Error: ${error}`, fkontak, m);
     }
 };
 
