@@ -1,4 +1,4 @@
-/*import yts from 'yt-search';
+import yts from 'yt-search';
 import fetch from 'node-fetch';
 
 const fetchWithFallback = async (urls) => {
@@ -18,7 +18,7 @@ const fetchWithFallback = async (urls) => {
 const handler = async (m, { conn, text, command }) => {
     try {
         if (!text) {
-            const msg = (command === 'play') 
+            const msg = (command === 'yta') 
                 ? '*[ 🤍 ] Ingresa el nombre o título de una canción de YouTube.*' 
                 : '*[ 📽️ ] Ingresa el nombre o título de un vídeo de YouTube.*';
             return conn.reply(m.chat, msg, m);
@@ -40,11 +40,11 @@ const handler = async (m, { conn, text, command }) => {
         };
 
         let fileUrl;
-        if (command === 'play') {
+        if (command === 'yta') {
             m.react('🕐');
             fileUrl = await fetchWithFallback(urls.mp3);
             await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '', m, null, { mimetype: "audio/mpeg" });
-        } else if (command === 'play2') {
+        } else if (command === 'ytv') {
             m.react('📹');
             fileUrl = await fetchWithFallback(urls.mp4);
             await conn.sendMessage(m.chat, { video: { url: fileUrl }, mimetype: "video/mp4" }, { quoted: m });
@@ -56,9 +56,9 @@ const handler = async (m, { conn, text, command }) => {
     }
 };
 
-handler.help = ['play', 'play2'];
-handler.command = ['play', 'play2'];
+handler.help = ['yta', 'ytv'];
+handler.command = ['yta', 'ytv'];
 handler.tags = ['descargas'];
 handler.register = true;
 
-export default handler;*/
+export default handler;
