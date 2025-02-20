@@ -156,7 +156,11 @@ const appledown = {
 
 conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 
-let dataos = await appleMusic.search(text)
+//let dataos = await appleMusic.search(text)
+let dataos = await appleMusic.search(text);
+if (!dataos || dataos.length === 0) {
+  return m.reply('*[ ❌ ] No se encontraron resultados en Apple Music.*');
+}
 let dataos2 = await appledown.download(dataos[0].link);
 let { name, albumname, artist, url, thumb, duration, token, download } = dataos2;
 
