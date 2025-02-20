@@ -43,11 +43,11 @@ const handler = async (m, { conn, text, command }) => {
         if (command === 'play') {
             m.react('🎧');
             fileUrl = await fetchWithFallback(urls.mp3);
-            await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '', fkontak, m, null, { mimetype: "audio/mpeg" });
+            await conn.sendFile(m.chat, fileUrl, `${videoInfo.title}.mp3`, '' fkontak, m, null, { mimetype: "audio/mpeg" });
         } else if (command === 'play2') {
             m.react('📹');
             fileUrl = await fetchWithFallback(urls.mp4);
-            await conn.sendMessage(m.chat, { video: { url: fileUrl }, mimetype: "video/mp4" }, { quoted: ,fkontak, m });
+            await conn.sendMessage(m.chat, { video: { url: fileUrl }, mimetype: "video/mp4" }, { quoted: fkontak, m });
         } else {
             throw "Comando no reconocido.";
         }
