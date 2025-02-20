@@ -39,9 +39,19 @@ for (let index in ytres) {
             ]
         });
     }
+
 await conn.sendList(m.chat, `*𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊𝙎*\n`, `\n𝘽𝙪𝙨𝙦𝙪𝙚𝙙𝙖 𝙙𝙚: ${text}`, `𝗕 𝗨 𝗦 𝗖 𝗔 𝗥`, listSections, fkontak);
 } catch (e) {
-await conn.sendButton(m.chat, `*❌ error*`, null, null, m)
+/*
+await conn.sendButton(m.chat, `*❌ error*`, null, null, m)*/
+
+await conn.sendButton(m.chat, `*❌ Error*`, [
+  {
+    text: 'Reportar error',
+    command: '#reporte'
+  }
+], null, null, m)
+
 console.log(e) 
 }}
 handler.help = ['playlist']
