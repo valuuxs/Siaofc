@@ -5,7 +5,7 @@ import qs from 'qs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) throw m.reply(`*[ 🎧 ] Hace falta el título del audio de AppleMusic.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Mi Kryptonita - Doble ONE`);
+  if (!text) throw m.reply(`*[ 🎧 ] Hace falta el título del audio de AppleMusic.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Mi Kryptonita - Doble ONE`, fkontak, m);
 
 
 const appleMusic = {
@@ -164,7 +164,7 @@ if (!dataos || dataos.length === 0) {
 let dataos2 = await appledown.download(dataos[0].link);
 let { name, albumname, artist, url, thumb, duration, token, download } = dataos2;
 
-m.reply(`*${name} - ${artist}* (${duration})\n\n${url}\n\n> *[ ℹ️ ]* sᥱ ᥱs𝗍ᥲ́ ᥱᥒ᥎іᥲᥒძ᥆ ᥱᥣ ᥲᥙძі᥆ ᥱs⍴ᥱrᥱ ᥙᥒ m᥆mᥱᥒ𝗍᥆...\n> sі ᥒ᥆ sᥱ ᥱᥒ᥎іᥲ ⍴rᥙᥱᑲᥱ ᥴ᥆ᥒ ᥱᥣ ᥴ᥆mᥲᥒძ᥆ *aplay2* ⍴ᥲrᥲ ᥲsᥱgᥙrᥲr ᥣᥲ ძᥱsᥴᥲrgᥲ.`);
+m.reply(`*${name} - ${artist}* (${duration})\n\n${url}\n\n> *[ ℹ️ ]* sᥱ ᥱs𝗍ᥲ́ ᥱᥒ᥎іᥲᥒძ᥆ ᥱᥣ ᥲᥙძі᥆ ᥱs⍴ᥱrᥱ ᥙᥒ m᥆mᥱᥒ𝗍᥆...\n> sі ᥒ᥆ sᥱ ᥱᥒ᥎іᥲ ⍴rᥙᥱᑲᥱ ᥴ᥆ᥒ ᥱᥣ ᥴ᥆mᥲᥒძ᥆ *aplay2* ⍴ᥲrᥲ ᥲsᥱgᥙrᥲr ᥣᥲ ძᥱsᥴᥲrgᥲ.`, fkontak, m);
       const doc = {
       audio: { url: download },
       mimetype: 'audio/mp4',
