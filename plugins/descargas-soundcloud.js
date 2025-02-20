@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Hace falta el título del audio de SoundCloud.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Floyymenor - Peligrosa`, m, rcanal)
+if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Hace falta el título del audio de SoundCloud.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Tatto - La Única Tropical`, m, rcanal)
 
 await m.react('🕒');
 try {
@@ -18,13 +18,12 @@ let { link: dl_url, quality, image } = json2;
 let audio = await getBuffer(dl_url);
 
 let txt = `> ${json[0].title}\n`;
-    txt += `ㅤ  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━━◉───── 06:10`
+    //txt += `  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━◉───── 06:10`
 
-/*
+
     txt += `▢ *Calidad:* ${quality}\n`;
     txt += `▢ *Url:* ${url}\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
-*/
 
 await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null);
 await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
