@@ -69,7 +69,7 @@ const ddownr = {
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `${emoji} ingresa el nombre de la música a descargar.`, m);
+      return conn.reply(m.chat, `🍎 ingresa el nombre de la música a descargar.`, m);
     }
 
     const search = await yts(text);
@@ -100,12 +100,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'play' || command === 'yta' || command === 'ytmp3') {
+    if (command === 'playaud' || command === 'yta' || command === 'ytmp3') {
         const api = await ddownr.download(url, 'mp3');
         const result = api.downloadUrl;
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
-    } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4') {
+    } else if (command === 'playvid' || command === 'ytv' || command === 'ytmp4') {
       let sources = [
         `https://api.alyachan.dev/api/ytv?url=${url}&apikey=Gata-Dios`,
         `https://api.vreden.my.id/api/ytmp4?url=${url}`,
@@ -136,17 +136,17 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       }
 
       if (!success) {
-        return m.reply(`${emoji2} *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
+        return m.reply(`🍐 *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
       }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-    return m.reply(`${msm}︎ Ocurrió un error: ${error.message}`);
+    return m.reply(`🍋 Ocurrió un error: ${error.message}`);
   }
 };
 
-handler.command = handler.help = ['play', 'play2', 'ytmp3', 'yta', 'ytmp4', 'ytv'];
+handler.command = handler.help = ['playaud', 'play2vid', 'ytmp3', 'yta', 'ytmp4', 'ytv'];
 handler.tags = ['downloader'];
 handler.group = true;
 handler.register = true;
