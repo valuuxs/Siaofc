@@ -183,7 +183,7 @@ m.reply(`*${name} - ${artist}* (${duration})\n\n${url}\n\n> *[ ℹ️ ]* sᥱ �
     await conn.sendMessage(m.chat, doc, { quoted: m });
     await conn.sendMessage(m.chat, { react: { text: '🎵', key: m.key }})
 }
-handler.help = ['aplay *<txt>*'];
+handler.help = ['aplay'];
 handler.tags = ['descargas'];
 handler.command = /^(aplay|applemusic|applemusicplay)$/i;
 handler.register = true;
