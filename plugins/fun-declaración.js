@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (command === 'declaracion') {
@@ -32,4 +32,6 @@ handler.command = ['declaracion', 'dclarar', 'declaración', 'si', 'no', 'Si', '
 handler.tags = ["fun"];
 handler.help = ["declaracion"];
 
-export default handler;
+export default handler;*/
+
+//Report - Reparation
