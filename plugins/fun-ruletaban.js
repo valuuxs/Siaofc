@@ -16,10 +16,10 @@ let handler = async (m, { conn, participants }) => {
     await conn.reply(m.chat, '*[ 🎰 ] La ruleta está girando...*', m);
 */
     // Enviar mensaje inicial para edición de cuenta regresiva
-    let msg = await conn.reply(m.chat, '🔄 *3...*', m);
+    let msg = await conn.reply(m.chat '*[ 🎰 ] La ruleta está comenzando a girar...*', m);
 
     // Cuenta regresiva con edición del mensaje
-    const countdown = ['🔄 *2...*', '🔄 *1...*'];
+    const countdown = ['*[ 🎰 ] La ruleta está girando...*'];
     for (let i = 0; i < countdown.length; i++) {
         await new Promise(resolve => setTimeout(resolve, 1500));
         await conn.sendMessage(m.chat, { text: countdown[i], edit: msg.key });
@@ -31,7 +31,7 @@ let handler = async (m, { conn, participants }) => {
 
     // Anunciar al perdedor con un mensaje normal
     await new Promise(resolve => setTimeout(resolve, 2000));
-    await conn.reply(m.chat, `*[ 🎰 ] La ruleta ha elegido a:*/n\`${tag}\|\n\n😈 *¡Adiós!*`, m);
+    await conn.reply(m.chat, `*[ 🎰 ] La ruleta ha elegido a:*\n\`${tag}\`\n\n😈 *¡Adiós!*`, m);
 
     // Esperar antes de eliminar para dramatismo
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -41,7 +41,7 @@ let handler = async (m, { conn, participants }) => {
 
     // Mensaje de confirmación final
     await new Promise(resolve => setTimeout(resolve, 1000));
-    await conn.reply(m.chat, `*Bueno, un pajeeo menos 👻*`, m);
+    await conn.reply(m.chat, `*Bueno, un pajero menos 👻*`, m);
 
     m.react('✅');
 };
