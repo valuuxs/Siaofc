@@ -40,7 +40,10 @@ await conn.reply(m.chat, 'Error al enviar la cancion', m)
 await conn.reply(m.chat, "Responde con uno de los numeros de la cancion que quieres", m)
 }}
 
-handler.command = ['scsearch', 'soundcloudsearch', 'soundsearch']
+handler.help = ['scsearch']
+handler.tags = ['buscador']
+handler.command = ['scsearch', 'soundcloudsearch]
+handler.register = true
 
 export default handler
 
