@@ -5,10 +5,10 @@ if (!text) return conn.reply(m.chat, `*[ 🔎 ] Ingresa el texto de la cancion q
 
 let result = await soundcloudSearch(text)
 let title = result.name
-let HS = '*[ ☕ ] Responde a este mensaje con el numero de la cancion que quieres*\n\n'
+let HS = '*[ ☕ ] Lista de canciones encontradas en SoundCloud*\n\n'
 result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
-HS += `\n> *Lista de canciones a descargar.*`   
+HS += `\n> rᥱs⍴᥆ᥒძᥲ ᥲ ᥱs𝗍ᥱ mᥱᥒsᥲȷᥱ ᥴ᥆ᥒ ᥱᥣ ᥒᥙ́mᥱr᥆ ძᥱ ᥣᥲ ᥴᥲᥒᥴі᥆́ᥒ 𝗊ᥙᥱ ძᥱsᥱᥲ ძᥱsᥴᥲrgᥲr.`   
 let { key } = await conn.reply(m.chat, HS, m)
 conn.SoundCloudSearch[m.sender] = { result, key, title }
 }
