@@ -11,10 +11,10 @@ let handler = async (m, { conn, participants }) => {
     if (gNoAdmins.length === 0) {
         return m.reply('*[ ⚠️ ] No hay usuarios disponibles para eliminar.*');
     }
-
+/*
     // Enviar primer mensaje normal
     await conn.reply(m.chat, '*[ 🎰 ] La ruleta está girando...*', m);
-
+*/
     // Enviar mensaje inicial para edición de cuenta regresiva
     let msg = await conn.reply(m.chat, '🔄 *3...*', m);
 
