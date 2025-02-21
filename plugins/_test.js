@@ -1,60 +1,67 @@
-import yts from 'yt-search';
-let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-if (!text) conn.reply(m.chat, `𝙀𝙎𝘾𝙍𝙄𝘽𝘼 𝙀𝙇 𝙉𝙊𝙈𝘽𝙍𝙀 𝘿𝙀 𝙐𝙉 𝙑𝙄𝘿𝙀𝙊 𝙊 𝘾𝘼𝙉𝘼𝙇 𝘿𝙀 𝙔𝙊𝙐𝙏𝙐𝘽𝙀\n\n𝙒𝙍𝙄𝙏𝙀 𝙏𝙃𝙀 𝙉𝘼𝙈𝙀 𝙊𝙁 𝘼 𝙔𝙊𝙐𝙏𝙐𝘽𝙀 𝙑𝙄𝘿𝙀𝙊 𝙊𝙍 𝘾𝙃𝘼𝙉𝙉𝙀𝙇`, fkontak,  m)
-try {
-    let result = await yts(text);
-    let ytres = result.videos;
-  let teskd = `𝘽𝙪𝙨𝙦𝙪𝙚𝙙𝙖 𝙙𝙚 *${text}*`
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import * as fs from 'fs';
 
-let listSections = [];
-for (let index in ytres) {
-        let v = ytres[index];
-        listSections.push({
-         title: `𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊𝙎`,
-            rows: [
+const handler = async (m, { conn, text, participants }) => {
+    try {
+        const users = participants.map((u) => conn.decodeJid(u.id));
+        const quoted = m.quoted ? await m.getQuotedObj() : null;
+        const quotedText = quoted?.text || quoted?.message?.conversation || '';
+
+        if (!quoted) return;
+
+        const msg = generateWAMessageFromContent(
+            m.chat,
+            { [quoted.mtype || 'extendedTextMessage']: quoted.message[quoted.mtype] || { text: quotedText } },
+            { quoted: m, userJid: conn.user.id }
+        );
+
+        await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+
+    } catch {
+        const users = participants.map((u) => conn.decodeJid(u.id));
+        const quoted = m.quoted ? m.quoted : m;
+        const mime = (quoted.msg || quoted).mimetype || '';
+        const isMedia = /image|video|sticker|audio/.test(mime);
+        const more = String.fromCharCode(8206);
+        const masss = more.repeat(850);
+        const htextos = text || '';
+
+        if (isMedia) {
+            var mediax = await quoted.download?.();
+            if (quoted.mtype === 'imageMessage') {
+                conn.sendMessage(m.chat, { image: mediax, mentions: users, caption: htextos }, { quoted: m });
+            } else if (quoted.mtype === 'videoMessage') {
+                conn.sendMessage(m.chat, { video: mediax, mentions: users, mimetype: 'video/mp4', caption: htextos }, { quoted: m });
+            } else if (quoted.mtype === 'audioMessage') {
+                conn.sendMessage(m.chat, { audio: mediax, mentions: users, mimetype: 'audio/mpeg', fileName: 'Hidetag.mp3' }, { quoted: m });
+            } else if (quoted.mtype === 'stickerMessage') {
+                conn.sendMessage(m.chat, { sticker: mediax, mentions: users }, { quoted: m });
+            }
+        } else {
+            await conn.relayMessage(
+                m.chat,
                 {
-                    header: '𝗔 𝗨 𝗗 𝗜 𝗢',
-                    title: "",
-                    description: `${v.title} | ${v.timestamp}\n`, 
-                    id: `${usedPrefix}yta ${v.url}`
+                    extendedTextMessage: {
+                        text: `${masss}\n${htextos}\n`,
+                        contextInfo: {
+                            mentionedJid: users,
+                            externalAdReply: {
+                                thumbnail: imagen1,
+                                sourceUrl: 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
+                            }
+                        }
+                    }
                 },
-                {
-                    header: "𝗩 𝗜 𝗗 𝗘 𝗢",
-                    title: "" ,
-                    description: `${v.title} | ${v.timestamp}\n`, 
-                    id: `${usedPrefix}ytv ${v.url}`
-                }, 
-              {
-                    header: "𝗔 𝗨 𝗗 𝗜 𝗢   𝗗 𝗢 𝗖",
-                    title: "" ,
-                    description: `${v.title} | ${v.timestamp}\n`, 
-                    id: `${usedPrefix}play3 ${v.url}`
-                }, 
-                {
-                    header: "𝗩 𝗜 𝗗 𝗘 𝗢   𝗗 𝗢 𝗖",
-                    title: "" ,
-                    description: `${v.title} | ${v.timestamp}\n`, 
-                    id: `${usedPrefix}play4 ${v.url}`
-                }
-            ]
-        });
+                {}
+            );
+        }
     }
+};
 
-await conn.sendList(m.chat, `*𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊𝙎*\n`, `\n𝘽𝙪𝙨𝙦𝙪𝙚𝙙𝙖 𝙙𝙚: ${text}`, `𝗕 𝗨 𝗦 𝗖 𝗔 𝗥`, listSections, fkontak);
-} catch (e) {
-/*
-await conn.sendButton(m.chat, `*❌ error*`, null, null, m)*/
+handler.help = ['notify2 <txt>'];
+handler.tags = ['gc'];
+handler.command = /^(hidetag2|notify2|notificar2|notifi2|noti2|n2|hidet2)$/i;
+handler.group = true;
+handler.admin = true;
 
-await conn.sendButton(m.chat, `*❌ Error*`, [
-  {
-    text: 'Reportar error',
-    command: '#reporte'
-  }
-], null, null, m)
-
-console.log(e) 
-}}
-handler.help = ['playlist']
-handler.tags = ['dl']
-handler.command = /^playlist|ytbuscar|yts(earch)?$/i
-export default handler
+export default handler;
