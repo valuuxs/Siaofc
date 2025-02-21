@@ -3,13 +3,13 @@ import FormData from "form-data";
 import cheerio from "cheerio";
 
 let handler = async (m, { conn, usedPrefix, command, text, args }) => {
-  if (!text) return conn.reply(m.chat, '*[ 🌷 ] Ingresa un link de tiktok*', m)
+  if (!text) return conn.reply(m.chat, '*[ ☕ ] Ingresa un link de TikTok*',fkontak, m)
     try {
         let data = await tiktokdl(text);
         console.log(data);
         let start = Date.now();
         let sp = (Date.now() - start) + 'ms';
-        let capp = `*_DESCARGAS - TIKTOK HD_*`;
+        let capp = `*\`DESCARGAS - TIKTOK HD\`*`;
 
         await m.react('🕓');
 
@@ -28,7 +28,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
     }
 };
 
-handler.help = ['tiktokhd *<link>*'];
+handler.help = ['tiktokhd'];
 handler.tags = ['descargas'];
 handler.command = /^(tiktokhd|tthd|tt3)$/i;
 handler.register = true;
