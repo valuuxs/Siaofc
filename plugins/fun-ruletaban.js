@@ -31,7 +31,7 @@ let handler = async (m, { conn, participants }) => {
 
     // Anunciar al perdedor con un mensaje normal
     await new Promise(resolve => setTimeout(resolve, 2000));
-    await conn.reply(m.chat, `*[ 🎰 ] La ruleta ha elegido a:*\n\`${tag}\`\n\n😈 *¡Adiós!*`, m);
+    await conn.reply(m.chat, `*[ 🎰 ] La ruleta ha elegido a:*\n${tag}\n\n😈 *¡Adiós!*`, m);
 
     // Esperar antes de eliminar para dramatismo
     await new Promise(resolve => setTimeout(resolve, 2000));
