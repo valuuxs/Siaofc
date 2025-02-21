@@ -8,6 +8,9 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
     const msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, {[m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : {text: '' || c}}, {quoted: m, userJid: conn.user.id}), text || q.text, conn.user.jid, {mentions: users});
     await conn.relayMessage(m.chat, msg.message, {messageId: msg.key.id});
   } catch {
+    /**
+[ By @NeKosmic || https://github.com/NeKosmic/ ]
+**/
 
     const users = participants.map((u) => conn.decodeJid(u.id));
     const quoted = m.quoted ? m.quoted : m;
@@ -15,7 +18,7 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
     const isMedia = /image|video|sticker|audio/.test(mime);
     const more = String.fromCharCode(8206);
     const masss = more.repeat(850);
-    const htextos = `${text ? text : '*Hola Soy CrowBot 😸*'}`;
+    const htextos = `${text ? text : '*Por favor pon el comando de nuevo*'}`;
     if ((isMedia && quoted.mtype === 'imageMessage') && htextos) {
       var mediax = await quoted.download?.();
       conn.sendMessage(m.chat, {image: mediax, mentions: users, caption: htextos, mentions: users}, {quoted: m});
@@ -29,11 +32,11 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
       var mediax = await quoted.download?.();
       conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, {quoted: m});
     } else {
-      await conn.relayMessage(m.chat, {extendedTextMessage: {text: `${masss}\n${htextos}\n`, ...{contextInfo: {mentionedJid: users, externalAdReply: {thumbnail: imagen1, sourceUrl: 'https://whatsapp.com/channel/0029Vb1AFK6HbFV9kaB3b13W'}}}}}, {});
+      await conn.relayMessage(m.chat, {extendedTextMessage: {text: `${masss}\n${htextos}\n`, ...{contextInfo: {mentionedJid: users, externalAdReply: {thumbnail: imagen1, sourceUrl: 'https://www.instagram.com/ceogeripium.dzn'}}}}}, {});
     }
   }
 };
-handler.command = /^(n3)$/i;
+handler.command = /^(n2|notify2|viso2)$/i;
 handler.group = true;
 handler.admin = true;
 export default handler;
