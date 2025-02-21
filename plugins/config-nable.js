@@ -300,5 +300,6 @@ break
 handler.help = ['enable', 'disable']
 handler.tags = ['nable', 'owner']
 handler.command = ['enable', 'disable', 'on', 'off', '1', '0']
+handler.admin = true
 
 export default handler
