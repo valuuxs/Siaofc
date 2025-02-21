@@ -18,7 +18,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         const videoURLWatermark = tiktokData.data.wmplay;
         const infonya_gan = `*📖 Descrip꯭ción:*
 > ${tiktokData.data.title}*
-╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒ *
+╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 ┊ ✧ *Likes:* ${tiktokData.data.digg_count}
 ┊ ✧ *Comentarios:* ${tiktokData.data.comment_count}
 ┊ ✧ *Compartidas:* ${tiktokData.data.share_count}
