@@ -1,5 +1,5 @@
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) return conn.reply(m.chat, `*[ ☕ ] Menciona algún usuario.`, m, rcanal, );
+  if (!text) return conn.reply(m.chat, `*[ ☕ ] Menciona algún usuario.*`, m, rcanal, );
   const percentages = (500).getRandom();
   let emoji = '';
   let description = '';
@@ -109,7 +109,7 @@ var hawemod = [
  }
 loading()    
 };
-handler.help = ['gay *<@tag>*', 'lesbiana *<@tag>*', 'pajero *<@tag>*', 'pajera *<@tag>*', 'puto *<@tag>*', 'puta *<@tag>*', 'manco *<@tag>*', 'manca *<@tag>*', 'rata *<@tag>*', 'prostituta *<@tag>*', 'prostituto *<@tag>*'];
+handler.help = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituta', 'prostituto'];
 handler.tags = ['fun'];
 handler.register = true;
 handler.group = true;
