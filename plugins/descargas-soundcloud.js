@@ -35,6 +35,7 @@ await m.react('❌');
 handler.help = ['play', 'soundcloud']
 handler.tags = ['descargas']
 handler.command = ['soundcloud', 'play']
+handler.register = true
 
 export default handler
 
