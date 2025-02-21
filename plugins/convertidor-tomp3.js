@@ -22,6 +22,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 };
 
 handler.help = ['tomp3', 'toaudio'];
+handler.tags = ['convertidor']
 handler.command = ['tomp3', 'toaudio'];
 handler.register = true;
 
