@@ -55,9 +55,9 @@ Sof02s32inf14.1e100.net
 *MODEM JUMPS:* 64`;
   m.reply(doxeo, null, {mentions: conn.parseMention(doxeo)});
 };
-handler.help = ['doxear *<@tag>*'];
+handler.help = ['doxear'];
 handler.tags = ['fun'];
-handler.command = /^Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame/i;
+handler.command = /^Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxing|doxing/i;
 handler.group = true;
 handler.register = true;
 
