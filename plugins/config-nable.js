@@ -294,7 +294,7 @@ break
 
       throw false
   }
-  conn.reply(m.chat, `*[ ℹ️ ] La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? 'este \`\`\`Bot\`\`\`' : isUser ? '' : 'este \`\`\`chat\`\`\`'}*`, m)
+  conn.reply(m.chat, `*[ ℹ️ ] La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? 'este \`\`\`Bot\`\`\`' : isUser ? '' : 'este \`\`\`chat\`\`\`'}*`, fkontak, m)
 }
 
 handler.help = ['enable', 'disable']
