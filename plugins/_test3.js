@@ -41,7 +41,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 𝘼𝙠𝙖𝙣𝙚 𝘽𝙤𝙩 - 𝙈𝘿 : 𝙐𝙨𝙭𝙧 𝘾𝙧𝙭𝙭𝙨 🥀
 - Para el menú completo usa *.allmenu*
 ㅤ· · ────── ·•· ────── · · 
-*╭┄⊰* TEST CTMR
+*╭┄⊰* TEST CTMR v:
 *│* დ _.menuanimes_
 *│* დ _.menuaudios_
 *│* დ _.menulogos_
