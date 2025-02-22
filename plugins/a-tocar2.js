@@ -120,8 +120,7 @@ ${iconosA.map(icono => `${icono} •`).join('\n')}
 ㅤ _ʚ Equipo B:_ ᭡
 ${iconosB.map(icono => `${icono} •`).join('\n')}
 
-*Organiza:* ${conn.getName(m.sender)}
-
+*ᡣ𐭩 Organiza:* ${conn.getName(m.sender)}
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
