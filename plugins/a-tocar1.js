@@ -1,4 +1,4 @@
-const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
         conn.reply(m.chat, '*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* .mascinterna4 10:00 am pe Vivido', m);
@@ -88,4 +88,4 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 handler.help = ['mascinterna4']
 handler.tags = ['ff']
 handler.command = /^(mascint4|mascinterna4)$/i
-export default handler;
+export default handler;*/
