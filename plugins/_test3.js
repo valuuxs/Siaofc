@@ -37,7 +37,7 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 *⎔ _Tokens:_* _${joincount}_
 *⎔ _Premium:_* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
 ㅤ· · ────── ·•· ────── · · 
-𝘼𝙠𝙖𝙣𝙚 𝘽𝙤𝙩 - 𝙈𝘿 : 𝙐𝙨𝙭𝙧 𝘾𝙧𝙭𝙭𝙨 🥀
+SHADOW ULTRA BY BK-CRISS7 🥀
 - Para el menú completo usa *.allmenu*
 ㅤ· · ────── ·•· ────── · · 
 *╭┄⊰* TEST CTMR v:
