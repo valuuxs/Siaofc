@@ -67,29 +67,41 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     let iconosB = [];
 
     switch (command) {
-        case 'mixtoint4':
-        case 'mixtointerna4':
+        case 'inmixto4':
+        case 'internamixto4':
             titulo = 'INTERNA MIXTO';
             iconosA = ['🍁', '🍁', '🍁', '🍁'];
             iconosB = ['🍃', '🍃', '🍃', '🍃'];
             break;
-        case 'mascint4':
-        case 'mascinterna4':
+        case 'inmasc4':
+        case 'internamasc4':
             titulo = 'INTERNA MASC';
             iconosA = ['🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻'];
             iconosB = ['🤺', '🤺', '🤺', '🤺'];
             break;
-        case 'femint4':
-        case 'feminterna4':
+        case 'infem4':
+        case 'internafem4':
             titulo = 'INTERNA FEM';
-            iconosA = ['🪷', '🪷', '🪷', '🪷'];
+            iconosA = ['🪱', '🪱', '🪱', '🪱'];
             iconosB = ['🦋', '🦋', '🦋', '🦋'];
             break;
-        case 'mascint6':
-        case 'mascinterna6':
-            titulo = 'INTERNA MASC 6vs6';
+        case 'inmixto6':
+        case 'internamixto6':
+            titulo = 'INTERNA MIXTO';
+            iconosA = ['❄️', '❄️', '❄️', '❄️', '❄️', '❄️'];
+            iconosB = ['🔥', '🔥', '🔥', '🔥', '🔥', '🔥'];
+            break;
+        case 'inmasc6':
+        case 'internamasc6':
+            titulo = 'INTERNA MASC';
             iconosA = ['🪸', '🪸', '🪸', '🪸', '🪸', '🪸'];
             iconosB = ['🦪', '🦪', '🦪', '🦪', '🦪', '🦪'];
+            break;
+        case 'infem6':
+        case 'internafem6':
+            titulo = 'INTERNA FEM';
+            iconosA = ['🍭', '🍭', '🍭', '🍭', '🍭', '🍭'];
+            iconosB = ['🍬', '🍬', '🍬', '🍬', '🍬', '🍬'];
             break;
         default:
             conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);
@@ -113,8 +125,8 @@ ${iconosB.map(icono => `${icono} •`).join('\n')}
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
 
-handler.help = ['mixtointerna4', 'mascinterna4', 'feminterna4', 'mascinterna6'];
+handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
 handler.tags = ['ff'];
-handler.command = /^(mixtoint4|mixtointerna4|mascint4|mascinterna4|femint4|feminterna4|mascint6|mascinterna6)$/i;
+handler.command = /^(inmixto4|internamixto4|inmixto6|internamixto6|inmasc4|internamasc4|inmasc6|internamasc6|infem4|internafem4|infem6|internafem6)$/i;
 
 export default handler;
