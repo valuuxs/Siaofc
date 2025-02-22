@@ -31,7 +31,7 @@ let pp = ''
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 //let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
 
-//creador y otros
+//CREADOR Y OTROS
 global.creador = 'Wa.me/51927238856'
 global.botreal = `${(conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bot')}`
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
@@ -42,12 +42,12 @@ global.namegrupo = 'Group Shadow Oficial'
 global.namecomu = 'Heavenly Team Community'
 global.namecomu2 = '☕ Heavenly Team Community'
 
-//Reacciones De Comandos.!
+//REACCIONES 
 global.rwait = '🕒'
 global.done = '✅'
 global.error = '✖️'
 
-//Emojis determinado de Shadow
+//EMOJIS PREDETERMINADOS
 global.emoji = '🌷'
 global.emoji2 = '🤍'
 global.emoji3 = '☕'
@@ -55,10 +55,10 @@ global.emoji4 = '🍨'
 global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
-//mensaje en espera
+//MENSAJE DE ESPERA 
 global.wait = '[ ⏳ ] *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ...*';
 
-//Enlaces
+//ENLACES
 var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
 var github = 'https://github.com/CrxstianEscobar/ShadowBot-MD' 
 var web = 'https://shadow-bot.vercel.app/' 
@@ -66,7 +66,7 @@ let instagram = 'https://www.instagram.com/shadowbot.md'
 
 global.redes = [grupo, github, web, instagram].getRandom()
 
-//Imagen
+//IMAGEN
 let category = "imagen"
 const db = './media/database/db.json'
 const db_ = JSON.parse(fs.readFileSync(db))
@@ -76,11 +76,13 @@ const response = await fetch(randomlink)
 const rimg = await response.buffer()
 global.icons = rimg
 
+/*
 //• ↳ ◜𝑻𝑰𝑬𝑴𝑷𝑶 𝑹𝑷𝑮◞ • ⚔
 var ase = new Date(); var hour = ase.getHours(); switch(hour){ case 0: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 1: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 2: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 3: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 4: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 5: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 6: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 7: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌅'; break; case 8: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 9: hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; break; case 10: hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; break; case 11: hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; break; case 12: hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; break; case 13: hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; break; case 14: hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌆'; break; case 15: hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌆'; break; case 16: hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌆'; break; case 17: hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌆'; break; case 18: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 19: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 20: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 21: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 22: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break; case 23: hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; break;}
 global.saludo = hour;
+*/
 
-//tags
+//TAGS & STICKERS
 global.nombre = conn.getName(m.sender)
 global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
@@ -90,13 +92,13 @@ global.authsticker = `\n\n☕ Bᴏᴛ:\n↳お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐
 
 global.packsticker = `ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856`
 
-//Fakes
+//FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
 global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318267632676@newsletter', newsletterName: "˚₊·͟͟͟͟͟͟͞͞͞͞͞͞➳❥ ꒰  HEAVENLY TEAM ꒱ | ೃ࿔₊•", serverMessageId: -1 }
 }}, { quoted: m }
 
-//Id Channel
+//ID CANALES
 global.idchannel = '120363357231409846@newsletter'
 global.canalIdM = ["120363357231409846@newsletter", "120363357231409846@newsletter", "120363357231409846@newsletter"]
 global.canalNombreM = ["⏤͟͟͞͞Shadow۵࿐", "✯ SB - Chanel ✯", "⏤͟͟͞͞☆ Shadow Test"]
