@@ -105,7 +105,7 @@ switch(hour) {
 }
 
 global.saludo = hour;
-
+/*
 // FECHA Y HORA EN FORMATO PERSONALIZADO (ZONA HORARIA PERÚ)
 moment.locale('es'); // Configurar idioma español
 var fecha = moment().tz('America/Lima');
@@ -120,7 +120,21 @@ diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
 mes = mes.charAt(0).toUpperCase() + mes.slice(1);
 
 global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}`;
+*/
+// FECHA Y HORA EN FORMATO PERSONALIZADO (ZONA HORARIA PERÚ)
+var fecha = moment().tz('America/Lima');
+var diaSemana = fecha.locale('es').format('dddd'); // Día de la semana en español
+var dia = fecha.format('D'); // Día del mes
+var mes = fecha.locale('es').format('MMMM'); // Mes en español
+var año = fecha.format('YYYY'); // Año
+var hora = fecha.format('h:mm A'); // Hora con AM/PM
 
+// Capitalizar primera letra del día y el mes
+diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
+mes = mes.charAt(0).toUpperCase() + mes.slice(1);
+
+// Resultado final
+global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}`;
 
 //TAGS & STICKERS
 global.nombre = conn.getName(m.sender)
