@@ -1,4 +1,4 @@
-const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {  
         conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora en formato 24H, el país y una modalidad.*
@@ -118,4 +118,4 @@ handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'
 handler.tags = ['ff'];
 handler.command = /^(inmixto4|internamixto4|inmixto6|internamixto6|inmasc4|internamasc4|inmasc6|internamasc6|infem4|internafem4|infem6|internafem6)$/i;
 
-export default handler;
+export default handler;*/
