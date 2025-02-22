@@ -5,13 +5,6 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   try {
     const pp = imagen1;
     const img = './media/menus/Menu.jpg';
-    const d = new Date(new Date + 3600000);
-    const locale = 'es';
-    const week = d.toLocaleDateString(locale, {weekday: 'long'});
-    const date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'});
-    let opciones = { timeZone: "America/Lima", hour12: false };
-    let hours = d.toLocaleTimeString(locale, opciones).split(':')[0];
-
 
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
