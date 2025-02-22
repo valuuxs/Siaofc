@@ -53,15 +53,18 @@ SHADOW ULTRA BY BK-CRISS7 🥀
 
     conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
+await conn.sendMessage(m.chat, { react: { text: '🤍', key: m.key } });
+
   } catch {
     conn.reply(m.chat,'╰⊱❌⊱ *_ERROR_* ⊱❌⊱╮\n\n*_EL MENÚ ESTÁ FALLANDO INTENTE DE NUEVO MÁS TARDE_*', m);
   }
 };
 //handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
 handler.command = /^(menutest)$/i;
-//handler.exp = 50;
 handler.fail = null;
+
 export default handler;
+
 function clockString(ms) {
   const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
   const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
