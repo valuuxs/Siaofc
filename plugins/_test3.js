@@ -26,7 +26,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `> 👋🏻 ¡Hola!, ${taguser}
 > ${saludo}
-> ${week}, ${date}
+> ${fechaHora}
 > ${d.toLocaleTimeString(locale, opciones)}  | |  Perú - Lima
 *˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
