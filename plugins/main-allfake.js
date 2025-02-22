@@ -97,7 +97,7 @@ switch(hour) {
         hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; 
         break;
     case 14: case 15: case 16: case 17:
-        hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌆'; 
+        hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ xD'; 
         break;
     case 18: case 19: case 20: case 21: case 22: case 23:
         hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; 
