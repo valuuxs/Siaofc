@@ -27,7 +27,6 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const str = `> 👋🏻 ¡Hola!, ${taguser}
 > ${saludo}
 > ${fechaHora}
-> ${d.toLocaleTimeString(locale, opciones)}  | |  Perú - Lima
 *˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
 *│* 
