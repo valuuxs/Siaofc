@@ -11,6 +11,8 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'});
     let opciones = { timeZone: "America/Lima", hour12: false };
     let hours = d.toLocaleTimeString(locale, opciones).split(':')[0];
+
+/*
     let saludo;
 
     // Determina el saludo según la hora del día en Lima, Perú
@@ -63,6 +65,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     } else if (hours == 23) {
       saludo = '🌒 Buenas noches, ¿No deberías estar durmiendo ya?';
       }
+*/
     //const time = d.toLocaleString('es-PE', {hour: 'numeric', minute: 'numeric', hour12: true});
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
