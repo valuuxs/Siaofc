@@ -1,4 +1,4 @@
-const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
         conn.reply(m.chat, `*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*
@@ -107,4 +107,4 @@ handler.help = ['mixtointerna4', 'mascinterna4', 'feminterna4'];
 handler.tags = ['ff'];
 handler.command = /^(mixtoint4|mixtointerna4|mascint4|mascinterna4|femint4|feminterna4)$/i;
 
-export default handler;
+export default handler;*/
