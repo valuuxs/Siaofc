@@ -12,61 +12,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     let opciones = { timeZone: "America/Lima", hour12: false };
     let hours = d.toLocaleTimeString(locale, opciones).split(':')[0];
 
-/*
-    let saludo;
 
-    // Determina el saludo según la hora del día en Lima, Perú
-    if (hours == 0) {
-      saludo = '🌒 ¡Vaya, aún despierto! ¿Eres un búho nocturno o qué?';
-    } else if (hours == 1) {
-      saludo = '🌒 Ya es la 1 AM ¿Aún no es hora de dormir?';
-    } else if (hours == 2) {
-      saludo = '🌒 Las 2 de la mañana, ¡Un verdadero noctámbulo!';
-    } else if (hours == 3) {
-      saludo = '🌒 Son las 3 AM, ¿Seguro que no deberías dormir?';
-    } else if (hours == 4) {
-      saludo = '🌒 Son las 4 AM, ¡La noche aún es joven!';
-    } else if (hours == 5) {
-      saludo = '🌉 Buenos días, ¡Ya casi amanece!';
-    } else if (hours == 6) {
-      saludo = '🌄 Son las 6 AM, ¡Hora de despertar!';
-    } else if (hours == 7) {
-      saludo = '☀️ Son las 7 AM, ¡El sol ya está arriba, hora de desayunar!';
-    } else if (hours == 8) {
-      saludo = '☀️ Buenos días, ¡Ah empezar el día con energía!';
-    } else if (hours == 9) {
-      saludo = '☀️ Son las 9 AM, ¡Espero que ya estés despierto!';
-    } else if (hours == 10) {
-      saludo = '☀️ Las 10 de la mañana, ¡Un buen momento para ser productivo!';
-    } else if (hours == 11) {
-      saludo = '☀️ Son las 11 AM, ¡Casi es hora del almuerzo!';
-    } else if (hours == 12) {
-      saludo = '☀️ Buenas tardes, ¡Hora de almorzar!';
-    } else if (hours == 13) {
-      saludo = '☀️ Son la 1 PM, ¡Espero que hayas disfrutado tu almuerzo!';
-    } else if (hours == 14) {
-      saludo = '☀️ Las 2 de la tarde, ¡La recta final del día!';
-    } else if (hours == 15) {
-      saludo = '🌤 Son las 3 PM, ¡Mantén el ritmo!';
-    } else if (hours == 16) {
-      saludo = '🌤 Son las 4 PM, ¡Ya casi es el fin del día!';
-    } else if (hours == 17) {
-      saludo = '🌇 Buenas tardes, ¡El día se va acabando!';
-    } else if (hours == 18) {
-      saludo = '🌆 Son las 6 PM, ¡Es hora de relajarse un poco!';
-    } else if (hours == 19) {
-      saludo = '🌃 Buenas noches, ¿Hora de Netflix y relax?';
-    } else if (hours == 20) {
-      saludo = '🌃 Son las 8 PM, ¡Un buen momento para relajarse!';
-    } else if (hours == 21) {
-      saludo = '🌌 Buenas noches, ¿Preparado para el último sprint del día?';
-    } else if (hours == 22) {
-      saludo = '🌌 Son las 10 PM, ¡Hora de prepararse para dormir!';
-    } else if (hours == 23) {
-      saludo = '🌒 Buenas noches, ¿No deberías estar durmiendo ya?';
-      }
-*/
-    //const time = d.toLocaleString('es-PE', {hour: 'numeric', minute: 'numeric', hour12: true});
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
     const user = global.db.data.users[m.sender];
