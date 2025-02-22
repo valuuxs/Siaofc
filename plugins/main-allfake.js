@@ -107,6 +107,7 @@ switch(hour) {
 global.saludo = hour;
 
 // FECHA Y HORA EN FORMATO PERSONALIZADO (ZONA HORARIA PERÚ)
+moment.locale('es'); // Configurar idioma español
 var fecha = moment().tz('America/Lima');
 var diaSemana = fecha.format('dddd'); // Día de la semana
 var dia = fecha.format('D'); // Día del mes
