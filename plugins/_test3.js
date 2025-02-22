@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
-const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
+const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
   try {
-    const pp = imagen1;
-    const img = './media/menus/Menu.jpg';
+
+    const img = './media/menus/Menu2.jpg';
 
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
@@ -52,7 +52,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 *│* დ _.menuff_
 *╰─────────────────┄⊰*`.trim();
 
-    conn.sendMessage(m.chat, { image: pp, caption: str, mentions: [m.sender] }, { quoted: fkontak });
+    conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
   } catch {
     conn.reply(m.chat,'╰⊱❌⊱ *_ERROR_* ⊱❌⊱╮\n\n*_EL MENÚ ESTÁ FALLANDO INTENTE DE NUEVO MÁS TARDE_*', m);
