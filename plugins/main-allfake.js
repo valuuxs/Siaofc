@@ -118,11 +118,7 @@ var hora = fecha.format('h:mm A'); // Hora con AM/PM
 diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
 mes = mes.charAt(0).toUpperCase() + mes.slice(1);
 
-// Resultado final
 global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}`;
-
-// Ejemplo de uso en un mensaje del bot
-console.log(global.fechaHora); // Salida: Viernes, 21 de febrero del 2025 │ Hora: 5:50 PM
 
 
 //TAGS & STICKERS
