@@ -16,6 +16,23 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 🌷 ¡Hᴏʟᴀ! ${taguser}
 ${saludo}
 
+*˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
+*╭╌┈╼◈ ╰ 3.0.0 ╯◈╾┈╌★*
+*│*
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
+
+*☕ Creador:* Cristian Escobar
+*✳️ Exp:* %exp
+*🪙 Coins:* %estrellas
+*🔆 Nivel:* %level
+*💫 Rango:* %role
+
+*⏰ Tiempo:* %muptime
+*👥 Usuarios:* %totalreg
+*🆙 Versión:* 3.0.0
+
+ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
+
 𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}menunsfw
 ര ׄ 🍃˚ ${usedPrefix}menuaudios
