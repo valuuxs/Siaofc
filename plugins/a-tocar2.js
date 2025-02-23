@@ -16,9 +16,150 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 🌷 ¡Hᴏʟᴀ! ${taguser}
 ${saludo}
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🌿ᩚ꤬ᰨᰍ
-ര ׄ 🌿˚ ${usedPrefix}menunsfw
-ര ׄ 🌿˚
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}menunsfw
+ര ׄ 🍃˚ ${usedPrefix}menuaudios
+ര ׄ 🍃˚ ${usedPrefix}menuff
+ര ׄ 🍃˚ ${usedPrefix}menuowner
+ര ׄ 🍃˚ ${usedPrefix}menulogos
+
+𓂂𓏸  𐅹੭੭   *\`\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}grupos
+ര ׄ 🍃˚ ${usedPrefix}owner
+ര ׄ 🍃˚ ${usedPrefix}ping
+ര ׄ 🍃˚ ${usedPrefix}uptime
+ര ׄ 🍃˚ ${usedPrefix}horario
+ര ׄ 🍃˚ ${usedPrefix}precios
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}play *texto*
+ര ׄ 🍃˚ ${usedPrefix}aplay *texto*
+ര ׄ 🍃˚ ${usedPrefix}aplay2 *texto*
+ര ׄ 🍃˚ ${usedPrefix}yta *texto*
+ര ׄ 🍃˚ ${usedPrefix}ytv *texto*
+ര ׄ 🍃˚ ${usedPrefix}apk *texto*
+ര ׄ 🍃˚ ${usedPrefix}pinterest *texto*
+ര ׄ 🍃˚ ${usedPrefix}tiktok *url*
+ര ׄ 🍃˚ ${usedPrefix}tiktok2 *url*
+ര ׄ 🍃˚ ${usedPrefix}instagram *url*
+ര ׄ 🍃˚ ${usedPrefix}facebook *url*
+ര ׄ 🍃˚ ${usedPrefix}mediafire *url*
+ര ׄ 🍃˚ ${usedPrefix}mega *url*
+ര ׄ 🍃˚ ${usedPrefix}playstore *url*
+ര ׄ 🍃˚ ${usedPrefix}xnxxdl *url*
+ര ׄ 🍃˚ ${usedPrefix}xvideosdl *url*
+ര ׄ 🍃˚ ${usedPrefix}pornhubdl *url*
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}scsearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}tiktoksearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}ytsearch*
+ര ׄ 🍃˚ ${usedPrefix}githubsearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}pssearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}xnxxsearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}xvsearch *texto*
+ര ׄ 🍃˚ ${usedPrefix}phsearch *texto*
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}infem4 *hr + p*
+ര ׄ 🍃˚ ${usedPrefix}inmasc4 *hr + p *
+ര ׄ 🍃˚ ${usedPrefix}inmixto4 *hr + p*
+ര ׄ 🍃˚ ${usedPrefix}infem6 *hr + p*
+ര ׄ 🍃˚ ${usedPrefix}inmasc6 *hr + p*
+ര ׄ 🍃˚ ${usedPrefix}inmixto6 *hr + p*
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}tourl *img*
+ര ׄ 🍃˚ ${usedPrefix}tourl *aud*
+ര ׄ 🍃˚ ${usedPrefix}tourl *vid*
+ര ׄ 🍃˚ ${usedPrefix}tomp3 *vid*
+ര ׄ 🍃˚ ${usedPrefix}toimg *sticker*
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}inspect *link*
+ര ׄ 🍃˚ ${usedPrefix}clima *texto*
+ര ׄ 🍃˚ ${usedPrefix}readmore *texto*
+ര ׄ 🍃˚ ${usedPrefix}imgg2 *texto*
+ര ׄ 🍃˚ ${usedPrefix}hd *img*
+ര ׄ 🍃˚ ${usedPrefix}whatmusic *aud*
+ര ׄ 🍃˚ ${usedPrefix}whatmusic *vid*
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}add *número*
+ര ׄ 🍃˚ ${usedPrefix}grupo *abrir / cerrar*
+ര ׄ 🍃˚ ${usedPrefix}grouptime *tiempo*
+ര ׄ 🍃˚ ${usedPrefix}notify *texto*
+ര ׄ 🍃˚ Aviso *texto*
+ര ׄ 🍃˚ ${usedPrefix}todos *texto*
+ര ׄ 🍃˚ ${usedPrefix}setwelcome *texto*
+ര ׄ 🍃˚ ${usedPrefix}setbye *texto*
+ര ׄ 🍃˚ ${usedPrefix}promote *@tag*
+ര ׄ 🍃˚ ${usedPrefix}demote *@tag*
+ര ׄ 🍃˚ ${usedPrefix}kick *@tag*
+ര ׄ 🍃˚ ${usedPrefix}inactivos *opción*
+ര ׄ 🍃˚ ${usedPrefix}link
+ര ׄ 🍃˚ ${usedPrefix}sorteo
+ര ׄ 🍃˚ ${usedPrefix}fantasmas
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}bass
+ര ׄ 🍃˚ ${usedPrefix}blown
+ര ׄ 🍃˚ ${usedPrefix}deep
+ര ׄ 🍃˚ ${usedPrefix}earrape
+ര ׄ 🍃˚ ${usedPrefix}fast
+ര ׄ 🍃˚ ${usedPrefix}smooth
+ര ׄ 🍃˚ ${usedPrefix}tupai
+ര ׄ 🍃˚ ${usedPrefix}nightcore
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}gay *@tag*
+ര ׄ 🍃˚ ${usedPrefix}lesbiana *@tag*
+ര ׄ 🍃˚ ${usedPrefix}pajero *@tag*
+ര ׄ 🍃˚ ${usedPrefix}pajera *@tag*
+ര ׄ 🍃˚ ${usedPrefix}puto *@tag*
+ര ׄ 🍃˚ ${usedPrefix}puta *@tag*
+ര ׄ 🍃˚ ${usedPrefix}manco *@tag*
+ര ׄ 🍃˚ ${usedPrefix}manca *@tag*
+ര ׄ 🍃˚ ${usedPrefix}rata *@tag*
+ര ׄ 🍃˚ ${usedPrefix}prostituto *@tag*
+ര ׄ 🍃˚ ${usedPrefix}prostituta *@tag*
+ര ׄ 🍃˚ ${usedPrefix}doxear *@tag*
+ര ׄ 🍃˚ ${usedPrefix}jalamela *@tag*
+ര ׄ 🍃˚ ${usedPrefix}simi *texto*
+ര ׄ 🍃˚ ${usedPrefix}piropo
+ര ׄ 🍃˚ ${usedPrefix}chiste
+ര ׄ 🍃˚ ${usedPrefix}facto
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}pregunta *texto*
+ര ׄ 🍃˚ ${usedPrefix}ttt *texto*
+ര ׄ 🍃˚ ${usedPrefix}ptt *opción*
+ര ׄ 🍃˚ ${usedPrefix}delttt
+ര ׄ 🍃˚ ${usedPrefix}acertijo
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}violar
+ര ׄ 🍃˚ ${usedPrefix}follar
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}sticker *img*
+ര ׄ 🍃˚ ${usedPrefix}qc *texto*
+ര ׄ 🍃˚ ${usedPrefix}dado
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}minar
+ര ׄ 🍃˚ ${usedPrefix}cofre
+ര ׄ 🍃˚ ${usedPrefix}slut
+ര ׄ 🍃˚ ${usedPrefix}nivel
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}perfil
+ര ׄ 🍃˚ ${usedPrefix}reg
+ര ׄ 🍃˚ ${usedPrefix}unreg
+
+𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+ര ׄ 🍃˚ ${usedPrefix}salir
+ര ׄ 🍃˚ ${usedPrefix}update
 `.trim()
 
         await conn.sendMessage(m.chat, {
