@@ -27,7 +27,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         let menu = `
 ㅤㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁ㅤㅤ𑁯🤍ᰍㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁
 ೯ ׅ 👤 ¡Hᴏʟᴀ! ¿Cᴏᴍᴏ Esᴛᴀ́s? ׄ ᦡᦡ
-꒰͜͡${taguser}, Sᴏʏ Sʜᴀᴅᴏᴡ
+꒰͜͡${taguser}
 ㅤㅤ ㅤ♡𑂳ᩙㅤ ּ ${saludo} ׄ ㅤタス
 
 *🧇 Activo:* ${uptime}
