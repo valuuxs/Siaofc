@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 
 const query = ['rolitas', 'rolitaschidas', 'musica', 'frases']
 
@@ -63,4 +63,4 @@ async function tiktoks(query) {
       reject(error);
     }
   });
-}
+}*/
