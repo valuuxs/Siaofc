@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 ${saludo}
 
 𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🌿ᩚ꤬ᰨᰍ
-ര ׄ 🌿˚ ${command} tox
+ര ׄ 🌿˚ ${usedPrefix}menunsfw
 ര ׄ 🌿˚
 `.trim()
 
