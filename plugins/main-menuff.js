@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
   try {
-    const img = './media/menus/Menu2.jpg';
-    //const videoUrl = 'https://files.catbox.moe/siww4z.mp4'
+    //const img = './media/menus/Menu2.jpg';
+    const videoUrl = 'https://files.catbox.moe/siww4z.mp4'
     const more = String.fromCharCode(8206);
     const readMore = more.repeat(850);
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
@@ -44,10 +44,10 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 ┃⚙️➺ .sala
 ╰━━━━━━⋆★⋆━━━━━━⬣
 `.trim();
-
-    conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 /*
-await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
+    conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
+
+await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });*/
 
       await conn.sendMessage(m.chat, {
             video: { url: videoUrl },
@@ -56,7 +56,7 @@ await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
             gifPlayback: true
         }, { quoted: fkontak })*/
 
-await conn.sendMessage(m.chat, { react: { text: '😇', key: m.key } });
+//await conn.sendMessage(m.chat, { react: { text: '😇', key: m.key } });
 
   } catch {
     conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el video.*\n\n${e}', m);
