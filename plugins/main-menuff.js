@@ -3,7 +3,6 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
   try {
-    await m.react('🎮')
     //const img = './media/menus/Menu2.jpg';
     const videoUrl = 'https://files.catbox.moe/siww4z.mp4'
     const more = String.fromCharCode(8206);
@@ -56,6 +55,8 @@ await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
             mentions: [m.sender],
             gifPlayback: true
         }, { quoted: fkontak })
+
+await conn.sendMessage(m.chat, { react: { text: '😇', key: m.key } });
 
   } catch {
     conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el video.*\n\n${e}', m);
