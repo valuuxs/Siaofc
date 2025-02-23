@@ -12,6 +12,20 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     exp = exp || 'Desconocida';
     role = role || 'Aldeano';
 
+    let _uptime = process.uptime() * 1000
+    let _muptime
+    if (process.send) {
+      process.send('uptime')
+      _muptime = await new Promise(resolve => {
+        process.once('message', resolve)
+        setTimeout(resolve, 1000)
+      }) * 1000
+    }
+    let muptime = clockString(_muptime)
+    let uptime = clockString(_uptime)
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+
         await m.react('🍃')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/pk3xxk.jpg')
@@ -33,8 +47,8 @@ ${saludo}
 *🔆 Nivel:* ${level}
 *💫 Rango:* ${role}
 
-*⏰ Tiempo:* muptime
-*👥 Usuarios:* totalreg
+*⏰ Tiempo:* ${muptime}
+*👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
 
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
