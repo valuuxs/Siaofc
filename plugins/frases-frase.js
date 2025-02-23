@@ -36,7 +36,6 @@ handler.tags = ['frases'];
 handler.command = handler.help = ['consejo', 'fraseromantica', 'historiaromantica'];
 export default handler;
 
-/*
 async function generarHistoria(prompt) {
   try {
     const response = await axios.post('https://Luminai.my.id', {
@@ -49,21 +48,6 @@ async function generarHistoria(prompt) {
   } catch (error) {
     console.error('Error en la IA:', error);
     throw error;
-  }
-}*/
-
-async function luminsesi(q, username, logic) {
-  try {
-    const response = await axios.post("https://Luminai.my.id", {
-      content: q,
-      user: username,
-      prompt: `${logic} Responde en español.`,
-      webSearchMode: false
-    });
-    return response.data.result;
-  } catch (error) {
-    console.error('*[ ℹ️ ] Error al obtener la historia:*', error);
-    return '*🥀 Error al generar la historia. Intenta nuevamente más tarde.*';
   }
 }
 
