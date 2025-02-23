@@ -12,17 +12,9 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     exp = exp || 'Desconocida';
     role = role || 'Aldeano';
 
-    let _uptime = process.uptime() * 1000
-    let _muptime
-    if (process.send) {
-      process.send('uptime')
-      _muptime = await new Promise(resolve => {
-        process.once('message', resolve)
-        setTimeout(resolve, 1000)
-      }) * 1000
-    }
-    let muptime = clockString(_muptime)
-    let uptime = clockString(_uptime)
+        const _uptime = process.uptime() * 1000;
+    const uptime = clockString(_uptime);
+
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
@@ -47,7 +39,7 @@ ${saludo}
 *🔆 Nivel:* ${level}
 *💫 Rango:* ${role}
 
-*⏰ Tiempo:* ${muptime}
+*⏰ Tiempo:* ${uptime}
 *👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
 
