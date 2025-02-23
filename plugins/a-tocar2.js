@@ -15,6 +15,10 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         let menu = `
 🌷 ¡Hᴏʟᴀ! ${taguser}
 ${saludo}
+
+𓂂𓏸  𐅹੭੭   *`mᥱᥒᥙs`*   🌿ᩚ꤬ᰨᰍ
+ര ׄ 🌿˚ ${command} tox
+ര ׄ 🌿˚
 `.trim()
 
         await conn.sendMessage(m.chat, {
