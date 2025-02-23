@@ -58,7 +58,7 @@ await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
         }, { quoted: fkontak })
 
   } catch {
-    conn.reply(m.chat,'', m);
+    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el video.*\n\n${e}', m);
   }
 };
 
