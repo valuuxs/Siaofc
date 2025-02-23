@@ -1,55 +1,22 @@
-// MEJORADO POR CRISS
-
 import fetch from 'node-fetch';
-import axios from 'axios';
 
 const handler = async (m, { conn, command }) => {
   if (command === 'consejo') {
     const consejo = consejos[Math.floor(Math.random() * consejos.length)];
-    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n🌟 *Consejo del día* 🌟\n\n❥ ${consejo}\n\n╰─◆────◈⚘◈─────◆─╯`;
+    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n⠀⠀🌟 *Consejo del día* 🌟\n\n❥ ${consejo}\n\n╰─◆────◈⚘◈─────◆─╯`;
     await m.reply(mensaje);
   }
 
   if (command === 'fraseromantica') {
     const frase_romantica = frasesromanticas[Math.floor(Math.random() * frasesromanticas.length)];
-    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n💖 *Frase romántica* 💖\n\n❥ ${frase_romantica}\n\n╰─◆────◈⚘◈─────◆─╯`;
+    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n⠀⠀💖 *Frase romántica* 💖\n\n❥ ${frase_romantica}\n\n╰─◆────◈⚘◈─────◆─╯`;
     await m.reply(mensaje);
-  }
-
-  if (command === 'historiaromantica') {
-    try {
-      await conn.sendPresenceUpdate('composing', m.chat); // Indica que está escribiendo
-
-      const prompt = "Crea una historia romántica breve con diálogos y emociones profundas. Responde en español.";
-      const historia = await generarHistoria(prompt);
-
-      const mensaje = `╭─◆────◈📖◈─────◆─╮\n\n💌 *Historia Romántica* 💌\n\n${historia}\n\n╰─◆────◈📖◈─────◆─╯`;
-      await m.reply(mensaje);
-    } catch (error) {
-      console.error('*[ ℹ️ ] Error al generar historia:*', error);
-      await m.reply('*🥀 Error al generar la historia. Inténtalo más tarde.*');
-    }
   }
 };
 
 handler.tags = ['frases'];
-handler.command = handler.help = ['consejo', 'fraseromantica', 'historiaromantica'];
+handler.command = handler.help = ['consejo', 'fraseromantica'];
 export default handler;
-
-async function generarHistoria(prompt) {
-  try {
-    const response = await axios.post('https://Luminai.my.id', {
-      content: prompt,
-      user: 'usuario',
-      webSearchMode: false
-    });
-
-    return response.data.result || '🥀 No se pudo generar una historia en este momento.';
-  } catch (error) {
-    console.error('Error en la IA:', error);
-    return '🥀 Error al generar la historia. Inténtalo más tarde.';
-  }
-}
 
 global.frasesromanticas = [
   'Eres la luz que ilumina mi vida en la oscuridad.',
@@ -119,4 +86,10 @@ global.consejos = [
   'Visualiza tus metas y sueños, imagina cómo te sentirás al alcanzarlos.',
   'Encuentra inspiración en aquellos que han superado obstáculos similares a los tuyos.',
   'Acepta los fracasos como parte del proceso, son oportunidades para aprender y crecer.',
+  'Rodéate de personas positivas y que te impulsen hacia adelante.',
+  'Mantén una mentalidad abierta y dispuesta a aprender cosas nuevas.',
+  'Recuerda por qué empezaste cuando te sientas desmotivado; reconecta con tu propósito.',
+  'Divide tus metas en pequeños pasos, eso hará el camino más alcanzable y menos abrumador.',
+  'No tengas miedo de perseguir tus sueños, la vida es demasiado corta para vivir con arrepentimientos.',
+  'Confía en que, con esfuerzo y perseverancia, puedes lograr todo lo que te propongas.',
 ];
