@@ -1,65 +1,52 @@
-import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
-const handler = async (m, {conn, command}) => {
+import axios from 'axios';
+
+const handler = async (m, { conn, command }) => {
   if (command === 'consejo') {
     const consejo = consejos[Math.floor(Math.random() * consejos.length)];
-    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n⠀⠀🌟 *Consejo del día* 🌟\n\n❥ ${consejo}\n\n╰─◆────◈⚘◈─────◆─╯`;
+    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n🌟 *Consejo del día* 🌟\n\n❥ ${consejo}\n\n╰─◆────◈⚘◈─────◆─╯`;
     await m.reply(mensaje);
   }
 
   if (command === 'fraseromantica') {
     const frase_romantica = frasesromanticas[Math.floor(Math.random() * frasesromanticas.length)];
-    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n⠀⠀💖 *Frase romántica* 💖\n\n❥ ${frase_romantica}\n\n╰─◆────◈⚘◈─────◆─╯`;
+    const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n💖 *Frase romántica* 💖\n\n❥ ${frase_romantica}\n\n╰─◆────◈⚘◈─────◆─╯`;
     await m.reply(mensaje);
   }
 
-  if (command == 'historiaromantica') {
+  if (command === 'historiaromantica') {
     try {
-      const cerpe = await cerpen(`cinta romantis`);
-      const storytime = await translate(cerpe.cerita, {to: 'es', autoCorrect: true}).catch((_) => null);
-      const titletime = await translate(cerpe.title, {to: 'es', autoCorrect: true}).catch((_) => null);
-      conn.reply(m.chat, `᭥🫐᭢ Título: ${titletime.text}
-᭥🍃᭢ Autor: ${cerpe.author}
-────────────────
-${storytime.text}`, m);
-    } catch {
-      const err = await fetch(`https://api.lolhuman.xyz/api/openai?apikey=${lolkeysapi}&text=Elabora%20una%20historia%20romantica%20que%20use%20el%20siguiente%20formato:%20%E1%AD%A5%F0%9F%AB%90%E1%AD%A2%20T%C3%ADtulo:%20%E1%AD%A5%F0%9F%8D%83%E1%AD%A2%20Autor:%20%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20hsitoria...%20adalah&user=user-unique-id`);
-      const json = await err.json();
-      const fraseChat = json.result;
-      conn.reply(m.chat, fraseChat, m);
+      await conn.sendPresenceUpdate('composing', m.chat); // Indica que está escribiendo
+
+      const prompt = "Crea una historia romántica breve con diálogos y emociones profundas.";
+      const historia = await generarHistoria(prompt);
+
+      const mensaje = `╭─◆────◈📖◈─────◆─╮\n\n💌 *Historia Romántica* 💌\n\n${historia}\n\n╰─◆────◈📖◈─────◆─╯`;
+      await m.reply(mensaje);
+    } catch (error) {
+      console.error('*[ ℹ️ ] Error al generar historia:*', error);
+      await m.reply(m.chat, '*🥀 Error al generar la historia. Inténtalo más tarde.*', m);
     }
   }
 };
+
 handler.tags = ['frases'];
 handler.command = handler.help = ['consejo', 'fraseromantica', 'historiaromantica'];
 export default handler;
 
-async function cerpen(category) {
-  return new Promise((resolve, reject) => {
-    const title = category.toLowerCase().replace(/[()*]/g, '');
-    const judul = title.replace(/\s/g, '-');
-    const page = Math.floor(Math.random() * 5);
-    axios.get('http://cerpenmu.com/category/cerpen-'+judul+'/page/'+page)
-        .then((get) => {
-          const $ = cheerio.load(get.data);
-          const link = [];
-          $('article.post').each(function(a, b) {
-            link.push($(b).find('a').attr('href'));
-          });
-          const random = link[Math.floor(Math.random() * link.length)];
-          axios.get(random).then((res) => {
-            const $$ = cheerio.load(res.data);
-            const hasil = {
-              title: $$('#content > article > h1').text(),
-              author: $$('#content > article').text().split('Cerpen Karangan: ')[1].split('Kategori: ')[0],
-              kategori: $$('#content > article').text().split('Kategori: ')[1].split('\n')[0],
-              lolos: $$('#content > article').text().split('Lolos moderasi pada: ')[1].split('\n')[0],
-              cerita: $$('#content > article > p').text(),
-            };
-            resolve(hasil);
-          });
-        });
-  });
+async function generarHistoria(prompt) {
+  try {
+    const response = await axios.post('https://Luminai.my.id', {
+      content: prompt,
+      user: 'usuario',
+      webSearchMode: false
+    });
+
+    return response.data.result;
+  } catch (error) {
+    console.error('Error en la IA:', error);
+    throw error;
+  }
 }
 
 global.frasesromanticas = [
@@ -103,7 +90,7 @@ global.consejos = [
   'Aprende a perdonar, tanto a los demás como a ti mismo, para liberar tu corazón.',
   'Valora el tiempo que pasas con tus seres queridos, es el regalo más valioso que puedes dar y recibir.',
   'Sé amable y compasivo con los demás, cada acto de bondad puede marcar la diferencia en sus vidas.',
-  'Aprende a decir \'no\' cuando sea necesario, y establece límites saludables.',
+  'Aprende a decir "no" cuando sea necesario, y establece límites saludables.',
   'Encuentra tiempo para hacer lo que te apasiona, pues eso nutre tu alma y te hace sentir vivo.',
   'No te compares con los demás, cada persona tiene su propio camino y ritmo en la vida.',
   'Escucha a tu pareja con empatía y comprensión, la comunicación es la base de una relación sólida.',
@@ -133,7 +120,4 @@ global.consejos = [
   'Rodéate de personas positivas y que te impulsen hacia adelante.',
   'Mantén una mentalidad abierta y dispuesta a aprender cosas nuevas.',
   'Recuerda por qué empezaste cuando te sientas desmotivado; reconecta con tu propósito.',
-  'Divide tus metas en pequeños pasos, eso hará el camino más alcanzable y menos abrumador.',
-  'No tengas miedo de perseguir tus sueños, la vida es demasiado corta para vivir con arrepentimientos.',
-  'Confía en que, con esfuerzo y perseverancia, puedes lograr todo lo que te propongas.',
 ];
