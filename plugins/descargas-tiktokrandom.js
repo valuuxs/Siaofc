@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const query = ['rolitas', 'rolitaschidas', 'estados', 'divertido', 'viral', 'musica', 'frases', 'automotivacion']
+const query = ['rolitas', 'rolitaschidas', 'musica', 'frases']
 
 let handler = async (m, {
     conn,
