@@ -6,6 +6,12 @@ import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
     try {
+    let { exp, estrellas, level, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(m.sender)
+    exp = exp || 'Desconocida';
+    role = role || 'Aldeano';
+
         await m.react('🍃')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/pk3xxk.jpg')
