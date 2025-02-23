@@ -3,8 +3,9 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
   try {
+    await m.react('🎮')
     //const img = './media/menus/Menu2.jpg';
-    const videoUrl = 'https://files.catbox.moe/7ha109.mp4' // URL fija del video
+    const videoUrl = 'https://files.catbox.moe/siww4z.mp4'
     const more = String.fromCharCode(8206);
     const readMore = more.repeat(850);
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
