@@ -231,8 +231,8 @@ ${saludo}
 
 handler.help = ['menuff']
 handler.tags = ['main']
-handler.command = ['menuff2', 'ff2'] 
-handler.register = false
+handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+handler.fail = true
 
 export default handler
 
