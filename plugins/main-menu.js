@@ -25,23 +25,19 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         const videoUrl = 'https://files.catbox.moe/7ha109.mp4' // URL fija del video
 
         let menu = `
-🌷 ¡Hᴏʟᴀ! ${taguser}
+👤 ¡Hᴏʟᴀ! ¿Cᴏ́ᴍᴏ Esᴛᴀs Hᴏʏ?
+${taguser} Sᴏʏ Sʜᴀᴅᴏᴡ
 ${saludo}
 
-*˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
-*╭╌┈╼◈ ╰ 3.0.0 ╯◈╾┈╌★*
-*│*
-*╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
-
-*☕ Creador:* Cristian Escobar
-*✳️ Exp:* ${exp}
-*🪙 Coins:* ${estrellas}
-*🔆 Nivel:* ${level}
-*💫 Rango:* ${role}
-
-*⏰ Tiempo:* ${uptime}
+*🍵 Creador:* Cristian Escobar
+*🧇 Activo:* ${uptime}
 *👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
+
+*🌒 Exp:* ${exp}
+*🪙 Coins:* ${estrellas}
+*🫖 Nivel:* ${level}
+*🍢 Rango:* ${role}
 
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
