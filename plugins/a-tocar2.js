@@ -52,42 +52,42 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}menuowner
 ര ׄ 🍃˚ ${usedPrefix}menulogos
 
-𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}grupos
-ര ׄ 🍃˚ ${usedPrefix}owner
-ര ׄ 🍃˚ ${usedPrefix}ping
-ര ׄ 🍃˚ ${usedPrefix}uptime
-ര ׄ 🍃˚ ${usedPrefix}horario
-ര ׄ 🍃˚ ${usedPrefix}precios
+𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🫖ᩚ꤬ᰨᰍ
+ര ׄ 🫖˚ ${usedPrefix}grupos
+ര ׄ 🫖˚ ${usedPrefix}owner
+ര ׄ 🫖˚ ${usedPrefix}ping
+ര ׄ 🫖˚ ${usedPrefix}uptime
+ര ׄ 🫖˚ ${usedPrefix}horario
+ര ׄ 🫖˚ ${usedPrefix}precios
 
-𓂂𓏸  𐅹੭੭   *\`ძᥱsᥴᥲrgᥲs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}play *texto*
-ര ׄ 🍃˚ ${usedPrefix}aplay *texto*
-ര ׄ 🍃˚ ${usedPrefix}aplay2 *texto*
-ര ׄ 🍃˚ ${usedPrefix}yta *texto*
-ര ׄ 🍃˚ ${usedPrefix}ytv *texto*
-ര ׄ 🍃˚ ${usedPrefix}apk *texto*
-ര ׄ 🍃˚ ${usedPrefix}pinterest *texto*
-ര ׄ 🍃˚ ${usedPrefix}tiktok *url*
-ര ׄ 🍃˚ ${usedPrefix}tiktok2 *url*
-ര ׄ 🍃˚ ${usedPrefix}instagram *url*
-ര ׄ 🍃˚ ${usedPrefix}facebook *url*
-ര ׄ 🍃˚ ${usedPrefix}mediafire *url*
-ര ׄ 🍃˚ ${usedPrefix}mega *url*
-ര ׄ 🍃˚ ${usedPrefix}playstore *url*
-ര ׄ 🍃˚ ${usedPrefix}xnxxdl *url*
-ര ׄ 🍃˚ ${usedPrefix}xvideosdl *url*
-ര ׄ 🍃˚ ${usedPrefix}pornhubdl *url*
+𓂂𓏸  𐅹੭੭   *\`ძᥱsᥴᥲrgᥲs\`*   📥ᩚ꤬ᰨᰍ
+ര ׄ 📥˚ ${usedPrefix}play *texto*
+ര ׄ 📥˚ ${usedPrefix}aplay *texto*
+ര ׄ 📥˚ ${usedPrefix}aplay2 *texto*
+ര ׄ 📥˚ ${usedPrefix}yta *texto*
+ര ׄ 📥˚ ${usedPrefix}ytv *texto*
+ര ׄ 📥˚ ${usedPrefix}apk *texto*
+ര ׄ 📥˚ ${usedPrefix}pinterest *texto*
+ര ׄ 📥˚ ${usedPrefix}tiktok *url*
+ര ׄ 📥˚ ${usedPrefix}tiktok2 *url*
+ര ׄ 📥˚ ${usedPrefix}instagram *url*
+ര ׄ 📥˚ ${usedPrefix}facebook *url*
+ര ׄ 📥˚ ${usedPrefix}mediafire *url*
+ര ׄ 📥˚ ${usedPrefix}mega *url*
+ര ׄ 📥˚ ${usedPrefix}playstore *url*
+ര ׄ 📥˚ ${usedPrefix}xnxxdl *url*
+ര ׄ 📥˚ ${usedPrefix}xvideosdl *url*
+ര ׄ 📥˚ ${usedPrefix}pornhubdl *url*
 
-𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}scsearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}tiktoksearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}ytsearch*
-ര ׄ 🍃˚ ${usedPrefix}githubsearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}pssearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}xnxxsearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}xvsearch *texto*
-ര ׄ 🍃˚ ${usedPrefix}phsearch *texto*
+𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🔎ᩚ꤬ᰨᰍ
+ര ׄ 🔎˚ ${usedPrefix}scsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}tiktoksearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}ytsearch*
+ര ׄ 🔎˚ ${usedPrefix}githubsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}pssearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}xnxxsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}phsearch *texto*
 
 𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}infem4 *hr + p*
