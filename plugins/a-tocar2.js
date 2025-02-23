@@ -66,6 +66,6 @@ ${ucapan()}
 
 handler.help = ['menuff']
 handler.tags = ['main']
-handler.command = ['menuff', 'ff'] 
+handler.command = ['menuff2', 'ff2'] 
 handler.register = false
 export default handler
