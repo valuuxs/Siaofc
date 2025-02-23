@@ -31,7 +31,7 @@ await conn.sendMessage(m.chat, { video: { url: download_url }, caption: video_ti
 console.error(error)
 }}
 
-HS.command = ['pornhub, 'phdl']
+HS.command = ['pornhub', 'phdl']
 
 export default HS
 //Dejen creditos 👀 [ By Jtxs ] https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
