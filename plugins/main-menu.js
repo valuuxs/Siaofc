@@ -100,7 +100,7 @@ ${readMore}
 ര ׄ 🪸˚ ${usedPrefix}tomp3 *vid*
 ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
 
-𓂂𓏸  𐅹੭੭   *\`һᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`hᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
 ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
 ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
 ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
