@@ -6,7 +6,7 @@ import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
     try {
-        await m.react('🎮')
+        await m.react('🍃')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 
