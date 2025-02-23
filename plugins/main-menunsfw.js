@@ -47,7 +47,14 @@ donde podrás disfrutar de los diversas descargas de contenido, gifs & fotos par
 ┃🔥➺ .manosear
 ┃🔥➺ .lesbianas
 ╰━━━━━━⋆★⋆━━━━━━⬣
-`.trim();
+
+╭╼[ *IMG & VID NSFW*]
+┃💟➺ .pack
+┃💟➺ .pack2
+┃💟➺ .pack3
+┃💟➺ .videoxxx
+┃💟➺ .videoxxxlesb
+╰━━━━━━⋆★⋆━━━━━━⬣`.trim();
 
     conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
