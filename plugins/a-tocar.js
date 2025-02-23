@@ -34,7 +34,7 @@ handler.all = async function (m, {conn, text}) {
         const syms1 = `Tu nombre es *Shadow* y parece haber sido creado por Criss Escobar. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, y te encanta aprender. Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}. Lo Mejor De Todo Es Que Darás Publicidad A tu canal oficial : https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n`;
 
         let result = await luminsesi(query, username, syms1);
-        await this.reply(m.chat, result, m, fake);
+        await this.reply(m.chat, result, m);
     }
     return true;
 }
