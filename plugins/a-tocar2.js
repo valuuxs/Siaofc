@@ -1,121 +1,71 @@
-/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+import fs from 'fs'
+import fetch from 'node-fetch'
+import moment from 'moment-timezone'
+import { promises } from 'fs'
+import { join } from 'path'
 
-    if (args.length < 3) {  
-        conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora en formato 24H, el país y una modalidad.*
-        
-*Usa AR para Argentina y PE para Perú.*
+let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+    try {
+        await m.react('🎮')
+        let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+        let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 
-[ 💡 ] Ejemplo: .${command} 20:00 pe Vivido`, m);
-        return;
+        let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+        const videoUrl = 'https://files.catbox.moe/7ha109.mp4' // URL fija del video
+
+        let menu = `
+🌷 ¡Hᴏʟᴀ! ${taguser}
+${ucapan()}
+
+*˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
+*╭╌┈╼◈ ╰ 1.4.0 ╯◈╾┈╌★*
+*│*
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
+
+╭─·˚₊· ͟͟͞͞꒰➳ *「 \`MENÚ FF\` 」*
+┊⪩ .v4fem
+┊⪩ .v4masc
+┊⪩ .v4mixto
+┊⪩ .v6fem
+┊⪩ .v6masc
+┊⪩ .v6mixto
+┊⪩ .feminterna4
+┊⪩ .mascinterna4
+┊⪩ .mixtointerna4
+┊⪩ .feminterna6
+┊⪩ .mascinterna6
+┊⪩ .mixtointerna6
+┊⪩ .donarsala
+┊⪩ .bermuda
+┊⪩ .kalahari
+┊⪩ .purgatorio
+┊⪩ .nexterra
+╰──────────── ·`.trim()
+
+        await conn.sendMessage(m.chat, {
+            video: { url: videoUrl }, // Video fijo
+            caption: menu,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                isForwarded: true,
+                forwardingScore: 999,
+                externalAdReply: {
+                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nSɪᴍᴘʟᴇ Bᴏᴛ Wʜᴀᴛsᴀᴘᴘ 💫',
+                    thumbnailUrl: perfil,
+                    mediaType: 1,
+                    renderLargerThumbnail: false,
+                },
+            },
+            gifPlayback: true,
+            gifAttribution: 0
+        }, { quoted: null })
+    } catch (e) {
+        await m.reply(`*[ ℹ️ ] Ocurrió un error al enviar el menú.*\n\n${e}`)
     }
+}
 
-    // Nueva validación para formato de 24 horas
-    const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;  
-    if (!horaRegex.test(args[0])) {  
-        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto. Usa HH o HH:MM (ej. 20 o 20:30).*', m);  
-        return;  
-    }  
-
-    let [hora, minutos] = args[0].includes(':') ? args[0].split(':').map(Number) : [Number(args[0]), 0];
-
-    const pais = args[1].toUpperCase();  
-
-    const diferenciasHorarias = {  
-        CL: 2,  // UTC-4  
-        AR: 2,  // UTC-3  
-        PE: 0,  // UTC-5  
-    };  
-
-    if (!(pais in diferenciasHorarias)) {  
-        conn.reply(m.chat, '*[ ℹ️ ] País no válido. Usa AR para Argentina, PE para Perú.*', m);  
-        return;  
-    }  
-
-    const diferenciaHoraria = diferenciasHorarias[pais];  
-    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });  
-
-    const horasEnPais = { CL: '', AR: '', PE: '' };  
-
-    for (const key in diferenciasHorarias) {  
-        const horaActual = new Date();  
-        horaActual.setHours(hora, minutos, 0, 0);
-
-        const horaEnPais = new Date(horaActual.getTime() + (3600000 * (diferenciasHorarias[key] - diferenciaHoraria)));  
-        horasEnPais[key] = formatTime(horaEnPais);  
-    }  
-
-    const modalidad = args.slice(2).join(' ');  
-    m.react('🎮');  
-
-    // Configuración de la modalidad según el comando usado  
-    let titulo = '';  
-    let iconosA = [];  
-    let iconosB = [];  
-
-    switch (command) {  
-        case 'inmixto4':  
-        case 'internamixto4':  
-            titulo = 'INTERNA MIXTO';  
-            iconosA = ['🍁', '🍁', '🍁', '🍁'];  
-            iconosB = ['🍃', '🍃', '🍃', '🍃'];  
-            break;  
-        case 'inmasc4':  
-        case 'internamasc4':  
-            titulo = 'INTERNA MASC';  
-            iconosA = ['🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻'];  
-            iconosB = ['🤺', '🤺', '🤺', '🤺'];  
-            break;  
-        case 'infem4':  
-        case 'internafem4':  
-            titulo = 'INTERNA FEM';  
-            iconosA = ['🪱', '🪱', '🪱', '🪱'];  
-            iconosB = ['🦋', '🦋', '🦋', '🦋'];  
-            break;  
-        case 'inmixto6':  
-        case 'internamixto6':  
-            titulo = 'INTERNA MIXTO';  
-            iconosA = ['❄️', '❄️', '❄️', '❄️', '❄️', '❄️'];  
-            iconosB = ['🔥', '🔥', '🔥', '🔥', '🔥', '🔥'];  
-            break;  
-        case 'inmasc6':  
-        case 'internamasc6':  
-            titulo = 'INTERNA MASC';  
-            iconosA = ['🪸', '🪸', '🪸', '🪸', '🪸', '🪸'];  
-            iconosB = ['🦪', '🦪', '🦪', '🦪', '🦪', '🦪'];  
-            break;  
-        case 'infem6':  
-        case 'internafem6':  
-            titulo = 'INTERNA FEM';  
-            iconosA = ['🍭', '🍭', '🍭', '🍭', '🍭', '🍭'];  
-            iconosB = ['🍬', '🍬', '🍬', '🍬', '🍬', '🍬'];  
-            break;  
-        default:  
-            conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);  
-            return;  
-    }  
-
-    const message = `ㅤㅤㅤ *\`${titulo}\`*
-
-╭── ︿︿︿︿︿ ⭒   ⭒   ⭒   ⭒   ⭒
-» ☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ: ${modalidad}
-» ⏰꒱ Hᴏʀᴀʀɪᴏs:
-│• \`ᴘᴇʀ:\` ${horasEnPais.PE}
-│• \`ᴀʀɢ:\` ${horasEnPais.AR}
-╰─── ︶︶︶︶ ✰⃕  ⌇ ⭒⭒   ˚̩̥̩̥*̩̩͙✩
-ㅤ ʚ Equipo A: ᭡
-${iconosA.map(icono => `${icono} •`).join('\n')}
-ㅤ ʚ Equipo B: ᭡
-${iconosB.map(icono => `${icono} •`).join('\n')}
-
-ᡣ𐭩 Organiza: ${conn.getName(m.sender)}
-
-> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`.trim();
-
-    conn.sendMessage(m.chat, { text: message }, { quoted: m });
-};
-
-handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
-handler.tags = ['ff'];
-handler.command = /^(inmixto4|internamixto4|inmixto6|internamixto6|inmasc4|internamasc4|inmasc6|internamasc6|infem4|internafem4|infem6|internafem6)$/i;
-
-export default handler;*/
+handler.help = ['menuff']
+handler.tags = ['main']
+handler.command = ['menuff', 'ff'] 
+handler.register = false
+export default handler
