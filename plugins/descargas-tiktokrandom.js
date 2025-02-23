@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const query = ['story%20wa','story%20sad','video%20fun','story%20wa%20galau','story%20wa%20sindiran','story%20wa%20bahagia','story%20wa%20lirik%20lagu%20overlay','story%20wa%20lirik%20lagu','video%20viral']
+/*const query = ['story%20wa','story%20sad','video%20fun','story%20wa%20galau','story%20wa%20sindiran','story%20wa%20bahagia','story%20wa%20lirik%20lagu%20overlay','story%20wa%20lirik%20lagu','video%20viral']*/
+const query = ['historia whatsapp', 'video divertido', 'video viral', 'canción overlay', 'historia triste', 'frases motivacionales']
 
 let handler = async (m, {
     conn,
@@ -19,7 +20,7 @@ m.reply(eror)
 }
 handler.help = ['tiktokrandom']
 handler.tags = ['descargas']
-handler.command = ['ttrandom', 'tiktokrandom']
+handler.command = ['ttrandom', 'tiktokrandom', 'ttr']
 handler.limit = true 
 handler.register = true
 
