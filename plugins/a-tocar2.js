@@ -33,7 +33,7 @@ ${saludo}
 *🔆 Nivel:* ${level}
 *💫 Rango:* ${role}
 
-*⏰ Tiempo:* ${muptime}
+*⏰ Tiempo:* muptime
 *👥 Usuarios:* totalreg
 *🆙 Versión:* 3.0.0
 
