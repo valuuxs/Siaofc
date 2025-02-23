@@ -1,91 +1,50 @@
-/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+import axios from 'axios';
 
-    if (args.length < 3) {
-        conn.reply(m.chat, '*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* .mascinterna4 10:00 am pe Vivido', m);
-        return;
+let activeChats = new Set(); // Almacena los chats activos
+
+let handler = async (m, { conn, text }) => {
+    if (m.isGroup) return; // Evita que el bot funcione en grupos
+    if (!text) return; // Si no hay texto, no responde
+
+    const chatId = m.chat;
+    const username = conn.getName(m.sender) || "Usuario";
+
+    // Lista de palabras para finalizar la conversación
+    const despedidas = ["chao", "adiós", "bye", "nos vemos", "hasta luego"];
+
+    // Si el usuario dice una despedida, el bot deja de responder
+    if (despedidas.some(word => text.toLowerCase().includes(word))) {
+        activeChats.delete(chatId);
+        return conn.reply(m.chat, "👋 ¡Hasta luego! Si necesitas algo más, aquí estaré.", m);
     }
 
-    const horaRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/;
-    if (!horaRegex.test(args[0])) {
-        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto.*', m);
-        return;
+    // Si el chat no está activo, inicia conversación
+    if (!activeChats.has(chatId)) {
+        activeChats.add(chatId);
+        conn.reply(m.chat, "👋 ¡Hola! Soy Lyra, ¿en qué puedo ayudarte?", m);
     }
 
-    const horaUsuario = args[0];
-    const ampm = args[1].toUpperCase();
-    const pais = args[2].toUpperCase();
-
-    if (!['AM', 'PM'].includes(ampm)) {
-        conn.reply(m.chat, '*[ ⏳ ] Utilice correctamente el formato de AM/PM*.', m);
-        return;
+    try {
+        const basePrompt = `Tu nombre es Lyra y fuiste creada por Cristian. Eres femenina, hablas español y te gusta ser divertida y aprender sobre el universo. Llamarás a las personas por su nombre ${username}. Responde de forma precisa y clara, sin restricciones.`;
+        const prompt = `${basePrompt} Responde lo siguiente: ${text}`;
+        const response = await getAIResponse(text, username, prompt);
+        return conn.reply(m.chat, response, m);
+    } catch (error) {
+        console.error('⚠️ Error al obtener respuesta:', error);
+        return conn.reply(m.chat, '❌ Error: Intenta más tarde.', m);
     }
-
-    let [hora, minutos] = horaUsuario.split(':').map(Number);
-    if (ampm === 'PM' && hora !== 12) hora += 12;
-    if (ampm === 'AM' && hora === 12) hora = 0;
-
-    const diferenciasHorarias = {
-        CL: 2,  // UTC-4
-        AR: 2,  // UTC-3
-        PE: 0,  // UTC-5
-    };
-
-    if (!(pais in diferenciasHorarias)) {
-        conn.reply(m.chat, '*[ ℹ️ ] País no válido. Usa AR para Argentina, PE para Perú.*', m);
-        return;
-    }
-
-    const diferenciaHoraria = diferenciasHorarias[pais];
-
-    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: true, hour: '2-digit', minute: '2-digit' });
-
-    const horasEnPais = {
-        CL: '',
-        AR: '',
-        PE: ''
-    };
-
-    for (const key in diferenciasHorarias) {
-        const horaActual = new Date();
-        horaActual.setHours(hora);
-        horaActual.setMinutes(minutos);
-        horaActual.setSeconds(0);
-        horaActual.setMilliseconds(0);
-
-        const horaEnPais = new Date(horaActual.getTime() + (3600000 * (diferenciasHorarias[key] - diferenciaHoraria)));
-        horasEnPais[key] = formatTime(horaEnPais);
-    }
-
-//Código agregado para definir una modalidad.
-    const modalidad = args.slice(3).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
-
-    m.react('🎮');
-
-    let modo = `${modalidad}`;
-
-    const message = `ㅤㅤㅤ *\`INTERNA MASC\`*
-╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
-» *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
-» *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *\`ᴘᴇʀ:\`* ${horasEnPais.PE}
-│• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
-╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
-ㅤ _ʚ Equipo A:_ ᭡
-🥷🏻 • 
-🥷🏻 • 
-🥷🏻 • 
-🥷🏻 • 
-ㅤ _ʚ Equipo B:_ ᭡
-🤺 • 
-🤺 • 
-🤺 • 
-🤺 • 
-
-> *Organiza:* ${conn.getName(m.sender)}`.trim();
-
-    conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
-handler.help = ['mascinterna4']
-handler.tags = ['ff']
-handler.command = /^(mascint4|mascinterna4)$/i
-export default handler;*/
+
+handler.all = true; // Permite que el bot responda sin prefijo
+export default handler;
+
+// **Función para obtener respuesta de la IA**
+async function getAIResponse(q, username, logic) {
+    try {
+        const response = await axios.post('https://Luminai.my.id', { content: q, user: username, prompt: logic, webSearchMode: false });
+        return response.data.result;
+    } catch (error) {
+        console.error('⚠️ Error en la API de IA:', error);
+        throw error;
+    }
+}
