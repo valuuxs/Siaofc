@@ -30,6 +30,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 ㅤ꒰͜͡${taguser}
 ㅤㅤ♡𑂳ᩙㅤ ּ ${saludo} ׄ ㅤタス
 
+*⏰ Hora:* ${hora}
 *🧇 Activo:* ${uptime}
 *👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
