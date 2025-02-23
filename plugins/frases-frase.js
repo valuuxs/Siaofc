@@ -1,4 +1,4 @@
-//CODIGO MEJORADO POR CRISS ESCOBAR
+// MEJORADO POR CRISS
 
 import fetch from 'node-fetch';
 import axios from 'axios';
@@ -20,14 +20,14 @@ const handler = async (m, { conn, command }) => {
     try {
       await conn.sendPresenceUpdate('composing', m.chat); // Indica que está escribiendo
 
-      const prompt = "Crea una historia romántica breve con diálogos y emociones profundas.";
+      const prompt = "Crea una historia romántica breve con diálogos y emociones profundas. Responde en español.";
       const historia = await generarHistoria(prompt);
 
       const mensaje = `╭─◆────◈📖◈─────◆─╮\n\n💌 *Historia Romántica* 💌\n\n${historia}\n\n╰─◆────◈📖◈─────◆─╯`;
       await m.reply(mensaje);
     } catch (error) {
       console.error('*[ ℹ️ ] Error al generar historia:*', error);
-      await m.reply(m.chat, '*🥀 Error al generar la historia. Inténtalo más tarde.*', m);
+      await m.reply('*🥀 Error al generar la historia. Inténtalo más tarde.*');
     }
   }
 };
@@ -44,10 +44,10 @@ async function generarHistoria(prompt) {
       webSearchMode: false
     });
 
-    return response.data.result;
+    return response.data.result || '🥀 No se pudo generar una historia en este momento.';
   } catch (error) {
     console.error('Error en la IA:', error);
-    throw error;
+    return '🥀 Error al generar la historia. Inténtalo más tarde.';
   }
 }
 
@@ -119,7 +119,4 @@ global.consejos = [
   'Visualiza tus metas y sueños, imagina cómo te sentirás al alcanzarlos.',
   'Encuentra inspiración en aquellos que han superado obstáculos similares a los tuyos.',
   'Acepta los fracasos como parte del proceso, son oportunidades para aprender y crecer.',
-  'Rodéate de personas positivas y que te impulsen hacia adelante.',
-  'Mantén una mentalidad abierta y dispuesta a aprender cosas nuevas.',
-  'Recuerda por qué empezaste cuando te sientas desmotivado; reconecta con tu propósito.',
 ];
