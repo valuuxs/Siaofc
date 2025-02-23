@@ -3,7 +3,8 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
   try {
-    const img = './media/menus/Menu2.jpg';
+    //const img = './media/menus/Menu2.jpg';
+    const videoUrl = 'https://files.catbox.moe/7ha109.mp4' // URL fija del video
     const more = String.fromCharCode(8206);
     const readMore = more.repeat(850);
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
@@ -43,10 +44,11 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 ┃⚙️➺ .sala
 ╰━━━━━━⋆★⋆━━━━━━⬣
 `.trim();
-
+/*
     conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
 await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
+*/
 
   } catch {
     conn.reply(m.chat,'╰⊱❌⊱ *_ERROR_* ⊱❌⊱╮\n\n*_EL MENÚ FF ESTÁ FALLANDO INTENTE DE NUEVO MÁS TARDE_*', m);
