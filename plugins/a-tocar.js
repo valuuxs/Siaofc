@@ -108,3 +108,20 @@ handler.tags = ['ff'];
 handler.command = /^(mixtoint4|mixtointerna4|mascint4|mascinterna4|femint4|feminterna4)$/i;
 
 export default handler;*/
+
+const handler = async (m, { args, isOwner }) => {
+  if (!isOwner) return; // Solo el dueño del bot puede usarlo
+
+  const texto = args.join(' ');
+  if (!texto) return m.reply('❌ Ingresa un código para evaluar.');
+
+  try {
+    const resultado = eval(texto); // Evalúa cualquier código
+    m.reply(`✅ Resultado: ${resultado}`);
+  } catch (error) {
+    m.reply(`❌ Error: ${error.message}`);
+  }
+};
+
+handler.command = /^(testcmd)$/i;
+export default handler;
