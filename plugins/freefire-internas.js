@@ -64,18 +64,17 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {  
-        conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora en formato 24H, el país y una modalidad.*
-        
+        conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora seguido el país y una modalidad.*
 *Usa AR para Argentina y PE para Perú.*
 
-[ 💡 ] Ejemplo: .${command} 20:00 pe Vivido`, m);
+*[ 💡 ] Ejemplo:* .${command} 20:00 pe Vv2`, m);
         return;
     }
 
     // Nueva validación para formato de 24 horas
     const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;  
     if (!horaRegex.test(args[0])) {  
-        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto. Usa HH o HH:MM (ej. 20 o 20:30).*', m);  
+        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto.*', m);  
         return;  
     }  
 
