@@ -3,7 +3,7 @@ import axios from 'axios';
 const query = ['rolitas', 'rolitaschidas', 'musica', 'frases', 'cumbiasperu', 'phonk', 'barcelona', 'realmadrid'];
 
 let handler = async (m, { conn }) => {
-    m.reply('Buscando un video, espera un momento...');
+    m.reply(wait);
 
     let querySelected = query[Math.floor(Math.random() * query.length)];
 
