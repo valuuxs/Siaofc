@@ -28,13 +28,13 @@ ${saludo}
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
 
 *☕ Creador:* Cristian Escobar
-*✳️ Exp:* %exp
-*🪙 Coins:* %estrellas
-*🔆 Nivel:* %level
-*💫 Rango:* %role
+*✳️ Exp:* ${exp}
+*🪙 Coins:* ${estrellas}
+*🔆 Nivel:* ${level}
+*💫 Rango:* ${role}
 
-*⏰ Tiempo:* %muptime
-*👥 Usuarios:* %totalreg
+*⏰ Tiempo:* ${muptime}
+*👥 Usuarios:* totalreg
 *🆙 Versión:* 3.0.0
 
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
