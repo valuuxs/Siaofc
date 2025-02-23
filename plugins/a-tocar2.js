@@ -46,7 +46,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}menuowner
 ര ׄ 🍃˚ ${usedPrefix}menulogos
 
-𓂂𓏸  𐅹੭੭   *\`\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}grupos
 ര ׄ 🍃˚ ${usedPrefix}owner
 ര ׄ 🍃˚ ${usedPrefix}ping
@@ -54,7 +54,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}horario
 ര ׄ 🍃˚ ${usedPrefix}precios
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ძᥱsᥴᥲrgᥲs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}play *texto*
 ര ׄ 🍃˚ ${usedPrefix}aplay *texto*
 ര ׄ 🍃˚ ${usedPrefix}aplay2 *texto*
@@ -73,7 +73,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}xvideosdl *url*
 ര ׄ 🍃˚ ${usedPrefix}pornhubdl *url*
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}scsearch *texto*
 ര ׄ 🍃˚ ${usedPrefix}tiktoksearch *texto*
 ര ׄ 🍃˚ ${usedPrefix}ytsearch*
@@ -83,7 +83,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}xvsearch *texto*
 ര ׄ 🍃˚ ${usedPrefix}phsearch *texto*
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}infem4 *hr + p*
 ര ׄ 🍃˚ ${usedPrefix}inmasc4 *hr + p *
 ര ׄ 🍃˚ ${usedPrefix}inmixto4 *hr + p*
@@ -91,14 +91,14 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}inmasc6 *hr + p*
 ര ׄ 🍃˚ ${usedPrefix}inmixto6 *hr + p*
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}tourl *img*
 ര ׄ 🍃˚ ${usedPrefix}tourl *aud*
 ര ׄ 🍃˚ ${usedPrefix}tourl *vid*
 ര ׄ 🍃˚ ${usedPrefix}tomp3 *vid*
 ര ׄ 🍃˚ ${usedPrefix}toimg *sticker*
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`һᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}inspect *link*
 ര ׄ 🍃˚ ${usedPrefix}clima *texto*
 ര ׄ 🍃˚ ${usedPrefix}readmore *texto*
@@ -107,7 +107,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}whatmusic *aud*
 ര ׄ 🍃˚ ${usedPrefix}whatmusic *vid*
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`grᥙ⍴᥆s\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}add *número*
 ര ׄ 🍃˚ ${usedPrefix}grupo *abrir / cerrar*
 ര ׄ 🍃˚ ${usedPrefix}grouptime *tiempo*
@@ -124,7 +124,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}sorteo
 ര ׄ 🍃˚ ${usedPrefix}fantasmas
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}bass
 ര ׄ 🍃˚ ${usedPrefix}blown
 ര ׄ 🍃˚ ${usedPrefix}deep
@@ -134,7 +134,7 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}tupai
 ര ׄ 🍃˚ ${usedPrefix}nightcore
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ძі᥎ᥱrsі᥆ᥒ\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}gay *@tag*
 ര ׄ 🍃˚ ${usedPrefix}lesbiana *@tag*
 ര ׄ 🍃˚ ${usedPrefix}pajero *@tag*
@@ -153,34 +153,34 @@ ${saludo}
 ര ׄ 🍃˚ ${usedPrefix}chiste
 ര ׄ 🍃˚ ${usedPrefix}facto
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ȷᥙᥱg᥆s\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}pregunta *texto*
 ര ׄ 🍃˚ ${usedPrefix}ttt *texto*
 ര ׄ 🍃˚ ${usedPrefix}ptt *opción*
 ര ׄ 🍃˚ ${usedPrefix}delttt
 ര ׄ 🍃˚ ${usedPrefix}acertijo
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}violar
 ര ׄ 🍃˚ ${usedPrefix}follar
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`s𝗍іᥴkᥱrs\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}sticker *img*
 ര ׄ 🍃˚ ${usedPrefix}qc *texto*
 ര ׄ 🍃˚ ${usedPrefix}dado
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`r⍴g\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}minar
 ര ׄ 🍃˚ ${usedPrefix}cofre
 ര ׄ 🍃˚ ${usedPrefix}slut
 ര ׄ 🍃˚ ${usedPrefix}nivel
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`rᥱgіs𝗍r᥆\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}perfil
 ര ׄ 🍃˚ ${usedPrefix}reg
 ര ׄ 🍃˚ ${usedPrefix}unreg
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`᥆աᥒᥱr\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}salir
 ര ׄ 🍃˚ ${usedPrefix}update
 `.trim()
