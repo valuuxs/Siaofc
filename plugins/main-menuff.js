@@ -50,9 +50,15 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 
 await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });
 */
+      await conn.sendMessage(m.chat, {
+            video: { url: videoUrl },
+            caption: str,
+            mentions: [m.sender],
+            gifPlayback: true
+        }, { quoted: fkontak })
 
   } catch {
-    conn.reply(m.chat,'╰⊱❌⊱ *_ERROR_* ⊱❌⊱╮\n\n*_EL MENÚ FF ESTÁ FALLANDO INTENTE DE NUEVO MÁS TARDE_*', m);
+    conn.reply(m.chat,'', m);
   }
 };
 
