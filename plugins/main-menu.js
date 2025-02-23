@@ -26,9 +26,10 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 
         let menu = `
 ᅟೖׅᗣ໋֟፝͜͝ᗣ֮ׄ͜⏜͜ᩘּׅ̤⏜̤ׄ͜🕌ׄ͜ᩧ⏜͜ᩘּׅ̤⏜֮ׄ͜ᗣ໋֟፝͜͝ᗣׅ𑐹ׄ
-👤 ¡Hᴏʟᴀ! ¿Cᴏ́ᴍᴏ Esᴛᴀs Hᴏʏ?
-${taguser} Sᴏʏ Sʜᴀᴅᴏᴡ
-${saludo}
+> 👤 ¡Hᴏʟᴀ! ¿Cᴏ́ᴍᴏ Esᴛᴀs Hᴏʏ?
+> ${taguser} Sᴏʏ Sʜᴀᴅᴏᴡ
+> ${saludo}
+  ︶⏝፝͜࿙࿚︶፝͜︶୭🍵ৎ︶፝͜︶࿙࿚፝͜⏝︶
 
 *🧇 Activo:* ${uptime}
 *👥 Usuarios:* ${totalreg}
@@ -38,7 +39,6 @@ ${saludo}
 *🪙 Coins:* ${estrellas}
 *🫖 Nivel:* ${level}
 *🍢 Rango:* ${role}
-  ︶⏝፝͜࿙࿚︶፝͜︶୭🍵ৎ︶፝͜︶࿙࿚፝͜⏝︶
 ${readMore}
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
