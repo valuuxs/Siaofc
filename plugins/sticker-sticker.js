@@ -1,8 +1,5 @@
 
 import { sticker } from '../lib/sticker.js'
-//import uploadFile from '../lib/uploadFile.js'
-//import uploadImage from '../lib/uploadImage.js'
-//import { webp2png } from '../lib/webp2mp4.js'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
@@ -11,10 +8,10 @@ try {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || q.mediaType || ''
 if (/webp|image|video/g.test(mime)) {
-if (/video/g.test(mime)) if ((q.msg || q).seconds > 10) return m.reply(`[ ☕ ] El video no puede durar mas de 10 segundos*`)
+if (/video/g.test(mime)) if ((q.msg || q).seconds > 10) return m.reply(`[ ⚠️ ] El video no puede durar mas de 10 segundos*`)
 let img = await q.download?.()
 
-if (!img) return conn.reply(m.chat, `*[ ℹ️ ] *_Y el video ?, intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m, rcanal)
+if (!img) return conn.reply(m.chat, `*[ ℹ️ ] Responde al video o imagen con el comando*`, m)
 
 let out
 try {
@@ -32,7 +29,7 @@ stiker = await sticker(false, out, global.packsticker, global.authsticker)
 } else if (args[0]) {
 if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packsticker, global.authsticker)
 
-else return m.reply(`💫 El url es incorrecto`)
+else return m.reply(`*[ ⚠️ ] El url es incorrecto*`)
 
 }
 } catch (e) {
@@ -41,11 +38,11 @@ if (!stiker) stiker = e
 } finally {
 if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: 'Տһ͟ᥲ֟፝ძ᥆ϣ  Ϟ  S𝗍іᥴkᥱrㅤ☕', body: `Shadow Bot MD`, mediaType: 2, sourceUrl: grupo, thumbnail: icons}}}, { quoted: m })
 
-else return conn.reply(m.chat, `*[ ℹ️ ] La conversión ah fallado, responde a un vídeo, imagen o gif lo cual será convertido en sticker.*`, m, rcanal)
+else return conn.reply(m.chat, `*[ ℹ️ ] La conversión ah fallado, responde a un vídeo, imagen o gif lo cual será convertido en sticker.*`, m)
 
 
 }}
-handler.help = ['sticker *<img>*', 's *<url>*']
+handler.help = ['sticker']
 handler.tags = ['sticker']
 handler.command = ['s', 'sticker', 'stiker']
 handler.register = true
