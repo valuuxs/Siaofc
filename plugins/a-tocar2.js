@@ -1,6 +1,6 @@
 import fs from 'fs'
 import fetch from 'node-fetch'
-import moment from 'moment-timezone'
+import { xpRange } from '../lib/levelling.js'
 import { promises } from 'fs'
 import { join } from 'path'
 
