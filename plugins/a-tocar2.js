@@ -89,106 +89,106 @@ ${saludo}
 ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}phsearch *texto*
 
-𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}infem4 *hr + p*
-ര ׄ 🍃˚ ${usedPrefix}inmasc4 *hr + p *
-ര ׄ 🍃˚ ${usedPrefix}inmixto4 *hr + p*
-ര ׄ 🍃˚ ${usedPrefix}infem6 *hr + p*
-ര ׄ 🍃˚ ${usedPrefix}inmasc6 *hr + p*
-ര ׄ 🍃˚ ${usedPrefix}inmixto6 *hr + p*
+𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   📑ᩚ꤬ᰨᰍ
+ര ׄ 📑˚ ${usedPrefix}infem4 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}inmasc4 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}inmixto4 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}infem6 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}inmasc6 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}inmixto6 *hr + p*
 
-𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}tourl *img*
-ര ׄ 🍃˚ ${usedPrefix}tourl *aud*
-ര ׄ 🍃˚ ${usedPrefix}tourl *vid*
-ര ׄ 🍃˚ ${usedPrefix}tomp3 *vid*
-ര ׄ 🍃˚ ${usedPrefix}toimg *sticker*
+𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🪸ᩚ꤬ᰨᰍ
+ര ׄ 🪸˚ ${usedPrefix}tourl *img*
+ര ׄ 🪸˚ ${usedPrefix}tourl *aud*
+ര ׄ 🪸˚ ${usedPrefix}tourl *vid*
+ര ׄ 🪸˚ ${usedPrefix}tomp3 *vid*
+ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
 
-𓂂𓏸  𐅹੭੭   *\`һᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}inspect *link*
-ര ׄ 🍃˚ ${usedPrefix}clima *texto*
-ര ׄ 🍃˚ ${usedPrefix}readmore *texto*
-ര ׄ 🍃˚ ${usedPrefix}imgg2 *texto*
-ര ׄ 🍃˚ ${usedPrefix}hd *img*
-ര ׄ 🍃˚ ${usedPrefix}whatmusic *aud*
-ര ׄ 🍃˚ ${usedPrefix}whatmusic *vid*
+𓂂𓏸  𐅹੭੭   *\`һᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
+ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
+ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
+ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
+ര ׄ ⚒️˚ ${usedPrefix}imgg2 *texto*
+ര ׄ ⚒️˚ ${usedPrefix}hd *img*
+ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
+ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
 
-𓂂𓏸  𐅹੭੭   *\`grᥙ⍴᥆s\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}add *número*
-ര ׄ 🍃˚ ${usedPrefix}grupo *abrir / cerrar*
-ര ׄ 🍃˚ ${usedPrefix}grouptime *tiempo*
-ര ׄ 🍃˚ ${usedPrefix}notify *texto*
-ര ׄ 🍃˚ Aviso *texto*
-ര ׄ 🍃˚ ${usedPrefix}todos *texto*
-ര ׄ 🍃˚ ${usedPrefix}setwelcome *texto*
-ര ׄ 🍃˚ ${usedPrefix}setbye *texto*
-ര ׄ 🍃˚ ${usedPrefix}promote *@tag*
-ര ׄ 🍃˚ ${usedPrefix}demote *@tag*
-ര ׄ 🍃˚ ${usedPrefix}kick *@tag*
-ര ׄ 🍃˚ ${usedPrefix}inactivos *opción*
-ര ׄ 🍃˚ ${usedPrefix}link
-ര ׄ 🍃˚ ${usedPrefix}sorteo
-ര ׄ 🍃˚ ${usedPrefix}fantasmas
+𓂂𓏸  𐅹੭੭   *\`grᥙ⍴᥆s\`*   🌵ᩚ꤬ᰨᰍ
+ര ׄ 🌵˚ ${usedPrefix}add *número*
+ര ׄ 🌵˚ ${usedPrefix}grupo *abrir / cerrar*
+ര ׄ 🌵˚ ${usedPrefix}grouptime *tiempo*
+ര ׄ 🌵˚ ${usedPrefix}notify *texto*
+ര ׄ 🌵˚ Aviso *texto*
+ര ׄ 🌵˚ ${usedPrefix}todos *texto*
+ര ׄ 🌵˚ ${usedPrefix}setwelcome *texto*
+ര ׄ 🌵˚ ${usedPrefix}setbye *texto*
+ര ׄ 🌵˚ ${usedPrefix}promote *@tag*
+ര ׄ 🌵˚ ${usedPrefix}demote *@tag*
+ര ׄ 🌵˚ ${usedPrefix}kick *@tag*
+ര ׄ 🌵˚ ${usedPrefix}inactivos *opción*
+ര ׄ 🌵˚ ${usedPrefix}link
+ര ׄ 🌵˚ ${usedPrefix}sorteo
+ര ׄ 🌵˚ ${usedPrefix}fantasmas
 
-𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}bass
-ര ׄ 🍃˚ ${usedPrefix}blown
-ര ׄ 🍃˚ ${usedPrefix}deep
-ര ׄ 🍃˚ ${usedPrefix}earrape
-ര ׄ 🍃˚ ${usedPrefix}fast
-ര ׄ 🍃˚ ${usedPrefix}smooth
-ര ׄ 🍃˚ ${usedPrefix}tupai
-ര ׄ 🍃˚ ${usedPrefix}nightcore
+𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🪻ᩚ꤬ᰨᰍ
+ര ׄ 🪻˚ ${usedPrefix}bass
+ര ׄ 🪻˚ ${usedPrefix}blown
+ര ׄ 🪻˚ ${usedPrefix}deep
+ര ׄ 🪻˚ ${usedPrefix}earrape
+ര ׄ 🪻˚ ${usedPrefix}fast
+ര ׄ 🪻˚ ${usedPrefix}smooth
+ര ׄ 🪻˚ ${usedPrefix}tupai
+ര ׄ 🪻˚ ${usedPrefix}nightcore
 
-𓂂𓏸  𐅹੭੭   *\`ძі᥎ᥱrsі᥆ᥒ\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}gay *@tag*
-ര ׄ 🍃˚ ${usedPrefix}lesbiana *@tag*
-ര ׄ 🍃˚ ${usedPrefix}pajero *@tag*
-ര ׄ 🍃˚ ${usedPrefix}pajera *@tag*
-ര ׄ 🍃˚ ${usedPrefix}puto *@tag*
-ര ׄ 🍃˚ ${usedPrefix}puta *@tag*
-ര ׄ 🍃˚ ${usedPrefix}manco *@tag*
-ര ׄ 🍃˚ ${usedPrefix}manca *@tag*
-ര ׄ 🍃˚ ${usedPrefix}rata *@tag*
-ര ׄ 🍃˚ ${usedPrefix}prostituto *@tag*
-ര ׄ 🍃˚ ${usedPrefix}prostituta *@tag*
-ര ׄ 🍃˚ ${usedPrefix}doxear *@tag*
-ര ׄ 🍃˚ ${usedPrefix}jalamela *@tag*
-ര ׄ 🍃˚ ${usedPrefix}simi *texto*
-ര ׄ 🍃˚ ${usedPrefix}piropo
-ര ׄ 🍃˚ ${usedPrefix}chiste
-ര ׄ 🍃˚ ${usedPrefix}facto
+𓂂𓏸  𐅹੭੭   *\`ძі᥎ᥱrsі᥆ᥒ\`*   🥯ᩚ꤬ᰨᰍ
+ര ׄ 🥯˚ ${usedPrefix}gay *@tag*
+ര ׄ 🥯˚ ${usedPrefix}lesbiana *@tag*
+ര ׄ 🥯˚ ${usedPrefix}pajero *@tag*
+ര ׄ 🥯˚ ${usedPrefix}pajera *@tag*
+ര ׄ 🥯˚ ${usedPrefix}puto *@tag*
+ര ׄ 🥯˚ ${usedPrefix}puta *@tag*
+ര ׄ 🥯˚ ${usedPrefix}manco *@tag*
+ര ׄ 🥯˚ ${usedPrefix}manca *@tag*
+ര ׄ 🥯˚ ${usedPrefix}rata *@tag*
+ര ׄ 🥯˚ ${usedPrefix}prostituto *@tag*
+ര ׄ 🥯˚ ${usedPrefix}prostituta *@tag*
+ര ׄ 🥯˚ ${usedPrefix}doxear *@tag*
+ര ׄ 🥯˚ ${usedPrefix}jalamela *@tag*
+ര ׄ 🥯˚ ${usedPrefix}simi *texto*
+ര ׄ 🥯˚ ${usedPrefix}piropo
+ര ׄ 🥯˚ ${usedPrefix}chiste
+ര ׄ 🥯˚ ${usedPrefix}facto
 
-𓂂𓏸  𐅹੭੭   *\`ȷᥙᥱg᥆s\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}pregunta *texto*
-ര ׄ 🍃˚ ${usedPrefix}ttt *texto*
-ര ׄ 🍃˚ ${usedPrefix}ptt *opción*
-ര ׄ 🍃˚ ${usedPrefix}delttt
-ര ׄ 🍃˚ ${usedPrefix}acertijo
+𓂂𓏸  𐅹੭੭   *\`ȷᥙᥱg᥆s\`*   🐚ᩚ꤬ᰨᰍ
+ര ׄ 🐚˚ ${usedPrefix}pregunta *texto*
+ര ׄ 🐚˚ ${usedPrefix}ttt *texto*
+ര ׄ 🐚˚ ${usedPrefix}ptt *opción*
+ര ׄ 🐚˚ ${usedPrefix}delttt
+ര ׄ 🐚˚ ${usedPrefix}acertijo
 
-𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}violar
-ര ׄ 🍃˚ ${usedPrefix}follar
+𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🔥ᩚ꤬ᰨᰍ
+ര ׄ 🔥˚ ${usedPrefix}violar
+ര ׄ 🔥˚ ${usedPrefix}follar
 
-𓂂𓏸  𐅹੭੭   *\`s𝗍іᥴkᥱrs\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}sticker *img*
-ര ׄ 🍃˚ ${usedPrefix}qc *texto*
-ര ׄ 🍃˚ ${usedPrefix}dado
+𓂂𓏸  𐅹੭੭   *\`s𝗍іᥴkᥱrs\`*   🍦ᩚ꤬ᰨᰍ
+ര ׄ 🍦˚ ${usedPrefix}sticker *img*
+ര ׄ 🍦˚ ${usedPrefix}qc *texto*
+ര ׄ 🍦˚ ${usedPrefix}dado
 
-𓂂𓏸  𐅹੭੭   *\`r⍴g\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}minar
-ര ׄ 🍃˚ ${usedPrefix}cofre
-ര ׄ 🍃˚ ${usedPrefix}slut
-ര ׄ 🍃˚ ${usedPrefix}nivel
+𓂂𓏸  𐅹੭੭   *\`r⍴g\`*   💸ᩚ꤬ᰨᰍ
+ര ׄ 💸˚ ${usedPrefix}minar
+ര ׄ 💸˚ ${usedPrefix}cofre
+ര ׄ 💸˚ ${usedPrefix}slut
+ര ׄ 💸˚ ${usedPrefix}nivel
 
-𓂂𓏸  𐅹੭੭   *\`rᥱgіs𝗍r᥆\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}perfil
-ര ׄ 🍃˚ ${usedPrefix}reg
-ര ׄ 🍃˚ ${usedPrefix}unreg
+𓂂𓏸  𐅹੭੭   *\`rᥱgіs𝗍r᥆\`*   🎣ᩚ꤬ᰨᰍ
+ര ׄ 🎣˚ ${usedPrefix}perfil
+ര ׄ 🎣˚ ${usedPrefix}reg
+ര ׄ 🎣˚ ${usedPrefix}unreg
 
-𓂂𓏸  𐅹੭੭   *\`᥆աᥒᥱr\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}salir
-ര ׄ 🍃˚ ${usedPrefix}update
+𓂂𓏸  𐅹੭੭   *\`᥆աᥒᥱr\`*   🍀ᩚ꤬ᰨᰍ
+ര ׄ 🍀˚ ${usedPrefix}salir
+ര ׄ 🍀˚ ${usedPrefix}update
 `.trim()
 
         await conn.sendMessage(m.chat, {
