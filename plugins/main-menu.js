@@ -229,10 +229,10 @@ ${saludo}
     }
 }
 
-handler.help = ['menuff']
-handler.tags = ['main']
+handler.help = ['menuff'];
+handler.tags = ['main'];
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
-handler.fail = true
+handler.fail = null;
 
 export default handler
 
