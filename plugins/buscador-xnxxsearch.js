@@ -18,7 +18,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     resultText += hasil + '\n'
   }
 
-  await conn.reply(m.chat, '*[ ℹ️ ] Espere un momento...*', m, fkontak)
+  await conn.reply(m.chat, '*[ ⏳ ] Espere un momento...*', m)
 
   conn.sendMessage(m.chat, {
     text: resultText,
