@@ -8,7 +8,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
   } 
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
+    return conn.reply(m.chat, `*[ 🔞 ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
   }
 
   try {
@@ -33,6 +33,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 handler.tags = ['nsfw']; 
 handler.help = ['pornhubsearch']; 
 handler.command = ['phsearch', 'pornhubsearch'];
+handler.register = true;
 export default handler;
 
 async function searchPornhub(search) {
