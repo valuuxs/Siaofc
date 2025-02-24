@@ -35,9 +35,9 @@ conn.sendMessage(m.chat, { delete: key })
 delete conn.SoundCloudSearch[m.sender]
 } catch (error) {
 console.error(error)
-await conn.reply(m.chat, 'Error al enviar la cancion', m)
+await conn.reply(m.chat, '*[ ❌ ] Error al enviar la cancion*', m)
 }} else {
-await conn.reply(m.chat, "Responde con uno de los numeros de la cancion que quieres", m)
+await conn.reply(m.chat, "*[ ℹ️ ] Responde con uno de los numeros de la cancion que quieres*", m)
 }}
 
 handler.help = ['scsearch']
