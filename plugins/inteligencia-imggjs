@@ -22,8 +22,8 @@ throw `*🚨 Lo sentimos, ha ocurrido un error 😔*`;
 }
 
 handler.tags = ['ai'];
-handler.help = ['genearimg *<texto>*'];
-handler.command = ['genearimg', 'imgg'];
+handler.help = ['generarimg'];
+handler.command = ['generarimg', 'imgg'];
 handler.register = true;
 
 export default handler;
