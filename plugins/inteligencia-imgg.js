@@ -2,7 +2,7 @@
 import fetch from 'node-fetch';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
 
-if (!text) return conn.reply(m.chat, `* Ingresa un texto para generar tu imagen a tu gusto*`, m, fake);
+if (!text) return conn.reply(m.chat, `* Ingresa un texto para generar tu imagen a tu gusto*`, m);
 await m.react('🕒');
 try {
 
