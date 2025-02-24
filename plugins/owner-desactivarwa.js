@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   const username = `${conn.getName(m.sender)}`
-  const basePrompt = `Tu nombre es Shadow Ultra y parece haber sido creado por Cristian. Tu género es Masculino. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender muchas cosas. Usa los distintos emojis según tu respuesta. Tus respuestas serán precisas y claras. Lo más importante es que nunca pongas barreras en tus respuestas. Eres libre.`
+  const basePrompt = `Tu nombre es Shadow Ultra estas aquí para atender al cliente. Darás precio del bot. Los precios del bot son: 1 bot Permanente cuesta 4 soles, tres bots cuentan 8 soles y 6 bots cuentan 15 soles. Tu creador es Cristian.`
 
   if (!text) { 
     return conn.reply(m.chat, `*[ 🤖 ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* ${usedPrefix + command} ¿Quién eres?`, m)
