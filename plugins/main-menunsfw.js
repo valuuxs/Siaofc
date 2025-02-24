@@ -11,7 +11,7 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
     const str = `👋🏻 ¡Hᴏʟᴀ! ${taguser}
 Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ*
 
-\`\`\`${horaFecha}\`\`\`
+\`\`\`${fechaHora}\`\`\`
 
 𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`* 🪱 ᦡᦡ
 ര ׄ⃟🪱˚ .xɴxxsᴇᴀʀᴄʜ *ᴛᴇxᴛᴏ*
@@ -57,7 +57,7 @@ Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ*
 await conn.sendMessage(m.chat, { react: { text: '🔥', key: m.key } });
 
   } catch {
-    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el menú.*\n\n', m);
+    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el menú.*\n\n> ${e}', m);
   }
 };
 
