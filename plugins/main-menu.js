@@ -92,7 +92,7 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}phsearch *texto*
 
-𓂂𓏸  𐅹੭੭   *`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs`*   ☕ᰨᰍ
+𓂂𓏸  𐅹੭੭   *`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
 ര ׄ ☕˚ ${usedPrefix}shadow *texto*
 
@@ -103,6 +103,12 @@ ${readMore}
 ര ׄ 📑˚ ${usedPrefix}infem6 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmasc6 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmixto6 *hr + p*
+
+𓂂𓏸  𐅹੭੭   *`𝖿rᥲsᥱs`*   🌻ᩚ꤬ᰨᰍ
+ര ׄ 🌻˚ ${usedPrefix}piropo
+ര ׄ 🌻˚ ${usedPrefix}consejo
+ര ׄ 🌻˚ ${usedPrefix}fraseromantica
+
 
 𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🪸ᩚ꤬ᰨᰍ
 ര ׄ 🪸˚ ${usedPrefix}tourl *img*
