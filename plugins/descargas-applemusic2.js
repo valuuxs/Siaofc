@@ -4,7 +4,7 @@ import qs from 'qs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return m.reply(`*[ 🎧 ] Hace falta el título del audio de AppleMusic.\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Amorfoda - Bad Bunny`);
+    return m.reply(`*[ 🎵 ] Hace falta el título del audio de AppleMusic.\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Amorfoda - Bad Bunny`);
   }
 
   const appleMusic = {
