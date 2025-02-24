@@ -57,7 +57,7 @@ Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ*
 await conn.sendMessage(m.chat, { react: { text: '🔥', key: m.key } });
 
   } catch {
-    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el video.*\n\n${e}', m);
+    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el menú.*\n\n', m);
   }
 };
 
