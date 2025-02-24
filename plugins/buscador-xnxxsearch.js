@@ -5,7 +5,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     return m.reply('*[ ℹ️ ] El contenido `+18` está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.');
     }
 
-  if (!text) throw m.reply(`*[ ℹ️ ] Ingresa el texto de lo que quieres buscar en Xnxx*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Con mi Prima.`)
+  if (!text) throw m.reply(`*[ 🔞 ] Ingresa el texto de lo que quieres buscar en Xnxx*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Con mi Prima.`)
   let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${text}`)
   let res = await response.json()
 
@@ -18,29 +18,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     resultText += hasil + '\n'
   }
 
-  let name = m.sender
-  let fkonn = {
-    key: {
-      fromMe: false,
-      participant: `0@s.whatsapp.net`,
-      ...(m.chat ? { remoteJid: '6285863907468@s.whatsapp.net' } : {})
-    },
-    message: {
-      contactMessage: {
-        displayName: await conn.getName(name),
-        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-      }
-    }
-  }
-
-  await conn.reply(m.chat, '*[ ℹ️ ] Espere un momento...*', fkonn)
+  await conn.reply(m.chat, '*[ ℹ️ ] Espere un momento...*', m, fkontak)
 
   conn.sendMessage(m.chat, {
     text: resultText,
     contextInfo: {
       externalAdReply: {
         title: `Xnxx Videos`,
-        body: wm,
+        body: `Shadow Ultra`,
         thumbnailUrl: "https://pomf2.lain.la/f/kro5qrjk.jpg",
         sourceUrl: "https://xxnx.com",
         mediaType: 1,
@@ -53,6 +38,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.command = ['xnxxsearch', 'xnxxs']
 handler.help = ['xnxxsearch *<consulta>*']
 handler.tags = ['nsfw','search']
-handler.premium = false
+handler.register = true
 
 export default handler
