@@ -9,7 +9,7 @@ conn.sendMessage(m.chat, {
         footer: dev, 
         buttons: [
             {
-                buttonId: `.vxxx`,
+                buttonId: `.test`,
                 buttonText: { displayText: 'Siguiente Vídeo' }
             }
         ],
