@@ -1,6 +1,5 @@
 import yts from 'yt-search';
 import fetch from 'node-fetch';
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, args, usedPrefix }) => {
     if (!args[0]) return conn.reply(m.chat, '*`Por favor ingresa un término de búsqueda`*', m);
@@ -11,13 +10,20 @@ const handler = async (m, { conn, args, usedPrefix }) => {
         if (!searchResults.length) throw new Error('No se encontraron resultados.');
 
         let video = searchResults[0];
-        let thumbnail = await (await fetch(video.miniatura)).buffer();
 
-    let messageText = `> *YouTube Play 🧇.*\n\n`;
-        messageText += `${video.titulo}\n\n`;
-        messageText += `• *Duración:* ${video.duracion || 'No disponible'}\n`;
-        messageText += `• *Autor:* ${video.canal || 'Desconocido'}\n`;
-        messageText += `• *Publicado:* ${convertTimeToSpanish(video.publicado)}\n`;
+        let thumbnail;
+        try {
+            thumbnail = await fetch(video.miniatura).then(res => res.arrayBuffer());
+        } catch (err) {
+            console.error("Error al obtener la miniatura:", err.message);
+            thumbnail = null;
+        }
+
+        let messageText = `> *YouTube Play 🧇.*\n\n`;
+        messageText += `🎵 *${video.titulo}*\n\n`;
+        messageText += `• *Duración:* ${video.duracion}\n`;
+        messageText += `• *Autor:* ${video.canal}\n`;
+        messageText += `• *Publicado:* ${video.publicado}\n`;
         messageText += `• *Enlace:* ${video.url}\n`;
 
         let sections = searchResults.slice(1, 11).map((v, index) => ({
@@ -25,29 +31,25 @@ const handler = async (m, { conn, args, usedPrefix }) => {
             rows: [
                 {
                     title: `🎶 Descargar MP3`,
-                    description: `Duración: ${v.duracion || 'No disponible'}`, 
+                    description: `Duración: ${v.duracion}`,
                     id: `${usedPrefix}ytmp3 ${v.url}`
                 },
                 {
                     title: `🎥 Descargar MP4`,
-                    description: `Duración: ${v.duracion || 'No disponible'}`, 
-                    id: `.ytv ${v.url}`
+                    description: `Duración: ${v.duracion}`,
+                    id: `${usedPrefix}ytmp4 ${v.url}`
                 }
             ]
         }));
 
         await conn.sendMessage(m.chat, {
-            image: thumbnail,
+            image: thumbnail ? { jpegThumbnail: thumbnail } : null,
             caption: messageText,
             footer: 'ᴘʀᴇꜱɪᴏɴᴀ ᴇʟ ʙᴏᴛᴏɴ ᴘᴀʀᴀ ᴇʟ ᴛɪᴘᴏ ᴅᴇ ᴅᴇꜱᴄᴀʀɢᴀ.',
-            contextInfo: {
-                mentionedJid: [m.sender],
-                forwardingScore: 999,
-                isForwarded: true
-            },
+            contextInfo: { mentionedJid: [m.sender] },
             buttons: [
                 {
-                    buttonId: `.yta ${video.url}`,
+                    buttonId: `${usedPrefix}yta ${video.url}`,
                     buttonText: { displayText: 'ᯓᡣ𐭩 ᥲᥙძі᥆' },
                     type: 1,
                 },
@@ -92,9 +94,9 @@ async function searchVideos(query) {
             url: video.url,
             miniatura: video.thumbnail,
             canal: video.author.name,
-            publicado: video.timestamp || 'No disponible',
+            publicado: typeof video.ago === 'string' ? convertTimeToSpanish(video.ago) : 'No disponible',
             vistas: video.views || 'No disponible',
-            duracion: video.duration.timestamp || 'No disponible'
+            duracion: video.duration || 'No disponible'
         }));
     } catch (error) {
         console.error('Error en yt-search:', error.message);
