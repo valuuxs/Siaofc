@@ -23,7 +23,7 @@ handler.help = ['videoxxx'];
 handler.command = ['test', 'testx'];
 
 export default handler;
-
+/*
 global.vidxxx = [
     'https://telegra.ph/file/4a270d9945ac46f42d95c.mp4',
     'https://telegra.ph/file/958c11e84d271e783ea3f.mp4',
@@ -41,3 +41,4 @@ global.vidxxx = [
     'https://telegra.ph/file/598857924f3a29ffd37ae.mp4',
     'https://telegra.ph/file/528caef6ea950ec45aeef.mp4',
 ];
+*/
