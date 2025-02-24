@@ -14,7 +14,7 @@ user.exp += rsl
 }
 handler.help = ['prostituirse']
 handler.tags = ['rpg']
-handler.command = ['prostituirse', 'prostituta', 'prostituir', 'sentones']
+handler.command = ['prostituirse', 'prostituta', 'prostituir', 'slut']
 handler.register = true
 export default handler
 function toNum(number) {
