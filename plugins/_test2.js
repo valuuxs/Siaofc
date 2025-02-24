@@ -3,31 +3,30 @@ import yts from "yt-search";
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    return m.reply("*[ 🌷 ] Ingresa un texto de lo que desee buscar en YouTube.*");
+    return m.reply("*[ 📥 ] Ingresa el título o link de Youtube.*");
   }
 
-  // Reacción de espera antes de comenzar el proceso
   await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
 
   let ytres = await yts(text);
   let video = ytres.videos[0];
 
   if (!video) {
-    return m.reply("*[ ℹ️ ] Video no encontrado*");
+    return m.reply("*[ ⚠️ ] Video no encontrado*");
   }
 
   let { title, thumbnail, timestamp, views, ago, url } = video;
 
   let vistas = parseInt(views).toLocaleString("es-ES") + " vistas";
 
-  let HS = `\`YOUTUBE - DESCARGAS\`
+  let HS = `*\`YOUTUBE - DESCARGAS\`*
 
 ᜊ *Duración:* ${timestamp}
 ᜊ *Vistas:* ${vistas}
 ᜊ *Subido:* ${ago}
 ᜊ *Enlace:* ${url}
 
-> *[ ℹ️ ] Se está enviando su audio, aguarde un momento...*`;
+> *[ ℹ️ ]* sᥱ ᥱs𝗍ᥲ ᥱᥒ᥎іᥲᥒძ᥆ sᥙ ᥲᥙძі᥆, ᥱs⍴ᥱrᥱ ᥙᥒ m᥆mᥱᥒ𝗍᥆...`;
 
   let thumb = (await conn.getFile(thumbnail))?.data;
 
@@ -51,18 +50,17 @@ let handler = async (m, { conn, text }) => {
 
     await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mimetype: "audio/mpeg" }, { quoted: m });
 
-    // Reacción de éxito después de enviar el audio
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
 
   } catch (error) {
     console.error(error);
-    m.reply("*[ ℹ️ ] Ocurrió un error al intentar obtener el audio del video.*");
+    m.reply("*[ ❌ ] Ocurrió un error al intentar obtener el audio del video.*");
 
-    // Reacción de error si ocurre un problema
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
   }
 };
 
-handler.command = /^(yta2)$/i;
+handler.command = /^(ytmp3)$/i;
+handler.register = true
 
 export default handler;
