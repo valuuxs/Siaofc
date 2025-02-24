@@ -1,52 +1,69 @@
-import Groq from 'groq-sdk'
+/* 
+- Flux Ai Imagen By Angel-OFC 
+- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
+import axios from "axios";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  let groq = new Groq({ apiKey: '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' })
-  conn.aiSessions = conn.aiSessions ? conn.aiSessions : {}
-
-  if (!text) return conn.reply(m.chat, `❀ Ingresa un texto para hablar con la IA`, m)
+  if (!text) return conn.reply(m.chat,`🤍 Ejemplo: ${usedPrefix}${command} paisaje hermoso`, m, fake)
+  await m.react('🕓')
 
   try {
-    if (!(m.sender in conn.aiSessions))
-      conn.aiSessions[m.sender] = [{
-        role: 'system',
-        content: `Eres Llama Ai una inteligencia artificial, responde de manera clara y concisa con emojis en todo texto para que los usuarios entiendan mejor tus respuestas. El nombre del usuario será: ${conn.getName(m.sender)}`
-      }]
-
-    if (conn.aiSessions[m.sender].length > 10) {
-      conn.aiSessions[m.sender] = conn.aiSessions[m.sender].slice(-1)
+    const result = await fluximg.create(text);
+    if (result && result.imageLink) {
+      await m.react('✅')
+      await conn.sendMessage(
+        m.chat,
+        {
+          image: { url: result.imageLink },
+          caption: `*\`Resultados De:\`* ${text}`,
+        },
+        { quoted: m }
+      );
+    } else {
+      throw new Error("No se pudo crear la imagen. Intentar otra vez.");
     }
-
-    conn.aiSessions[m.sender].push({ role: 'user', content: text })
-
-    let sessionMessages = [...conn.aiSessions[m.sender], { role: 'user', content: text }]
-
-    let payloads = { messages: sessionMessages, model: 'llama-3.1-70b-versatile' }
-
-    let json = await groq.chat.completions.create(payloads)
-    let responseMessage = json.choices[0].message.content
-    conn.aiSessions[m.sender].push({ role: "system", content: responseMessage })
-
-await conn.sendMessage(m.chat, {
-text: responseMessage,
-contextInfo: {
-externalAdReply: {
-title: 'ᥣᥣᥲmᥲ - ᥲі ⍴᥆ᥕᥱr ᑲᥡ mᥱ𝗍ᥲ',
-body: dev,
-thumbnailUrl: 'https://files.catbox.moe/j791b7.jpeg',
-sourceUrl: channels,
-mediaType: 1,
-renderLargerThumbnail: true
-}}},
-{ quoted: m})
-
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    conn.reply(
+      m.chat,
+      "Se produjo un error al crear la imagen.",
+      m
+    );
   }
-}
+};
 
-handler.help = ['llama *<texto>*'];
-handler.tags = ['ai'];
-handler.command = ['llama']
+handler.help = ["flux *<texto>*"];
+handler.tags = ["ai"];
+handler.command = ["flux"];
 
-export default handler
+export default handler;
+
+const fluximg = {
+  defaultRatio: "2:3", 
+
+  create: async (query) => {
+    const config = {
+      headers: {
+        accept: "*/*",
+        authority: "1yjs1yldj7.execute-api.us-east-1.amazonaws.com",
+        "user-agent": "Postify/1.0.0",
+      },
+    };
+
+    try {
+      const response = await axios.get(
+        `https://1yjs1yldj7.execute-api.us-east-1.amazonaws.com/default/ai_image?prompt=${encodeURIComponent(
+          query
+        )}&aspect_ratio=${fluximg.defaultRatio}`,
+        config
+      );
+      return {
+        imageLink: response.data.image_link,
+      };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+};
