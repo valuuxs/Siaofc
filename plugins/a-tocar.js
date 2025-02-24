@@ -6,12 +6,12 @@ let rvid = global.vidxxx[Math.floor(Math.random() * global.vidxxx.length)];
 
 conn.sendMessage(m.chat, { 
         video: { url: rvid }, 
-        caption: '🍭 ¡Disfruta Del Video!', 
+        caption: '🍒 Disfruta del Video', 
         footer: dev, 
         buttons: [
             {
-                buttonId: `.vxxx`,
-                buttonText: { displayText: 'Siguiente Vídeo' }
+                buttonId: `.videoxxx2`,
+                buttonText: { displayText: 'sᥙgᥙіᥱᥒ𝗍ᥱ ᥎іძᥱ᥆' }
             }
         ],
         viewOnce: true,
@@ -19,9 +19,9 @@ conn.sendMessage(m.chat, {
     }, { quoted: m });
 }
 
-handler.tag = ['emox'];
-handler.help = ['videoxxx'];
-handler.command = ['videoxxx', 'vxxx'];
+handler.tag = ['nsfw'];
+handler.help = ['videoxxx2'];
+handler.command = ['videoxxx2'];
 
 export default handler;
 
