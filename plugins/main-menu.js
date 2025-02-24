@@ -56,6 +56,13 @@ ${readMore}
 ര ׄ 🫖˚ ${usedPrefix}horario
 ര ׄ 🫖˚ ${usedPrefix}precios
 
+𓂂𓏸  𐅹੭੭   *`᥆ᥒ - ᥆𝖿𝖿`*   🌿ᩚ꤬ᰨᰍ
+ര ׄ 🌿˚ ${usedPrefix}enable *opción*
+ര ׄ 🌿˚ ${usedPrefix}disable *opción*
+ര ׄ 🌿˚ ${usedPrefix}on *opción*
+ര ׄ 🌿˚ ${usedPrefix}off *opción*
+ര ׄ 🌿˚ ${usedPrefix}manual
+
 𓂂𓏸  𐅹੭੭   *\`ძᥱsᥴᥲrgᥲs\`*   📥ᩚ꤬ᰨᰍ
 ര ׄ 📥˚ ${usedPrefix}play *texto*
 ര ׄ 📥˚ ${usedPrefix}aplay *texto*
@@ -84,6 +91,10 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}xnxxsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}phsearch *texto*
+
+𓂂𓏸  𐅹੭੭   *`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs`*   ☕ᰨᰍ
+ര ׄ ☕˚ ${usedPrefix}ia *texto*
+ര ׄ ☕˚ ${usedPrefix}shadow *texto*
 
 𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   📑ᩚ꤬ᰨᰍ
 ര ׄ 📑˚ ${usedPrefix}infem4 *hr + p*
