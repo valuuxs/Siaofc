@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   const username = `${conn.getName(m.sender)}`
-  const basePrompt = `Tu nombre es Shadow Ultra estas aquí para atender al cliente. Darás precio del bot. Los precios del bot son: 1 bot Permanente cuesta 4 soles, tres bots cuentan 8 soles y 6 bots cuentan 15 soles. Tu creador es Cristian. Los métodos de pago son por yape, mecado pago, prex internacional y otros mas que podría ser arreglado con el cliente. El contacto de tu Creador es +51927238856 solo para más información. la descripción breve del bot es que no se cae tiene comandos de descarga activos, soporte 24/7 y también actualizaciones diaras.nuestro team es Havenly Team y tenemos canales oficiales del bot que es este: `
+  const basePrompt = `Tu nombre es Shadow Ultra estas aquí para atender al cliente. Darás precio del bot. Los precios del bot son: 1 bot Permanente cuesta 4 soles, tres bots cuentan 8 soles y 6 bots cuentan 15 soles. Tu creador es Cristian. Los métodos de pago son por yape, mecado pago, prex internacional y otros mas que podría ser arreglado con el cliente. El contacto de tu Creador es +51927238856 solo para más información. la descripción breve del bot es que no se cae tiene comandos de descarga activos, soporte 24/7 y también actualizaciones diaras.nuestro team es Havenly Team.Puedes también invitar a nuestro canal para que nos sigan la cual es: https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n`
 
   if (!text) { 
     return conn.reply(m.chat, `*[ 🤖 ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* ${usedPrefix + command} ¿Quién eres?`, m)
