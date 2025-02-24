@@ -1,37 +1,36 @@
-//Falta mejorar 
+
 import cheerio from 'cheerio';
 import axios from 'axios';
 
 let handler = async (m, { conn, args, command, usedPrefix }) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return conn.reply(m.chat, '🔞 El contenido *NSFW* está desactivado en este grupo.\n> Un administrador puede activarlo con el comando » *#nsfw*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] El contenido `+18` está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.', m);
   } 
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*[ ☕ ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} anal con mi prima.`, m);
+    return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
   }
 
   try {
     let searchResults = await searchPornhub(args[0]);
     let teks = searchResults.result.map((v, i) => 
-      `「 *P O R N H U B  - S E A R C H* 」
+      `*\`BUSCADOR - PORNHUB\`*
 🎞️ *Título:* ${v.title}
 🕒 *Duración:* ${v.duration}
-👀 *Vistas:* ${v.views}
 🔗 *Link:* ${v.url}
----------------------------------------------------\n`).join('\n\n');
+------------------------------------\n`).join('\n\n');
 
     if (searchResults.result.length === 0) {
-      teks = '🍭 No se encontraron resultados...';
+      teks = '*[ ⚠️ ] No se encontraron resultados...*';
     }
 
     conn.reply(m.chat, teks, m);
   } catch (e) {
-    return conn.reply(m.chat, `⚠️ Ocurrió un error: ${e.message}`, m);
+    return conn.reply(m.chat, `*[ ❌ ] Ocurrió un error:* ${e.message}`, m);
   }
 };
 
-handler.tags = ['+18']; 
+handler.tags = ['nsfw']; 
 handler.help = ['pornhubsearch']; 
 handler.command = ['phsearch', 'pornhubsearch'];
 export default handler;
@@ -54,7 +53,7 @@ async function searchPornhub(search) {
 
     return { result };
   } catch (error) {
-    console.error('⚠️ Ocurrió un error al buscar en Pornhub:', error);
+    console.error('*[ ❌ ] Ocurrió un error al buscar en Pornhub:*', error);
     return { result: [] };
   }
 }
