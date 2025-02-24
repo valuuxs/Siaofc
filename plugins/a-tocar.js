@@ -11,7 +11,7 @@ conn.sendMessage(m.chat, {
         buttons: [
             {
                 buttonId: `.videoxxx2`,
-                buttonText: { displayText: 'sᥙgᥙіᥱᥒ𝗍ᥱ ᥎іძᥱ᥆' }
+                buttonText: { displayText: 'sigᥙіᥱᥒ𝗍ᥱ ᥎іძᥱ᥆' }
             }
         ],
         viewOnce: true,
