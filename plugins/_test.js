@@ -32,7 +32,7 @@ const handler = async (m, {
 }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: '☁️ Te Faltó El Texto!',
+            text: '*[ 🍦 ] Agrega un texto.',
         }, {
             quoted: m
         });
@@ -66,7 +66,7 @@ const handler = async (m, {
         fs.unlinkSync(outputFilePath);
     } catch (error) {
         return conn.sendMessage(m.chat, {
-            text: `Hubo un error 😪`,
+            text: `*[ ❌ ] Error en la API.*`,
         }, {
             quoted: m
         });
@@ -74,6 +74,6 @@ const handler = async (m, {
 };
 handler.command = ['brat'];
 handler.tags = ['sticker'];
-handler.help = ['brat *<texto>*'];
+handler.help = ['brat'];
 
 export default handler;
