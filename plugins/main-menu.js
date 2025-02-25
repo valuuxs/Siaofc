@@ -146,14 +146,27 @@ ${readMore}
 ര ׄ 🌵˚ ${usedPrefix}fantasmas
 
 𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🪻ᩚ꤬ᰨᰍ
-ര ׄ 🪻˚ ${usedPrefix}bass
-ര ׄ 🪻˚ ${usedPrefix}blown
-ര ׄ 🪻˚ ${usedPrefix}deep
-ര ׄ 🪻˚ ${usedPrefix}earrape
-ര ׄ 🪻˚ ${usedPrefix}fast
-ര ׄ 🪻˚ ${usedPrefix}smooth
-ര ׄ 🪻˚ ${usedPrefix}tupai
-ര ׄ 🪻˚ ${usedPrefix}nightcore
+ര ׄ 🪻˚ ${usedPrefix}bass *vid*
+ര ׄ 🪻˚ ${usedPrefix}blown *vid*
+ര ׄ 🪻˚ ${usedPrefix}deep *vid*
+ര ׄ 🪻˚ ${usedPrefix}earrape *vid*
+ര ׄ 🪻˚ ${usedPrefix}fast *vid*
+ര ׄ 🪻˚ ${usedPrefix}smooth *vid*
+ര ׄ 🪻˚ ${usedPrefix}tupai *vid*
+ര ׄ 🪻˚ ${usedPrefix}nightcore *vid*
+ര ׄ 🪻˚ ${usedPrefix}reverse *vid*
+ര ׄ 🪻˚ ${usedPrefix}robot *vid*
+ര ׄ 🪻˚ ${usedPrefix}slow *vid*
+ര ׄ 🪻˚ ${usedPrefix}squirrel *vid*
+ര ׄ 🪻˚ ${usedPrefix}chipmunk *vid*
+ര ׄ 🪻˚ ${usedPrefix}reverb *vid*
+ര ׄ 🪻˚ ${usedPrefix}chorus *vid*
+ര ׄ 🪻˚ ${usedPrefix}flanger *vid*
+ര ׄ 🪻˚ ${usedPrefix}distortion *vid*
+ര ׄ 🪻˚ ${usedPrefix}pitch *vid*
+ര ׄ 🪻˚ ${usedPrefix}highpass *vid*
+ര ׄ 🪻˚ ${usedPrefix}lowpass *vid*
+ര ׄ 🪻˚ ${usedPrefix}underwater *vid*
 
 𓂂𓏸  𐅹੭੭   *\`ძі᥎ᥱrsі᥆ᥒ\`*   🥯ᩚ꤬ᰨᰍ
 ര ׄ 🥯˚ ${usedPrefix}gay *@tag*
