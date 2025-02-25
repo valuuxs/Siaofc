@@ -95,6 +95,8 @@ ${readMore}
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs\`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
 ര ׄ ☕˚ ${usedPrefix}shadow *texto*
+ര ׄ ☕˚ ${usedPrefix}flux *texto*
+ര ׄ ☕˚ ${usedPrefix}chatgpt *texto*
 
 𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   📑ᩚ꤬ᰨᰍ
 ര ׄ 📑˚ ${usedPrefix}infem4 *hr + p*
@@ -201,6 +203,8 @@ ${readMore}
 
 𓂂𓏸  𐅹੭੭   *\`s𝗍іᥴkᥱrs\`*   🍦ᩚ꤬ᰨᰍ
 ര ׄ 🍦˚ ${usedPrefix}sticker *img*
+ര ׄ 🍦˚ ${usedPrefix}sticker *vid*
+ര ׄ 🍦˚ ${usedPrefix}brat *texto*
 ര ׄ 🍦˚ ${usedPrefix}qc *texto*
 ര ׄ 🍦˚ ${usedPrefix}dado
 
