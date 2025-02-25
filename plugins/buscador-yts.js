@@ -1,17 +1,14 @@
 import yts from 'yt-search'
 
 var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `*[ 🌷 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
+    if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
-        // Respuesta mientras se realiza la búsqueda
-        conn.reply(m.chat, '*🔍 Buscando resultados...*', m);
+        conn.reply(m.chat, wait, fkotank, m);
 
-        // Realizamos la búsqueda en YouTube
         let results = await yts(text);
         let tes = results.all;
 
-        // Si no se encuentran resultados
         if (!tes || tes.length === 0) {
             return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
         }
