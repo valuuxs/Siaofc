@@ -4,7 +4,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
-        conn.reply(m.chat, wait, fkotank, m);
+        conn.reply(m.chat, '*[ ⏳ ] Aguarde un momento...*', fkotank, m);
 
         let results = await yts(text);
         let tes = results.all;
