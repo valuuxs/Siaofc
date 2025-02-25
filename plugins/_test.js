@@ -1,30 +1,79 @@
-import { sticker } from '../lib/sticker.js';
-import fetch from 'node-fetch';
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import sharp from 'sharp';
+import {
+    tmpdir
+} from 'os';
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-let handler = async (m, { conn, text }) => {
-if (!text) return m.reply('Por favor, proporciona un texto para el sticker.');
+const fetchSticker = async (text, attempt = 1) => {
+    try {
+        const response = await axios.get(`https://kepolu-brat.hf.space/brat`, {
+            params: {
+                q: text
+            },
+            responseType: 'arraybuffer',
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response?.status === 429 && attempt <= 3) {
+            const retryAfter = error.response.headers['retry-after'] || 5;
+            await delay(retryAfter * 1000);
+            return fetchSticker(text, attempt + 1);
+        }
+        throw error;
+    }
+};
 
-try {
- const response = await fetch(`https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(text)}`);
-if (!response.ok) return m.reply('Error en la respuesta de la API.');
+const handler = async (m, {
+    text,
+    conn
+}) => {
+    if (!text) {
+        return conn.sendMessage(m.chat, {
+            text: '☁️ Te Faltó El Texto!',
+        }, {
+            quoted: m
+        });
+    }
 
-const buffer = await response.buffer();
-let stiker = await sticker(null, buffer, global.packname, global.author);
+    try {
+        const buffer = await fetchSticker(text);
+        const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
+        await sharp(buffer)
+            .resize(512, 512, {
+                fit: 'contain',
+                background: {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                    alpha: 0
+                }
+            })
+            .webp({
+                quality: 80
+            })
+            .toFile(outputFilePath);
 
- conn.sendFile(m.chat, stiker, null, { asSticker: true }, m);
-if (stiker) return conn.sendFile(m.chat, stiker, 'pene.webp', '', m);
-/*
-try {
-let pene = `https://api.fgmods.xyz/api/maker/carbon?text=${text}&apikey=elrebelde21`
-// await conn.sendMessage(m.chat, { sticker: pene }, { quoted: m });
-await conn.sendFile(m.chat, pene, 'sticker.webp', '', m, null);*/
-
-} catch (error) {
-m.reply(`Error: ${error}`);
-  }
-}
-
-handler.help = ['brat <texto>'];
+        await conn.sendMessage(m.chat, {
+            sticker: {
+                url: outputFilePath
+            },
+        }, {
+            quoted: fkontak
+        });
+        fs.unlinkSync(outputFilePath);
+    } catch (error) {
+        return conn.sendMessage(m.chat, {
+            text: `Hubo un error 😪`,
+        }, {
+            quoted: m
+        });
+    }
+};
+handler.command = ['brat'];
 handler.tags = ['sticker'];
-handler.command = /^brat$/i;
+handler.help = ['brat *<texto>*'];
+
 export default handler;
