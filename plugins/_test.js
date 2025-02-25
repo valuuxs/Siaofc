@@ -32,7 +32,7 @@ const handler = async (m, {
 }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: '*[ 🍦 ] Agrega un texto.',
+            text: '*[ 🍦 ] Agrega un texto.*',
         }, {
             quoted: m
         });
