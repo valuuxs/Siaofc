@@ -8,19 +8,8 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let user = global.db.data.users[m.sender]
     let name2 = conn.getName(m.sender)
     let whe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : m.sender
-/*
-    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')*/
 
-const defaultProfile = 'https://files.catbox.moe/xr2m6u.jpg';
-let perfil;
-
-try {
-    perfil = await conn.profilePictureUrl(whe, 'image');
-} catch (error) {
-    console.log('[ERROR] No se pudo obtener la foto de perfil:', error);
-    perfil = defaultProfile;
-}
-
+    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
 
     if (user.registered === true) {
         return m.reply(`*[ ℹ️ ] Ya te encuentras registrado.*\n\n*¿Quieres volver a registrarte?*\n\n*Use este comando para eliminar su registro*\n*\`${usedPrefix}unreg\`*`)
