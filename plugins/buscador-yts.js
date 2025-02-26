@@ -34,7 +34,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['ytbuscar', 'ytsearch', 'yts']
+handler.command = ['youtubesearch', 'ytsearch', 'yts']
 
 handler.register = true
 
