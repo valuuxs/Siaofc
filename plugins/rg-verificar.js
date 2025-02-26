@@ -8,13 +8,25 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let user = global.db.data.users[m.sender]
     let name2 = conn.getName(m.sender)
     let whe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : m.sender
-    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
+/*
+    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')*/
+
+const defaultProfile = 'https://files.catbox.moe/xr2m6u.jpg';
+let perfil;
+
+try {
+    perfil = await conn.profilePictureUrl(whe, 'image');
+} catch (error) {
+    console.log('[ERROR] No se pudo obtener la foto de perfil:', error);
+    perfil = defaultProfile;
+}
+
 
     if (user.registered === true) {
         return m.reply(`*[ ℹ️ ] Ya te encuentras registrado.*\n\n*¿Quieres volver a registrarte?*\n\n*Use este comando para eliminar su registro*\n*\`${usedPrefix}unreg\`*`)
     }
 
-    if (!Reg.test(text)) return m.reply(`*[ ℹ️ ] Ingresa tu nombre y edad para registrarte en mi base de datos.*\n\n*${usedPrefix + command} <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} ${name2}.18`)
+    if (!Reg.test(text)) return m.reply(`*[ 👤 ] Ingresa tu nombre y edad para registrarte en mi base de datos.*\n\n*${usedPrefix + command} <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} ${name2}.18`)
 
     let [_, name, splitter, age] = text.match(Reg)
     if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
