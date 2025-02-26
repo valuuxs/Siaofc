@@ -36,8 +36,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 }
 
 handler.command = ['xnxxsearch', 'xnxxs']
-handler.help = ['xnxxsearch *<consulta>*']
-handler.tags = ['nsfw','search']
+handler.help = ['xnxxsearch']
+handler.tags = ['buscador']
 handler.register = true
 
 export default handler
