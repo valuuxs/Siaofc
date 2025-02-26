@@ -126,7 +126,7 @@ global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 
-global.authsticker = `\n\n☕ Bᴏᴛ:\n↳お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳@${conn.getName(m.sender)}`;
+global.authsticker = `\n\n☕ Bᴏᴛ:\n↳協 ֪ Տһᥲ͡ძ͜᥆፝֟ա  ⚡︎  Uᥣ𝗍rᥲ ׄ🍒˚ .\n\n🍨 Usᴜᴀʀɪᴏ:\n↳@${conn.getName(m.sender)}`;
 
 global.packsticker = `ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856`
 
