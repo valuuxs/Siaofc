@@ -35,6 +35,6 @@ m.react('✖️');
  }
 }
 
-handler.command = ['happymodsearch', 'hpmodsearch', 'hpmsearch'];
+handler.command = ['happymodsearch', 'hmsearch', 'hpmsearch'];
 
 export default handler;
