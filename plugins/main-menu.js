@@ -83,16 +83,16 @@ ${readMore}
 ര ׄ 📥˚ ${usedPrefix}pornhubdl *url*
 
 𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🔎ᩚ꤬ᰨᰍ
-ര ׄ 🔎˚ ${usedPrefix}scsearch *texto*
-ര ׄ 🔎˚ ${usedPrefix}ttsearch *texto*
-ര ׄ 🔎˚ ${usedPrefix}ytsearch *texto*
-ര ׄ 🔎˚ ${usedPrefix}ttsearch2 *texto*
-ര ׄ 🔎˚ ${usedPrefix}hpmsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}soundcloudsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}tiktoksearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}tiktoksearch2 *texto*
+ര ׄ 🔎˚ ${usedPrefix}youtubetsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}happymodsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}githubsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}pssearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}xnxxsearch *texto*
-ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
-ര ׄ 🔎˚ ${usedPrefix}phsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}xvideossearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}pornhubsearch *texto*
 
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs\`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
