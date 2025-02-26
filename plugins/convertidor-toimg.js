@@ -1,7 +1,7 @@
 import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
-let handler = async (message, { conn, text }) => {
+let handler = async (m, { conn, text }) => {
     if (!text) return conn.reply(m.chat, '*¿Qué quieres buscar en TikTok?*', m);
 
     async function createVideoMessage(url) {
@@ -17,7 +17,7 @@ let handler = async (message, { conn, text }) => {
     }
 
     try {
-        await message.react('🕓');
+        await m.react('🕓');
         conn.reply(m.chat, '*Descargando su video...*', m);
 
         let apiUrl = `https://delirius-apiofc.vercel.app/search/tiktoksearch?query=${encodeURIComponent(text)}`;
@@ -53,7 +53,7 @@ let handler = async (message, { conn, text }) => {
                     })
                 }
             }
-        }, { quoted: message });
+        }, { quoted: m });
 
         await message.react('✅');
         await conn.relayMessage(message.chat, responseMessage.message, { messageId: responseMessage.key.id });
