@@ -2,7 +2,7 @@ import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (message, { conn, text }) => {
-    if (!text) return conn.reply(message.chat, '*¿Qué quieres buscar en TikTok?*', message);
+    if (!text) return conn.reply(m.chat, '*¿Qué quieres buscar en TikTok?*', m);
 
     async function createVideoMessage(url) {
         const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
@@ -18,13 +18,13 @@ let handler = async (message, { conn, text }) => {
 
     try {
         await message.react('🕓');
-        conn.reply(message.chat, '*Descargando su video...*', message);
+        conn.reply(m.chat, '*Descargando su video...*', m);
 
         let apiUrl = `https://delirius-apiofc.vercel.app/search/tiktoksearch?query=${encodeURIComponent(text)}`;
         let { data: response } = await axios.get(apiUrl);
 
         if (!response || response.status !== 200 || !response.meta || response.meta.length === 0) {
-            return conn.reply(message.chat, '*No se encontraron resultados para tu búsqueda.*', message);
+            return conn.reply(m.chat, '*No se encontraron resultados para tu búsqueda.*', message);
         }
 
         let results = response.meta.map(result => ({
@@ -65,7 +65,7 @@ let handler = async (message, { conn, text }) => {
 
 handler.help = ['tiktoksearch <texto>'];
 handler.tags = ['search'];
-handler.command = ['tiktoksearch'];
+handler.command = ['tiz'];
 handler.register = true;
-handler.corazones = 1;
+//handler.corazones = 1;
 export default handler;
