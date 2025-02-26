@@ -20,7 +20,8 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
 
     let [_, name, splitter, age] = text.match(Reg)
     //if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
-    if (!age) return m.reply('*[ ⚠️ ] La edad no puede estar vacía.*')
+    //if (!age) return m.reply('*[ ⚠️ ] La edad no puede estar vacía.*')
+if (!age) return conn.reply(m.chat, '*[ ⚠️ ] La edad no puede estar vacía.*', m);
     if (name.length >= 100) return m.reply('*[ ⚠️ ] El nombre es demasiado largo.*')
 
     age = parseInt(age)
