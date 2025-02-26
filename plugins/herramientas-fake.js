@@ -1,5 +1,5 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-let txt = `[ ℹ️ ] Ejemplos de uso.*\n\n> ${usedPrefix + command} ¿quién soy? *@user* eres mi putita`
+let txt = `*[ ℹ️ ] Ejemplo de uso:*\n\n> ${usedPrefix + command} ¿Quién soy? *@user* Eres mi putita.`
 if (!text) return m.reply(txt)
 let cm = copy(m)
 let who
@@ -16,7 +16,7 @@ contextInfo: {
 mentionedJid: conn.parseMention(real.join(sp).trim())
 }})}
 handler.help = ['fake']
-handler.tags = ['tools']
+handler.tags = ['herramientas']
 handler.command = /^(fake)$/
 handler.register = true 
 
