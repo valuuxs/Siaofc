@@ -127,6 +127,19 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}hd *img*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
+ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
+ര ׄ ⚒️˚ ${usedPrefix}inspeccionar *link*
+ര ׄ ⚒️˚ ${usedPrefix}nuevafotochannel
+ര ׄ ⚒️˚ ${usedPrefix}nosilenciarcanal
+ര ׄ ⚒️˚ ${usedPrefix}silenciarcanal
+ര ׄ ⚒️˚ ${usedPrefix}seguircanal
+ര ׄ ⚒️˚ ${usedPrefix}avisoschannel
+ര ׄ ⚒️˚ ${usedPrefix}resiviravisos
+ര ׄ ⚒️˚ ${usedPrefix}eliminarfotochannel
+ര ׄ ⚒️˚ ${usedPrefix}reactioneschannel
+ര ׄ ⚒️˚ ${usedPrefix}reaccioneschannel
+ര ׄ ⚒️˚ ${usedPrefix}nuevonombrecanal
+ര ׄ ⚒️˚ ${usedPrefix}nuevadescchannel
 
 𓂂𓏸  𐅹੭੭   *\`grᥙ⍴᥆s\`*   🌵ᩚ꤬ᰨᰍ
 ര ׄ 🌵˚ ${usedPrefix}add *número*
