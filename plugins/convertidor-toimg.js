@@ -1,17 +1,28 @@
-let { downloadContentFromMessage } = (await import('@whiskeysockets/baileys'));
+import { webp2png } from '../lib/webp2mp4.js';
 
-let handler = async (m, { conn }) => {
-if (!m.quoted) return conn.reply(m.chat, `*[ ℹ️ ] Responde a una imagen ViewOnce (ver solo vez)*.`, m)
-if (!m?.quoted || !m?.quoted?.viewOnce) return conn.reply(m.chat, `*[ ℹ️ ] Responde a una imagen ViewOnce (ver solo una vez)*`, m)
-let buffer = await m.quoted.download(false);
-if (/videoMessage/.test(m.quoted.mtype)) {
-return conn.sendFile(m.chat, buffer, 'media.mp4', m.quoted.caption || '', m)
-} else if (/imageMessage/.test(m.quoted.mtype)) {
-return conn.sendFile(m.chat, buffer, 'media.jpg', m.quoted?.caption || '', m)
-}}
-handler.help = ['read']
-handler.tags = ['herramientas']
-handler.command = ['readviewonce', 'read', 'readvo', 'ver'] 
-handler.register = true 
+const handler = async (m, { conn, usedPrefix, command }) => {
+  try {
+    if (!m.quoted) throw `*[ ℹ️ ] Responda a un sticker con el comando ${usedPrefix + command} para convertirlo en imagen.*`;
 
-export default handler
+    const q = m.quoted;
+    const mime = q.mimetype || '';
+
+    if (!mime.includes('webp')) throw '*[❗𝐈𝐍𝐅𝐎❗] El archivo adjunto no es un sticker.*';
+
+    const media = await q.download();
+    if (!media) throw '*[❗𝐄𝐑𝐑𝐎𝐑❗] No se pudo descargar el sticker.*';
+
+    const out = await webp2png(media).catch(() => null);
+    if (!out || out.length === 0) throw '*[❗𝐄𝐑𝐑𝐎𝐑❗] No se pudo convertir el sticker en imagen.*';
+
+    await conn.sendFile(m.chat, out, 'sticker.png', '*Aquí tienes tu imagen!*', m);
+  } catch (error) {
+    m.reply(error);
+  }
+};
+
+handler.help = ['toimg (reply)'];
+handler.tags = ['sticker'];
+handler.command = ['toimg', 'jpg', 'img'];
+
+export default handler;
