@@ -4,7 +4,7 @@ import PhoneNumber from 'awesome-phonenumber'
 import moment from 'moment-timezone'
 
 //let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
-let Reg = /^([^\d\s.]+(?:\s[^\d\s.]+)*)[.|](\d{1,3})$/i;
+let Reg = /\|?(.*)([.|] *?)([0-9]+)$/i;
 let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let user = global.db.data.users[m.sender]
     let name2 = conn.getName(m.sender)
