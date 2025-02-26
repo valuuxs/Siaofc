@@ -3,7 +3,8 @@ import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
 import moment from 'moment-timezone'
 
-let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
+//let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
+let Reg = /^(.+?)[.| ]\s?(\d+)$/i;
 let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let user = global.db.data.users[m.sender]
     let name2 = conn.getName(m.sender)
@@ -18,7 +19,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     if (!Reg.test(text)) return m.reply(`*[ 👤 ] Ingresa tu nombre y edad para registrarte en mi base de datos.*\n\n*${usedPrefix + command} <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n${usedPrefix + command} ${name2}.18`)
 
     let [_, name, splitter, age] = text.match(Reg)
-    if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
+    //if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
     if (!age) return m.reply('*[ ⚠️ ] La edad no puede estar vacía.*')
     if (name.length >= 100) return m.reply('*[ ⚠️ ] El nombre es demasiado largo.*')
 
