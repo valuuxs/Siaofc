@@ -9,13 +9,6 @@ let handler = async (m, { conn, text }) => {
         return videoMessage;
     }
 
-    async function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
-
     try {
         await m.react('🕓');
         conn.reply(m.chat, '*Descargando su video...*', m);
@@ -24,10 +17,10 @@ let handler = async (m, { conn, text }) => {
         let { data: response } = await axios.get(apiUrl);
 
         if (!response || response.status !== 200 || !response.meta || response.meta.length === 0) {
-            return conn.reply(m.chat, '*No se encontraron resultados para tu búsqueda.*', message);
+            return conn.reply(m.chat, '*No se encontraron resultados para tu búsqueda.*', m);
         }
 
-        let results = response.meta.map(result => ({
+        let results = await Promise.all(response.meta.map(async result => ({
             body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
             footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '🔎 TikTok - Búsquedas' }),
             header: proto.Message.InteractiveMessage.Header.fromObject({
@@ -36,9 +29,9 @@ let handler = async (m, { conn, text }) => {
                 videoMessage: await createVideoMessage(result.hd) // URL del video sin marca de agua
             }),
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({ buttons: [] })
-        }));
+        })));
 
-        const responseMessage = generateWAMessageFromContent(message.chat, {
+        const responseMessage = generateWAMessageFromContent(m.chat, {
             viewOnceMessage: {
                 message: {
                     messageContextInfo: {
@@ -49,17 +42,18 @@ let handler = async (m, { conn, text }) => {
                         body: proto.Message.InteractiveMessage.Body.create({ text: `Resultados de: ${text}` }),
                         footer: proto.Message.InteractiveMessage.Footer.create({ text: '🔎 TikTok - Búsquedas' }),
                         header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
-                        carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: results }) // SE USA results AQUÍ
+                        carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: results })
                     })
                 }
             }
         }, { quoted: m });
 
-        await message.react('✅');
-        await conn.relayMessage(message.chat, responseMessage.message, { messageId: responseMessage.key.id });
+        await m.react('✅');
+        await conn.relayMessage(m.chat, responseMessage.message, { messageId: responseMessage.key.id });
 
     } catch (error) {
         console.error('Error en la búsqueda de TikTok:', error);
+        await conn.reply(m.chat, '⚠️ Ocurrió un error al buscar en TikTok.', m);
     }
 };
 
