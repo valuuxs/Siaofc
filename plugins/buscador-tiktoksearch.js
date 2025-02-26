@@ -2,7 +2,7 @@ import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(message.chat, '*[ ☕ ] Por favor, ingrese el texto de lo que desea buscar en tiktok.*', message);
+  if (!text) return conn.reply(message.chat, '*[ 🔎 ] Ingrese el texto que desee buscar en TikTok*', message);
 
   // Función para crear el mensaje de video
   async function createVideoMessage(url) {
@@ -12,7 +12,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 
   try {
     // Mensaje inicial informando al usuario que se está descargando el video
-    conn.reply(message.chat, '*Espere un momento...*', message);
+    conn.reply(message.chat, wait, message);
 
     // Realizar la búsqueda de TikTok
     let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text);
@@ -62,7 +62,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['tiktoksearch *<txt>*'];
+handler.help = ['tiktoksearch'];
 handler.register = true;
 handler.tags = ['buscador'];
 handler.command = ['tiktoksearch', 'ttss', 'ttsearch'];
