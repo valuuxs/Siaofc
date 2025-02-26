@@ -131,6 +131,7 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}hd *img*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
+ര ׄ ⚒️˚ ${usedPrefix}flag *país*
 ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
 ര ׄ ⚒️˚ ${usedPrefix}inspeccionar *link*
 ര ׄ ⚒️˚ ${usedPrefix}nuevafotochannel
@@ -252,6 +253,7 @@ ${readMore}
 𓂂𓏸  𐅹੭੭   *\`᥆աᥒᥱr\`*   🍀ᩚ꤬ᰨᰍ
 ര ׄ 🍀˚ ${usedPrefix}salir
 ര ׄ 🍀˚ ${usedPrefix}update
+ര ׄ 🍀˚ ${usedPrefix}blocklist
 `.trim()
 
         await conn.sendMessage(m.chat, {
