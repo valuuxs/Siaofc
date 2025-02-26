@@ -98,6 +98,8 @@ ${readMore}
 ര ׄ ☕˚ ${usedPrefix}shadow *texto*
 ര ׄ ☕˚ ${usedPrefix}flux *texto*
 ര ׄ ☕˚ ${usedPrefix}chatgpt *texto*
+ര ׄ ☕˚ ${usedPrefix}imgg *texto*
+ര ׄ ☕˚ ${usedPrefix}imgg2 *texto*
 
 𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   📑ᩚ꤬ᰨᰍ
 ര ׄ 📑˚ ${usedPrefix}infem4 *hr + p*
@@ -124,7 +126,7 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
 ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
 ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
-ര ׄ ⚒️˚ ${usedPrefix}imgg2 *texto*
+ര ׄ ⚒️˚ ${usedPrefix}read *texto*
 ര ׄ ⚒️˚ ${usedPrefix}hd *img*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
