@@ -1,4 +1,4 @@
-let handler = async (m, { conn }) => {
+const handler = async (m, { conn }) => {
   let totalf = Object.values(global.plugins).reduce((total, plugin) => {
     if (plugin.command) {
       if (Array.isArray(plugin.command)) {
@@ -12,5 +12,5 @@ let handler = async (m, { conn }) => {
 
   conn.reply(m.chat, `🤖 El bot tiene *${totalf}* comandos disponibles.`, m);
 };
-handler.command = ['totalcomandos', 'comandostotales'];
+handler.command = ['totalcomandos', 'comandostotales', 'totalf'];
 export default handler;
