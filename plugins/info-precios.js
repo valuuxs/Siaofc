@@ -45,8 +45,6 @@ handler.tag = ['info'];
 handler.help = ['p'];
 handler.command = ['p'];
 
-export default handler;
-*/
 
 let handler = async (m, { conn }) => {
     let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
@@ -64,10 +62,10 @@ let handler = async (m, { conn }) => {
             nativeFlowMessage: {
                 buttons: [
                     {
-                        name: 'cta_url',
+                        name: 'quick_reply',
                         buttonParamsJson: JSON.stringify({
                             display_text: 'owner',
-                            url: 'https://wa.me/51927238856'
+                            id: '.owner'
                         })
                     }
                 ]
