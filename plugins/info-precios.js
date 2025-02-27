@@ -1,6 +1,6 @@
 
 // Para los pajeros xd
-let handler = async(m, { conn }) => {
+/*let handler = async(m, { conn }) => {
 
 let rvid = global.vidxxx[Math.floor(Math.random() * global.vidxxx.length)];
 
@@ -41,4 +41,28 @@ global.vidxxx = [
     'https://telegra.ph/file/ee2cf1b359d6eef50d7b7.mp4',
     'https://telegra.ph/file/598857924f3a29ffd37ae.mp4',
     'https://telegra.ph/file/528caef6ea950ec45aeef.mp4',
-];
+];*/
+
+let handler = async (m, { conn }) => {
+    let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
+
+    conn.sendMessage(m.chat, { 
+        image: { url: imageUrl }, 
+        caption: '🍒 ¡Bienvenido! @⁨Shadow V2⁩\n\n¿Quieres dominar WhatsApp con el bot más poderoso? ¡Shadow está aquí!\nPersonaliza tu experiencia de WhatsApp como nunca antes.', 
+        footer: dev, 
+        buttons: [
+            {
+                buttonId: `.owner`,
+                buttonText: { displayText: 'owner' }
+            }
+        ],
+        viewOnce: true,
+        headerType: 4
+    }, { quoted: m });
+}
+
+handler.tag = ['info'];
+handler.help = ['p'];
+handler.command = ['p'];
+
+export default handler;
