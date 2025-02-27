@@ -89,6 +89,7 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}ttsearch2 *texto*
 ര ׄ 🔎˚ ${usedPrefix}ytsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}hpmsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}spotifysearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}githubsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}playstoresearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}xnxxsearch *texto*
