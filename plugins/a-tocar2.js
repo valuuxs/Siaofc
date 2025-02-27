@@ -1,41 +1,56 @@
-const handler = async (m, { conn }) => {
-  const message = "👋 ¡Hola! ¿Qué deseas hacer?";
-  
-  const buttons = [
-    { buttonId: 'saludo', buttonText: { displayText: '👋 Saludar' }, type: 1 },
-    { buttonId: 'despedida', buttonText: { displayText: '👋 Despedirse' }, type: 1 },
-    { buttonId: 'hora', buttonText: { displayText: '⏰ Saber la hora' }, type: 1 }
+import { generateWAMessageContent, generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
+
+let handler = async (m, { conn }) => {
+  const message = "👋 ¡Hola! ¿Qué opción eliges?";
+
+  let push = [];
+
+  let opciones = [
+    { title: "Opción 1", desc: "Esto es la opción 1", command: ".opcion1" },
+    { title: "Opción 2", desc: "Esto es la opción 2", command: ".opcion2" },
+    { title: "Opción 3", desc: "Esto es la opción 3", command: ".opcion3" },
   ];
 
-  const buttonMessage = {
-    text: message,
-    footer: 'Elige una opción:',
-    buttons: buttons,
-    headerType: 1
-  };
+  for (let op of opciones) {
+    push.push({
+      body: proto.Message.InteractiveMessage.Body.fromObject({
+        text: `◦ *${op.title}*\n${op.desc}`
+      }),
+      footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '' }),
+      header: proto.Message.InteractiveMessage.Header.fromObject({
+        title: '',
+        hasMediaAttachment: false
+      }),
+      nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+        buttons: [
+          {
+            "name": "cta_copy",
+            "buttonParamsJson": `{\"display_text\":\"Seleccionar\",\"id\":\"123\",\"copy_code\":\"${op.command}\"}`
+          }
+        ]
+      })
+    });
+  }
 
-  await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+  const msg = generateWAMessageFromContent(m.chat, {
+    viewOnceMessage: {
+      message: {
+        messageContextInfo: {
+          deviceListMetadata: {},
+          deviceListMetadataVersion: 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+          body: proto.Message.InteractiveMessage.Body.create({ text: message }),
+          footer: proto.Message.InteractiveMessage.Footer.create({ text: 'Selecciona una opción:' }),
+          header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
+          carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...push] })
+        })
+      }
+    }
+  }, { quoted: m });
+
+  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 };
 
 handler.command = ['menuprueba'];
 export default handler;
-
-// Evento para manejar los botones presionados
-const buttonHandler = async (m, { conn }) => {
-  const buttonId = m?.message?.interactiveResponseMessage?.buttonId;
-
-  if (!buttonId) return;
-
-  if (buttonId === 'saludo') {
-    await conn.sendMessage(m.chat, { text: "👋 ¡Hola! ¿Cómo estás?" }, { quoted: m });
-  } else if (buttonId === 'despedida') {
-    await conn.sendMessage(m.chat, { text: "👋 ¡Adiós! Que tengas un buen día." }, { quoted: m });
-  } else if (buttonId === 'hora') {
-    const ahora = new Date().toLocaleTimeString('es-PE', { timeZone: 'America/Lima' });
-    await conn.sendMessage(m.chat, { text: `⏰ La hora actual es: ${ahora}` }, { quoted: m });
-  }
-};
-
-handler.customPrefix = /^(saludo|despedida|hora)$/;
-handler.command = new RegExp;
-export { buttonHandler };
