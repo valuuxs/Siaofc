@@ -10,7 +10,7 @@ const handler = async (m, { conn }) => {
     return total;
   }, 0);
 
-  conn.reply(m.chat, `🤖 El bot tiene *${totalf}* comandos disponibles.`, m);
+  conn.reply(m.chat, `*[ ℹ️ ] El bot cuenta actualmente con \`${totalf}\` comandos disponibles.*\n*Si tienes alguna sugerencia no dudes en contactar con mi creador.*`, m);
 };
 handler.command = ['totalcomandos', 'comandostotales', 'totalf'];
 export default handler;
