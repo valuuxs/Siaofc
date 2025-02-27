@@ -1,4 +1,4 @@
-const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
         conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*
@@ -60,10 +60,10 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     const modalidad = args.slice(3).join(' ');
     m.react('🎮');
-/*
+*/
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
-    if (args.length < 3) {  
+    if (args.length < 2) {  
         conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora seguido el país y una modalidad.*
 *Usa AR para Argentina y PE para Perú.*
 
@@ -108,7 +108,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     const modalidad = args.slice(2).join(' ');  
     m.react('🎮');  
-*/
+
     // Configuración de la modalidad según el comando usado
     let titulo = '';
     let iconosA = [];
