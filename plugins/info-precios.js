@@ -6,8 +6,8 @@ let handler = async (m, { conn }) => {
         footer: dev, 
         buttons: [
             {
-                buttonId: `.videoxxx2`,
-                buttonText: { displayText: 'sigᥙіᥱᥒ𝗍ᥱ ᥎іძᥱ᥆' }
+                buttonId: `.owner`,
+                buttonText: { displayText: 'owner' }
             }
         ],
         headerType: 4
@@ -15,7 +15,7 @@ let handler = async (m, { conn }) => {
 }
 
 handler.tag = ['nsfw'];
-handler.help = ['videoxxx2'];
-handler.command = ['videoxxx2'];
+handler.help = ['vi'];
+handler.command = ['vi'];
 
 export default handler;
