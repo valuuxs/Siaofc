@@ -15,21 +15,9 @@ let handler = async (m, { conn }) => {
                 `https://chat.whatsapp.com/CwpXWm25KZX6HxUxcSmwvN\n\n` +
                 `¡ᥒ᥆ 𝗍ᥱ ⍴іᥱrძᥲs ᥣᥲ ᥆⍴᥆r𝗍ᥙᥒіძᥲძ ძᥱ ᥣᥣᥱ᥎ᥲr 𝗍ᥙ ᥱ᥊⍴ᥱrіᥱᥒᥴіᥲ ძᥱ ᥕһᥲ𝗍sᥲ⍴⍴ ᥲᥣ sіgᥙіᥱᥒ𝗍ᥱ ᥒі᥎ᥱᥣ ᥴ᥆ᥒ ᥒᥙᥱs𝗍r᥆ ᑲ᥆𝗍!`;
 
-    conn.sendMessage(m.chat, { 
-        text: texto, 
-        footer: 'Shadow Bot',
-        buttons: [
-            {
-                buttonId: `.owner`,
-                buttonText: { displayText: 'Owner' }
-            }
-        ],
-        headerType: 1
-    }, { quoted: m });
+    await conn.sendMessage(m.chat, { text: texto }, { quoted: m });
 }
 
-handler.tag = ['info'];
-handler.help = ['tes'];
 handler.command = ['tes'];
 
 export default handler;
