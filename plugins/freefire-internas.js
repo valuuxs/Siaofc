@@ -164,9 +164,9 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 │• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
-${iconosA.map(icono => `${icono} •`).join('\n')}
+${iconosA.map(icono => `${icono} • `).join('\n')}
 ㅤ _ʚ Equipo B:_ ᭡
-${iconosB.map(icono => `${icono} •`).join('\n')}
+${iconosB.map(icono => `${icono} • `).join('\n')}
 
 *ᡣ𐭩 Organiza:* ${conn.getName(m.sender)}
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`.trim();
