@@ -153,7 +153,7 @@ global.videosxxxc2 = [
 ];*/
 
 // ⏲️⏲️😅⏲️⛏️🕰️🕰️⛏️🕰️😂🕰️😂🕰️⛏️🕰️😂🕰️😂🕰️🕰️😂🕰️
-
+/*
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, command }) => {
@@ -219,4 +219,4 @@ globalThis.videosxxxc2 = [
     'https://telegra.ph/file/c430651857023968d3a76.mp4',
     'https://telegra.ph/file/1ba17f6230dd1ea2de48c.mp4',
     'https://telegra.ph/file/e04b802f12aafee3d314e.mp4'
-];
+];*/
