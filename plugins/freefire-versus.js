@@ -109,7 +109,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
 ${iconos.map(icono => `${icono} •`).join('\n')}
 
-ㅤ `\Sᥙ⍴ᥣᥱᥒ𝗍ᥱs:\`
+ㅤ \`Sᥙ⍴ᥣᥱᥒ𝗍ᥱs:\`
 
 ${iconos2.map(icono => `${icono} •`).join('\n')}
 
