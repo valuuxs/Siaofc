@@ -1,7 +1,7 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 2) {  
-        conn.reply(m.chat, `*[ 😃 ] Proporciona una hora seguido el país y una modalidad.*
+        conn.reply(m.chat, `*[ ℹ️ ] Proporciona una hora seguido el país y una modalidad.*
 *Usa AR para Argentina y PE para Perú.*
 
 *[ 💡 ] Ejemplo:* .${command} 20 pe Vv2`, m);
@@ -92,8 +92,8 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'vsmixto6':
             titulo = '6VS6 MIXTO';
             players = ['Jᥙgᥲძ᥆r᥊s'];
-            iconos = ['🍭', '🍭', '🍭', '🍭', '🍭', '🍭'];
-            iconos2 = ['🍬', '🍬'];
+            iconos = ['🥯', '🥯', '🥯', '🥯', '🥯', '🥯'];
+            iconos2 = ['🥯', '🥯'];
             break;
         default:
             conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);
@@ -101,19 +101,19 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     }
 
     const message = `ㅤㅤㅤ *\`${titulo}\`*
-╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
-» *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modalidad}
-» *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *\`ᴘᴇʀ:\`* ${horasEnPais.PE}
-│• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
-╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
-ㅤ _ʚ Equipo A:_ ᭡
-${iconosA.map(icono => `${icono} •`).join('\n')}
-ㅤ _ʚ Equipo B:_ ᭡
-${iconosB.map(icono => `${icono} •`).join('\n')}
 
-*ᡣ𐭩 Organiza:* ${conn.getName(m.sender)}
-> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`.trim();
+🕹꒱ *ʀᴇɢʟᴀs:* ${modalidad}
+⏰꒱ *ʜᴏʀᴀ:* ${horasEnPais.PE} 🇵🇪 ${horasEnPais.AR} 🇦🇷
+
+ㅤ \`${players}\`
+
+${iconos.map(icono => `${icono} •`).join('\n')}
+
+ㅤ `Sᥙ⍴ᥣᥱᥒ𝗍ᥱs:`
+
+${iconos2.map(icono => `${icono} •`).join('\n')}
+
+> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
