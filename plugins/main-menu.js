@@ -111,6 +111,12 @@ ${readMore}
 ര ׄ 📑˚ ${usedPrefix}infem6 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmasc6 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmixto6 *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v4fem *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v4masc *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v4mixto *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v6fem *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v6masc *hr + p*
+ര ׄ 📑˚ ${usedPrefix}v6mixto *hr + p*
 
 𓂂𓏸  𐅹੭੭   *\`𝖿rᥲsᥱs\`*   🌻ᩚ꤬ᰨᰍ
 ര ׄ 🌻˚ ${usedPrefix}piropo
