@@ -1,4 +1,6 @@
 const handler = async (m, { conn }) => {
+  const name = conn.getName(m.sender);
+  const usertag = '@' + m.sender.split('@s.whatsapp.net')[0];
   let totalf = Object.values(global.plugins).reduce((total, plugin) => {
     if (plugin.command) {
       if (Array.isArray(plugin.command)) {
@@ -10,7 +12,7 @@ const handler = async (m, { conn }) => {
     return total;
   }, 0);
 
-  conn.reply(m.chat, `*[ ℹ️ ] El bot cuenta actualmente con \`${totalf}\` comandos disponibles.*\n*Si tienes alguna sugerencia no dudes en contactar con mi creador.*`, m);
+  conn.reply(m.chat, `*[ ℹ️ ] ¡El poder está en tus manos!*\n*Bienvenido ${usertag}*\n\n*Este bot cuenta con \`${totalf}\` comandos disponibles para ti. ¿Tienes alguna sugerencia para mejorar nuestra experiencia? ¡No dudes en contactar con mi creador!*\n\n> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`, m);
 };
 handler.command = ['totalcomandos', 'comandostotales', 'totalf'];
 export default handler;
