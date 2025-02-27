@@ -11,7 +11,7 @@ const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     return total;
   }, 0);
 
-  conn.reply(m.chat, `*[ ℹ️ ] ¡El poder está en tus manos!*\n*Bienvenido ${taguser}*\n\n*Este bot cuenta con \`${totalf}\` comandos disponibles para ti. ¿Tienes alguna sugerencia para mejorar nuestra experiencia? ¡No dudes en contactar con mi creador!*\n\n> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`, m);
+  conn.reply(m.chat, `*[ 🔎 ] ¡El poder está en tus manos!*\n*Bienvenido ${taguser}*\n\n*Este bot cuenta con \`${totalf}\` comandos disponibles para ti. ¿Tienes alguna sugerencia para mejorar nuestra experiencia? ¡No dudes en contactar con mi creador!*\n\n> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`, m);
 };
 handler.command = ['totalcomandos', 'comandostotales', 'totalf'];
 export default handler;
