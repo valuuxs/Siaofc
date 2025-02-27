@@ -107,11 +107,11 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
 ㅤ \`${players}\`
 
-${iconos.map(icono => `${icono} •`).join('\n')}
+${iconos.map(icono => `${icono}˚ `).join('\n')}
 
 ㅤ \`Sᥙ⍴ᥣᥱᥒ𝗍ᥱs:\`
 
-${iconos2.map(icono => `${icono} •`).join('\n')}
+${iconos2.map(icono => `${icono}˚ `).join('\n')}
 
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `.trim();
 
