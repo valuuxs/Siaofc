@@ -49,7 +49,6 @@ export default handler;
 */
 
 let handler = async (m, { conn }) => {
-    // Enviar mensaje de bienvenida con botones
     conn.sendMessage(m.chat, { 
         text: '🍒 ¡Bienvenido! @⁨Shadow V2⁩\n\n¿Quieres dominar WhatsApp con el bot más poderoso? ¡Shadow está aquí!\nPersonaliza tu experiencia de WhatsApp como nunca antes.\n\n*`PRECIOS DEL BOT`*\n\n\`\`\`PERMAMENTE\`\`\`\n> *ᴜɴ ɢʀᴜᴘᴏ:*\n𝟦 🇵🇪/𝟣𝟥𝟢𝟢 🇦🇷\n> *ᴛʀᴇs ɢʀᴜᴘᴏs:*\n𝟪 🇵🇪/𝟤𝟨𝟢𝟢 🇦🇷\n> *sᴇɪs ɢʀᴜᴘᴏs:*\n𝟣𝟧 🇵🇪/𝟧𝟢𝟢𝟢 🇦🇷\n\n\`\`\`MENSUAL\`\`\`\n𝟤 🇵🇪/𝟫𝟢𝟢 🇦🇷\n\n\`\`\`PERSONALIZADO\`\`\`\n𝟥𝟢 🇵🇪/𝟫𝟧𝟢𝟢 🇦🇷\n\n\`\`\`PRUEBA & COMPRA\`\`\`\nhttps://chat.whatsapp.com/CwpXWm25KZX6HxUxcSmwvN', 
         footer: dev, 
@@ -60,16 +59,12 @@ let handler = async (m, { conn }) => {
                 type: 1
             }
         ],
-        viewOnce: true
-    }, { quoted: m });
-
-    // Enviar imagen en tipo anuncio
-    await conn.sendMessage(m.chat, {
+        viewOnce: true,
         contextInfo: {
             externalAdReply: {
                 showAdAttribution: true,
-                title: 'һ᥆ᥣᥲ s᥆ᥡ ᥱᥣ ᥴrᥱᥲძ᥆r ძᥱ sһᥲძ᥆ᥕ ᑲ᥆𝗍',
-                body: dev,
+                title: '🔥 Shadow Bot - El mejor bot de WhatsApp',
+                body: 'Contacta al creador ahora',
                 thumbnailUrl: 'https://files.catbox.moe/8an9fs.jpg',
                 sourceUrl: 'https://wa.me/51927238856?text=Vengo+Del+Comando+.owner',
                 mediaType: 1,
