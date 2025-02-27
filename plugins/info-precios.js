@@ -46,32 +46,41 @@ handler.help = ['p'];
 handler.command = ['p'];
 */
 
+import { proto } from '@whiskeysockets/baileys';
+
 let handler = async (m, { conn }) => {
     let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
 
-    conn.sendMessage(m.chat, {
-        interactiveMessage: {
-            body: {
-                text: '🍒 ¡Bienvenido! @⁨Shadow V2⁩\n\n¿Quieres dominar WhatsApp con el bot más poderoso? ¡Shadow está aquí!\nPersonaliza tu experiencia de WhatsApp como nunca antes.'
-            },
-            header: {
-                title: 'Shadow V2',
-                subtitle: 'Bot de WhatsApp',
-                media: { url: imageUrl, mimetype: 'image/jpeg' }
-            },
-            nativeFlowMessage: {
-                buttons: [
-                    {
-                        name: 'quick_reply',
-                        buttonParamsJson: JSON.stringify({
-                            display_text: 'owner',
-                            id: '.owner'
-                        })
-                    }
-                ]
+    let interactiveMessage = {
+        body: '🍒 ¡Bienvenido! @⁨Shadow V2⁩\n\n¿Quieres dominar WhatsApp con el bot más poderoso? ¡Shadow está aquí!\nPersonaliza tu experiencia de WhatsApp como nunca antes.',
+        footer: 'Shadow V2',
+        header: {
+            title: 'Shadow V2',
+            subtitle: 'Bot de WhatsApp',
+            hasMediaAttachment: true,
+            mediaAttachment: {
+                url: imageUrl,
+                mimetype: 'image/jpeg'
             }
+        },
+        nativeFlowMessage: {
+            buttons: [
+                {
+                    name: 'quick_reply',
+                    buttonParamsJson: JSON.stringify({
+                        display_text: 'owner',
+                        id: '.owner'
+                    })
+                }
+            ]
         }
-    }, { quoted: m });
+    };
+
+    let message = {
+        interactiveMessage: proto.Message.InteractiveMessage.fromObject(interactiveMessage)
+    };
+
+    await conn.relayMessage(m.chat, message, { messageId: m.key.id });
 }
 
 handler.tag = ['info'];
