@@ -44,7 +44,7 @@ let handler = async (m, { conn }) => {
 handler.tag = ['info'];
 handler.help = ['p'];
 handler.command = ['p'];
-
+*/
 
 let handler = async (m, { conn }) => {
     let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
