@@ -49,6 +49,7 @@ ${readMore}
 ര ׄ 🍃˚ ${usedPrefix}menulogos
 
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🫖ᩚ꤬ᰨᰍ
+ര ׄ 🫖˚ ${usedPrefix}totalf
 ര ׄ 🫖˚ ${usedPrefix}grupos
 ര ׄ 🫖˚ ${usedPrefix}owner
 ര ׄ 🫖˚ ${usedPrefix}ping
