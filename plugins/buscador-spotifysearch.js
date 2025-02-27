@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) return m.reply('Ingresa el texto de lo que quieres buscar en Spotify 🤍');
+if (!text) return m.reply('*[ ℹ️ ] Ingresa el texto de lo que quieres buscar en Spotify*\n\n*[ 💡 ] Ejemplo:* .spotifysearch Gata Only');
 await m.react('🕓');
 
 try {
@@ -43,7 +43,7 @@ buttons: [ */
                 buttons: [
 {
 "name": "cta_copy",
-"buttonParamsJson": "{\"display_text\":\"🎧 ¡Descargar Audio! 🎧\",\"id\":\"123456789\",\"copy_code\":\".spotify " + track.url + "\"}"
+"buttonParamsJson": "{\"display_text\":\"ძᥱsᥴᥲrgᥲr ᥲᥙძі᥆\",\"id\":\"123456789\",\"copy_code\":\".spotify " + track.url + "\"}"
 },
 ]
 })
