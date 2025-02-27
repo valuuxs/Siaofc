@@ -1,8 +1,8 @@
+// Para los pajeros xd
 let handler = async (m, { conn }) => {
-    let mensaje = `*🍒 ¡Bienvenido! Bebesita⁩*\n\n¿Quieres dominar WhatsApp con el bot más poderoso? *¡Shadow está aquí!*\nPersonaliza tu experiencia de WhatsApp como nunca antes.`;
-
     conn.sendMessage(m.chat, { 
-        text: mensaje,
+        image: { url: 'https://files.catbox.moe/ilr818.jpg' }, 
+        caption: `*🍒 ¡Bienvenido! Shadow V2⁩*\n\n¿Quieres dominar WhatsApp con el bot más poderoso? *¡Shadow está aquí!*\nPersonaliza tu experiencia de WhatsApp como nunca antes.`,
         footer: dev, 
         buttons: [
             {
@@ -10,12 +10,12 @@ let handler = async (m, { conn }) => {
                 buttonText: { displayText: 'sigᥙіᥱᥒ𝗍ᥱ ᥎іძᥱ᥆' }
             }
         ],
-        headerType: 1
+        headerType: 4
     }, { quoted: m });
-};
+}
 
 handler.tag = ['nsfw'];
-handler.help = ['v2'];
-handler.command = ['v2'];
+handler.help = ['videoxxx2'];
+handler.command = ['videoxxx2'];
 
 export default handler;
