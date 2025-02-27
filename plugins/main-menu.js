@@ -84,7 +84,7 @@ ${readMore}
 
 𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🔎ᩚ꤬ᰨᰍ
 ര ׄ 🔎˚ ${usedPrefix}scsearch *texto*
-ര ׄ 🍀˚ ${usedPrefix}aplaysearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}aplaysearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}ttsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}ttsearch2 *texto*
 ര ׄ 🔎˚ ${usedPrefix}ytsearch *texto*
