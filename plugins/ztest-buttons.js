@@ -1,4 +1,4 @@
-/*
+
 //Buttons - Message Im Interactive
 
 let handler = async (m, { conn }) => {
@@ -6,12 +6,12 @@ let handler = async (m, { conn }) => {
 
     conn.sendMessage(m.chat, { 
         image: { url: imageUrl }, 
-        caption: 'TEXTO 🍒', 
-        footer: dev, 
+        caption: 'Hola usuario de WhatsApp esto solo es un test de botones que no tiene nada que ver con lo demás.', 
+        footer: '© Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ', 
         buttons: [
             {
-                buttonId: `.owner`,
-                buttonText: { displayText: 'owner' }
+                buttonId: `.ping`,
+                buttonText: { displayText: 'ᯓᡣ𐭩 ⍴іᥒg' }
             }
         ],
         viewOnce: true,
@@ -19,12 +19,12 @@ let handler = async (m, { conn }) => {
     }, { quoted: m });
 }
 
-handler.tag = ['info'];
+handler.tag = ['test'];
 handler.help = ['p'];
-handler.command = ['p'];
+handler.command = ['buttontest'];
 
 export default handler;
-
+/*
 // Buttons Ix
 
 let handler = async (m, { conn }) => {
