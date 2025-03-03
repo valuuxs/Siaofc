@@ -12,7 +12,7 @@ https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
 ❀ HasumiBot FreeCodes 
 https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 */
-
+/*
 // *𓍯𓂃𓏧♡  FREE FIRE STALK*
 import axios from 'axios'
 
@@ -74,4 +74,4 @@ console.error(error)
 
 HS.command = ['freefirestalk', 'ffstalk']
 
-export default HS
+export default HS*/
