@@ -55,6 +55,6 @@ let handler = async (m, { conn, text }) => {
     }
 };
 
-handler.command = ['freefirestalkx', 'ffstalkx', 'ffx'];
+handler.command = ['freefirestalk', 'ffstalk', 'ffs'];
 handler.register = true;
 export default handler;
