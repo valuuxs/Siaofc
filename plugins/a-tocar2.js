@@ -12,12 +12,12 @@ https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
 ❀ HasumiBot FreeCodes 
 https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 */
-/*
+
 // *𓍯𓂃𓏧♡  FREE FIRE STALK*
 import axios from 'axios'
 
 let HS = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa el ID de un usuario de Free Fire que quieras stalkear`, m)
+if (!text) return conn.reply(m.chat, `🌿 Ingresa el ID de un usuario de Free Fire que quieras stalkear`, m)
 
 try {
 let api = await axios.get(`https://vapis.my.id/api/ff-stalk?id=${text}`)
@@ -74,8 +74,8 @@ console.error(error)
 
 HS.command = ['freefirestalk', 'ffstalk']
 
-export default HS*/
-
+export default HS
+/*
 import axios from 'axios';
 
 let HS = async (m, { conn, text }) => {
@@ -139,4 +139,4 @@ let HS = async (m, { conn, text }) => {
 };
 
 HS.command = ['freefirestalk', 'ffstalk'];
-export default HS;
+export default HS;*/
