@@ -38,16 +38,7 @@ let handler = async (m, { conn, text }) => {
 *[ INFO - CLAN ]*
   - *Nombre del clan:* ${guildName}
   - *Nivel del clan:* ${guildLevel}
-  - *Miembros:* ${member} / ${capacity} miembros
-\n*[ INFO - LÍDER DEL CLAN ]*
-  - *Nombre:* ${ketua_guild.name}
-  - *Nivel:* ${ketua_guild.level}
-  - *XP:* ${ketua_guild.xp}
-  - *Puntos BR:* ${ketua_guild.BR_points}
-  - *Puntos CS:* ${ketua_guild.CS_points}
-  - *Like:* ${ketua_guild.like}
-  - *Fecha de Creación:* ${ketua_guild.create_time}
-  - *Último Inicio de Sesión:* ${ketua_guild.last_login}`;
+  - *Miembros:* ${member} / ${capacity} miembros`;
         }
 
         await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
