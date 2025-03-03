@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, '*[ 🌿 ] Ingresa el ID de un usuario de Free Fire que quieras stalkear.*\n\n> El comando está en desarrollo, puede haber errores.', m);
+    if (!text) return conn.reply(m.chat, '*[ 🫡 ] Ingresa el ID de un usuario de Free Fire que quieras stalkear.*\n\n> El comando está en desarrollo, puede haber errores.', m);
 
     try {  
         let api = await axios.get(`https://vapis.my.id/api/ff-stalk?id=${text}`);  
