@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, '*[ 🫡 ] Ingresa el ID de un usuario de Free Fire que quieras stalkear.*\n\n> El comando está en desarrollo, puede haber errores.', m);
+    if (!text) return conn.reply(m.chat, '*[ 🌒 ] Ingresa el ID de un usuario de Free Fire que quieras stalkear.*\n\n> El comando está en desarrollo, puede haber errores.', m);
 
     try {  
         let api = await axios.get(`https://vapis.my.id/api/ff-stalk?id=${text}`);  
@@ -11,8 +11,20 @@ let handler = async (m, { conn, text }) => {
         let { account, pet_info = {}, guild = {}, equippedItems = {} } = json.data;  
         let { name, level, xp, region, like, bio, create_time, last_login, honor_score, booyah_pass, BR_points, CS_points } = account;  
 
-        let { name: petName = "Sin mascota", level: petLevel = 0, xp: petXP = 0 } = pet_info;  
-        let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
+        let { name: petName = "Sin mascota", level: petLevel = 0, xp: petXP = 0 } = pet_info;
+
+
+let guildName = "Sin clan", guildLevel = 0, member = 0, capacity = 0;
+
+if (guild && typeof guild === "object") {
+    guildName = guild.name || "Sin clan";
+    guildLevel = guild.level || 0;
+    member = guild.member || 0;
+    capacity = guild.capacity || 0;
+}
+
+
+        //let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
         let equipped_title = equippedItems?.Title?.[0]?.name || "Ninguno";
 
 let mascotaInfo = "";
