@@ -12,7 +12,7 @@ https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
 ❀ HasumiBot FreeCodes 
 https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 */
-
+/*
 // *𓍯𓂃𓏧♡  FREE FIRE STALK*
 import axios from 'axios'
 
@@ -75,16 +75,17 @@ console.error(error)
 HS.command = ['freefirestalk', 'ffstalk']
 
 export default HS
-/*
+*/
+
 import axios from 'axios';
 
-let HS = async (m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, `❀ Ingresa el ID de un usuario de Free Fire que quieras stalkear`, m);
+let handler = async (m, { conn, text }) => {
+    if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Ingresa el ID de un usuario de Free Fire que quieras stalkear*`, m);
 
     try {
         let api = await axios.get(`https://vapis.my.id/api/ff-stalk?id=${text}`);
         let json = api.data;
-        if (!json.status) return conn.reply(m.chat, "No se encontraron resultados", m);
+        if (!json.status) return conn.reply(m.chat, "*[ ❌ ] No se encontraron resultados*", m);
 
         let { account, pet_info = {}, guild = {}, ketua_guild = {}, equippedItems = {} } = json.data;
         let { id, name, level, xp, region, like, bio, create_time, last_login, honor_score, booyah_pass, BR_points, CS_points } = account;
@@ -138,5 +139,6 @@ let HS = async (m, { conn, text }) => {
     }
 };
 
-HS.command = ['freefirestalk', 'ffstalk'];
-export default HS;*/
+handler.command = ['freefirestalk', 'ffstalk'];
+handler.register = true
+export default handler;
