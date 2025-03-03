@@ -18,68 +18,33 @@ try {
     let HS = `*[ INFO - USUARIO ]*
 
 Usuario: ${name}
-
 Nivel: ${level}
-
 XP: ${xp}
-
 Región: ${region}
-
 Like: ${like}
-
 Bio: ${bio || "No disponible"}
-
 Fecha de Creación: ${create_time}
-
 Último Inicio de Sesión: ${last_login}
-
 Honor Score: ${honor_score}
-
 Booyah Pass: ${booyah_pass ? "Sí" : "No"}
-
 Puntos BR: ${BR_points}
-
 Puntos CS: ${CS_points}
-
 Título Equipado: ${equipped_title}
 
 
 [ INFO - MASCOTA ]
 
 Nombre: ${petName}
-
 Nivel: ${petLevel}
-
 XP: ${petXP}
 
 
 [ INFO - CLAN ]
 
 Nombre del clan: ${guildName}
-
 Nivel del clan: ${guildLevel}
-
 Miembros: ${member} / ${capacity} miembros
 `;
-
-if (ketua_guild.name) {  
-    HS += `\n*[ INFO - LÍDER DEL CLAN ]*
-
-Nombre: ${ketua_guild.name}
-
-Nivel: ${ketua_guild.level}
-
-XP: ${ketua_guild.xp}
-
-Puntos BR: ${ketua_guild.BR_points}
-
-Puntos CS: ${ketua_guild.CS_points}
-
-Like: ${ketua_guild.like}
-
-Fecha de Creación: ${ketua_guild.create_time}
-
-Último Inicio de Sesión: ${ketua_guild.last_login}`;
 }
 
 await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
