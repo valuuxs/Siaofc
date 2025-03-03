@@ -39,10 +39,6 @@ let handler = async (m, { conn, text }) => {
   - *Nombre del clan:* ${guildName}
   - *Nivel del clan:* ${guildLevel}
   - *Miembros:* ${member} / ${capacity} miembros
-/*`;
-
-        if (ketua_guild.name) {
-            HS += `*/
 \n*[ INFO - LÍDER DEL CLAN ]*
   - *Nombre:* ${ketua_guild.name}
   - *Nivel:* ${ketua_guild.level}
