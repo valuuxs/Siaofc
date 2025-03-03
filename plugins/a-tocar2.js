@@ -45,7 +45,6 @@ Nivel del clan: ${guildLevel}
 Miembros: ${member} / ${capacity} miembros
 `;
 
-await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
         await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
 
     } catch (error) {
