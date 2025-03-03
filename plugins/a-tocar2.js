@@ -13,18 +13,7 @@ let handler = async (m, { conn, text }) => {
 
         let { name: petName = "Sin mascota", level: petLevel = 0, xp: petXP = 0 } = pet_info;
 
-
-let guildName = "Sin clan", guildLevel = 0, member = 0, capacity = 0;
-
-if (guild && typeof guild === "object") {
-    guildName = guild.name || "Sin clan";
-    guildLevel = guild.level || 0;
-    member = guild.member || 0;
-    capacity = guild.capacity || 0;
-}
-
-
-        //let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
+        let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
         let equipped_title = equippedItems?.Title?.[0]?.name || "Ninguno";
 
 let mascotaInfo = "";
