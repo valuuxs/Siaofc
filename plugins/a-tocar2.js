@@ -16,22 +16,6 @@ let handler = async (m, { conn, text }) => {
         let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
         let equipped_title = equippedItems?.Title?.[0]?.name || "Ninguno";
 
-let mascotaInfo = "";
-if (petName !== "Sin mascota") {
-    mascotaInfo = `*[ INFO - MASCOTA ]*
-- *Nombre:* ${petName}
-- *Nivel:* ${petLevel}
-- *XP:* ${petXP}`;
-}
-
-let clanInfo = "";
-if (guildName !== "Sin clan") {
-    clanInfo = `*[ INFO - CLAN ]*
-- *Nombre del clan:* ${guildName}
-- *Nivel del clan:* ${guildLevel}
-- *Miembros:* ${member} / ${capacity} miembros`;
-}
-
 let HS = `*[ INFO - USUARIO ]*
 - *Usuario:* ${name}
 - *Nivel:* ${level}
@@ -47,9 +31,19 @@ let HS = `*[ INFO - USUARIO ]*
 - *Puntos CS:* ${CS_points}
 - *Título Equipado:* ${equipped_title}
 
-${mascotaInfo}
+[ INFO - MASCOTA ]
 
-${clanInfo}`.trim(); // Elimina espacios en blanco extra si no hay mascota o clan
+Nombre: ${petName}
+Nivel: ${petLevel}
+XP: ${petXP}
+
+
+[ INFO - CLAN ]
+
+Nombre del clan: ${guildName}
+Nivel del clan: ${guildLevel}
+Miembros: ${member} / ${capacity} miembros
+`;
 
 await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
         await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
