@@ -68,7 +68,7 @@ import axios from 'axios';
 
 let handler = async (m, { conn, text }) => {
     if (!text) {
-        return conn.reply(m.chat, "*[ ℹ️ ] Ingresa el ID de un usuario de Free Fire que quieras stalkear*", m);
+        return conn.reply(m.chat, "*[ 🪙 ] Ingresa el ID de un usuario de Free Fire que quieras stalkear*", m);
     }
 
     try {
