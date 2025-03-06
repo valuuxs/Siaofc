@@ -20,7 +20,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
             return m.reply('❌ No se pudieron obtener los datos. Asegúrate de que la URL ingresada sea correcta.');
         }
 
-        const cpt = `*✔️🍟 Descargador de CapCut*\n\n> *• Título:* ${result.title}\n> *• Fecha:* ${result.date}\n> *• Usuario:* ${result.pengguna}\n> *• Me gusta:* ${result.likes}\n> *• Autor:* ${result.author.name}`;
+        const cpt = `*\`CAPCUT - DESCARGAS\`*\n\n> *• Título:* ${result.title}\n> *• Fecha:* ${result.date}\n> *• Usuario:* ${result.pengguna}\n> *• Me gusta:* ${result.likes}\n> *• Autor:* ${result.author.name}`;
         await conn.sendFile(m.chat, result.videoUrl, '', cpt, m, {
             thumbnail: await fetch(result.posterUrl).then(res => res.buffer())
         });
@@ -29,7 +29,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
     } catch (error) {
         console.error(error);
         await m.react('❌');
-        m.reply('Ocurrió un error al obtener los datos.');
+        m.reply('*Ocurrió un error al obtener los datos.*');
     }
 };
 
