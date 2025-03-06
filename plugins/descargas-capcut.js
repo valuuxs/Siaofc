@@ -8,7 +8,7 @@ import cheerio from "cheerio";
 const handler = async (m, { conn, usedPrefix, command, text }) => {
     if (!text) {
         await m.react('✖️');
-        return m.reply(`*• Ejemplo :* ${usedPrefix + command} *url*`);
+        return m.reply(`*[  ℹ️ ] Coloca un link de Cap Cut.*\n\n*[ 💡 ] Ejemplo :* ${usedPrefix + command} *url*`);
     }
 
     try {
