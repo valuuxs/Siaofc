@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 import yts from 'yt-search';
-import axios from 'axios';
+import axios from "axios";
 
 const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
 const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
@@ -21,10 +21,18 @@ const ddownr = {
 
     try {
       const response = await axios.request(config);
+
       if (response.data && response.data.success) {
-        const { id } = response.data;
+        const { id, title, info } = response.data;
+        const { image } = info;
         const downloadUrl = await ddownr.cekProgress(id);
-        return downloadUrl;
+
+        return {
+          id: id,
+          image: image,
+          title: title,
+          downloadUrl: downloadUrl
+        };
       } else {
         throw new Error('Fallo al obtener los detalles del video.');
       }
@@ -45,10 +53,11 @@ const ddownr = {
     try {
       while (true) {
         const response = await axios.request(config);
+
         if (response.data && response.data.success && response.data.progress === 1000) {
           return response.data.download_url;
         }
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
       }
     } catch (error) {
       console.error('Error:', error);
@@ -60,7 +69,7 @@ const ddownr = {
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `${emoji} ingresa el nombre de la música a descargar.`, m);
+      return conn.reply(m.chat, `❀ Por favor, ingresa el nombre de la música a descargar.`, m);
     }
 
     const search = await yts(text);
@@ -71,13 +80,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `♡ Título: *${title}*\n> ♡ Duración: *${timestamp}*\n> ♡ Vistas: *${vistas}*\n> ♡ Canal: *${videoInfo.author.name || 'Desconocido'}*\n> ♡ Publicado: *${ago}*\n> ♡ Enlace: ${url}\n> Powered By Crow's Club`;
+    const infoMessage = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n`;
     const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
       contextInfo: {
         externalAdReply: {
-          title: packname,
+          title: botname,
           body: dev,
           mediaType: 1,
           previewType: 0,
@@ -91,57 +100,39 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'playdoc' || command === 'ytmp3doc') {
-      const downloadUrl = await ddownr.download(url, 'mp3');
-      await conn.sendMessage(m.chat, {
-        document: { url: downloadUrl },
-        fileName: `${title}.mp3`,
-        mimetype: "audio/mpeg"
-      }, { quoted: m });
+    if (command === 'play' || command === 'yta' || command === 'ytmp3') {
+      const api = await (await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=audio&quality=128kbps&apikey=GataDios`)).json()
+      const result = api.data.url
+      await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
 
-     } else if (command === 'playmp4' || command === 'penemp4' || command === 'ytmp4') {
-       let sources = [
-        `https://api.alyachan.dev/api/ytv?url=${url}&apikey=Gata-Dios`,
-        `https://api.vreden.my.id/api/ytmp4?url=${url}`,
-        `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`
-      ];
+    } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4') {
 
-      let success = false;
-      for (let source of sources) {
-        try {
-          const res = await fetch(source);
-          const { data, result, downloads } = await res.json();
-          let downloadUrl = data?.dl || result?.download?.url || downloads?.url || data?.download?.url;
+      const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`)
+      const json = await response.json()
 
-          if (downloadUrl) {
-            success = true;
-            await conn.sendMessage(m.chat, {
-              video: { url: downloadUrl },
-              fileName: `${title}.mp4`,
-              mimetype: 'video/mp4',
-              caption: ``,
-              thumbnail: thumb
-            }, { quoted: m });
-            break;
-          }
-        } catch (e) {
-          console.error(`Error con la fuente ${source}:`, e.message);
-        }
+      try {
+        await conn.sendMessage(m.chat, {
+          video: { url: json.data.url },
+          fileName: json.data.filename,
+          mimetype: 'video/mp4',
+          caption: '',
+          thumbnail: json.thumbnail
+        }, { quoted: m });
+      } catch (e) {
+        console.error(`Error con la fuente de descarga:`, e.message);
       }
 
-      if (!success) {
-        return m.reply(`✨ *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
-      }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-    return m.reply(`🍭 Ocurrió un error: ${error.message}`);
+    return m.reply(`⚠︎ Ocurrió un error: ${error.message}`);
   }
 };
 
-handler.command = handler.help = ['pdoc', 'pdoc2', 'ytmp4doc', 'ytmp3doc'];
-handler.tags = ['descargas'];
+handler.command = handler.help = ['play', 'play2', 'ytmp3', 'yta', 'ytmp4', 'ytv'];
+handler.tags = ['downloader'];
+handler.group = true;
 
 export default handler;
 
