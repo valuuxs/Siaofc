@@ -72,7 +72,7 @@ const handler = async (m, { participants, args }) => {
 
 handler.help = ['todos *<mensaje opcional>*'];
 handler.tags = ['grupo'];
-handler.command = /^(tagall|invocar|marcar|todos|invocación)$/i;
+handler.command = /^(tagall2|invocar2|marcar2|todos2|invocación2)$/i;
 handler.admin = true;
 handler.group = true;
 
