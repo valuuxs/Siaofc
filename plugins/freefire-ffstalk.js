@@ -19,38 +19,38 @@ let handler = async (m, { conn, text }) => {
         let { name: guildName = "Sin clan", level: guildLevel = 0, member = 0, capacity = 0 } = guild;  
         let equipped_title = equippedItems?.Title?.[0]?.name || "Ninguno";
 
-        let HS = `*[ 🔍 INFO - USUARIO ]*
+        let HS = `*\`INFO - USUARIO 🔎\`*
 - *Usuario:* ${name}
 - *Nivel:* ${level}
 - *XP:* ${xp}
 - *Región:* ${region}
-- *Like:* ${like}
+- *Likes:* ${like}
 - *Bio:* ${bio || "No disponible"}
 - *Fecha de Creación:* ${create_time}
 - *Último Inicio de Sesión:* ${last_login}
-- *Honor Score:* ${honor_score}
-- *Booyah Pass:* ${booyah_pass ? "Sí" : "No"}
+- *Honor:* ${honor_score}
+- *Pase Booyah:* ${booyah_pass ? "Sí" : "No"}
 - *Puntos BR:* ${BR_points}
 - *Puntos CS:* ${CS_points}
 - *Título Equipado:* ${equipped_title}
 
-*[ 🐾 INFO - MASCOTA ]*
+*\`INFO - MASCOTA 🐾\`*
 - *Nombre:* ${petName}
 - *Nivel:* ${petLevel}
 - *XP:* ${petXP}
 
-*[ 🏆 INFO - CLAN ]*
+*\`INFO - CLAN 👑\`*
 - *Nombre del clan:* ${guildName}
 - *Nivel del clan:* ${guildLevel}
 - *Miembros:* ${member} / ${capacity} miembros
 `;
 
         await conn.sendMessage(m.chat, { text: HS }, { quoted: m });
-        await m.react('✅'); // Indica que el proceso terminó con éxito
+        await m.react('✅');
 
     } catch (error) {
         console.error("Error en la API:", error.response?.data || error);
-        await m.react('❌'); // Indica error
+        await m.react('❌');
         conn.reply(m.chat, "*[ ⚠️ ] Hubo un error al obtener los datos. Intenta de nuevo más tarde.*", m);
     }
 };
