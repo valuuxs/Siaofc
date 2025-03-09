@@ -14,7 +14,7 @@ conn.sendMessage(m.chat, {
         footer: dev, 
         buttons: [
             {
-                buttonId: `.vxxx`,
+                buttonId: `.vxxx4`,
                 buttonText: { displayText: 'Siguiente Vídeo' }
             }
         ],
@@ -25,7 +25,7 @@ conn.sendMessage(m.chat, {
 
 handler.tag = ['emox'];
 handler.help = ['videoxxx'];
-handler.command = ['videoxxx', 'vxxx'];
+handler.command = ['videoxxx4', 'vxxx4'];
 
 export default handler;
 
