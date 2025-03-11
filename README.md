@@ -2,7 +2,7 @@
  <p align="center">Node-Js.</p>
 </p>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=de &background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=560&height=90&lines=Criss.Vx+lanzó+la+mejor+versión+3.0.0;De+Shadow+Ultra+MD;Con+nuevos+comandos+y+mejoras;Shadow+El+Mejor+Bot+De+WhatsApp" alt="Typing SVG"/></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=#4B0082&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=560&height=90&lines=Criss.Vx+lanzó+la+mejor+versión+3.0.0;De+Shadow+Ultra+MD;Con+nuevos+comandos+y+mejoras;Shadow+El+Mejor+Bot+De+WhatsApp" alt="Typing SVG"/></a>
 
 ![img](https://files.catbox.moe/e4qg5o.jpg)
 
