@@ -2,7 +2,7 @@
 "name": "ShadowBot-MD",
 "version": "3.0.0",
 "description": "Simple WhatsApp Bot Multi Device",
-"main": "heavenly.js",
+"main": "main.js",
 "type": "module",
 "directories": {
 "lib": "lib",
@@ -11,10 +11,10 @@
 },
 "scripts": {
 "start": "node heavenly.js",
-"qr": "node heavenly.js qr",
-"code": "node heavenly.js code",
+"qr": "main.js qr",
+"code": "main.js code",
 "test": "node test.js",
-"test2": "nodemon heavenly.js",
+"test2": "nodemon main.js",
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
