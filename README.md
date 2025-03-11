@@ -2,7 +2,7 @@
  <p align="center">Node-Js.</p>
 </p>
 
-  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FFDAB9&lines=Bienvenido+al+Repositorio+de+Shadow+Bot-MD;Creado+por+Cristian+Escobar)](https://git.io/typing-svg)
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=000000&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=560&height=90&lines=Izumi-kzx+lanzó+la mejor+versión;De+Genesis Ai - 2.0.7;Con+nuevos+comandos+y+mejoras;Genesis+El+Mejor Bot+De+WhatsApp" alt="Typing SVG"/></a>
 ![img](https://files.catbox.moe/e4qg5o.jpg)
 
 [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20grupo-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX) [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y)
