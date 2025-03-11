@@ -32,9 +32,9 @@
 
 | RRSS | Tipo | Idioma | Enlace |
 | --- | --- | --- |--- |
-| WhatsApp | Canal | Español | [¡Únete aquí!](https://whatsapp.com/channel/0029Vafxnat8qIzxOjUrwP41) |
-| WhatsApp | Grupo | Español | [¡Únete aquí!](https://chat.whatsapp.com/Cj8oTiVQOvIISylM5yi5DP) |
-| WhatsApp | Group | Español | [¡Únete aquí!](https://chat.whatsapp.com/K2Nsyu6eVVT7Wpe1ak7anR) |
+| WhatsApp | Canal | Español | [¡Únete aquí!](https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n) |
+| WhatsApp | Team | Español | [¡Únete aquí!](https://whatsapp.com/channel/0029Vafxnat8qIzxOjUrwP41) |
+| WhatsApp | Grupo | Español | [¡Únete aquí!](https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I) |
 
 
 ## Creador
