@@ -14,19 +14,14 @@ const { name, description, author, version } = require(join(__dirname, './packag
 const { say } = cfonts;
 const rl = createInterface(process.stdin, process.stdout);
 say('Shadow\nUltra', {
-font: 'block',
-align: 'center',
-colors: ['magentaBright']
-});
-say(`Multi Device`, {
 font: 'chrome',
 align: 'center',
-colors: ['redBright']
+gradient: ['red', 'magenta']
 });
 say(`Created by Criss Escobar`, {
 font: 'console',
 align: 'center',
-colors: ['blueBright']
+gradient: ['red', 'magenta']
 });
 var isRunning = false;
 function start(file) {
@@ -36,7 +31,7 @@ let args = [join(__dirname, file), ...process.argv.slice(2)];
 say([process.argv[0], ...args].join(' '), {
 font: 'console',
 align: 'center',
-colors: ['candy']
+gradient: ['red', 'magenta']
 });
 setupMaster({
 exec: args[0],
@@ -77,4 +72,46 @@ console.warn('🔴 Se excedió el límite de Listeners en:');
 console.warn(warning.stack);
 }
 });
-start('heavenly.js');
+start('main.js');
+
+if (code === 0) return
+watchFile(args[0], () => {
+unwatchFile(args[0])
+start(file)
+})})
+
+const ramInGB = os.totalmem() / (1024 * 1024 * 1024)
+const freeRamInGB = os.freemem() / (1024 * 1024 * 1024)
+const packageJsonPath = path.join(path.dirname(currentFilePath), './package.json')
+try {
+const packageJsonData = await fsPromises.readFile(packageJsonPath, 'utf-8')
+const packageJsonObj = JSON.parse(packageJsonData)
+const currentTime = new Date().toLocaleString()
+let lineM = '⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ 》'
+console.log(chalk.yellow(`╭${lineM}
+┊${chalk.blueBright('╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
+┊${chalk.blueBright('┊')}${chalk.yellow(`🖥️ ${os.type()}, ${os.release()} - ${os.arch()}`)}
+┊${chalk.blueBright('┊')}${chalk.yellow(`💾 Total RAM: ${ramInGB.toFixed(2)} KB`)}
+┊${chalk.blueBright('┊')}${chalk.yellow(`💽 Free RAM: ${freeRamInGB.toFixed(2)} KB`)}
+┊${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
+┊${chalk.blueBright('╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
+┊${chalk.blueBright('┊')} ${chalk.blue.bold(`🟢INFORMACIÓN :`)}
+┊${chalk.blueBright('┊')} ${chalk.blueBright('┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
+┊${chalk.blueBright('┊')}${chalk.cyan(`🍒 Nombre: ${packageJsonObj.name}`)}
+┊${chalk.blueBright('┊')}${chalk.cyan(`☕ Versión: ${packageJsonObj.version}`)}
+┊${chalk.blueBright('┊')}${chalk.cyan(`📌 Descripción: ${packageJsonObj.description}`)}
+┊${chalk.blueBright('┊')}${chalk.cyan(`👤 Creador: ${packageJsonObj.author.name}`)}
+┊${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
+╰${lineM}`));
+setInterval(() => {}, 1000)
+} catch (err) {
+console.error(chalk.red(`❌ No se pudo leer el archivo package.json: ${err}`))
+}
+
+let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+if (!opts['test'])
+if (!rl.listenerCount()) rl.on('line', line => {
+p.emit('message', line.trim())
+})}
+
+start('main.js')
