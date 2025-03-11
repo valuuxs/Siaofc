@@ -9,7 +9,7 @@ let rvid = global.vidxxx[Math.floor(Math.random() * global.vidxxx.length)];
 //let vid = 'https://dark-core-api.vercel.app/api/random/anime-random-hot?key=dk-vip';
 
 conn.sendMessage(m.chat, { 
-        video: { url: vid }, 
+        video: { url: rvid }, 
         caption: '🍭 ¡Disfruta Del Video!', 
         footer: dev, 
         buttons: [
