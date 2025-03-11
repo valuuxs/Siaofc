@@ -21,7 +21,7 @@ conn.sendMessage(m.chat, {
 
 handler.tag = ['nsfw'];
 handler.help = ['videoxxx2'];
-handler.command = ['videoxxx2, 'vxxx2'];
+handler.command = ['videoxxx2', 'vxxx2'];
 
 export default handler;
 
