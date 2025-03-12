@@ -6,7 +6,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
     const buttons = [
         {
-            buttonId: `${usedPrefix + command}`,
+            buttonId: `.messi`,
             buttonText: { displayText: "⚽ Ver más" },
             type: 1
         }
