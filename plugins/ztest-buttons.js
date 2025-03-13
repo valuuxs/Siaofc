@@ -49,53 +49,65 @@ handler.command = ['p'];
 */
 
 
-
+import yts from 'yt-search';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import { randomBytes } from 'crypto';
 
-const handler = async (m, { conn }) => {
-    try {
-        // Preparar la imagen para el encabezado del mensaje
-        const { imageMessage } = await prepareWAMessageMedia({
-            image: { url: "https://i.pinimg.com/736x/1c/b9/dc/1cb9dce731c1544b0bd018b02567fd1f.jpg" }
-        }, { upload: conn.waUploadToServer });
+// Comando principal para búsqueda y opciones interactivas
+const handler = async (m, { conn, text }) => {
+    if (!text) {
+        return conn.reply(m.chat, `*[🔎] Por favor, ingresa una búsqueda de YouTube.*`, m);
+    }
 
-        // Secciones para las opciones interactivas
+    try {
+        // Respuesta inicial de espera
+        await conn.reply(m.chat, '🔍 Buscando en YouTube...', m);
+
+        // Realizar la búsqueda en YouTube
+        const results = await yts(text);
+        const videos = results.all;
+
+        if (!videos || videos.length === 0) {
+            return conn.reply(m.chat, `❌ No se encontraron resultados para *${text}*`, m);
+        }
+
+        const first = videos[0]; // Primer resultado para mostrar
+        const firstText = `*「🌷」Resultado Principal:*\n\n` +
+            `☕ *Título:* ${first.title}\n` +
+            `📡 *Canal:* ${first.author.name}\n` +
+            `🕝 *Duración:* ${first.timestamp}\n` +
+            `📆 *Subido:* ${first.ago}\n` +
+            `👀 *Vistas:* ${first.views}\n` +
+            `🔗 *Enlace:* ${first.url}`;
+
+        // Enviar el primer resultado con su miniatura
+        await conn.sendFile(m.chat, first.thumbnail, 'yts.jpeg', firstText, m);
+
+        // Generar secciones dinámicas con las URLs de los resultados
         const sections = [
             {
-                title: "Opciones de Descarga",
-                rows: [
-                    {
-                        title: 'Descargar en Audio',
-                        description: "Descarga el audio del video",
-                        id: ".ytmp3 https://youtube.com/xxxx"
-                    },
-                    {
-                        title: 'Descargar en Video',
-                        description: "Descarga el video en formato MP4",
-                        id: ".ytmp4 https://youtube.com/xxxx"
-                    },
-                ],
+                title: "Descargar en Audio",
+                rows: videos.map(video => ({
+                    title: video.title,
+                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                    id: `.ytmp3 ${video.url}`
+                }))
             },
+            {
+                title: "Descargar en Video",
+                rows: videos.map(video => ({
+                    title: video.title,
+                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                    id: `.ytmp4 ${video.url}`
+                }))
+            }
         ];
 
         // Contenido del mensaje interactivo
         const messageContent = {
             interactiveMessage: {
-                body: { text: 'Selecciona una opción para descargar:' },
+                body: { text: '🎵 Selecciona una opción para descargar:' },
                 footer: { text: 'Shadow Bot' },
-                header: {
-                    title: 'Descargas de YouTube',
-                    subtitle: 'Selecciona el formato que deseas',
-                    hasMediaAttachment: true,
-                    documentMessage: {
-                        ...imageMessage,
-                        pageCount: 1,
-                        fileLength: 99999999999,
-                        fileName: 'descarga',
-                        jpegThumbnail: imageMessage.jpegThumbnail
-                    },
-                },
                 nativeFlowMessage: {
                     buttons: [
                         {
@@ -121,10 +133,11 @@ const handler = async (m, { conn }) => {
 
     } catch (error) {
         console.error("Error al enviar el mensaje interactivo:", error);
+        conn.reply(m.chat, '❌ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.', m);
     }
 };
 
-// Manejador para capturar respuestas de botones
+// Manejador para procesar respuestas de botones
 const handleButtonResponse = async (m, conn) => {
     try {
         if (m.message?.interactiveResponseMessage) {
@@ -132,7 +145,7 @@ const handleButtonResponse = async (m, conn) => {
 
             if (selectedId.startsWith('.ytmp3') || selectedId.startsWith('.ytmp4')) {
                 // Confirmación de selección
-                await conn.reply(m.chat, `Procesando tu solicitud: ${selectedId}`, m);
+                await conn.reply(m.chat, `🎶 Procesando tu solicitud: ${selectedId}`, m);
 
                 // Simular que el usuario escribió el comando para que el bot lo procese
                 m.text = selectedId;
@@ -144,7 +157,7 @@ const handleButtonResponse = async (m, conn) => {
                     usedPrefix: '.'
                 });
             } else {
-                await conn.reply(m.chat, 'Opción no reconocida.', m);
+                await conn.reply(m.chat, '❌ Opción no reconocida.', m);
             }
         }
     } catch (error) {
@@ -161,7 +174,6 @@ const setupButtonHandler = (conn) => {
     });
 };
 
-handler.command = ["tes"];
-
+handler.command = ["ytxx"];
 export { handler, setupButtonHandler };
 export default handler;
