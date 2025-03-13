@@ -59,6 +59,8 @@ const handler = async (m, {
         await conn.sendMessage(m.chat, {
             sticker: {
                 url: outputFilePath
+                packName: global.packname
+                authorName: global.authorname
             },
         }, {
             quoted: fkontak
