@@ -183,7 +183,7 @@ const handler = async (m, { conn, args, command }) => {
   if (args.length < 1) return m.reply(`🧇 *Ingresa una URL de un video o audio de YouTube*`);
 
   let url = args[0];
-  let format = command === 'ytmp3x' ? 'mp3' : args[1] || '720';
+  let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
 
   if (!savetube.isUrl(url)) return m.reply("Por favor, ingresa un link válido de YouTube.");
 
@@ -216,7 +216,7 @@ const handler = async (m, { conn, args, command }) => {
 };
 
 handler.help = ['ytmp4 *<url>*', 'ytmp3 *<url>*'];
-handler.command = ['ytmp4x', 'ytmp3x'];
+handler.command = ['ytmp4', 'ytmp3'];
 handler.tags = ['dl']
 
 export default handler;
