@@ -32,7 +32,7 @@ const handler = async (m, {
 }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: '*[ 🍦 ] Agrega un texto.*',
+            text: '*[ ℹ️ ] Agrega un texto.*',
         }, {
             quoted: m
         });
@@ -58,10 +58,8 @@ const handler = async (m, {
 
         await conn.sendMessage(m.chat, {
             sticker: {
-                url: outputFilePath,
-                packname: global.packname,
-                author: global.author
-            }
+                url: outputFilePath
+            },
         }, {
             quoted: fkontak
         });
