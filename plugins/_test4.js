@@ -1,7 +1,7 @@
 const { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } = (await import('@whiskeysockets/baileys')).default;
 import yts from 'yt-search';
 
-const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
+const handler = async (m, { conn, text, usedPrefix, command }) => {
     const device = await getDevice(m.key.id);
     
     if (!text) throw "⚠️ *Por favor, ingrese el texto para buscar en YouTube.*";
