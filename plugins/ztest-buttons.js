@@ -78,7 +78,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
                 rows: tes.slice(1).map(video => ({
                     title: video.title,
                     description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.yta ${video.url}`
+                    id: `.ytmp3 ${video.url}`
                 }))
             },
             {
@@ -86,7 +86,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
                 rows: tes.slice(1).map(video => ({
                     title: video.title,
                     description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytv ${video.url}`
+                    id: `.ytmp4 ${video.url}`
                 }))
             }
         ];
