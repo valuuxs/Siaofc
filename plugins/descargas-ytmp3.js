@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+/*import fetch from "node-fetch";
 import yts from "yt-search";
 
 let handler = async (m, { conn, text }) => {
@@ -63,4 +63,4 @@ let handler = async (m, { conn, text }) => {
 handler.command = /^(ytmp3)$/i;
 handler.register = true
 
-export default handler;
+export default handler;*/
