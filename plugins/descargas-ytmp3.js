@@ -78,7 +78,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
   if (!args || !args[0]) {
     return star.reply(
       m.chat,
-      `✦ *¡Ingresa el texto o enlace del vídeo de YouTube!*\n\n» *Ejemplo:*\n> *${usedPrefix + command}* Canción de ejemplo`,
+      `*[ ℹ️ ] Ingresa el texto o enlace del vídeo de YouTube.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command}* El baño - Enrique Iglesias.`,
       m
     );
   }
@@ -99,7 +99,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
       let ytres = await yts(query);
       video = ytres.videos[0];
       if (!video) {
-        return star.reply(m.chat, '✦ *Video no encontrado.*', m).then(() => m.react('✖️'));
+        return star.reply(m.chat, '*[ ⚠️ ] Video no encontrado.*', m).then(() => m.react('✖️'));
       }
     }
 
@@ -109,7 +109,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
     let videoInfo = yt.video['360p']; 
 
     if (!videoInfo) {
-      return star.reply(m.chat, '✦ *No se encontró una calidad compatible para el video.*', m).then(() => m.react('✖️'));
+      return star.reply(m.chat, '*[ ⚠️ ] No se encontró una calidad compatible para el video.*', m).then(() => m.react('✖️'));
     }
 
     let { fileSizeH: sizeHumanReadable, fileSize } = videoInfo;
@@ -126,12 +126,12 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
     let durationInMinutes = parseFloat(timestamp.split(':')[0]) * 60 + parseFloat(timestamp.split(':')[1]);
 
 
-    let txt = `✦ *Título:* » ${title}\n`;
-    txt += `✦ *Duración:* » ${timestamp}\n`;
-    txt += `✦ *Visitas:* » ${views}\n`;
-    txt += `✦ *Subido:* » ${ago}\n`;
-    txt += `✦ *Tamaño:* » ${sizeHumanReadable}\n\n`;
-    //txt += `> *- ↻ El video se está enviando, espera un momento...*`;
+    let txt = `*${title}*\n`;
+    txt += `*⌛ Duración:* ${timestamp}\n`;
+    txt += `*👀 Visitas:* ${views}\n`;
+    txt += `*📆 Subido:* ${ago}\n`;
+    txt += `*⚖️ Tamaño:* ${sizeHumanReadable}\n\n`;
+    txt += `> ↻ El video se está enviando, aguarde un momento...*`;
 
 
     await star.sendFile(m.chat, thumbnail, 'thumbnail.jpg', txt, m);
@@ -142,7 +142,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
     let { data } = json;
 
     if (!data || !data.dl) {
-      return star.reply(m.chat, '✦ *Error al obtener el enlace de descarga desde la API.*', m).then(() => m.react('✖️'));
+      return star.reply(m.chat, '*[ ⚠️ ] Error al obtener el enlace de descarga desde la API.*', m).then(() => m.react('✖️'));
     }
 
     let { dl: downloadUrl } = data;
@@ -155,7 +155,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
         { document: { url: downloadUrl }, mimetype: 'video/mp4', fileName: `${title}.mp4` },
         { quoted: m }
       );
-      await m.react('📄'); // Reacción de documento
+      //await m.react('☑️');
     } else {
       // Enviar como video normal si es menor o igual al límite y dura menos de 30 minutos
       await star.sendMessage(
@@ -172,7 +172,6 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
   }
 };
 
-
-handler.command = ['play4', 'playvidoc']; // Comandos disponibles
+handler.command = ['play4', 'ytmp4doc'];
 
 export default handler;
