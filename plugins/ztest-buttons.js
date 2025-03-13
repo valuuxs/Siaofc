@@ -49,8 +49,9 @@ handler.command = ['p'];
 */
 
 
+const { prepareWAMessageMedia, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
+import("crypto");
 import yts from 'yt-search';
-const { generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
 
 var handler = async (m, { text, conn }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
