@@ -35,7 +35,7 @@ await conn.sendMessage(m.chat, {
 
 handler.command = ['ytmp4']
 
-export default handler;*/
+export default handler;
 
 
 import fetch from 'node-fetch';
@@ -107,4 +107,4 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.tags = ['descargas'];
 handler.command = /^(ytmp4)$/i;
 handler.register = true;
-export default handler;
+export default handler;*/
