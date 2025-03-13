@@ -49,52 +49,53 @@ handler.command = ['p'];
 */
 
 
-import yts from 'yt-search';
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'; // Importación necesaria
 
-var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
+import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { randomBytes } from 'crypto';
 
+const handler = async (m, { conn }) => {
     try {
-        conn.reply(m.chat, wait, fkontak, m);
+        // Preparar la imagen para el encabezado del mensaje
+        const { imageMessage } = await prepareWAMessageMedia({
+            image: { url: "https://i.pinimg.com/736x/1c/b9/dc/1cb9dce731c1544b0bd018b02567fd1f.jpg" }
+        }, { upload: conn.waUploadToServer });
 
-        let results = await yts(text);
-        let tes = results.all;
-
-        if (!tes || tes.length === 0) {
-            return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
-        }
-
-        // Enviar el primer resultado
-        const first = tes[0];
-        const firstText = `*「🌷」Resultado Principal:*\n\n☕ *Título:* ${first.title}\n📡 *Canal:* ${first.author.name}\n🕝 *Duración:* ${first.timestamp}\n📆 *Subido:* ${first.ago}\n👀 *Vistas:* ${first.views}\n🔗 *Enlace:* ${first.url}`;
-        
-        await conn.sendFile(m.chat, first.thumbnail, 'yts.jpeg', firstText, m);
-
-        // Crear lista interactiva para los demás resultados
+        // Secciones para las opciones interactivas
         const sections = [
             {
-                title: "Descargar en Audio",
-                rows: tes.slice(1).map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytmp3 ${video.url}`
-                }))
+                title: "Opciones de Descarga",
+                rows: [
+                    {
+                        title: 'Descargar en Audio',
+                        description: "Descarga el audio del video",
+                        id: ".ytmp3 https://youtube.com/xxxx"
+                    },
+                    {
+                        title: 'Descargar en Video',
+                        description: "Descarga el video en formato MP4",
+                        id: ".ytmp4 https://youtube.com/xxxx"
+                    },
+                ],
             },
-            {
-                title: "Descargar en Video",
-                rows: tes.slice(1).map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytmp4 ${video.url}`
-                }))
-            }
         ];
 
-        const listMessage = {
+        // Contenido del mensaje interactivo
+        const messageContent = {
             interactiveMessage: {
                 body: { text: 'Selecciona una opción para descargar:' },
                 footer: { text: 'Shadow Bot' },
+                header: {
+                    title: 'Descargas de YouTube',
+                    subtitle: 'Selecciona el formato que deseas',
+                    hasMediaAttachment: true,
+                    documentMessage: {
+                        ...imageMessage,
+                        pageCount: 1,
+                        fileLength: 99999999999,
+                        fileName: 'descarga',
+                        jpegThumbnail: imageMessage.jpegThumbnail
+                    },
+                },
                 nativeFlowMessage: {
                     buttons: [
                         {
@@ -108,22 +109,59 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
                     messageParamsJson: "{}",
                     messageVersion: 1
                 }
+            },
+            messageContextInfo: {
+                messageSecret: randomBytes(32)
             }
         };
 
         // Enviar el mensaje interactivo
-        const message = generateWAMessageFromContent(m.chat, listMessage, { userJid: conn.user.id });
+        const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: conn.user.id });
         await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
     } catch (error) {
-        console.error(error);
-        conn.reply(m.chat, 'Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.', m);
+        console.error("Error al enviar el mensaje interactivo:", error);
     }
-}
+};
 
-handler.help = ['ytsearch']
-handler.tags = ['buscador']
-handler.command = ['ytx']
-handler.register = true
+// Manejador para capturar respuestas de botones
+const handleButtonResponse = async (m, conn) => {
+    try {
+        if (m.message?.interactiveResponseMessage) {
+            const selectedId = m.message.interactiveResponseMessage.singleSelectReply.selectedRowId;
 
+            if (selectedId.startsWith('.ytmp3') || selectedId.startsWith('.ytmp4')) {
+                // Confirmación de selección
+                await conn.reply(m.chat, `Procesando tu solicitud: ${selectedId}`, m);
+
+                // Simular que el usuario escribió el comando para que el bot lo procese
+                m.text = selectedId;
+                await conn.executeCommand(m, {
+                    conn,
+                    text: selectedId.split(' ')[1],
+                    args: [selectedId.split(' ')[1]],
+                    command: selectedId.split(' ')[0],
+                    usedPrefix: '.'
+                });
+            } else {
+                await conn.reply(m.chat, 'Opción no reconocida.', m);
+            }
+        }
+    } catch (error) {
+        console.error('Error al procesar la respuesta del botón:', error);
+    }
+};
+
+// Escuchar interacciones de botones
+const setupButtonHandler = (conn) => {
+    conn.ev.on('messages.upsert', async (chatUpdate) => {
+        const m = chatUpdate.messages[0];
+        if (!m || !m.message || m.key.fromMe) return;
+        await handleButtonResponse(m, conn);
+    });
+};
+
+handler.command = ["tes"];
+
+export { handler, setupButtonHandler };
 export default handler;
