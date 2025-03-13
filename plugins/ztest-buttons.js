@@ -48,10 +48,9 @@ handler.help = ['p'];
 handler.command = ['p'];
 */
 
-
-const { prepareWAMessageMedia, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
-import("crypto");
 import yts from 'yt-search';
+const { prepareWAMessageMedia, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
+const { randomBytes } = await import('crypto');
 
 var handler = async (m, { text, conn }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
@@ -68,74 +67,48 @@ var handler = async (m, { text, conn }) => {
 
         const first = tes[0];
 
+        // Preparamos la imagen para el mensaje
+        const media = await prepareWAMessageMedia({
+            image: { url: first.thumbnail }
+        }, { upload: conn.waUploadToServer });
+
         const sections = [
             {
                 title: "Descargar en Audio",
-                rows: [
-                    {
-                        title: first.title,
-                        description: `Duración: ${first.timestamp} | Vistas: ${first.views}`,
-                        id: `.yta ${first.url}`
-                    },
-                    ...tes.slice(1).map(video => ({
-                        title: video.title,
-                        description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                        id: `.yta ${video.url}`
-                    }))
-                ]
+                rows: tes.map(video => ({
+                    title: video.title,
+                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                    id: `.yta ${video.url}`
+                }))
             },
             {
                 title: "Descargar en Video",
-                rows: [
-                    {
-                        title: first.title,
-                        description: `Duración: ${first.timestamp} | Vistas: ${first.views}`,
-                        id: `.ytv ${first.url}`
-                    },
-                    ...tes.slice(1).map(video => ({
-                        title: video.title,
-                        description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                        id: `.ytv ${video.url}`
-                    }))
-                ]
+                rows: tes.map(video => ({
+                    title: video.title,
+                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                    id: `.ytv ${video.url}`
+                }))
             }
         ];
 
         const listMessage = {
-            interactiveMessage: {
-                body: {
-                    text: `*「🌷」Resultado Principal:*\n\n` +
-                          `☕ *Título:* ${first.title}\n` +
-                          `📡 *Canal:* ${first.author.name}\n` +
-                          `🕝 *Duración:* ${first.timestamp}\n` +
-                          `📆 *Subido:* ${first.ago}\n` +
-                          `👀 *Vistas:* ${first.views}\n` +
-                          `🔗 *Enlace:* ${first.url}`
-                },
-                footer: { text: 'Selecciona una opción para descargar:' },
-                header: {
-                    hasMediaAttachment: true,
-                    imageMessage: {
-                        url: first.thumbnail
-                    }
-                },
-                nativeFlowMessage: {
-                    buttons: [
-                        {
-                            name: "single_select",
-                            buttonParamsJson: JSON.stringify({
-                                title: "Opciones de Descarga",
-                                sections: sections,
-                            }),
-                        }
-                    ],
-                    messageParamsJson: "{}",
-                    messageVersion: 1
-                }
+            text: `*「🌷」Resultado Principal:*\n\n` +
+                  `☕ *Título:* ${first.title}\n` +
+                  `📡 *Canal:* ${first.author.name}\n` +
+                  `🕝 *Duración:* ${first.timestamp}\n` +
+                  `📆 *Subido:* ${first.ago}\n` +
+                  `👀 *Vistas:* ${first.views}\n` +
+                  `🔗 *Enlace:* ${first.url}`,
+            footer: 'Selecciona una opción para descargar:',
+            image: media.imageMessage,
+            buttonText: 'Opciones de Descarga',
+            sections,
+            contextInfo: {
+                messageSecret: randomBytes(32) // Opcional, para más personalización del mensaje
             }
         };
 
-        const message = generateWAMessageFromContent(m.chat, listMessage, { userJid: conn.user.id });
+        const message = generateWAMessageFromContent(m.chat, { listMessage }, { userJid: conn.user.id });
         await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
     } catch (error) {
@@ -146,7 +119,7 @@ var handler = async (m, { text, conn }) => {
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['xd']
+handler.command = ['youtubesearch', 'ytsearch', 'yts']
 handler.register = true
 
 export default handler;
