@@ -119,7 +119,7 @@ var handler = async (m, { text, conn }) => {
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['youtubesearch', 'ytsearch', 'yts']
+handler.command = ['tx']
 handler.register = true
 
 export default handler;
