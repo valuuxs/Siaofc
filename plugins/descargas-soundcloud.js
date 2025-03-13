@@ -32,9 +32,9 @@ await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`,
 await m.react('❌');
 }}
 
-handler.help = ['play', 'soundcloud']
+handler.help = ['splay', 'soundcloud']
 handler.tags = ['descargas']
-handler.command = ['soundcloud', 'play']
+handler.command = ['soundcloud', 'splay']
 handler.register = true
 
 export default handler
