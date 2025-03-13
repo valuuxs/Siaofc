@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, args, usedPrefix }) => {
-    if (!args[0]) return conn.reply(m.chat, '*`Por favor ingresa un término de búsqueda`*', m);
+    if (!args[0]) return conn.reply(m.chat, '*[ ℹ️ ] Ingresa un título de Youtube.*\n\n*[ 💡 ] Ejemplo:* Corazón Serrano - Mix Poco Yo', m);
 
     await m.react('🕓');
     try {
@@ -16,10 +16,10 @@ const handler = async (m, { conn, args, usedPrefix }) => {
 
         let messageText = `\`DESCARGAS - PLAY\`\n\n`;
         messageText += `${video.titulo}\n\n`;
-        messageText += `*⌛ 𝖣𝗎𝗋𝖺𝖼𝗂𝗈𝗇:* ${video.duracion || 'No disponible'}\n`;
-        messageText += `*👤 𝖠𝗎𝗍𝗈𝗋:* ${video.canal || 'Desconocido'}\n`;
-        messageText += `*📆 𝖯𝗎𝖻𝗅𝗂𝖼𝖺𝖽𝗈:* ${convertTimeToSpanish(video.publicado)}\n`;
-        messageText += `*🖇️ 𝖫𝗂𝗇𝗄:* ${video.url}\n`;
+        messageText += `*⌛ Duración:* ${video.duracion || 'No disponible'}\n`;
+        messageText += `*👤 Autor:* ${video.canal || 'Desconocido'}\n`;
+        messageText += `*📆 Publicado:* ${convertTimeToSpanish(video.publicado)}\n`;
+        messageText += `*🖇️ Url:* ${video.url}\n`;
 
         await conn.sendMessage(m.chat, {
             image: thumbnail,
