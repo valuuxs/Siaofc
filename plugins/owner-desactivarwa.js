@@ -63,30 +63,32 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         },
     }, { userJid: conn.user.jid, quoted: m });
 
-    conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 
-    // Capturar respuesta de los botones interactivos
+    // Capturar respuesta de botones interactivos y ejecutar comando manualmente
     conn.ev.on('messages.upsert', async (upsert) => {
         const msg = upsert.messages[0];
         if (!msg.message) return;
 
-        // Si es una respuesta de lista
+        // Captura de respuestas de lista
         if (msg.message.listResponseMessage) {
             const selectedId = msg.message.listResponseMessage.singleSelectReply.selectedRowId;
             console.log('Comando recibido:', selectedId);
-            await conn.fakeMessage(msg.key.remoteJid, selectedId, msg);
-        }
-
-        // Si es una respuesta de botón (por si en algún caso se recibe así)
-        if (msg.message.buttonResponseMessage) {
-            const selectedId = msg.message.buttonResponseMessage.selectedButtonId;
-            console.log('Comando recibido:', selectedId);
-            await conn.fakeMessage(msg.key.remoteJid, selectedId, msg);
+            if (selectedId.startsWith('.ytmp3') || selectedId.startsWith('.ytmp4')) {
+                const [cmd, url] = selectedId.split(' ');
+                // Simular mensaje de comando para que lo procese el bot
+                const fakeMsg = {
+                    ...msg,
+                    message: { conversation: selectedId },
+                    text: selectedId
+                };
+                conn.ev.emit('messages.upsert', { messages: [fakeMsg], type: 'append' });
+            }
         }
     });
 };
 
 handler.help = ['ytsearch <texto>'];
 handler.tags = ['search'];
-handler.command = /^(tesyt2)$/i;
+handler.command = /^(tesyt3)$/i;
 export default handler;
