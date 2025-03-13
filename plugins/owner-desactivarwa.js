@@ -64,5 +64,5 @@ const handler = async (m, { conn, text, usedPrefix }) => {
 
 handler.help = ['ytsearch <texto>'];
 handler.tags = ['search'];
-handler.command = /^(tesyt)$/i;
+handler.command = /^(tesytx)$/i;
 export default handler;
