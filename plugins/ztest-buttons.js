@@ -48,10 +48,11 @@ handler.help = ['p'];
 handler.command = ['p'];
 */
 
-import yts from 'yt-search';
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'; // Importación necesaria
 
-var handler = async (m, { text, conn, args, command, usedPrefix }) => {
+import yts from 'yt-search';
+const { generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
+
+var handler = async (m, { text, conn }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
@@ -64,36 +65,59 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
             return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
         }
 
-        // Enviar el primer resultado
         const first = tes[0];
-        const firstText = `*「🌷」Resultado Principal:*\n\n☕ *Título:* ${first.title}\n📡 *Canal:* ${first.author.name}\n🕝 *Duración:* ${first.timestamp}\n📆 *Subido:* ${first.ago}\n👀 *Vistas:* ${first.views}\n🔗 *Enlace:* ${first.url}`;
-        
-        await conn.sendFile(m.chat, first.thumbnail, 'yts.jpeg', firstText, m);
 
-        // Crear lista interactiva para los demás resultados
         const sections = [
             {
                 title: "Descargar en Audio",
-                rows: tes.slice(1).map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.yta ${video.url}`
-                }))
+                rows: [
+                    {
+                        title: first.title,
+                        description: `Duración: ${first.timestamp} | Vistas: ${first.views}`,
+                        id: `.yta ${first.url}`
+                    },
+                    ...tes.slice(1).map(video => ({
+                        title: video.title,
+                        description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                        id: `.yta ${video.url}`
+                    }))
+                ]
             },
             {
                 title: "Descargar en Video",
-                rows: tes.slice(1).map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytv ${video.url}`
-                }))
+                rows: [
+                    {
+                        title: first.title,
+                        description: `Duración: ${first.timestamp} | Vistas: ${first.views}`,
+                        id: `.ytv ${first.url}`
+                    },
+                    ...tes.slice(1).map(video => ({
+                        title: video.title,
+                        description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
+                        id: `.ytv ${video.url}`
+                    }))
+                ]
             }
         ];
 
         const listMessage = {
             interactiveMessage: {
-                body: { text: 'Selecciona una opción para descargar:' },
-                footer: { text: 'Shadow Bot' },
+                body: {
+                    text: `*「🌷」Resultado Principal:*\n\n` +
+                          `☕ *Título:* ${first.title}\n` +
+                          `📡 *Canal:* ${first.author.name}\n` +
+                          `🕝 *Duración:* ${first.timestamp}\n` +
+                          `📆 *Subido:* ${first.ago}\n` +
+                          `👀 *Vistas:* ${first.views}\n` +
+                          `🔗 *Enlace:* ${first.url}`
+                },
+                footer: { text: 'Selecciona una opción para descargar:' },
+                header: {
+                    hasMediaAttachment: true,
+                    imageMessage: {
+                        url: first.thumbnail
+                    }
+                },
                 nativeFlowMessage: {
                     buttons: [
                         {
@@ -110,7 +134,6 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
             }
         };
 
-        // Enviar el mensaje interactivo
         const message = generateWAMessageFromContent(m.chat, listMessage, { userJid: conn.user.id });
         await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
@@ -122,7 +145,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['yvx']
+handler.command = ['youtubesearch', 'ytsearch', 'yts']
 handler.register = true
 
 export default handler;
