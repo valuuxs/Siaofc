@@ -64,17 +64,17 @@ const handler = async (m, { conn, args, usedPrefix }) => {
         let video = searchResults[0];
         let thumbnail = await (await fetch(video.miniatura)).buffer();
 
-        let messageText = `> *𝖸𝗈𝗎𝖳𝗎𝖻𝖾 𝖯𝗅𝖺𝗒 🧇.*\n\n`;
+        let messageText = `\`DESCARGAS - PLAY\`\n\n`;
         messageText += `${video.titulo}\n\n`;
-        messageText += `• *𝖣𝗎𝗋𝖺𝖼𝗂𝗈𝗇:* ${video.duracion || 'No disponible'}\n`;
-        messageText += `• *𝖠𝗎𝗍𝗈𝗋:* ${video.canal || 'Desconocido'}\n`;
-        messageText += `• *𝖯𝗎𝖻𝗅𝗂𝖼𝖺𝖽𝗈:* ${convertTimeToSpanish(video.publicado)}\n`;
-        messageText += `• *𝖫𝗂𝗇𝗄:* ${video.url}\n`;
+        messageText += `*⌛ 𝖣𝗎𝗋𝖺𝖼𝗂𝗈𝗇:* ${video.duracion || 'No disponible'}\n`;
+        messageText += `*👤 𝖠𝗎𝗍𝗈𝗋:* ${video.canal || 'Desconocido'}\n`;
+        messageText += `*📆 𝖯𝗎𝖻𝗅𝗂𝖼𝖺𝖽𝗈:* ${convertTimeToSpanish(video.publicado)}\n`;
+        messageText += `*🖇️ 𝖫𝗂𝗇𝗄:* ${video.url}\n`;
 
         await conn.sendMessage(m.chat, {
             image: thumbnail,
             caption: messageText,
-            footer: 'ᴘʀᴇꜱɪᴏɴᴀ ᴇʟ ʙᴏᴛᴏɴ ᴘᴀʀᴀ ᴇʟ ᴛ𝗂𝗉𝗈 𝗍𝖾 𝖽𝖾𝗌𝖼𝖺𝗋𝗀𝖺.',
+            footer: '⍴rᥱsі᥆ᥒᥲ ᥱᥣ ᑲ᥆𝗍᥆ᥒ',
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
@@ -82,13 +82,13 @@ const handler = async (m, { conn, args, usedPrefix }) => {
             },
             buttons: [
                 {
-                    buttonId: `${usedPrefix}ytmp3x ${video.url}`,
-                    buttonText: { displayText: '🎧 𝖠𝗎𝖽𝗂𝗈' },
+                    buttonId: `${usedPrefix}ytmp3 ${video.url}`,
+                    buttonText: { displayText: 'Audio' },
                     type: 1,
                 },
                 {
-                    buttonId: `${usedPrefix}ytmp4x ${video.url}`,
-                    buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈 🎥' },
+                    buttonId: `${usedPrefix}ytmp4 ${video.url}`,
+                    buttonText: { displayText: 'Vídeo' },
                     type: 1,
                 }
             ],
@@ -104,9 +104,9 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     }
 };
 
-handler.help = ['play *<texto>*'];
-handler.tags = ['dl'];
-handler.command = ['playx2'];
+handler.help = ['play'];
+handler.tags = ['descargas'];
+handler.command = ['play'];
 export default handler;
 
 async function searchVideos(query) {
