@@ -1,6 +1,6 @@
 
 //Buttons - Message Im Interactive
-
+/*
 let handler = async (m, { conn }) => {
     let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
 
