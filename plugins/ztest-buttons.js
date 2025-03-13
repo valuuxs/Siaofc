@@ -71,26 +71,10 @@ const handler = async (m, { conn, args, usedPrefix }) => {
         messageText += `• *𝖯𝗎𝖻𝗅𝗂𝖼𝖺𝖽𝗈:* ${convertTimeToSpanish(video.publicado)}\n`;
         messageText += `• *𝖫𝗂𝗇𝗄:* ${video.url}\n`;
 
-        let ytSections = searchResults.slice(1, 11).map((v, index) => ({
-            title: `${index + 1}┃ ${v.titulo}`,
-            rows: [
-                {
-                    title: `🎶 Descargar MP3`,
-                    description: `Duración: ${v.duracion || 'No disponible'}`, 
-                    id: `${usedPrefix}ytmp3 ${v.url}`
-                },
-                {
-                    title: `🎥 Descargar MP4`,
-                    description: `Duración: ${v.duracion || 'No disponible'}`, 
-                    id: `${usedPrefix}ytmp4 ${v.url}`
-                }
-            ]
-        }));
-
         await conn.sendMessage(m.chat, {
             image: thumbnail,
             caption: messageText,
-            footer: 'ᴘʀᴇꜱɪᴏɴᴀ ᴇʟ ʙᴏᴛᴏɴ ᴘᴀʀᴀ ᴇʟ ᴛɪᴘᴏ ᴅᴇ ᴅᴇꜱᴄᴀʀɢᴀ.',
+            footer: 'ᴘʀᴇꜱɪᴏɴᴀ ᴇʟ ʙᴏᴛᴏɴ ᴘᴀʀᴀ ᴇʟ ᴛ𝗂𝗉𝗈 𝗍𝖾 𝖽𝖾𝗌𝖼𝖺𝗋𝗀𝖺.',
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
@@ -106,17 +90,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
                     buttonId: `${usedPrefix}ytmp4x ${video.url}`,
                     buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈 🎥' },
                     type: 1,
-                },
-                {
-                    type: 4,
-                    nativeFlowInfo: {
-                        name: 'single_select',
-                        paramsJson: JSON.stringify({
-                            title: '𝖱𝖾𝗌𝗎𝗅𝗍𝖺𝖽𝗈𝗌  𝖸𝗈𝗎𝖳𝗎𝖻𝖾 🔍',
-                            sections: ytSections,
-                        }),
-                    },
-                },
+                }
             ],
             headerType: 1,
             viewOnce: true
@@ -132,7 +106,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
 
 handler.help = ['play *<texto>*'];
 handler.tags = ['dl'];
-handler.command = ['playxxx2'];
+handler.command = ['playx2'];
 export default handler;
 
 async function searchVideos(query) {
