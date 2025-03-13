@@ -48,11 +48,11 @@ handler.help = ['p'];
 handler.command = ['p'];
 */
 
-import yts from 'yt-search';
-const { prepareWAMessageMedia, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
-const { randomBytes } = await import('crypto');
 
-var handler = async (m, { text, conn }) => {
+import yts from 'yt-search';
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys'; // Importación necesaria
+
+var handler = async (m, { text, conn, args, command, usedPrefix }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
@@ -65,17 +65,17 @@ var handler = async (m, { text, conn }) => {
             return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
         }
 
+        // Enviar el primer resultado
         const first = tes[0];
+        const firstText = `*「🌷」Resultado Principal:*\n\n☕ *Título:* ${first.title}\n📡 *Canal:* ${first.author.name}\n🕝 *Duración:* ${first.timestamp}\n📆 *Subido:* ${first.ago}\n👀 *Vistas:* ${first.views}\n🔗 *Enlace:* ${first.url}`;
+        
+        await conn.sendFile(m.chat, first.thumbnail, 'yts.jpeg', firstText, m);
 
-        // Preparamos la imagen para el mensaje
-        const media = await prepareWAMessageMedia({
-            image: { url: first.thumbnail }
-        }, { upload: conn.waUploadToServer });
-
+        // Crear lista interactiva para los demás resultados
         const sections = [
             {
                 title: "Descargar en Audio",
-                rows: tes.map(video => ({
+                rows: tes.slice(1).map(video => ({
                     title: video.title,
                     description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
                     id: `.yta ${video.url}`
@@ -83,7 +83,7 @@ var handler = async (m, { text, conn }) => {
             },
             {
                 title: "Descargar en Video",
-                rows: tes.map(video => ({
+                rows: tes.slice(1).map(video => ({
                     title: video.title,
                     description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
                     id: `.ytv ${video.url}`
@@ -92,23 +92,27 @@ var handler = async (m, { text, conn }) => {
         ];
 
         const listMessage = {
-            text: `*「🌷」Resultado Principal:*\n\n` +
-                  `☕ *Título:* ${first.title}\n` +
-                  `📡 *Canal:* ${first.author.name}\n` +
-                  `🕝 *Duración:* ${first.timestamp}\n` +
-                  `📆 *Subido:* ${first.ago}\n` +
-                  `👀 *Vistas:* ${first.views}\n` +
-                  `🔗 *Enlace:* ${first.url}`,
-            footer: 'Selecciona una opción para descargar:',
-            image: media.imageMessage,
-            buttonText: 'Opciones de Descarga',
-            sections,
-            contextInfo: {
-                messageSecret: randomBytes(32) // Opcional, para más personalización del mensaje
+            interactiveMessage: {
+                body: { text: 'Selecciona una opción para descargar:' },
+                footer: { text: 'Shadow Bot' },
+                nativeFlowMessage: {
+                    buttons: [
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "Opciones de Descarga",
+                                sections: sections,
+                            }),
+                        }
+                    ],
+                    messageParamsJson: "{}",
+                    messageVersion: 1
+                }
             }
         };
 
-        const message = generateWAMessageFromContent(m.chat, { listMessage }, { userJid: conn.user.id });
+        // Enviar el mensaje interactivo
+        const message = generateWAMessageFromContent(m.chat, listMessage, { userJid: conn.user.id });
         await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
     } catch (error) {
@@ -119,7 +123,7 @@ var handler = async (m, { text, conn }) => {
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['tx']
+handler.command = ['ytx']
 handler.register = true
 
 export default handler;
