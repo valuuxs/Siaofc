@@ -78,7 +78,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
   if (!args || !args[0]) {
     return star.reply(
       m.chat,
-      `*[ ℹ️ ] Ingresa el texto o enlace del vídeo de YouTube.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command}* El baño - Enrique Iglesias.`,
+      `*[ ℹ️ ] Ingresa el texto o enlace del vídeo de YouTube.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} El baño - Enrique Iglesias.`,
       m
     );
   }
@@ -168,7 +168,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
   } catch (error) {
     console.error(error);
     await m.react('✖️'); // Error durante el proceso
-    star.reply(m.chat, '✦ *Ocurrió un error al procesar tu solicitud. Intenta nuevamente más tarde.*', m);
+    star.reply(m.chat, '*[ ❌ ] Ocurrió un error al procesar tu solicitud. Intenta nuevamente más tarde.*', m);
   }
 };
 
