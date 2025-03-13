@@ -60,7 +60,7 @@ const handler = async (m, {
             sticker: {
                 url: outputFilePath
                 packName: global.packname
-                authorName: global.authorname
+                authorName: global.author
             },
         }, {
             quoted: fkontak
