@@ -1,3 +1,5 @@
+//Code mejorado por Criss Escobar 
+
 const toM = (a) => '@' + a.split('@')[0];
 
 function getRandomText(a, b) {
