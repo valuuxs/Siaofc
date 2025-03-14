@@ -1,5 +1,5 @@
 let handler = async (m, { conn, text }) => {
-    const suittag = '123456789'; // Reemplaza con el número del propietario sin el + ni espacios
+    const suittag = '51927238856'; // Reemplaza con el número del propietario sin el + ni espacios
     const nombre = m.pushName || 'Usuario'; // Nombre del usuario o por defecto "Usuario"
 
     if (!text) {
