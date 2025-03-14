@@ -1,27 +1,51 @@
 const toM = (a) => '@' + a.split('@')[0];
 
-async function handler(m, {groupMetadata}) {
-  const ps = groupMetadata.participants.map((v) => v.id);
-  const randomIndexA = Math.floor(Math.random() * ps.length);
-  const a = ps[randomIndexA];
+function getRandomText(a, b) {
+  const texts = [
+    `*${toM(a)} y ${toM(b)}, deberían comenzar una aventura juntos 🌟*`,
+    `*${toM(a)}, tu destino podría estar con ${toM(b)} 💫*`,
+    `*${toM(a)} y ${toM(b)} son la pareja perfecta, ¡vivan los novios! 💍*`,
+    `*¿Y si ${toM(a)} y ${toM(b)} se dan una oportunidad? 🌹*`,
+    `*¡Alerta de química! ${toM(a)} y ${toM(b)} hacen una bonita pareja 💓*`,
+    `*${toM(a)}, parece que tu media naranja es ${toM(b)} 🍊*`,
+    `*Dicen que las estrellas se alinean cuando ${toM(a)} y ${toM(b)} están cerca ✨*`,
+    `*${toM(a)} y ${toM(b)}... el amor está en el aire 💕*`,
+    `*¿Qué opinan del dúo dinámico? ${toM(a)} y ${toM(b)} 🔥*`,
+    `*${toM(a)}, ¿te animas a invitar a ${toM(b)} a una cita? ☕*`,
+    `*Se dice por ahí que ${toM(a)} y ${toM(b)} son almas gemelas 🔮*`,
+    `*${toM(a)} y ${toM(b)}, el universo los quiere ver juntos 🌌*`,
+    `*¿Será este el inicio de una gran historia de amor entre ${toM(a)} y ${toM(b)}? 📖*`,
+    `*Cupido ha lanzado su flecha entre ${toM(a)} y ${toM(b)} 🏹*`,
+    `*${toM(a)}, ¿aceptarías un baile con ${toM(b)} bajo la luna? 🌙*`,
+    `*Una cita entre ${toM(a)} y ${toM(b)} sería legendaria 😍*`,
+    `*Que se preparen los corazones, porque ${toM(a)} y ${toM(b)} están destinados 💘*`,
+    `*¿Y si hoy ${toM(a)} le confiesa sus sentimientos a ${toM(b)}? 😳*`,
+    `*El amor está tocando la puerta de ${toM(a)} y ${toM(b)} 🚪❤️*`,
+    `*Parece que ${toM(a)} y ${toM(b)} están hechos el uno para el otro 💏*`
+  ];
+  return texts[Math.floor(Math.random() * texts.length)];
+}
+
+async function handler(m, { groupMetadata }) {
+  const ps = groupMetadata.participants.map(v => v.id);
+  const a = ps[Math.floor(Math.random() * ps.length)];
   let b;
-  do {
-    const randomIndexB = Math.floor(Math.random() * ps.length);
-    b = ps[randomIndexB];
-  } while (b === a);
+  do b = ps[Math.floor(Math.random() * ps.length)];
+  while (b === a);
 
-  let txt = `*\`FORMANDO PAREJA\` 💏*\n${toM(a)}, Deberías empezar una cita con ${toM(b)} 🌹`;
+  const text = getRandomText(a, b);
 
-  const stickerUrl = 'https://files.catbox.moe/oqzptb.webp'; 
-  m.react('💘');
+  await m.react('💘');
 
-  await conn.sendFile(m.chat, stickerUrl, 'sticker.webp', '', m, null);
-  await conn.sendMessage(m.chat, { text: txt, mentions: [a, b] });
-};
+  await m.reply(text, null, {
+    mentions: [a, b],
+  });
+}
 
 handler.help = ['formarpareja'];
 handler.tags = ['fun'];
-handler.command = ['formarpareja', 'formarparejas', 'pareja'];
-handler.group = true
+handler.command = ['formarpareja', 'formarparejas'];
+handler.group = true;
+handler.register = true;
 
-export default handler
+export default handler;
