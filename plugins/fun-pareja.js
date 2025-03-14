@@ -46,8 +46,7 @@ async function handler(m, { groupMetadata }) {
 
 handler.help = ['formarpareja'];
 handler.tags = ['fun'];
-handler.command = ['formarpareja', 'formarparejas'];
+handler.command = ['formarpareja', 'formarparejas', 'pareja'];
 handler.group = true;
-handler.register = true;
 
 export default handler;
