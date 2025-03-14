@@ -113,8 +113,6 @@ chat.antiBot2 = false
                     chat.delete = false
                 if (!isNumber(chat.expired))
                     chat.expired = 0
-                if (!('modoadmin' in chat))
-    chat.modoadmin = false
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
@@ -133,7 +131,6 @@ chat.antiBot2 = false
                     autoAceptar: false,
                     reaction: false,
                     expired: 0, 
-                    modoadmin: false,
                 }
             var settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
@@ -294,6 +291,13 @@ ${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que
 user.antispam++        
 return
 }
+
+//Modoadmin
+let hl = global.prefix 
+let adminMode = chat.modoadmin
+let isPotentialCommand = plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl || m.text.slice(0, 1) == hl || plugins.command
+
+if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && isPotentialCommand) continue
 
 //Antispam 2                
 /*if (user.antispam2 && isROwner) return
