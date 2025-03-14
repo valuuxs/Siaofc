@@ -1,3 +1,5 @@
+//Adaptado & Mejorado por Criss Escobar 
+
 let handler = async (m, { conn, text }) => {
     const suittag = '51927238856'; // Número del propietario con código de país, sin espacios
     const user = m.pushName || 'Usuario'; // Nombre del usuario o por defecto "Usuario"
