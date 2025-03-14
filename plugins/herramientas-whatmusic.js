@@ -1,58 +1,37 @@
-import fetch from 'node-fetch';
-import FormData from 'form-data';
-import fs from 'fs';
+
+import fs from 'fs'
+import acrcloud from 'acrcloud'
+let acr = new acrcloud({
+host: 'identify-eu-west-1.acrcloud.com',
+access_key: 'c33c767d683f78bd17d4bd4991955d81',
+access_secret: 'bvgaIAEtADBTbLwiPGYlxupWqkNGIjT7J9Ag2vIu'
+})
 
 let handler = async (m) => {
-    let q = m.quoted ? m.quoted : m;
-    let mime = q.mimetype || '';
+let q = m.quoted ? m.quoted : m
+let mime = (q.msg || q).mimetype || ''
+if (/audio|video/.test(mime)) {
+let media = await q.download()
+let ext = mime.split('/')[1]
+fs.writeFileSync(`./tmp/${m.sender}.${ext}`, media)
+let res = await acr.identify(fs.readFileSync(`./tmp/${m.sender}.${ext}`))
+let { code, msg } = res.status
+if (code !== 0) throw msg
+let { title, artists, album, genres, release_date } = res.metadata.music[0]
+let txt = `
+𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊 𝘿𝙀 𝙇𝘼 𝘽𝙐𝙎𝙌𝙐𝙀𝘿𝘼𝙎 
 
-    if (/audio|video/.test(mime)) {
-        let media = await q.download(true);
-        let upload = await uploadFile(media);
-
-        if (!upload || !upload.files || !upload.files[0]) {
-            return m.reply('🚩 Error al subir el archivo.');
-        }
-
-        let url = upload.files[0];
-        let response = await fetch(`https://apis-starlights-team.koyeb.app/starlight/chazam?url=${url}`);
-        let json = await response.json();
-
-        if (!json || !json.title) {
-            return m.reply('🚩 No se pudo reconocer la canción.');
-        }
-
-        let txt = `*\`-• C H A Z A M - M U S I C •-\`*\n\n` +
-                  `🍟 *Nombre:* ${json.title}\n` +
-                  `🍟 *Artista:* ${json.artist}\n` +
-                  `🍟 *Tipo:* ${json.type}\n` +
-                  `🍟 *Link:* ${json.url}`;
-
-        m.reply(txt);
-    } else {
-        return m.reply('🚩 Responde a un *Audio/Video.*');
-    }
-};
-
-handler.help = ['shazam *<Audio/Video>*'];
-handler.tags = ['tools'];
-handler.command = /^(shazam|whatmusic)$/i;
-handler.register = true;
-
-export default handler;
-
-async function uploadFile(path) {
-    let form = new FormData();
-    form.append('files[]', fs.createReadStream(path));
-
-    let res = await (await fetch('https://uguu.se/upload.php', {
-        method: 'post',
-        headers: {
-            ...form.getHeaders()
-        },
-        body: form
-    })).json();
-
-    await fs.promises.unlink(path);
-    return res;
+• 🌻 𝙏𝙄𝙏𝙐𝙇𝙊: ${title}
+• 🍃 𝘼𝙍𝙏𝙄𝙎𝙏𝘼: ${artists !== undefined ? artists.map(v => v.name).join(', ') : 'No encontrado'}
+• 💻 𝘼𝙇𝘽𝙐𝙈: ${album.name || 'No encontrado'}
+• 💛 𝙂𝙀𝙉𝙀𝙍𝙊: ${genres !== undefined ? genres.map(v => v.name).join(', ') : 'No encontrado'}
+• 🪙 𝙁𝙀𝘾𝙃𝘼 𝘿𝙀 𝙇𝘼𝙉𝙕𝘼𝙈𝙄𝙀𝙉𝙏𝙊: ${release_date || 'No encontrado'}
+`.trim()
+fs.unlinkSync(`./tmp/${m.sender}.${ext}`)
+m.reply(txt)
+} else
+return m.reply('Por favor, responda a un audio o video para que pueda identificar la música.');
 }
+handler.command = /^quemusica|quemusicaes|whatmusic$/i
+//handler.estrellas = 6;
+export default handler
