@@ -387,7 +387,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.audios = isEnable
       break
-//💡💡💡💡
+
  case 'modoadmin':
     case 'soloadmin':
       if (m.isGroup) {
@@ -398,19 +398,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.modoadmin = isEnable
       break
-//💡💡💡
-
-    case 'modoadmin':
-      if (m.isGroup) {
-        if (!(isAdmin || isROwner || isOwner)) {
-          global.dfail('admin', m, conn);
-          throw false;
-        }
-      }
-      chat.modoadmin = isEnable;
-      break;
-
-
 
   case 'detect':
     case 'configuraciones':
@@ -485,7 +472,7 @@ break
 `.trim())
       throw false
   }
-  m.reply(`La función *${type}* se *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? 'para este bot' : isUser ? '' : 'para este chat'}`)
+   m.reply(`*[ ℹ️ ] La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`)
 }
 
 handler.help = ['enable', 'disable']
