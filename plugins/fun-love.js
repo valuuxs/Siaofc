@@ -46,10 +46,10 @@ const handler = async (m, { conn, command, text }) => {
     const loveMessage = getRandomMessage(isHighLove ? loveMessages : notSoHighLoveMessages);
 
     const response = 
-        `━━━━━━⬣ *💖 LOVE 💖* ⬣━━━━━━\n` +
+        `━━━━⬣ *💖 LOVE 💖* ⬣━━━━\n` +
         `*❥ En el universo del amor, ${text} y @${m.sender.split('@')[0]} ${loveDescription} del ${lovePercentage}% de un 100%.*\n\n` +
         `*💌 ${loveMessage}*\n` +
-        `━━━━━━⬣ *💖 LOVE 💖* ⬣━━━━━━`;
+        `━━━━⬣ *💖 LOVE 💖* ⬣━━━━`;
 
     // Animación de carga
     async function loading() {
