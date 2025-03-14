@@ -1,8 +1,8 @@
 //Adaptado & Mejorado por Criss Escobar 
 
 let handler = async (m, { conn, text }) => {
-    const suittag = '51927238856'; // Número del propietario con código de país, sin espacios
-    const user = m.pushName || 'Usuario'; // Nombre del usuario o por defecto "Usuario"
+    const suittag = '51927238856';
+    const user = m.pushName || 'Usuario';
 
     if (!text) {
         return conn.reply(m.chat, `*[ ℹ️ ] ¡Hola ${user}! ¿Qué comando quieres sugerir?*`, m);
@@ -19,12 +19,10 @@ let handler = async (m, { conn, text }) => {
 *📝 Comando sugerido:*
 > ${text}`;
 
-    // Enviar sugerencia al propietario
     await conn.reply(`${suittag}@s.whatsapp.net`, m.quoted ? teks + m.quoted.text : teks, m, {
         mentions: conn.parseMention(teks),
     });
 
-    // Confirmación al usuario
     m.reply('*[ ✅ ] ¡Tu sugerencia ha sido enviada al propietario!* Gracias por tu aporte.');
 };
 
