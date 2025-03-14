@@ -47,8 +47,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { args, usedPrefix, command }) => {
   const msg = `👑 *Uso correcto del comando:* ${usedPrefix + command} _(idioma)_ _(texto)_\n\n` +
-              `*Ejemplo:* ${usedPrefix + command} en Hello\n` +
-              `*Idiomas admitidos:* https://cloud.google.com/translate/docs/languages`;
+              `*Ejemplo:* ${usedPrefix + command} es Hello`;
               
   if (!args || !args[0]) return m.reply(msg);
 
