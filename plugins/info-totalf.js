@@ -1,5 +1,4 @@
-/*Codigo creado por Criss Escobar
-No borren los créditos 🗣️*/
+//Codigo creado por Criss Escobar
 
 const handler = async (m, { conn }) => {
 const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
