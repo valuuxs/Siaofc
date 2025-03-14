@@ -387,7 +387,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.audios = isEnable
       break
-
+//💡💡💡💡
  case 'modoadmin':
     case 'soloadmin':
       if (m.isGroup) {
@@ -398,6 +398,19 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.modoadmin = isEnable
       break
+//💡💡💡
+
+    case 'modoadmin':
+      if (m.isGroup) {
+        if (!(isAdmin || isROwner || isOwner)) {
+          global.dfail('admin', m, conn);
+          throw false;
+        }
+      }
+      chat.modoadmin = isEnable;
+      break;
+
+
 
   case 'detect':
     case 'configuraciones':
