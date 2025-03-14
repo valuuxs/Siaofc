@@ -112,8 +112,7 @@ import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 
 const handler = async (m, { args, usedPrefix, command }) => {
-  const msg = `👑 *Uso correcto del comando:* ${usedPrefix + command} _(idioma)_ _(texto)_\n\n` +
-              `*Ejemplo:* ${usedPrefix + command} es Hello`;
+  const msg = `*[ ℹ️ ] Proporciona el idioma seguido el texto para traducirlo.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} es Hello`;
 
   if (!args || !args[0]) return m.reply(msg);
 
@@ -130,16 +129,16 @@ const handler = async (m, { args, usedPrefix, command }) => {
 
   // Usar texto citado si no se proporcionó en los argumentos
   if (!text && m.quoted?.text) text = m.quoted.text;
-  if (!text) return m.reply('*[❗] Debes proporcionar un texto para traducir.*');
+  if (!text) return m.reply('*[ ⚠️ ] Debes proporcionar un texto para traducir.*');
 
   try {
     await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } }); // Reacción de espera
 
     // Intentar traducción con la API principal
     const result = await translate(text, { to: lang, autoCorrect: true });
-    await m.reply(`*Traducción:* ${result.text}`);
+    await m.reply(`*Traducción:*\n${result.text}`);
 
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } }); // Reacción de éxito
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
   } catch (error) {
     try {
       // Intentar traducción con API secundaria si la primera falla
