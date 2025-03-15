@@ -31,7 +31,7 @@ return list[Math.floor(Math.random() * list.length)]
 
 let handler = async (m, { conn, command, text }) => {
 
-    if (!text) return m.reply(`*[ ℹ️ ] Ingresa un nombre justo al comando.*`)
+    if (!text) return m.reply(`*[ ℹ️ ] Ingrese el nombre de alguna persona.*\n\n*[ 💡 ] Ejemplo:* .personalidad Shadow`)
 
   let personalidad = `
 ┏━━°❀❬ *PERSONALIDAD}* ❭❀°━━┓
@@ -49,7 +49,7 @@ let handler = async (m, { conn, command, text }) => {
 *┃• Género* : ${pickRandom(['Hombre', 'Mujer', 'Homosexual', 'Bisexual', 'Pansexual', 'Feminista', 'Heterosexual', 'Macho alfa', 'Mujerzona', 'Marimacha', 'Palosexual', 'PlayStationSexual', 'Sr. Manuela', 'Pollosexual'])}
 ┗━━━━━━━━━━━━━━━━
 `
-conn.reply(m.chat, personalidad, m, { mentions: conn.parseMention(personalidad) })
+conn.reply(m.chat, personalidad, m, { mentions: conn.parseMention(personalidad) }, rcanal)
 }
 handler.help = ['personalidad *<nombre>*']
 handler.tags = ['fun']
