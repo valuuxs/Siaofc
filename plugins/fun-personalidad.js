@@ -49,7 +49,7 @@ let handler = async (m, { conn, command, text }) => {
 *┃• Género* : ${pickRandom(['Hombre', 'Mujer', 'Homosexual', 'Bisexual', 'Pansexual', 'Feminista', 'Heterosexual', 'Macho alfa', 'Mujerzona', 'Marimacha', 'Palosexual', 'PlayStationSexual', 'Sr. Manuela', 'Pollosexual'])}
 ┗━━━━━━━━━━━━━━━━
 `
-conn.reply(m.chat, personalidad, m, { mentions: conn.parseMention(personalidad) }, rcanal)
+conn.reply(m.chat, personalidad, m, { mentions: conn.parseMention(personalidad) })
 }
 handler.help = ['personalidad *<nombre>*']
 handler.tags = ['fun']
