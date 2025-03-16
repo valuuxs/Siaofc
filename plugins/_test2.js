@@ -15,8 +15,8 @@ const savetube = {
     'referer': 'https://yt.savetube.me/',
     'user-agent': 'Postify/1.0.0'
   },
-  //formats: ['144', '240', '360', '480', '720', '1080', 'mp3'],
-  formats: ['144', '240', '360', '480', 'mp3'],
+  formats: ['144', '240', '360', '480', '720', '1080', 'mp3'],
+  //formats: ['144', '240', '360', '480', 'mp3'],
 
   crypto: {
     hexToBuffer: (hexString) => {
