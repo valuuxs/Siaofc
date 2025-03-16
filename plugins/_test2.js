@@ -15,7 +15,8 @@ const savetube = {
     'referer': 'https://yt.savetube.me/',
     'user-agent': 'Postify/1.0.0'
   },
-  formats: ['144', '240', '360', '480', '720', '1080', 'mp3'],
+  //formats: ['144', '240', '360', '480', '720', '1080', 'mp3'],
+  formats: ['144', '240', '360', '480', 'mp3'],
 
   crypto: {
     hexToBuffer: (hexString) => {
@@ -180,7 +181,7 @@ const savetube = {
 };
 
 const handler = async (m, { conn, args, command }) => {
-  if (args.length < 1) return m.reply(`🧇 *Ingresa una URL de un video o audio de YouTube*`);
+  if (args.length < 1) return m.reply(`*[ ℹ️ ] Ingresa una URL de un video o audio de YouTube*`);
 
   let url = args[0];
   let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
