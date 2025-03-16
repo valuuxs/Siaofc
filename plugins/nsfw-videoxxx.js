@@ -1,3 +1,7 @@
+/*By Criss Escobar
+Agradecimientos a Edson por pasar vídeos el pajero ese.
+ No quitar Creditos putas 🗣️*/
+
 let handler = async(m, { conn }) => {
 
 let chat = global.db.data.chats[m.chat];
