@@ -1,7 +1,3 @@
-/*By Criss Escobar
-Agradecimientos a Edson por pasar vídeos el pajero ese.
- No quitar Creditos putas 🗣️*/
-
 let handler = async(m, { conn }) => {
 
 let chat = global.db.data.chats[m.chat];
@@ -74,4 +70,13 @@ global.vidxxx = [
 'https://files.catbox.moe/i78qdb.mp4',
 'https://files.catbox.moe/rz1xee.mp4',
 'https://files.catbox.moe/rqjd7n.mp4',
+'https://files.catbox.moe/5oo8tf.mp4',
+'https://files.catbox.moe/rr1sxn.mp4',
+'https://files.catbox.moe/iu8w7i.mp4',
+'https://files.catbox.moe/06z2uu.mp4',
+'https://files.catbox.moe/kx6540.mp4',
+'https://files.catbox.moe/87g24j.mp4',
+'https://files.catbox.moe/ckblqz.mp4',
+'https://files.catbox.moe/nc2xw9.mp4',
+'https://files.catbox.moe/q44m8g.mp4',
 ];
