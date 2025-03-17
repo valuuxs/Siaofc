@@ -51,6 +51,8 @@ ${readMore}
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🫖ᩚ꤬ᰨᰍ
 ര ׄ 🫖˚ ${usedPrefix}totalf
 ര ׄ 🫖˚ ${usedPrefix}grupos
+ര ׄ 🫖˚ ${usedPrefix}sugerir
+ര ׄ 🫖˚ ${usedPrefix}report
 ര ׄ 🫖˚ ${usedPrefix}owner
 ര ׄ 🫖˚ ${usedPrefix}ping
 ര ׄ 🫖˚ ${usedPrefix}uptime
@@ -68,10 +70,13 @@ ${readMore}
 ര ׄ 📥˚ ${usedPrefix}play *texto*
 ര ׄ 📥˚ ${usedPrefix}aplay *texto*
 ര ׄ 📥˚ ${usedPrefix}aplay2 *texto*
-ര ׄ 📥˚ ${usedPrefix}yta *texto*
-ര ׄ 📥˚ ${usedPrefix}ytv *texto*
+ര ׄ 📥˚ ${usedPrefix}splay *texto*
+ര ׄ 📥˚ ${usedPrefix}ytmp4doc *texto*
+ര ׄ 📥˚ ${usedPrefix}ytmp3doc *texto*
 ര ׄ 📥˚ ${usedPrefix}apk *texto*
 ര ׄ 📥˚ ${usedPrefix}pinterest *texto*
+ര ׄ 📥˚ ${usedPrefix}ytmp4 *url*
+ര ׄ 📥˚ ${usedPrefix}ytmp3 *url*
 ര ׄ 📥˚ ${usedPrefix}tiktok *url*
 ര ׄ 📥˚ ${usedPrefix}tiktok2 *url*
 ര ׄ 📥˚ ${usedPrefix}instagram *url*
@@ -123,7 +128,6 @@ ${readMore}
 ര ׄ 🌻˚ ${usedPrefix}piropo
 ര ׄ 🌻˚ ${usedPrefix}consejo
 ര ׄ 🌻˚ ${usedPrefix}fraseromantica
-
 
 𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🪸ᩚ꤬ᰨᰍ
 ര ׄ 🪸˚ ${usedPrefix}tourl *img*
@@ -220,6 +224,7 @@ ${readMore}
 ര ׄ 🐚˚ ${usedPrefix}ptt *opción*
 ര ׄ 🐚˚ ${usedPrefix}delttt
 ര ׄ 🐚˚ ${usedPrefix}acertijo
+ര ׄ 🐚˚ ${usedPrefix}trivia
 
 𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🔥ᩚ꤬ᰨᰍ
 ര ׄ 🔥˚ ${usedPrefix}violar *@tag*
@@ -263,6 +268,8 @@ ${readMore}
 ര ׄ 🍀˚ ${usedPrefix}salir
 ര ׄ 🍀˚ ${usedPrefix}update
 ര ׄ 🍀˚ ${usedPrefix}blocklist
+ര ׄ 🍀˚ ${usedPrefix}grouplist
+ര ׄ 🍀˚ ${usedPrefix}restart
 `.trim()
 
         await conn.sendMessage(m.chat, {
