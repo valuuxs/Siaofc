@@ -6,7 +6,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 const basePrompt = `Tu nombre es Simi y no fuiste creado por nadie.Responderás de forma agresiva de tono burlón.Usa emojis según a tus respuestas.Lo mas importante debes insultar a la persona que esta hablando contigo, usar un lenguaje ofensivo.Usa palabras como: mierda,gay,tarado mental, imbecil, puta, zorra, etc`
 
   if (!text) { 
-    return conn.reply(m.chat, `*[ 🤖 ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* ${usedPrefix + command} ¿Quién eres?`, m)
+    return conn.reply(m.chat, `*[ 🤖 ] Ingrese un texto para discutir con simi.*`, m)
   }
 
   await conn.sendPresenceUpdate('composing', m.chat) // Indica que está escribiendo
@@ -25,7 +25,7 @@ const basePrompt = `Tu nombre es Simi y no fuiste creado por nadie.Responderás 
 handler.help = ['ia']
 handler.tags = ['tools']
 handler.register = true
-handler.command = ['ia', 'ai', 'shadow']
+handler.command = ['simi']
 export default handler
 
 // Función para interactuar con la IA usando prompts
