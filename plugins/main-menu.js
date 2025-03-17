@@ -75,6 +75,8 @@ ${readMore}
 ര ׄ 📥˚ ${usedPrefix}ytmp3doc *texto*
 ര ׄ 📥˚ ${usedPrefix}apk *texto*
 ര ׄ 📥˚ ${usedPrefix}pinterest *texto*
+ര ׄ 📥˚ ${usedPrefix}capcut *url*
+ര ׄ 📥˚ ${usedPrefix}pinvid *url*
 ര ׄ 📥˚ ${usedPrefix}ytmp4 *url*
 ര ׄ 📥˚ ${usedPrefix}ytmp3 *url*
 ര ׄ 📥˚ ${usedPrefix}tiktok *url*
@@ -101,6 +103,9 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}xnxxsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}xvsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}pornhubsearch *texto*
+ര ׄ 🔎˚ ${usedPrefix}gnula *texto*
+ര ׄ 🔎˚ ${usedPrefix}mercadolibre *texto*
+ര ׄ 🔎˚ ${usedPrefix}ffstalk *id*
 
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs\`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
@@ -132,6 +137,8 @@ ${readMore}
 𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🪸ᩚ꤬ᰨᰍ
 ര ׄ 🪸˚ ${usedPrefix}tourl *img*
 ര ׄ 🪸˚ ${usedPrefix}tourl *aud*
+ര ׄ 🪸˚ ${usedPrefix}toptt *aud*
+ര ׄ 🪸˚ ${usedPrefix}toptt *vid*
 ര ׄ 🪸˚ ${usedPrefix}tourl *vid*
 ര ׄ 🪸˚ ${usedPrefix}tomp3 *vid*
 ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
@@ -141,6 +148,8 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
 ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
 ര ׄ ⚒️˚ ${usedPrefix}read *texto*
+ര ׄ ⚒️˚ ${usedPrefix}fake *texto + user + texto*
+ര ׄ ⚒️˚ ${usedPrefix}traducir *idioma + texto*
 ര ׄ ⚒️˚ ${usedPrefix}hd *img*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
@@ -167,10 +176,12 @@ ${readMore}
 ര ׄ 🌵˚ Aviso *texto*
 ര ׄ 🌵˚ ${usedPrefix}todos *texto*
 ര ׄ 🌵˚ ${usedPrefix}setwelcome *texto*
+ര ׄ 🌵˚ ${usedPrefix}groupdesc *texto*
 ര ׄ 🌵˚ ${usedPrefix}setbye *texto*
 ര ׄ 🌵˚ ${usedPrefix}promote *@tag*
 ര ׄ 🌵˚ ${usedPrefix}demote *@tag*
 ര ׄ 🌵˚ ${usedPrefix}kick *@tag*
+ര ׄ 🌵˚ ${usedPrefix}mute *@tag*
 ര ׄ 🌵˚ ${usedPrefix}inactivos *opción*
 ര ׄ 🌵˚ ${usedPrefix}link
 ര ׄ 🌵˚ ${usedPrefix}sorteo
