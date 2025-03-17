@@ -1,13 +1,34 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply('⚠ *_️Ingrese el error ue desea reportar._*');
-    if (text.length < 10) throw '⚠️ *_Especifique bien el error, mínimo 10 caracteres._*'
-    if (text.length > 1000) throw '⚠️ *_Máximo 1000 caracteres para enviar el error._*'
-    const teks = `╭───────────────────\n│⊷〘 *R E P O R T E* 〙⊷\n├───────────────────\n│⁖🧡꙰  *Cliente:*\n│✏️ Wa.me/${m.sender.split`@`[0]}\n│\n│⁖💚꙰  *Mensaje:*\n│📩 ${text}\n╰───────────────────`
-    await conn.reply(global.owner[0][0] + '@s.whatsapp.net', m.quoted ? teks + m.quoted.text : teks, m, { mentions: conn.parseMention(teks) })
-    m.reply('⚠️ *_El reporte se envío a mi creador, cualquier informe falso puede ocasionar baneo._*')
-}
-handler.help = ['reportar']
-handler.tags = ['info']
-handler.command = /^(reporte|report|reportar|bug|error)$/i
+    try {
+        text = text.trim();
+        if (!text) return m.reply('*[ ℹ️ ] Ingrese el error que desea reportar.*');
+        if (text.length < 10) return m.reply('*[ ⚠️ ] Especifique bien el error, mínimo 10 caracteres.*');
+        if (text.length > 1000) return m.reply('*[ ⚠️ ] Máximo 1000 caracteres para enviar el error.*');
 
-export default handler
+        const sender = m.sender.split('@')[0];
+        const teks = `
+*\`REPORTE - ERROR\`*
+
+\`\`\`👤CLIENTE\`\`\`
+✑ Wa.me/${sender}
+
+\`\`\`📩MENSAJE\`\`\`
+> ${text}`;
+
+        const ownerJid = global.owner[0][0] + '@s.whatsapp.net';
+        await conn.reply(ownerJid, m.quoted ? `${teks}\n\n📎 *Mensaje citado:* ${m.quoted.text}` : teks, m, {
+            mentions: conn.parseMention(teks),
+        });
+
+        m.reply(`*[ ✅ ] ${m.pushName || 'Usuario'}, tu reporte ha sido enviado a mi creador. Recuerda que los informes falsos pueden ocasionar baneo.*`);
+    } catch (err) {
+        console.error(err);
+        m.reply('*[ ❌ ] Ocurrió un error al enviar tu reporte. Inténtalo de nuevo más tarde.*');
+    }
+};
+
+handler.help = ['reportar'];
+handler.tags = ['info'];
+handler.command = /^(reporte|report|reportar|bug|error)$/i;
+
+export default handler;
