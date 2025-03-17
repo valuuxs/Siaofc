@@ -174,6 +174,7 @@ ${readMore}
 ര ׄ 🌵˚ ${usedPrefix}grouptime *tiempo*
 ര ׄ 🌵˚ ${usedPrefix}notify *texto*
 ര ׄ 🌵˚ Aviso *texto*
+ര ׄ 🌵˚ Admins *texto*
 ര ׄ 🌵˚ ${usedPrefix}todos *texto*
 ര ׄ 🌵˚ ${usedPrefix}setwelcome *texto*
 ര ׄ 🌵˚ ${usedPrefix}groupdesc *texto*
@@ -183,8 +184,8 @@ ${readMore}
 ര ׄ 🌵˚ ${usedPrefix}kick *@tag*
 ര ׄ 🌵˚ ${usedPrefix}mute *@tag*
 ര ׄ 🌵˚ ${usedPrefix}inactivos *opción*
+ര ׄ 🌵˚ ${usedPrefix}tagnum *prefix*
 ര ׄ 🌵˚ ${usedPrefix}link
-ര ׄ 🌵˚ ${usedPrefix}sorteo
 ര ׄ 🌵˚ ${usedPrefix}fantasmas
 
 𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🪻ᩚ꤬ᰨᰍ
@@ -225,9 +226,18 @@ ${readMore}
 ര ׄ 🥯˚ ${usedPrefix}doxear *@tag*
 ര ׄ 🥯˚ ${usedPrefix}jalamela *@tag*
 ര ׄ 🥯˚ ${usedPrefix}simi *texto*
+ര ׄ 🥯˚ ${usedPrefix}pregunta *texto*
+ര ׄ 🥯˚ ${usedPrefix}genio *texto*
+ര ׄ 🥯˚ ${usedPrefix}top
+ര ׄ 🥯˚ ${usedPrefix}sorteo
 ര ׄ 🥯˚ ${usedPrefix}piropo
 ര ׄ 🥯˚ ${usedPrefix}chiste
 ര ׄ 🥯˚ ${usedPrefix}facto
+ര ׄ 🥯˚ ${usedPrefix}verdad
+ര ׄ 🥯˚ ${usedPrefix}pareja
+ര ׄ 🥯˚ ${usedPrefix}parejas
+ര ׄ 🥯˚ ${usedPrefix}love
+ര ׄ 🥯˚ ${usedPrefix}personalidad
 
 𓂂𓏸  𐅹੭੭   *\`ȷᥙᥱg᥆s\`*   🐚ᩚ꤬ᰨᰍ
 ര ׄ 🐚˚ ${usedPrefix}pregunta *texto*
@@ -269,6 +279,7 @@ ${readMore}
 ര ׄ 💸˚ ${usedPrefix}cofre
 ര ׄ 💸˚ ${usedPrefix}slut
 ര ׄ 💸˚ ${usedPrefix}nivel
+ര ׄ 💸˚ ${usedPrefix}ruleta
 
 𓂂𓏸  𐅹੭੭   *\`rᥱgіs𝗍r᥆\`*   🎣ᩚ꤬ᰨᰍ
 ര ׄ 🎣˚ ${usedPrefix}perfil
@@ -281,6 +292,9 @@ ${readMore}
 ര ׄ 🍀˚ ${usedPrefix}blocklist
 ര ׄ 🍀˚ ${usedPrefix}grouplist
 ര ׄ 🍀˚ ${usedPrefix}restart
+ര ׄ 🍀˚ ${usedPrefix}join
+ര ׄ 🍀˚ ${usedPrefix}chetar
+ര ׄ 🍀˚ ${usedPrefix}unbanuser
 `.trim()
 
         await conn.sendMessage(m.chat, {
