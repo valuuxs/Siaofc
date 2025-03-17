@@ -63,6 +63,6 @@ m.reply(searchResults)
 }
 handler.help = ['applemusicsearch *<texto>*'];
 handler.tags = ['buscador'];
-handler.command = /^(applemusicsearch|applemsearch|applemusics)$/i;
+handler.command = /^(applemusicsearch|applesearch|aplaysearch)$/i;
 
 export default handler;
