@@ -75,6 +75,6 @@ console.error(error)
 
 handler.help = ["spotifysearch *<texto>*"]
 handler.tags = ["search"]
-handler.command = /^(spotifysearch)$/i
+handler.command = /^(spotifysearch|spsearch)$/i
 
 export default handler
