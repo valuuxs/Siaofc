@@ -354,6 +354,17 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.antiLink = isEnable
       break
 
+   case 'antidelete': 
+     case 'antieliminar': 
+     case 'delete':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+       global.dfail('admin', m, conn)
+       throw false
+     }}
+     chat.delete = isEnable
+     break
+
       case 'antiprivado':
       isAll = true
       if (!isROwner) {
