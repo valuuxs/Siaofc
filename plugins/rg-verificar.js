@@ -31,7 +31,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     user.regTime = +new Date
     user.registered = true
     global.db.data.users[m.sender].money += 600
-    global.db.data.users[m.sender].estrellas += 10
+    global.db.data.users[m.sender].diamantes += 15
     global.db.data.users[m.sender].exp += 245
     global.db.data.users[m.sender].joincount += 5    
 
@@ -47,8 +47,8 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     regbot += `- *Nombre:* ${name}\n`
     regbot += `- *Edad:* ${age} años\n\n`
     regbot += `*RECOMPENSAS*\n\n> `
-    regbot += `🪙 15 Coins\n> `
-    regbot += `✳️ 245 Xp\n> `
+    regbot += `💎 15 Diamantes\n> `
+    regbot += `💫 245 Exp\n> `
     regbot += `🎫 12 Tokens\n\n`
     regbot += `> ᥴ᥆ᥣ᥆ᥴᥲ *.profile* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.\n> ᥎ᥱrі𝖿іᥴᥲ 𝗍ᥙ rᥱgіs𝗍r᥆ ᥲ𝗊ᥙі 👇🏻`
 
