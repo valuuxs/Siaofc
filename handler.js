@@ -410,7 +410,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                         }
                     }
                     if (m.diamantes)
-                        conn.reply(m.chat, `Utilizaste \`${+m.diamantes}\` Diamantes 💎`, m)
+                        conn.reply(m.chat, `Utilizaste *${+m.diamantes}* Diamantes 💎`, m)
                 }
                 break
             }
