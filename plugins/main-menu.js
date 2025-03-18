@@ -6,7 +6,7 @@ import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
     try {
-    let { exp, estrellas, level, role } = global.db.data.users[m.sender]
+    let { exp, diamantes, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     exp = exp || 'Desconocida';
@@ -34,8 +34,8 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 *👥 Usuarios:* ${totalreg}
 *🆙 Versión:* 3.0.0
 
-*🌒 Exp:* ${exp}
-*🪙 Coins:* ${estrellas}
+*💎 Gemas:* ${diamantes}
+*💫 Exp:* ${exp}
 *🫖 Nivel:* ${level}
 *🍢 Rango:* ${role}
 ${readMore}
@@ -144,7 +144,6 @@ ${readMore}
 ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
 
 𓂂𓏸  𐅹੭੭   *\`hᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
-ര ׄ ⚒️˚ ${usedPrefix}inspect *link*
 ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
 ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
 ര ׄ ⚒️˚ ${usedPrefix}read *texto*
