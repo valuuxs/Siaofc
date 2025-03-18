@@ -12,11 +12,11 @@ let info = `[ ⛏️ ] *Te has adentrando en lo profundo de las cuevas*
 
 > ᥆ᑲ𝗍ᥙ᥎іs𝗍ᥱ ᥣ᥆s sіgᥙіᥱᥒ𝗍ᥱs rᥱᥴᥙrs᥆s:
 
-✨ *Exp:* ${hasil}
-🪙 *Coins:* ${coin}
-💎 *Esmeralda*: ${emerald}
+💫 *Exp:* ${hasil}
+💎 *Diamantes:* ${diamantes}
+💚 *Esmeralda*: ${emerald}
 🔩 *Hierro:* ${iron}
-🏅 *Oro:* ${gold}
+🪙 *Oro:* ${gold}
 🕋 *Carbón:* ${coal}
 🪨 *Piedra:* ${stone}`
 
@@ -25,7 +25,7 @@ await m.react('⛏️')
 
 user.health -= 50
 user.pickaxedurability -= 30
-user.estrellas += coin
+user.diamantes += diamantes
 user.iron += iron
 user.gold += gold
 user.emerald += emerald
