@@ -28,7 +28,7 @@ export async function handler(chatUpdate) {
         if (!m)
             return
         m.exp = 0
-        m.estrellas = false
+        m.diamantes = false
         try {
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object')
@@ -36,8 +36,8 @@ export async function handler(chatUpdate) {
             if (user) {
                 if (!isNumber(user.exp))
                     user.exp = 0
-                if (!isNumber(user.estrellas))
-                    user.estrellas = 10
+                if (!isNumber(user.diamantes))
+                    user.diamantes = 10
                 if (!('premium' in user)) 
                     user.premium = false
                 if (!user.premium) 
@@ -67,7 +67,7 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
-                    estrellas: 10,
+                    diamantes: 10,
                     registered: false,
                     name: m.name,
                     age: -1,
@@ -361,8 +361,8 @@ global.db.data.users[m.sender].spam = new Date * 1
                     m.reply('chirrido -_-')
                 else
                     m.exp += xp
-                if (!isPrems && plugin.estrellas && global.db.data.users[m.sender].estrellas < plugin.estrellas * 1) {
-                    conn.reply(m.chat, `Se agotaron tus *Coins* 🪙`, m, fake)
+                if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
+                    conn.reply(m.chat, `*Se agotaron tus Diamantes 💎*`, m)
                     continue
                 }
                 let extra = {
@@ -391,7 +391,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                 try {
                     await plugin.call(this, m, extra)
                     if (!isPrems)
-                        m.estrellas = m.estrellas || plugin.estrellas || false
+                        m.diamantes = m.diamantes || plugin.diamantes || false
                 } catch (e) {
                     m.error = e
                     console.error(e)
@@ -409,8 +409,8 @@ global.db.data.users[m.sender].spam = new Date * 1
                             console.error(e)
                         }
                     }
-                    if (m.estrellas)
-                        conn.reply(m.chat, `Utilizaste *${+m.estrellas}* 🪙`, m, fake)
+                    if (m.diamantes)
+                        conn.reply(m.chat, `Utilizaste \`${+m.diamantes}\` Diamantes 💎`, m)
                 }
                 break
             }
@@ -427,7 +427,7 @@ global.db.data.users[m.sender].spam = new Date * 1
         if (m) {
             if (m.sender && (user = global.db.data.users[m.sender])) {
                 user.exp += m.exp
-                user.estrellas -= m.estrellas * 1
+                user.diamantes -= m.diamantes * 1
             }
 
             let stat
@@ -467,8 +467,8 @@ global.db.data.users[m.sender].spam = new Date * 1
       if (opts['autoread']) await this.readMessages([m.key])
       if (settingsREAD.autoread2) await this.readMessages([m.key])  
 
-     if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|adow|a|s)/gi)) {
-         let emot = pickRandom(["🚩", "🍟", "✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
+     if (db.data.chats[m.chat].reaction && m.text.match(/(ción|navidad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|adow|a|s)/gi)) {
+         let emot = pickRandom(["🙄", "😱", "✨️", "🥵", "😎", "☠️", "🫩", "☃️", "🫂", "😮‍💨", "💖", "💞", "💕", "💋", "🏳️‍🌈", "🌚", "🌝", "🤑", "🙈", "😂", "😹", "😼", "🗣️", "☕", "🤍"])
        if (!m.fromMe) return this.sendMessage(m.chat, { react: { text: emot, key: m.key }})
        }
      function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
