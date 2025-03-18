@@ -118,7 +118,7 @@ const pins = async (judul) => {
 };
 
 let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`🍫 Ingresa un texto. Ejemplo: .pinterest Crow`);
+  if (!text) return m.reply(`*[ ℹ️ ] Ingresa un texto.*\n\n*[ 💡 ] Ejemplo:* .pinterest Gatos`);
 
   try {
     m.react('🕒');
