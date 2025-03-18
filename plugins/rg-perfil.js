@@ -7,7 +7,7 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kg
 
 //let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
 
-let { premium, level, description, estrellas, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender];
+let { premium, level, description, diamantes, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender];
 
 age = age || 'Sin especificar';
 description = description || 'Sin descripción';
@@ -26,10 +26,10 @@ let noprem = `
 
 
 ╭─• *\`𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒\`*
-│ *🪙 Coins:* ${estrellas || 0}
-│ *🍨 Nivel:* ${level || 0}
-│ *🌷 Xp:* ${exp || 0}
-│ *☕ Rango:* ${role}
+│ *💎 Diamantes* ${diamantes || 0}
+│ *🆙 Nivel:* ${level || 0}
+│ *💫 Exᴘ* ${exp || 0}
+│ *🤍 Rango:* ${role}
 ╰─────────────•
 
 > By Shadow Bot MD
@@ -41,9 +41,9 @@ let prem = `╭─⪩ 𓆩 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔
 ╰─────────────⪩
 
 ╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
-│⧼🍪⧽ *Cᴏɪɴs:* ${estrellas}
-│⧼🔰⧽ *Nɪᴠᴇʟ:* ${level}
-│⧼💫⧽ *Xᴘ:* ${exp}
+│⧼💎⧽ *:* ${diamantes}
+│⧼🆙⧽ *Nɪᴠᴇʟ:* ${level}
+│⧼💫⧽ *Exᴘ* ${exp}
 │⧼⚜️⧽ *Rᴀɴɢᴏ:* ${role}
 ╰─────────────⪩`.trim()
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, rcanal, { mentions: [who] })
