@@ -37,7 +37,6 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 handler.help = ['tiktok']
 handler.tags = ['descargas']
 handler.command = /^(tt|tiktok)$/i;
-handler.register = true
 
 export default handler
 
