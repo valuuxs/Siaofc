@@ -43,7 +43,6 @@ await conn.reply(m.chat, "*[ ℹ️ ] Responde con uno de los numeros de la canc
 handler.help = ['scsearch']
 handler.tags = ['buscador']
 handler.command = ['scsearch', 'soundcloudsearch']
-handler.register = true
 
 export default handler
 
