@@ -40,7 +40,6 @@ handler.tags = ['nsfw'];
 
 export default handler;*/
 
-
 import axios from 'axios';
 
 const handler = async (m, { command, conn }) => {
@@ -62,18 +61,18 @@ const handler = async (m, { command, conn }) => {
 
         const randomImage = res[Math.floor(Math.random() * res.length)];
 
-        // Crear botones para los otros comandos disponibles
-        const buttons = handler.command.map(cmd => ({
-            buttonId: `.${cmd}`,
-            buttonText: { displayText: `📌 ${cmd}` }
-        }));
-
-        // Enviar imagen con botones
-        await conn.sendMessage(m.chat, { 
+        // Enviar archivo con botones
+        await conn.sendMessage(m.chat, {
             image: { url: randomImage },
             caption: `🔥 *${command}*`,
-            footer: 'Shadow Bot',
-            buttons,
+            footer: '© Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ',
+            buttons: [
+                {
+                    buttonId: `${command}`,
+                    buttonText: { displayText: 'ᯓᡣ𐭩 Siguiente' }
+                }
+            ],
+            viewOnce: true,
             headerType: 4
         }, { quoted: m });
 
