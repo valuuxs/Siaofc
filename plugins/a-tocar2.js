@@ -10,7 +10,7 @@ const handler = async (m, { command, conn }) => {
         await conn.sendMessage(m.chat, { react: { text: '🙈', key: m.key } });
 
         // Obtener contenido desde GitHub
-        const url = `https://raw.githubusercontent.com/WOTCHITA/YaemoriBot-MD/master/src/JSON/${command}.json`;
+        const url = `https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`;
         const { data: res } = await axios.get(url);
 
         // Seleccionar un elemento aleatorio
