@@ -33,7 +33,7 @@ const handler = async (m, { command, conn }) => {
 
     } catch (err) {
         console.error(err);
-        m.reply(`*[ ❌ ] Error archivo no encontrado:*\n>${err.message || err}`);
+        m.reply(`*[ ❌ ] Error archivo no encontrado:*\n> ${err.message || err}`);
     }
 };
 
