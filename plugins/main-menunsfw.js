@@ -49,6 +49,7 @@ Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ* 🔞
 ര ׄ⃟🍒˚ .pack2
 ര ׄ⃟🍒˚ .pack3
 ര ׄ⃟🍒˚ .videoxxx
+ര ׄ⃟🍒˚ .videoxxx2
 
 > © mᥱᥒᥙ *ᥒs𝖿ᥕ* ᑲᥡ  ᥴrіss.᥎᥊`.trim();
 
@@ -62,7 +63,7 @@ await conn.sendMessage(m.chat, { react: { text: '🔥', key: m.key } });
 };
 
 handler.help = ['menunsfw']
-handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu+18)$/i;
+handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu+18|menucaliente|menuporno|pornomenu|menuxxx)$/i;
 handler.fail = null;
 
 export default handler;
