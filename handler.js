@@ -296,12 +296,12 @@ return
 }
 
 //Modoadmin
-/*let hl = global.prefix 
+let hl = global.prefix 
 let adminMode = chat.modoadmin
 let isPotentialCommand = plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl || m.text.slice(0, 1) == hl || plugins.command
 
 if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && isPotentialCommand) continue
-*/
+
 //Antispam 2                
 /*if (user.antispam2 && isROwner) return
 let time = global.db.data.users[m.sender].spam + 3000
