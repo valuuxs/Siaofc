@@ -5,6 +5,10 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         throw m.reply(`*[ 🔗 ] Ingrese un link de TikTok*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcmTCa6/`);
     }
 
+if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
+    throw m.reply(`*[ ⚠️ ] El enlace ingresado no es válido. Asegúrese de que sea un link de TikTok.*`);
+}
+
     try {
         await conn.reply(m.chat, "*[ ⏳ ] Aguarde un momento, estoy enviando su video...*", m);
 
