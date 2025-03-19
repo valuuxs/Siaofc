@@ -411,7 +411,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       break
 
   case 'reaction':
-    case 'reaccion':
+    case 'reacciones':
     case 'emojis':
       if (!m.isGroup) {
         if (!isOwner) {
