@@ -48,7 +48,7 @@ ${tiktokData.data.music}`;
 handler.help = ['tiktok2']
 handler.tags = ['descargas']
 handler.command = /^(tiktok2|tt2|tt2dl)$/i;
-handler.register = true
+
 export default handler
 
 async function tiktokdl(url) {
