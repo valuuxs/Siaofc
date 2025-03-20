@@ -777,12 +777,12 @@ await conn.sendMessage(m.chat, {
     },
     { 
       buttonId: ".menu", 
-      buttonText: { displayText: 'Menu 🧇' } 
+      buttonText: { displayText: 'Menú ☕' } 
     }
   ],
   viewOnce: true,
   headerType: 1
-}, { quoted: estilo });
+}, { quoted: fkontak });
 }
 
 handler.help = ['enable', 'disable']
