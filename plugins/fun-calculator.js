@@ -61,17 +61,17 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "🙈 Tranquila que te voy hacer un oral.",
 "🥵 ¿Lo haces por gusto verdad?",
 "💖 ¿Cuando hacemos un trío? bebé"
-    ]
+    ],
     sinpoto: [
 "👀 ¿Seguro que no eres hombre con pelo largo?",
 "😹 Ni con cirugía te levantas ese autoestima",
 "🙉 Hasta un mosquito hace mas bulto que tu."
-    ]
+    ],
     sintetas: [
 "📭 Mas vacía que el buzón de alguien sin amigos.",
 "🌚 Da igual si estas defrente o de espalda, esque no hay diferencia.",
 "🫨 Se supone que la pubertad ayuda, ¿Qué pasó con tigo?"
-    ]
+    ],
     chipi: [
 "🤡 Lo tuyo no es mini, es edición limitada.",
 "😹 Lo bueno es que los golpes en la entrepierna no te hacen nada.",
