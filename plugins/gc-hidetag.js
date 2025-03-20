@@ -61,7 +61,7 @@ await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 }
 handler.help = ['notify <txt>']
 handler.tags = ['gc']
-handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet)$/i;
+handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet|aviso)$/i;
 handler.group = true
 handler.admin = true
 
