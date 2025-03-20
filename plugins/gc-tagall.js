@@ -7,14 +7,12 @@ const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, com
     throw false;
   }
   const pesan = args.join` `;
-const oi = `\`⏤͟͟͞͞A⃞᥎ׁׅꪱׁׁׁׅׅׅׅ꯱ᨵׁׅׅ :\` ${pesan}`;
-  let teks = `૮꒰˵•ᵜ•˵꒱ა‧ \`ꭈׁׅꫀׁׁׅܻׅ݊᥎ׁׅꪱׁׁׁׁׅׅׅׅ᥎ׁׅɑׁׅ݊ꪀ ℘ᥣׁׅ֪ɑׁׅ݊ꪀtׁׁׁׅׅׅɑׁׅׅ꯱!\`\n ⚘⃝ іᥒ𝗍ᥱgrᥲᥒ𝗍ᥱs : ${participants.length}\n\n ${oi}\n\n╭•┈┈•┈┈🌟┈•┈┈•◌ᜓ ݊ ᜒ𝅄\n`;
+const oi = `*\`AVISO:\`* ${pesan}`;
+  let teks = `𝗦𝗛𝗔𝗗𝗢𝗪 𝗟𝗢𝗦 𝗜𝗡𝗩𝗢𝗖𝗔 🫡\`\n*INTEGRANTES:* ${participants.length}\n\n ${oi}\n\nෆ *ETIQUETAS*\n`;
   for (const mem of participants) {
-    teks += `│ ꕤᝰ. @${mem.id.split('@')[0]}\n`;
+    teks += `യ ׄ🌿˚ @${mem.id.split('@')[0]}\n`;
   }
-  teks += `╰─┐ • •ㅤ•-ˏˋ✿ˊˎ-• •ㅤ•
-        ꒷︶︶꒷︶︶꒷꒦︶✧꒷₊˚\n\n>`
-  teks += ` ${botname}`;
+  teks += `➳ *Shadow Ultra - MD*`;
   conn.sendMessage(m.chat, {text: teks, mentions: participants.map((a) => a.id)} );
 };
 handler.help = ['todos *<txt>*'];
