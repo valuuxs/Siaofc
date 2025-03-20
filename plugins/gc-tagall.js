@@ -8,7 +8,7 @@ const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, com
   }
   const pesan = args.join` `;
 const oi = `*\`AVISO:\`* ${pesan}`;
-  let teks = `𝗦𝗛𝗔𝗗𝗢𝗪 𝗟𝗢𝗦 𝗜𝗡𝗩𝗢𝗖𝗔 🫡\n*INTEGRANTES:* ${participants.length}\n\n ${oi}\n\nෆ *ETIQUETAS*\n`;
+  let teks = `𝗦𝗛𝗔𝗗𝗢𝗪 𝗕𝗢𝗧 𝗟𝗢𝗦 𝗜𝗡𝗩𝗢𝗖𝗔 🫡\n*INTEGRANTES:* ${participants.length}\n\n ${oi}\n\nෆ *ETIQUETAS*\n`;
   for (const mem of participants) {
     teks += `യ ׄ🌿˚ @${mem.id.split('@')[0]}\n`;
   }
