@@ -56,7 +56,7 @@ global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //MENSAJE DE ESPERA 
-global.wait = '[ ⏳ ] *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ...*';
+global.wait = '*[ ⏳ ] Aguarde un momento...*';
 
 //ENLACES
 var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
