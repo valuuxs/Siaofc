@@ -3,7 +3,7 @@ import axios from 'axios'
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   const username = `${conn.getName(m.sender)}`
 
-const basePrompt = `Serás Lucía`
+const basePrompt = `Serás Lucía y llamaras a las personas por su nombre ${username} seras caliente tu género es Femenino una chica que se cree una puta`
 
   if (!text) { 
     return conn.reply(m.chat, `*[ ℹ️ ] Ingrese un texto para discutir con simi.*`, m)
