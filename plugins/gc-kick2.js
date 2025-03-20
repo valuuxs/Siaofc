@@ -17,13 +17,6 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
     m.reply(`*[ ℹ️ ] El participante fue eliminado.*`);
 };
 
-handler.help = ['kick *<@tag>*'];
-handler.tags = ['gc'];
-handler.command = ['kick2', 'expulsar2', 'ban2', 'rip2', 'sacar2'];
-handler.admin = true;
-handler.group = true;
-handler.botAdmin = true;
-
 handler.help = ['Aviso *<txt>*'];
 handler.tags = ['gc'];
 handler.command = /^(ick|an|acar|xpulsar|ip)$/i;
