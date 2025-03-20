@@ -2,8 +2,8 @@ import { sticker } from '../lib/sticker.js'
 import fetch from 'node-fetch'  
 import axios from 'axios'  
   
-let handler = async (m, { conn, text, command, fkontak }) => {  
-    if (!text) return m.reply(`*[ 🌿 ] Ingresa un texto para realizar tu Sticker.*`)  
+let handler = async (m, { conn, text, command }) => {  
+    if (!text) return m.reply(`*[ ℹ️ ] Ingresa un texto para realizar tu Sticker.*`)  
   
     let texto1 = global.packsticker  
     let texto2 = global.authsticker  
@@ -17,7 +17,7 @@ let handler = async (m, { conn, text, command, fkontak }) => {
   
     if (url) {  
         let stiker = await sticker(null, url, texto1, texto2)  
-        await conn.sendFile(m.chat, stiker, 'sticker.webp', '', fkontak, true) // Enviar con fkontak  
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, true)
     }  
 }  
   
