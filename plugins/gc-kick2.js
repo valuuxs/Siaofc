@@ -24,4 +24,12 @@ handler.admin = true;
 handler.group = true;
 handler.botAdmin = true;
 
+handler.help = ['Aviso *<txt>*'];
+handler.tags = ['gc'];
+handler.command = /^(ick|an|acar|xpulsar|ip)$/i;
+handler.customPrefix = /k|K|b|B|s|S|e|E|r|R/i;
+handler.group = true;
+handler.admin = true;
+handler.botAdmin = true;
+
 export default handler;
