@@ -22,8 +22,8 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
 
 handler.help = ['Kick'];
 handler.tags = ['gc'];
-handler.command = /^(ick|an|acar|ip|xpulsar)$/i;
-handler.customPrefix = /k|K|b|B|s|S|r|R|e|E/i;
+handler.command = /^(ick)$/i;
+handler.customPrefix = /k|K/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
