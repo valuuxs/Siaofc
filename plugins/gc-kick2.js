@@ -1,7 +1,4 @@
 let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) => {
-    let chatSettings = global.db.data.settings[m.chat] || {};
-    
-    if (!chatSettings.restrict) throw `*Modo restrict está desactivado. Usa #enable restrict*`;
 
     let kickte = `*[ ℹ️ ] Menciona al usuario que deseas eliminar.*`;
 
