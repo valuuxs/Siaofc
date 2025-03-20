@@ -63,19 +63,19 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "💖 ¿Cuando hacemos un trío? bebé"
     ]
     sinpoto: [
-"😹 Tabla de mierdx",
-"👹 Jaja tabla",
-"🙉 Tablaaaaaaa"
+"👀 ¿Seguro que no eres hombre con pelo largo?",
+"😹 Ni con cirugía te levantas ese autoestima",
+"🙉 Hasta un mosquito hace mas bulto que tu."
     ]
     sintetas: [
-"😿 Pobrecita.",
-"😮‍💨 Seguro le hacen Bullying",
-"😱 ¿Sos hombre?"
+"📭 Mas vacía que el buzón de alguien sin amigos.",
+"🌚 Da igual si estas defrente o de espalda, esque no hay diferencia.",
+"🫨 Se supone que la pubertad ayuda, ¿Qué pasó con tigo?"
     ]
     chipi: [
-"🤡 Pobre gil de mrd todo feo & chipi.",
-"😹 ¿Por eso no tienes novia verdad?",
-"💀 Seguro le cortaron el Pinchx"
+"🤡 Lo tuyo no es mini, es edición limitada.",
+"😹 Lo bueno es que los golpes en la entrepierna no te hacen nada.",
+"💀 Dicen q lo importante es como se usa, pero en tu casi ni así."
     ]
   };
 
