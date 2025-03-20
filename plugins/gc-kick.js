@@ -20,7 +20,7 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
 
 handler.help = ['kick *<@tag>*']
 handler.tags = ['gc']
-handler.command = ['kick', 'expulsar', 'ban', 'rip'] 
+handler.command = ['kick', 'expulsar', 'ban', 'rip', 'sacar'] 
 handler.admin = true
 handler.group = true
 handler.botAdmin = true
