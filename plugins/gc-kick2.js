@@ -20,12 +20,11 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
     m.reply(`*[ ℹ️ ] El participante fue eliminado.*`);
 };
 
-handler.help = ['Kick'];
+handler.help = ['kick *<@tag>*'];
 handler.tags = ['gc'];
-handler.command = /^(ick)$/i;
-handler.customPrefix = /k|K/i;
-handler.group = true;
+handler.command = ['kick2', 'expulsar2', 'ban2', 'rip2', 'sacar2'];
 handler.admin = true;
+handler.group = true;
 handler.botAdmin = true;
 
 export default handler;
