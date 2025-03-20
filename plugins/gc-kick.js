@@ -1,5 +1,5 @@
 let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) => {
-if (!db.data.settings.restrict) throw `*Modo Horny #enable restrict*`;
+if (!global.db.data.settings.restrict) throw `*Modo Horny #enable restrict*`;
     let kickte = `*[ ℹ️ ] Menciona al usuario que deseas eliminar.*`
 
     if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)})
