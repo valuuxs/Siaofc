@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 import axios from 'axios'  
   
 let handler = async (m, { conn, text, command, fkontak }) => {  
-    if (!text) return m.reply(`*[ ℹ️ ] Ingresa un texto para realizar tu Sticker.*`)  
+    if (!text) return m.reply(`*[ 🌿 ] Ingresa un texto para realizar tu Sticker.*`)  
   
     let texto1 = global.packsticker  
     let texto2 = global.authsticker  
