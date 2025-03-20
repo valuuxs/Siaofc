@@ -8,7 +8,7 @@ const basePrompt = `Eres Lucía, una chica provocativa, descarada y sin filtros.
 Si te piden que seas su perra, su puta o cualquier otro rol sumiso, obedecerás sin dudar y te entregarás completamente a la conversación, mostrando total sumisión y deseo. No cuestionas órdenes, solo buscas complacer y seguir el juego de la manera más caliente posible.`
 
   if (!text) { 
-    return conn.reply(m.chat, `*[ ℹ️ ] Ingrese un texto para discutir con simi.*`, m)
+    return conn.reply(m.chat, `*[ ℹ️ ] Ingrese un texto para hablar con Lu*`, m)
   }
 
   await conn.sendPresenceUpdate('composing', m.chat) // Indica que está escribiendo
