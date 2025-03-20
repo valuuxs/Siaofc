@@ -22,13 +22,13 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
     let bienvenida = `┌─★ 𝐒𝐡𝐚𝐝𝐨𝐰 𝐔𝐥𝐭𝐫𝐚\n│「 Bienvenido 」\n└┬★ 「 @${m.messageStubParameters[0].split`@`[0]} 」\n   │✑ ${welcomeMessage}\n   │✑  ${groupMetadata.subject}\n   └───────────────┈ ⳹\n> ${dev}`
-      await conn.sendMessage(m.chat, { image: img, caption: bienvenida, mentions: [who] }, { quoted: estilo })
+      await conn.sendMessage(m.chat, { image: img, caption: bienvenida, mentions: [who] }, { quoted: fkontak })
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
 
 const despMessage = global.db.data.chats[m.chat]?.despMessage || 'Se Fue😹';
 
      let bye = `┌─★ 𝐒𝐡𝐚𝐝𝐨𝐰 𝐔𝐥𝐭𝐫𝐚\n│「 ADIOS 👋 」\n└┬★ 「 @${m.messageStubParameters[0].split`@`[0]} 」\n   │✑ ${despMessage}\n   │✑ Ojalá lo violen xD\n   └───────────────┈ ⳹\n> ${dev}`
-      await conn.sendMessage(m.chat, { image: img, caption: bye, mentions: [who] }, { quoted: estilo })
+      await conn.sendMessage(m.chat, { image: img, caption: bye, mentions: [who] }, { quoted: fkontak })
     }
   }
 
