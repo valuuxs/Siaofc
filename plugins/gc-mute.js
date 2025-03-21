@@ -46,5 +46,6 @@ handler.before = async (m, { conn }) => {
 handler.command = ['mute', 'unmute'];
 handler.admin = true;
 handler.botAdmin = true;
+handler.rowner = true;
 
 export default handler;
