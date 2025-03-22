@@ -28,9 +28,8 @@ let handler = async (m, { conn, text }) => {
         if (!code) return m.reply('*[ ⚠️ ] enlace inválido.*')
 
         let res = await conn.groupAcceptInvite(code)
-        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.\n¡Disfruta del Bot en tu grupo!*`)
+        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)
 
-        // Si el usuario especifica días, se configura el tiempo de permanencia
         if (expired) {
             expired = Math.min(999, Math.max(1, isNumber(expired) ? parseInt(expired) : 0))
             let chats = global.db.data.chats[res] || (global.db.data.chats[res] = {})
@@ -38,7 +37,7 @@ let handler = async (m, { conn, text }) => {
             m.reply(`*[ ⌛ ] Shadow permanecerá en el grupo durante \`${expired}\` días.*`)
         }
     } catch {
-        return m.reply(`*[ ❌ ] Ocurrió un error al otrar al grupo.`) 
+        return m.reply(`*[ ❌ ] Ocurrió un error al otrar al grupo.*`) 
     }
 }
 
