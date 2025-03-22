@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 import fetch from 'node-fetch';
 
@@ -19,7 +19,7 @@ handler.command = ['pack'];
 export default handler;
 
 
-import fetch from 'node-fetch';
+import fetch from 'node-fetch';*/
 
 let handler = async (m, { conn, usedPrefix, command }) => {
 
