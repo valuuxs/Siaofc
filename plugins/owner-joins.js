@@ -18,6 +18,8 @@ handler.rowner = true
 
 export default handler*/
 
+//Mejorado por Criss Escobar
+
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})(?:\s+([0-9]{1,3}))?/i
 
 let handler = async (m, { conn, text }) => {
@@ -27,8 +29,16 @@ let handler = async (m, { conn, text }) => {
         let [_, code, expired] = text.match(linkRegex) || []
         if (!code) return m.reply('*[ ⚠️ ] enlace inválido.*')
 
-        let res = await conn.groupAcceptInvite(code)
-        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)
+        /*let res = await conn.groupAcceptInvite(code)
+        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
+
+let groupId = await conn.groupAcceptInvite(code)
+
+let groupMetadata = await conn.groupMetadata(groupId).catch(() => null)
+if (groupMetadata) return m.reply(`*[ 🦈 ] Ya estoy en este grupo.*`)
+
+m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)
+
 
         if (expired) {
             expired = Math.min(999, Math.max(1, isNumber(expired) ? parseInt(expired) : 0))
