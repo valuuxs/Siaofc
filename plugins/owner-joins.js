@@ -18,37 +18,31 @@ handler.rowner = true
 
 export default handler*/
 
+let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})(?:\s+([0-9]{1,3}))?/i
 
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})(?:\s(\d{1,3}))?/i
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`[ ℹ️ ] Ingresa el enlace del Grupo.`)  
-    
-    let [_, code, expired] = text.match(linkRegex) || []  
-    if (!code) return m.reply('*[ ⚠️ ] Enlace inválido.*')  
+let handler = async (m, { conn, text }) => {
+    if (!text) return m.reply(`*[ ℹ️ ] Ingresa el enlace del Grupo.*`)
 
     try {
-        let res = await conn.groupAcceptInvite(code)  
-        expired = Math.floor(Math.min(999, Math.max(1, isNumber(expired) ? parseInt(expired) : 0)))  
+        let [_, code, expired] = text.match(linkRegex) || []
+        if (!code) return m.reply('*[ ⚠️ ] enlace inválido.*')
 
-        if (!expired) {
-            m.reply(`*[ ℹ️ ] Me uní correctamente al Grupo.*`)
-        } else {
-            m.reply(`🚩 Me uní correctamente al Grupo Durante *${expired}* días.`)
+        let res = await conn.groupAcceptInvite(code)
+        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.\n¡Disfruta del Bot en tu grupo!*`)
+
+        // Si el usuario especifica días, se configura el tiempo de permanencia
+        if (expired) {
+            expired = Math.min(999, Math.max(1, isNumber(expired) ? parseInt(expired) : 0))
+            let chats = global.db.data.chats[res] || (global.db.data.chats[res] = {})
+            chats.expired = +new Date() + expired * 1000 * 60 * 60 * 24
+            m.reply(`*[ ⌛ ] Shadow permanecerá en el grupo durante \`${expired}\` días.*`)
         }
-
-        let chats = global.db.data.chats[res] || (global.db.data.chats[res] = {})  
-        if (expired) chats.expired = +new Date() + expired * 1000 * 60 * 60 * 24  
-
-    } catch (e) {
-        let errorMsg = '✘ Ocurrió un error.'
-        if (e.message.includes('revoke')) errorMsg = '*✘ No puedo unirme. Parece que el enlace ha sido revocado o es inválido.*'
-        if (e.message.includes('remove')) errorMsg = '*✘ No puedo unirme. Fui eliminado del grupo anteriormente.*'
-        m.reply(errorMsg)
+    } catch {
+        return m.reply(`*[ ❌ ] Ocurrió un error al otrar al grupo.`) 
     }
 }
 
-handler.help = ['join <link> <días>']
+handler.help = ['join *<link> <días>*']
 handler.tags = ['owner']
 handler.command = ['join', 'entrar']
 handler.rowner = true
