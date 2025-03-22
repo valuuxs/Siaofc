@@ -10,7 +10,7 @@ m.chat, `*[ 🎁 ] Ya Reclamastes Tu Cofre*\nRegresa en \`${msToTime(time - new 
   const ai = Math.floor(Math.random() * 4000);
   const expp = Math.floor(Math.random() * 5000);
 
-  global.db.data.users[m.sender].cookies += dia;
+  global.db.data.users[m.sender].diamantes += dia;
   global.db.data.users[m.sender].money += ai;
   global.db.data.users[m.sender].joincount += tok;
   global.db.data.users[m.sender].exp += expp;
@@ -22,7 +22,7 @@ m.chat, `*[ 🎁 ] Ya Reclamastes Tu Cofre*\nRegresa en \`${msToTime(time - new 
 ╰━━━━━━━━━━━━⬣
 
 ╭━〔 ${global.botname} 〕⬣
-┃ *${dia} Cookies* 🍪
+┃ *${dia} Diamantes* 💎
 ┃ *${tok} Tokens* 💰
 ┃ *${ai} Coins* 🪙
 ┃ *${expp} Exp* ⚡
