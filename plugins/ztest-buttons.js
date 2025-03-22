@@ -22,6 +22,7 @@ let handler = async (m, { conn }) => {
 handler.tag = ['test'];
 handler.help = ['p'];
 handler.command = ['buttontest'];
+handler.diamantes = 1;
 
 export default handler;
 /*
