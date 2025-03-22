@@ -1,6 +1,6 @@
 
 //Buttons - Message Im Interactive
-/*
+
 let handler = async (m, { conn }) => {
     let imageUrl = 'https://files.catbox.moe/ilr818.jpg';
 
@@ -46,7 +46,7 @@ let handler = async (m, { conn }) => {
 handler.tag = ['info'];
 handler.help = ['p'];
 handler.command = ['p'];
-*/
+
 
 
 
@@ -127,4 +127,4 @@ handler.tags = ['buscador']
 handler.command = ['ytss']
 handler.register = true
 
-export default handler;
+export default handler;*/
