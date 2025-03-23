@@ -54,14 +54,11 @@ import axios from 'axios';
 
 const handler = async (m, { command, conn }) => {
     try {
-        // Verifica si el chat permite NSFW
         if (!db.data.chats[m.chat]?.nsfw && m.isGroup) 
             throw '🚩 *¡Estos comandos están desactivados en este chat!*';
 
-        // Agregar reacción
         await conn.sendMessage(m.chat, { react: { text: '🙈', key: m.key } });
 
-        // URL del archivo JSON en GitHub
         const url = `https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`;
 
         // Retraso opcional para evitar bloqueos por muchas solicitudes seguidas (2s)
@@ -96,7 +93,6 @@ const handler = async (m, { command, conn }) => {
     }
 };
 
-// Configuración del handler
 handler.help = handler.command = [
     'nsfwloli', 'nsfwfoot', 'nsfwass', 'nsfwbdsm', 'nsfwcum', 'nsfwero', 
     'nsfwfemdom', 'nsfwglass', 'nsfworgy', 'yuri', 'yuri2', 'yaoi', 'yaoi2', 
