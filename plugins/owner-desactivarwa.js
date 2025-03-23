@@ -1,92 +1,92 @@
-const { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } = (await import('@whiskeysockets/baileys')).default;
 import yts from 'yt-search';
+import baileys from '@whiskeysockets/baileys';
 
-const handler = async (m, { conn, text }) => {
-    const device = await getDevice(m.key.id);
+async function sendAlbumMessage(jid, medias, options = {}) {
+    if (medias.length < 2) {
+        throw new RangeError("Se requieren al menos 2 elementos para el carrusel.");
+    }
 
-    if (!text) throw "⚠️ *Por favor, ingrese el texto para buscar en YouTube.*";
+    const caption = options.text || options.caption || "";
+    const delay = !isNaN(options.delay) ? options.delay : 500;
+    delete options.text;
+    delete options.caption;
+    delete options.delay;
 
-    const results = await yts(text);
-    if (!results || !results.videos) return m.reply('> *[❗] Error: No se encontraron videos.*');
-
-    const videos = results.videos.slice(0, 20); // Tomamos hasta 20 resultados
-
-    if (device !== 'desktop' && device !== 'web') {
-        // Elegimos un video aleatorio
-        const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-        const media = await prepareWAMessageMedia({ image: { url: randomVideo.thumbnail } }, { upload: conn.waUploadToServer });
-
-        // Sección de botones de descarga
-        const sections = [
-            {
-                title: "Descargar en Audio",
-                rows: videos.map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytmp3 ${video.url}`
-                }))
-            },
-            {
-                title: "Descargar en Video",
-                rows: videos.map(video => ({
-                    title: video.title,
-                    description: `Duración: ${video.timestamp} | Vistas: ${video.views}`,
-                    id: `.ytmp4 ${video.url}`
-                }))
-            }
-        ];
-
-        // Mensaje interactivo
-        const interactiveMessage = {
-            body: { 
-                text: `*—◉ Resultados obtenidos:* ${videos.length}\n\n🎬 *Video aleatorio:*\n📌 *Título:* ${randomVideo.title}\n👤 *Autor:* ${randomVideo.author.name}\n👁️ *Vistas:* ${randomVideo.views}\n🔗 *Enlace:* ${randomVideo.url}` 
-            },
-            footer: { text: "Shadow Bot" },
-            header: {
-                title: "*< YouTube Search />*",
-                hasMediaAttachment: true,
-                imageMessage: media.imageMessage,
-            },
-            nativeFlowMessage: {
-                buttons: [
-                    {
-                        name: "single_select",
-                        buttonParamsJson: JSON.stringify({
-                            title: "Opciones de Descarga",
-                            sections: sections,
-                        }),
+    const album = baileys.generateWAMessageFromContent(
+        jid,
+        {
+            messageContextInfo: {},
+            albumMessage: {
+                expectedImageCount: medias.filter(media => media.type === "image").length,
+                expectedVideoCount: medias.filter(media => media.type === "video").length,
+                ...(options.quoted
+                    ? {
+                        contextInfo: {
+                            remoteJid: options.quoted.key.remoteJid,
+                            fromMe: options.quoted.key.fromMe,
+                            stanzaId: options.quoted.key.id,
+                            participant: options.quoted.key.participant || options.quoted.key.remoteJid,
+                            quotedMessage: options.quoted.message,
+                        },
                     }
-                ],
-                messageParamsJson: "{}"
-            }
-        };
-
-        const msg = generateWAMessageFromContent(m.chat, {
-            viewOnceMessage: {
-                message: {
-                    interactiveMessage,
-                },
+                    : {}),
             },
-        }, { userJid: conn.user.jid, quoted: m });
+        },
+        {}
+    );
 
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+    await conn.relayMessage(album.key.remoteJid, album.message, { messageId: album.key.id });
 
-    } else {
-        // Si el usuario está en Desktop/Web, mostrar los resultados en texto
-        const teks = videos.map((v) => {
-            return `
-🎬 *_${v.title}_*
-🔗 *Enlace:* ${v.url}
-🕒 *Duración:* ${v.timestamp}
-📅 *Publicado:* ${v.ago}
-👁️ *Vistas:* ${v.views}`;
-        }).join('\n\n━━━━━━━━━━━━━━\n\n');
+    for (let i = 0; i < medias.length; i++) {
+        const { type, data, caption } = medias[i];
+        const msg = await baileys.generateWAMessage(
+            album.key.remoteJid,
+            { [type]: data, ...(i === 0 ? { caption } : {}) },
+            { upload: conn.waUploadToServer }
+        );
+        msg.message.messageContextInfo = {
+            messageAssociation: { associationType: 1, parentMessageKey: album.key },
+        };
+        await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
+        await baileys.delay(delay);
+    }
 
-        conn.sendFile(m.chat, videos[0].thumbnail, 'resultado.jpg', teks.trim(), m);      
-    }    
+    return album;
+}
+
+var handler = async (m, { text, conn }) => {
+    if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
+
+    try {
+        conn.reply(m.chat, '*Buscando...* 🔍', m);
+
+        let results = await yts(text);
+        let videos = results.all.filter(v => v.type === 'video').slice(0, 5); // Tomamos solo 5 resultados
+
+        if (!videos.length) {
+            return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
+        }
+
+        const medias = videos.map(v => ({
+            type: 'image',
+            data: { url: v.thumbnail },
+            caption: `🎥 *${v.title}*\n📡 *Canal:* ${v.author.name}\n🕝 *Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace:* ${v.url}`
+        }));
+
+        await sendAlbumMessage(m.chat, medias, {
+            caption: `🔎 *Resultados de YouTube para:* "${text}"`,
+            quoted: m
+        });
+
+    } catch (error) {
+        console.error(error);
+        conn.reply(m.chat, 'Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.', m);
+    }
 };
 
-handler.help = ['ytsearch <texto>'];
-handler.tags = ['search'];
-handler.command = /^(tesytt)$/i;
+handler.help = ['ytsearch'];
+handler.tags = ['buscador'];
+handler.command = ['youtubesearch', 'ytsearch', 'yts'];
+handler.register = true;
+
 export default handler;
