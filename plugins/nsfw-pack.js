@@ -23,7 +23,7 @@ import fetch from 'node-fetch';*/
 
 let handler = async (m, { conn, usedPrefix, command }) => {
 
-    m.react('🕑');
+    //m.react('🕑');
 
     let txt = 'Pack 🔥';
     let img = 'https://delirius-apiofc.vercel.app/nsfw/girls';
@@ -35,8 +35,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
             type: 1
         }
     ];
-
-    m.react('✅');
     await conn.sendMessage(
         m.chat,
         {
