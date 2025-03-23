@@ -1,64 +1,20 @@
+import fetch from 'node-fetch';
 import yts from 'yt-search';
-import baileys from '@whiskeysockets/baileys';
+import baileys, { generateWAMessageContent, generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 
-async function sendAlbumMessage(jid, medias, options = {}) {
-    if (medias.length < 2) {
-        throw new RangeError("Se requieren al menos 2 elementos para el carrusel.");
-    }
-
-    const caption = options.text || options.caption || "";
-    const delay = !isNaN(options.delay) ? options.delay : 500;
-    delete options.text;
-    delete options.caption;
-    delete options.delay;
-
-    const album = baileys.generateWAMessageFromContent(
-        jid,
-        {
-            messageContextInfo: {},
-            albumMessage: {
-                expectedImageCount: medias.filter(media => media.type === "image").length,
-                expectedVideoCount: medias.filter(media => media.type === "video").length,
-                ...(options.quoted
-                    ? {
-                        contextInfo: {
-                            remoteJid: options.quoted.key.remoteJid,
-                            fromMe: options.quoted.key.fromMe,
-                            stanzaId: options.quoted.key.id,
-                            participant: options.quoted.key.participant || options.quoted.key.remoteJid,
-                            quotedMessage: options.quoted.message,
-                        },
-                    }
-                    : {}),
-            },
-        },
-        {}
+async function createImage(url, conn) {
+    const { imageMessage } = await generateWAMessageContent(
+        { image: { url } },
+        { upload: conn.waUploadToServer }
     );
-
-    await conn.relayMessage(album.key.remoteJid, album.message, { messageId: album.key.id });
-
-    for (let i = 0; i < medias.length; i++) {
-        const { type, data, caption } = medias[i];
-        const msg = await baileys.generateWAMessage(
-            album.key.remoteJid,
-            { [type]: data, ...(i === 0 ? { caption } : {}) },
-            { upload: conn.waUploadToServer }
-        );
-        msg.message.messageContextInfo = {
-            messageAssociation: { associationType: 1, parentMessageKey: album.key },
-        };
-        await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
-        await baileys.delay(delay);
-    }
-
-    return album;
+    return imageMessage;
 }
 
 var handler = async (m, { text, conn }) => {
     if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
-        conn.reply(m.chat, '*Buscando...* 🔍', m);
+        await m.react('🔍');
 
         let results = await yts(text);
         let videos = results.all.filter(v => v.type === 'video').slice(0, 5); // Tomamos solo 5 resultados
@@ -67,16 +23,50 @@ var handler = async (m, { text, conn }) => {
             return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
         }
 
-        const medias = videos.map(v => ({
-            type: 'image',
-            data: { url: v.thumbnail },
-            caption: `🎥 *${v.title}*\n📡 *Canal:* ${v.author.name}\n🕝 *Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace:* ${v.url}`
-        }));
+        let push = [];
+        for (let video of videos) {
+            let image = await createImage(video.thumbnail, conn);
 
-        await sendAlbumMessage(m.chat, medias, {
-            caption: `🔎 *Resultados de YouTube para:* "${text}"`,
-            quoted: m
-        });
+            push.push({
+                body: proto.Message.InteractiveMessage.Body.fromObject({
+                    text: `🎥 *Título:* ${video.title}\n📡 *Canal:* ${video.author.name}\n🕝 *Duración:* ${video.timestamp}\n📆 *Subido:* ${video.ago}\n👀 *Vistas:* ${video.views}`
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '' }),
+                header: proto.Message.InteractiveMessage.Header.fromObject({
+                    title: '',
+                    hasMediaAttachment: true,
+                    imageMessage: image
+                }),
+                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+                    buttons: [
+                        {
+                            "name": "cta_copy",
+                            "buttonParamsJson": `{"display_text":"📺 Ver Video","id":"123456789","copy_code":"${video.url}"}`
+                        }
+                    ]
+                })
+            });
+        }
+
+        const msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    messageContextInfo: {
+                        deviceListMetadata: {},
+                        deviceListMetadataVersion: 2
+                    },
+                    interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+                        body: proto.Message.InteractiveMessage.Body.create({ text: `🔎 *Resultados de YouTube para:* "${text}"` }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({ text: '_YouTube Search_' }),
+                        header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
+                        carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...push] })
+                    })
+                }
+            }
+        }, { quoted: m });
+
+        await m.react('✅');
+        await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 
     } catch (error) {
         console.error(error);
@@ -86,7 +76,7 @@ var handler = async (m, { text, conn }) => {
 
 handler.help = ['ytsearch'];
 handler.tags = ['buscador'];
-handler.command = ['nop'];
+handler.command = ['ytz'];
 handler.register = true;
 
 export default handler;
