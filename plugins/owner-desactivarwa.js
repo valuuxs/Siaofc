@@ -86,7 +86,7 @@ var handler = async (m, { text, conn }) => {
 
 handler.help = ['ytsearch'];
 handler.tags = ['buscador'];
-handler.command = ['youtubesearch', 'ytsearch', 'yts'];
+handler.command = ['nop'];
 handler.register = true;
 
 export default handler;
