@@ -74,14 +74,12 @@ const handler = async (m, { command, conn }) => {
         if (!Array.isArray(res) || res.length === 0) 
             throw '🚩 *No se encontró contenido para este comando.*';
 
-        // Seleccionar una imagen aleatoria
         const randomImage = res[Math.floor(Math.random() * res.length)];
 
-        // Enviar imagen con botón
         await conn.sendMessage(m.chat, {
             image: { url: randomImage },
             caption: `🥵 *${command}*`,
-            footer: dev, // Ya definida en tu código
+            footer: dev,
             buttons: [
                 {
                     buttonId: `.${command}`,
