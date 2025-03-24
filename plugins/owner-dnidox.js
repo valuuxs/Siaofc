@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw m.reply(`*ℹ️ Ingresa un número de DNI*\n\n*💡 Ejemplo:* ${usedPrefix}${command} 46027897`);
+    if (!text) throw m.reply(`*ℹ️ Ingresa un número de DNI*\n> *\`💡 Ejemplo:\`* ${usedPrefix}${command} 46027897`);
 
     // Verificar que el texto sea numérico y tenga 8 dígitos (longitud típica del DNI en Perú)
     if (!/^\d{8}$/.test(text)) return m.reply('Por favor ingresa un número de DNI válido (8 dígitos).');
