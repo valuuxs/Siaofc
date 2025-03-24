@@ -29,15 +29,15 @@ let handler = async (m, { conn, text }) => {
         let [_, code, expired] = text.match(linkRegex) || []
         if (!code) return m.reply('*[ ⚠️ ] enlace inválido.*')
 
-        /*let res = await conn.groupAcceptInvite(code)
-        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
+        let res = await conn.groupAcceptInvite(code)
+        m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)
 
-let groupId = await conn.groupAcceptInvite(code)
+/*let groupId = await conn.groupAcceptInvite(code)
 
 let groupMetadata = await conn.groupMetadata(groupId).catch(() => null)
 if (groupMetadata) return m.reply(`*[ 🦈 ] Ya estoy en este grupo.*`)
 
-m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)
+m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
 
 
         if (expired) {
