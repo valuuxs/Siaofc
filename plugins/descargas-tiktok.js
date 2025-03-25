@@ -20,7 +20,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
+        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}`;
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*\`DESCARGAS - TIKTOK\`*" + `\n\n${infonya_gan}`, m);
