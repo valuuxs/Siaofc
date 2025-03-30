@@ -13,6 +13,9 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const user = global.db.data.users[m.sender];
     const { money, joincount, exp, limit, level, role } = user;
 
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
