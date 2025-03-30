@@ -27,13 +27,13 @@ const handler = async (m, { conn, isPrems }) => {
 *𓈒𓏸🌿 \`Version:\`* 1.0.0
 
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el *Creador*
-${readmore}
-↷✦; \`MENÚS\` ❞ 🌷︵᷼  
+
+↷✦ \`MENÚS\` ❞ 🌷︵᷼  
 ⠞🌷੭‎ ${usedPrefix}menunsfw
 ⠞🌷੭‎ ${usedPrefix}menuowner
 ⠞🌷੭‎ ${usedPrefix}menulogos
 
-↷✦; \`INFO BOT\` ❞ 🍄︵᷼  
+↷✦ \`INFO BOT\` ❞ 🍄︵᷼  
 ⠞🍄੭‎ ${usedPrefix}totalf
 ⠞🍄੭‎ ${usedPrefix}grupos
 ⠞🍄੭‎ ${usedPrefix}sugerir
