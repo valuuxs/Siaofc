@@ -1,7 +1,7 @@
 import fs from 'fs'
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 try {
 await m.react('🧡');
 
@@ -16,7 +16,7 @@ let rtotalreg = Object.values(global.db.data.users).filter(user => user.register
 
 const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];  
 
-const text = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
+const menu = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ✧ Hola ${taguser}\n${saludo}
 
 ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
@@ -264,7 +264,7 @@ const text = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ⠞👑੭ ${usedPrefix}unbanuser`.trim();
 
 conn.sendMessage(m.chat, {  
-  text: text,  
+  text: menu,  
   contextInfo: {  
     mentionedJid: conn.parseMention(text),  
     isForwarded: true,  
