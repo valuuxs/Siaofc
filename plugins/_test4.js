@@ -298,40 +298,41 @@ function clockString(ms) {
   return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
 }*/
 
-// By WillZek >> https://github.com/WillZek
-
 import fetch from 'node-fetch';
 
-let handler = async(m, { conn, text, usedPrefix, command }) => {
+let handler = async (m, { conn, text }) => {
+    if (!text) return m.reply('🍭 Ingrese un texto para buscar un grupo de WhatsApp');
 
-if (!text) return m.reply('🍭 Ingrese Un Texto Para Buscar Un Grupo De WhatsApp');
+    try {
+        let api = `https://api.agungny.my.id/api/searchgroup?q=${encodeURIComponent(text)}`;
+        let response = await fetch(api);
+        let json = await response.json();
 
-try {
-let api = `https://api.agungny.my.id/api/searchgroup?q=${text}`;
+        if (!json || !json.result || json.result.length === 0) {
+            m.react('✖️');
+            return m.reply('💠 No se encontró ningún grupo de WhatsApp');
+        }
 
-let response = await fetch(api);
-let json = await response.json();
+        m.react('🕑');
 
-m.react('🕑');
-let txt = `🔎 \`GRUPO WHATSAPP - SEARCH\`.`;
-      for (let i = 0; i < (5 <= json.result.length ? 5 : json.result.length); i++) {
-    let cb = json.result[i];
-    txt += `\n\n`;
-    txt += `💠 *Nombre Del Grupo:* ${cb.title}\n`
-    txt += `💠 *Descripción:* ${cb.desc}\n`
-    txt += `💠 *Link:* ${cb.link}`;
-     }
+        let txt = `🔎 *Resultados de búsqueda de grupos de WhatsApp:*\n`;
+        for (let i = 0; i < Math.min(5, json.result.length); i++) {
+            let cb = json.result[i];
+            txt += `\n────────────────────\n`;
+            txt += `💠 *Nombre:* ${cb.title}\n`;
+            txt += `💠 *Descripción:* ${cb.desc || 'Sin descripción'}\n`;
+            txt += `💠 *Link:* ${cb.link}\n`;
+        }
 
-m.react('🕒');
-let img = json.result[0];
+        let img = json.result[0]?.thumb || 'https://via.placeholder.com/500';
 
-conn.sendMessage(m.chat, { image: { url: img.thumb }, caption: txt }, { quoted: m });
-m.react('✅');
-
-} catch (e) {
-m.reply('💠 No Se Encontró El Grupo De WhatsApp');
-m.react('✖️');
- }
+        m.react('🕒');
+        await conn.sendMessage(m.chat, { image: { url: img }, caption: txt }, { quoted: m });
+        m.react('✅');
+    } catch (e) {
+        m.react('✖️');
+        m.reply('💠 No se encontró ningún grupo de WhatsApp o hubo un error en la búsqueda.');
+    }
 };
 
 handler.help = ['buscargp'];
