@@ -295,7 +295,8 @@ conn.reply(m.chat, '❎ Error en el comando. Inténtalo más tarde.', m);
 
 handler.help = ['menuff'];
 handler.tags = ['main'];
-handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+//handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+handler.command = /^(me)$/i;
 handler.fail = null;
 
 export default handler;
