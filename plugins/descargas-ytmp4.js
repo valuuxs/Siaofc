@@ -1,110 +1,96 @@
-/*import fetch from 'node-fetch';
+import fetch from "node-fetch";
+import axios from 'axios';
 
-let handler = async(m, { conn, args, text }) => {
-
-if (!text) return m.reply('Ingrese Un Link De YouTube\n> *Ejemplo:* https://youtube.com/shorts/ZisXJqH1jtw?si=0RZacIJU5zhoCmWh');
-
-m.react(rwait);
-
-let video;
-try {
-      video = await (await fetch(`https://api.alyachan.dev/api/ytv?url=${text}&apikey=uXxd7d`)).json();
-} catch (error) {
-try {
-      video = await (await fetch(`https://api.fgmods.xyz/api/downloader/ytmp4?url=${text}&quality=480p&apikey=be9NqGwC`)).json();
-} catch (error) {
-try {
-      video = await (await fetch(`https://good-camel-seemingly.ngrok-free.app/download/mp4?url=${text}`)).json();
-} catch (error) {
-      video = await (await fetch(`https://dark-core-api.vercel.app/api/download/ytmp4?key=api&url=${text}`)).json();
-      }
+let handler = async (m, { conn, text, usedPrefix, command, args }) => {
+  try {
+    if (!text) {
+      return conn.reply(m.chat, `🌱 Ejemplo de uso: ytv https://youtube.com/watch?v=Hx920thF8X4`, m);
     }
- }
 
-let link = video?.data?.url || video?.download_url || video?.result?.dl_url || video?.downloads?.link
+    if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) {
+      return m.reply(`Enalce inválido`);
+    }
 
-if (!link) return m.reply('No se pudo obtener el video.');
+    m.react('🕒');
+    let json = await ytdl(args[0]);
+    let limit = 10485760;
+    let size = await getSize(json.url);
 
-await conn.sendMessage(m.chat, {
-      video: { url: link },
-      mimetype: "video/mp4",
-      caption: `${dev}`,
-    }, { quoted: m });
-    m.react(done);
-}
+    const cap = ${json.title}\n\n🌿 \`URL\` : ${args[0]}\n⚖️ \`PESO:\` ${await formatSize(size) || "Desconocido"}`;
 
-handler.command = ['ytmp4']
+    conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" })
+
+    m.react('☑️');
+  } catch (e) {
+ m.reply(e)
+  }
+};
+
+handler.help = ['ytv'];
+handler.command = ['ytv2', 'ytv'];
+handler.tags = ['dl'];
+handler.diamantes = 3;
 
 export default handler;
 
+async function ytdl(url) {
+  const headers = {
+    "accept": "*/*",
+    "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+    "sec-ch-ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\"",
+    "sec-ch-ua-mobile": "?1",
+    "sec-ch-ua-platform": "\"Android\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "Referer": "https://id.ytmp3.mobi/",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  };
+  const initial = await fetch(`https://d.ymcdn.org/api/v1/init?p=y&23=1llum1n471&_=${Math.random()}`, { headers });
+  const init = await initial.json();
+  const id = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/))([^&?/]+)/)?.[1];
+  const convertURL = init.convertURL + `&v=${id}&f=mp4&_=${Math.random()}`;
 
-import fetch from 'node-fetch';
+  const converts = await fetch(convertURL, { headers });
+  const convert = await converts.json();
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) {
-        return conn.reply(m.chat, '🍭 Ingresa una URL válida de *Youtube*.', m);
+  let info = {};
+  for (let i = 0; i < 3; i++) {
+    const progressResponse = await fetch(convert.progressURL, { headers });
+    info = await progressResponse.json();
+    if (info.progress === 3) break;
+  }
+
+  const result = {
+    url: convert.downloadURL,
+    title: info.title
+  };
+  return result;
+}
+
+async function formatSize(bytes) {
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    bytes = Number(bytes);
+
+    if (isNaN(bytes)) {
+        return 'Tamaño de bytes inválido'
     }
 
-    try {
-        await m.react('🕒');
-
-        const apis = [
-            `https://api.siputzx.my.id/api/d/ytmp4?url=${encodeURIComponent(text)}`,
-            `https://api.botcahx.eu.org/api/dowloader/yt?url=${encodeURIComponent(text)}&apikey=xenzpedo`,
-            `https://mahiru-shiina.vercel.app/download/ytmp4?url=${encodeURIComponent(text)}`,
-            `https://api.agungny.my.id/api/youtube-video?url=${encodeURIComponent(text)}`
-        ];
-
-        let result;
-        for (const api of apis) {
-            try {
-                const response = await fetch(api);
-                result = await response.json();
-                if (result.status && result.result && result.result.downloadUrl) {
-                    const { title, downloadUrl } = result.result;
-
-                    const videoFileResponse = await fetch(downloadUrl);
-                    if (videoFileResponse.ok) {
-                        const buffer = await videoFileResponse.buffer();
-                        const size = parseInt(videoFileResponse.headers.get('content-length'), 10) || 0;
-
-                        if (size > 10 * 1024 * 1024) {
-                            await conn.sendMessage(
-                                m.chat,
-                                {
-                                    document: buffer,
-                                    mimetype: 'video/mp4',
-                                    fileName: `${title}.mp4`,
-                                },
-                                { quoted: m }
-                            );
-                        } else {
-                            await conn.sendMessage(
-                                m.chat,
-                                {
-                                    video: buffer,
-                                    mimetype: 'video/mp4',
-                                },
-                                { quoted: m }
-                            );
-                        }
-                    }
-
-                    await m.react('✅');
-                    return;
-                }
-            } catch (err) {
-                console.error(`Error con API: ${api}`, err.message);
-            }
-        }
-
-        throw new Error('No se pudo obtener el enlace de descarga de ninguna API.');
-    } catch (error) {
-        await m.react('❌');
+    while (bytes >= 1024 && i < units.length - 1) {
+        bytes /= 1024;
+        i++;
     }
-};
 
-handler.tags = ['descargas'];
-handler.command = /^(ytmp4)$/i;
-handler.register = true;
-export default handler;*/
+    return `${bytes.toFixed(2)} ${units[i]}`;
+}
+
+async function getSize(url) {
+  try {
+      const response = await axios.head(url);
+      const contentLength = response.headers['content-length'];
+      return contentLength ? parseInt(contentLength, 10) : null;
+  } catch (error) {
+      return error;
+  }
+}
