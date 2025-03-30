@@ -41,7 +41,7 @@ const handler = async (m, { conn, isPrems }) => {
   }
 };
 
-handler.command = /^(menutest)$/i;
+handler.command = /^(men)$/i;
 handler.fail = null;
 
 export default handler;
