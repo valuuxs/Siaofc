@@ -1,7 +1,5 @@
 import fs from 'fs'
 import fetch from 'node-fetch'
-import { xpRange } from '../lib/levelling.js'
-import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
 try {
@@ -25,9 +23,9 @@ const text = `
 
 ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
 
-𓈒𓏸🌴 `Bot Name:` ${botname}
-𓈒𓏸🌵 `Activo:` ${uptime}
-𓈒𓏸🍃 `Usuarios:` ${totalreg}
+𓈒𓏸🌴 `Bot Name:`
+𓈒𓏸🌵 `Activo:` 
+𓈒𓏸🍃 `Usuarios:` 
 𓈒𓏸🌿 `Version:` 1.0.0
 
 ✪ `Platform:` Linux
