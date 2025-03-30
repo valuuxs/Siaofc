@@ -14,7 +14,7 @@ Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ* 🔞
 \`\`\`${fechaHora}\`\`\`
 
 𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`* 🪱 ᦡᦡ
-ര ׄ⃟🪱˚ .xnxxsearch *texto*
+ര ׄ⃟🪱˚ ${usedPrefix}bbxnxxsearch *texto*
 ര ׄ⃟🪱˚ .xvsearch *texto*
 ര ׄ⃟🪱˚ .phsearch *texto*
 ര ׄ⃟🪱˚ .r34 *texto*
