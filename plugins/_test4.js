@@ -19,7 +19,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ✧ Hola ${taguser}\n${saludo}
 
-꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856`.trim();
+> ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856`.trim();
 
     conn.sendMessage(m.chat, {
       text: text,
