@@ -15,9 +15,11 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
-    const text = `> 👋🏻 ¡Hola!, ${taguser}
-> ${saludo}
-> ${fechaHora}\nHola ${usedPrefix}holam`.trim();
+    const text = `
+︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
+✧ Hola ${taguser}\n${saludo}
+
+꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856`.trim();
 
     conn.sendMessage(m.chat, {
       text: text,
