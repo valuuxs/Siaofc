@@ -29,7 +29,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ✪ Platform: Linux
 ✪ Baileys: Multi-Device
 ✪ Prefix [ . ]
-${readmore}
+${readMore}
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el Creador
 `.trim();
 
