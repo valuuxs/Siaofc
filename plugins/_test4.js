@@ -112,7 +112,7 @@ const handler = async (m, { conn, isPrems }) => {
 
 *𓈒𓏸🌴 \`Bot Name:\`* Morchi Bot - MD
 *𓈒𓏸🌵 \`Activo:\`* ${uptime}
-*𓈒𓏸🍃 \`Usuarios:\`* ${totalreg}
+*𓈒𓏸🍃 \`Usuarios:\`* 
 *𓈒𓏸🌿 \`Version:\`* 1.0.0
 
 *✪ \`Platform:\`* Linux
