@@ -15,9 +15,34 @@ const handler = async (m, { conn, isPrems }) => {
 
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
-    const text = `> 👋🏻 ¡Hola!, ${taguser}
-> ${saludo}
-> ${fechaHora}`.trim();
+    const text = `
+︵᷼     ⿻ *Morchi* ࣪   ࣭  ࣪ *WA* ࣭  🐈  ࣪   ࣭ 
+✧ *Hola ${taguser}*\n${saludo}
+
+*꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856*
+
+*𓈒𓏸🌴 \`Bot Name:\`* Morchi Bot - MD
+*𓈒𓏸🌵 \`Activo:\`* ${uptime}
+*𓈒𓏸🍃 \`Usuarios:\`* 100
+*𓈒𓏸🌿 \`Version:\`* 1.0.0
+
+> 😸 Si encuentra un comando con errores no dudes en reportarlo con el *Creador*
+${readmore}
+↷✦; \`MENÚS\` ❞ 🌷︵᷼  
+⠞🌷੭‎ ${usedPrefix}menunsfw
+⠞🌷੭‎ ${usedPrefix}menuowner
+⠞🌷੭‎ ${usedPrefix}menulogos
+
+↷✦; \`INFO BOT\` ❞ 🍄︵᷼  
+⠞🍄੭‎ ${usedPrefix}totalf
+⠞🍄੭‎ ${usedPrefix}grupos
+⠞🍄੭‎ ${usedPrefix}sugerir
+⠞🍄੭‎ ${usedPrefix}report
+⠞🍄੭‎ ${usedPrefix}owner
+⠞🍄੭‎ ${usedPrefix}ping
+⠞🍄੭‎ ${usedPrefix}uptime
+⠞🍄੭‎ ${usedPrefix}horario
+⠞🍄੭‎ ${usedPrefix}precios`.trim();
 
     conn.sendMessage(m.chat, {
       text: text,
