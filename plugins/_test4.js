@@ -264,7 +264,7 @@ const text = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ⠞👑੭ .unbanuser`.trim();
 
 conn.sendMessage(m.chat, {  
-  text: menu,  
+  text: text,  
   contextInfo: {  
     mentionedJid: conn.parseMention(text),  
     isForwarded: true,  
