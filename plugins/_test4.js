@@ -33,235 +33,235 @@ const menu = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el Creador
 
 ↷✦; \`MENÚS\` ❞ 🌷︵᷼ 
-⠞🌷੭‎ ${usedPrefix}menunsfw
-⠞🌷੭‎ ${usedPrefix}menuowner
-⠞🌷੭‎ ${usedPrefix}menulogos
+⠞🌷੭‎ .menunsfw
+⠞🌷੭‎ .menuowner
+⠞🌷੭‎ .menulogos
 
 ↷✦; \`INFO BOT\` ❞ 🍄︵᷼ 
-⠞🍄੭‎ ${usedPrefix}totalf
-⠞🍄੭‎ ${usedPrefix}grupos
-⠞🍄੭‎ ${usedPrefix}sugerir
-⠞🍄੭‎ ${usedPrefix}report
-⠞🍄੭‎ ${usedPrefix}owner
-⠞🍄੭‎ ${usedPrefix}ping
-⠞🍄੭‎ ${usedPrefix}uptime
-⠞🍄੭‎ ${usedPrefix}horario
-⠞🍄੭‎ ${usedPrefix}precios
+⠞🍄੭‎ .totalf
+⠞🍄੭‎ .grupos
+⠞🍄੭‎ .sugerir
+⠞🍄੭‎ .report
+⠞🍄੭‎ .owner
+⠞🍄੭‎ .ping
+⠞🍄੭‎ .uptime
+⠞🍄੭‎ .horario
+⠞🍄੭‎ .precios
 
 ↷✦; \`CONFIG\` ❞ 🪻︵᷼ 
-⠞🪻੭‎ ${usedPrefix}enable opción
-⠞🪻੭‎ ${usedPrefix}disable opción
-⠞🪻੭‎ ${usedPrefix}on opción
-⠞🪻੭‎ ${usedPrefix}off opción
-⠞🪻੭‎ ${usedPrefix}manual
+⠞🪻੭‎ .enable opción
+⠞🪻੭‎ .disable opción
+⠞🪻੭‎ .on opción
+⠞🪻੭‎ .off opción
+⠞🪻੭‎ .manual
 
 ↷✦; \`DOWNLOAD\` ❞ 🪷︵᷼ 
-⠞🪷੭‎ ${usedPrefix}play texto
-⠞🪷੭‎ ${usedPrefix}ytmp4doc texto
-⠞🪷੭‎ ${usedPrefix}ytmp3doc texto
-⠞🪷੭‎ ${usedPrefix}apk texto
-⠞🪷੭‎ ${usedPrefix}pinterest texto
-⠞🪷੭‎ ${usedPrefix}pinvid url
-⠞🪷੭‎ ${usedPrefix}ytmp4 url
-⠞🪷੭‎ ${usedPrefix}ytmp3 url
-⠞🪷੭‎ ${usedPrefix}tiktok url
-⠞🪷੭‎ ${usedPrefix}instagram url
-⠞🪷੭‎ ${usedPrefix}facebook url
-⠞🪷੭‎ ${usedPrefix}mediafire url
-⠞🪷੭‎ ${usedPrefix}mega url
-⠞🪷੭‎ ${usedPrefix}playstore url
-⠞🪷੭‎ ${usedPrefix}xnxxdl url
-⠞🪷੭‎ ${usedPrefix}xvideosdl url
+⠞🪷੭‎ .play texto
+⠞🪷੭‎ .ytmp4doc texto
+⠞🪷੭‎ .ytmp3doc texto
+⠞🪷੭‎ .apk texto
+⠞🪷੭‎ .pinterest texto
+⠞🪷੭‎ .pinvid url
+⠞🪷੭‎ .ytmp4 url
+⠞🪷੭‎ .ytmp3 url
+⠞🪷੭‎ .tiktok url
+⠞🪷੭‎ .instagram url
+⠞🪷੭‎ .facebook url
+⠞🪷੭‎ .mediafire url
+⠞🪷੭‎ .mega url
+⠞🪷੭‎ .playstore url
+⠞🪷੭‎ .xnxxdl url
+⠞🪷੭‎ .xvideosdl url
 
 ↷✦; \`SEARCH\` ❞ 🍮︵᷼ 
-⠞🍮੭‎ ${usedPrefix}aplaysearch texto
-⠞🍮੭‎ ${usedPrefix}ttsearch texto
-⠞🍮੭‎ ${usedPrefix}ttsearch2 texto
-⠞🍮੭‎ ${usedPrefix}ytsearch texto
-⠞🍮੭‎ ${usedPrefix}spotifysearch texto
-⠞🍮੭‎ ${usedPrefix}playstoresearch texto
-⠞🍮੭‎ ${usedPrefix}xnxxsearch texto
-⠞🍮੭‎ ${usedPrefix}xvsearch texto
-⠞🍮੭‎ ${usedPrefix}gnula texto
-⠞🍮੭‎ ${usedPrefix}mercadolibre texto
+⠞🍮੭‎ .aplaysearch texto
+⠞🍮੭‎ .ttsearch texto
+⠞🍮੭‎ .ttsearch2 texto
+⠞🍮੭‎ .ytsearch texto
+⠞🍮੭‎ .spotifysearch texto
+⠞🍮੭‎ .playstoresearch texto
+⠞🍮੭‎ .xnxxsearch texto
+⠞🍮੭‎ .xvsearch texto
+⠞🍮੭‎ .gnula texto
+⠞🍮੭‎ .mercadolibre texto
 
 ↷✦; \`LISTAS\` ❞ 📜︵᷼ 
-⠞📜੭‎ ${usedPrefix}v4fem hr + p
-⠞📜੭‎ ${usedPrefix}v4masc hr + p
-⠞📜੭‎ ${usedPrefix}v4mixto hr + p
-⠞📜੭‎ ${usedPrefix}v6fem hr + p
-⠞📜੭‎ ${usedPrefix}v6masc hr + p
-⠞📜੭‎ ${usedPrefix}v6mixto hr + p
+⠞📜੭‎ .v4fem hr + p
+⠞📜੭‎ .v4masc hr + p
+⠞📜੭‎ .v4mixto hr + p
+⠞📜੭‎ .v6fem hr + p
+⠞📜੭‎ .v6masc hr + p
+⠞📜੭‎ .v6mixto hr + p
 
 ↷✦; \`FRASES\` ❞ 🌻︵᷼ 
-⠞🌻੭‎ ${usedPrefix}piropo
-⠞🌻੭‎ ${usedPrefix}consejo
-⠞🌻੭‎ ${usedPrefix}fraseromantica
+⠞🌻੭‎ .piropo
+⠞🌻੭‎ .consejo
+⠞🌻੭‎ .fraseromantica
 
 ↷✦; \`CONVERTERS\` ❞ 🧸︵᷼ 
-⠞🧸੭‎ ${usedPrefix}tourl img
-⠞🧸੭‎ ${usedPrefix}tourl aud
-⠞🧸੭‎ ${usedPrefix}toptt aud
-⠞🧸੭‎ ${usedPrefix}toptt vid
-⠞🧸੭‎ ${usedPrefix}tourl vid
-⠞🧸੭‎ ${usedPrefix}tomp3 vid
-⠞🧸੭‎ ${usedPrefix}toimg sticker
+⠞🧸੭‎ .tourl img
+⠞🧸੭‎ .tourl aud
+⠞🧸੭‎ .toptt aud
+⠞🧸੭‎ .toptt vid
+⠞🧸੭‎ .tourl vid
+⠞🧸੭‎ .tomp3 vid
+⠞🧸੭‎ .toimg sticker
 
 ↷✦; \`TOOLS\` ❞ 🛠️︵᷼ 
-⠞🛠️੭‎ ${usedPrefix}clima texto
-⠞🛠️੭‎ ${usedPrefix}readmore texto
-⠞🛠️੭‎ ${usedPrefix}read texto
-⠞🛠️੭‎ ${usedPrefix}fake texto + user + texto
-⠞🛠️੭‎ ${usedPrefix}traducir idioma + texto
-⠞🛠️੭‎ ${usedPrefix}hd img
-⠞🛠️੭‎ ${usedPrefix}whatmusic aud
-⠞🛠️੭‎ ${usedPrefix}whatmusic vid
-⠞🛠️੭‎ ${usedPrefix}flag país
-⠞🛠️੭‎ ${usedPrefix}inspect link
-⠞🛠️੭‎ ${usedPrefix}inspeccionar link
-⠞🛠️੭‎ ${usedPrefix}nuevafotochannel
-⠞🛠️੭‎ ${usedPrefix}nosilenciarcanal
-⠞🛠️੭‎ ${usedPrefix}silenciarcanal
-⠞🛠️੭‎ ${usedPrefix}seguircanal
-⠞🛠️੭‎ ${usedPrefix}avisoschannel
-⠞🛠️੭‎ ${usedPrefix}resiviravisos
-⠞🛠️੭‎ ${usedPrefix}eliminarfotochannel
-⠞🛠️੭‎ ${usedPrefix}reactioneschannel
-⠞🛠️੭‎ ${usedPrefix}reaccioneschannel
-⠞🛠️੭‎ ${usedPrefix}nuevonombrecanal
-⠞🛠️੭‎ ${usedPrefix}nuevadescchannel
+⠞🛠️੭‎ .clima texto
+⠞🛠️੭‎ .readmore texto
+⠞🛠️੭‎ .read texto
+⠞🛠️੭‎ .fake texto + user + texto
+⠞🛠️੭‎ .traducir idioma + texto
+⠞🛠️੭‎ .hd img
+⠞🛠️੭‎ .whatmusic aud
+⠞🛠️੭‎ .whatmusic vid
+⠞🛠️੭‎ .flag país
+⠞🛠️੭‎ .inspect link
+⠞🛠️੭‎ .inspeccionar link
+⠞🛠️੭‎ .nuevafotochannel
+⠞🛠️੭‎ .nosilenciarcanal
+⠞🛠️੭‎ .silenciarcanal
+⠞🛠️੭‎ .seguircanal
+⠞🛠️੭‎ .avisoschannel
+⠞🛠️੭‎ .resiviravisos
+⠞🛠️੭‎ .eliminarfotochannel
+⠞🛠️੭‎ .reactioneschannel
+⠞🛠️੭‎ .reaccioneschannel
+⠞🛠️੭‎ .nuevonombrecanal
+⠞🛠️੭‎ .nuevadescchannel
 
 ↷✦; \`GROUPS\` ❞ 🌿︵᷼ 
-⠞🌿੭‎ ${usedPrefix}add número
-⠞🌿੭‎ ${usedPrefix}grupo abrir / cerrar
-⠞🌿੭‎ ${usedPrefix}grouptime tiempo
-⠞🌿੭‎ ${usedPrefix}notify texto
+⠞🌿੭‎ .add número
+⠞🌿੭‎ .grupo abrir / cerrar
+⠞🌿੭‎ .grouptime tiempo
+⠞🌿੭‎ .notify texto
 ⠞🌿੭‎ Aviso texto
 ⠞🌿੭‎ Admins texto
-⠞🌿੭‎ ${usedPrefix}todos texto
-⠞🌿੭‎ ${usedPrefix}setwelcome texto
-⠞🌿੭‎ ${usedPrefix}groupdesc texto
-⠞🌿੭‎ ${usedPrefix}setbye texto
-⠞🌿੭‎ ${usedPrefix}promote @tag
-⠞🌿੭‎ ${usedPrefix}demote @tag
-⠞🌿੭‎ ${usedPrefix}kick @tag
-⠞🌿੭‎ ${usedPrefix}mute @tag
-⠞🌿੭‎ ${usedPrefix}inactivos opción
-⠞🌿੭‎ ${usedPrefix}tagnum prefix
-⠞🌿੭‎ ${usedPrefix}link
-⠞🌿੭‎ ${usedPrefix}fantasmas
+⠞🌿੭‎ .todos texto
+⠞🌿੭‎ .setwelcome texto
+⠞🌿੭‎ .groupdesc texto
+⠞🌿੭‎ .setbye texto
+⠞🌿੭‎ .promote @tag
+⠞🌿੭‎ .demote @tag
+⠞🌿੭‎ .kick @tag
+⠞🌿੭‎ .mute @tag
+⠞🌿੭‎ .inactivos opción
+⠞🌿੭‎ .tagnum prefix
+⠞🌿੭‎ .link
+⠞🌿੭‎ .fantasmas
 
 ↷✦; \`EFFECTS\` ❞ 🍃︵᷼ 
-⠞🍃੭‎ ${usedPrefix}bass vid
-⠞🍃੭‎ ${usedPrefix}blown vid
-⠞🍃੭‎ ${usedPrefix}deep vid
-⠞🍃੭‎ ${usedPrefix}earrape vid
-⠞🍃੭‎ ${usedPrefix}fast vid
-⠞🍃੭‎ ${usedPrefix}smooth vid
-⠞🍃੭‎ ${usedPrefix}tupai vid
-⠞🍃੭‎ ${usedPrefix}nightcore vid
-⠞🍃੭‎ ${usedPrefix}reverse vid
-⠞🍃੭‎ ${usedPrefix}robot vid
-⠞🍃੭‎ ${usedPrefix}slow vid
-⠞🍃੭‎ ${usedPrefix}squirrel vid
-⠞🍃੭‎ ${usedPrefix}chipmunk vid
-⠞🍃੭‎ ${usedPrefix}reverb vid
-⠞🍃੭‎ ${usedPrefix}chorus vid
-⠞🍃੭‎ ${usedPrefix}flanger vid
-⠞🍃੭‎ ${usedPrefix}distortion vid
-⠞🍃੭‎ ${usedPrefix}pitch vid
-⠞🍃੭‎ ${usedPrefix}highpass vid
-⠞🍃੭‎ ${usedPrefix}lowpass vid
-⠞🍃੭‎ ${usedPrefix}underwater vid
+⠞🍃੭‎ .bass vid
+⠞🍃੭‎ .blown vid
+⠞🍃੭‎ .deep vid
+⠞🍃੭‎ .earrape vid
+⠞🍃੭‎ .fast vid
+⠞🍃੭‎ .smooth vid
+⠞🍃੭‎ .tupai vid
+⠞🍃੭‎ .nightcore vid
+⠞🍃੭‎ .reverse vid
+⠞🍃੭‎ .robot vid
+⠞🍃੭‎ .slow vid
+⠞🍃੭‎ .squirrel vid
+⠞🍃੭‎ .chipmunk vid
+⠞🍃੭‎ .reverb vid
+⠞🍃੭‎ .chorus vid
+⠞🍃੭‎ .flanger vid
+⠞🍃੭‎ .distortion vid
+⠞🍃੭‎ .pitch vid
+⠞🍃੭‎ .highpass vid
+⠞🍃੭‎ .lowpass vid
+⠞🍃੭‎ .underwater vid
 
 ↷✦; \`FUN\` ❞ 🥥︵᷼ 
-⠞🥥੭‎ ${usedPrefix}gay @tag
-⠞🥥੭‎ ${usedPrefix}lesbiana @tag
-⠞🥥੭‎ ${usedPrefix}pajero @tag
-⠞🥥੭‎ ${usedPrefix}pajera @tag
-⠞🥥੭‎ ${usedPrefix}puto @tag
-⠞🥥੭‎ ${usedPrefix}puta @tag
-⠞🥥੭‎ ${usedPrefix}manco @tag
-⠞🥥੭‎ ${usedPrefix}manca @tag
-⠞🥥੭‎ ${usedPrefix}rata @tag
-⠞🥥੭‎ ${usedPrefix}prostituto @tag
-⠞🥥੭‎ ${usedPrefix}prostituta @tag
-⠞🥥੭‎ ${usedPrefix}doxear @tag
-⠞🥥੭‎ ${usedPrefix}jalamela @tag
-⠞🥥੭‎ ${usedPrefix}simi texto
-⠞🥥੭‎ ${usedPrefix}pregunta texto
-⠞🥥੭‎ ${usedPrefix}genio texto
-⠞🥥੭‎ ${usedPrefix}top
-⠞🥥੭‎ ${usedPrefix}sorteo
-⠞🥥੭‎ ${usedPrefix}piropo
-⠞🥥੭‎ ${usedPrefix}chiste
-⠞🥥੭‎ ${usedPrefix}facto
-⠞🥥੭‎ ${usedPrefix}verdad
-⠞🥥੭‎ ${usedPrefix}pareja
-⠞🥥੭‎ ${usedPrefix}parejas
-⠞🥥੭‎ ${usedPrefix}love
-⠞🥥੭‎ ${usedPrefix}personalidad
+⠞🥥੭‎ .gay @tag
+⠞🥥੭‎ .lesbiana @tag
+⠞🥥੭‎ .pajero @tag
+⠞🥥੭‎ .pajera @tag
+⠞🥥੭‎ .puto @tag
+⠞🥥੭‎ .puta @tag
+⠞🥥੭‎ .manco @tag
+⠞🥥੭‎ .manca @tag
+⠞🥥੭‎ .rata @tag
+⠞🥥੭‎ .prostituto @tag
+⠞🥥੭‎ .prostituta @tag
+⠞🥥੭‎ .doxear @tag
+⠞🥥੭‎ .jalamela @tag
+⠞🥥੭‎ .simi texto
+⠞🥥੭‎ .pregunta texto
+⠞🥥੭‎ .genio texto
+⠞🥥੭‎ .top
+⠞🥥੭‎ .sorteo
+⠞🥥੭‎ .piropo
+⠞🥥੭‎ .chiste
+⠞🥥੭‎ .facto
+⠞🥥੭‎ .verdad
+⠞🥥੭‎ .pareja
+⠞🥥੭‎ .parejas
+⠞🥥੭‎ .love
+⠞🥥੭‎ .personalidad
 
 ↷✦; \`GAME\` ❞ 🎋︵᷼ 
-⠞🎋੭‎ ${usedPrefix}pregunta texto
-⠞🎋੭‎ ${usedPrefix}ttt texto
-⠞🎋੭‎ ${usedPrefix}ptt opción
-⠞🎋੭‎ ${usedPrefix}delttt
-⠞🎋੭‎ ${usedPrefix}acertijo
-⠞🎋੭‎ ${usedPrefix}trivia
+⠞🎋੭‎ .pregunta texto
+⠞🎋੭‎ .ttt texto
+⠞🎋੭‎ .ptt opción
+⠞🎋੭‎ .delttt
+⠞🎋੭‎ .acertijo
+⠞🎋੭‎ .trivia
 
 ↷✦; \`ANIME\` ❞ 🌾︵᷼ 
-⠞🌾੭‎ ${usedPrefix}messi
-⠞🌾੭‎ ${usedPrefix}cr7
+⠞🌾੭‎ .messi
+⠞🌾੭‎ .cr7
 
 ↷✦; `GIFS NSFW` ❞ 🔥︵᷼ 
-⠞🔥੭‎ ${usedPrefix}violar @tag
-⠞🔥੭‎ ${usedPrefix}follar @tag
-⠞🔥੭‎ ${usedPrefix}anal @tag
-⠞🔥੭‎ ${usedPrefix}coger @tag
-⠞🔥੭‎ ${usedPrefix}coger2 @tag
-⠞🔥੭‎ ${usedPrefix}penetrar @tag
-⠞🔥੭‎ ${usedPrefix}sexo @tag
-⠞🔥੭‎ ${usedPrefix}rusa @tag
-⠞🔥੭‎ ${usedPrefix}sixnine @tag
-⠞🔥੭‎ ${usedPrefix}pies @tag
-⠞🔥੭‎ ${usedPrefix}mamada @tag
-⠞🔥੭‎ ${usedPrefix}lickpussy @tag
-⠞🔥੭‎ ${usedPrefix}grabboobs @tag
-⠞🔥੭‎ ${usedPrefix}suckboobs @tag
-⠞🔥੭‎ ${usedPrefix}cum @tag
-⠞🔥੭‎ ${usedPrefix}fap @tag
-⠞🔥੭‎ ${usedPrefix}manosear @tag
-⠞🔥੭‎ ${usedPrefix}lesbianas @tag
+⠞🔥੭‎ .violar @tag
+⠞🔥੭‎ .follar @tag
+⠞🔥੭‎ .anal @tag
+⠞🔥੭‎ .coger @tag
+⠞🔥੭‎ .coger2 @tag
+⠞🔥੭‎ .penetrar @tag
+⠞🔥੭‎ .sexo @tag
+⠞🔥੭‎ .rusa @tag
+⠞🔥੭‎ .sixnine @tag
+⠞🔥੭‎ .pies @tag
+⠞🔥੭‎ .mamada @tag
+⠞🔥੭‎ .lickpussy @tag
+⠞🔥੭‎ .grabboobs @tag
+⠞🔥੭‎ .suckboobs @tag
+⠞🔥੭‎ .cum @tag
+⠞🔥੭‎ .fap @tag
+⠞🔥੭‎ .manosear @tag
+⠞🔥੭‎ .lesbianas @tag
 
 ↷✦; \`STICKERS\` ❞ 🦋︵᷼ 
-⠞🦋੭‎ ${usedPrefix}sticker img
-⠞🦋੭‎ ${usedPrefix}sticker vid
-⠞🦋੭‎ ${usedPrefix}brat texto
-⠞🦋੭‎ ${usedPrefix}qc texto
-⠞🦋੭‎ ${usedPrefix}dado
+⠞🦋੭‎ .sticker img
+⠞🦋੭‎ .sticker vid
+⠞🦋੭‎ .brat texto
+⠞🦋੭‎ .qc texto
+⠞🦋੭‎ .dado
 
 ↷✦; \`RPG\` ❞ 💸︵᷼ 
-⠞💸੭‎ ${usedPrefix}minar
-⠞💸੭‎ ${usedPrefix}cofre
-⠞💸੭ ${usedPrefix}slut
-⠞💸੭ ${usedPrefix}nivel
-⠞💸੭ ${usedPrefix}ruleta
+⠞💸੭‎ .minar
+⠞💸੭‎ .cofre
+⠞💸੭ .slut
+⠞💸੭ .nivel
+⠞💸੭ .ruleta
 
 ↷✦; \`REGISTRO\` ❞ ☁️︵᷼ 
-⠞☁️੭ ${usedPrefix}perfil
-⠞☁️੭ ${usedPrefix}reg
-⠞☁️੭ ${usedPrefix}unreg
+⠞☁️੭ .perfil
+⠞☁️੭ .reg
+⠞☁️੭ .unreg
 
 ↷✦; \`OWNER\` ❞ 👑︵᷼ 
-⠞👑੭ ${usedPrefix}salir
-⠞👑੭ ${usedPrefix}update
-⠞👑੭ ${usedPrefix}blocklist
-⠞👑੭ ${usedPrefix}grouplist
-⠞👑੭ ${usedPrefix}restart
-⠞👑੭ ${usedPrefix}join
-⠞👑੭ ${usedPrefix}chetar
-⠞👑੭ ${usedPrefix}unbanuser`.trim();
+⠞👑੭ .salir
+⠞👑੭ .update
+⠞👑੭ .blocklist
+⠞👑੭ .grouplist
+⠞👑੭ .restart
+⠞👑੭ .join
+⠞👑੭ .chetar
+⠞👑੭ .unbanuser`.trim();
 
 conn.sendMessage(m.chat, {  
   text: menu,  
@@ -285,10 +285,8 @@ conn.reply(m.chat, '❎ Error en el comando. Inténtalo más tarde.', m);
 }
 };
 
-handler.help = ['menuff'];
-handler.tags = ['main'];
 //handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
-handler.command = /^(me)$/i;
+handler.command = /^(mexxx)$/i;
 handler.fail = null;
 
 export default handler;
