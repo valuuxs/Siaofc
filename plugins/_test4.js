@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const handler = async (m, { conn, isPrems }) => {
+const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
     await m.react('🧡');
 
@@ -17,7 +17,7 @@ const handler = async (m, { conn, isPrems }) => {
 
     const text = `> 👋🏻 ¡Hola!, ${taguser}
 > ${saludo}
-> ${fechaHora}`.trim();
+> ${fechaHora}\nHola ${usedPrefix}holam`.trim();
 
     conn.sendMessage(m.chat, {
       text: text,
