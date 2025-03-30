@@ -19,26 +19,25 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
-︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA BOT ࣭  🐈  ࣪   ࣭
-✧ Hola ${taguser}\n${saludo}
+︵᷼     ⿻ *Mᴏʀᴄʜɪ* ࣪   ࣭  ࣪ *WA BOT* ࣭  🐈  ࣪   ࣭
+✿ *Hᴏʟᴀ ${taguser}*\n${saludo}
 
-꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
+> ꒰꛱ ͜Desarrollado por *Cristian Escobar* +51927238856
 
 *𓈒𓏸🌴 \`Bot Name:\`* ${botname}
 *𓈒𓏸🌵 \`Activo:\`* ${uptime}
 *𓈒𓏸🍃 \`Usuarios:\`* ${totalreg}
-*𓈒𓏸🌿 \`Version:\`* 1.0.0
-
-*✪ \`Platform:\`* Linux
-*✪ \`Baileys:\`* Multi-Device
-*✪ \`Prefix\`* [ . ]
+*𓈒𓏸🌿 \`Versión:\`* 1.0.0
 
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el Creador
-
+${readMore}
 ↷✦; *\`MENÚS\`* ❞ 🌷︵᷼ 
 ⠞🌷੭‎ ${usedPrefix}menunsfw
 ⠞🌷੭‎ ${usedPrefix}menuowner
-⠞🌷੭‎ ${usedPrefix}menulogos`.trim();
+⠞🌷੭‎ ${usedPrefix}menulogos
+
+
+`.trim();
 
     conn.sendMessage(m.chat, {
       text: text,
