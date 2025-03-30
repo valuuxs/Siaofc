@@ -16,32 +16,28 @@ let rtotalreg = Object.values(global.db.data.users).filter(user => user.register
 
 const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];  
 
-const text = `
-
-︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
+const text = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ✧ Hola ${taguser}\n${saludo}
 
 ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
 
-𓈒𓏸🌴 `Bot Name:`
-𓈒𓏸🌵 `Activo:` 
-𓈒𓏸🍃 `Usuarios:` 
-𓈒𓏸🌿 `Version:` 1.0.0
+𓈒𓏸🌴 \`Bot Name:\`
+𓈒𓏸🌵 \`Activo:\` 
+𓈒𓏸🍃 \`Usuarios:\` 
+𓈒𓏸🌿 \`Version:\` 1.0.0
 
-✪ `Platform:` Linux
-✪ `Baileys:` Multi-Device
-✪ `Prefix` [ . ]
+✪ \`Platform:\` Linux
+✪ \`Baileys:\` Multi-Device
+✪ \`Prefix\` [ . ]
 
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el Creador
 
-
-
-↷✦; `MENÚS` ❞ 🌷︵᷼ 
+↷✦; \`MENÚS\` ❞ 🌷︵᷼ 
 ⠞🌷੭‎ ${usedPrefix}menunsfw
 ⠞🌷੭‎ ${usedPrefix}menuowner
 ⠞🌷੭‎ ${usedPrefix}menulogos
 
-↷✦; `INFO BOT` ❞ 🍄︵᷼ 
+↷✦; \`INFO BOT\` ❞ 🍄︵᷼ 
 ⠞🍄੭‎ ${usedPrefix}totalf
 ⠞🍄੭‎ ${usedPrefix}grupos
 ⠞🍄੭‎ ${usedPrefix}sugerir
@@ -52,14 +48,14 @@ const text = `
 ⠞🍄੭‎ ${usedPrefix}horario
 ⠞🍄੭‎ ${usedPrefix}precios
 
-↷✦; `CONFIG` ❞ 🪻︵᷼ 
+↷✦; \`CONFIG\` ❞ 🪻︵᷼ 
 ⠞🪻੭‎ ${usedPrefix}enable opción
 ⠞🪻੭‎ ${usedPrefix}disable opción
 ⠞🪻੭‎ ${usedPrefix}on opción
 ⠞🪻੭‎ ${usedPrefix}off opción
 ⠞🪻੭‎ ${usedPrefix}manual
 
-↷✦; `DOWNLOAD` ❞ 🪷︵᷼ 
+↷✦; \`DOWNLOAD\` ❞ 🪷︵᷼ 
 ⠞🪷੭‎ ${usedPrefix}play texto
 ⠞🪷੭‎ ${usedPrefix}ytmp4doc texto
 ⠞🪷੭‎ ${usedPrefix}ytmp3doc texto
@@ -77,7 +73,7 @@ const text = `
 ⠞🪷੭‎ ${usedPrefix}xnxxdl url
 ⠞🪷੭‎ ${usedPrefix}xvideosdl url
 
-↷✦; `SEARCH` ❞ 🍮︵᷼ 
+↷✦; \`SEARCH\` ❞ 🍮︵᷼ 
 ⠞🍮੭‎ ${usedPrefix}aplaysearch texto
 ⠞🍮੭‎ ${usedPrefix}ttsearch texto
 ⠞🍮੭‎ ${usedPrefix}ttsearch2 texto
@@ -89,7 +85,7 @@ const text = `
 ⠞🍮੭‎ ${usedPrefix}gnula texto
 ⠞🍮੭‎ ${usedPrefix}mercadolibre texto
 
-↷✦; `LISTAS` ❞ 📜︵᷼ 
+↷✦; \`LISTAS\` ❞ 📜︵᷼ 
 ⠞📜੭‎ ${usedPrefix}v4fem hr + p
 ⠞📜੭‎ ${usedPrefix}v4masc hr + p
 ⠞📜੭‎ ${usedPrefix}v4mixto hr + p
@@ -97,12 +93,12 @@ const text = `
 ⠞📜੭‎ ${usedPrefix}v6masc hr + p
 ⠞📜੭‎ ${usedPrefix}v6mixto hr + p
 
-↷✦; `FRASES` ❞ 🌻︵᷼ 
+↷✦; \`FRASES\` ❞ 🌻︵᷼ 
 ⠞🌻੭‎ ${usedPrefix}piropo
 ⠞🌻੭‎ ${usedPrefix}consejo
 ⠞🌻੭‎ ${usedPrefix}fraseromantica
 
-↷✦; `CONVERTERS` ❞ 🧸︵᷼ 
+↷✦; \`CONVERTERS\` ❞ 🧸︵᷼ 
 ⠞🧸੭‎ ${usedPrefix}tourl img
 ⠞🧸੭‎ ${usedPrefix}tourl aud
 ⠞🧸੭‎ ${usedPrefix}toptt aud
@@ -111,7 +107,7 @@ const text = `
 ⠞🧸੭‎ ${usedPrefix}tomp3 vid
 ⠞🧸੭‎ ${usedPrefix}toimg sticker
 
-↷✦; `TOOLS` ❞ 🛠️︵᷼ 
+↷✦; \`TOOLS\` ❞ 🛠️︵᷼ 
 ⠞🛠️੭‎ ${usedPrefix}clima texto
 ⠞🛠️੭‎ ${usedPrefix}readmore texto
 ⠞🛠️੭‎ ${usedPrefix}read texto
@@ -135,7 +131,7 @@ const text = `
 ⠞🛠️੭‎ ${usedPrefix}nuevonombrecanal
 ⠞🛠️੭‎ ${usedPrefix}nuevadescchannel
 
-↷✦; `GROUPS` ❞ 🌿︵᷼ 
+↷✦; \`GROUPS\` ❞ 🌿︵᷼ 
 ⠞🌿੭‎ ${usedPrefix}add número
 ⠞🌿੭‎ ${usedPrefix}grupo abrir / cerrar
 ⠞🌿੭‎ ${usedPrefix}grouptime tiempo
@@ -155,7 +151,7 @@ const text = `
 ⠞🌿੭‎ ${usedPrefix}link
 ⠞🌿੭‎ ${usedPrefix}fantasmas
 
-↷✦; `EFFECTS` ❞ 🍃︵᷼ 
+↷✦; \`EFFECTS\` ❞ 🍃︵᷼ 
 ⠞🍃੭‎ ${usedPrefix}bass vid
 ⠞🍃੭‎ ${usedPrefix}blown vid
 ⠞🍃੭‎ ${usedPrefix}deep vid
@@ -178,7 +174,7 @@ const text = `
 ⠞🍃੭‎ ${usedPrefix}lowpass vid
 ⠞🍃੭‎ ${usedPrefix}underwater vid
 
-↷✦; `FUN` ❞ 🥥︵᷼ 
+↷✦; \`FUN\` ❞ 🥥︵᷼ 
 ⠞🥥੭‎ ${usedPrefix}gay @tag
 ⠞🥥੭‎ ${usedPrefix}lesbiana @tag
 ⠞🥥੭‎ ${usedPrefix}pajero @tag
@@ -206,7 +202,7 @@ const text = `
 ⠞🥥੭‎ ${usedPrefix}love
 ⠞🥥੭‎ ${usedPrefix}personalidad
 
-↷✦; `GAME` ❞ 🎋︵᷼ 
+↷✦; \`GAME\` ❞ 🎋︵᷼ 
 ⠞🎋੭‎ ${usedPrefix}pregunta texto
 ⠞🎋੭‎ ${usedPrefix}ttt texto
 ⠞🎋੭‎ ${usedPrefix}ptt opción
@@ -214,7 +210,7 @@ const text = `
 ⠞🎋੭‎ ${usedPrefix}acertijo
 ⠞🎋੭‎ ${usedPrefix}trivia
 
-↷✦; `ANIME` ❞ 🌾︵᷼ 
+↷✦; \`ANIME\` ❞ 🌾︵᷼ 
 ⠞🌾੭‎ ${usedPrefix}messi
 ⠞🌾੭‎ ${usedPrefix}cr7
 
@@ -238,26 +234,26 @@ const text = `
 ⠞🔥੭‎ ${usedPrefix}manosear @tag
 ⠞🔥੭‎ ${usedPrefix}lesbianas @tag
 
-↷✦; `STICKERS` ❞ 🦋︵᷼ 
+↷✦; \`STICKERS\` ❞ 🦋︵᷼ 
 ⠞🦋੭‎ ${usedPrefix}sticker img
 ⠞🦋੭‎ ${usedPrefix}sticker vid
 ⠞🦋੭‎ ${usedPrefix}brat texto
 ⠞🦋੭‎ ${usedPrefix}qc texto
 ⠞🦋੭‎ ${usedPrefix}dado
 
-↷✦; `RPG` ❞ 💸︵᷼ 
+↷✦; \`RPG\` ❞ 💸︵᷼ 
 ⠞💸੭‎ ${usedPrefix}minar
 ⠞💸੭‎ ${usedPrefix}cofre
 ⠞💸੭ ${usedPrefix}slut
 ⠞💸੭ ${usedPrefix}nivel
 ⠞💸੭ ${usedPrefix}ruleta
 
-↷✦; `REGISTRO` ❞ ☁️︵᷼ 
+↷✦; \`REGISTRO\` ❞ ☁️︵᷼ 
 ⠞☁️੭ ${usedPrefix}perfil
 ⠞☁️੭ ${usedPrefix}reg
 ⠞☁️੭ ${usedPrefix}unreg
 
-↷✦; `OWNER` ❞ 👑︵᷼ 
+↷✦; \`OWNER\` ❞ 👑︵᷼ 
 ⠞👑੭ ${usedPrefix}salir
 ⠞👑੭ ${usedPrefix}update
 ⠞👑੭ ${usedPrefix}blocklist
@@ -265,9 +261,7 @@ const text = `
 ⠞👑੭ ${usedPrefix}restart
 ⠞👑੭ ${usedPrefix}join
 ⠞👑੭ ${usedPrefix}chetar
-⠞👑੭ ${usedPrefix}unbanuser
-
-`.trim();
+⠞👑੭ ${usedPrefix}unbanuser`.trim();
 
 conn.sendMessage(m.chat, {  
   text: text,  
