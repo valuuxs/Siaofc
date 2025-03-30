@@ -21,14 +21,14 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
 > ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
 
-𓈒𓏸🌴 \`Bot Name:\`
-𓈒𓏸🌵 \`Activo:\` ${uptime}
-𓈒𓏸🍃 \`Usuarios:\` ${totalreg}
-𓈒𓏸🌿 \`Version:\` 1.0.0
+𓈒𓏸🌴 Bot Name:
+𓈒𓏸🌵 Activo: ${uptime}
+𓈒𓏸🍃 Usuarios: ${totalreg}
+𓈒𓏸🌿 Version: 1.0.0
 
-✪ \`Platform:\` Linux
-✪ \`Baileys:\` Multi-Device
-✪ \`Prefix\` [ . ]
+✪ Platform: Linux
+✪ Baileys: Multi-Device
+✪ Prefix [ . ]
 
 > 😸 Si encuentra un comando con errores no dudes en reportarlo con el Creador
 `.trim();
