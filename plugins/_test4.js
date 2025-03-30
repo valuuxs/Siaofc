@@ -16,7 +16,7 @@ let rtotalreg = Object.values(global.db.data.users).filter(user => user.register
 
 const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];  
 
-const menu = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
+const text = `︵᷼     ⿻ Morchi ࣪   ࣭  ࣪ WA ࣭  🐈  ࣪   ࣭
 ✧ Hola ${taguser}\n${saludo}
 
 ꒰꛱ ͜Desarrollado por Cristian Escobar +51927238856
