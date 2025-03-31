@@ -14,7 +14,7 @@ return !0
 if (!Number(args[0])) return m.reply('🚩 La cantidad deve ser un Numero.')
 let count = parseInt(args[0])
 if (!user.diamantes) return m.reply('No tienes *Diamantes* en la Cartera.')
-if (user.diamantes < count) return m.reply(`Solo tienes *${user.estrellas} Diamantes* en la Cartera.`)
+if (user.diamantes < count) return m.reply(`Solo tienes *${user.diamantes} Diamantes* en la Cartera.`)
 user.diamantes -= count * 1
 user.bank += count * 1
 await m.reply(`Depositaste *${count} 💎* al Banco.`)}
