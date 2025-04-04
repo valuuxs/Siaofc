@@ -10,7 +10,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
         let tes = results.all;
 
         if (!tes || tes.length === 0) {
-            return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
+            return conn.reply(m.chat, `*⚠️ No se encontraron resultados para:*\n> *${text}*`, m);
         }
 
         // Formateamos los resultados obtenidos
@@ -32,7 +32,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
     }
 }
 
-handler.help = ['ytsearch']
+handler.help = ['ytsearch2']
 handler.tags = ['buscador']
 handler.command = ['youtubesearch2', 'ytsearch2', 'yts2']
 
