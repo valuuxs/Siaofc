@@ -6,7 +6,7 @@ import FormData from "form-data";
 import Jimp from "jimp";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`*[ 🔎 ] ¿Que deseas buscar en YouTube?*`);
+    if (!text) return m.reply(`*🔎 ¿Que deseas buscar en YouTube?*`);
 
   await m.react('🕓')
 
@@ -102,8 +102,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 }
 
 handler.help = ["ytsearch2 *<texto>*", "yts *<texto>*"];
-handler.tags = ["search2"];
-handler.command = ["ytsearch2", "yts2"];
+handler.tags = ["buscador"];
+handler.command = ["ytsearch", "yts"];
 
 export default handler;
 
