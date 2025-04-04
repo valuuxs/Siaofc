@@ -181,19 +181,19 @@ const savetube = {
 };
 
 const handler = async (m, { conn, args, command }) => {
-  if (args.length < 1) return m.reply(`*[ ℹ️ ] Ingresa una URL de un video o audio de YouTube*`);
+  if (args.length < 1) return m.reply(`*🌿 Ingresa una URL de un video o audio de YouTube*`);
 
   let url = args[0];
   let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
 
-  if (!savetube.isUrl(url)) return m.reply("Por favor, ingresa un link válido de YouTube.");
+  if (!savetube.isUrl(url)) return m.reply("\`\`\`⚠️ Por favor, ingresa un link válido de YouTube.\`\`\`");
 
   try {
     await m.react('🕒');
     let res = await savetube.download(url, format);
     if (!res.status) {
       await m.react('✖️');
-      return m.reply(`*Error:* ${res.error}`);
+      return m.reply(`\`\`\`❌ Error:\`\`\` ${res.error}`);
     }
 
     let { title, download, type } = res.result;
