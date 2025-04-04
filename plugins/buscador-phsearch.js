@@ -4,11 +4,12 @@ import axios from 'axios';
 
 let handler = async (m, { conn, args, command, usedPrefix }) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return conn.reply(m.chat, '*[ ℹ️ ] El contenido `+18` está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.', m);
+    return conn.reply(m.chat, '*🌴 El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*
+> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.', m);
   } 
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
+    return conn.reply(m.chat, `*🍁 Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
   }
 
   try {
