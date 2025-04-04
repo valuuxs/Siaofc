@@ -22,7 +22,7 @@ sourceUrl: channel }}})
 let res = await fetch(`http://registry.npmjs.com/-/v1/search?text=${text}`)
 let { objects } = await res.json()
 
-if (!objects.length) return conn.reply(m.chat, `『✦』 No se encontró resultado de: ${text}`, m, fake)
+if (!objects.length) return conn.reply(m.chat, `\`\`\`⚠️ No se enconraron resultados\`\`\``, m)
 
 let txt = objects.map(({ package: pkg }) => {
 return `《✧》 𝖲craper - Akari 《✧》
@@ -34,11 +34,11 @@ return `《✧》 𝖲craper - Akari 《✧》
 \n\n----------`
 }).join`\n\n`
 
-await conn.reply(m.chat, txt, m, fake)
-await m.react(done)
+await conn.reply(m.chat, txt, m)
+await m.react('✅')
 } catch {
 await conn.reply(m.chat, '\`\`\`⚠️ Ocurrió un error\`\`\`', m)
-await m.react(error)
+await m.react('❌')
 }}
 
 handler.help = ['npmjs']
