@@ -18,7 +18,7 @@ let json = await response.json();
 let arch = json.results[0];
 
 if (!arch || arch.length === 0) {
-    return m.reply(`*[ ⚠️ ] No Encontramos Resultados Para: ${text}*`);
+    return m.reply(`\`\`\`⚠️ No se encontraron resultados de la búsqueda\`\`\``);
 }
 
 m.react('🕑');
