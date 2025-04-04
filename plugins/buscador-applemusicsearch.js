@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) throw m.reply(`*🔍 Ingrese el título de la canción que desee buscar en AppleMusic.*`);
+  if (!text) throw m.reply(`*🔎 Ingrese el título de la canción que desee buscar en AppleMusic.*`);
 
 
 const appleMusic = {
