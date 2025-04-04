@@ -1,134 +1,39 @@
-import fetch from 'node-fetch';
-import yts from "yt-search";
-import axios from 'axios';
-const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
-import FormData from "form-data";
-import Jimp from "jimp";
+import yts from 'yt-search'
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`*[ 🔎 ] ¿Que deseas buscar en YouTube?*`);
+var handler = async (m, { text, conn, args, command, usedPrefix }) => {
+    if (!text) return conn.reply(m.chat, `*🔎 Por favor, ingresa una búsqueda de YouTube.*`, m);
 
-  await m.react('🕓')
+    try {
+        conn.reply(m.chat, wait, fkontak, m);
 
-    async function createImage(img) {
-        const { imageMessage } = await generateWAMessageContent({
-            image: img
-        }, {
-            upload: conn.waUploadToServer
-        });
-        return imageMessage;
-    }
+        let results = await yts(text);
+        let tes = results.all;
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        if (!tes || tes.length === 0) {
+            return conn.reply(m.chat, `*⚠️ No se encontraron resultados para:*\n> *${text}*`, m);
         }
-    }
 
-    let push = [];
-    let results = await yts(text);
-    let videos = results.videos.slice(0, 9); 
-    shuffleArray(videos);
-
-    let i = 1;
-    for (let video of videos) {
-        let imageUrl = video.thumbnail;
-        let imageK = await fetch(imageUrl);
-        let imageB = await imageK.buffer();
-      let pr = await remini(imageB, "enhance")
-        push.push({
-            body: proto.Message.InteractiveMessage.Body.fromObject({
-                text: `◦ *Título:* ${video.title}\n◦ *Duración:* ${video.timestamp}\n◦ *Vistas:* ${video.views}`
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                text: '' 
-            }),
-            header: proto.Message.InteractiveMessage.Header.fromObject({
-                title: ``,
-                hasMediaAttachment: true,
-                imageMessage: await createImage(pr) 
-            }),
-            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-                buttons: [
-                    {
-                "name": "cta_copy",
-                "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar audio! 🎧",
-                "copy_code": `.ytmp3 ${video.url}`
-                })
-              },{
-                "name": "cta_copy",
-                "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar video! 📹",
-                "copy_code": `.ytmp4 ${video.url}`
-                })
-              }
-                ]
-            })
-        });
-    }
-
-    const bot = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-            message: {
-                messageContextInfo: {
-                    deviceListMetadata: {},
-                    deviceListMetadataVersion: 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-                    body: proto.Message.InteractiveMessage.Body.create({
-                        text: '*☕ Resultados de:* ' + `*${text}*`
-                    }),
-                    footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: 'YouTube - Search'
-                    }),
-                    header: proto.Message.InteractiveMessage.Header.create({
-                        hasMediaAttachment: false
-                    }),
-                    carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-                        cards: [...push] // Mengisi carousel dengan hasil video
-                    })
-
-                })
+        // Formateamos los resultados obtenidos
+        let teks = tes.map(v => {
+            switch (v.type) {
+                case 'video':
+                    return `*「🌷」Resultados de la búsqueda para:*\n<${text}>\n\n☕ *Título:* ${v.title}\n📡 *Canal* ${v.author.name}\n*🕝 Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace* ${v.url}`;
             }
+        }).filter(v => v).join('\n\n*┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n');
+
+        // Si existen resultados, enviamos el primero junto con la información
+        if (tes.length > 0) {
+            conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', teks, m);
         }
-    }, {
-    'quoted': m
-  });
 
-    await conn.relayMessage(m.chat, bot.message, { messageId: bot.key.id });
-  await m.react('✅')
-}
-
-handler.help = ["ytsearch2 *<texto>*", "yts *<texto>*"];
-handler.tags = ["search2"];
-handler.command = ["ytsearch2", "yts2"];
-
-export default handler;
-
-async function remini(imageData, operation) {
-  return new Promise(async (resolve, reject) => {
-    const availableOperations = ["enhance", "recolor", "dehaze"]
-    if (availableOperations.includes(operation)) {
-      operation = operation
-    } else {
-      operation = availableOperations[0]
+    } catch (error) {
+        console.error(error);
+        conn.reply(m.chat, '*❌ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.*', m);
     }
-    const baseUrl = "https://inferenceengine.vyro.ai/" + operation + ".vyro"
-    const formData = new FormData()
-    formData.append("image", Buffer.from(imageData), {filename: "enhance_image_body.jpg", contentType: "image/jpeg"})
-    formData.append("model_version", 1, {"Content-Transfer-Encoding": "binary", contentType: "multipart/form-data; charset=utf-8"})
-    formData.submit({url: baseUrl, host: "inferenceengine.vyro.ai", path: "/" + operation, protocol: "https:", headers: {"User-Agent": "okhttp/4.9.3", Connection: "Keep-Alive", "Accept-Encoding": "gzip"}},
-      function (err, res) {
-        if (err) reject(err);
-        const chunks = [];
-        res.on("data", function (chunk) {chunks.push(chunk)});
-        res.on("end", function () {resolve(Buffer.concat(chunks))});
-        res.on("error", function (err) {
-        reject(err);
-        });
-      },
-    )
-  })
 }
+
+handler.help = ['ytsearch2']
+handler.tags = ['buscador']
+handler.command = ['youtubesearch2', 'ytsearch2', 'yts2']
+
+export default handler
