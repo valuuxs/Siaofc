@@ -101,9 +101,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   await m.react('✅')
 }
 
-handler.help = ["ytsearch *<texto>*", "yts *<texto>*"];
-handler.tags = ["search"];
-handler.command = ["ytsearch", "yts"];
+handler.help = ["ytsearch2 *<texto>*", "yts *<texto>*"];
+handler.tags = ["search2"];
+handler.command = ["ytsearch2", "yts2"];
 
 export default handler;
 
