@@ -4,12 +4,11 @@ import axios from 'axios';
 
 let handler = async (m, { conn, args, command, usedPrefix }) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return conn.reply(m.chat, '*🌴 El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*
-> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.', m);
+    return conn.reply(m.chat, '*🌴 El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.', m);
   } 
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*🍁 Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Gótica Culona.`, m);
+    return conn.reply(m.chat, `*🍁 Ingrese la búsqueda que desea realizar en PornHub.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Gótica Culona.`, m);
   }
 
   try {
@@ -22,12 +21,12 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 ------------------------------------\n`).join('\n\n');
 
     if (searchResults.result.length === 0) {
-      teks = '*[ ⚠️ ] No se encontraron resultados...*';
+      teks = '\`\`\`⚠️ No se encontraron resultados\`\`\`';
     }
 
     conn.reply(m.chat, teks, m);
   } catch (e) {
-    return conn.reply(m.chat, `*[ ❌ ] Ocurrió un error:* ${e.message}`, m);
+    return conn.reply(m.chat, `\`\`\`❌ Ocurrió un error\`\`\``, m);
   }
 };
 
@@ -55,7 +54,7 @@ async function searchPornhub(search) {
 
     return { result };
   } catch (error) {
-    console.error('*[ ❌ ] Ocurrió un error al buscar en Pornhub:*', error);
+    console.error('\`\`\`❌ Ocurrió un error al buscar en Pornhub:\`\`\`', error);
     return { result: [] };
   }
 }
