@@ -1,7 +1,7 @@
 import yts from 'yt-search'
 
 var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `*[ 🔎 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
+    if (!text) return conn.reply(m.chat, `*🔎 Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
         conn.reply(m.chat, wait, fkontak, m);
@@ -28,13 +28,13 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
 
     } catch (error) {
         console.error(error);
-        conn.reply(m.chat, 'Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.', m);
+        conn.reply(m.chat, '*❌ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.*', m);
     }
 }
 
 handler.help = ['ytsearch']
 handler.tags = ['buscador']
-handler.command = ['youtubesearch', 'ytsearch', 'yts']
+handler.command = ['youtubesearch2', 'ytsearch2', 'yts2']
 
 handler.register = true
 
