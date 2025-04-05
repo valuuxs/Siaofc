@@ -3,30 +3,37 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
-    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('*ℹ️ El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
+    if (m.isGroup && (!db.data.chats[m.chat] || !db.data.chats[m.chat].nsfw)) {
+        return m.reply('*ℹ️ El contenido* ```nsfw``` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
     }
+
     if (!args[0]) {
         return conn.reply(m.chat, `*🍁 Por favor, ingresa el texto de lo que deseas buscar en xvideos.*\n> *\`Ejemplo:\`* ${usedPrefix + command} con mi prima.`, m);
     }
 
+    await m.react('⌛');
+
     try {
         const results = await xvideosSearch(args.join(' '));
-        if (results.length === 0) {
+        if (!results || results.length === 0) {
             return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para esta búsqueda\`\`\``, m);
         }
 
         let responseMessage = `\`\`\`乂 XVIDEOS - SEARCH\`\`\`\n\n`;
-        results.forEach((video, index) => {
-            responseMessage += `≡ 🌴 *\`Título\`:* ${video.title}\n`;
-            responseMessage += `≡ 🍃 */\`Duración:\`* ${video.duration}\n`;
-            responseMessage += `≡ 🌿 *\`Calidad:\`* ${video.quality || 'No disponible'}\n`;
-            responseMessage += `≡ 🌵 *\`Enlace:\`* ${video.url}\n\n`;
+
+        results.slice(0, 10).forEach((video, index) => {
+            responseMessage += `*\`${index + 1}\`*\n`;
+            responseMessage += `≡ 🌴 *Título:* ${video.title}\n`;
+            responseMessage += `≡ 🍃 *Duración:* ${video.duration}\n`;
+            responseMessage += `≡ 🌿 *Calidad:* ${video.quality || 'No disponible'}\n`;
+            responseMessage += `≡ 🌵 *Enlace:* ${video.url}\n\n`;
         });
 
-        conn.reply(m.chat, responseMessage, m);
+        await conn.reply(m.chat, responseMessage.trim(), {quoted: fkontak});
+        await m.react('✅');
     } catch (e) {
         console.error(e);
+        await m.react('❌');
         return conn.reply(m.chat, `\`\`\`❌ Ocurrió un error al buscar videos. Por favor, intenta de nuevo más tarde.\`\`\``, m);
     }
 };
@@ -50,7 +57,9 @@ async function xvideosSearch(query) {
                 const duration = $(element).find("span.duration").text().trim();
                 const quality = $(element).find("span.video-hd-mark").text().trim();
 
-                results.push({ title, url: videoUrl, duration, quality });
+                if (title && videoUrl) {
+                    results.push({ title, url: videoUrl, duration, quality });
+                }
             });
 
             resolve(results);
