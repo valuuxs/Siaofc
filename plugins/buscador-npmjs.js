@@ -25,13 +25,13 @@ let { objects } = await res.json()
 if (!objects.length) return conn.reply(m.chat, `\`\`\`⚠️ No se enconraron resultados\`\`\``, m)
 
 let txt = objects.map(({ package: pkg }) => {
-return `《✧》 𝖲craper - Akari 《✧》
+return `\`\`\`乂 SCRAPER - SEARCH\`\`\`
 
-✦ 𝐍𝐨𝐦𝐛𝐫𝐞: ${pkg.name}
-✦ 𝐕𝐞𝐫𝐬𝐢𝐨𝐧: V${pkg.version}
-✦ 𝐄𝐧𝐥𝐚𝐜𝐞: ${pkg.links.npm}
-✦ 𝐃𝐞𝐬𝐜𝐫𝐢𝐩𝐜𝐢𝐨𝐧: ${pkg.description}
-\n\n----------`
+≡ 🍄 *\`Nombre:\`* ${pkg.name}
+≡ 🌹 *\`Versión:\`* V${pkg.version}
+≡ 🍁 *\`Link:\`* ${pkg.links.npm}
+≡ 🌷 *\`Descripción:\`* ${pkg.description}
+\n\n`
 }).join`\n\n`
 
 await conn.reply(m.chat, txt, m)
