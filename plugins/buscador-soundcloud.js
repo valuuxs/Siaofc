@@ -1,11 +1,11 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `*[ 🔎 ] Ingresa el texto de la cancion que quieras buscar en SoundCloud*`, fkontak, m)
+if (!text) return conn.reply(m.chat, `* 🔎 Ingresa el texto de la cancion que deseas buscar en SoundCloud*`, fkontak, m)
 
 let result = await soundcloudSearch(text)
 let title = result.name
-let HS = '*[ ☕ ] Lista de canciones encontradas en SoundCloud*\n\n'
+let HS = '*☕ Lista de canciones encontradas en SoundCloud*\n\n'
 result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
 HS += `\n> rᥱs⍴᥆ᥒძᥲ ᥲ ᥱs𝗍ᥱ mᥱᥒsᥲȷᥱ ᥴ᥆ᥒ ᥱᥣ ᥒᥙ́mᥱr᥆ ძᥱ ᥣᥲ ᥴᥲᥒᥴі᥆́ᥒ 𝗊ᥙᥱ ძᥱsᥱᥲ ძᥱsᥴᥲrgᥲr.`   
@@ -35,9 +35,9 @@ conn.sendMessage(m.chat, { delete: key })
 delete conn.SoundCloudSearch[m.sender]
 } catch (error) {
 console.error(error)
-await conn.reply(m.chat, '*[ ❌ ] Error al enviar la cancion*', m)
+await conn.reply(m.chat, '\`\`\`❌ Error al enviar la cancion\`\`\`', m)
 }} else {
-await conn.reply(m.chat, "*[ ℹ️ ] Responde con uno de los numeros de la cancion que quieres*", m)
+await conn.reply(m.chat, "*ℹ️ Responde con uno de los números de la canción que quieres*", m)
 }}
 
 handler.help = ['scsearch']
