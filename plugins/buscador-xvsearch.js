@@ -23,10 +23,10 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 
         results.slice(0, 10).forEach((video, index) => {
             responseMessage += `*\`${index + 1}\`*\n`;
-            responseMessage += `≡ 🌴 *Título:* ${video.title}\n`;
-            responseMessage += `≡ 🍃 *Duración:* ${video.duration}\n`;
-            responseMessage += `≡ 🌿 *Calidad:* ${video.quality || 'No disponible'}\n`;
-            responseMessage += `≡ 🌵 *Enlace:* ${video.url}\n\n`;
+            responseMessage += `≡ 🌴 *\`Título:\`* ${video.title}\n`;
+            responseMessage += `≡ 🍃 *\`Duración:\`* ${video.duration}\n`;
+            responseMessage += `≡ 🌿 *\`Calidad:\`* ${video.quality || 'No disponible'}\n`;
+            responseMessage += `≡ 🌵 *\`Enlace:\`* ${video.url}\n\n`;
         });
 
         await conn.reply(m.chat, responseMessage.trim(), m);
