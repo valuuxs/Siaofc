@@ -1,39 +1,22 @@
 import yts from 'yt-search'
+let handler = async (m, {conn, text }) => {
+  if (!text) throw `*🔎 ¿Que deseas buscar en Youtube?*`
+  let results = await yts(text)
+let tes = results.videos
+let ms = tes.map(v => `
+° ${v.title}
 
-var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `*🔎 Por favor, ingresa una búsqueda de YouTube.*`, m);
-
-    try {
-        conn.reply(m.chat, wait, fkontak, m);
-
-        let results = await yts(text);
-        let tes = results.all;
-
-        if (!tes || tes.length === 0) {
-            return conn.reply(m.chat, `*⚠️ No se encontraron resultados para:*\n> *${text}*`, m);
-        }
-
-        // Formateamos los resultados obtenidos
-        let teks = tes.map(v => {
-            switch (v.type) {
-                case 'video':
-                    return `*「🌷」Resultados de la búsqueda para:*\n<${text}>\n\n☕ *Título:* ${v.title}\n📡 *Canal* ${v.author.name}\n*🕝 Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace* ${v.url}`;
-            }
-        }).filter(v => v).join('\n\n*┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n');
-
-        // Si existen resultados, enviamos el primero junto con la información
-        if (tes.length > 0) {
-            conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', teks, m);
-        }
-
-    } catch (error) {
-        console.error(error);
-        conn.reply(m.chat, '*❌ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.*', m);
-    }
+≡ 🌳 \`${mssg.duration} :\` ${v.timestamp}
+≡ 🌴 \`${mssg.aploud} :\` ${v.ago}
+≡ 🍁 \`${mssg.views} :\` ${v.views.toLocaleString()}
+≡ 🌿 \`${mssg.link} :\` ${v.url}
+`.trim()).join('\n________________________\n\n')
+let teks = `\`\`\`乂 YOUTUBE - SEARCH\`\`\`\n\n${ms}`
+teks += `\n\n${footer}`
+        conn.sendFile(m.chat, tes[0].image, 'yts.jpeg', teks, m)
 }
-
-handler.help = ['ytsearch2']
-handler.tags = ['buscador']
-handler.command = ['youtubesearch2', 'ytsearch2', 'yts2']
+handler.help = ['ytsearch'] 
+handler.tags = ['dl']
+handler.command = ['ytsearch', 'yts'] 
 
 export default handler
