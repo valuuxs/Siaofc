@@ -6,7 +6,7 @@ import FormData from "form-data";
 import Jimp from "jimp";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`*🔎 ¿Que deseas buscar en YouTube?*`);
+    if (!text) return m.reply(`*🌴 Por favor, ingresa un texto para buscar en Youtube.\n> *\`Ejemplo:\`* .${command} Bing Bang*`);
 
   await m.react('🕓')
 
@@ -78,7 +78,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 },
                 interactiveMessage: proto.Message.InteractiveMessage.fromObject({
                     body: proto.Message.InteractiveMessage.Body.create({
-                        text: '*☕ Resultados de:* ' + `*${text}*`
+                        text: '*\`Resultados de:\`* ' + `*${text}*`
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
                         text: 'YouTube - Search'
