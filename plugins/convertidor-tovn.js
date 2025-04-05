@@ -39,7 +39,10 @@ const handler = async (m, { conn }) => {
     const q = m.quoted ? m.quoted : m;
     const mime = (m.quoted ? m.quoted : m.msg).mimetype || '';
 
-    if (!/video|audio/.test(mime)) throw '*Responde a un video o audio para convertir a nota de voz.*';
+//    if (!/video|audio/.test(mime)) throw '*Responde a un video o audio para convertir a nota de voz.*';
+  if (!/video|audio/.test(mime)) {
+    return conn.reply(m.chat, `*☕ Responda al video o audio con el comando .tovn para convertirlo en nota de voz.*`, m);
+  }
 
     const media = await q.download?.();
     if (!media && /video/.test(mime)) throw '*No se pudo descargar el video.*';
