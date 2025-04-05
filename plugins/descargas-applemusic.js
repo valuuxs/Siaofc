@@ -164,7 +164,7 @@ if (!dataos || dataos.length === 0) {
 let dataos2 = await appledown.download(dataos[0].link);
 let { name, albumname, artist, url, thumb, duration, token, download } = dataos2;
 
-m.reply(`\`\`\`◜AppleMusic - Download◞\`\`\`\n\n≡ *🌴 \`Title:\`* ${name}\n≡ *🌿 \`Artist:\`* ${artist}*\n≡ *⌛ `Duration:`* ${duration}\n\n≡ *🍃 `Url:`* ${url}\n\n> ☁️ Se está procesando el Audio, aguarde un momento.`);
+m.reply(`\`\`\`◜AppleMusic - Download◞\`\`\`\n\n≡ *🌴 \`Title:\`* ${name}\n≡ *🌿 \`Artist:\`* ${artist}*\n≡ *⌛ \`Duration:\`* ${duration}\n\n≡ *🍃 \`Url:\`* ${url}\n\n> ☁️ Se está procesando el Audio, aguarde un momento.`);
       const doc = {
       audio: { url: download },
       mimetype: 'audio/mp4',
