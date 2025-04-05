@@ -1,48 +1,20 @@
-import { toAudio } from '../lib/converter.js';
-import ffmpeg from 'fluent-ffmpeg';
-import fs from 'fs';
-
-function hasAudioTrack(filePath) {
-  return new Promise((resolve, reject) => {
-    ffmpeg.ffprobe(filePath, (err, metadata) => {
-      if (err) return reject(err);
-      const hasAudio = metadata.streams.some(s => s.codec_type === 'audio');
-      resolve(hasAudio);
-    });
-  });
+import { toAudio } from '../lib/converter.js'
+let handler = async (m, { conn, usedPrefix, command }) => {
+    try {
+    let q = m.quoted ? m.quoted : m
+   let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
+   // if (!/video|audio/.test(mime)) throw `🍭 Responda al video o nota de voz que desea convertir a mp3 con el comando :\n\n*${usedPrefix + command}*`
+    let media = await q.download?.()
+    if (!media) throw '💠 Error al descargar medios'
+    let audio = await toAudio(media, 'mp4')
+    if (!audio.data) throw '❎ Error al convertir'
+    conn.sendFile(m.chat, audio.data, 'audio.mp3', '', m, null, { mimetype: 'audio/mp4' })
+    } catch (e) {
+        m.reply(`✨ Ha Ocurrido Un Error Use De Nuevo:\n\n*${usedPrefix + command}*`)
+   }
 }
+handler.help = ['tomp3']
+handler.tags = ['descargas']
+handler.command = ['tomp3', 'mp3', 'toudio'] 
 
-const handler = async (m, { conn, usedPrefix, command }) => {
-  const q = m.quoted ? m.quoted : m;
-  const mime = (q || q.msg).mimetype || q.mediaType || '';
-
-  if (!/video|audio/.test(mime)) {
-    return conn.reply(m.chat, `*☕ Responda al video o nota de voz con el comando ${usedPrefix + command} para convertirlo en audio.*`, m);
-  }
-
-  const media = await q.download();
-  if (!media) {
-    return conn.reply(m.chat, '```❌ Ocurrió un error al descargar el video.```', m);
-  }
-
-  const hasAudio = await hasAudioTrack(media).catch(() => false);
-  if (!hasAudio) {
-    fs.unlinkSync(media); // elimina el archivo si no tiene audio
-    return conn.reply(m.chat, '```⚠️ El video no contiene pista de audio.```', m);
-  }
-
-  const audio = await toAudio(media, 'mp4');
-  fs.unlinkSync(media); // elimina el archivo temporal tras convertir
-
-  if (!audio.data) {
-    return conn.reply(m.chat, '```❌ Ocurrió un error al convertir el archivo a audio.```', m);
-  }
-
-  conn.sendMessage(m.chat, { audio: audio.data, mimetype: 'audio/mpeg' }, { quoted: m });
-};
-
-handler.help = ['tomp3', 'toaudio'];
-handler.tags = ['convertidor'];
-handler.command = ['tomp3', 'toaudio', 'toaud'];
-
-export default handler;
+export default handler
