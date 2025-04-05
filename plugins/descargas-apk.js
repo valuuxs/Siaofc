@@ -102,7 +102,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   // Caso: .apk sin término de búsqueda
-  if (command === 'apk' && !text) {
+  if (command === 'apk2' && !text) {
     let example = `${usedPrefix}apk WhatsApp`;
     return conn.sendMessage(
       m.chat,
