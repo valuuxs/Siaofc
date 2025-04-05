@@ -6,7 +6,7 @@ let apkSession = new Map();
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   // Rama: Comando inicial .apk con término de búsqueda
-  if (command === 'apk2' && text) {
+  if (command === 'apk' && text) {
     const reactionMessage = await conn.sendMessage(
       m.chat,
       { text: `🔍 Buscando la aplicación...` },
@@ -102,7 +102,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   // Caso: .apk sin término de búsqueda
-  if (command === 'apk2' && !text) {
+  if (command === 'apk' && !text) {
     let example = `${usedPrefix}apk WhatsApp`;
     return conn.sendMessage(
       m.chat,
@@ -112,5 +112,5 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.command = /^(apk2|apk_download)$/i;
+handler.command = /^(apk|apk_download)$/i;
 export default handler;
