@@ -8,11 +8,12 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const data5 = await download(searchA[0].id);
 
     // Preparar el mensaje con la información del APK
-    let response = `*_DESCARGAS - APTOIDE_*\n\n`;
-    response += `🕵🏻 *Nombre* : ${data5.name}\n`;
-    response += `🗃 *Package* : ${data5.package}\n`;
-    response += `🪴 *Actualización* : ${data5.lastup}\n`;
-    response += `⚖ *Peso* : ${data5.size}`;
+    let response = `\`\`\`◜Aptoide - Download◞\`\`\`\n\n`;
+    response += `*${data5.name}*\n`;
+    response += `*🌻 \`Package:\`* ${data5.package}\n`;
+    response += `*🪴 \`Update:\`* ${data5.lastup}\n`;
+    response += `*⚖ \`Peso:\`* ${data5.size}`\n\n;
+    response += `> ☁️ Enviando archivo, aguarde un momento.`;
 
     // Enviar la respuesta con la imagen y la descripción
     await conn.sendMessage(m.chat, { 
