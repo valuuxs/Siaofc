@@ -1,7 +1,7 @@
 import gplay from "google-play-scraper";
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, "*🔎 Ingresa el nombre de la APK que deseas buscar*", m);
+    return conn.reply(m.chat, "*🔎 Ingresa el nombre de la APP que deseas buscar en la PlayStore*", m);
   }
   let res = await gplay.search({ term: text });
   if (!res.length) {
