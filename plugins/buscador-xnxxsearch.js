@@ -22,8 +22,8 @@ try {
     let resultText = `\`\`\`乂 XNXX - SEARCH\`\`\``;
     res.data.result.slice(0, 10).forEach((item, index) => {
         resultText += `\n\n*\`${index + 1}\`*`
-        resultText += `\n≡ 🌴 *\`Title:\`* ${item.title}`
-        resultText += `\n≡ 🌿 *\`Info:\`* ${item.info}`
+        resultText += `\n° *${item.title}*`
+        resultText += `\n≡ 🌴 *\`Info:\`* ${item.info}`
         resultText += `\n≡ 🌵 *\`Url:\`* ${item.link}`
     })
 
