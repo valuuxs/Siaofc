@@ -39,6 +39,6 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   }
 };
 
-handler.command = /^(apk|apkmod|modapk|dapk2|aptoide|aptoidedl)$/i;
+handler.command = /^(apkmod|modapk|aptoide|aptoidedl)$/i;
 
 export default handler;
