@@ -7,14 +7,12 @@ try {
 let api = await fetch(`https://delirius-apiofc.vercel.app/search/cuevana?q=${encodeURIComponent(text)}`)
 let json = await api.json()
 
-let JT = `📽️ ${command}  -  Search 📽️`;
+let JT = `\`\`\`乂 CUEVANA - SEARCH\`\`\``;
 json.data.forEach((app, index) => {
-      JT += `\n\n═══════════════`;
-      JT += `\n☁️ *Nro :* ${index + 1}`
-      JT += `\n🖼️ *Imagen:* ${app.image}`
-      JT += `\n⚜️ *Titulo:* ${app.title}`
-      JT += `\n📚 *Descripcion:* ${app.description}`
-      JT += `\n🔗 *Link:* ${app.link}`
+      JT += `\n\n*\`${index + 1}\`*`
+      JT += `\n≡ 🌴 *\`Title:\`* ${app.title}`
+      JT += `\n≡ 🍃 *\`Description:\`* ${app.description}`
+      JT += `\n≡ 🌿 *\`Link:\`* ${app.link}`
 }) 
 
 m.reply(JT)
