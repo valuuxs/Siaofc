@@ -1,11 +1,11 @@
 import { search, download } from 'aptoide-scraper';
 
 const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
-  if (!text) return conn.reply(m.chat, '*[ ℹ️ ] Ingrese el nombre de una apk.*', m);  // Mensaje si no se proporciona texto
+  if (!text) return conn.reply(m.chat, '*📪 Ingresa el nombre de una Apk que deseas descargar.*', m);
 
   try {    
     const searchA = await search(text);  // Realiza la búsqueda
-    const data5 = await download(searchA[0].id);  // Descarga la información del APK
+    const data5 = await download(searchA[0].id);
 
     // Preparar el mensaje con la información del APK
     let response = `*_DESCARGAS - APTOIDE_*\n\n`;
@@ -22,7 +22,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
     // Verificar si el archivo es muy grande
     if (data5.size.includes('GB') || parseInt(data5.size.replace(' MB', '')) > 999) {
-      return await conn.sendMessage(m.chat, { text: '*[ ⚠️ ] El archivo es demasiado pesado.*' }, { quoted: m });
+      return await conn.sendMessage(m.chat, { text: '*⚠️ El archivo es demasiado pesado.*' }, { quoted: m });
     }
 
     // Enviar el archivo APK
@@ -33,12 +33,11 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     }, { quoted: m });
 
   } catch (err) {
-    console.error(err);  // Mostrar error en la consola para depuración
-    return conn.reply(m.chat, '*[ ❌ ] Ocurrió un fallo.*', m);  // Mensaje de error
+    console.error(err);
+    return conn.reply(m.chat, '*❌ Ocurrió un fallo.*', m);
   }
 };
 
 handler.command = /^(apk|apkmod|modapk|dapk2|aptoide|aptoidedl)$/i;
-handler.register = true;
 
 export default handler;
