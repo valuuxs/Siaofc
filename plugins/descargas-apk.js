@@ -7,7 +7,8 @@ let apkSession = new Map();
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   // Rama: Comando inicial .apk con término de búsqueda
   if (command === 'apk' && text) {
-    const reactionMessage = await conn.sendMessage(
+await m.react('📭');
+    /*const reactionMessage = await conn.sendMessage(
       m.chat,
       { text: `🔍 Buscando la aplicación...` },
       { quoted: m }
@@ -16,7 +17,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       m.chat,
       { react: { text: '📱', key: reactionMessage.key } },
       { quoted: m }
-    );
+    );*/
     try {
       // Llamada a la API con el término de búsqueda
       const response = await fetch(`https://delirius-apiofc.vercel.app/download/apk?query=${encodeURIComponent(text)}`);
@@ -87,7 +88,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
     let { app } = session;
     const downloadUrl = app.download;
-    // Enviar el archivo APK como documento
+
+    await m.react('⏳');
+
     await conn.sendMessage(
       m.chat,
       {
@@ -98,6 +101,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       },
       { quoted: m }
     );
+
+    await m.react('✅');
     return;
   }
 
