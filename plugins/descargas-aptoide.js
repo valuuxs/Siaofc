@@ -9,10 +9,10 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
     // Preparar el mensaje con la información del APK
     let response = `\`\`\`◜Aptoide - Download◞\`\`\``;
-    response += `\n\n*${data5.name}*\n`;
-    response += `*🌻 \`Package:\`* ${data5.package}\n`;
-    response += `*🪴 \`Update:\`* ${data5.lastup}\n`;
-    response += `*⚖ \`Peso:\`* ${data5.size}\n\n`;
+    response += `\n\n*${data5.name}*\n\n`;
+    response += `≡ *🌻 \`Package:\`* ${data5.package}\n`;
+    response += `≡ *🪴 \`Update:\`* ${data5.lastup}\n`;
+    response += `≡ *⚖ \`Peso:\`* ${data5.size}\n\n`;
     response += `> ☁️ Enviando archivo, aguarde un momento.`;
 
     // Enviar la respuesta con la imagen y la descripción
