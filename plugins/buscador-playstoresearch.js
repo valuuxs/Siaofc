@@ -5,7 +5,7 @@ let handler = async (m, { conn, text }) => {
   }
   let res = await gplay.search({ term: text });
   if (!res.length) {
-    return conn.reply(m.chat, "*⚠️ No se encontraron resultados, intente con otra busqueda*", m); 
+    return conn.reply(m.chat, "```*⚠️ No se encontraron resultados, intente con otra busqueda*```", m); 
   }
   let opt = {
     contextInfo: {
@@ -19,11 +19,11 @@ let handler = async (m, { conn, text }) => {
   };
   res = res.map(
     (v) =>
-      `*🏷️ Resultado:* ${v.title}
-       *☕ Desarrollador:* ${v.developer}
-       *💸 Precio:* ${v.priceText || "Gratis"}
-       *📈 Puntuación:* ${v.scoreText || "Sin Puntuación"}
-       *⛓️ Link:* ${v.url}`
+      `*🤍 \`Resultado:\`* ${v.title}
+       *☕ \`Desarrollador:\`* ${v.developer}
+       *💸 \`Precio:\`* ${v.priceText || "Gratis"}
+       *📈 \`Puntuación:\`* ${v.scoreText || "Sin Puntuación"}
+       *⛓️ \`Link:\`* ${v.url}`
   ).join("\n\n");
   conn.reply(m.chat, res, m, opt); 
 };
