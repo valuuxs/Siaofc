@@ -20,10 +20,14 @@ let handler = async (m, { conn, text, args }) => {
 
       const medias = results.slice(0, 10).map(img => ({ type: 'image', data: { url: img.image_large_url } }));
 
+/*
       await conn.sendSylphy(m.chat, medias, {
         caption: `◜ Pinterest Search ◞\n\n≡ 🔎 \`Búsqueda :\` "${text}"\n≡ 📄 \`Resultados :\` ${medias.length}`,
         quoted: m
-      });
+      });*/
+await sendAlbumMessage(m.chat, medias, {
+  quoted: m
+});
 
       await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
     }
