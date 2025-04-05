@@ -112,5 +112,5 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.command = /^(apk)$/i;
+handler.command = /^(apk2|apk_download)$/i;
 export default handler;
