@@ -1,12 +1,12 @@
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text }) => {
-  conn reply m.chat(`*🔎 ¿Qué deseas buscar en YouTube?*`);
+  if (!text) return conn.reply(m.chat, `*🔎 ¿Qué deseas buscar en YouTube?*`, m)
 
   let results = await yts(text)
   let tes = results.videos
 
-  if (!tes.length) throw '\`\`\`⚠️ No se encontraron resultados.\`\`\`'
+  if (!tes.length) throw '```⚠️ No se encontraron resultados.```'
 
   let ms = tes.map(v => `
 ° ${v.title}
