@@ -18,7 +18,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
     return conn.reply(m.chat, '```❌ Ocurrio un error al convertir su nota de voz a audio.```', m);
   }
 
-  conn.sendMessage(m.chat, {audio: audio.data, mimetype: 'audio/mpeg'}, {quoted: m});
+  conn.sendMessage(m.chat, {audio: audio.data, mimetype: 'audio/mpeg'}, {quoted: fkontak});
 };
 
 handler.help = ['tomp3', 'toaudio'];
