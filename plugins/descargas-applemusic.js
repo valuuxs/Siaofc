@@ -186,6 +186,5 @@ m.reply(`\`\`\`◜AppleMusic - Download◞\`\`\`\n\n≡ *🌴 \`Title:\`* ${name
 handler.help = ['aplay'];
 handler.tags = ['descargas'];
 handler.command = /^(aplay|applemusic|applemusicplay)$/i;
-handler.register = true;
 
 export default handler;
