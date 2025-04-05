@@ -87,6 +87,10 @@ export async function handler(chatUpdate) {
                     chat.isBanned = false
                 if (!('welcome' in chat))
                     chat.welcome = false
+                if (!('sWelcome' in chat))
+                    chat.sWelcome = ''
+                if (!('sBye' in chat))
+                    chat.sBye = ''
                 if (!('audios' in chat))
                     chat.audios = false
                 if (!('detect' in chat))
@@ -119,6 +123,8 @@ export async function handler(chatUpdate) {
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     welcome: false,
+                    sWelcome: '',
+                    sBye: '',
                     delete: false,
                     audios: false,
                     detect: true,
