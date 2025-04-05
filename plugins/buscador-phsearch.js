@@ -17,13 +17,13 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
       return conn.reply(m.chat, '```⚠️ No se encontraron resultados.```', m)
     }
 
-    let txt = '```乂 PORNHUB - SEARCH```\n'
+    let txt = '```乂 PORNHUB - SEARCH```'
 
     searchResults.result.slice(0, 10).forEach((v, i) => {
       txt += `\n\n*\`${i + 1}\`*`
-      txt += `\n≡ 🌴 *Título:* ${v.title}`
-      txt += `\n≡ 🌵 *Duración:* ${v.duration}`
-      txt += `\n≡ 🌿 *Link:* ${v.url}`
+      txt += `\n≡ 🌴 *\`Título:\`* ${v.title}`
+      txt += `\n≡ 🌵 *\`Duración:\`* ${v.duration}`
+      txt += `\n≡ 🌿 *\`Link:\`* ${v.url}`
     })
 
     await conn.reply(m.chat, txt.trim(), m)
