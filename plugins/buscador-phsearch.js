@@ -21,7 +21,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 
     searchResults.result.slice(0, 10).forEach((v, i) => {
       txt += `\n\n*\`${i + 1}\`*`
-      txt += `\n≡ 🌴 *\`Título:\`* ${v.title}`
+      txt += `\n° *${v.title}*`
       txt += `\n≡ 🌵 *\`Duración:\`* ${v.duration}`
       txt += `\n≡ 🌿 *\`Link:\`* ${v.url}`
     })
