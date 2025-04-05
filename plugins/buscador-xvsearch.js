@@ -16,12 +16,12 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para esta búsqueda\`\`\``, m);
         }
 
-        let responseMessage = `*🔎 Resultados de la búsqueda para:* *${args.join(' ')}*\n\n`;
+        let responseMessage = `\`\`\`乂 XVIDEOS - SEARCH\`\`\`\n\n`;
         results.forEach((video, index) => {
-            responseMessage += `☁️ *Título:* ${video.title}\n`;
-            responseMessage += `🕒 *Duración:* ${video.duration}\n`;
-            responseMessage += `🎞️ *Calidad:* ${video.quality || 'No disponible'}\n`;
-            responseMessage += `🔗 *Enlace:* ${video.url}\n---------------------------------\n\n`;
+            responseMessage += `≡ 🌴 *\`Título\`:* ${video.title}\n`;
+            responseMessage += `≡ 🍃 */\`Duración:\`* ${video.duration}\n`;
+            responseMessage += `≡ 🌿 *\`Calidad:\`* ${video.quality || 'No disponible'}\n`;
+            responseMessage += `≡ 🌵 *\`Enlace:\`* ${video.url}\n\n`;
         });
 
         conn.reply(m.chat, responseMessage, m);
