@@ -22,7 +22,7 @@ if (!arch || arch.length === 0) {
 }
 
 m.react('🕑');
-let txt = `\`\`\`${arch.name}\`\`\`\n≡ 🌳 *\`Description:\`* ${arch.description}\n≡ 🌵 *\`Stars:\`* ${arch.stars}\n≡ 🍃 *\`Url:\`* ${arch.link}`;
+let txt = `\`\`\`${arch.name}\`\`\`\n\n≡ 🌳 *\`Description:\`* ${arch.description}\n≡ 🌵 *\`Stars:\`* ${arch.stars}\n≡ 🍃 *\`Url:\`* ${arch.link}`;
 
 let img = arch.image;
 
