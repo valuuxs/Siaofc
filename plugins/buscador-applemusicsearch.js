@@ -57,7 +57,7 @@ const appleMusic = {
 
 
 let dataos = await appleMusic.search(text)
-let searchResults = dataos.map((v, i) => `\`\`\`APPLEMUSIC - SEARCH\`\`\`\n\n${i + 1}. *${v.title}*\n   Link: ${v.link}`).join('\n\n');
+let searchResults = dataos.map((v, i) => `${i + 1}. *${v.title}*\n   Link: ${v.link}`).join('\n\n');
 m.reply(searchResults)
 
 }
