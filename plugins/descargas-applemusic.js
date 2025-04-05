@@ -181,7 +181,7 @@ m.reply(`\`\`\`◜AppleMusic - Download◞\`\`\`\n\n≡ *🌴 \`Title:\`* ${name
       }
     };
     await conn.sendMessage(m.chat, doc, { quoted: m });
-    await conn.sendMessage(m.chat, { react: { text: '🎵', key: m.key }})
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
 }
 handler.help = ['aplay'];
 handler.tags = ['descargas'];
