@@ -7,13 +7,13 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     return m.reply('*ℹ️ El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
     }
     if (!args[0]) {
-        return conn.reply(m.chat, `*🍁 Por favor, ingresa la búsqueda que deseas realizar en xvideos.*\n> *\`Ejemplo:\`* ${usedPrefix + command} con mi prima.`, m);
+        return conn.reply(m.chat, `*🍁 Por favor, ingresa el texto de lo que deseas buscar en xvideos.*\n> *\`Ejemplo:\`* ${usedPrefix + command} con mi prima.`, m);
     }
 
     try {
         const results = await xvideosSearch(args.join(' '));
         if (results.length === 0) {
-            return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para:\`\`\`\n${args.join(' ')}`, m);
+            return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para:\`\`\``, m);
         }
 
         let responseMessage = `*🔎 Resultados de la búsqueda para:* *${args.join(' ')}*\n\n`;
