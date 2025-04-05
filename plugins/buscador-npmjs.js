@@ -24,6 +24,19 @@ let { objects } = await res.json()
 
 if (!objects.length) return conn.reply(m.chat, `\`\`\`⚠️ No se enconraron resultados\`\`\``, m)
 
+
+let txt = `\`\`\`乂 SCRAPER - SEARCH\`\`\``;
+json.data.forEach((app, index) => {
+      txt += `\n\n*\`${index + 1}\`*`
+      txt += `\n≡ 🌴 *\`Nombre:\`* ${pkg.name}`
+      txt += `\n≡ 🌵 *\`Versión:\`* V${pkg.version}`
+      txt += `\n≡ 🍃 *\`Description:\`* ${pkg.description}`
+      txt += `\n≡ 🌿 *\`Link:\`* ${pkg.links.npm}`
+}) 
+
+m.reply(txt)
+
+/*
 let txt = objects.map(({ package: pkg }) => {
 return `\`\`\`乂 SCRAPER - SEARCH\`\`\`
 
@@ -32,9 +45,9 @@ return `\`\`\`乂 SCRAPER - SEARCH\`\`\`
 ≡ 🍁 *\`Link:\`* ${pkg.links.npm}
 ≡ 🌷 *\`Descripción:\`* ${pkg.description}
 \n\n`
-}).join`\n\n`
+}).join`\n\n`*/
 
-await conn.reply(m.chat, txt, m)
+await conn.reply(m.chat, txt, m)*/
 await m.react('✅')
 } catch {
 await conn.reply(m.chat, '\`\`\`⚠️ Ocurrió un error\`\`\`', m)
