@@ -1,13 +1,11 @@
 let handler = async (m, { conn, text, isROwner, isOwner }) => {
-/*
-let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }*/
 
 if (text) {
 global.db.data.chats[m.chat].sWelcome = text
 conn.reply(m.chat, '*✅ La bienvenida del grupo ha sido configurada*', fkontak, m)
 
 } else {
-    conn.reply(m.chat, `*_ESCRIBE EL MENSAJE DE BIENVENIDA_*\n*_OPCIONAL PUEDE USAR LO QUE ESTA CON "@" PARA AGREGAR MÁS INFORMACIÓN:_*\n\n*⚡ @user (Mención al usuario(a))*\n*⚡ @group (Nombre de grupo)*\n*⚡ @desc (Description de grupo)*\n\n*RECUERDE QUE LOS "@" SON OPCIONALES*`, m)
+    conn.reply(m.chat, `*🌵 ¡Escribe el mensaje de bienvenida!*\n✎ *Puedes usar:*\n\n- *\`@user\`* (Mención al Usuario)\n- *\`@group\`* (Nombre del Grupo)\n- *\`@desc\`* (Descripción del Grupo)\n\n> ☕ Los @ son opcionales`, fkontak, m)
 }
 }
 handler.help = ['setwelcome @user + texto']
