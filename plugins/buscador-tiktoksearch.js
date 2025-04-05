@@ -45,7 +45,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
             deviceListMetadataVersion: 2
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({ text: '*☕ Resultado de:* ' + text }),
+            body: proto.Message.InteractiveMessage.Body.create({ text: '*\`Resultado de:\`* ' + text }),
             footer: proto.Message.InteractiveMessage.Footer.create({ text: 'TikTok - Search' }),
             header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...results] })
@@ -64,6 +64,6 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 
 handler.help = ['tiktoksearch'];
 handler.tags = ['buscador'];
-handler.command = ['tiktoksearch', 'ttss', 'ttsearch'];
+handler.command = ['tiktoksearch', 'ttss', 'ttsearch', 'tiktoks'];
 
 export default handler;
