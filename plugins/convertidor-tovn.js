@@ -45,11 +45,12 @@ const handler = async (m, { conn }) => {
   }
 
     const media = await q.download?.();
-    if (!media && /video/.test(mime)) throw '*No se pudo descargar el video.*';
-    if (!media && /audio/.test(mime)) throw '*No se pudo descargar el audio.*';
+    if (!media && /video/.test(mime)) throw '```❌ No se pudo descargar el video.```';
+    if (!media && /audio/.test(mime)) throw '*
+```❌ No se pudo descargar el audio.```';
 
     const audio = await toPTT(media, 'mp4');
-    if (!audio.data) throw '*No se pudo convertir el archivo a nota de voz.*';
+    if (!audio.data) throw '```❌ No se pudo convertir el archivo a nota de voz.```';
 
     const aa = await conn.sendFile(m.chat, audio.data, 'audio.ogg', '', m, true, { mimetype: 'audio/ogg; codecs=opus' });
     if (!aa) {
