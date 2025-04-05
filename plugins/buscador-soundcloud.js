@@ -8,7 +8,7 @@ let title = result.name
 let HS = '```乂 SOUNDCLOUD - SEARCH```\n\n- ```Lista de canciones encontradas```\n\n'
 result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
-HS += `\n> 🍇 Responde a este mensaje con el número de la canción que deseas descargar.`   
+HS += `\n> 🥥 Responde a este mensaje con el número de la canción que deseas descargar.`   
 let { key } = await conn.reply(m.chat, HS, m)
 conn.SoundCloudSearch[m.sender] = { result, key, title }
 }
