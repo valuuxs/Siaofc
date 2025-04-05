@@ -2,7 +2,7 @@ import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return conn.reply(m.chat, '*¿Qué quieres buscar en TikTok?*', m);
+    if (!text) return conn.reply(m.chat, '🌴 *¿Qué deseas buscar en TikTok?*', m);
 
     async function createVideoMessage(url) {
         const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
@@ -11,18 +11,18 @@ let handler = async (m, { conn, text }) => {
 
     try {
         await m.react('🕓');
-        conn.reply(m.chat, '*Descargando su video...*', m);
+        conn.reply(m.chat, '*⌛ Descargando su video...*', m);
 
         let apiUrl = `https://delirius-apiofc.vercel.app/search/tiktoksearch?query=${encodeURIComponent(text)}`;
         let { data: response } = await axios.get(apiUrl);
 
         if (!response || response.status !== 200 || !response.meta || response.meta.length === 0) {
-            return conn.reply(m.chat, '*No se encontraron resultados para tu búsqueda.*', m);
+            return conn.reply(m.chat, '\`\`\`No se encontraron resultados para tu búsqueda.\`\`\`', m);
         }
 
         let results = await Promise.all(response.meta.map(async result => ({
             body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-            footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '🔎 TikTok - Búsquedas' }),
+            footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Shadow Bot Ultra' }),
             header: proto.Message.InteractiveMessage.Header.fromObject({
                 title: result.title || "Sin título",
                 hasMediaAttachment: true,
@@ -39,8 +39,8 @@ let handler = async (m, { conn, text }) => {
                         deviceListMetadataVersion: 2
                     },
                     interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-                        body: proto.Message.InteractiveMessage.Body.create({ text: `Resultados de: ${text}` }),
-                        footer: proto.Message.InteractiveMessage.Footer.create({ text: '🔎 TikTok - Búsquedas' }),
+                        body: proto.Message.InteractiveMessage.Body.create({ text: `*\`Resultados de:\`* ${text}` }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({ text: 'TikTok - Search' }),
                         header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
                         carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: results })
                     })
@@ -53,12 +53,12 @@ let handler = async (m, { conn, text }) => {
 
     } catch (error) {
         console.error('Error en la búsqueda de TikTok:', error);
-        await conn.reply(m.chat, '⚠️ Ocurrió un error al buscar en TikTok.', m);
+        await conn.reply(m.chat, '\`\`\`⚠️ Ocurrió un error al buscar en TikTok.\`\`\`', m);
     }
 };
 
 handler.help = ['tiktoksearch2'];
 handler.tags = ['search'];
-handler.command = ['tiktoksearch2', 'ttsearch2', 'ttss2'];
-handler.register = true;
+handler.command = ['tiktoksearch2', 'ttsearch2', 'ttss2', 'tiktoks2'];
+
 export default handler;
