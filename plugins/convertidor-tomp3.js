@@ -5,17 +5,17 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   const mime = (q || q.msg).mimetype || q.mediaType || '';
 
   if (!/video|audio/.test(mime)) {
-    return conn.reply(m.chat, `*[ ℹ️ ] Responda al video o nota de voz con el comando ${usedPrefix + command} para convertirlo en audio.*`, m);
+    return conn.reply(m.chat, `*☕ Responda al video o nota de voz con el comando ${usedPrefix + command} para convertirlo en audio.*`, m);
   }
 
   const media = await q.download();
   if (!media) {
-    return conn.reply(m.chat, '*[ ❌ ] Ocurrio un error al descargar su video.*', m);
+    return conn.reply(m.chat, '```❌ Ocurrio un error al descargar su video.```', m);
   }
 
   const audio = await toAudio(media, 'mp4');
   if (!audio.data) {
-    return conn.reply(m.chat, '*[ ❌ ] Ocurrio un error al convertir su nota de voz a audio.*', m);
+    return conn.reply(m.chat, '```❌ Ocurrio un error al convertir su nota de voz a audio.```', m);
   }
 
   conn.sendMessage(m.chat, {audio: audio.data, mimetype: 'audio/mpeg'}, {quoted: m});
