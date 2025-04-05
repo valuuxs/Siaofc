@@ -16,7 +16,7 @@ teks += `\n\n${footer}`
         conn.sendFile(m.chat, tes[0].image, 'yts.jpeg', teks, m)
 }
 handler.help = ['ytsearch'] 
-handler.tags = ['dl']
+handler.tags = ['buscador']
 handler.command = ['ytsearch2', 'yts2'] 
 
 export default handler
