@@ -1,7 +1,7 @@
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text }) => {
-  if (!text) throw `*🔎 ¿Qué deseas buscar en YouTube?*`
+  conn reply m.chat(`*🔎 ¿Qué deseas buscar en YouTube?*`);
 
   let results = await yts(text)
   let tes = results.videos
