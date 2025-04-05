@@ -1,11 +1,11 @@
 import gplay from "google-play-scraper";
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, "*[ 🏷️ ] Ingresa el nombre de la app que quieras buscar*", m);
+    return conn.reply(m.chat, "*🔎 Ingresa el nombre de la APK que deseas buscar*", m);
   }
   let res = await gplay.search({ term: text });
   if (!res.length) {
-    return conn.reply(m.chat, "*[ 🏷️ ] No se encontraron resultados, intenteb con otra busqueda*", m, rcanal); 
+    return conn.reply(m.chat, "*⚠️ No se encontraron resultados, intente con otra busqueda*", m); 
   }
   let opt = {
     contextInfo: {
