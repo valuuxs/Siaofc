@@ -13,7 +13,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     try {
         const results = await xvideosSearch(args.join(' '));
         if (results.length === 0) {
-            return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para:\`\`\``, m);
+            return conn.reply(m.chat, `\`\`\`⚠️ No se encontraron resultados para esta búsqueda\`\`\``, m);
         }
 
         let responseMessage = `*🔎 Resultados de la búsqueda para:* *${args.join(' ')}*\n\n`;
