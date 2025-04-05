@@ -5,8 +5,8 @@ if (!text) return conn.reply(m.chat, `*🌴 Ingresa el texto de la cancion que d
 
 let result = await soundcloudSearch(text)
 let title = result.name
-let HS = '```乂 SOUNDCLOUD - SEARCH```\n- ```Lista de canciones encontradas```\n\n'
-result.forEach((t, index) => { HS += `*\`${index + 1}\`* ${t.name}\n`
+let HS = '```乂 SOUNDCLOUD - SEARCH```\n\n- ```Lista de canciones encontradas```\n\n'
+result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
 HS += `\n> 🍇 Responde a este mensaje con el número de la canción que deseas descargar.`   
 let { key } = await conn.reply(m.chat, HS, m)
@@ -37,7 +37,7 @@ delete conn.SoundCloudSearch[m.sender]
 console.error(error)
 await conn.reply(m.chat, '\`\`\`❌ Error al enviar la cancion\`\`\`', m)
 }} else {
-await conn.reply(m.chat, "*ℹ️ Responde con uno de los números de la canción que quieres*", m)
+await conn.reply(m.chat, "*☁️ Responde con uno de los números de la canción que quieres*", m)
 }}
 
 handler.help = ['scsearch']
