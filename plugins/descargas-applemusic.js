@@ -5,7 +5,7 @@ import qs from 'qs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) throw m.reply(`*[ 🎧 ] Hace falta el título del audio de AppleMusic.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Mi Kryptonita - Doble ONE`);
+  if (!text) throw m.reply(`*📀 Por favor, ingresa el nombre de la música que desea descargar de Apple Music*\n> *\`Ejemplo:\`* ${usedPrefix + command} Grupo 5 - Motor & Motivo`);
 
 
 const appleMusic = {
@@ -159,7 +159,7 @@ conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 //let dataos = await appleMusic.search(text)
 let dataos = await appleMusic.search(text);
 if (!dataos || dataos.length === 0) {
-  return m.reply('*[ ❌ ] No se encontraron resultados en Apple Music.*');
+  return m.reply('*❌ No se encontraron resultados en Apple Music.*');
 }
 let dataos2 = await appledown.download(dataos[0].link);
 let { name, albumname, artist, url, thumb, duration, token, download } = dataos2;
