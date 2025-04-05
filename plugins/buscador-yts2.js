@@ -17,6 +17,6 @@ teks += `\n\n${footer}`
 }
 handler.help = ['ytsearch'] 
 handler.tags = ['dl']
-handler.command = ['ytsearch', 'yts'] 
+handler.command = ['ytsearch2', 'yts2'] 
 
 export default handler
