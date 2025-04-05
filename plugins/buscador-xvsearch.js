@@ -29,7 +29,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             responseMessage += `≡ 🌵 *Enlace:* ${video.url}\n\n`;
         });
 
-        await conn.reply(m.chat, responseMessage.trim(), {quoted: fkontak});
+        await conn.reply(m.chat, responseMessage.trim(), m);
         await m.react('✅');
     } catch (e) {
         console.error(e);
