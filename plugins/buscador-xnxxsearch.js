@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('*🌴 El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
+    return m.reply('*ℹ️ El contenido* \`\`\`nsfw\`\`\` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
     }
 
   if (!text) throw m.reply(`*🍁 Por favor, ingresa el texto de lo que deseas buscar en xnxx*\n> *\`Ejemplo:\`* ${usedPrefix + command} Con mi Prima.`)
@@ -38,5 +38,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.command = ['xnxxsearch', 'xnxxs']
 handler.help = ['xnxxsearch']
 handler.tags = ['buscador']
+handler.register = true
 
 export default handler
