@@ -6,7 +6,7 @@ let apkSession = new Map();
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   // Rama: Comando inicial .apk con término de búsqueda
-  if (command === 'apk' && text) {
+  if (command === 'apk2' && text) {
     const reactionMessage = await conn.sendMessage(
       m.chat,
       { text: `🔍 Buscando la aplicación...` },
