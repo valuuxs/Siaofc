@@ -6,7 +6,7 @@ m.react('🕒');
         let ouh = await fetch(`https://api.agatz.xyz/api/pinterest?url=${text}`)
   let gyh = await ouh.json()
 
-await conn.sendMessage(m.chat, { video: { url: gyh.data.result }, caption: '' }, { quoted: m });
+await conn.sendMessage(m.chat, { video: { url: gyh.data.result }, caption: '\`\`\`◜Pinterest - Download◞\`\`\`\n\n> The video from Pinterest has been downloaded successfully.' }, { quoted: fkontak });
 
 // await conn.sendFile(m.chat, gyh.data.result, `pinvideobykeni.mp4`, `*${emoji} Url:* ${gyh.data.url}`, m)
 await m.react('✅');
