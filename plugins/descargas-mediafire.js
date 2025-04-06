@@ -86,7 +86,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     }
 };
 
-handler.command = /^(mediafire|mfire)$/i;
+handler.command = /^(mediafire|mf)$/i;
 handler.register = true;
 handler.diamantes = 3;
 
