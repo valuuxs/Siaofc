@@ -58,6 +58,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     // Enviar el mensaje de respuesta
     await conn.relayMessage(message.chat, responseMessage.message, { messageId: responseMessage.key.id });
 
+    await message.react('✅');
   } catch (error) {
     await conn.reply(message.chat, error.toString(), message);
   }
