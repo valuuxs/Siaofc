@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 
-// Mensajes predefinidos para reutilización
 const mssg = {
     noLink: (platform) => `*⚠️ Por favor, proporciona un enlace de ${platform}*.`,
     invalidLink: (platform) => `*❌ El enlace proporcionado no es válido de ${platform}. Por favor verifica el enlace.*`,
@@ -10,32 +9,22 @@ const mssg = {
     busy: '*⏳ El servidor está procesando otra solicitud. Por favor espere a que termine.*',
 };
 
-// Estado del servidor
 let isProcessing = false;
 
-// Función para enviar respuestas rápidas
 const reply = (texto, conn, m) => {
-    conn.sendMessage(m.chat, { 
-        text: texto, 
-    }, { quoted: m });
+    conn.sendMessage(m.chat, { text: texto }, { quoted: m });
 };
 
-// Función para verificar si la URL proporcionada es válida
 const isValidUrl = (url) => {
     const regex = /^(https?:\/\/)?(www\.)?mediafire\.com\/.*$/i;
     return regex.test(url);
 };
 
-// Función para extraer el nombre del archivo desde el enlace
 const extractFileNameFromLink = (url) => {
     const match = url.match(/\/file\/[^/]+\/(.+?)\/file$/i);
-    if (match) {
-        return decodeURIComponent(match[1].replace(/%20/g, ' ')); // Decodificar espacios y caracteres especiales
-    }
-    return null;
+    return match ? decodeURIComponent(match[1].replace(/%20/g, ' ')) : null;
 };
 
-// Función para determinar el tipo MIME según la extensión del archivo
 const getMimeType = (fileName) => {
     const ext = fileName.split('.').pop().toLowerCase();
     const mimeTypes = {
@@ -51,32 +40,18 @@ const getMimeType = (fileName) => {
     return mimeTypes[ext] || 'application/octet-stream';
 };
 
-// Handler principal para los comandos
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (command === 'mediafire') {
-        if (!text) {
-            return reply(`*📥 Por favor, ingresa un enlace de Mediafire*`, conn, m);
-        }
-
-        // Verificar si el servidor está ocupado
-        if (isProcessing) {
-            return reply(mssg.busy, conn, m);
-        }
-
-        // Verificar si el enlace proporcionado es válido
-        if (!isValidUrl(text)) {
-            return reply(mssg.invalidLink('Mediafire'), conn, m);
-        }
+        if (!text) return reply(`*📥 Por favor, ingresa un enlace de Mediafire*`, conn, m);
+        if (isProcessing) return reply(mssg.busy, conn, m);
+        if (!isValidUrl(text)) return reply(mssg.invalidLink('Mediafire'), conn, m);
 
         try {
-            isProcessing = true; // Marcar el servidor como ocupado
-            console.log(`Procesando enlace: ${text}`);
+            isProcessing = true;
+            await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
 
-            // Extraer el nombre del archivo desde el enlace
-            let fileName = extractFileNameFromLink(text);
-            if (!fileName) {
-                fileName = 'archivo_descargado'; // Asignar nombre genérico si no se pudo extraer
-            }
+            console.log(`Procesando enlace: ${text}`);
+            let fileName = extractFileNameFromLink(text) || 'archivo_descargado';
 
             const apiUrl = `https://www.dark-yasiya-api.site/download/mfire?url=${encodeURIComponent(text)}`;
             const apiResponse = await fetch(apiUrl);
@@ -84,13 +59,9 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
             if (data.status && data.result && data.result.dl_link) {
                 const downloadUrl = data.result.dl_link;
-                const fileSize = parseFloat(data.result.size.replace(/[^0-9.]/g, '')); // Extraer tamaño en MB
+                const fileSize = parseFloat(data.result.size.replace(/[^0-9.]/g, ''));
 
-                // Verificar el tamaño del archivo
-                if (fileSize > 650) {
-                    isProcessing = false; // Liberar el servidor
-                    return reply(mssg.fileTooLarge, conn, m);
-                }
+                if (fileSize > 650) return reply(mssg.fileTooLarge, conn, m);
 
                 const mimeType = getMimeType(fileName);
 
@@ -100,24 +71,23 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
                     fileName: fileName,
                 }, { quoted: m });
 
+                await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
             } else {
-                isProcessing = false; // Liberar el servidor
                 return reply(mssg.fileNotFound, conn, m);
             }
 
         } catch (error) {
-            console.error('*❌ Error con la API de Dark Yasiya:*', error.message);
+            console.error('❌ Error con la API de Dark Yasiya:', error.message);
+            await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
             return reply(mssg.error, conn, m);
-
         } finally {
-            isProcessing = false; // Liberar el servidor
+            isProcessing = false;
         }
     }
 };
 
-// Comando para activar la función de descarga desde Mediafire
 handler.command = /^(mediafire|mfire)$/i;
-handler.register = true
-handler.diamantes = 3
+handler.register = true;
+handler.diamantes = 3;
 
 export default handler;
