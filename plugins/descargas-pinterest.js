@@ -1,4 +1,4 @@
-import axios from 'axios';
+enimport axios from 'axios';
 import cheerio from 'cheerio';
 import baileys from '@whiskeysockets/baileys';
 
@@ -142,7 +142,7 @@ let handler = async (m, { conn, text, args }) => {
 };
 
 handler.help = ['pinterest'];
-handler.command = ['pinterest', 'pin'];
+handler.command = ['pinterestdl', 'pindl'];
 handler.tags = ['buscador'];
 
 export default handler;
