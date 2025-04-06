@@ -61,7 +61,7 @@ await m.react('📭');
         { quoted: m }
       );
     } catch (error) {
-      console.error("❌ Error:", error);
+      console.error("*❌ Error:*", error);
       await conn.sendMessage(
         m.chat,
         { react: { text: '❌', key: reactionMessage.key } },
@@ -69,7 +69,7 @@ await m.react('📭');
       );
       await conn.sendMessage(
         m.chat,
-        { text: `❌ Ocurrió un error: ${error.message || "Error desconocido"}` },
+        { text: `*❌ Ocurrió un error:*\n${error.message || "Error desconocido"}` },
         { quoted: m }
       );
     }
@@ -82,7 +82,7 @@ await m.react('📭');
     if (!session) {
       return conn.sendMessage(
         m.chat,
-        { text: `❗ No hay sesión activa. Realiza una búsqueda usando ${usedPrefix}apk <nombre de la aplicación>.` },
+        { text: `*⚠️ No hay sesión activa. Realiza una búsqueda usando ${usedPrefix}apk <nombre de la aplicación>*.` },
         { quoted: m }
       );
     }
@@ -111,7 +111,7 @@ await m.react('📭');
     let example = `${usedPrefix}apk WhatsApp`;
     return conn.sendMessage(
       m.chat,
-      { text: `❗ Ingresa un término de búsqueda.\n\nEjemplo: ${example}` },
+      { text: `*☁️ Ingresa un término de búsqueda.*` },
       { quoted: m }
     );
   }
