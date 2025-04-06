@@ -5,14 +5,14 @@ const botName = 'Descarga de MEGA';
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
   try {
-    if (!text) return conn.reply(m.chat,`*[ ℹ️ ] Ingresa un link de Mega mas el comando.*\n\n*[ 💡 ] Ejemplo:* _${usedPrefix + command} https://mega.nz/file/ovJTHaQZ#yAbkrvQgykcH_NDKQ8eIc0zvsN7jonBbHZ_HTQL6lZ8_`, null, { quoted: m });
+    if (!text) return conn.reply(m.chat,`*📥 Por favor, ingresa un enlace de Mega*`, null, { quoted: m });
     m.react('(⏳');
     const file = File.fromURL(text);
     await file.loadAttributes();
 
     if (file.size >= 300000000) return m.reply('Error: El archivo es demasiado pesado (Peso máximo: 300MB ( Premium: 800MB )');
 
-    const caption = `*_DESCARGAS - MEGA_*\n\n*🪴 File:* ${file.name}\n*⚖️ Size:* ${formatBytes(file.size)}\n\n> Shadow Bot MD`;
+    const caption = `\`\`\`◜Mega - Download◞\`\`\`\n\n*🪴 File:* ${file.name}\n*⚖️ Size:* ${formatBytes(file.size)}\n\n> Shadow Bot MD`;
     const data = await file.downloadBuffer();
     const fileExtension = path.extname(file.name).toLowerCase();
     const mimeTypes = {
