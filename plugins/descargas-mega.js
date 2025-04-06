@@ -1,8 +1,6 @@
 import { File } from "megajs";
 import path from "path";
 
-const botName = 'Descarga de MEGA';
-
 function formatBytes(bytes, decimals = 2) {
   if (!+bytes) return '0 Bytes';
   const k = 1024;
@@ -21,7 +19,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
 
     if (file.size >= 300000000) return m.reply('Error: El archivo es demasiado pesado (Peso máximo: 300MB ( Premium: 800MB )');
 
-    const caption = `\`\`\`◜Mega - Download◞\`\`\`\n\n*🌴 \`File:\`* ${file.name}\n*⚖️ \`Size:\`* ${formatBytes(file.size)}\n\n> ${botName}`;
+    const caption = `\`\`\`◜Mega - Download◞\`\`\`\n\n*🌴 \`File:\`* ${file.name}\n*⚖️ \`Size:\`* ${formatBytes(file.size)}\n\n> ${dev}`;
     const data = await file.downloadBuffer();
     const fileExtension = path.extname(file.name).toLowerCase();
     const mimeTypes = {
