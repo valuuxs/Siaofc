@@ -14,7 +14,7 @@ let handler = async (m, { args, conn }) => {
     }
   } catch {
     await m.react('❌')
-    conn.reply(m.chat, '*[ ℹ️ ] Ocurrió un error.*')
+    conn.reply(m.chat, '*❌ Ocurrió un error.*')
   }
 }
 
