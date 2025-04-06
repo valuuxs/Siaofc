@@ -12,7 +12,8 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 
   try {
     // Mensaje inicial informando al usuario que se está descargando el video
-    conn.reply(message.chat, wait, message);
+    //conn.reply(message.chat, wait, message);
+      await m.react('⏳');
 
     // Realizar la búsqueda de TikTok
     let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text);
