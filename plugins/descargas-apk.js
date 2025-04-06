@@ -34,7 +34,7 @@ await m.react('📭');
       description += `° 🌴 *\`Name:\`* ${app.name}\n`;
       description += `° 🌵 *\`Dev:\`* ${app.developer}\n`;
       description += `° ⚖️ *\`Tamaño:\`* ${app.size}\n\n`;
-      description += `> Powered By Moon Force Team`;
+      description += `> ${dev}`;
 
       // Botón para descarga
       const buttons = [
