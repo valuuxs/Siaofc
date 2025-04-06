@@ -2,15 +2,15 @@ import { webp2mp4 } from '../lib/webp2mp4.js';
 import { ffmpeg } from '../lib/converter.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
-  const wait = '*[ ⏳ ] Procesando...*';
+  const wait = '*⏳ Procesando...*';
 
-  if (!m.quoted) return conn.reply(m.chat, `*[ ☕ ] Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
+  if (!m.quoted) return conn.reply(m.chat, `*☕ Responda a un sticker en movimiento que desee convertir en vídeo con el comando ${usedPrefix + command}*`, m);
   const mime = m.quoted.mimetype || '';
   
-  if (!/webp/.test(mime)) return conn.reply(m.chat, `*[ ☕ ] Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
+  if (!/webp/.test(mime)) return conn.reply(m.chat, `*☕ Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
   
   const media = await m.quoted.download();
-  if (!media) return conn.reply(m.chat, '*[ ❌ ] No se pudo descargar el archivo. Intente de nuevo.*', m);
+  if (!media) return conn.reply(m.chat, '*❌ No se pudo descargar el archivo. Intente de nuevo.*', m);
   
   let out = Buffer.alloc(0);
 
