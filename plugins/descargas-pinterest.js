@@ -1,15 +1,12 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
+import baileys from '@whiskeysockets/baileys';
 
 async function dl(url) {
   try {
-    const res = await axios.get(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' }
-    });
-
+    const res = await axios.get(url, { headers: { "User-Agent": "Mozilla/5.0" } });
     const $ = cheerio.load(res.data);
     const tag = $('script[data-test-id="video-snippet"]');
-
     if (tag.length) {
       const result = JSON.parse(tag.text());
       return {
@@ -25,38 +22,29 @@ async function dl(url) {
       };
     }
   } catch {
-    return { error: 'No se pudo descargar el contenido.' };
+    return { msg: "Error, inténtalo de nuevo más tarde" };
   }
 }
 
 let handler = async (m, { conn, text }) => {
-  if (!text || !text.includes("https://") || !text.includes("pinterest.com")) {
-    return m.reply(`*⚠️ Por favor, ingresa un enlace válido de Pinterest.*\n> *Ejemplo:* .pinterest https://www.pinterest.com/pin/123456789`);
+  if (!text || !text.includes('https://')) {
+    return m.reply(`*⚠️ Proporciona un enlace válido de Pinterest.*\n> *Ejemplo:* .pindl https://www.pinterest.com/pin/123456`);
   }
 
   try {
-    m.react("⌛");
-    const media = await dl(text);
-    if (!media || media.error || !media.download) {
-      return conn.reply(m.chat, '```❌ No se pudo obtener el contenido del enlace.```', m);
-    }
-
-    const isVideo = media.download.includes(".mp4");
-
-    await conn.sendMessage(m.chat, {
-      [isVideo ? "video" : "image"]: { url: media.download },
-      caption: media.title || 'Contenido de Pinterest'
-    }, { quoted: m });
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-
+    await m.react('⌛');
+    const result = await dl(text);
+    if (!result || !result.download) return m.reply('⚠️ No se pudo obtener el contenido del enlace.');
+    const isVideo = result.download.endsWith('.mp4');
+    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: result.title }, { quoted: m });
+    await m.react('✅');
   } catch (error) {
     console.error(error);
-    conn.reply(m.chat, '```⚠️ Error al descargar el contenido de Pinterest.```', m);
+    conn.reply(m.chat, '⚠️ Error al procesar el enlace de Pinterest.', m);
   }
 };
 
-handler.help = ['pinterest'];
+handler.help = ['pinterestdl', 'pindl'];
 handler.command = ['pinterestdl', 'pindl'];
 handler.tags = ['downloader'];
 
