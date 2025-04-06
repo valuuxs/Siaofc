@@ -1,11 +1,9 @@
-enimport axios from 'axios';
-import cheerio from 'cheerio';
+
+import axios from 'axios';
 import baileys from '@whiskeysockets/baileys';
 
 async function sendAlbumMessage(jid, medias, options = {}) {
-  if (typeof jid !== "string") {
-    throw new TypeError(`jid must be string, received: ${jid} (${jid?.constructor?.name})`);
-  }
+  if (typeof jid !== "string") throw new TypeError(`jid must be string, received: ${jid} (${jid?.constructor?.name})`);
 
   for (const media of medias) {
     if (!media.type || (media.type !== "image" && media.type !== "video")) {
@@ -16,9 +14,7 @@ async function sendAlbumMessage(jid, medias, options = {}) {
     }
   }
 
-  if (medias.length < 2) {
-    throw new RangeError("Minimum 2 media");
-  }
+  if (medias.length < 2) throw new RangeError("Minimum 2 media");
 
   const caption = options.text || options.caption || "";
   const delay = !isNaN(options.delay) ? options.delay : 500;
@@ -68,95 +64,38 @@ async function sendAlbumMessage(jid, medias, options = {}) {
   return album;
 }
 
-const pins = async (query) => {
+const pins = async (judul) => {
+  const link = `https://id.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${encodeURIComponent(judul)}%26rs%3Dtyped&data=...`; // acorta el link aquí si gustas
+  const headers = {
+    'accept': 'application/json, text/javascript, */*; q=0.01',
+    'user-agent': 'Mozilla/5.0 ...'
+    // otros headers omitidos para brevedad
+  };
+
   try {
-    const url = `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(query)}`;
-    const res = await axios.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-        'Accept-Language': 'en-US,en;q=0.9'
+    const res = await axios.get(link, { headers });
+    const data = res.data?.resource_response?.data?.results || [];
+    return data.map(item => {
+      if (item.images) {
+        return {
+          image_large_url: item.images.orig?.url || null,
+          image_medium_url: item.images['564x']?.url || null,
+          image_small_url: item.images['236x']?.url || null
+        };
       }
-    });
-
-    const $ = cheerio.load(res.data);
-    const matches = [];
-
-    $('img[srcset]').each((i, el) => {
-      const src = $(el).attr('src');
-      if (src && !src.includes('data:image')) {
-        matches.push({
-          image_large_url: src
-        });
-      }
-    });
-
-    return matches.slice(0, 10); // Solo 10 imágenes
+      return null;
+    }).filter(Boolean);
   } catch (error) {
-    console.error('Error scraping Pinterest:', error.message);
+    console.error('Error en búsqueda Pinterest:', error);
     return [];
   }
 };
 
-let handler = async (m, { conn, text, args }) => {
-  if (!text) return m.reply(`*🔎 Por favor, ingresa un texto para buscar en Pinterest.*\n> *Ejemplo:* \`.pinterest Gatos Hermosos\``);
-
-  try {
-    if (text.includes("https://")) {
-      m.react("⌛");
-
-      let i = await dl(args[0]);
-      let isVideo = i.download.includes(".mp4");
-
-      await conn.sendMessage(m.chat, {
-        [isVideo ? "video" : "image"]: { url: i.download },
-        caption: i.title
-      }, { quoted: m });
-
-      m.react("☑️");
-      return;
-    }
-
-    m.react('🕒');
-    const results = await pins(text);
-
-    if (!results || results.length === 0) {
-      return conn.reply(m.chat, `⚠️ No se encontraron resultados para esa búsqueda.`, m);
-    }
-
-    const medias = results.map(img => ({
-      type: 'image',
-      data: { url: img.image_large_url }
-    }));
-
-    await sendAlbumMessage(m.chat, medias, {
-      caption: `\`\`\`乂 PINTEREST - SEARCH\`\`\`\n\n≡ 🌳 *Búsqueda:* ${text}\n≡ 🌿 *Resultados:* ${medias.length}`,
-      quoted: m
-    });
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-
-  } catch (error) {
-    console.error(error);
-    conn.reply(m.chat, '⚠️ Error al obtener imágenes de Pinterest.', m);
-  }
-};
-
-handler.help = ['pinterest'];
-handler.command = ['pinterestdl', 'pindl'];
-handler.tags = ['buscador'];
-
-export default handler;
-
-// Función para descargar imagen o video de un link de Pinterest
 async function dl(url) {
   try {
-    const res = await axios.get(url, {
-      headers: { "User-Agent": "Mozilla/5.0" }
-    });
-
+    const res = await axios.get(url, { headers: { "User-Agent": "Mozilla/5.0" } });
     const $ = cheerio.load(res.data);
     const tag = $('script[data-test-id="video-snippet"]');
-
     if (tag.length) {
       const result = JSON.parse(tag.text());
       return {
@@ -175,3 +114,49 @@ async function dl(url) {
     return { msg: "Error, inténtalo de nuevo más tarde" };
   }
 }
+
+let handler = async (m, { conn, text }) => {
+  if (!text) return m.reply(`*🔎 Por favor, ingresa un texto para buscar en Pinterest.*\n> *Ejemplo:* .pinterest Gatos Hermosos`);
+
+  try {
+    // Si contiene un enlace
+    if (text.includes('https://')) {
+      await m.react('⌛');
+      const result = await dl(text);
+      if (!result || !result.download) return m.reply('⚠️ No se pudo obtener el contenido del enlace.');
+      const isVideo = result.download.endsWith('.mp4');
+      await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: result.title }, { quoted: m });
+      return await m.react('✅');
+    }
+
+    // Si es texto, buscar en Pinterest
+    await m.react('🕒');
+    const results = await pins(text);
+    if (!results.length) return conn.reply(m.chat, '⚠️ No se encontraron resultados para esa búsqueda.', m);
+
+    const maxImages = Math.min(results.length, 10);
+    const medias = results.slice(0, maxImages).map(img => ({
+      type: 'image',
+      data: {
+        url: img.image_large_url || img.image_medium_url || img.image_small_url
+      }
+    }));
+
+    await sendAlbumMessage(m.chat, medias, {
+      caption: `\`\`\`乂 PINTEREST - SEARCH\`\`\`\n\n≡ 🌳 *Búsqueda:* ${text}\n≡ 🌿 Resultados: ${maxImages}`,
+      quoted: m
+    });
+
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
+
+  } catch (error) {
+    console.error(error);
+    conn.reply(m.chat, '⚠️ Error al obtener imágenes de Pinterest.', m);
+  }
+};
+
+handler.help = ['pinterest'];
+handler.command = ['pinterestdl', 'pindl'];
+handler.tags = ['buscador'];
+
+export default handler;
