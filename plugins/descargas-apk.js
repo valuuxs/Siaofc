@@ -30,15 +30,11 @@ await m.react('📭');
       apkSession.set(m.chat, { app });
 
       // Descripción de la aplicación
-      let description = `\`\`\`◜Apk - Download◞\`\`\`\n`;
-      description += `➷ *Nombre:* ${app.name}\n`;
-      description += `➷ *Desarrollador:* ${app.developer}\n`;
-      description += `➷ *ID:* ${app.id}\n`;
-      description += `➷ *Publicado:* ${app.publish}\n`;
-      description += `➷ *Tamaño:* ${app.size}\n`;
-      description += `➷ *Descargas:* ${app.stats.downloads.toLocaleString()}\n`;
-      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.rating.total} valoraciones)\n\n`;
-      description += `_⚠️Estas Seguro De Descargar Esta Aplicación??._`;
+      let description = `\`\`\`◜Apk - Download◞\`\`\`\n\n`;
+      description += `° 🌴 *\`Name:\`* ${app.name}\n`;
+      description += `° 🌵 *\`Dev\`* ${app.developer}\n`;
+      description += `° ⚖️ *\`Tamaño:\`* ${app.size}\n\n`;
+      description += `> Powered By Moon Force Team`;
 
       // Botón para descarga
       const buttons = [
