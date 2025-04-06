@@ -4,196 +4,166 @@ import * as cheerio from "cheerio";
 const pindl = {
     video: async (url) => {
         try {
-            let { data: html } = await axios.get(url);
-            let $ = cheerio.load(html);
+            const { data: html } = await axios.get(url);
+            const $ = cheerio.load(html);
+            const script = $('script[data-test-id="video-snippet"]').html();
 
-            const mediaDataScript = $('script[data-test-id="video-snippet"]');
-            if (mediaDataScript.length) {
-                const mediaData = JSON.parse(mediaDataScript.html());
+            if (!script) return null;
+            const media = JSON.parse(script);
 
-                if (
-                    mediaData["@type"] === "VideoObject" &&
-                    mediaData.contentUrl &&
-                    mediaData.contentUrl.endsWith(".mp4")
-                ) {
-                    return {
-                        type: "video",
-                        name: mediaData.name,
-                        description: mediaData.description,
-                        contentUrl: mediaData.contentUrl,
-                        thumbnailUrl: mediaData.thumbnailUrl,
-                        uploadDate: mediaData.uploadDate,
-                        duration: mediaData.duration,
-                        commentCount: mediaData.commentCount,
-                        likeCount: mediaData.interactionStatistic?.find(
-                            (stat) =>
-                            stat.InteractionType["@type"] === "https://schema.org/LikeAction"
-                        )?.InteractionCount,
-                        watchCount: mediaData.interactionStatistic?.find(
-                            (stat) =>
-                            stat.InteractionType["@type"] ===
-                            "https://schema.org/WatchAction"
-                        )?.InteractionCount,
-                        creator: mediaData.creator?.name,
-                        creatorUrl: mediaData.creator?.url,
-                        keywords: mediaData.keywords,
-                    };
-                }
+            if (
+                media["@type"] === "VideoObject" &&
+                media.contentUrl?.endsWith(".mp4")
+            ) {
+                const stats = media.interactionStatistic || [];
+                return {
+                    type: "video",
+                    name: media.name,
+                    description: media.description,
+                    contentUrl: media.contentUrl,
+                    thumbnailUrl: media.thumbnailUrl,
+                    uploadDate: media.uploadDate,
+                    duration: media.duration,
+                    commentCount: media.commentCount,
+                    likeCount: stats.find((s) =>
+                        s.interactionType?.["@type"] === "https://schema.org/LikeAction"
+                    )?.userInteractionCount,
+                    watchCount: stats.find((s) =>
+                        s.interactionType?.["@type"] === "https://schema.org/WatchAction"
+                    )?.userInteractionCount,
+                    creator: media.creator?.name,
+                    creatorUrl: media.creator?.url,
+                    keywords: media.keywords,
+                };
             }
             return null;
-        } catch (error) {
-            return {
-                error: "Error al obtener los datos del video"
-            };
+        } catch {
+            return { error: "Error al obtener datos del video." };
         }
     },
 
     image: async (url) => {
         try {
-            let { data: html } = await axios.get(url);
-            let $ = cheerio.load(html);
+            const { data: html } = await axios.get(url);
+            const $ = cheerio.load(html);
+            const script = $('script[data-test-id="leaf-snippet"]').html();
 
-            const mediaDataScript = $('script[data-test-id="leaf-snippet"]');
-            if (mediaDataScript.length) {
-                const mediaData = JSON.parse(mediaDataScript.html());
+            if (!script) return null;
+            const media = JSON.parse(script);
 
-                if (
-                    mediaData["@type"] === "SocialMediaPosting" &&
-                    mediaData.image &&
-                    (mediaData.image.endsWith(".png") ||
-                        mediaData.image.endsWith(".jpg") ||
-                        mediaData.image.endsWith(".jpeg") ||
-                        mediaData.image.endsWith(".webp")) &&
-                    !mediaData.image.endsWith(".gif")
-                ) {
-                    return {
-                        type: "image",
-                        author: mediaData.author?.name,
-                        authorUrl: mediaData.author?.url,
-                        headline: mediaData.headline,
-                        articleBody: mediaData.articleBody,
-                        image: mediaData.image,
-                        datePublished: mediaData.datePublished,
-                        sharedContentUrl: mediaData.sharedContent?.url,
-                        isRelatedTo: mediaData.isRelatedTo,
-                        mainEntityOfPage: mediaData.mainEntityOfPage?.["@id"],
-                    };
-                }
+            if (
+                media["@type"] === "SocialMediaPosting" &&
+                /\.(jpg|jpeg|png|webp)$/i.test(media.image || "")
+            ) {
+                return {
+                    type: "image",
+                    author: media.author?.name,
+                    authorUrl: media.author?.url,
+                    headline: media.headline,
+                    articleBody: media.articleBody,
+                    image: media.image,
+                    datePublished: media.datePublished,
+                    sharedContentUrl: media.sharedContent?.url,
+                    isRelatedTo: media.isRelatedTo,
+                    mainEntityOfPage: media.mainEntityOfPage?.["@id"],
+                };
             }
             return null;
-        } catch (error) {
-            return {
-                error: "Error al obtener los datos de la imagen"
-            };
+        } catch {
+            return { error: "Error al obtener datos de la imagen." };
         }
     },
 
     gif: async (url) => {
         try {
-            let { data: html } = await axios.get(url);
-            let $ = cheerio.load(html);
+            const { data: html } = await axios.get(url);
+            const $ = cheerio.load(html);
+            const script = $('script[data-test-id="leaf-snippet"]').html();
 
-            const mediaDataScript = $('script[data-test-id="leaf-snippet"]');
-            if (mediaDataScript.length) {
-                const mediaData = JSON.parse(mediaDataScript.html());
+            if (!script) return null;
+            const media = JSON.parse(script);
 
-                if (
-                    mediaData["@type"] === "SocialMediaPosting" &&
-                    mediaData.image &&
-                    mediaData.image.endsWith(".gif")
-                ) {
-                    return {
-                        type: "gif",
-                        author: mediaData.author?.name,
-                        authorUrl: mediaData.author?.url,
-                        headline: mediaData.headline,
-                        articleBody: mediaData.articleBody,
-                        gif: mediaData.image,
-                        datePublished: mediaData.datePublished,
-                        sharedContentUrl: mediaData.sharedContent?.url,
-                        isRelatedTo: mediaData.isRelatedTo,
-                        mainEntityOfPage: mediaData.mainEntityOfPage?.["@id"],
-                    };
-                }
+            if (
+                media["@type"] === "SocialMediaPosting" &&
+                media.image?.endsWith(".gif")
+            ) {
+                return {
+                    type: "gif",
+                    author: media.author?.name,
+                    authorUrl: media.author?.url,
+                    headline: media.headline,
+                    articleBody: media.articleBody,
+                    gif: media.image,
+                    datePublished: media.datePublished,
+                    sharedContentUrl: media.sharedContent?.url,
+                    isRelatedTo: media.isRelatedTo,
+                    mainEntityOfPage: media.mainEntityOfPage?.["@id"],
+                };
             }
             return null;
-        } catch (error) {
-            return {
-                error: "Error al obtener los datos del GIF"
-            };
+        } catch {
+            return { error: "Error al obtener datos del gif." };
         }
     },
 
-    download: async (urlPin) => {
-        let result = await pindl.video(urlPin);
-        if (result) return result;
+    download: async (url) => {
+        const video = await pindl.video(url);
+        if (video) return video;
 
-        result = await pindl.image(urlPin);
-        if (result) return result;
+        const image = await pindl.image(url);
+        if (image) return image;
 
-        result = await pindl.gif(urlPin);
-        return result || {
-            error: "No se encontró ningún medio"
-        };
-    },
+        const gif = await pindl.gif(url);
+        return gif || { error: "No se encontró ningún medio en el enlace." };
+    }
 };
 
 const handler = async (m, { conn, text }) => {
-    if (!text) throw "¿Dónde está la URL?";
+    if (!text) throw "Falta el enlace de Pinterest.";
 
-    await m.react('🕓');
+    if (!/^https?:\/\/(www\.)?pinterest\.[a-z.]+\/pin\//i.test(text)) {
+        throw "El enlace proporcionado no es válido. Asegúrate de que sea un pin de Pinterest.";
+    }
+
+    await m.react('🟣');
 
     try {
         const result = await pindl.download(text);
         if (result.error) throw result.error;
 
-        let caption = ``;
+        let caption = "";
 
         if (result.type === "video") {
-            caption += `「✦」 *Información Video*\n\n> ✐ Título » ${result.name || "N/A"}\n> 🜸 Link » ${result.contentUrl}\n`;
+            caption = `「✦」 *Video de Pinterest*\n\n✐ *Título:* ${result.name || "N/A"}\n🜸 *Link:* ${result.contentUrl}`;
             await conn.sendMessage(m.chat, {
-                video: {
-                    url: result.contentUrl
-                },
+                video: { url: result.contentUrl },
                 caption
-            }, {
-                quoted: m
-            });
+            }, { quoted: m });
         } else if (result.type === "image") {
-            caption += `「✦」 *Información Imagen*\n\n> ✐ Título » ${result.headline || "N/A"}\n> 🜸 Link » ${result.image}`;
+            caption = `「✦」 *Imagen de Pinterest*\n\n✐ *Título:* ${result.headline || "N/A"}\n🜸 *Link:* ${result.image}`;
             await conn.sendMessage(m.chat, {
-                image: {
-                    url: result.image
-                },
+                image: { url: result.image },
                 caption
-            }, {
-                quoted: m
-            });
+            }, { quoted: m });
         } else if (result.type === "gif") {
-            caption += `「✦」 *Información Gif*\n\n> ✐ Título » ${result.headline || "N/A"}\n> 🜸 Link » ${result.gif}\n`;
+            caption = `「✦」 *GIF de Pinterest*\n\n✐ *Título:* ${result.headline || "N/A"}\n🜸 *Link:* ${result.gif}`;
             await conn.sendMessage(m.chat, {
-                video: {
-                    url: result.gif
-                },
+                video: { url: result.gif },
                 caption
-            }, {
-                quoted: m
-            });
+            }, { quoted: m });
         }
 
         await m.react('✅');
-    } catch (error) {
-        await m.react('✖️');
+    } catch (err) {
+        await m.react('❌');
         await conn.sendMessage(m.chat, {
-            text: `Algo salió mal: ${error}`
-        }, {
-            quoted: m
-        });
+            text: `Error al procesar el enlace: ${err}`
+        }, { quoted: m });
     }
 };
 
-handler.help = ["pinterestdl *<url>*"];
-handler.tags = ["dl"];
+handler.help = ["pinterestdl <url>"];
+handler.tags = ["descargas"];
 handler.command = /^(pindl|pinterestdl)$/i;
 
 export default handler;
