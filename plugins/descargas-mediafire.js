@@ -106,7 +106,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             }
 
         } catch (error) {
-            console.error('Error con la API de Dark Yasiya:', error.message);
+            console.error('*❌ Error con la API de Dark Yasiya:*', error.message);
             return reply(mssg.error, conn, m);
 
         } finally {
