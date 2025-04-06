@@ -19,7 +19,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
             return m.reply('*❌ No se pudieron obtener los datos. Asegúrate de que la URL ingresada sea correcta.*');
         }
 
-        const cpt = `\`\`\`◜CapCut - Download◞\`\`\`\n\n° *🌴 Titulo:* ${result.title}\n° *📆 Fecha:* ${result.date}\n° *👤 Autor:* ${result.author.name}\n° *🤍 Likes:* ${result.likes}\n\n> ${dev}`;
+        const cpt = `\`\`\`◜CapCut - Download◞\`\`\`\n\n° *🌴 Título:* ${result.title}\n° *📆 Fecha:* ${result.date}\n° *👤 Autor:* ${result.author.name}\n° *🤍 Likes:* ${result.likes}\n\n> ${dev}`;
         await conn.sendFile(m.chat, result.videoUrl, '', cpt, m, {
             thumbnail: await fetch(result.posterUrl).then(res => res.buffer())
         });
