@@ -32,7 +32,7 @@ await m.react('📭');
       // Descripción de la aplicación
       let description = `\`\`\`◜Apk - Download◞\`\`\`\n\n`;
       description += `° 🌴 *\`Name:\`* ${app.name}\n`;
-      description += `° 🌵 *\`Dev\`* ${app.developer}\n`;
+      description += `° 🌵 *\`Dev:\`* ${app.developer}\n`;
       description += `° ⚖️ *\`Tamaño:\`* ${app.size}\n\n`;
       description += `> Powered By Moon Force Team`;
 
