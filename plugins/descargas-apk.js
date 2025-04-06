@@ -30,7 +30,7 @@ await m.react('📭');
       apkSession.set(m.chat, { app });
 
       // Descripción de la aplicación
-      let description = `⌘━─━─≪ *Shadow ™* ≫─━─━⌘\n`;
+      let description = `\`\`\`◜Apk - Download◞\`\`\`\n`;
       description += `➷ *Nombre:* ${app.name}\n`;
       description += `➷ *Desarrollador:* ${app.developer}\n`;
       description += `➷ *ID:* ${app.id}\n`;
@@ -97,7 +97,7 @@ await m.react('📭');
         document: { url: downloadUrl },
         mimetype: "application/vnd.android.package-archive",
         fileName: `${app.name}.apk`,
-        caption: `⟡ *${app.name}*\n⟡ APK listo para descargar.\n> Powered by Nova Spark`
+        caption: `> Shadow Ultra - MD`
       },
       { quoted: m }
     );
@@ -111,7 +111,7 @@ await m.react('📭');
     let example = `${usedPrefix}apk WhatsApp`;
     return conn.sendMessage(
       m.chat,
-      { text: `*☁️ Ingresa un término de búsqueda.*` },
+      { text: `*📪 Ingresa el nombre de una Apk que deseas descargar.*\n> *\`Ejemplo:\`* ${example}` },
       { quoted: m }
     );
   }
