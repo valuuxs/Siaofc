@@ -2,12 +2,12 @@ import fetch from 'node-fetch';
 
 // Mensajes predefinidos para reutilización
 const mssg = {
-    noLink: (platform) => `❗️ *Por favor, proporciona un enlace de ${platform}*.`,
-    invalidLink: (platform) => `❗️ El enlace proporcionado no es válido de ${platform}. Por favor verifica el enlace.`,
-    error: '❗️ Ocurrió un error al intentar procesar la descarga 🧐.',
-    fileNotFound: '❗️ No se pudo encontrar el archivo en Mediafire. Asegúrate de que el enlace sea correcto.',
-    fileTooLarge: '❗️ El archivo es demasiado grande (más de 650 MB). No se puede procesar.',
-    busy: '❗️ El servidor está procesando otra solicitud. Por favor, espera a que termine.',
+    noLink: (platform) => `*⚠️ Por favor, proporciona un enlace de ${platform}*.`,
+    invalidLink: (platform) => `*❌ El enlace proporcionado no es válido de ${platform}. Por favor verifica el enlace.*`,
+    error: '*⚠️ Ocurrió un error al intentar procesar la descarga.*',
+    fileNotFound: '*❌ No se pudo encontrar el archivo en Mediafire. Asegúrate de que el enlace sea correcto.*',
+    fileTooLarge: '*ℹ️ El archivo es demasiado grande más de \`650 MB\`. No se puede procesar.*',
+    busy: '*⏳ El servidor está procesando otra solicitud. Por favor espere a que termine.*',
 };
 
 // Estado del servidor
@@ -55,7 +55,7 @@ const getMimeType = (fileName) => {
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (command === 'mediafire') {
         if (!text) {
-            return reply(`❗️ *Por favor, ingresa un enlace de Mediafire*\n\nEjemplo: ${usedPrefix + command} https://www.mediafire.com/file/abcd1234/file_name`, conn, m);
+            return reply(`*📥 Por favor, ingresa un enlace de Mediafire*`, conn, m);
         }
 
         // Verificar si el servidor está ocupado
@@ -117,5 +117,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
 // Comando para activar la función de descarga desde Mediafire
 handler.command = /^(mediafire|mfire)$/i;
+handler.register = true
+handler.diamantes = 3
 
 export default handler;
