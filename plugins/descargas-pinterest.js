@@ -7,32 +7,44 @@ const pindl = {
             let { data: html } = await axios.get(url);
             let $ = cheerio.load(html);
 
-            const mediaDataScript = $('script[data-test-id="video-snippet"]').html();
-            if (!mediaDataScript) return null;
+            const mediaDataScript = $('script[data-test-id="video-snippet"]');
+            if (mediaDataScript.length) {
+                const mediaData = JSON.parse(mediaDataScript.html());
 
-            const mediaData = JSON.parse(mediaDataScript);
-            if (mediaData["@type"] === "VideoObject" && mediaData.contentUrl?.endsWith(".mp4")) {
-                return {
-                    type: "video",
-                    name: mediaData.name || "Desconocido",
-                    description: mediaData.description || "Sin descripción",
-                    contentUrl: mediaData.contentUrl,
-                    thumbnailUrl: mediaData.thumbnailUrl,
-                    uploadDate: mediaData.uploadDate,
-                    duration: mediaData.duration,
-                    likeCount: mediaData.interactionStatistic?.find(
-                        (stat) => stat.InteractionType["@type"] === "https://schema.org/LikeAction"
-                    )?.InteractionCount || 0,
-                    watchCount: mediaData.interactionStatistic?.find(
-                        (stat) => stat.InteractionType["@type"] === "https://schema.org/WatchAction"
-                    )?.InteractionCount || 0,
-                    creator: mediaData.creator?.name || "Desconocido",
-                    creatorUrl: mediaData.creator?.url || "No disponible",
-                };
+                if (
+                    mediaData["@type"] === "VideoObject" &&
+                    mediaData.contentUrl &&
+                    mediaData.contentUrl.endsWith(".mp4")
+                ) {
+                    return {
+                        type: "video",
+                        name: mediaData.name,
+                        description: mediaData.description,
+                        contentUrl: mediaData.contentUrl,
+                        thumbnailUrl: mediaData.thumbnailUrl,
+                        uploadDate: mediaData.uploadDate,
+                        duration: mediaData.duration,
+                        commentCount: mediaData.commentCount,
+                        likeCount: mediaData.interactionStatistic?.find(
+                            (stat) =>
+                            stat.InteractionType["@type"] === "https://schema.org/LikeAction"
+                        )?.InteractionCount,
+                        watchCount: mediaData.interactionStatistic?.find(
+                            (stat) =>
+                            stat.InteractionType["@type"] ===
+                            "https://schema.org/WatchAction"
+                        )?.InteractionCount,
+                        creator: mediaData.creator?.name,
+                        creatorUrl: mediaData.creator?.url,
+                        keywords: mediaData.keywords,
+                    };
+                }
             }
             return null;
         } catch (error) {
-            return { error: "Error al obtener el video" };
+            return {
+                error: "Error al obtener los datos del video"
+            };
         }
     },
 
@@ -41,38 +53,38 @@ const pindl = {
             let { data: html } = await axios.get(url);
             let $ = cheerio.load(html);
 
-            // Intentar obtener la imagen desde el script de Pinterest
-            let mediaDataScript = $('script[data-test-id="leaf-snippet"]').html();
-            if (mediaDataScript) {
-                const mediaData = JSON.parse(mediaDataScript);
-                if (mediaData["@type"] === "SocialMediaPosting" && mediaData.image) {
+            const mediaDataScript = $('script[data-test-id="leaf-snippet"]');
+            if (mediaDataScript.length) {
+                const mediaData = JSON.parse(mediaDataScript.html());
+
+                if (
+                    mediaData["@type"] === "SocialMediaPosting" &&
+                    mediaData.image &&
+                    (mediaData.image.endsWith(".png") ||
+                        mediaData.image.endsWith(".jpg") ||
+                        mediaData.image.endsWith(".jpeg") ||
+                        mediaData.image.endsWith(".webp")) &&
+                    !mediaData.image.endsWith(".gif")
+                ) {
                     return {
                         type: "image",
-                        author: mediaData.author?.name || "Desconocido",
-                        authorUrl: mediaData.author?.url || "No disponible",
-                        headline: mediaData.headline || "Sin título",
+                        author: mediaData.author?.name,
+                        authorUrl: mediaData.author?.url,
+                        headline: mediaData.headline,
+                        articleBody: mediaData.articleBody,
                         image: mediaData.image,
-                        datePublished: mediaData.datePublished || "Desconocida",
+                        datePublished: mediaData.datePublished,
+                        sharedContentUrl: mediaData.sharedContent?.url,
+                        isRelatedTo: mediaData.isRelatedTo,
+                        mainEntityOfPage: mediaData.mainEntityOfPage?.["@id"],
                     };
                 }
             }
-
-            // Si falla, intentar con las etiquetas meta
-            let imageUrl = $('meta[property="og:image"]').attr("content");
-            if (imageUrl) {
-                return {
-                    type: "image",
-                    author: "Desconocido",
-                    authorUrl: "No disponible",
-                    headline: "Imagen obtenida de Pinterest",
-                    image: imageUrl,
-                    datePublished: "Desconocida",
-                };
-            }
-
             return null;
         } catch (error) {
-            return { error: "Error al obtener la imagen" };
+            return {
+                error: "Error al obtener los datos de la imagen"
+            };
         }
     },
 
@@ -81,23 +93,34 @@ const pindl = {
             let { data: html } = await axios.get(url);
             let $ = cheerio.load(html);
 
-            const mediaDataScript = $('script[data-test-id="leaf-snippet"]').html();
-            if (!mediaDataScript) return null;
+            const mediaDataScript = $('script[data-test-id="leaf-snippet"]');
+            if (mediaDataScript.length) {
+                const mediaData = JSON.parse(mediaDataScript.html());
 
-            const mediaData = JSON.parse(mediaDataScript);
-            if (mediaData["@type"] === "SocialMediaPosting" && mediaData.image?.endsWith(".gif")) {
-                return {
-                    type: "gif",
-                    author: mediaData.author?.name || "Desconocido",
-                    authorUrl: mediaData.author?.url || "No disponible",
-                    headline: mediaData.headline || "Sin título",
-                    gif: mediaData.image,
-                    datePublished: mediaData.datePublished || "Desconocida",
-                };
+                if (
+                    mediaData["@type"] === "SocialMediaPosting" &&
+                    mediaData.image &&
+                    mediaData.image.endsWith(".gif")
+                ) {
+                    return {
+                        type: "gif",
+                        author: mediaData.author?.name,
+                        authorUrl: mediaData.author?.url,
+                        headline: mediaData.headline,
+                        articleBody: mediaData.articleBody,
+                        gif: mediaData.image,
+                        datePublished: mediaData.datePublished,
+                        sharedContentUrl: mediaData.sharedContent?.url,
+                        isRelatedTo: mediaData.isRelatedTo,
+                        mainEntityOfPage: mediaData.mainEntityOfPage?.["@id"],
+                    };
+                }
             }
             return null;
         } catch (error) {
-            return { error: "Error al obtener el GIF" };
+            return {
+                error: "Error al obtener los datos del GIF"
+            };
         }
     },
 
@@ -109,41 +132,68 @@ const pindl = {
         if (result) return result;
 
         result = await pindl.gif(urlPin);
-        return result || { error: "No se encontró ningún medio" };
+        return result || {
+            error: "No se encontró ningún medio"
+        };
     },
 };
 
 const handler = async (m, { conn, text }) => {
-    if (!text) throw "❌ Ingresa una URL de Pinterest.";
+    if (!text) throw "¿Dónde está la URL?";
 
-    await m.react("🕓");
+    await m.react('🕓');
 
     try {
         const result = await pindl.download(text);
         if (result.error) throw result.error;
 
-        let caption = "";
+        let caption = ``;
 
         if (result.type === "video") {
-            caption += `📹 *Video encontrado*\n\n🎬 *Título:* ${result.name}\n🔗 *Enlace:* ${result.contentUrl}`;
-            await conn.sendMessage(m.chat, { video: { url: result.contentUrl }, caption }, { quoted: m });
+            caption += `「✦」 *Información Video*\n\n> ✐ Título » ${result.name || "N/A"}\n> 🜸 Link » ${result.contentUrl}\n`;
+            await conn.sendMessage(m.chat, {
+                video: {
+                    url: result.contentUrl
+                },
+                caption
+            }, {
+                quoted: m
+            });
         } else if (result.type === "image") {
-            caption += `🖼️ *Imagen encontrada*\n\n📝 *Título:* ${result.headline}\n🔗 *Enlace:* ${result.image}`;
-            await conn.sendMessage(m.chat, { image: { url: result.image }, caption }, { quoted: m });
+            caption += `「✦」 *Información Imagen*\n\n> ✐ Título » ${result.headline || "N/A"}\n> 🜸 Link » ${result.image}`;
+            await conn.sendMessage(m.chat, {
+                image: {
+                    url: result.image
+                },
+                caption
+            }, {
+                quoted: m
+            });
         } else if (result.type === "gif") {
-            caption += `🎞️ *GIF encontrado*\n\n📝 *Título:* ${result.headline}\n🔗 *Enlace:* ${result.gif}`;
-            await conn.sendMessage(m.chat, { video: { url: result.gif }, caption }, { quoted: m });
+            caption += `「✦」 *Información Gif*\n\n> ✐ Título » ${result.headline || "N/A"}\n> 🜸 Link » ${result.gif}\n`;
+            await conn.sendMessage(m.chat, {
+                video: {
+                    url: result.gif
+                },
+                caption
+            }, {
+                quoted: m
+            });
         }
 
-        await m.react("✅");
+        await m.react('✅');
     } catch (error) {
-        await m.react("❌");
-        await conn.sendMessage(m.chat, { text: `⚠️ Error: ${error}` }, { quoted: m });
+        await m.react('✖️');
+        await conn.sendMessage(m.chat, {
+            text: `Algo salió mal: ${error}`
+        }, {
+            quoted: m
+        });
     }
 };
 
-handler.help = ["pinterestdl <url>"];
-handler.tags = ["descargas"];
+handler.help = ["pinterestdl *<url>*"];
+handler.tags = ["dl"];
 handler.command = /^(pindl|pinterestdl)$/i;
 
 export default handler;
