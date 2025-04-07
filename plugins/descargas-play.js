@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, args, usedPrefix }) => {
-    if (!args[0]) return conn.reply(m.chat, '*[ ℹ️ ] Ingresa un título de Youtube.*\n\n*[ 💡 ] Ejemplo:* Corazón Serrano - Mix Poco Yo', m);
+    if (!args[0]) return conn.reply(m.chat, '*🧇 Por favor, ingresa un título de YouTube.*\n\n> *\`Ejemplo:\`* Corazón Serrano - Mix Poco Yo', m);
 
     await m.react('🕓');
     try {
@@ -14,12 +14,11 @@ const handler = async (m, { conn, args, usedPrefix }) => {
         let video = searchResults[0];
         let thumbnail = await (await fetch(video.miniatura)).buffer();
 
-        let messageText = `\`DESCARGAS - PLAY\`\n\n`;
-        messageText += `${video.titulo}\n\n`;
-        messageText += `*⌛ Duración:* ${video.duracion || 'No disponible'}\n`;
-        messageText += `*👤 Autor:* ${video.canal || 'Desconocido'}\n`;
-        messageText += `*📆 Publicado:* ${convertTimeToSpanish(video.publicado)}\n`;
-        messageText += `*🖇️ Url:* ${video.url}\n`;
+        let messageText = `\`\`\`◜YouTube - Download◞\`\`\`\n\n`;
+        messageText += `*${video.titulo}*\n\n`;
+        messageText += `≡ *⏳ \`Duración\`* ${video.duracion || 'No disponible'}\n`;
+        messageText += `≡ *🌴 \`Autor\`* ${video.canal || 'Desconocido'}\n`;
+        messageText += `≡ *🌵 \`Url\`* ${video.url}\n`;
 
         await conn.sendMessage(m.chat, {
             image: thumbnail,
@@ -37,7 +36,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
                     type: 1,
                 },
                 {
-                    buttonId: `${usedPrefix}ytmp4 ${video.url}`,
+                    buttonId: `${usedPrefix}ytv ${video.url}`,
                     buttonText: { displayText: 'Vídeo' },
                     type: 1,
                 }
