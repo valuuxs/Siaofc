@@ -3,13 +3,13 @@ import fetch from 'node-fetch';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, args, usedPrefix }) => {
-    if (!args[0]) return conn.reply(m.chat, '*🧇 Por favor, ingresa un título de YouTube.*\n\n> *\`Ejemplo:\`* Corazón Serrano - Mix Poco Yo', m);
+    if (!args[0]) return conn.reply(m.chat, '*🧇 Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* Corazón Serrano - Mix Poco Yo', m);
 
     await m.react('🕓');
     try {
         let searchResults = await searchVideos(args.join(" "));
 
-        if (!searchResults.length) throw new Error('No se encontraron resultados.');
+        if (!searchResults.length) throw new Error('*❌ No se encontraron resultados.*');
 
         let video = searchResults[0];
         let thumbnail = await (await fetch(video.miniatura)).buffer();
@@ -71,7 +71,7 @@ async function searchVideos(query) {
             duracion: video.duration.timestamp || 'No disponible'
         }));
     } catch (error) {
-        console.error('Error en yt-search:', error.message);
+        console.error('*Error en yt-search:*', error.message);
         return [];
     }
 }
