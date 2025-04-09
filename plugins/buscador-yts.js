@@ -61,7 +61,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 "name": "cta_copy",
                 "buttonParamsJson": JSON.stringify({
                 "display_text": "Descargar video! 📹",
-                "copy_code": `.ytmp4 ${video.url}`
+                "copy_code": `.ytv ${video.url}`
                 })
               }
                 ]
