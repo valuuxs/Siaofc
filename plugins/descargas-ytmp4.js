@@ -4,7 +4,7 @@ import axios from 'axios';
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   try {
     if (!text) {
-      return conn.reply(m.chat, `🌱 Ejemplo de uso: ytv https://youtube.com/watch?v=Hx920thF8X4`, m);
+      return conn.reply(m.chat, `*🧇 Ingresa la URL del vídeo de YouTube.*`, m);
     }
 
     if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) {
@@ -16,20 +16,20 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let limit = 10485760;
     let size = await getSize(json.url);
 
-    const cap = `${json.title}\n\n🌿 \`URL\` : ${args[0]}\n⚖️ \`PESO:\` ${await formatSize(size) || "Desconocido"}`;
+    const cap = `\`\`\`◜YouTube - MP4◞\`\`\`\n\n*${json.title}*\n≡ 🌴 \`URL\` : ${args[0]}\n≡ ⚖️ Peso: ${await formatSize(size) || "Desconocido"}`;
 
     conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" })
 
-    m.react('☑️');
+    m.react('✅');
   } catch (e) {
  m.reply(e)
   }
 };
 
-handler.help = ['ytv'];
-handler.command = ['ytv2', 'ytv'];
+handler.help = ['ytmp4'];
+handler.command = ['ytv2', 'ytmp4', 'ytv'];
 handler.tags = ['dl'];
-handler.diamantes = 3;
+handler.diamond = true;
 
 export default handler;
 
