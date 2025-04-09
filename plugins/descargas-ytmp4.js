@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     }
 
     if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) {
-      return m.reply(`⚠️ Enlace inválido, por favor coloque un enlace válido de YouTube.`);
+      return m.reply(`*⚠️ Enlace inválido, por favor coloque un enlace válido de YouTube.*`);
     }
 
     m.react('🕒');
