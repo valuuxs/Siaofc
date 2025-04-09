@@ -8,21 +8,22 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     }
 
     if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) {
-      return m.reply(`Enalce inválido`);
+      return m.reply(`Enlace inválido`);
     }
 
     m.react('🕒');
     let json = await ytdl(args[0]);
-    let limit = 10485760;
     let size = await getSize(json.url);
+    let sizeStr = size ? await formatSize(size) : 'Desconocido';
 
-    const cap = `\`\`\`◜YouTube - MP4◞\`\`\`\n\n*${json.title}*\n≡ *🌴 \`URL:\`* ${args[0]}\n≡ *⚖️ \`Peso:\`* ${await formatSize(size) || "Desconocido"}`;
+    const cap = `\`\`\`◜YouTube - MP4◞\`\`\`\n\n*${json.title}*\n≡ *🌴 \`URL:\`* ${args[0]}\n≡ *⚖️ \`Peso:\`* ${sizeStr}`;
 
-    conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" })
+    conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" });
 
     m.react('✅');
   } catch (e) {
- m.reply(e)
+    console.error(e);
+    m.reply(`Ocurrió un error:\n${e.message}`);
   }
 };
 
@@ -61,36 +62,34 @@ async function ytdl(url) {
     if (info.progress === 3) break;
   }
 
-  const result = {
+  return {
     url: convert.downloadURL,
-    title: info.title
+    title: info.title || 'video'
   };
-  return result;
 }
 
 async function formatSize(bytes) {
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-    let i = 0;
-    bytes = Number(bytes);
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+  let i = 0;
 
-    if (isNaN(bytes)) {
-        return 'Tamaño de bytes inválido'
-    }
+  if (!bytes || isNaN(bytes)) return 'Desconocido';
 
-    while (bytes >= 1024 && i < units.length - 1) {
-        bytes /= 1024;
-        i++;
-    }
+  while (bytes >= 1024 && i < units.length - 1) {
+    bytes /= 1024;
+    i++;
+  }
 
-    return `${bytes.toFixed(2)} ${units[i]}`;
+  return `${bytes.toFixed(2)} ${units[i]}`;
 }
 
 async function getSize(url) {
   try {
-      const response = await axios.head(url);
-      const contentLength = response.headers['content-length'];
-      return contentLength ? parseInt(contentLength, 10) : null;
+    const response = await axios.head(url);
+    const contentLength = response.headers['content-length'];
+    if (!contentLength) return null;
+    return parseInt(contentLength, 10);
   } catch (error) {
-      return error;
+    console.error("Error al obtener el tamaño:", error.message);
+    return null;
   }
 }
