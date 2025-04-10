@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `*[ 🎧 ] Hace falta el título del audio de SoundCloud.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Tatto - La Única Tropical`, m, rcanal)
+if (!text) return conn.reply(m.chat, `*💽 Por favor, ingresa el nombre de la música que desea descargar de SoundCloud*\n> *\`Ejemplo:\`* ${usedPrefix + command} Olvidame - Corazón Serrano`, m, rcanal)
 
 await m.react('🕒');
 try {
