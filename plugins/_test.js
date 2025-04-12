@@ -1,47 +1,56 @@
-import fs from 'fs';
-import path from 'path';
+import fetch from "node-fetch";
 
-var handler = async (m, { usedPrefix, command }) => {
-    try {
-        await m.react('🕒'); 
-        conn.sendPresenceUpdate('composing', m.chat);
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply('🌿 El contenido +18 está desactivado para este chat.\n> Use *enable nsfw* para activarlo.');
+  }
 
-        const pluginsDir = './plugins';
+  if (!text) throw m.reply(`*🍁 Por favor, ingresa el texto de lo que deseas buscar en xnxx*\n> *\`Ejemplo:\`* ${usedPrefix + command} Con mi Prima.`);
 
-        const files = fs.readdirSync(pluginsDir).filter(file => file.endsWith('.js'));
+  await m.react('⌛');
 
-        let response = `⚠️ *Revisión de Syntax Errors:*\n\n`;
-        let hasErrors = false;
+  let res;
+  try {
+    let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${encodeURIComponent(text)}`);
+    res = await response.json();
+  } catch (e) {
+    return m.reply('❌ Error al conectar con la API.');
+  }
 
-        for (const file of files) {
-            try {
-                await import(path.resolve(pluginsDir, file));
-            } catch (error) {
-                hasErrors = true;
-                response += `‼️ *Error en:* ${file}\n`;
-                if (error.loc) {
-                    response += `*Línea:* ${error.loc.line}, *Columna:* ${error.loc.column}\n`;
-                }
-                response += `${error.message}\n\n`;
-            }
-        }
+  if (res.status !== 200) throw m.reply(`API Error: ${res.creator}`);
 
-        if (!hasErrors) {
-            response += '✅ ¡Todo está en orden! No se detectaron errores de sintaxis.';
-        }
+  let resultText = `\`\`\`乂 XNXX - SEARCH\`\`\``;
 
-        await conn.reply(m.chat, response, m);
-        await m.react('✅');
-    } catch (err) {
-        await m.react('✖️'); 
-        console.error(err);
-        conn.reply(m.chat, '🚩 *Ocurrió un fallo al verificar los plugins.*', m);
-    }
+  const vids_ = {
+    from: m.sender,
+    urls: [],
+    timer: setTimeout(() => {
+      // Elimina los resultados después de 10 minutos
+      global.videoListXXX = global.videoListXXX.filter(item => item.from !== m.sender);
+    }, 10 * 60 * 1000) // 10 minutos
+  };
+
+  res.data.result.slice(0, 10).forEach((item, index) => {
+    resultText += `\n\n*\`${index + 1}\`*`;
+    resultText += `\n° *${item.title}*`;
+    resultText += `\n≡ 🌴 *\`Info:\`* ${item.info}`;
+    resultText += `\n≡ 🌵 *\`Url:\`* ${item.link}`;
+    
+    vids_.urls.push(item.link);
+  });
+
+  // Guarda los resultados en global.videoListXXX
+  if (!global.videoListXXX) global.videoListXXX = [];
+  global.videoListXXX.push(vids_);
+
+  await conn.sendMessage(m.chat, { text: resultText }, { quoted: fkontak });
+
+  await m.react('✅');
 };
 
-handler.command = ['pi'];
-handler.help = ['errores'];
-handler.tags = ['tools'];
+handler.command = ['tesis', 'tesiss'];
+handler.help = ['xnxxsearch'];
+handler.tags = ['buscador'];
 handler.register = true;
 
 export default handler;
