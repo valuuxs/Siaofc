@@ -2,9 +2,10 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-const handler = async (m, { conn, args, command, usedPrefix, text }) => {
-
-  if (!db.data.chats[m.chat].nsfw && m.isGroup) throw `*Modo Horny #enable nsfw*`;
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+        return m.reply('*ℹ️ El contenido* ```nsfw``` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
+    }
 
   if (!args[0]) {
   return conn.reply(m.chat, `*[ ℹ️ ] Por favor, proporciona un enlace de XVideos.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://www.xvideos.com/video70389849/pequena_zorra_follada_duro`, m);
