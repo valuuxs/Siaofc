@@ -65,7 +65,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         const tiktokData = await tiktokdl(args[0]);
 
         if (!tiktokData) {
-            await m.react('❌');
+            //await m.react('❌');
             throw m.reply("*❌ Error de la api*");
         }
 
@@ -75,13 +75,13 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TikTok - Download◞\`\`\`" + `\n\n${infonya_gan}`, m);
-            await m.react('✅'); // Reacción de éxito
+            //await m.react('✅');
         } else {
-            await m.react('❌');
+            //await m.react('❌');
             throw m.reply("*❌ No se pudo descargar.*");
         }
     } catch (error1) {
-        await m.react('❌');
+        //await m.react('❌');
         conn.reply(m.chat, `Error: ${error1}`, m);
     }
 };
