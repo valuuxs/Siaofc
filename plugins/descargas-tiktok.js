@@ -16,10 +16,10 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}`;
+        const infonya_gan = `\`\`\`◜TikTok - Download◞\`\`\`\n\n*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TikTok - Download◞\`\`\`" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", infonya_gan", m);
             setTimeout(async () => {
             }, 1500);
         } else {
