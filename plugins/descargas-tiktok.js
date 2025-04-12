@@ -20,7 +20,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `\`\`\`◜Apk - Download◞\`\`\`\n\n*📖 Descripción:*\n> ${tiktokData.data.title}`;
+        const infonya_gan = `\`\`\`◜TikTok - Download◞\`\`\`\n\n*📖 Descripción:*\n> ${tiktokData.data.title}`;
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", infonya_gan, m);
@@ -36,7 +36,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 
 handler.help = ['tiktok']
 handler.tags = ['descargas']
-handler.command = /^(tt|tiktok)$/i;
+handler.command = /^(tt|tiktok|tk)$/i;
 
 export default handler
 
