@@ -10,7 +10,12 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 }
 
     try {
-        await conn.reply(m.chat, "*⏳ Aguarde un momento, estoy enviando su video...*", m);
+        await conn.sendMessage(m.chat, {
+    react: {
+        text: "⏳",
+        key: m.key
+    }
+});
 
         const tiktokData = await tiktokdl(args[0]);
 
