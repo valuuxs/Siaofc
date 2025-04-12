@@ -28,7 +28,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
         const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, 'tiktok.mp4', '◜TikTok - Download◞\\n\n${infonya_gan}', m);
+            await conn.sendFile(m.chat, videoURL, `tiktok.mp4', '◜TikTok - Download◞\n\n${infonya_gan}`, m);
             setTimeout(async () => {
             }, 1500);
         } else {
