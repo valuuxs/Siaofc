@@ -21,7 +21,7 @@ var handler = async (m, { conn, args }) => {
         const info = `*📖 Descripción:*\n> ${tiktokData.data.title}`;
 
         if (videoURL && typeof videoURL === 'string') {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "```◜TikTok - Download◞```\n\n" + info, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "```◜TikToke - Download◞```\n\n" + info, m);
             await m.react('✅');
         } else {
             await m.react('❌');
