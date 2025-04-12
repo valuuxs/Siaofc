@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 
   if (!args[0]) {
-    return m.reply(`*[ 🔗 ] Ingrese un enlace válido de Xnxx.*\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://www.xnxx.com/video-14lcwbe8/rubia_novia_follada_en_cuarto_de_bano*`);
+    return m.reply(`*🫓 Por favor, ingresa un enlace válido de XNXX.*`);
 }
   try {
     await conn.reply(m.chat, '*[ ⏳ ] Se está enviando el vídeo, espere un momento', m, rcanal);
