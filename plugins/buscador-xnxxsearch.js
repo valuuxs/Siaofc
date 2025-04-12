@@ -42,7 +42,7 @@ import fetch from "node-fetch";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('🌿 El contenido +18 está desactivado para este chat.\n> Use *enable nsfw* para activarlo.');
+    return m.reply('🌿 El contenido `+18` está desactivado para este chat.\n> Use *enable nsfw* para activarlo.');
   }
 
   if (!text) throw m.reply(`*🍁 Por favor, ingresa el texto de lo que deseas buscar en xnxx*\n> *\`Ejemplo:\`* ${usedPrefix + command} Con mi Prima.`);
