@@ -1,33 +1,40 @@
 import fetch from 'node-fetch';
 
-let handler = async(m, { conn, args, usedPrefix, command }) => {
+let handler = async (m, { conn, args }) => {
+  if (!args[0]) {
+    return m.reply('*🧇 Por favor, ingresa un link de TikTok.*');
+  }
 
-if (!args[0]) return m.reply(`*🧇 Por favor, ingresa un link de TikTok.*`);
+  try {
+    m.react('⌛');
 
-try {
-let api = `https://eliasar-yt-api.vercel.app/api/search/tiktok?query=${args[0]}`;
-let response = await fetch(api);
-let json = await response.json();
-let res = json.results;
+    const apiUrl = `https://eliasar-yt-api.vercel.app/api/search/tiktok?query=${args[0]}`;
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) throw new Error('No se pudo obtener información del video.');
 
-m.react('⌛');
-let ttt = `*\`Autor:\`* ${res.author}\n*\`Título:\`* ${res.title}`;
+    const json = await response.json();
+    const res = json.results;
 
-let dark = await (await fetch(`https://dark-core-api.vercel.app/api/download/tiktok?key=dk-vip&url=${args[0]}`)).json();
-let aud = res.audio;
-//let img = dark.result.thumbanail;
+    if (!res || !res.audio) {
+      throw new Error('No se encontró audio en el video proporcionado.');
+    }
 
-//await conn.sendFile(m.chat, img, 'thumbnail.jpg', ttt, m, null, rcanal);
+    const info = `*\`Autor:\`* ${res.author}\n*\`Título:\`* ${res.title}`;
+    const audioUrl = res.audio;
 
-conn.sendMessage(m.chat, { audio: { url: aud }, mimetype: 'audio/mpeg' }, { quoted: m });
-m.react('✅');
+    await conn.sendMessage(m.chat, {
+      audio: { url: audioUrl },
+      mimetype: 'audio/mpeg'
+    }, { quoted: m });
 
-} catch (e) {
-m.reply(`Error: ${e.message}`);
-m.react('✖️');
- }
-}
+    m.react('✅');
+  } catch (e) {
+    console.error(e);
+    m.reply(`*❌ Ocurrió un error:* ${e.message || 'Error desconocido'}`);
+    m.react('✖️');
+  }
+};
 
 handler.command = ['tiktokmp3', 'ttmp3'];
-
 export default handler;
