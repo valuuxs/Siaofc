@@ -108,6 +108,6 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 
 handler.help = ['spotify <url o texto>'];
 handler.tags = ['descargas'];
-handler.command = /^(spo)$/i;
+handler.command = /^(tesp)$/i;
 
 export default handler;
