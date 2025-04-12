@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*🧡 Ingrese un link de TikTok*\n\n*💡 Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcmTCa6/`);
+        throw m.reply(`*🥞 Por favor, ingresa un link de Tiktok.*`);
     }
 
 if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
@@ -28,7 +28,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
         const infonya_gan = `*📖 Descripción:*\n> ${tiktokData.data.title}*`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*\`DESCARGAS - TIKTOK\`*" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TikTok - Download◞\`\`\`" + `\n\n${infonya_gan}`, m);
             setTimeout(async () => {
             }, 1500);
         } else {
