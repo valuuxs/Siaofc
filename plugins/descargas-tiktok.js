@@ -6,18 +6,21 @@ var handler = async (m, { conn, args }) => {
         return m.reply(`*⚠️ El link ingresado no es válido.*`);
 
     try {
-        await m.react('⌛'); // Esperando
+        await m.react('⌛');
 
         const tiktokData = await tiktokdl(args[0]);
-        if (!tiktokData) {
+        if (!tiktokData || !tiktokData.data) {
             await m.react('❌');
             return m.reply("*❌ Error al obtener datos.*");
         }
 
-        const videoURL = tiktokData.data.play;
+        const videoURL = Array.isArray(tiktokData.data.play)
+            ? tiktokData.data.play[0]
+            : tiktokData.data.play;
+
         const info = `*📖 Descripción:*\n> ${tiktokData.data.title}`;
 
-        if (videoURL) {
+        if (videoURL && typeof videoURL === 'string') {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "```◜TikTok - Download◞```\n\n" + info, m);
             await m.react('✅');
         } else {
