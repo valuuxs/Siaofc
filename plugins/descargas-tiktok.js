@@ -10,7 +10,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 }
 
     try {
-        await m.react('⌛');
+        await m.react('⏳');
 
         const tiktokData = await tiktokdl(args[0]);
 
@@ -24,6 +24,7 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", infonya_gan, m);
+         await m.react('✅');
             setTimeout(async () => {
             }, 1500);
         } else {
