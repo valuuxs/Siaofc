@@ -8,8 +8,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
   if (!text) {
     return conn.reply(
       m.chat,
-      '[ ᰔᩚ ] Ingresa el nombre o enlace para buscar en *Spotify*.\n\n' + 
-      `Ejemplo:\n> *${usedPrefix + command}* https://open.spotify.com/track/123456789`,
+      '*🧇 Por favor, ingresa un enlace de descarga de Spotify.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://open.spotify.com/track/35ttE4t8lQZA2vuCYDg4G7',
       m
     );
   }
@@ -23,14 +22,14 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     if (result.success) {
       const { title, thumbnail, downloadLink } = result;
 
-      const mensaje = `🎵 *Título:* ${title}`;
+      const mensaje = `🌴 *\`Título:\`* ${title}`;
 
       await conn.sendFile(m.chat, thumbnail, 'cover.jpg', mensaje, m);
 
 /*      await conn.sendMessage(
         m.chat,
         {
-          text: `🔗 *Enlace de descarga:* ${downloadLink}`
+          text: `🌿 *\`Enlace de descarga:\`* ${downloadLink}`
         },
         { quoted: m }
       );
@@ -43,7 +42,7 @@ await conn.sendMessage(m.chat, { audio: { url: downloadLink }, mimetype: 'audio/
       await m.react('❌');
       conn.reply(
         m.chat,
-        '[ ᰔᩚ ] No se pudo obtener la música para este enlace o búsqueda.',
+        '*⚠️ No se pudo obtener la música para este enlace o búsqueda.*',
         m
       );
     }
@@ -52,7 +51,7 @@ await conn.sendMessage(m.chat, { audio: { url: downloadLink }, mimetype: 'audio/
     await m.react('❌');
     conn.reply(
       m.chat,
-      '[ ᰔᩚ ] Ocurrió un error al procesar tu solicitud.',
+      '*❌ Ocurrió un error al procesar tu solicitud.*',
       m
     );
   }
@@ -61,6 +60,5 @@ await conn.sendMessage(m.chat, { audio: { url: downloadLink }, mimetype: 'audio/
 handler.help = ['spotify *<url>*'];
 handler.tags = ['descargas'];
 handler.command = /^(spotify|spdl)$/i;
-handler.register = true;
 
 export default handler;
