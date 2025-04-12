@@ -20,12 +20,12 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
         const tiktokData = await tiktokdl(args[0]);
 
         if (!tiktokData) {
-            throw m.reply("*Error api!*");
+            throw m.reply("*❌ Error de la api*");
         }
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descripción:*\n> ${tiktokData.data.title}*`;
+        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TikTok - Download◞\`\`\`" + `\n\n${infonya_gan}`, m);
