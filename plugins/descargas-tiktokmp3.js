@@ -1,14 +1,8 @@
-/* Tiktok MP3 By WillZek 
-- >> https://github.com/WillZek
-*/
-
-// [💥] 𝗧𝗜𝗞𝗧𝗢𝗞 𝗠𝗣3
-
 import fetch from 'node-fetch';
 
 let handler = async(m, { conn, args, usedPrefix, command }) => {
 
-if (!args[0]) return m.reply(`🧇 Por favor, ingresa el link del TikTok.`);
+if (!args[0]) return m.reply(`*🧇 Por favor, ingresa un link de TikTok.*`);
 
 try {
 let api = `https://eliasar-yt-api.vercel.app/api/search/tiktok?query=${args[0]}`;
@@ -21,9 +15,9 @@ let ttt = `*\`Autor:\`* ${res.author}\n*\`Título:\`* ${res.title}`;
 
 let dark = await (await fetch(`https://dark-core-api.vercel.app/api/download/tiktok?key=dk-vip&url=${args[0]}`)).json();
 let aud = res.audio;
-let img = dark.result.thumbanail;
+//let img = dark.result.thumbanail;
 
-await conn.sendFile(m.chat, img, 'thumbnail.jpg', ttt, m, null, rcanal);
+//await conn.sendFile(m.chat, img, 'thumbnail.jpg', ttt, m, null, rcanal);
 
 conn.sendMessage(m.chat, { audio: { url: aud }, mimetype: 'audio/mpeg' }, { quoted: m });
 m.react('✅');
