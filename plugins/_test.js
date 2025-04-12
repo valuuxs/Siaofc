@@ -39,7 +39,7 @@ var handler = async (m, { usedPrefix, command }) => {
     }
 };
 
-handler.command = ['errores'];
+handler.command = ['pi'];
 handler.help = ['errores'];
 handler.tags = ['tools'];
 handler.register = true;
