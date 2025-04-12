@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*🥞 Por favor, ingresa un link de TikTok.*\n\n> *\`Ejemplo:\`* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
+        throw m.reply(`*🥞 Por favor, ingresa un link de TikTok.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
     }
 
     try {
@@ -32,7 +32,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 ${tiktokData.data.music}`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*\`DESCARGAS - TIKTOK V2\`*" + `\n\n${infonya_gan}`,fkontak, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TiTokV2 - Download◞\`\`\`" + `\n\n${infonya_gan}`,fkontak, m);
             setTimeout(async () => {
                 // Aquí se eliminó la línea que enviaba el audio
                  await conn.sendFile(m.chat, `${tiktokData.data.music}`, "lagutt.mp3", "", m);
