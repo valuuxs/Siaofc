@@ -1,52 +1,38 @@
-import fetch from 'node-fetch'
+import fg from 'api-dylux';
 
-var handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) {
-        throw m.reply(`*🥞 Por favor, ingresa un link de Tiktok.*`);
-    }
-
-if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
-    throw m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrese de que sea un link de TikTok.*`);
-}
-
+const handler = async (m, { conn, text, args, usedPrefix, command }) => {
     try {
-        await conn.sendMessage(m.chat, {
-    react: {
-        text: "⏳",
-        key: m.key
-    }
-});
-
-        const tiktokData = await tiktokdl(args[0]);
-
-        if (!tiktokData) {
-            throw m.reply("*❌ Error de la api*");
+        if (!args[0]) {
+            return conn.reply(m.chat, `✳️ Debes ingresar un enlace de TikTok.\n\n📌 *Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMreHF2dC/`, m);
         }
 
-        const videoURL = tiktokData.data.play;
-        const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
-
-        if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, `tiktok.mp4', '◜TikTok - Download◞\n\n${infonya_gan}`, m);
-            setTimeout(async () => {
-            }, 1500);
-        } else {
-            throw m.reply("*❌ No se pudo descargar.*");
+        if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) {
+            return conn.reply(m.chat, `❎ Enlace de TikTok inválido.`, m);
         }
-    } catch (error1) {
-        conn.reply(m.chat, `Error: ${error1}`, m);
+
+        m.react('🕒');
+
+        let data = await fg.tiktok(`${args[0]}`);
+        let { title, play, duration } = data.result;
+        let { nickname } = data.result.author;
+
+        let caption = `
+  乂 TikTok Download
+
+  ◦ 👤 *Autor:* ${nickname}
+  ◦ 📌 *Título:* ${title}
+  ◦ ⏱️ *Duración:* ${duration}`;
+
+        await conn.sendFile(m.chat, play, `tiktok.mp4`, caption, m);
+
+        m.react('✅');
+    } catch (e) {
+        return conn.reply(m.chat, `❌ *Error:* ${e.message}`, m);
     }
 };
 
-handler.help = ['tiktok']
-handler.tags = ['descargas']
-handler.command = /^(tt|tiktok)$/i;
+handler.help = ["tiktok"];
+handler.tags = ["dl"];
+handler.command = ["tt", "tiktok", "ttdl"];
 
-export default handler
-
-async function tiktokdl(url) {
-    let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`
-    let response = await (await fetch(tikwm)).json()
-    return response
-}
+export default handler;
