@@ -2,11 +2,11 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*[ 🔗 ] Ingrese un link de TikTok*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
+        throw m.reply(`*🥞 Por favor, ingresa un link de TikTok.*\n\n> *\`Ejemplo:\`* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
     }
 
     try {
-        await conn.reply(m.chat, "*[ ⏳ ] Aguarde un momento, estoy enviando su video...*", m);
+        //await conn.reply(m.chat, "*[ ⏳ ] Aguarde un momento, estoy enviando su video...*", m);
 
         const tiktokData = await tiktokdl(args[0]);
 
@@ -17,7 +17,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
         const infonya_gan = `*📖 Descrip꯭ción:*
-> ${tiktokData.data.title}*
+> ${tiktokData.data.title}
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 ┊ ✧ *Likes:* ${tiktokData.data.digg_count}
 ┊ ✧ *Comentarios:* ${tiktokData.data.comment_count}
