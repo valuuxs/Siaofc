@@ -4,7 +4,7 @@ import axios from 'axios';
 const query = ['rolitas', 'rolitaschidas', 'musica', 'frases', 'cumbiasperu', 'phonk', 'barcelona', 'realmadrid'];
 
 let handler = async (m, { conn }) => {
-    m.reply(wait);
+    await m.react('📽️');
 
     let querySelected = query[Math.floor(Math.random() * query.length)];
 
@@ -43,7 +43,7 @@ async function tiktoks(querySelected) {
 
             const videos = response.data.data.videos;
             if (!videos || videos.length === 0) {
-                reject('No se encontraron videos.');
+                reject('*No se encontraron videos.*');
             } else {
                 const videorndm = videos[Math.floor(Math.random() * videos.length)];
 
