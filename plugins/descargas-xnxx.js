@@ -5,8 +5,7 @@ import cheerio from 'cheerio';
 const handler = async (m, {conn, args, command, usedPrefix}) => {
   const datas = global
 if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('*🌿 El contenido* `nsfw` *está desactivado para este chat.*
-> Use *enable nsfw* para activarlo.');
+    return m.reply('*🌿 El contenido* `nsfw` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
     }
   if (!args[0]) {
     return m.reply(`*🐈 Ingrese un enlace válido de Xnxx.*\n*💡 Ejemplo:* ${usedPrefix + command} https://www.xnxx.com/video-14lcwbe8/rubia_novia_follada_en_cuarto_de_bano*`);
