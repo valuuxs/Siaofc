@@ -10,8 +10,8 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
 }
 
     try {
-        //await conn.reply(m.chat, "*[ ⏳ ] Aguarde un momento, estoy enviando su video...*", m);
-          await m.react('⌛');
+        await conn.reply(m.chat, "*[ ⏳ ] Aguarde un momento, estoy enviando su video...*", m);
+          //await m.react('⌛');
 
         const tiktokData = await tiktokdl(args[0]);
 
@@ -24,12 +24,12 @@ if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
         const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*\`\`\`◜TikTok - Download◞\`\`\`*" + `\n\n${infonya_gan}`, m);
-            await m.react('✅');
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "\`\`\`◜TikTok - Download◞\`\`\`" + `\n\n${infonya_gan}`, m);
+            //await m.react('✅');
             setTimeout(async () => {
             }, 1500);
         } else {
-            throw m.reply("*[ ❌ ] No se pudo descargar.*");
+            throw m.reply("*❌ No se pudo descargar.*");
         }
     } catch (error1) {
         conn.reply(m.chat, `Error: ${error1}`, m);
