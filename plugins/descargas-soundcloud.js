@@ -21,7 +21,7 @@ let txt = `*${json[0].title}*\n`;
     //txt += `  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━◉───── 06:10`
     //txt += `- *Calidad:* ${quality}\n`;
     txt += `${url}\n\n`;
-    txt += `> *[ ℹ️ ]* sᥱ ᥱs𝗍ᥲ́ ᥱᥒ᥎іᥲᥒძ᥆ ᥱᥣ ᥲᥙძі᥆ ᥱs⍴ᥱrᥱ ᥙᥒ m᥆mᥱᥒ𝗍᥆...\n> sі ᥒ᥆ sᥱ ᥱᥒ᥎іᥲ ⍴rᥙᥱᑲᥱ ᥴ᥆ᥒ ᥱᥣ ᥴ᥆mᥲᥒძ᥆ *aplay* ⍴ᥲrᥲ ᥲsᥱgᥙrᥲr ᥣᥲ ძᥱsᥴᥲrgᥲ.`
+    txt += `> ☁️ Se esta procesando el Audio, aguarde un momento.`
 
 //await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null);
 await conn.reply(m.chat, txt, fkontak, m);
