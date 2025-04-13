@@ -1,7 +1,7 @@
 import { sticker } from '../lib/sticker.js'
 
 let handler = async (m, { conn, text, command }) => {
-    if (!text) return m.reply(`*[ ℹ️ ] Ingresa un texto para realizar tu Sticker.*`)
+    if (!text) return conn.reply(m.chat, '*🍪 Por favor, ingresa un texto para realizar tu Sticker.*', m, rcanal)
 
     let texto1 = global.packsticker
     let texto2 = global.authsticker
@@ -19,7 +19,7 @@ let handler = async (m, { conn, text, command }) => {
         await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, true)
     } catch (err) {
         console.error(err)
-        m.reply('*[ ❌ ] Error al generar el sticker. Intenta nuevamente más tarde.*')
+        conn.reply(m.chat, '*❌ Error al generar el sticker. Intenta nuevamente más tarde.*', m, rcanal)
     }
 }
 
