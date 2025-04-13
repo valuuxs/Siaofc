@@ -517,7 +517,7 @@ premium: '*[ ℹ️ ] Esta función solo es para usuarios Premium.*',
 group: '*[ ℹ️ ] Esta funcion solo puede ser ejecutada en grupos.*', 
 private: '*[ ℹ️ ] Esta función solo puede ser usada en chat privado.*', 
 admin: '*[ ℹ️ ] Este comando solo puede ser usado por admins.*', 
-botAdmin: '*☕ Para usar esta función debo ser admin.*',
+botAdmin: '\`\`\`☕ Pᥲrᥲ ⍴᥆ძᥱr ᥙsᥲr ᥱs𝗍ᥱ ᥴ᥆mᥲᥒძ᥆ ᥱs ᥒᥱᥴᥱsᥲrі᥆ 𝗊ᥙᥱ ᥡ᥆ sᥱᥲ ᥲძmіᥒ.\`\`\`',
 unreg: `*[ ℹ️ ] No te encuentras registrado, registrese para usar esta función*\n\n*.reg <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n> .reg ${user2}.18`,
 restrict: '*[ ℹ️ ] Esta característica esta desactivada.*'
 }[type];
