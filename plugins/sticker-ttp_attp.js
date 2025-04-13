@@ -19,7 +19,7 @@ let handler = async (m, { conn, text, command }) => {
         await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, true)
     } catch (err) {
         console.error(err)
-        conn.reply(m.chat, '*❌ Error al generar el sticker. Intenta nuevamente más tarde.*', m, rcanal)
+        conn.reply(m.chat, '*❌ Error al generar el sticker. Intenta nuevamente más tarde.*', m)
     }
 }
 
