@@ -4,7 +4,7 @@ import axios from 'axios';
 let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   try {
     if (!text) {
-      return conn.reply(m.chat, `*🧇 Ingresa la URL del vídeo de YouTube.*`, m);
+      return conn.reply(m.chat, `*🧇 Por favor, ingresa la URL del vídeo de YouTube.*`, m);
     }
 
     if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) {
@@ -27,10 +27,9 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
   }
 };
 
-handler.help = ['ytmp4'];
-handler.command = ['ytv2', 'ytmp4', 'ytv'];
+handler.help = ['ytmp4doc'];
+handler.command = ['ytmp4doc'];
 handler.tags = ['dl'];
-handler.diamond = true;
 
 export default handler;
 
