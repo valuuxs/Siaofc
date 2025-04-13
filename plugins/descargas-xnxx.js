@@ -41,7 +41,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
   }
 };
 
-handler.command = ['xnxxdl'];
+handler.command = ['xnxxdl', 'xnxx'];
 handler.register = true;
 export default handler;
 
