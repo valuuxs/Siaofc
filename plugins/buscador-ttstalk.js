@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let handler = async (m, { usedPrefix, command, conn, text }) => {
-  if (!text) return m.reply(`Error! Ingresa un usuario. *Ejemplo:* ${usedPrefix + command} mrbeast`);
+  if (!text) return m.reply(`🔎 Por favor, ingresa un usuario de tiktok para Stalkear.\n> *\`Ejemplo:\`* ${usedPrefix + command} mrbeast`);
 
   try {
     await m.react('⏳');
@@ -15,7 +15,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     let stats = res.result.stats
     let profileTab = user.profileTab
 
-    let teks = `乂  *STALKER TIKTOK*\n
+    let teks = `\`\`\`乂 STALKER - TIKTOK\`\`\`\n
 *◦ NOMBRE :* ${user.nickname}
 *◦ USUARIO :* ${user.uniqueId}
 *◦ ID :* ${user.id}
@@ -41,7 +41,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     await m.react('✅')
 
   } catch (err) {
-    m.reply('❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.')
+    m.reply('*❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*')
   }
 }
 
