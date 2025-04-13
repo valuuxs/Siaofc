@@ -8,7 +8,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     return m.reply('*🌿 El contenido* `nsfw` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
     }
   if (!args[0]) {
-    return m.reply(`*🫓 Ingrese un enlace válido de XNXX`);
+    return m.reply(`*🫓 Ingrese un enlace válido de xnxx.*`);
 }
   try {
     await m.react('⏳');
