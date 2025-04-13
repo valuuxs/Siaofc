@@ -32,9 +32,9 @@ const handler = async (m, {
 }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: '*[ ℹ️ ] Agrega un texto.*',
+            text: '*🍪 Por favor, ingresa un texto para realizar tu sticker.*',
         }, {
-            quoted: m
+            quoted: rcanal
         });
     }
 
