@@ -30,13 +30,17 @@ const handler = async (m, {
     text,
     conn
 }) => {
-    if (!text) {
+/*    if (!text) {
         return conn.sendMessage(m.chat, {
             text: '*🍪 Por favor, ingresa un texto para realizar tu sticker.*',
         }, {
             quoted: m
         }, rcanal);
-    }
+    }*/
+
+if (!text) {
+    return conn.reply(m.chat, '*🍪 Por favor, ingresa un texto para realizar tu sticker.*', m, rcanal)
+}
 
     try {
         const buffer = await fetchSticker(text);
