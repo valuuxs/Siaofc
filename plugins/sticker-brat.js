@@ -35,7 +35,7 @@ const handler = async (m, {
             text: '*🍪 Por favor, ingresa un texto para realizar tu sticker.*',
         }, {
             quoted: m
-        });
+        }, rcanal);
     }
 
     try {
