@@ -8,9 +8,11 @@ const handler = async (m, {conn, args}) => {
       previewType: 0, thumbnail: fs.readFileSync('./Menu2.jpg'),
       sourceUrl: `https://github.com/BrunoSobrino/TheMystic-Bot-MD`}}});
 };
-handler.help = ['linkgroup'];
-handler.tags = ['group'];
-handler.command = /^(lk)?$/i;
-handler.group = true;
-handler.botAdmin = true;
-export default handler;
+
+
+handler.help = ['link']
+handler.tags = ['gc']
+handler.command = ['lx']
+
+handler.group = true
+handler.botAdmin = true
