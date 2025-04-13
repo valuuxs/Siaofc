@@ -510,14 +510,14 @@ global.dfail = (type, m, conn) => {
 let user2 = m.pushName || 'Anónimo'
 
 const msg = {
-rowner: '*[ ℹ️ ] Esta función solo puede ser usada por mi Creador.*', 
+rowner: '*☕ Esta función solo puede ser usada por mi Creador.*', 
 owner: '*[ ℹ️ ] Esta función solo puede ser usada por mi desarrollador.*', 
 mods: '*[ ℹ️ ] Esta función solo puede ser usada los moderadores del bot.*', 
 premium: '*[ ℹ️ ] Esta función solo es para usuarios Premium.*', 
 group: '*[ ℹ️ ] Esta funcion solo puede ser ejecutada en grupos.*', 
 private: '*[ ℹ️ ] Esta función solo puede ser usada en chat privado.*', 
 admin: '*[ ℹ️ ] Este comando solo puede ser usado por admins.*', 
-botAdmin: '*[ ℹ️ ] Para usar esta función debo ser admin.*',
+botAdmin: '*☕ Para usar esta función debo ser admin.*',
 unreg: `*[ ℹ️ ] No te encuentras registrado, registrese para usar esta función*\n\n*.reg <nombre.edad>*\n\n*[ 💡 ] Ejemplo:*\n> .reg ${user2}.18`,
 restrict: '*[ ℹ️ ] Esta característica esta desactivada.*'
 }[type];
