@@ -19,8 +19,13 @@ return m.reply('*[ ⚠️ ] 𝙴𝙻 𝙾𝚆𝙽𝙴𝚁 𝚃𝙸𝙴𝙽𝙴 �
     }
 
     await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
+/*
     m.reply(`*[ ℹ️ ] El participante fue eliminado.*`)
-}
+}*/
+
+m.reply(`*[ ℹ️ ] El participante *@${user.split('@')[0]}* fue eliminado.`, m.chat, {
+  mentions: [user]
+})
 
 handler.help = ['kick *<@tag>*']
 handler.tags = ['gc']
