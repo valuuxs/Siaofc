@@ -91,7 +91,7 @@ const savetube = {
     if (!savetube.isUrl(link)) return { status: false, code: 400, error: "URL inválida de YouTube." };
 
     const id = savetube.youtube(link);
-    if (!id) return { status: false, code: 400, error: "No se pudo extraer el ID del video." };
+    if (!id) return { status: false, code: 400, error: "*No se pudo extraer el ID del video.*" };
 
     try {
       const cdnRes = await savetube.getCDN();
@@ -159,12 +159,12 @@ const handler = async (m, { conn, args }) => {
     await m.react('✅');
   } catch (e) {
     await m.react('✖️');
-    m.reply(`*¡Fallo en la descarga!*`);
+    m.reply(`*⚠️ La descarga ah fallando, es posible que el archivo que intenta descargar pesa demasiado.*`);
   }
 };
 
 handler.help = ['ytmp3 *<url>*'];
-handler.command = ['yta'];
-handler.tags = ['dl'];
+handler.command = ['ytmp3'];
+handler.tags = ['descargas'];
 
 export default handler;
