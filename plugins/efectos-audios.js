@@ -45,7 +45,7 @@ let handler = async (m, { conn, args, __dirname, usedPrefix, command }) => {
                 })
                 await m.react('✅')
             })
-        } else return conn.reply(m.chat, `*[ 🔊 ] Responda al audio o nota de voz*`, m, rcanal)
+        } else return conn.reply(m.chat, `*🔊 Por favor, responda al audio o nota de voz*`, m)
     } catch {
         await m.react('✖️')
     }
@@ -53,7 +53,6 @@ let handler = async (m, { conn, args, __dirname, usedPrefix, command }) => {
 handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai', 'reverb', 'chorus', 'flanger', 'distortion', 'pitch', 'highpass', 'lowpass', 'underwater'].map(v => v + ' *<mp3/vn>*')
 handler.tags = ['audio']
 handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk|reverb|chorus|flanger|distortion|pitch|highpass|lowpass|underwater)$/i
-handler.register = true 
 export default handler
 
 const getRandom = (ext) => {
