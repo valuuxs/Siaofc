@@ -5,13 +5,13 @@ const handler = async (m, {conn, participants, groupMetadata, args}) => {
   const owner = groupMetadata.owner || groupAdmins.find((p) => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net';
   const pesan = args.join` `;
   const oi = `» ${pesan}`;
-  const text = `🎩 Invocando Admins:  
+  const text = `*🥯 \`Invocando Admins\`*
   
 ${listAdmin}
 
-🍭 Mensaje: ${oi}
+𖡻፞ ᰷ ⃪֪⃕🍄 ᮫ׁ֪⃟Mensaje: ${oi}
 
-『✦』Este comando solo se puede ejecutar si tienes algún problema o duda con el *Bot*, si lo usas con otras intenciones se te *baneara* o *eliminara* del grupo.`.trim();
+> ✿ Este comando solo puede ser ejecutado si hay algún problema en el grupo o con el bot.`.trim();
   conn.sendFile(m.chat, pp, 'error.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner]});
 };
 handler.help = ['admins *<texto>*'];
