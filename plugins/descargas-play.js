@@ -36,7 +36,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
                     type: 1,
                 },
                 {
-                    buttonId: `${usedPrefix}ytv ${video.url}`,
+                    buttonId: `${usedPrefix}ytmp4doc ${video.url}`,
                     buttonText: { displayText: 'Vídeo' },
                     type: 1,
                 }
@@ -49,7 +49,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     } catch (e) {
         console.error(e);
         await m.react('✖️');
-        conn.reply(m.chat, '*`Error al buscar el video.`*', m);
+        conn.reply(m.chat, '*☁ Error al buscar el video.*', m);
     }
 };
 
