@@ -159,7 +159,7 @@ const handler = async (m, { conn, args }) => {
     await m.react('✅');
   } catch (e) {
     await m.react('✖️');
-    m.reply(`*⚠️ La descarga ah fallando, es posible que el archivo que intenta descargar pesa demasiado.*`);
+    m.reply(`*⚠️ La descarga ah fallando, es posible que el archivo sea muy pesado.*`);
   }
 };
 
