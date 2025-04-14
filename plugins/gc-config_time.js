@@ -15,9 +15,9 @@ const handler = async (m, {conn, isAdmin, isOwner, args, usedPrefix, command}) =
   }[(args[0] || '')];
   if (isClose === undefined) {
           const caption = `
-*[ ℹ️ ] Ingresa una opción válida seguido del número de horas.*
+*🍃 Ingresa una opción válida seguido del número de horas.*
 
-*[ 💡 ] Ejemplo:*
+> *\`Ejemplo:\`* 
 ${usedPrefix + command} *open 1*
 ${usedPrefix + command} *close 1*
 
@@ -28,12 +28,12 @@ ${usedPrefix + command} *close 1*
   }
   const timeoutset = 86400000 * args[1] / 24;
   await conn.groupSettingUpdate(m.chat, isClose).then(async (_)=> {
-          m.reply(`*[ ⚠️ ] Grupo ${isClose == 'announcement' ? 'cerrado' : 'abierto'} ${args[1] ? `durante* \`\`\`${clockString(timeoutset)}\`\`\` *hora(s)*` : ''}`);
+          m.reply(`*🌵 Grupo ${isClose == 'announcement' ? 'cerrado' : 'abierto'} ${args[1] ? `durante* \`\`\`${clockString(timeoutset)}\`\`\` *hora(s)*` : ''}`);
   });
   if (args[1]) {
          setTimeout(async () => {
       await conn.groupSettingUpdate(m.chat, `${isClose == 'announcement' ? 'not_announcement' : 'announcement'}`).then(async (_)=>{
-                    conn.reply(m.chat, `${isClose == 'not_announcement' ? '*[ ℹ️ ] Función activada con éxito*' : '*[ ℹ️ ] Función finalizada el grupo se abrió con éxito*'}!`);
+                    conn.reply(m.chat, `${isClose == 'not_announcement' ? '*🍃 Función activada con éxito*' : '*🍃 Función finalizada el grupo se abrió con éxito*'}!`);
             });
     }, timeoutset);
   }
