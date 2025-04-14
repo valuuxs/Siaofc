@@ -32,7 +32,7 @@ await conn.reply(m.chat, `*🚮 Se eliminaron \`${filesDeleted}\` archivos de se
 conn.reply(m.chat, `*👋🏻 ¡Hola! ¿Ahora me ves?*`, m)
 }
 } catch (err) {
-console.error('*❌ Error al leer la carpeta o los archivos de sesión:*', err)
+console.error('Error al leer la carpeta o los archivos de sesión:', err)
 await conn.reply(m.chat, '*👋🏻 ¡Hola Soy \`ShadowUltra\` Sigue el Canal!*', m, rcanal)
 }
 
