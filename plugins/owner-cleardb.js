@@ -12,7 +12,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 
 conn.reply(m.chat, `🚮 *Realizado, ya se ha eliminado la database*`, m)
 
-const tmp = [tmpdir(), join(__dirname, '../media/database/db.json')]
+const tmp = [tmpdir(), join(__dirname, '../media/database/database.json')]
 const filename = []
 tmp.forEach(dirname => readdirSync(dirname).forEach(file => filename.push(join(dirname, file))))
 return filename.map(file => {
