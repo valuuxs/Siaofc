@@ -26,20 +26,19 @@ break
 }}}
 
 if (filesDeleted === 0) {
-await conn.reply(m.chat, '*[ ℹ️ ] No se encontró ningún archivo que incluya la ID del chat*', m, rcanal, )
+await conn.reply(m.chat, '*🥯 No se encontró ningún archivo que incluya la ID del chat*', m, rcanal, )
 } else {
-await conn.reply(m.chat, `*[ ℹ️ ] Se eliminaron ${filesDeleted} archivos de sesión*`, m)
-conn.reply(m.chat, `*👋🏻 ¡Hola! ¿logras verme?*`, m)
+await conn.reply(m.chat, `*🚮 Se eliminaron \`${filesDeleted}\` archivos de sesión*`, m)
+conn.reply(m.chat, `*👋🏻 ¡Hola! ¿Ahora me ves?*`, m)
 }
 } catch (err) {
-console.error('*[ ❌ ] Error al leer la carpeta o los archivos de sesión:*', err)
-await conn.reply(m.chat, '[ ℹ️ ] *Hola Soy \`ShadowBot\` Sigue el Canal*', m, rcanal)
+console.error('*❌ Error al leer la carpeta o los archivos de sesión:*', err)
+await conn.reply(m.chat, '*👋🏻 ¡Hola Soy \`ShadowUltra\` Sigue el Canal!*', m, rcanal)
 }
 
 }
 handler.help = ['ds', 'fixmsgespera']
 handler.tags = ['info']
 handler.command = /^(fixmsgespera|ds)$/i
-handler.register = true
 
 export default handler
