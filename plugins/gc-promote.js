@@ -8,8 +8,8 @@ const handler = async (m, {conn, usedPrefix, text}) => {
     var number = text;
   }
 
-  if (!text && !m.quoted) return conn.reply(m.chat, `*[ ℹ️ ] Mencione al usuario para promoverlo.*`, m);
-  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, '*[ ⚠️ ] El usuario ingresado es incorrecto.*', m);
+  if (!text && !m.quoted) return conn.reply(m.chat, `*🍃 Menciona algún participante que desea promover*`, m);
+  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, '*⚠️ El usuario ingresado es incorrecto.*', m);
 
   try {
     if (text) {
@@ -22,7 +22,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
   } catch (e) {
   } finally {
     conn.groupParticipantsUpdate(m.chat, [user], 'promote');
-    conn.reply(m.chat, `*[ ✅ ] Órdenes Recibidas.*`, m);
+    conn.reply(m.chat, `*🌵 El usuario fue promovido.*`, m);
   }
 };
 handler.help = ['*<@tag>*'].map((v) => 'promote ' + v);
