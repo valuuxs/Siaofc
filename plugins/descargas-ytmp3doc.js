@@ -1,18 +1,18 @@
-import fs from 'fs';
-const handler = async (m, {conn, args}) => {
-  const group = m.chat;
-  conn.reply(m.chat, 'https://chat.whatsapp.com/' + await conn.groupInviteCode(group), m, {
-    contextInfo: {externalAdReply: {mediaUrl: null, mediaType: 1, description: null,
-      title: '𝙻𝙸𝙽𝙺 𝙳𝙴𝙻 𝙶𝚁𝚄𝙿𝙾',
-      body: '𝚃𝚑𝚎 𝙼𝚢𝚜𝚝𝚒𝚌 - 𝙱𝚘𝚝',
-      previewType: 0, thumbnail: fs.readFileSync('./Menu2.jpg'),
-      sourceUrl: `https://github.com/BrunoSobrino/TheMystic-Bot-MD`}}});
-};
+import fetch from 'node-fetch'
+import { sticker } from '../lib/sticker.js'
 
-
-handler.help = ['link']
-handler.tags = ['gc']
-handler.command = ['lx']
-
-handler.group = true
-handler.botAdmin = true
+let handler = async (m, {
+    conn
+}) => {
+    let res = await fetch('https://nekos.life/api/v2/img/meow')
+    let json = await res.json()
+    let stiker = await sticker(null, json.url, global.packname, global.author)
+    if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.gif', '', m, false, {
+        asSticker: true
+    })
+    throw stiker.toString()
+}
+handler.help = ['scat']
+handler.tags = ['sticker']
+handler.command = ["scat", "stickercat", "cats"]
+export default handler
