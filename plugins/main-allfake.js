@@ -37,10 +37,10 @@ global.botreal = `${(conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bo
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/51927238856'
 global.namech = '𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫'
-global.namechannel2 = 'ꨴ ☁꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Mᴏᴏɴ Fᴏʀᴄᴇ Ƭᴇᴀᴍ 彡'
+global.namechannel2 = 'ꘓꘓ   ໒☀️ؑ   𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ  𝖳ᥱᥲ𝗆 彡'
 global.namegrupo = 'Group Shadow Oficial'
-global.namecomu = 'Heavenly Team Community'
-global.namecomu2 = '☕ Heavenly Team Community'
+global.namecomu = 'Sunflare Community'
+global.namecomu2 = 'Nova Spark Community'
 
 //REACCIONES 
 global.rwait = '🕒'
@@ -56,7 +56,7 @@ global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //MENSAJE DE ESPERA 
-global.wait = '*[ ⏳ ] Aguarde un momento...*';
+global.wait = '*⏳ Aguarde un momento...*';
 
 //ENLACES
 var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
@@ -128,12 +128,12 @@ global.readMore = more.repeat(850)
 
 global.authsticker = `\n\n🍪 mᥲძᥱ ᑲᥡ:\n↳協 ֪ Տһᥲ͡ძ͜᥆፝֟ա  ⚡︎  Uᥣ𝗍rᥲ ׄ🍒˚ .\n\n👤 rᥱ𝗊ᥙіrᥱძ ᑲᥡ\n↳@${conn.getName(m.sender)}`;
 
-global.packsticker = `ꨴ ☁꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Mᴏᴏɴ Fᴏʀᴄᴇ Ƭᴇᴀᴍ 彡\n↳@moonforce_team\n\n☘️ іᥒ𝖿᥆rmᥲ𝗍і᥆ᥒ\n↳Wa.me/51927238856`
+global.packsticker = `ꘓꘓ  ໒☀️ؑ  𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ  𝖳ᥱᥲ𝗆 彡\n↳@team_sunflare\n\n☘️ іᥒ𝖿᥆rmᥲ𝗍і᥆ᥒ\n↳Wa.me/51927238856`
 
 //FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
-global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318267632676@newsletter', newsletterName: "˚₊·͟͟͟͟͟͟͞͞͞͞͞͞𝑴𝒐𝒐𝒏 𝑭𝒐𝒓𝒄𝒆 - 𝑻𝒆𝒂𝒎 ೃ࿔₊•", serverMessageId: -1 }
+global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318267632676@newsletter', newsletterName: "˚₊·͟͟͟͟͟͟͞͞͞͞͞͞𝑺𝒖𝒏𝒇𝒍𝒂𝒓𝒆 - 𝑻𝒆𝒂𝒎 ೃ࿔₊•", serverMessageId: -1 }
 }}, { quoted: m }
 
 //ID CANALES
