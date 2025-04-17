@@ -73,7 +73,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     ︱·˚🤍 Disfruta del grupo.
     └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴ ғᴏʀᴄᴇ ᴛᴇᴀᴍ`
+> ${dev}`
 
       await conn.sendMessage(m.chat, { image: img, caption: text, mentions: [who] }, { quoted: fkontak })
     } else if (
@@ -94,7 +94,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     ︱·˚👻 Ojalá y lo violen los ngros.
     └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴ ғᴏʀᴄᴇ ᴛᴇᴀᴍ`
+> ${dev}`
 
       await conn.sendMessage(m.chat, { image: img, caption: text, mentions: [who] }, { quoted: fkontak })
     }
