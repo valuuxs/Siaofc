@@ -8,7 +8,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let who = m.messageStubParameters[0]
   let taguser = `@${who.split('@')[0]}`
   let chat = global.db.data.chats[m.chat]
-  let defaultImage = 'https://files.catbox.moe/dgvj76.jpg'
+  let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg'
 
   if (chat.welcome) {
     let img
@@ -35,7 +35,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 ┌ *\`ɢʀᴏᴜᴘ::\`*
   ☕ ᩙᩞ✑ ${groupName}
 └┬ *ɴᴇᴡ ᴍᴇᴍʙᴇʀ*
-    ︱·˚🤍 Disfruta del grupo.
+    ︱·˚🌿 Disfruta del grupo.
     └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
 > ${dev}`
@@ -56,7 +56,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
 ┌ *\`ᴘᴜᴛᴀ ᴇʟɪᴍɪɴᴀᴅᴀ\`*
 └┬ *ᴇx ᴍᴇᴍʙᴇʀ*
-    ︱·˚👻 Ojalá y lo violen los ngros.
+    ︱·˚🤍 Ojalá y lo violen los ngros.
     └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
 > ${dev}`
