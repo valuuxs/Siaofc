@@ -31,13 +31,14 @@ let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
 let rtx = `*${textbot}*\n\n✐ Cσɳҽxισɳ SυႦ-Bσƚ Mσԃҽ QR\n\n✰ Con otro celular o en la PC escanea este QR para convertirte en un *Sub-Bot* Temporal.\n\n\`1\` » Haga clic en los tres puntos en la esquina superior derecha\n\n\`2\` » Toque dispositivos vinculados\n\n\`3\` » Escanee este codigo QR para iniciar sesion con el bot\n\n✧ ¡Este código QR expira en 45 segundos!.`
-let rtx2 = `ㅤׅ   ׄ᷼⏜ *\`𝚂𝚄𝙱 !\`*   ☁    *\`𝙱𝙾𝚃 !\`* ⏜ׄ᷼   ׅ\n`
-    rtx2 += `                  𝖴𝗌𝖺    𝖾𝗌𝗍𝖾 \n     𝖢𝗈́𝖽𝗂𝗀𝗈   𝗉𝖺𝗋𝖺    𝖼𝗈𝗇𝗏𝖾𝗋𝗍𝗂𝗋𝗍𝖾\n𝖾𝗇    𝗌𝗎𝖻𝖻𝗈𝗍    𝖽𝖾    𝖲𝗁𝖺𝖽𝗈𝗐   𝖴𝗅𝗍𝗋𝖺\n`
+let rtx2 = `ׅ   ׄ᷼⏜ *\`𝚂𝚄𝙱 !\`*   ☁    *\`𝙱𝙾𝚃 !\`* ⏜ׄ᷼   ׅ\n`
+    rtx2 += `                   𝖴𝗌𝖺   𝖾𝗌𝗍𝖾  𝖢𝗈́𝖽𝗂𝗀𝗈\n     𝗉𝖺𝗋𝖺   𝖼𝗈𝗇𝗏𝖾𝗋𝗍𝗂𝗋𝗍𝖾   𝖾𝗇  𝗎𝗇   𝗌𝗎𝖻𝖻𝗈𝗍\n                  𝖽𝖾   𝖲𝗁𝖺𝖽𝗈𝗐   𝖴𝗅𝗍𝗋𝖺\n`
     rtx2 += ` ㅤ︵ ׄ    ꒡⦙⦙⦙ꜝ .      !           ₍ ⑅ᐢ . .ᐢ₎     ♡̲ ︵ ׄ\nᅟ࡛ᅟ৲৲݁   *\`𝖯𝖺𝗌𝗈𝗌::\`* 𖹭ׅ֮   🫲🏻 ぁ\n`
-    rtx2 += `☕ ׅ⿻ 𝖧ᥲ𝗀ᥲ ᥴᥣ𝗂ᥴ𝗄 ᥱᥒ ᥣ᥆𝗌 𝟥 ⍴ᥙᥒ𝗍᥆𝗌.\n`
-    rtx2 += `☕ ׅ⿻ 𝖳᥆𝗊ᥙᥱ ძ𝗂𝗌⍴᥆𝗌𝗂𝗍𝗂᥎᥆𝗌 ᥎𝗂ᥒᥴᥙᥣᥲძ᥆𝗌.\n`
-    rtx2 += `☕ ׅ⿻ 𝖵𝗂ᥒᥴᥙᥣᥲ ᥴ᥆ᥒ ᥒᥙ́𝗆ᥱ𝗋᥆ ძᥱ 𝗍ᥱᥣᥱ𝖿᥆ᥒ᥆.\n` 
-    rtx2 += `☕ ׅ⿻  𝖤𝗌ᥴ𝗋𝗂ᑲᥲ ᥱᥣ ᥴ᥆́ძ𝗂𝗀᥆ ⍴𝗋᥆⍴᥆𝗋ᥴ𝗂᥆ᥒძ᥆.            ֺㅤׅ   ㅤ⋱  ִㅤֺ    ִ  ⁝  ִㅤֺ    ִ  ⋰ㅤㅤׅ\n    ©::  ☀ ⣷ ׄ${dev} ១፝֟᷼ᰍㅤׄ`;
+    rtx2 += `🌿 ׅ⿻ 𝖧ᥲ𝗀ᥲ ᥴᥣ𝗂ᥴ𝗄 ᥱᥒ ᥣ᥆𝗌 𝟥 ⍴ᥙᥒ𝗍᥆𝗌.\n`
+    rtx2 += `🌿 ׅ⿻ 𝖳᥆𝗊ᥙᥱ ძ𝗂𝗌⍴᥆𝗌𝗂𝗍𝗂᥎᥆𝗌 ᥎𝗂ᥒᥴᥙᥣᥲძ᥆𝗌.\n`
+    rtx2 += `🌿 ׅ⿻ 𝖵𝗂ᥒᥴᥙᥣᥲ ᥴ᥆ᥒ ᥒᥙ́𝗆ᥱ𝗋᥆ ძᥱ 𝗍ᥱᥣᥱ𝖿᥆ᥒ᥆.\n` 
+    rtx2 += `🌿 ׅ⿻  𝖤𝗌ᥴ𝗋𝗂ᑲᥲ ᥱᥣ ᥴ᥆́ძ𝗂𝗀᥆ ⍴𝗋᥆⍴᥆𝗋ᥴ𝗂᥆ᥒძ᥆.\n\n            ֺㅤׅ   ㅤ⋱  ִㅤֺ    ִ  ⁝  ִㅤֺ    ִ  ⋰ㅤㅤׅ
+© ☀ ⣷ ׄ𝖯᥆𝗐ᥱ𝗋ᥱძ ᑲᥡ 𝖲ᥙᥒ𝖿ᥣᥲ𝗋ᥱ 𝖳ᥱᥲ𝗆 ១፝֟᷼ᰍ`;
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
