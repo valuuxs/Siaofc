@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 let handler = async (m, { conn }) => {
   try {
-    const imageUrl = 'https://example.com/tuimagen.jpg'; // reemplaza con la URL real de tu imagen
+    const imageUrl = 'https://files.catbox.moe/xr2m6u.jpg'; // reemplaza con la URL real de tu imagen
     const res = await fetch(imageUrl);
     const buffer = await res.buffer();
 
