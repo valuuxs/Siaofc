@@ -171,10 +171,9 @@ export async function before(m, { conn, participants, groupMetadata }) {
   return true
 }*/
 
-
 import { WAMessageStubType } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
-import { WelcomeLeave } from 'canvafy'
+import canvafy from 'canvafy'
 
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return true
@@ -184,85 +183,112 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let chat = global.db.data.chats[m.chat]
   let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg'
   let insta = 'https://instagram.com/dev.criss_vx'
-  const dev = 'By Dev Criss'
-  const groupName = groupMetadata.subject
-  const groupDesc = groupMetadata.desc || 'sin descripción'
-  const groupSize = participants.length
 
-  const getAvatar = async () => {
+  if (chat.welcome) {
+    let img
     try {
-      return await conn.profilePictureUrl(who, 'image')
+      let pp = await conn.profilePictureUrl(who, 'image')
+      img = await (await fetch(pp)).buffer()
     } catch {
-      return defaultImage
+      img = await (await fetch(defaultImage)).buffer()
     }
-  }
 
-  const generateImage = async (title, description, bg) => {
-    const avatar = await getAvatar()
-    const buffer = await new WelcomeLeave()
-      .setAvatar(avatar)
-      .setBackground('image', bg)
-      .setTitle(title)
-      .setDescription(description)
-      .setBorder('#2a2e35')
-      .setAvatarBorder('#2a2e35')
-      .setOverlayOpacity(0.1)
-      .build()
-    return buffer
-  }
+    const groupName = groupMetadata.subject
+    const groupDesc = groupMetadata.desc || 'sin descripción'
 
-  if (!chat.welcome) return
+    if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+      let text = chat.sWelcome
+        ? chat.sWelcome
+            .replace(/@user/g, taguser)
+            .replace(/@group/g, groupName)
+            .replace(/@desc/g, groupDesc)
+        : `𓆩°»｡˚ ∾･⁙･ ღ ➵ ⁘ ➵ ღ ･⁙･∾ ˚ ｡«°𓆪
+❍⌇─➭ *Wᴇʟᴄᴏᴍᴇ ᴛᴏ Gʀᴏᴜᴘ ::*
+๑ ˚ ͙۪۪̥${taguser} 👋🏻꒱
 
-  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-    const desc = `Ahora somos ${groupSize} miembros.`
-    const bienvenida = chat.sWelcome
-      ? chat.sWelcome.replace(/@user/g, taguser).replace(/@group/g, groupName).replace(/@desc/g, groupDesc)
-      : `✧ Bienvenido ${taguser} a *${groupName}*.\nDisfruta tu estancia.`
+┌ *\`ɢʀᴏᴜᴘ::\`*
+  ☕ ᩙᩞ✑ ${groupName}
+└┬ *ɴᴇᴡ ᴍᴇᴍʙᴇʀ*
+    ︱·˚🌿 Disfruta del grupo.
+    └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
-    const img = await generateImage('¡BIENVENIDO/A!', desc, 'https://i.ibb.co/1fVJfvxk/file.jpg')
+> ${dev}`
 
-    await conn.sendMessage(m.chat, {
-      text: bienvenida,
-      contextInfo: {
-        mentionedJid: [who],
-        isForwarded: true,
-        forwardingScore: 999,
-        externalAdReply: {
-          title: `${await conn.getName(who)}, bienvenido a ${groupName}`,
-          body: dev,
-          thumbnail: img,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          sourceUrl: insta
+      let imgBienvenida = await new canvafy.WelcomeLeave()
+        .setAvatar(img)
+        .setBackground('image', 'https://files.catbox.moe/xr2m6u.jpg')
+        .setTitle('¡BIENVENIDO/A!')
+        .setDescription(`Disfruta de tu estadía. Ahora somos ${participants.length} miembros.`)
+        .setBorder('#2a2e35')
+        .setAvatarBorder('#2a2e35')
+        .setOverlayOpacity(0.1)
+        .build()
+
+      await conn.sendMessage(m.chat, {
+        text,
+        contextInfo: {
+          mentionedJid: [who],
+          isForwarded: true,
+          forwardingScore: 999,
+          externalAdReply: {
+            title: `${await conn.getName(who)}, bienvenido a ${groupName}`,
+            body: 'By Dev Criss',
+            thumbnail: imgBienvenida,
+            sourceUrl: insta,
+            mediaType: 1,
+            renderLargerThumbnail: true
+          }
         }
-      }
-    }, { quoted: fkontak })
-  }
+      }, { quoted: fkontak })
+    }
 
-  if ([WAMessageStubType.GROUP_PARTICIPANT_REMOVE, WAMessageStubType.GROUP_PARTICIPANT_LEAVE].includes(m.messageStubType)) {
-    const desc = `Ahora somos ${groupSize - 1} miembros.`
-    const despedida = chat.sBye
-      ? chat.sBye.replace(/@user/g, taguser).replace(/@group/g, groupName).replace(/@desc/g, groupDesc)
-      : `✧ ${taguser} ha salido de *${groupName}*.\n¡Hasta pronto!`
+    if (
+      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
+      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE
+    ) {
+      let text = chat.sBye
+        ? chat.sBye
+            .replace(/@user/g, taguser)
+            .replace(/@group/g, groupName)
+            .replace(/@desc/g, groupDesc)
+        : `𓆩°»｡˚ ∾･⁙･ ღ ➵ ⁘ ➵ ღ ･⁙･∾ ˚ ｡«°𓆪
+❍⌇─➭ *Sᴇᴇ ʏᴏᴜ Lᴀᴛᴇʀ ::*
+๑ ˚ ͙۪۪̥${taguser} 🖕🏻꒱
 
-    const img = await generateImage('¡HASTA LUEGO!', desc, 'https://i.ibb.co/Kcf0xdrQ/file.jpg')
+┌ *\`ᴇx ᴍᴇᴍʙᴇʀ\`*
+└┬ *Eɴ Fɪɴ...*
+    ︱·˚🤍 Ojalá y lo violen los ngros.
+    └╾ׅ╴ׂꨪ╌╼᪶╾᪶ ۪〫┄ׅ⃯፝֟╌╼᪶֘╾᪶╌ׅꨪ╶۪╼┘
 
-    await conn.sendMessage(m.chat, {
-      text: despedida,
-      contextInfo: {
-        mentionedJid: [who],
-        isForwarded: true,
-        forwardingScore: 999,
-        externalAdReply: {
-          title: `${await conn.getName(who)} ha salido de ${groupName}`,
-          body: dev,
-          thumbnail: img,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          sourceUrl: insta
+> ${dev}`
+
+      let imgDespedida = await new canvafy.WelcomeLeave()
+        .setAvatar(img)
+        .setBackground('image', 'https://files.catbox.moe/xr2m6u.jpg')
+        .setTitle('¡HASTA LUEGO!')
+        .setDescription(`Nos vemos pronto. Ahora somos ${participants.length} miembros.`)
+        .setBorder('#2a2e35')
+        .setAvatarBorder('#2a2e35')
+        .setOverlayOpacity(0.1)
+        .build()
+
+      await conn.sendMessage(m.chat, {
+        text,
+        contextInfo: {
+          mentionedJid: [who],
+          isForwarded: true,
+          forwardingScore: 999,
+          externalAdReply: {
+            title: `${await conn.getName(who)} ha salido de ${groupName}`,
+            body: 'By Dev Criss',
+            thumbnail: imgDespedida,
+            sourceUrl: insta,
+            mediaType: 1,
+            renderLargerThumbnail: true
+          }
         }
-      }
-    }, { quoted: fkontak })
+      }, { quoted: fkontak })
+    }
   }
 
   return true
