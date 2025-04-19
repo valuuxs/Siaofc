@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { sendMini } from '../lib/sendMini.js'
+import { sendMini } from '../plugins/_test5.js'
 
 let handler = async (m, { conn }) => {
   let img = await (await fetch('https://i.imgur.com/RP6QwCS.jpeg')).buffer()
