@@ -79,7 +79,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let taguser = `@${who.split('@')[0]}`
   let chat = global.db.data.chats[m.chat]
   let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg'
-  let insta = 'https://instagram.com/dev_criss'
+  let insta = 'https://instagram.com/dev.criss_vx'
 
   if (chat.welcome) {
     let img
