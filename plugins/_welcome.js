@@ -67,8 +67,8 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   return true
 }*/
-
-
+//⭐⭐⭐⭐⭐⭐⭐⭐⭐
+/*
 import { WAMessageStubType } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 
@@ -169,4 +169,77 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   return true
+}*/
+//☕☕☕☕☕☕
+import { WAMessageStubType } from '@whiskeysockets/baileys';
+import fetch from 'node-fetch';
+import canvafy from 'canvafy';
+
+// === Constantes de configuración ===
+const DEFAULT_AVATAR = 'https://i.ibb.co/cFzgdNw/file.jpg';
+const WELCOME_BG = 'https://i.ibb.co/1fVJfvxk/file.jpg';
+const GOODBYE_BG = 'https://i.ibb.co/Kcf0xdrQ/file.jpg';
+const BORDER_COLOR = '#2a2e35';
+
+const GROUP_TITLE = 'GΞИΞSIS | WhatsApp Ai';
+const GROUP_LINK = 'https://chat.whatsapp.com/H5ueOzVRAzhBolt3lczDfG';
+
+export async function before(m, { conn, participants, groupMetadata }) {
+  if (!m.messageStubType || !m.isGroup) return !0;
+  if (!m.messageStubParameters || !m.messageStubParameters[0]) return;
+
+  let chat = global.db.data.chats[m.chat];
+  let who = m.messageStubParameters[0] + '@s.whatsapp.net';
+  let user = global.db.data.users[who];
+  let userName = user ? user.name : await conn.getName(who);
+
+  const getUserAvatar = async () => {
+    try {
+      return await conn.profilePictureUrl(m.messageStubParameters[0], 'image');
+    } catch {
+      return DEFAULT_AVATAR;
+    }
+  };
+
+  const generateImage = async (title, description, backgroundImage) => {
+    const userAvatar = await getUserAvatar();
+    const img = await new canvafy.WelcomeLeave()
+      .setAvatar(userAvatar)
+      .setBackground('image', backgroundImage)
+      .setTitle(title)
+      .setDescription(description)
+      .setBorder(BORDER_COLOR)
+      .setAvatarBorder(BORDER_COLOR)
+      .setOverlayOpacity(0.1)
+      .build();
+    return img;
+  };
+
+  let groupSize = participants.length;
+  if (m.messageStubType === 27) groupSize++;
+  else if ([28, 32].includes(m.messageStubType)) groupSize--;
+
+  if (chat.welcome && m.messageStubType === 27) {
+    let bienvenida = `❀ *Se unió* al grupo *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]} \n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Bienvenido! ¡Esperamos que tengas un excelente día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 ¡Disfruta de tu tiempo con nosotros!`;
+
+    let img = await generateImage(
+      '¡BIENVENIDO/A!',
+      `Disfruta de tu estadía. Ahora somos ${groupSize} miembros.`,
+      WELCOME_BG
+    );
+
+    await conn.sendMini(m.chat, GROUP_TITLE, null, bienvenida, img, img, GROUP_LINK, null);
+  }
+
+  if (chat.welcome && [28, 32].includes(m.messageStubType)) {
+    let despedida = `❀ *Se salió* del grupo  *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]}\n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Nos vemos pronto! ¡Que tengas un buen día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 Próximamente...`;
+
+    let img = await generateImage(
+      '¡HASTA LUEGO!',
+      `Nos vemos pronto. Ahora somos ${groupSize} miembros.`,
+      GOODBYE_BG
+    );
+
+    await conn.sendMini(m.chat, GROUP_TITLE, null, despedida, img, img, GROUP_LINK, null);
+  }
 }
