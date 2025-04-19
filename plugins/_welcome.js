@@ -176,13 +176,13 @@ import fetch from 'node-fetch';
 import canvafy from 'canvafy';
 
 // === Constantes de configuración ===
-const DEFAULT_AVATAR = 'https://i.ibb.co/cFzgdNw/file.jpg';
-const WELCOME_BG = 'https://i.ibb.co/1fVJfvxk/file.jpg';
-const GOODBYE_BG = 'https://i.ibb.co/Kcf0xdrQ/file.jpg';
+const DEFAULT_AVATAR = 'https://files.catbox.moe/8w73kp.jpg';
+const WELCOME_BG = 'https://files.catbox.moe/z4s6vg.jpg';
+const GOODBYE_BG = 'https://files.catbox.moe/z4s6vg.jpg';
 const BORDER_COLOR = '#2a2e35';
 
-const GROUP_TITLE = 'GΞИΞSIS | WhatsApp Ai';
-const GROUP_LINK = 'https://chat.whatsapp.com/H5ueOzVRAzhBolt3lczDfG';
+const GROUP_TITLE = 'SHADOW | WhatsApp Ai';
+const GROUP_LINK = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I';
 
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return !0;
