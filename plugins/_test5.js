@@ -19,7 +19,7 @@ export async function sendMini(conn, jid, title, content, footer, thumbnail, url
           {
             urlButton: {
               displayText: title || 'Ver enlace',
-              url: url || 'https://example.com'
+              url: url || 'https://github.com/ShadowUltra-MD'
             }
           }
         ],
