@@ -32,7 +32,7 @@ await m.react(error)
 conn.reply(m.chat, '🚩 *No se encontró resultados de:* ' + text, m, fake)}}
 handler.help = ['githubsearch']
 handler.tags = ['buscador']
-handler.command = ['githubsearch']
+handler.command = ['tesgh']
 
 //handler.register = true
 
