@@ -182,7 +182,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let who = m.messageStubParameters[0]
   let taguser = `@${who.split('@')[0]}`
   let chat = global.db.data.chats[m.chat]
-  let defaultImage = 'https://i.ibb.co/1fVJfvxk/file.jpg'
+  let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg'
   let insta = 'https://instagram.com/dev.criss_vx'
   const dev = 'By Dev Criss'
   const groupName = groupMetadata.subject
