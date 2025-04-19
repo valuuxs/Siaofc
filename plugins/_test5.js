@@ -21,7 +21,7 @@ export async function sendMini(conn, jid, title, content, footer, thumbnail, url
           {
             urlButton: {
               displayText: title || 'Visitar',
-              url: url || 'https://github.com/CristianOff/ShadowBot-MDv3'
+              url: url || 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
             }
           }
         ],
