@@ -1,15 +1,13 @@
-import { proto } from '@whiskeysockets/baileys'
-
 /**
  * Envía un mensaje mini con título, imagen y botón.
  * @param {Object} conn - Conexión de Baileys
  * @param {String} jid - ID del chat
- * @param {String} title - Título principal (opcional)
- * @param {String} content - Contenido del mensaje
+ * @param {String} title - Título del botón
+ * @param {String} content - Texto del mensaje
  * @param {String} footer - Texto de pie de mensaje
- * @param {Buffer} thumbnail - Imagen miniatura (recomendada en buffer)
- * @param {String} url - Enlace del botón
- * @param {Object} quoted - Mensaje citado
+ * @param {Buffer} thumbnail - Imagen como buffer
+ * @param {String} url - Enlace al que apunta el botón
+ * @param {Object} quoted - Mensaje citado (opcional)
  */
 export async function sendMini(conn, jid, title, content, footer, thumbnail, url, quoted) {
   const template = {
@@ -20,8 +18,8 @@ export async function sendMini(conn, jid, title, content, footer, thumbnail, url
         hydratedButtons: [
           {
             urlButton: {
-              displayText: title || 'Visitar',
-              url: url || 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
+              displayText: title || 'Ver enlace',
+              url: url || 'https://example.com'
             }
           }
         ],
@@ -32,5 +30,5 @@ export async function sendMini(conn, jid, title, content, footer, thumbnail, url
     }
   }
 
-  await conn.relayMessage(jid, template, { messageId: quoted?.key?.id || undefined })
+  await conn.relayMessage(jid, template, { messageId: quoted?.key?.id })
 }
