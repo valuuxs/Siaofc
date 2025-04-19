@@ -171,83 +171,99 @@ export async function before(m, { conn, participants, groupMetadata }) {
   return true
 }*/
 
-import { WAMessageStubType } from '@whiskeysockets/baileys';
-import fetch from 'node-fetch';
-import canvafy from 'canvafy';
+
+import { WAMessageStubType } from '@whiskeysockets/baileys'
+import fetch from 'node-fetch'
+import { WelcomeLeave } from 'canvafy'
 
 export async function before(m, { conn, participants, groupMetadata }) {
-  if (!m.messageStubType || !m.isGroup) return !0;
+  if (!m.messageStubType || !m.isGroup) return true
 
-  let chat = global.db.data.chats[m.chat];
-  let titu = 'SHADOW | WhatsApp Ai';
-  let grupo = 'https://chat.whatsapp.com/H5ueOzVRAzhBolt3lczDfG';
-  let who = m.messageStubParameters[0] + '@s.whatsapp.net';
-  let user = global.db.data.users[who];
-  let userName = user ? user.name : await conn.getName(who);
+  let who = m.messageStubParameters[0]
+  let taguser = `@${who.split('@')[0]}`
+  let chat = global.db.data.chats[m.chat]
+  let defaultImage = 'https://i.ibb.co/1fVJfvxk/file.jpg'
+  let insta = 'https://instagram.com/dev.criss_vx'
+  const dev = 'By Dev Criss'
+  const groupName = groupMetadata.subject
+  const groupDesc = groupMetadata.desc || 'sin descripción'
+  const groupSize = participants.length
 
-  const getUserAvatar = async () => {
+  const getAvatar = async () => {
     try {
-      return await conn.profilePictureUrl(m.messageStubParameters[0], 'image');
-    } catch (err) {
-      return 'https://i.ibb.co/cFzgdNw/file.jpg';
+      return await conn.profilePictureUrl(who, 'image')
+    } catch {
+      return defaultImage
     }
-  };
+  }
 
-  const generateImage = async (title, description, backgroundImage) => {
-    const userAvatar = await getUserAvatar();
-    const img = await new canvafy.WelcomeLeave()
-      .setAvatar(userAvatar)
-      .setBackground('image', backgroundImage)
+  const generateImage = async (title, description, bg) => {
+    const avatar = await getAvatar()
+    const buffer = await new WelcomeLeave()
+      .setAvatar(avatar)
+      .setBackground('image', bg)
       .setTitle(title)
       .setDescription(description)
       .setBorder('#2a2e35')
       .setAvatarBorder('#2a2e35')
       .setOverlayOpacity(0.1)
-      .build();
-
-    return img;
-  };
-
-  let groupSize = participants.length;
-  if (m.messageStubType === 27) {
-    groupSize++;
-  } else if (m.messageStubType === 28 || m.messageStubType === 32) {
-    groupSize--;
+      .build()
+    return buffer
   }
 
-  if (chat.welcome && m.messageStubType == 27) {
-    let bienvenida = `❀ *Se unió* al grupo *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]} \n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Bienvenido! ¡Esperamos que tengas un excelente día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 ¡Disfruta de tu tiempo con nosotros!`;
+  if (!chat.welcome) return
 
-    let img = await generateImage(
-      '¡BIENVENIDO/A!',
-      `Disfruta de tu estadía. Ahora somos ${groupSize} miembros.`,
-      'https://i.ibb.co/1fVJfvxk/file.jpg'
-    );
+  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+    const desc = `Ahora somos ${groupSize} miembros.`
+    const bienvenida = chat.sWelcome
+      ? chat.sWelcome.replace(/@user/g, taguser).replace(/@group/g, groupName).replace(/@desc/g, groupDesc)
+      : `✧ Bienvenido ${taguser} a *${groupName}*.\nDisfruta tu estancia.`
 
-    await conn.sendMini(m.chat, titu, null, bienvenida, img, img, grupo, null);
+    const img = await generateImage('¡BIENVENIDO/A!', desc, 'https://i.ibb.co/1fVJfvxk/file.jpg')
+
+    await conn.sendMessage(m.chat, {
+      text: bienvenida,
+      contextInfo: {
+        mentionedJid: [who],
+        isForwarded: true,
+        forwardingScore: 999,
+        externalAdReply: {
+          title: `${await conn.getName(who)}, bienvenido a ${groupName}`,
+          body: dev,
+          thumbnail: img,
+          mediaType: 1,
+          renderLargerThumbnail: true,
+          sourceUrl: insta
+        }
+      }
+    }, { quoted: fkontak })
   }
 
-  if (chat.welcome && m.messageStubType == 28) {
-    let bye = `❀ *Se salió* del grupo  *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]}\n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Nos vemos pronto! ¡Que tengas un buen día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 Próximamente...`;
+  if ([WAMessageStubType.GROUP_PARTICIPANT_REMOVE, WAMessageStubType.GROUP_PARTICIPANT_LEAVE].includes(m.messageStubType)) {
+    const desc = `Ahora somos ${groupSize - 1} miembros.`
+    const despedida = chat.sBye
+      ? chat.sBye.replace(/@user/g, taguser).replace(/@group/g, groupName).replace(/@desc/g, groupDesc)
+      : `✧ ${taguser} ha salido de *${groupName}*.\n¡Hasta pronto!`
 
-    let img = await generateImage(
-      '¡HASTA LUEGO!',
-      `Nos vemos pronto. Ahora somos ${groupSize} miembros.`,
-      'https://i.ibb.co/Kcf0xdrQ/file.jpg'
-    );
+    const img = await generateImage('¡HASTA LUEGO!', desc, 'https://i.ibb.co/Kcf0xdrQ/file.jpg')
 
-    await conn.sendMini(m.chat, titu, null, bye, img, img, grupo, null);
+    await conn.sendMessage(m.chat, {
+      text: despedida,
+      contextInfo: {
+        mentionedJid: [who],
+        isForwarded: true,
+        forwardingScore: 999,
+        externalAdReply: {
+          title: `${await conn.getName(who)} ha salido de ${groupName}`,
+          body: dev,
+          thumbnail: img,
+          mediaType: 1,
+          renderLargerThumbnail: true,
+          sourceUrl: insta
+        }
+      }
+    }, { quoted: fkontak })
   }
 
-  if (chat.welcome && m.messageStubType == 32) {
-    let kick = `❀ *Se salió* del grupo  *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]}\n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Nos vemos pronto! ¡Que tengas un buen día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 Próximamente...`;
-
-    let img = await generateImage(
-      '¡HASTA LUEGO!',
-      `Nos vemos pronto. Ahora somos ${groupSize} miembros.`,
-      'https://i.ibb.co/Kcf0xdrQ/file.jpg'
-    );
-
-    await conn.sendMini(m.chat, titu, null, kick, img, img, grupo, null);
-  }
+  return true
 }
