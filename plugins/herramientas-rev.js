@@ -1,14 +1,9 @@
 import fetch from 'node-fetch'
+import { sendMini } from '../lib/sendMini.js'
 
 let handler = async (m, { conn }) => {
-  let imgUrl = 'https://files.catbox.moe/xr2m6u.jpg'
-  let img = await (await fetch(imgUrl)).buffer()
-
-  let titulo = 'Test de sendMini'
-  let contenido = 'Este es un mensaje de prueba usando *sendMini*.\n\n¿Se visualiza correctamente?'
-  let footer = 'Shadow Ultra'
-  
-  await conn.sendMini(m.chat, titulo, contenido, footer, img, img, 'https://github.com/CrxstianEscobar/ShadowUltra-MD', m)
+  let img = await (await fetch('https://i.imgur.com/RP6QwCS.jpeg')).buffer()
+  await sendMini(conn, m.chat, 'Ver Proyecto', '¡Este es un mensaje de prueba con sendMini!', 'Shadow Bot', img, 'https://github.com/CrxstianEscobar/ShadowUltra-MD', m)
 }
 
 handler.command = /^testmini$/i
