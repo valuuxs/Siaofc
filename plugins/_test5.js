@@ -1,33 +1,36 @@
-/**
- * Envía un mensaje con botón, imagen y texto compatible con todas las versiones.
- * @param {Object} conn - Conexión de Baileys
- * @param {String} jid - ID del chat
- * @param {String} title - Texto del botón
- * @param {String} content - Texto del mensaje principal
- * @param {String} footer - Pie del mensaje
- * @param {Buffer} thumbnail - Imagen como buffer
- * @param {String} url - (opcional) Enlace si quieres incluirlo como texto
- * @param {Object} quoted - Mensaje citado
- */
-export async function sendMini(conn, jid, title, content, footer, thumbnail, url, quoted) {
-  try {
-    let message = {
-      image: { jpegThumbnail: thumbnail, url: undefined },
-      caption: content + (url ? `\n\n🌐 ${url}` : ''),
-      footer: footer || '',
-      buttons: [
-        {
-          buttonId: '.help',
-          buttonText: { displayText: title || 'Ver menú' },
-          type: 1
-        }
-      ],
-      headerType: 4 // 4 = mensaje con imagen
-    }
+import fetch from 'node-fetch';
 
-    await conn.sendMessage(jid, message, { quoted })
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  try {
+    const insta = 'https://instagram.com/dev.criss_vx';
+    const img = 'https://files.catbox.moe/xr2m6u.jpg'; // reemplaza con tu imagen
+    const mensaje = `Hola @${m.sender.split('@')[0]}, gracias por usar *Shadow Bot*!\n\nSigue al Dev Criss en Instagram!`;
+
+    await conn.sendMessage(m.chat, {
+      text: mensaje,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        isForwarded: true,
+        forwardingScore: 999,
+        externalAdReply: {
+          title: `${await conn.getName(m.sender)}, gracias por usar Shadow Bot`,
+          body: 'Desarrollado por Dev Criss',
+          thumbnail: await (await fetch(img)).buffer(),
+          sourceUrl: insta,
+          mediaType: 1,
+          renderLargerThumbnail: true
+        }
+      }
+    }, { quoted: m });
+    
   } catch (e) {
-    console.error('[sendMini ERROR]', e)
-    conn.reply(jid, 'Ocurrió un error al enviar el mensaje mini.', quoted)
+    console.error(e);
+    conn.reply(m.chat, '❎ Ocurrió un error al enviar el mensaje.', m);
   }
-}
+};
+
+handler.command = /^promo$/i;
+handler.help = ['promo'];
+handler.tags = ['info'];
+
+export default handler;
