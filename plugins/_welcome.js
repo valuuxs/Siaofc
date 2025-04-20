@@ -150,7 +150,7 @@ if (
           isForwarded: true,
           forwardingScore: 999,
           externalAdReply: {
-            title: `¡Bienvenidx! ${await conn.getName(who)}\nAhora somos ${groupSize} en el grupo`,
+            title: `¡Bienvenidx! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`,
             body: 'ゲ◜៹ New Member ៹◞ゲ',
             thumbnail: img,
             sourceUrl: insta,
