@@ -10,11 +10,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let chat = global.db.data.chats[m.chat]
   let defaultImage = 'https://files.catbox.moe/xr2m6u.jpg'
   let insta = 'https://instagram.com/dev.criss_vx'
-/*
-  let groupSize = participants.length
-  if (m.messageStubType === 27) groupSize++
-  else if (m.messageStubType === 28 || m.messageStubType === 32) groupSize--
-*/
+
 let groupSize = participants.length
 if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) groupSize++
 if (
