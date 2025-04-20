@@ -25,7 +25,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
         isForwarded: true,
         forwardingScore: 999,
         externalAdReply: {
-          title: `${await conn.getName(m.sender)}, This is the Audios Menu.\nYou can follow me on Instagram by clicking here`,
+          title: `${await conn.getName(m.sender)}, This is the Audios Menu. You can follow me on Instagram by clicking here`,
           body: dev,
           thumbnail: await (await fetch(img)).buffer(),
           sourceUrl: insta,
