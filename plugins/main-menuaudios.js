@@ -25,8 +25,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
         isForwarded: true,
         forwardingScore: 999,
         externalAdReply: {
-          title: `${await conn.getName(m.sender)}, Thank for using Morchiyara, you can follow me on Instagram by clicking here`,
-          body: 'Im Dev Criss',
+          title: `${await conn.getName(m.sender)}, This is the Audios Menu.\nYou can follow me on Instagram by clicking here`,
+          body: dev,
           thumbnail: await (await fetch(img)).buffer(),
           sourceUrl: insta,
           mediaType: 1,
@@ -40,16 +40,10 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   }
 };
 
-handler.command = /^(tesmenu)$/i;
+handler.command = /^(menuaudios)$/i;
 handler.fail = null;
 
 export default handler;
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
-function clockString(ms) {
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
-}
