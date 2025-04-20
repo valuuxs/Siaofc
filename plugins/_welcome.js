@@ -177,7 +177,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
 > ${dev}`
 
-      await conn.SendLuffy(m.chat, text, img, {
+      await conn.sendLuffy(m.chat, text, img, {
         title: `¡Bienvenidx! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`,
         body: 'ゲ◜៹ New Member ៹◞ゲ',
         sourceUrl: insta,
@@ -201,7 +201,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
 > ${dev}`
 
-      await conn.SendLuffy(m.chat, text, img, {
+      await conn.sendLuffy(m.chat, text, img, {
         title: `¡Adiós! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`,
         body: 'ゲ◜៹ Kicked Member ៹◞ゲ',
         sourceUrl: insta,
@@ -219,7 +219,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
 > ${dev}`
 
-      await conn.SendLuffy(m.chat, text, img, {
+      await conn.sendLuffy(m.chat, text, img, {
         title: `¡Adiós! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`,
         body: 'ゲ◜៹ Bye Member ៹◞ゲ',
         sourceUrl: insta,
