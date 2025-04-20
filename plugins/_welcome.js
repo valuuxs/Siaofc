@@ -169,7 +169,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   // Salida
- /* if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
+  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
     let text = chat.sBye
       ? chat.sBye
           .replace(/@user/g, taguser)
@@ -179,7 +179,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
       : `*¡Hasta Luego!*\n෫ࣲׄ֟፝͡${taguser} 👋🏻꒱\n\nᏊ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ 𝖦𝗋𝖺𝖼𝗂𝖺𝗌 𝗉𝗈𝗋 𝖾𝗌𝗍𝖺𝗋 𝖺𝗊𝗎𝗂.\n\n> ${dev}`
     await conn.sendLuffy(m.chat, txt1, member1, img, img, insta, fkontak)
   }
-
+/*
   // Expulsión
   if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
     let text = chat.sRemove
