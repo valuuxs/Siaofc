@@ -146,8 +146,8 @@ export async function before(m, { conn, participants, groupMetadata }) {
   } else if (m.messageStubType == 28 || m.messageStubType == 32) {
     groupSize--;
   }
-  let taguser = `@${who.split('@')[0]}`
   let who = m.messageStubParameters[0]
+  let taguser = `@${who.split('@')[0]}`
   let chat = global.db.data.chats[m.chat]
   let txt = `¡Bienvenidx! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`
   let txt1 = `¡Adiós! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`
