@@ -226,11 +226,11 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && m.messageStubType == 27) {
-    let bienvenida = `❀ *Se unió* al grupo *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]} \n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Bienvenido! ¡Esperamos que tengas un excelente día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 ¡Disfruta de tu tiempo con nosotros!`;
+    let bienvenida = `❀ *Se unió* al grupo`;
 
     let img = await generateImage(
       '¡BIENVENIDO/A!',
-      `Disfruta de tu estadía. Ahora somos ${groupSize} miembros.`,
+      `Mari se la come entera`,
       'https://files.catbox.moe/z4s6vg.jpg'
     );
 
@@ -238,11 +238,11 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && m.messageStubType == 28) {
-    let bye = `❀ *Se salió* del grupo  *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]}\n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Nos vemos pronto! ¡Que tengas un buen día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 Próximamente...`;
+    let bye = `❀ *Se salió* del grupooo`;
 
     let img = await generateImage(
       '¡HASTA LUEGO!',
-      `Nos vemos pronto. Ahora somos ${groupSize} miembros.`,
+      `Nos vemos pronto. Ahora somos 9 miembros.`,
       'https://files.catbox.moe/z4s6vg.jpg'
     );
 
@@ -250,11 +250,11 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && m.messageStubType == 32) {
-    let kick = `❀ *Se salió* del grupo  *${groupMetadata.subject.trim()}*\n    ✰ @${m.messageStubParameters[0].split`@`[0]}\n\n    Ꮚ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ ¡Nos vemos pronto! ¡Que tengas un buen día!\n\n> ✐ No olvides usar *#help* si necesitas algo.\n> 🜸 Próximamente...`;
+    let kick = `❀ *Se salió* del grupo`;
 
     let img = await generateImage(
       '¡HASTA LUEGO!',
-      `Nos vemos pronto. Ahora somos ${groupSize} miembros.`,
+      `Nos vemos pronto. Ahora somos 10 miembros.`,
       'https://files.catbox.moe/z4s6vg.jpg'
     );
 
