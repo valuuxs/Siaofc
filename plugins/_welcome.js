@@ -1,4 +1,4 @@
-/*
+
 import { WAMessageStubType } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 
@@ -123,7 +123,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   return true
 }
-*/
+/*
 //⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
 import { WAMessageStubType } from '@whiskeysockets/baileys'
@@ -178,7 +178,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@count/g, groupSize)
       : `*¡Hasta Luego!*\n෫ࣲׄ֟፝͡${taguser} 👋🏻꒱\n\nᏊ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ 𝖦𝗋𝖺𝖼𝗂𝖺𝗌 𝗉𝗈𝗋 𝖾𝗌𝗍𝖺𝗋 𝖺𝗊𝗎𝗂.\n\n> ${dev}`
     await conn.sendLuffy(m.chat, txt1, member1, img, img, redes, fkontak)
-  }
+  } */
 /*
   // Expulsión
   if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
@@ -189,9 +189,9 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@desc/g, groupDesc)
           .replace(/@count/g, groupSize)
       : */
-
+/*
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       let text = `*¡Expulsado!*\n෫ࣲׄ֟፝͡${taguser} 👊🏻꒱\n\n𝖲𝖾 𝗁𝖺 𝗂𝗋 𝗎𝗇 𝗆𝗂𝖾𝗆𝖻𝗋𝗈. 𝖤𝗌𝗉𝖾𝗋𝖺𝗆𝗈𝗌 𝗊𝗎𝖾 𝗋𝖾𝗀𝗋𝖾𝗌𝖾 𝗋𝖾𝖿𝗈𝗋𝗆𝖺𝖽𝗈.\n\n> ${dev}`
     await conn.sendLuffy(m.chat, txt1, member2, img, img, redes, fkontak)
   }
-}
+}*/
