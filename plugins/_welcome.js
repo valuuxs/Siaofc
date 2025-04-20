@@ -169,7 +169,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   // Salida
-  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
+ /* if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
     let text = chat.sBye
       ? chat.sBye
           .replace(/@user/g, taguser)
@@ -188,7 +188,10 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@group/g, groupName)
           .replace(/@desc/g, groupDesc)
           .replace(/@count/g, groupSize)
-      : `*¡Expulsado!*\n෫ࣲׄ֟፝͡${taguser} 👊🏻꒱\n\n𝖲𝖾 𝗁𝖺 𝗂𝗋 𝗎𝗇 𝗆𝗂𝖾𝗆𝖻𝗋𝗈. 𝖤𝗌𝗉𝖾𝗋𝖺𝗆𝗈𝗌 𝗊𝗎𝖾 𝗋𝖾𝗀𝗋𝖾𝗌𝖾 𝗋𝖾𝖿𝗈𝗋𝗆𝖺𝖽𝗈.\n\n> ${dev}`
+      : */
+
+    if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
+      let text = `*¡Expulsado!*\n෫ࣲׄ֟፝͡${taguser} 👊🏻꒱\n\n𝖲𝖾 𝗁𝖺 𝗂𝗋 𝗎𝗇 𝗆𝗂𝖾𝗆𝖻𝗋𝗈. 𝖤𝗌𝗉𝖾𝗋𝖺𝗆𝗈𝗌 𝗊𝗎𝖾 𝗋𝖾𝗀𝗋𝖾𝗌𝖾 𝗋𝖾𝖿𝗈𝗋𝗆𝖺𝖽𝗈.\n\n> ${dev}`
     await conn.sendLuffy(m.chat, txt1, member2, img, img, insta, fkontak)
   }
 }
