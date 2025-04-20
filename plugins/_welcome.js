@@ -141,7 +141,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE
   ) groupSize--
 
-  let insta = 'https://instagram.com/dev.criss_vx'
+  //let insta = 'https://instagram.com/dev.criss_vx'
   let who = m.messageStubParameters[0]
   let taguser = `@${who.split('@')[0]}`
   let username = await conn.getName(who)
@@ -165,7 +165,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@desc/g, groupDesc)
           .replace(/@count/g, groupSize)
       : `*¡Bienvenido(a)!*\n෫ࣲׄ֟፝͡${taguser} 🫶🏻꒱\n\nᦷᩘᦷ   ݂ 𝖣𝗂𝗌𝖿𝗋𝗎𝗍𝖺 𝖽𝖾 𝗍𝗎 𝖾𝗌𝗍𝖺𝖽𝗂𝖺.\n✎ 𝖴𝗌𝖺 *#help* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗅𝖺 𝗅𝗂𝗌𝗍𝖺 𝖽𝖾 𝖼𝗈𝗆𝖺𝗇𝖽𝗈𝗌.\n\n> ${dev}`
-    await conn.sendLuffy(m.chat, txt, member, img, img, insta, fkontak)
+    await conn.sendLuffy(m.chat, txt, member, img, img, redes, fkontak)
   }
 
   // Salida
@@ -177,7 +177,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@desc/g, groupDesc)
           .replace(/@count/g, groupSize)
       : `*¡Hasta Luego!*\n෫ࣲׄ֟፝͡${taguser} 👋🏻꒱\n\nᏊ⁠˘⁠ ⁠ꈊ⁠ ⁠˘⁠ ⁠Ꮚ 𝖦𝗋𝖺𝖼𝗂𝖺𝗌 𝗉𝗈𝗋 𝖾𝗌𝗍𝖺𝗋 𝖺𝗊𝗎𝗂.\n\n> ${dev}`
-    await conn.sendLuffy(m.chat, txt1, member1, img, img, insta, fkontak)
+    await conn.sendLuffy(m.chat, txt1, member1, img, img, redes, fkontak)
   }
 /*
   // Expulsión
@@ -192,6 +192,6 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       let text = `*¡Expulsado!*\n෫ࣲׄ֟፝͡${taguser} 👊🏻꒱\n\n𝖲𝖾 𝗁𝖺 𝗂𝗋 𝗎𝗇 𝗆𝗂𝖾𝗆𝖻𝗋𝗈. 𝖤𝗌𝗉𝖾𝗋𝖺𝗆𝗈𝗌 𝗊𝗎𝖾 𝗋𝖾𝗀𝗋𝖾𝗌𝖾 𝗋𝖾𝖿𝗈𝗋𝗆𝖺𝖽𝗈.\n\n> ${dev}`
-    await conn.sendLuffy(m.chat, txt1, member2, img, img, insta, fkontak)
+    await conn.sendLuffy(m.chat, txt1, member2, img, img, redes, fkontak)
   }
 }
