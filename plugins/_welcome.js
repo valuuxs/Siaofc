@@ -5,6 +5,7 @@ import fetch from 'node-fetch'
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return true
 
+
   let who = m.messageStubParameters[0]
   let taguser = `@${who.split('@')[0]}`
   let chat = global.db.data.chats[m.chat]
@@ -136,21 +137,29 @@ import fetch from 'node-fetch'
 
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return !0;
+
   let pp = await conn.profilePictureUrl(m.messageStubParameters[0], 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
   let img = await (await fetch(`${pp}`)).buffer()
-  let chat = global.db.data.chats[m.chat]
-  let txt = 'ゲ◜៹ New Member ៹◞ゲ'
-  let txt1 = 'ゲ◜៹ Bye Member ៹◞ゲ'
   let groupSize = participants.length
   if (m.messageStubType == 27) {
     groupSize++;
   } else if (m.messageStubType == 28 || m.messageStubType == 32) {
     groupSize--;
   }
+  let taguser = `@${who.split('@')[0]}`
+  let who = m.messageStubParameters[0]
+  let chat = global.db.data.chats[m.chat]
+  let txt = `¡Bienvenidx! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`
+  let txt1 = `¡Adiós! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`
+  let txt2 = `¡Adiós! ${await conn.getName(who)}\nAhora somos ${groupSize} miembros en el grupo`
+  let member = 'ゲ◜៹ New Member ៹◞ゲ'
+  let member1 = 'ゲ◜៹ Bye Member ៹◞ゲ'
+  let member2 = 'ゲ◜៹ Kicked Member ៹◞ゲ'
+
 
   if (chat.welcome && m.messageStubType == 27) {
-    let bienvenida = `❀ *Bienvenido* a ${groupMetadata.subject}\n✰ @${m.messageStubParameters[0].split`@`[0]}\n✦ Ahora somos ${groupSize} Miembros.\n•(=^●ω●^=)• Disfruta tu estadía en el grupo!\n> ✐ Puedes usar *#help* para ver la lista de comandos.`    
-    await conn.sendLuffy(m.chat, txt, dev, bienvenida, img, img, redes, fkontak)
+    let bienvenida = `*¡Bienvenido(a)!*\n෫ࣲׄ֟፝͡${taguser} 🫶🏻꒱\n\nᦷᩘᦷ   ݂ 𝖣𝗂𝗌𝖿𝗋𝗎𝗍𝖺 𝖽𝖾 𝗍𝗎 𝖾𝗌𝗍𝖺𝖽𝗂𝖺.\n✎ 𝖴𝗌𝖺 *#help* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗅𝖺 𝗅𝗂𝗌𝗍𝖺 𝖽𝖾 𝖼𝗈𝗆𝖺𝗇𝖽𝗈𝗌.\n\n> ${dev}`    
+    await conn.sendLuffy(m.chat, txt, member, bienvenida, img, img, redes, fkontak)
   }
 
   if (chat.welcome && (m.messageStubType == 28 || m.messageStubType == 32)) {
