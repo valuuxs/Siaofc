@@ -143,7 +143,9 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let groupSize = participants.length
   if (m.messageStubType == 27) {
     groupSize++;
-  } else if (m.messageStubType == 28 || m.messageStubType == 32) {
+  } if (m.messageStubType == 28) {
+    groupSize++;
+  } if (m.messageStubType == 32) {
     groupSize--;
   }
   let who = m.messageStubParameters[0]
