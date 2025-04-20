@@ -113,8 +113,8 @@ export async function before(m, { conn, participants, groupMetadata }) {
           isForwarded: true,
           forwardingScore: 999,
           externalAdReply: {
-            title: `¡Bienvenido/a! ${await conn.getName(who)}, bienvenido a ${groupName}`,
-            body: 'By Dev Criss',
+            title: `¡Bienvenido/a! ${await conn.getName(who)}, al grupo ${groupName}`,
+            body: 'ゲ◜៹ 𝖭𝖾𝗐 𝖬𝖾𝗆𝖻𝖾𝗋 ៹◞ゲ',
             thumbnail: img,
             sourceUrl: insta,
             mediaType: 1,
@@ -148,8 +148,8 @@ export async function before(m, { conn, participants, groupMetadata }) {
           isForwarded: true,
           forwardingScore: 999,
           externalAdReply: {
-            title: `${await conn.getName(who)} ha salido de ${groupName}`,
-            body: 'By Dev Criss',
+            title: `¡Hasta Luego! ${await conn.getName(who)}, del grupo ${groupName}`,
+            body: 'ゲ◜៹ 𝖡𝗒𝖾 𝖬𝖾𝗆𝖻𝖾𝗋 ៹◞ゲ',
             thumbnail: img,
             sourceUrl: insta,
             mediaType: 1,
