@@ -148,7 +148,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   let chat = global.db.data.chats[m.chat]
   let txt = `¡Bienvenidx! ${username}\nAhora somos ${groupSize} miembros en el grupo`
   let txt1 = `¡Adiós! ${username}\nAhora somos ${groupSize} miembros en el grupo`
-  let txt2 = `¡Adiós! ${username}\nAhora somos ${groupSize} miembros en el grupo`
+  //let txt2 = `¡Adiós! ${username}\nAhora somos ${groupSize} miembros en el grupo`
   let member = 'ゲ◜៹ New Member ៹◞ゲ'
   let member1 = 'ゲ◜៹ Bye Member ៹◞ゲ'
   let member2 = 'ゲ◜៹ Kicked Member ៹◞ゲ'
@@ -189,6 +189,6 @@ export async function before(m, { conn, participants, groupMetadata }) {
           .replace(/@desc/g, groupDesc)
           .replace(/@count/g, groupSize)
       : `*¡Expulsado!*\n෫ࣲׄ֟፝͡${taguser} 👊🏻꒱\n\n𝖲𝖾 𝗁𝖺 𝗂𝗋 𝗎𝗇 𝗆𝗂𝖾𝗆𝖻𝗋𝗈. 𝖤𝗌𝗉𝖾𝗋𝖺𝗆𝗈𝗌 𝗊𝗎𝖾 𝗋𝖾𝗀𝗋𝖾𝗌𝖾 𝗋𝖾𝖿𝗈𝗋𝗆𝖺𝖽𝗈.\n\n> ${dev}`
-    await conn.sendLuffy(m.chat, txt2, member2, img, img, insta, fkontak)
+    await conn.sendLuffy(m.chat, txt1, member2, img, img, insta, fkontak)
   }
 }
