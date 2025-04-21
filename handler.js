@@ -91,6 +91,8 @@ export async function handler(chatUpdate) {
                     chat.sWelcome = ''
                 if (!('sBye' in chat))
                     chat.sBye = ''
+                if (!('sKick' in chat))
+                    chat.sKick = ''
                 if (!('audios' in chat))
                     chat.audios = false
                 if (!('detect' in chat))
@@ -125,6 +127,7 @@ export async function handler(chatUpdate) {
                     welcome: false,
                     sWelcome: '',
                     sBye: '',
+                    sKick: '',
                     delete: false,
                     audios: false,
                     detect: true,
