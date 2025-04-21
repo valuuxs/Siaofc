@@ -36,6 +36,10 @@ if (chat.welcome && m.messageStubType == 27) {
   await conn.sendLuffy(m.chat, txt, sunflare, bienvenida, img, img, insta, fkontak)
 }
 
+if (chat.welcome && m.messageStubType == 28) {
+  const groupName = groupMetadata.subject
+  const groupDesc = groupMetadata.desc || 'sin descripción'
+
   let ban = chat.sKick
     ? chat.sKick
         .replace(/@user/g, taguser)
