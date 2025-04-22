@@ -1,32 +1,43 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const handler = async (m, { text, conn }) => {
-    if (!text) return conn.reply(m.chat, '*✍️ Escribe algo para preguntarle a la IA.*', m);
+let handler = async (m, { conn, usedPrefix, command, text }) => {
+  const username = `${conn.getName(m.sender)}`
+  
+  if (!text) {
+    return conn.reply(m.chat, `💬 Ingresa una pregunta para consultar con ChatGPT`, m)
+  }
 
-    const contexto = `Eres un bot llamado Shadow Bot, muy inteligente, amable y con sentido del humor. Responde lo siguiente: ${text}`;
+  await conn.sendPresenceUpdate('composing', m.chat)
 
-    try {
-        await conn.sendPresenceUpdate('composing', m.chat);
-        await conn.sendMessage(m.chat, { react: { text: '💭', key: m.key } });
+  const basePrompt = `Tu nombre es ChatGPT, un modelo avanzado de lenguaje creado por OpenAI. Llamarás al usuario por su nombre ${username}. Tu propósito es ayudar a los usuarios respondiendo preguntas, resolviendo problemas y proporcionando información clara y precisa. Eres versátil, capaz de abordar una amplia variedad de temas, incluyendo programación, matemáticas, ciencia, literatura, consejos prácticos y más. Te comunicas de manera amigable, profesional y accesible. No emites juicios personales y siempre intentas ser objetivo y útil. Tu conocimiento se basa en información hasta enero de 2025. Simulas empatía para ofrecer una interacción más humana. Respeta las normas éticas y de privacidad.`
 
-        const res = await axios.get('https://api.sylphy.xyz/ai/chatgpt', {
-            params: {
-                text: contexto,
-                apikey: 'sylph'
-            }
-        });
+  const promptFinal = `${basePrompt} Responde lo siguiente: ${text}`
 
-        const reply = res.data?.result || '*❌ No se recibió respuesta de la IA.*';
-        return conn.reply(m.chat, reply, m);
+  try {
+    const response = await obtenerRespuestaChatGPT(promptFinal)
+    await conn.reply(m.chat, response, m)
+  } catch (error) {
+    console.error('*❌ Error al obtener la respuesta:*', error)
+    await conn.reply(m.chat, '*Error: intenta más tarde.*', m)
+  }
+}
 
-    } catch (err) {
-        console.error(err);
-        return conn.reply(m.chat, '*❌ Hubo un error al contactar con la IA.*', m);
-    }
-};
+handler.help = ['chatgpt']
+handler.tags = ['inteligencia']
+handler.command = ['chatgpt', 'gpt']
+export default handler
 
-handler.command = ['gpt'];
-handler.help = ['gpt <texto>'];
-handler.tags = ['ai'];
-
-export default handler;
+async function obtenerRespuestaChatGPT(texto) {
+  try {
+    const res = await axios.get('https://api.sylphy.xyz/ai/chatgpt', {
+      params: {
+        text: texto,
+        apikey: 'sylph'
+      }
+    })
+    return res.data.result || 'No se pudo obtener una respuesta válida.'
+  } catch (error) {
+    console.error('*❌ Error en la API de Sylphy:*', error)
+    throw error
+  }
+}
