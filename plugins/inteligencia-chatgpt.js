@@ -1,16 +1,32 @@
-import fetch from 'node-fetch'
+import axios from 'axios';
 
-let handler = async (m, { conn, text }) => {
-if (!text) return m.reply('Ingresa un texto')
+const handler = async (m, { text, conn }) => {
+    if (!text) return conn.reply(m.chat, '*✍️ Escribe algo para preguntarle a la IA.*', m);
 
-try {
-let api = await fetch(`https://deliriussapi-oficial.vercel.app/ia/chatgpt?q=${text}`)
-let json = await api.json()
-m.reply(json.data)
-} catch (error) {
-console.error(error)
-}}
+    const contexto = `Eres un bot llamado Shadow Bot, muy inteligente, amable y con sentido del humor. Responde lo siguiente: ${text}`;
 
-handler.command = ['chatgpt']
+    try {
+        await conn.sendPresenceUpdate('composing', m.chat);
+        await conn.sendMessage(m.chat, { react: { text: '💭', key: m.key } });
 
-export default handler
+        const res = await axios.get('https://api.sylphy.xyz/ai/chatgpt', {
+            params: {
+                text: contexto,
+                apikey: 'sylph'
+            }
+        });
+
+        const reply = res.data?.result || '*❌ No se recibió respuesta de la IA.*';
+        return conn.reply(m.chat, reply, m);
+
+    } catch (err) {
+        console.error(err);
+        return conn.reply(m.chat, '*❌ Hubo un error al contactar con la IA.*', m);
+    }
+};
+
+handler.command = ['gpt'];
+handler.help = ['gpt <texto>'];
+handler.tags = ['ai'];
+
+export default handler;
