@@ -8,17 +8,16 @@ import axios from 'axios'
 import moment from 'moment-timezone' 
 
 global.owner = [
-   ['51927238856', 'Cristian Escobar', true],
+   ['51927238856', 'Dev.Criss', true],
    ['51965911060', 'Shadow', true],
-   ['5493865536185', 'Kenisawa (Colab)', false],
-   ['51990841568', 'Colaborador', false]
+   ['5493865536185', 'Kenisawa (Colab)', false]
 ]
 
 global.creadorbot = [
    ['51927238856', 'Cristian Escobar', true]
 ]
 
-global.mods = ['51990841568', '51965911060']
+global.mods = ['51990841568', '51953587566']
 global.prems = ['51965911060']
 
 
@@ -46,10 +45,10 @@ global.repobot = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
 global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
 global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
-global.insta = 'https://www.instagram.com/shadowbot.md'
+global.insta = 'https://www.instagram.com/dev.criss_vx'
 
 
-global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "543876577197-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'MOONFORCE 乂 TEAM', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "543876577197-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'Sunflare 乂 Team', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
 
 global.cheerio = cheerio
