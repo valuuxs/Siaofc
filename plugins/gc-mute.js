@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 const handler = async (m, { conn, command, text, isAdmin, participants }) => {
     const userId = m.mentionedJid && m.mentionedJid[0] 
@@ -48,4 +48,4 @@ handler.admin = true;
 handler.botAdmin = true;
 handler.rowner = true;
 
-export default handler;
+export default handler;*/
