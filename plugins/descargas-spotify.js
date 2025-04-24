@@ -27,7 +27,8 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     }
 
     // Descargar desde la API
-    const response = await fetch(`https://dark-core-api.vercel.app/api/download/spotify?key=api&url=${encodeURIComponent(url)}`);
+    //const response = await fetch(`https://dark-core-api.vercel.app/api/download/spotify?key=api&url=${encodeURIComponent(url)}`);
+const response = await fetch(`https://api.vreden.my.id/api/spotify?url=${encodeURIComponent(url)}`);
     const result = await response.json();
 
     if (result.success && result.downloadLink) {
