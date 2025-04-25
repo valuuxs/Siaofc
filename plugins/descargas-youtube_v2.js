@@ -12,7 +12,7 @@ async function searchYouTube(query) {
 }
 
 async function ssvidDownloader(url, forceType = null) {
-  if (!/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(url)) throw 'URL tidak valid'
+  if (!/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(url)) throw m.reply('URL no valida')
 
   const res = await axios.post(
     'https://ssvid.net/api/ajax/search',
@@ -139,7 +139,7 @@ const handler = async (m, { text, command, conn }) => {
   if (command === 'ytmp4_2') {
     if (!text.includes('youtu')) throw m.reply('No es un link de YouTube valido')
     const res = await ssvidDownloader(text, 'video')
-    const caption = `\`Y O U T U B E - V I D E O\`\n\n🎀 Título: ${res.title}\n✨ Autor: ${res.author}\n🕐 Durasi: ${res.duration}\n📌 Calidad: ${res.download.quality}`
+    const caption = `\`Y O U T U B E - V I D E O\`\n\n🎀 Título: ${res.title}\n✨ Autor: ${res.author}\n🕐 Duración: ${res.duration}\n📌 Calidad: ${res.download.quality}`
 
     await conn.sendMessage(m.chat, {
       video: { url: res.download.url },
