@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+function formatNumber(n) {
+  return Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
+}
+
 let handler = async (m, { usedPrefix, command, conn, text }) => {
   if (!text) return m.reply(`🔎 Por favor, ingresa un usuario de Instagram para stalkear.\n> *Ejemplo:* ${usedPrefix + command} dev.criss_vx`);
 
@@ -13,13 +17,15 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     let user = res.data;
     let profilePic = user.profile_pic_url_hd || 'https://files.catbox.moe/xr2m6u.jpg';
 
+    let verifiedMark = user.is_verified ? ' ✅' : '';
+
     let teks = `乂 *STALKER - INSTAGRAM*\n\n` +
-      `*◦ Usuario:* ${user.username}\n` +
+      `*◦ Usuario:* ${user.username}${verifiedMark}\n` +
       `*◦ Nombre completo:* ${user.full_name || 'No disponible'}\n` +
       `*◦ ID:* ${user.id}\n` +
-      `*◦ Seguidores:* ${user.followers_count}\n` +
-      `*◦ Siguiendo:* ${user.following_count}\n` +
-      `*◦ Publicaciones:* ${user.media_count}\n` +
+      `*◦ Seguidores:* ${formatNumber(user.followers_count)}\n` +
+      `*◦ Siguiendo:* ${formatNumber(user.following_count)}\n` +
+      `*◦ Publicaciones:* ${formatNumber(user.media_count)}\n` +
       `*◦ Descripción:* ${user.biography || 'Sin descripción'}\n` +
       `*◦ Web:* ${user.external_url || 'No disponible'}\n` +
       `*◦ Verificada:* ${user.is_verified ? '✅ Sí' : '❌ No'}\n` +
@@ -28,7 +34,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
 
     await conn.sendMessage(m.chat, { image: { url: profilePic }, caption: teks.trim() }, { quoted: m });
     await m.react('✅');
-    
+
   } catch (err) {
     console.error(err);
     m.reply('*❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*');
