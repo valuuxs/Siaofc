@@ -1,31 +1,29 @@
 import axios from 'axios';
 
-function formatNumber(n) {
-  return Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-}
-
 let handler = async (m, { usedPrefix, command, conn, text }) => {
-  if (!text) return m.reply(`🔎 Por favor, ingresa un usuario de Instagram para stalkear.\n> *Ejemplo:* ${usedPrefix + command} dev.criss_vx`);
+  if (!text) {
+    return m.reply(`🔎 Por favor, ingresa un usuario de Instagram para stalkear.\n> *Ejemplo:* ${usedPrefix + command} dev.criss_vx`);
+  }
 
   try {
     await m.react('⏳');
 
-    let { data: res } = await axios.get(`https://api.vreden.my.id/api/igstalk?query=${encodeURIComponent(text)}`, { timeout: 15000 });
+    const { data: res } = await axios.get(`https://api.vreden.my.id/api/igstalk?query=${encodeURIComponent(text)}`, { timeout: 15000 });
 
-    if (res.status !== 200 || !res.data) throw 'No se encontró el usuario.';
+    if (!res || res.status !== 200 || !res.data || !res.data.username) {
+      throw 'Usuario no encontrado o datos incompletos.';
+    }
 
-    let user = res.data;
-    let profilePic = user.profile_pic_url_hd || 'https://files.catbox.moe/xr2m6u.jpg';
+    const user = res.data;
+    const profilePic = user.profile_pic_url_hd || 'https://files.catbox.moe/xr2m6u.jpg';
 
-    let verifiedMark = user.is_verified ? ' ✅' : '';
-
-    let teks = `乂 *STALKER - INSTAGRAM*\n\n` +
-      `*◦ Usuario:* ${user.username}${verifiedMark}\n` +
+    const teks = `乂 *STALKER - INSTAGRAM*\n\n` +
+      `*◦ Usuario:* ${user.username}\n` +
       `*◦ Nombre completo:* ${user.full_name || 'No disponible'}\n` +
       `*◦ ID:* ${user.id}\n` +
-      `*◦ Seguidores:* ${formatNumber(user.followers_count)}\n` +
-      `*◦ Siguiendo:* ${formatNumber(user.following_count)}\n` +
-      `*◦ Publicaciones:* ${formatNumber(user.media_count)}\n` +
+      `*◦ Seguidores:* ${user.followers_count}\n` +
+      `*◦ Siguiendo:* ${user.following_count}\n` +
+      `*◦ Publicaciones:* ${user.media_count}\n` +
       `*◦ Descripción:* ${user.biography || 'Sin descripción'}\n` +
       `*◦ Web:* ${user.external_url || 'No disponible'}\n` +
       `*◦ Verificada:* ${user.is_verified ? '✅ Sí' : '❌ No'}\n` +
@@ -36,8 +34,22 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     await m.react('✅');
 
   } catch (err) {
-    console.error(err);
-    m.reply('*❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*');
+    console.error('Error en IGStalk:', err);
+
+    // Detectamos tipo de error
+    let errorMsg = '*❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*';
+
+    if (axios.isAxiosError(err)) {
+      if (err.code === 'ECONNABORTED') {
+        errorMsg = '*❌ Error: La API tardó demasiado en responder (timeout).*';
+      } else if (err.response) {
+        errorMsg = `*❌ Error: Fallo del servidor (${err.response.status}).*`;
+      }
+    } else if (typeof err === 'string') {
+      errorMsg = `*❌ ${err}*`;
+    }
+
+    m.reply(errorMsg);
   }
 };
 
