@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     if (!contentType || !contentType.startsWith('video/')) throw m.reply('error en la API.')
 
    
-    let bratSticker = await sticker(res.data, null, global?.info?.packname ?? m.name ?? '', global.info.author)
+    let bratSticker = await sticker(res.data, null, global.packname, global.author)
     
     
     await conn.sendFile(m.chat, bratSticker, null, { asSticker: true }, m)
