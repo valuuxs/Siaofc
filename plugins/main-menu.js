@@ -18,7 +18,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
-        await m.react('🍪')
+        await m.react('☁️')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/pk3xxk.jpg')
 
@@ -74,8 +74,11 @@ ${readMore}
 ര ׄ 📥˚ ${usedPrefix}ytmp4doc *texto*
 ര ׄ 📥˚ ${usedPrefix}ytmp3doc *texto*
 ര ׄ 📥˚ ${usedPrefix}apk *texto*
+ര ׄ 📥˚ ${usedPrefix}aptoide *texto*
+ര ׄ 📥˚ ${usedPrefix}modapk *texto*
 ര ׄ 📥˚ ${usedPrefix}pinterest *texto*
 ര ׄ 📥˚ ${usedPrefix}capcut *url*
+ര ׄ 📥˚ ${usedPrefix}pindl *url*
 ര ׄ 📥˚ ${usedPrefix}pinvid *url*
 ര ׄ 📥˚ ${usedPrefix}ytmp4 *url*
 ര ׄ 📥˚ ${usedPrefix}ytmp3 *url*
@@ -106,12 +109,13 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}gnula *texto*
 ര ׄ 🔎˚ ${usedPrefix}mercadolibre *texto*
 ര ׄ 🔎˚ ${usedPrefix}ffstalk *id*
+ര ׄ 🔎˚ ${usedPrefix}ttstalk *username*
+ര ׄ 🔎˚ ${usedPrefix}igstalk *username*
 
 𓂂𓏸  𐅹੭੭   *\`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs\`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
-ര ׄ ☕˚ ${usedPrefix}shadow *texto*
-ര ׄ ☕˚ ${usedPrefix}flux *texto*
 ര ׄ ☕˚ ${usedPrefix}chatgpt *texto*
+ര ׄ ☕˚ ${usedPrefix}flux *texto*
 ര ׄ ☕˚ ${usedPrefix}imgg *texto*
 ര ׄ ☕˚ ${usedPrefix}imgg2 *texto*
 
@@ -141,6 +145,7 @@ ${readMore}
 ര ׄ 🪸˚ ${usedPrefix}toptt *vid*
 ര ׄ 🪸˚ ${usedPrefix}tourl *vid*
 ര ׄ 🪸˚ ${usedPrefix}tomp3 *vid*
+ര ׄ 🪸˚ ${usedPrefix}tovid *sticker*
 ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
 
 𓂂𓏸  𐅹੭੭   *\`hᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
@@ -150,6 +155,8 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}fake *texto + user + texto*
 ര ׄ ⚒️˚ ${usedPrefix}traducir *idioma + texto*
 ര ׄ ⚒️˚ ${usedPrefix}hd *img*
+ര ׄ ⚒️˚ ${usedPrefix}remini *img*
+ര ׄ ⚒️˚ ${usedPrefix}background *img*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ⚒️˚ ${usedPrefix}whatmusic *vid*
 ര ׄ ⚒️˚ ${usedPrefix}flag *país*
@@ -176,8 +183,9 @@ ${readMore}
 ര ׄ 🌵˚ Admins *texto*
 ര ׄ 🌵˚ ${usedPrefix}todos *texto*
 ര ׄ 🌵˚ ${usedPrefix}setwelcome *texto*
-ര ׄ 🌵˚ ${usedPrefix}groupdesc *texto*
+ര ׄ 🌵˚ ${usedPrefix}setremove *texto*
 ര ׄ 🌵˚ ${usedPrefix}setbye *texto*
+ര ׄ 🌵˚ ${usedPrefix}groupdesc *texto*
 ര ׄ 🌵˚ ${usedPrefix}promote *@tag*
 ര ׄ 🌵˚ ${usedPrefix}demote *@tag*
 ര ׄ 🌵˚ ${usedPrefix}kick *@tag*
@@ -246,8 +254,9 @@ ${readMore}
 ര ׄ 🐚˚ ${usedPrefix}acertijo
 ര ׄ 🐚˚ ${usedPrefix}trivia
 
-𓂂𓏸  𐅹੭੭   *\`ᥲᥒіmᥱ\`*   🐚ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`ᥲᥒіmᥱ\`*   ᰨᰍ
 ര ׄ 🏕️˚ ${usedPrefix}messi
+ര ׄ 🏕️˚ ${usedPrefix}cr7
 
 𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🔥ᩚ꤬ᰨᰍ
 ര ׄ 🔥˚ ${usedPrefix}violar *@tag*
@@ -273,8 +282,10 @@ ${readMore}
 ര ׄ 🍦˚ ${usedPrefix}sticker *img*
 ര ׄ 🍦˚ ${usedPrefix}sticker *vid*
 ര ׄ 🍦˚ ${usedPrefix}brat *texto*
+ര ׄ 🍦˚ ${usedPrefix}bratv *texto*
 ര ׄ 🍦˚ ${usedPrefix}qc *texto*
 ര ׄ 🍦˚ ${usedPrefix}dado
+ര ׄ 🍦˚ ${usedPrefix}reloj
 
 𓂂𓏸  𐅹੭੭   *\`r⍴g\`*   💸ᩚ꤬ᰨᰍ
 ര ׄ 💸˚ ${usedPrefix}minar
@@ -317,7 +328,7 @@ ${readMore}
             gifAttribution: 0
         }, { quoted: null })
     } catch (e) {
-        await m.reply(`*[ ℹ️ ] Ocurrió un error al enviar el menú.*\n\n${e}`)
+        await m.reply(`*☕ Ocurrió un error al enviar el menú.*\n\n${e}`)
     }
 }
 
