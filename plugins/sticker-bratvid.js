@@ -4,7 +4,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   const query = text || m.quoted?.text || m.quoted?.caption || m.quoted?.description
-  if (!query) throw m.reply(`Ingresa el texto, Ejemplo:\n\n${usedPrefix + command} Hola mundo!`)
+  if (!query) throw m.reply(`Ingresa el texto, Ejemplo:\n${usedPrefix + command} Hola mundo!`)
   m.react('🕐')
 
   try {
@@ -40,7 +40,7 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   const query = text || m.quoted?.text || m.quoted?.caption || m.quoted?.description
-  if (!query) return m.reply(`🍪 Ingresa un texto.\n\n> \`\`\`Ejemplo:\`\`\`\n${usedPrefix + commad} Hola Mundo`)
+  if (!query) return m.reply(`*🍪 Ingresa un texto.*\n> *\`Ejemplo:\`*\n${usedPrefix + commad} Hola Mundo`)
   
   if (query.length > 100) {
     return m.reply('*⚠️ El texto es demasiado largo. Usa menos de 100 caracteres.*')
