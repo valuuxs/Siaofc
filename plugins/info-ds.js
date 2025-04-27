@@ -1,6 +1,6 @@
 
-//Codigo hecho por @Fabri115 y mejorado por BrunoSobrino */
-
+//Codigo hecho por @Fabri115 y mejorado por BrunoSobrino 
+/*
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 
@@ -41,4 +41,4 @@ handler.help = ['ds', 'fixmsgespera']
 handler.tags = ['info']
 handler.command = /^(fixmsgespera|ds)$/i
 
-export default handler
+export default handler*/
