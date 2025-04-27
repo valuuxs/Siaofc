@@ -254,9 +254,9 @@ ${readMore}
 ര ׄ 🐚˚ ${usedPrefix}acertijo
 ര ׄ 🐚˚ ${usedPrefix}trivia
 
-𓂂𓏸  𐅹੭੭   *\`ᥲᥒіmᥱ\`*   ᰨᰍ
-ര ׄ 🏕️˚ ${usedPrefix}messi
-ര ׄ 🏕️˚ ${usedPrefix}cr7
+𓂂𓏸  𐅹੭੭   *\`ᥲᥒіmᥱ\`*   ☁ᩚ꤬ᰨᰍ️
+ര ׄ ☁️˚ ${usedPrefix}messi
+ര ׄ ☁️˚ ${usedPrefix}cr7
 
 𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🔥ᩚ꤬ᰨᰍ
 ര ׄ 🔥˚ ${usedPrefix}violar *@tag*
