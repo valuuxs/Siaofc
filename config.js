@@ -10,7 +10,8 @@ import moment from 'moment-timezone'
 global.owner = [
    ['51927238856', 'Dev.Criss', true],
    ['51965911060', 'Shadow', true],
-   ['5493865536185', 'Kenisawa (Colab)', false]
+   ['5493865536185', 'Kenisawa (Colab)', false],
+   ['56940074825', 'Undefined', false]
 ]
 
 global.creadorbot = [
