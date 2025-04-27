@@ -35,47 +35,59 @@ handler.limit = false
 
 export default handler
 */
-import { sticker } from '../lib/sticker.js'
-import fetch from 'node-fetch'
 
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-  const query = text || m.quoted?.text || m.quoted?.caption || m.quoted?.description
-  if (!query) return m.reply(`*🍪 Ingresa un texto.*\n> *\`Ejemplo:\`*\n${usedPrefix + commad} Hola Mundo`)
-  
-  if (query.length > 100) {
-    return m.reply('*⚠️ El texto es demasiado largo. Usa menos de 100 caracteres.*')
-  }
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import { tmpdir } from 'os';
 
-  try {
-    await m.react('⏳')
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    const url = `https://api.nekorinn.my.id/maker/bratvid?text=${encodeURIComponent(query)}`
-    const res = await fetch(url)
+const fetchSticker = async (text, attempt = 1) => {
+    try {
+        const response = await axios.get('https://api.nekorinn.my.id/maker/bratvid', {
+            params: { text },
+            responseType: 'arraybuffer',
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response?.status === 429 && attempt <= 3) {
+            const retryAfter = Number(error.response.headers['retry-after']) || 5;
+            await delay(retryAfter * 1000);
+            return fetchSticker(text, attempt + 1);
+        }
+        throw error;
+    }
+};
 
-    if (!res.ok) {
-      return m.reply('Error: La API no pudo procesar tu solicitud. Intenta más tarde.')
+const handler = async (m, { text, conn }) => {
+    if (!text) {
+        return conn.reply(m.chat, '*🍪 Por favor, ingresa un texto para realizar tu sticker.*', m);
     }
 
-    const contentType = res.headers.get('content-type') || ''
-    if (!contentType.startsWith('video/')) {
-      return m.reply('Error interno: La API no devolvió un video válido.')
+    let outputFilePath;
+    try {
+        const buffer = await fetchSticker(text);
+        outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
+        fs.writeFileSync(outputFilePath, buffer);
+
+        await conn.sendMessage(m.chat, {
+            sticker: { url: outputFilePath },
+        }, { quoted: m });
+    } catch (error) {
+        console.error('Error en bratvid:', error?.response?.data || error);
+        return conn.sendMessage(m.chat, {
+            text: '*❌ Error en la API.*',
+        }, { quoted: m });
+    } finally {
+        if (outputFilePath && fs.existsSync(outputFilePath)) {
+            fs.unlinkSync(outputFilePath);
+        }
     }
+};
 
-    const buffer = await res.buffer()
-    const bratSticker = await sticker(buffer, { packname: global.packname, author: global.author })
+handler.command = ['bratvid'];
+handler.tags = ['sticker'];
+handler.help = ['bratvid <texto>'];
 
-    await conn.sendFile(m.chat, bratSticker, null, { asSticker: true }, m)
-    await m.react('✅')
-
-  } catch (err) {
-    console.error(err)
-    m.reply('❌ Error de conexión o interno. Por favor intenta nuevamente más tarde.')
-  }
-}
-
-handler.help = ['bratvid <texto>']
-handler.command = ['bratvid']
-handler.tags = ['sticker']
-handler.limit = false
-
-export default handler
+export default handler;
