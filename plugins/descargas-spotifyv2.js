@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 if (!text) throw m.reply(`🥞 Por favor, ingresa el nombre de una canción de Spotify.`);
-m.react('🕒');
+await m.react('🕒');
 let ouh = await fetch(`https://api.nekorinn.my.id/downloader/spotifyplay?q=${text}`)
 let gyh = await ouh.json()
 
@@ -11,6 +11,6 @@ await m.react('✅');
 }
 handler.help = ['spotify_v2 *<texto>*']
 handler.tags = ['descargas']
-handler.command = ['spotify']
+handler.command = ['spotify_v2']
 
 export default handler
