@@ -1,13 +1,13 @@
 
 let handler = async (m, { conn, usedPrefix, command, text}) => {
-    if (!text) return m.reply(`*Ejemplo:* ${usedPrefix + command} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]\n\n*Uso:* ${prefix + command} Hello World! | erickson | erickson | 1000 | 500 | 100 | Twitter | https://files.image/example.jpg | https://files.image/example.jpg\n\nLos que están entre paréntesis son opcionales`)
+    if (!text) return m.reply(`*Ejemplo:* ${usedPrefix + command} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]\n\n*Uso:* ${usedPrefix + command} Hello World! | erickson | erickson | 1000 | 500 | 100 | Twitter | https://files.image/example.jpg | https://files.image/example.jpg\n\nLos que están entre paréntesis son opcionales`)
 
     const parts = text.split('|').map(part => part.trim())
 
     const tweet = parts[0]
     const username = parts[1]
 
-    if (!tweet || !username || parts.length < 2) return m.reply(`*Ejemplo:* ${usedPrefix + command} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]\n\n*Uso:* ${prefix + command} Hello World! | erickson | erickson | 1000 | 500 | 100 | Twitter | https://files.image/example.jpg | https://files.image/example.jpg\n\nLos que están entre paréntesis son opcionales`)
+    if (!tweet || !username || parts.length < 2) return m.reply(`*Ejemplo:* ${usedPrefix + command} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]\n\n*Uso:* ${usedPrefix + command} Hello World! | erickson | erickson | 1000 | 500 | 100 | Twitter | https://files.image/example.jpg | https://files.image/example.jpg\n\nLos que están entre paréntesis son opcionales`)
 
     const usernames = username.replace(/\s/g, '')
 
