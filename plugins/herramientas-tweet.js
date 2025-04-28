@@ -1,5 +1,5 @@
 
-let handler = async (m, { conn, text, prefix, command }) => {
+let handler = async (m, { conn, usedPrefix, command, text}) => {
     if (!text) return m.reply(`*Ejemplo:* ${prefix + command} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]\n\n*Uso:* ${prefix + command} Hello World! | erickson | erickson | 1000 | 500 | 100 | Twitter | https://files.image/example.jpg | https://files.image/example.jpg\n\nLos que están entre paréntesis son opcionales`)
 
     const parts = text.split('|').map(part => part.trim())
@@ -58,7 +58,6 @@ let handler = async (m, { conn, text, prefix, command }) => {
 }
 
 handler.command = ["tweet"]
-handler.tags = ["maker", "image"]
-handler.help = [`${handler.command[0]} texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]`]
-
-module.exports = handler
+handler.tags = ["tools"]
+handler.help = [`tweet texto | usuario | [nombre] | [likes] | [txt citado] | [retweets] | [cliente] | [perfil_url] | [tweet_img_url]`]
+export default handler
