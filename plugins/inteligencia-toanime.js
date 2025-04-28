@@ -11,7 +11,7 @@ let q = m.quoted ? m.quoted : m;
 let link = await catbox(media);
 await m.reply(`🌸 Transformando imagen al estilo Anime...`)
 let api_anime = `https://api.nekorinn.my.id/tools/img2anime?imageUrl=${link}`;
-await conn.sendFile(m.chat, api_anime, 'thumbnail.jpg', ``, m, null, rcanal);
+await conn.sendFile(m.chat, api_anime, 'thumbnail.jpg', `Listo 🌟`, m, null, rcanal);
 }
 handler.help = ['toanime']
 handler.tags = ['inteligencia']
