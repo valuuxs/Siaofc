@@ -1,71 +1,39 @@
-import fetch from "node-fetch";
-import crypto from "crypto";
-import { FormData, Blob } from "formdata-node";
-import { fileTypeFromBuffer } from "file-type";
+
 import axios from 'axios';
 import FormData from 'form-data';
 
-const handler = async (m, { conn }) => {
-let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || "";
-  if (!mime) return m.reply("No media found", null, { quoted: fkontak });
-  let media = await q.download();
-let link = await catbox(media);
-let type = (args[0] === 'mild') ? 'mild' : 'unblur';
-await m.react("🐢")
-let { data } = await axios.get(`https://abella.icu/unblur?url=${encodeURIComponent(link)}&type=${type}`, {
+async function Uguu(buffer, filename) {
+  let form = new FormData();
+  form.append('files[]', buffer, { filename });
+  let { data } = await axios.post('https://uguu.se/upload.php', form, {
+    headers: form.getHeaders()
+  });
+  if (data?.files?.[0]?.url) return data.files[0].url;
+  else throw m.reply('Error al subir imagen.');
+}
+
+let handler = async (m, { conn, args }) => {
+  try {
+    await m.react('⌛');
+    let type = (args[0] === 'mild') ? 'mild' : 'unblur';
+    let q = m.quoted ? m.quoted : m;
+    let mime = (q.msg || q).mimetype || '';
+    if (!mime.startsWith('image/')) throw m.reply('Responde a una imagen.');
+    let media = await q.download();
+    let url = await Uguu(media, `image.${mime.split('/')[1]}`);
+    let { data } = await axios.get(`https://abella.icu/unblur?url=${encodeURIComponent(url)}&type=${type}`, {
       responseType: 'arraybuffer'
     });
-// await conn.sendFile(m.chat, Buffer.from(data), 'thumbnail.jpg', `Listo 🌟`, m, null, rcanal);
-await conn.sendMessage(m.chat, {image: { url: Buffer.from(data) }}, {quoted: fkontak});
-}
-handler.help = ['unblur <unblur/mild>']
-handler.tags = ['inteligencia']
-handler.command = ['unblur']
-export default handler
-
-
-function formatBytes(bytes) {
-  if (bytes === 0) {
-    return "0 B";
+    await m.react('✅');
+    await conn.sendMessage(m.chat, { image: Buffer.from(data) }, { quoted: m });
+  } catch (e) {
+    await m.react('❌');
+    m.reply(`${e}`);
   }
-  const sizes = ["B", "KB", "MB", "GB", "TB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return `${(bytes / 1024 ** i).toFixed(2)} ${sizes[i]}`;
-}
+};
 
+handler.help = ['unblur', 'unblur mild'];
+handler.tags = ['tools'];
+handler.command = ['unblur'];
 
-/**
- * Upload image to catbox
- * Supported mimetype:
- * - `image/jpeg`
- * - `image/jpg`
- * - `image/png`s
- * - `image/webp`
- * - `video/mp4`
- * - `video/gif`
- * - `audio/mpeg`
- * - `audio/opus`
- * - `audio/mpa`
- * @param {Buffer} buffer Image Buffer
- * @return {Promise<string>}
- */
-async function catbox(content) {
-  const { ext, mime } = (await fileTypeFromBuffer(content)) || {};
-  const blob = new Blob([content.toArrayBuffer()], { type: mime });
-  const formData = new FormData();
-  const randomBytes = crypto.randomBytes(5).toString("hex");
-  formData.append("reqtype", "fileupload");
-  formData.append("fileToUpload", blob, randomBytes + "." + ext);
-
-  const response = await fetch("https://catbox.moe/user/api.php", {
-    method: "POST",
-    body: formData,
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36",
-    },
-  });
-
-  return await response.text();
-}
+export default handler;
