@@ -10,7 +10,7 @@ let q = m.quoted ? m.quoted : m;
   let media = await q.download();
 let link = await catbox(media);
 await m.reply(`🔥 Transformando imagen al estilo Real...`)
-let api_real `https://fastrestapis.fasturl.cloud/imgedit/aiimage?prompt=Anime&reffImage=${encodeURIComponent(link)}&style=RealisticModel&width=1024&height=1024&creativity=0.5`;
+let api_real = `https://fastrestapis.fasturl.cloud/imgedit/aiimage?prompt=Anime&reffImage=${encodeURIComponent(link)}&style=RealisticModel&width=1024&height=1024&creativity=0.5`;
 // await conn.sendFile(m.chat, api_real, 'thumbnail.jpg', `Listo 🌟`, m, null, rcanal);
 await conn.sendMessage(m.chat, {image: { url: api_real }}, {quoted: fkontak});
 }
