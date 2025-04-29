@@ -1,35 +1,39 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return m.reply(`🧇 Por favor, ingresa el enlace o nombre de una canción de Spotify.`);
-  await m.react('🕒');
-  
-  const isSpotifyUrl = /https?:\/\/(open\.)?spotify\.com\/(track|album|playlist)\/[a-zA-Z0-9]+/.test(text);
+if (!text) throw m.reply(`🧇 Por favor, ingresa el enlace o nombre de una canción de Spotify.`);
+await m.react('🕒');
+let ouh = await fetch(`https://api.nekorinn.my.id/downloader/spotifyplay?q=${text}`)
+let gyh = await ouh.json()
+let { downloadUrl, metadata } = gyh.result
+let { title, artist, duration, imageUrl } = metadata
+m.reply(" 🌟 Enviando, _*"+title+" "+artist+"... ("+duration+")*_")
+            await conn.sendMessage(m.chat, {
+                audio: {
+                    url: downloadUrl
+                },
+                mimetype: 'audio/mpeg',
+                ptt: false,
+                contextInfo: {
+                    externalAdReply: {
+                        title: title,
+                        body: artist,
+                        thumbnailUrl: imageUrl,
+                        sourceUrl: downloadUrl,
+                        mediaType: 1,
+                        showAdAttribution: true,
+                        renderLargerThumbnail: true
+                    }
+                }
+            }, {
+                quoted: fkontak
+            });
 
-  try {
-    let res = await fetch(`https://api.nekorinn.my.id/downloader/spotifyplay?q=${encodeURIComponent(text)}`);
-    if (!res.ok) throw new Error('Error al contactar con la API.');
-
-    let json = await res.json();
-    if (!json.result || !json.result.downloadUrl) {
-      if (isSpotifyUrl) {
-        throw new Error('El enlace de Spotify no es válido o no se pudo procesar.');
-      } else {
-        throw new Error('No se encontró la canción.');
-      }
-    }
-
-    await conn.sendMessage(m.chat, { audio: { url: json.result.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
-    await m.react('✅');
-  } catch (err) {
-    console.error(err);
-    await m.reply(`❌ ${err.message}`);
-    await m.react('❌');
-  }
+//await conn.sendMessage(m.chat, { audio: { url: gyh.result.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+await m.react('✅');
 }
-
-handler.help = ['spotify *<texto>*']
+handler.help = ['spv2 *<texto/link>*']
 handler.tags = ['descargas']
-handler.command = ['testeo']
+handler.command = ['spv2']
 
 export default handler
