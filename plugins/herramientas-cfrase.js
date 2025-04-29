@@ -1,7 +1,7 @@
 
 const handler = async (m, { text, quoted }) => {
   const defaultPP = 'https://files.catbox.moe/6x3v5u.jpg';
-  const defaultSignature = '@KenisawaDevolper';
+  const defaultSignature = '@frases_que_nadie_dijo';
   const name = m.name || 'Usuario Anonimo';
 
   if (!text) return m.reply(`Ingresa el texto para crear la frase!\nEjemplo: .cfrase Hola mundo | https://example.com/pp.jpg*`);
