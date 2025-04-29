@@ -1,6 +1,6 @@
 
 const handler = async (m, { text, quoted }) => {
-  const defaultPP = 'https://fastmanager.fasturl.cloud/Uploads/Hikaru-PP.png';
+  const defaultPP = 'https://files.catbox.moe/6x3v5u.jpg';
   const defaultSignature = '@KenisawaDevolper';
   const name = m.name || 'Usuario Anonimo';
 
