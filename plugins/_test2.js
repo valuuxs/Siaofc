@@ -2,10 +2,10 @@ let handler = async (m, { conn }) => {
 
 m.react('👩🏿');
 
-const message = "She*s Mari";
+const message = "She is Mari and like the black penis 🌚";
 if (m.isGroup) {
 
-const imageUrl = 'https://files.catbox.moe/ub2doj.jpg';
+const imageUrl = 'https://files.catbox.moe/kzcctr.jpg';
 
 await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, { mimetype: 'image/jpeg' });
 }
