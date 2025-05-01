@@ -1,19 +1,18 @@
 let handler = async (m, { conn }) => {
-// React con un emoji al mensaje
-m.react('🏞️');
-// Mensaje que se enviará
-const message = "Mapa Bermuda - Free Fire";
+
+m.react('👩🏿');
+
+const message = "She*s Mari";
 if (m.isGroup) {
-// URL de la imagen
-const imageUrl = 'https://i.ibb.co/BfhKXBq/file.jpg'; // Cambia esta URL por la de la imagen que deseas enviar
-// Envía el mensaje
-// Envía la imagen
+
+const imageUrl = 'https://files.catbox.moe/ub2doj.jpg';
+
 await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, { mimetype: 'image/jpeg' });
 }
 }
 handler.help = ['bermuda'];
 handler.tags = ['ff'];
-handler.command = ['bermuda', 'mapabermuda'];
+handler.command = ['negra', 'mari'];
 handler.admin = true;
 handler.botAdmin = false;
 handler.group = true;
