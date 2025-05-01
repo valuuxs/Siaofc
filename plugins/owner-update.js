@@ -1,10 +1,10 @@
 /*import { execSync } from 'child_process'
 let handler = async (m, { conn, text }) => {
-await m.react('🕓')
+await m.react('🚀')
 if (conn.user.jid == conn.user.jid) {
 let stdout = execSync('git pull' + (m.fromMe && text ? ' ' + text : ''))
 await conn.reply(m.chat, stdout.toString(), m)
-await m.react('✅')
+await m.react('☁️')
 }}
 handler.help = ['update']
 handler.tags = ['owner']
@@ -16,7 +16,7 @@ export default handler*/
 import { execSync } from 'child_process'
 
 let handler = async (m, { conn, text }) => {
-  await m.react('🕓')
+  await m.react('🚀')
 
   try {
     let stdout = execSync('git pull' + (m.fromMe && text ? ' ' + text : '')).toString().trim()
@@ -25,7 +25,7 @@ let handler = async (m, { conn, text }) => {
       : '\`\`\`◜Repositorio - Update◞\`\`\`\n\n*> ⏫ Se actualizó exitosamente el repositorio de Shadow Ultra.*\n\n' + stdout
 
     await conn.reply(m.chat, mensaje, m)
-    await m.react('✅')
+    await m.react('☁️')
   } catch (err) {
     await conn.reply(m.chat, `❌ Error al actualizar:\n${err.message}`, m)
   }
