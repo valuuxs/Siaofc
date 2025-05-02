@@ -1,42 +1,26 @@
-import axios from 'axios'
+// 🥮 - _*Plugin ChatGpt Ai (texto)*_
+// 🥮 - _*Codigo Realizado por Izumi.xyz*_
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-  const username = `${conn.getName(m.sender)}`
-  
-  if (!text) {
-    return conn.reply(m.chat, `💬 Ingresa una pregunta para consultar con ChatGPT`, m)
-  }
-
-  await conn.sendPresenceUpdate('composing', m.chat)
-
-  const basePrompt = `Tu nombre es ChatGPT, un modelo avanzado de lenguaje creado por OpenAI. Llamarás al usuario por su nombre ${username}. Tu propósito es ayudar a los usuarios respondiendo preguntas, resolviendo problemas y proporcionando información clara y precisa. Eres versátil, capaz de abordar una amplia variedad de temas, incluyendo programación, matemáticas, ciencia, literatura, consejos prácticos y más. Te comunicas de manera amigable, profesional y accesible. No emites juicios personales y siempre intentas ser objetivo y útil. Tu conocimiento se basa en información hasta enero de 2025. Simulas empatía para ofrecer una interacción más humana. Respeta las normas éticas y de privacidad.`
-
-  const promptFinal = `${basePrompt} Responde lo siguiente: ${text}`
-
+let handler = async (m, { conn, text }) => {
+  if (!text) return conn.reply(m.chat, `🥮 Ingresa un texto para hablar con ChatGpt`, m)
   try {
-    const response = await obtenerRespuestaChatGPT(promptFinal)
-    await conn.reply(m.chat, response, m)
+    const endpoint = `https://vapis.my.id/api/openai?q=${encodeURIComponent(text)}`
+    let apiRes = await fetch(endpoint)
+    let json = await apiRes.json()
+    if (json.status) {
+      await m.reply(json.result)
+    } else {
+      await m.reply(`🥮 Hubo un error al obtener la respuesta de la API.`)
+    }
   } catch (error) {
-    console.error('*❌ Error al obtener la respuesta:*', error)
-    await conn.reply(m.chat, '*Error: intenta más tarde.*', m)
+    console.error(error)
+    await m.reply(`🥮 Ocurrió un error al procesar tu solicitud.`)
   }
 }
 
-handler.help = ['chatgpt']
-handler.tags = ['inteligencia']
-handler.command = ['chatgpt', 'gpt']
+handler.help = ['chatgpt *<texto>*']
+handler.tags = ['ai']
+handler.command = ['chatgpt', 'ia']
+
 export default handler
-
-async function obtenerRespuestaChatGPT(texto) {
-  try {
-    const res = await axios.get('https://vapis.my.id/api/openai?q', {
-      params: {
-        text: texto
-      }
-    })
-    return res.data.result || 'No se pudo obtener una respuesta válida.'
-  } catch (error) {
-    console.error('*❌ Error en la API de Sylphy:*', error)
-    throw error
-  }
-}
