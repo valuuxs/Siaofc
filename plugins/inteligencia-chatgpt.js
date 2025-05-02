@@ -29,10 +29,9 @@ export default handler
 
 async function obtenerRespuestaChatGPT(texto) {
   try {
-    const res = await axios.get('https://api.sylphy.xyz/ai/chatgpt', {
+    const res = await axios.get('https://vapis.my.id/api/openai?q', {
       params: {
-        text: texto,
-        apikey: 'sylph'
+        text: texto
       }
     })
     return res.data.result || 'No se pudo obtener una respuesta válida.'
