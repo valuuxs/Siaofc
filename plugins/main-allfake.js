@@ -57,6 +57,7 @@ global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //MENSAJE DE ESPERA 
 global.wait = '*⏳ Aguarde un momento...*';
+global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.';
 
 //ENLACES
 var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
