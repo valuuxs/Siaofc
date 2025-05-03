@@ -41,14 +41,14 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 ${readMore}
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
-𓂂𓏸  𐅹੭੭   *\`mᥱᥒᥙs\`*   🍃ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`Mᧉ𝗇𝗎𝗌\`*   🍃ᩚ꤬ᰨᰍ
 ര ׄ 🍃˚ ${usedPrefix}menunsfw
 ര ׄ 🍃˚ ${usedPrefix}menuaudios
 ര ׄ 🍃˚ ${usedPrefix}menuff
 ര ׄ 🍃˚ ${usedPrefix}menuowner
 ര ׄ 🍃˚ ${usedPrefix}menulogos
 
-𓂂𓏸  𐅹੭੭   *\`іᥒ𝖿᥆\`*   🫖ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖨𝗇ẜᨣ\`*   🫖ᩚ꤬ᰨᰍ
 ര ׄ 🫖˚ ${usedPrefix}totalf
 ര ׄ 🫖˚ ${usedPrefix}grupos
 ര ׄ 🫖˚ ${usedPrefix}sugerir
@@ -59,14 +59,14 @@ ${readMore}
 ര ׄ 🫖˚ ${usedPrefix}horario
 ര ׄ 🫖˚ ${usedPrefix}precios
 
-𓂂𓏸  𐅹੭੭   *\`᥆ᥒ - ᥆𝖿𝖿\`*   🌿ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖮𝗇-𝖮ẜẜ\`*   🌿ᩚ꤬ᰨᰍ
 ര ׄ 🌿˚ ${usedPrefix}enable *opción*
 ര ׄ 🌿˚ ${usedPrefix}disable *opción*
 ര ׄ 🌿˚ ${usedPrefix}on *opción*
 ര ׄ 🌿˚ ${usedPrefix}off *opción*
 ര ׄ 🌿˚ ${usedPrefix}manual
 
-𓂂𓏸  𐅹੭੭   *\`ძᥱsᥴᥲrgᥲs\`*   📥ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖣ᨣ𝗐𝗇𝗅ᨣ𝖺𝖽\`*   📥ᩚ꤬ᰨᰍ
 ര ׄ 📥˚ ${usedPrefix}play *texto*
 ര ׄ 📥˚ ${usedPrefix}aplay *texto*
 ര ׄ 📥˚ ${usedPrefix}aplay2 *texto*
@@ -93,7 +93,7 @@ ${readMore}
 ര ׄ 📥˚ ${usedPrefix}xvideosdl *url*
 ര ׄ 📥˚ ${usedPrefix}pornhubdl *url*
 
-𓂂𓏸  𐅹੭੭   *\`ᑲᥙsᥴᥲძ᥆rᥱs\`*   🔎ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖲ᧉ𝖺ꭇ𝖼𝗁\`*   🔎ᩚ꤬ᰨᰍ
 ര ׄ 🔎˚ ${usedPrefix}scsearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}aplaysearch *texto*
 ര ׄ 🔎˚ ${usedPrefix}ttsearch *texto*
@@ -112,14 +112,14 @@ ${readMore}
 ര ׄ 🔎˚ ${usedPrefix}ttstalk *username*
 ര ׄ 🔎˚ ${usedPrefix}igstalk *username*
 
-𓂂𓏸  𐅹੭੭   *\`іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲs\`*   ☕ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖨𝗇ƚᧉ𝖨ı𝗀ᧉ𝗇𝖼ı𝖺𝗌\`*   ☕ᩚ꤬ᰨᰍ
 ര ׄ ☕˚ ${usedPrefix}ia *texto*
 ര ׄ ☕˚ ${usedPrefix}chatgpt *texto*
 ര ׄ ☕˚ ${usedPrefix}flux *texto*
 ര ׄ ☕˚ ${usedPrefix}imgg *texto*
 ര ׄ ☕˚ ${usedPrefix}imgg2 *texto*
 
-𓂂𓏸  𐅹੭੭   *\`ᥣіs𝗍ᥲs\`*   📑ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖫ı𝗌ƚ𝖺𝗌\`*   📑ᩚ꤬ᰨᰍ
 ര ׄ 📑˚ ${usedPrefix}infem4 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmasc4 *hr + p*
 ര ׄ 📑˚ ${usedPrefix}inmixto4 *hr + p*
@@ -133,12 +133,12 @@ ${readMore}
 ര ׄ 📑˚ ${usedPrefix}v6masc *hr + p*
 ര ׄ 📑˚ ${usedPrefix}v6mixto *hr + p*
 
-𓂂𓏸  𐅹੭੭   *\`𝖿rᥲsᥱs\`*   🌻ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖥𝗋𝖺𝗌ᧉ𝗌\`*   🌻ᩚ꤬ᰨᰍ
 ര ׄ 🌻˚ ${usedPrefix}piropo
 ര ׄ 🌻˚ ${usedPrefix}consejo
 ര ׄ 🌻˚ ${usedPrefix}fraseromantica
 
-𓂂𓏸  𐅹੭੭   *\`ᥴ᥆ᥒ᥎ᥱr𝗍іძ᥆rᥱs\`*   🪸ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖢ᨣ𝗇𝗏ᧉ𝗋ƚᧉ𝗋𝗌\`*   🪸ᩚ꤬ᰨᰍ
 ര ׄ 🪸˚ ${usedPrefix}tourl *img*
 ര ׄ 🪸˚ ${usedPrefix}tourl *aud*
 ര ׄ 🪸˚ ${usedPrefix}toptt *aud*
@@ -148,7 +148,7 @@ ${readMore}
 ര ׄ 🪸˚ ${usedPrefix}tovid *sticker*
 ര ׄ 🪸˚ ${usedPrefix}toimg *sticker*
 
-𓂂𓏸  𐅹੭੭   *\`hᥱrrᥲmіᥱᥒ𝗍ᥲs\`*   ⚒ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖳ᨣᨣ𝗅𝗌\`*   ⚒ᩚ꤬ᰨᰍ
 ര ׄ ⚒️˚ ${usedPrefix}clima *texto*
 ര ׄ ⚒️˚ ${usedPrefix}readmore *texto*
 ര ׄ ⚒️˚ ${usedPrefix}read *texto*
@@ -174,7 +174,7 @@ ${readMore}
 ര ׄ ⚒️˚ ${usedPrefix}nuevonombrecanal
 ര ׄ ⚒️˚ ${usedPrefix}nuevadescchannel
 
-𓂂𓏸  𐅹੭੭   *\`grᥙ⍴᥆s\`*   🌵ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖦ꭇ𝗎𝗉ᨣ𝗌\`*   🌵ᩚ꤬ᰨᰍ
 ര ׄ 🌵˚ ${usedPrefix}add *número*
 ര ׄ 🌵˚ ${usedPrefix}grupo *abrir / cerrar*
 ര ׄ 🌵˚ ${usedPrefix}grouptime *tiempo*
@@ -195,7 +195,7 @@ ${readMore}
 ര ׄ 🌵˚ ${usedPrefix}link
 ര ׄ 🌵˚ ${usedPrefix}fantasmas
 
-𓂂𓏸  𐅹੭੭   *\`ᥱ𝖿ᥱᥴ𝗍᥆s\`*   🪻ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖤ẜᧉ𝖼ƚ𝗌\`*   🪻ᩚ꤬ᰨᰍ
 ര ׄ 🪻˚ ${usedPrefix}bass *vid*
 ര ׄ 🪻˚ ${usedPrefix}blown *vid*
 ര ׄ 🪻˚ ${usedPrefix}deep *vid*
@@ -218,7 +218,7 @@ ${readMore}
 ര ׄ 🪻˚ ${usedPrefix}lowpass *vid*
 ര ׄ 🪻˚ ${usedPrefix}underwater *vid*
 
-𓂂𓏸  𐅹੭੭   *\`ძі᥎ᥱrsі᥆ᥒ\`*   🥯ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖥𝗎𝗇\`*   🥯ᩚ꤬ᰨᰍ
 ര ׄ 🥯˚ ${usedPrefix}gay *@tag*
 ര ׄ 🥯˚ ${usedPrefix}lesbiana *@tag*
 ര ׄ 🥯˚ ${usedPrefix}pajero *@tag*
@@ -246,7 +246,7 @@ ${readMore}
 ര ׄ 🥯˚ ${usedPrefix}love
 ര ׄ 🥯˚ ${usedPrefix}personalidad
 
-𓂂𓏸  𐅹੭੭   *\`ȷᥙᥱg᥆s\`*   🐚ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖩𝗎ᧉ𝗀ᨣ𝗌\`*   🐚ᩚ꤬ᰨᰍ
 ര ׄ 🐚˚ ${usedPrefix}pregunta *texto*
 ര ׄ 🐚˚ ${usedPrefix}ttt *texto*
 ര ׄ 🐚˚ ${usedPrefix}ptt *opción*
@@ -254,11 +254,11 @@ ${readMore}
 ര ׄ 🐚˚ ${usedPrefix}acertijo
 ര ׄ 🐚˚ ${usedPrefix}trivia
 
-𓂂𓏸  𐅹੭੭   *\`ᥲᥒіmᥱ\`*   ☁ᩚ꤬ᰨᰍ️
+𓂂𓏸  𐅹੭੭   *\`𝖠𝗇ı𝗆ᧉ\`*   ☁ᩚ꤬ᰨᰍ️
 ര ׄ ☁️˚ ${usedPrefix}messi
 ര ׄ ☁️˚ ${usedPrefix}cr7
 
-𓂂𓏸  𐅹੭੭   *\`gі𝖿s ᥒs𝖿ա\`*   🔥ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖦ıẜ𝗌-𝖭𝗌ẜɯ\`*   🔥ᩚ꤬ᰨᰍ
 ര ׄ 🔥˚ ${usedPrefix}violar *@tag*
 ര ׄ 🔥˚ ${usedPrefix}follar *@tag*
 ര ׄ 🔥˚ ${usedPrefix}anal *@tag*
@@ -278,7 +278,7 @@ ${readMore}
 ര ׄ 🔥˚ ${usedPrefix}manosear *@tag*
 ര ׄ 🔥˚ ${usedPrefix}lesbianas *@tag*
 
-𓂂𓏸  𐅹੭੭   *\`s𝗍іᥴkᥱrs\`*   🍦ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖲ƚ𝗂𝖼𝗄ᧉꭇ\`*   🍦ᩚ꤬ᰨᰍ
 ര ׄ 🍦˚ ${usedPrefix}sticker *img*
 ര ׄ 🍦˚ ${usedPrefix}sticker *vid*
 ര ׄ 🍦˚ ${usedPrefix}brat *texto*
@@ -287,19 +287,19 @@ ${readMore}
 ര ׄ 🍦˚ ${usedPrefix}dado
 ര ׄ 🍦˚ ${usedPrefix}reloj
 
-𓂂𓏸  𐅹੭੭   *\`r⍴g\`*   💸ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖱𝗉𝗀\`*   💸ᩚ꤬ᰨᰍ
 ര ׄ 💸˚ ${usedPrefix}minar
 ര ׄ 💸˚ ${usedPrefix}cofre
 ര ׄ 💸˚ ${usedPrefix}slut
 ര ׄ 💸˚ ${usedPrefix}nivel
 ര ׄ 💸˚ ${usedPrefix}ruleta
 
-𓂂𓏸  𐅹੭੭   *\`rᥱgіs𝗍r᥆\`*   🎣ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖱ᧉ𝗀ı𝗌𝗍𝗋ᨣ\`*   🎣ᩚ꤬ᰨᰍ
 ര ׄ 🎣˚ ${usedPrefix}perfil
 ര ׄ 🎣˚ ${usedPrefix}reg
 ര ׄ 🎣˚ ${usedPrefix}unreg
 
-𓂂𓏸  𐅹੭੭   *\`᥆աᥒᥱr\`*   🍀ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖮ɯ𝗇ᧉꭇ\`*   🍀ᩚ꤬ᰨᰍ
 ര ׄ 🍀˚ ${usedPrefix}salir
 ര ׄ 🍀˚ ${usedPrefix}update
 ര ׄ 🍀˚ ${usedPrefix}blocklist
