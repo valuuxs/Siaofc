@@ -34,8 +34,8 @@ let handler = async (m) => {
 \`\`\`乂 BÚSQUEDA - ACRCLOUD\`\`\`
 
 ≡ *🌴 Título:* ${title}
-👤: ${artists?.map(v => v.name).join(', ') || 'No encontrado'}
-≡*🌿 Álbum:* ${album?.name || 'No encontrado'}
+≡ *👤 Artista:* ${artists?.map(v => v.name).join(', ') || 'No encontrado'}
+≡ *🌿 Álbum:* ${album?.name || 'No encontrado'}
 ≡ *🌵 Género:* ${genres?.map(v => v.name).join(', ') || 'No encontrado'}
 ≡ *🌳 Lanzamiento:* ${release_date || 'No encontrado'}
     `.trim()
