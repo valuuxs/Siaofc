@@ -1,4 +1,4 @@
-import fs from 'fs'
+/*import fs from 'fs'
 import acrcloud from 'acrcloud'
 
 let acr = new acrcloud({
@@ -51,7 +51,7 @@ let handler = async (m) => {
 
 handler.command = /^quemusica|quemusicaes|whatmusic$/i
 export default handler
-
+*/
 
 
 import fs from 'fs'
