@@ -118,5 +118,5 @@ let handler = async (m) => {
   }
 }
 
-handler.command = /^quemusica|quemusicaes|whatmusic$/i
+handler.command = ['quemusica', 'quemusicaes', 'whatmusic']
 export default handler
