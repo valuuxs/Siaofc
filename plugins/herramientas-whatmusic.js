@@ -1,42 +1,3 @@
-/*
-import fs from 'fs'
-import acrcloud from 'acrcloud'
-let acr = new acrcloud({
-host: 'identify-eu-west-1.acrcloud.com',
-access_key: 'c33c767d683f78bd17d4bd4991955d81',
-access_secret: 'bvgaIAEtADBTbLwiPGYlxupWqkNGIjT7J9Ag2vIu'
-})
-
-let handler = async (m) => {
-let q = m.quoted ? m.quoted : m
-let mime = (q.msg || q).mimetype || ''
-if (/audio|video/.test(mime)) {
-let media = await q.download()
-let ext = mime.split('/')[1]
-fs.writeFileSync(`./tmp/${m.sender}.${ext}`, media)
-let res = await acr.identify(fs.readFileSync(`./tmp/${m.sender}.${ext}`))
-let { code, msg } = res.status
-if (code !== 0) throw msg
-let { title, artists, album, genres, release_date } = res.metadata.music[0]
-let txt = `
-𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊 𝘿𝙀 𝙇𝘼 𝘽𝙐𝙎𝙌𝙐𝙀𝘿𝘼𝙎 
-
-• 🌻 𝙏𝙄𝙏𝙐𝙇𝙊: ${title}
-• 🍃 𝘼𝙍𝙏𝙄𝙎𝙏𝘼: ${artists !== undefined ? artists.map(v => v.name).join(', ') : 'No encontrado'}
-• 💻 𝘼𝙇𝘽𝙐𝙈: ${album.name || 'No encontrado'}
-• 💛 𝙂𝙀𝙉𝙀𝙍𝙊: ${genres !== undefined ? genres.map(v => v.name).join(', ') : 'No encontrado'}
-• 🪙 𝙁𝙀𝘾𝙃𝘼 𝘿𝙀 𝙇𝘼𝙉𝙕𝘼𝙈𝙄𝙀𝙉𝙏𝙊: ${release_date || 'No encontrado'}
-`.trim()
-fs.unlinkSync(`./tmp/${m.sender}.${ext}`)
-m.reply(txt)
-} else
-return m.reply('Por favor, responda a un audio o video para que pueda identificar la música.');
-}
-handler.command = /^quemusica|quemusicaes|whatmusic$/i
-//handler.estrellas = 6;
-export default handler
-*/
-
 import fs from 'fs'
 import acrcloud from 'acrcloud'
 
@@ -55,7 +16,7 @@ let handler = async (m) => {
 
   try {
     let media = await q.download()
-    if (!media) throw 'No se pudo descargar el archivo de audio/video.'
+    if (!media) throw '*❌ No se pudo descargar el archivo de audio/video.*'
 
     let ext = mime.split('/')[1]
     let file = `./tmp/${m.sender}-${Date.now()}.${ext}`
@@ -64,19 +25,19 @@ let handler = async (m) => {
     let res = await acr.identify(fs.readFileSync(file))
     let { code, msg } = res.status
     if (code !== 0) throw msg
-    if (!res.metadata?.music?.length) throw 'No se encontró ninguna coincidencia de música.'
+    if (!res.metadata?.music?.length) throw '*⚠️ No se encontró ninguna coincidencia de música.*'
 
     let info = res.metadata.music[0]
     let { title, artists, album, genres, release_date } = info
 
     let txt = `
-𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊 𝘿𝙀 𝙇𝘼 𝘽𝙐𝙎𝙌𝙐𝙀𝘿𝘼
+\`\`\`乂 BÚSQUEDA - ACRCLOUD\`\`\`
 
-• 🌻 𝙏𝙄𝙏𝙐𝙇𝙊: ${title}
-• 🍃 𝘼𝙍𝙏𝙄𝙎𝙏𝘼: ${artists?.map(v => v.name).join(', ') || 'No encontrado'}
-• 💻 𝘼𝙇𝘽𝙐𝙈: ${album?.name || 'No encontrado'}
-• 💛 𝙂𝙀𝙉𝙀𝙍𝙊: ${genres?.map(v => v.name).join(', ') || 'No encontrado'}
-• 🪙 𝙁𝙀𝘾𝙃𝘼 𝘿𝙀 𝙇𝘼𝙉𝙕𝘼𝙈𝙄𝙀𝙉𝙏𝙊: ${release_date || 'No encontrado'}
+≡ *🌴 Título:* ${title}
+👤: ${artists?.map(v => v.name).join(', ') || 'No encontrado'}
+≡*🌿 Álbum:* ${album?.name || 'No encontrado'}
+≡ *🌵 Género:* ${genres?.map(v => v.name).join(', ') || 'No encontrado'}
+≡ *🌳 Lanzamiento:* ${release_date || 'No encontrado'}
     `.trim()
 
     m.reply(txt)
