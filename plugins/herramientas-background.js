@@ -14,10 +14,10 @@ const handler = async (m, { conn }) => {
     const mime = (q.msg || q).mimetype || q.mediaType || ""
 
     if (!/^image\/(jpe?g|png)$/.test(mime)) {
-      return m.reply('⚡ Responde a una imagen')
+      return m.reply('🫧 Responde a una imagen')
     }
 
-    await conn.sendMessage(m.chat, { text: `⏳ Eliminando fondo.\n>${dev}` }, { quoted: m })
+    await m.react('👨🏻‍🔧')
 
     const buffer = await q.download()
     const image = await Jimp.read(buffer)
