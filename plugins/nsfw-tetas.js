@@ -1,15 +1,15 @@
 // By Criss Escobar
 import axios from 'axios';
 
-let handler = async (m, { conn, usedPrefix }) => {
+let handler = async (m, { conn, usedPrefix, command }) => {
     let who;
     if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     return m.reply(hotw);
     }
         const url = `https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`;
 
-        // Retraso opcional para evitar bloqueos por muchas solicitudes seguidas (2s)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Retraso opcional para evitar bloqueos por muchas solicitudes seguidas (1s)
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Obtener datos del JSON
         const { data: res } = await axios.get(url, { timeout: 5000 });
