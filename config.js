@@ -32,15 +32,7 @@ global.nombrebot = 'Shadow Bot - MD'
 global.textbot = `「 SHADOW BOT MD 」`
 global.vs = '3.0.0'
 
-
-global.imagen1 = fs.readFileSync('./media/menus/Menu.jpg')
-global.imagen2 = fs.readFileSync('./media/menus/Menu2.jpg')
-global.imagen3 = fs.readFileSync('./media/menus/Menu3.jpg')
-global.welcome = fs.readFileSync('./media/welcome.jpg')
-global.adios = fs.readFileSync('./media/adios.jpg')
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
-global.shadowurl = fs.readFileSync('./media/shadowurl.jpg')
-
 
 global.repobot = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
 global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
