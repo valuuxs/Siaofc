@@ -1,13 +1,11 @@
 // By Criss Escobar
 import axios from 'axios';
 
-const handler = async (m, { command, conn }) => {
-    try {
-        if (!db.data.chats[m.chat]?.nsfw && m.isGroup) 
-            throw (hotw);
-
-        await conn.sendMessage(m.chat, { react: { text: '🙈', key: m.key } });
-
+let handler = async (m, { conn, usedPrefix }) => {
+    let who;
+    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply(hotw);
+    }
         const url = `https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`;
 
         // Retraso opcional para evitar bloqueos por muchas solicitudes seguidas (2s)
@@ -18,7 +16,7 @@ const handler = async (m, { command, conn }) => {
 
         // Validar que el JSON contenga datos
         if (!Array.isArray(res) || res.length === 0) 
-            throw '🚩 *No se encontró contenido para este comando.*';
+            throw '⚠️ *No se encontró contenido para este comando.*';
 
         const randomImage = res[Math.floor(Math.random() * res.length)];
 
@@ -38,7 +36,7 @@ const handler = async (m, { command, conn }) => {
 
     } catch (err) {
         console.error('❌ Error en el comando:', err.message);
-        m.reply(`*[ ❌ ] Error archivo no encontrado:*\n> ${err.message || err}`);
+        m.reply(`*❌ Error archivo no encontrado:*\n> ${err.message || err}`);
     }
 };
 
