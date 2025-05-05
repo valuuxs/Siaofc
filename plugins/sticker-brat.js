@@ -9,7 +9,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const fetchSticker = async (text, attempt = 1) => {
     try {
-        const response = await axios.get('https://api.nekorinn.my.id/maker/brat-v2', {
+        const response = await axios.get('https://vapis.my.id/api/bratv1', {
             params: {
                 q: text
             },
