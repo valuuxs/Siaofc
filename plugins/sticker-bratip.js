@@ -11,8 +11,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
 handler.help = ['brat <texto>']
 handler.tags = ['sticker']
-handler.command = /^brat$/i
+handler.command = /^brat2$/i
 handler.group = false
-handler.limit = true
+//handler.limit = true
 
 export default handler
