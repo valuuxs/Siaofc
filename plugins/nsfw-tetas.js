@@ -4,7 +4,7 @@ import axios from 'axios';
 const handler = async (m, { command, conn }) => {
     try {
         if (!db.data.chats[m.chat]?.nsfw && m.isGroup) 
-            throw '🚩 *¡Estos comandos están desactivados en este chat!*';
+            throw (hotw);
 
         await conn.sendMessage(m.chat, { react: { text: '🙈', key: m.key } });
 
