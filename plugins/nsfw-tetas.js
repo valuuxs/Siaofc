@@ -50,6 +50,3 @@ handler.help = handler.command = [
 handler.tags = ['nsfw'];
 
 export default handler;
-
-
-Como lo pondría nombrar a este code
