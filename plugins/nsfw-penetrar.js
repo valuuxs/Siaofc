@@ -19,11 +19,9 @@ let handler = async (m, { conn, command, text }) => {
     conn.reply(m.chat, responseMessage, null, { mentions: [user] });
 }
 
-// Ayuda y configuración del comando
 handler.help = ['penetrar @user'];
 handler.tags = ['emox'];
 handler.command = ['penetrar', 'penetrado'];
-handler.register = true;
 handler.group = true;
 handler.fail = null;
 
