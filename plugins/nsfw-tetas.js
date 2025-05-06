@@ -2,12 +2,11 @@
 import axios from 'axios';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    let who;
+try {
     if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     return m.reply(hotw);
     }
 
-try {
         const url = `https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`;
 
         // Retraso opcional para evitar bloqueos por muchas solicitudes seguidas (1s)
