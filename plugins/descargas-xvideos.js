@@ -3,9 +3,9 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 const handler = async (m, { conn, args, command, usedPrefix, text }) => {
-  if (m.isGroup && !(db.data.chats[m.chat] && db.data.chats[m.chat].nsfw)) {
-    return m.reply('*🌿 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
-  }
+if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply(hotw);
+    }
 
   if (!args[0]) {
     return conn.reply(m.chat, `*🫓 Por favor, ingresa un enlace válido de xvideos.*`, m);
