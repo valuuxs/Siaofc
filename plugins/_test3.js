@@ -24,8 +24,8 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 handler.help = ['ia']
 handler.tags = ['tools']
 handler.register = true
-handler.command = ['ot']
-handler.customPrefix = /b|B/i;
+handler.command = ['ot', 'bot']
+handler.customPrefix = /b|B|.|#/i;
 export default handler
 
 // Función para interactuar con la IA usando prompts
