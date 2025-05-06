@@ -2,9 +2,10 @@ import cheerio from 'cheerio'
 import axios from 'axios'
 
 let handler = async (m, { conn, args, command, usedPrefix }) => {
-  if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return conn.reply(m.chat, '*🌿 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.', m)
-  }
+
+if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply(hotw);
+    }
 
   if (!args[0]) {
     return conn.reply(m.chat, `*🍁 Ingrese la búsqueda que desea realizar en PornHub.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Gótica Culona`, m)
