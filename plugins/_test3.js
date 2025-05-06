@@ -27,7 +27,6 @@ if (!db.data.chats[m.chat].simi && m.isGroup) {
 
 handler.help = ['ia']
 handler.tags = ['tools']
-handler.register = true
 handler.command = ['ot', 'bot']
 handler.customPrefix = /b|B|.|#/i;
 export default handler
