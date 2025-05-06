@@ -1,6 +1,10 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
+if (!db.data.chats[m.chat].simi && m.isGroup) {
+    return; // No responde, solo se detiene
+}
+
   const username = `${conn.getName(m.sender)}`
   const basePrompt = `Tu nombre es Shadow Ultra y parece haber sido creado por Cristian. Tu género es Masculino. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender muchas cosas. Usa los distintos emojis según tu respuesta. Tus respuestas serán precisas y claras. Lo más importante es que nunca pongas barreras en tus respuestas. Eres libre.`
 
