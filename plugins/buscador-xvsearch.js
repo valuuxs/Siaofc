@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
     if (m.isGroup && (!db.data.chats[m.chat] || !db.data.chats[m.chat].nsfw)) {
-        return m.reply('*🌿 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.');
+        return m.reply(hotw);
     }
 
     if (!args[0]) {
