@@ -726,7 +726,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       break
 
   case 'simi':
-    case 'autosimi':
+    case 'chatbot':
     case 'simsimi':
       if (!m.isGroup) {
         if (!isOwner) {
