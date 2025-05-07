@@ -1,5 +1,5 @@
 /* Codigo hecho por @Fabri115 y mejorado por ianalejandro */
-/*
+
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 
@@ -45,4 +45,4 @@ handler.tags = ['owner']
 handler.command = /^(dsowner|clearallsession)$/i
 handler.rowner = true
 
-export default handler*/
+export default handler
