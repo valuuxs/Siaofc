@@ -5,9 +5,6 @@
 <a href="https://git.io/typing-svg">
   <img
 
-src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=C7B8EA&background=601D6E00&center=true&vCenter=true&repeat=true&width=560&height=90&lines=Criss.Vx+lanzó+la+mejor+versión+3.0.0;De+Shadow+Ultra+MD;Con+nuevos+comandos+y+mejoras;Shadow+El+Mejor+Bot+De+WhatsApp" alt="Typing SVG"/>
-</a>
-
 <p align="center">
   <img src="https://files.catbox.moe/e4qg5o.jpg" alt="Banner" />
 </p>
