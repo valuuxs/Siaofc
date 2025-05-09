@@ -38,6 +38,6 @@ handler.tags = ['gc'];
 handler.command = /^(viso)$/i;
 handler.customPrefix = /a|A/i;
 handler.group = true;
-handler.admin = true;
+handler.admin = false;
 export default handler;
 
