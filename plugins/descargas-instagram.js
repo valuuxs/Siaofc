@@ -1,4 +1,4 @@
-import { igdl } from "ruhend-scraper"
+/*import { igdl } from "ruhend-scraper"
 
 let handler = async (m, { args, conn }) => {
   if (!args[0]) {
@@ -22,4 +22,4 @@ handler.command = ['instagram', 'ig', 'instagram2', 'ig2']
 handler.tags = ['downloader']
 handler.help = ['instagram', 'ig']
 
-export default handler
+export default handler*/
