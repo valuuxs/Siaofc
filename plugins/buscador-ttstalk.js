@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let handler = async (m, { usedPrefix, command, conn, text }) => {
-  if (!text) return m.reply(`🔎 Por favor, ingresa un usuario de tiktok para Stalkear.\n> *\`Ejemplo:\`* ${usedPrefix + command} mrbeast`);
+  if (!text) return m.reply(`${xsearch} Por favor, ingresa un usuario de tiktok para Stalkear.\n> *\`Ejemplo:\`* ${usedPrefix + command} mrbeast`);
 
   try {
     await m.react('⏳');
