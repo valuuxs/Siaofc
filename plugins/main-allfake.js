@@ -56,11 +56,18 @@ global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //EMOJIS DE CATEGORÍAS
-global.exanime = '🫧'
-global.exsearch = '🌳'
-global.exdownload = '🥞'
-global.exconverter = '🥮'
-global.exgroup = '🌵'
+global.xanime = '🍚'
+global.xsearch = '🌳'
+global.xdownload = '🥞'
+global.xconverter = '🥮'
+global.xgroup = '🍃'
+global.xinfo = '🫖'
+global.xowner = '☕'
+global.ia = '☁️'
+global.fun = '🥯'
+global.sticker = '🍪'
+global.rpg = '💸'
+
 
 
 //MENSAJE DE ESPERA 
