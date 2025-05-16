@@ -8,7 +8,7 @@ import fetch from 'node-fetch';
 
 let handler = async(m, { conn, text, usedPrefix, command }) => {
 
-if (!text) return m.reply(`*🔎 Ingrese un texto para buscar en HappyMod*\n> *\`Ejemplo\`*\n> ${usedPrefix + command} Minecraft`);
+if (!text) return m.reply(`*${xsearch} Ingrese un texto para buscar en HappyMod*\n> *\`Ejemplo\`*\n> ${usedPrefix + command} Minecraft`);
 
 try {
 let api = `https://dark-core-api.vercel.app/api/search/happymod?key=api&text=${text}`;
