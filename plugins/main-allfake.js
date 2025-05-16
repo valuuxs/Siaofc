@@ -59,7 +59,9 @@ global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 global.exanime = '🫧'
 global.exsearch = '🌳'
 global.exdownload = '🥞'
-global.exgroups = '🥮'
+global.exconverter = '🥮'
+global.exgroup = '🌵'
+
 
 //MENSAJE DE ESPERA 
 global.wait = '*⏳ Aguarde un momento...*';
