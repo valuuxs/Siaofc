@@ -63,10 +63,10 @@ global.xconverter = '🥮'
 global.xgroup = '🍃'
 global.xinfo = '🫖'
 global.xowner = '☕'
-global.ia = '☁️'
-global.fun = '🥯'
-global.sticker = '🍪'
-global.rpg = '💸'
+global.xia = '☁️'
+global.xfun = '🥯'
+global.xsticker = '🍪'
+global.xrpg = '💸'
 
 
 
