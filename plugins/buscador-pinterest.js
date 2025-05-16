@@ -118,7 +118,7 @@ const pins = async (judul) => {
 };
 
 let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`*🔎 Por favor, ingresa un texto para buscar en Pinterest.*\n> *\`Ejemplo:\`* .pinterest Gatos Hermosos`);
+  if (!text) return m.reply(`*${xsearch} Por favor, ingresa un texto para buscar en Pinterest.*\n> *\`Ejemplo:\`* .pinterest Gatos Hermosos`);
 
   try {
     m.react('🕒');
