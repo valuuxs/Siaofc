@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*🥞 Por favor, ingresa un link de TikTok.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
+        throw m.reply(`*${xdownload} Por favor, ingresa un link de TikTok.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://vm.tiktok.com/ZMkcuXwJv/`);
     }
 
     try {
@@ -52,7 +52,8 @@ handler.command = /^(tiktok2|tt2|tt2dl)$/i;
 export default handler
 
 async function tiktokdl(url) {
-    let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`
+    //let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`
+    let tikwm = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`
     let response = await (await fetch(tikwm)).json()
     return response
 }
