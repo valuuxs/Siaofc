@@ -55,60 +55,62 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'v4fem':
         case 'vsfem4':
             titulo = '4VS4 FEM';
-            players = ['Jᥙgᥲძ᥆rᥲs:'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖺𝗌'];
             iconos = ['🌸', '🌸', '🌸', '🌸'];
             iconos2 = ['🌸', '🌸'];
             break;
         case 'v4masc':
         case 'vsmasc4':
             titulo = '4VS4 MASC';
-            players = ['Jᥙgᥲძ᥆rᥱs'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌::'];
             iconos = ['🥥', '🥥', '🥥', '🥥'];
             iconos2 = ['🥥', '🥥'];
             break;
         case 'v4mixto':
         case 'vsmixto4':
             titulo = '4VS4 MIXTO';
-            players = ['Jᥙgᥲძ᥆r᥊s'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌'];
             iconos = ['🍁', '🍁', '🍁', '🍁'];
             iconos2 = ['🍁', '🍁'];
             break;
         case 'v6fem':
         case 'vsfem6':
             titulo = '6VS6 FEM';
-            players = ['Jᥙgᥲძ᥆rᥲs'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖺𝗌'];
             iconos = ['🦋', '🦋', '🦋', '🦋', '🦋', '🦋'];
             iconos2 = ['🦋', '🦋'];
             break;
         case 'v6masc':
         case 'vsmasc6':
             titulo = '6VS6 MASC';
-            players = ['Jᥙgᥲძ᥆rᥱs'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌'];
             iconos = ['🥞', '🥞', '🥞', '🥞', '🥞', '🥞'];
             iconos2 = ['🥞', '🥞'];
             break;
         case 'v6mixto':
         case 'vsmixto6':
             titulo = '6VS6 MIXTO';
-            players = ['Jᥙgᥲძ᥆r᥊s'];
+            players = ['𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌'];
             iconos = ['🥯', '🥯', '🥯', '🥯', '🥯', '🥯'];
             iconos2 = ['🥯', '🥯'];
             break;
         default:
-            conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);
+            conn.reply(m.chat, '*❌ Comando no válido.*', m);
             return;
     }
 
-    const message = `ㅤㅤㅤ *\`${titulo}\`*
+    const message = `ꆬꆬ       ݂    *${titulo}*    🌹֟፝  
 
-🕹꒱ *𝗆𝗈𝖽:* ${modalidad}
-⏰꒱ *ʜᴏʀᴀ:* ${horasEnPais.PE} 🇵🇪 ${horasEnPais.AR} 🇦🇷
+  ത *𝖬𝗈𝖽𝖺𝗅𝗂𝖽𝖺𝖽:* ${modalidad}
+  ത *𝖧𝗈𝗋𝖺:* ${horasEnPais.PE} 🇵🇪 ${horasEnPais.AR} 🇦🇷
 
-ㅤ \`${players}\`
+ㅤㅤㅤ࿙࿚ㅤׅㅤ࿙࿚࿙࿚ㅤׅㅤ࿙࿚
+
+ ׄ߳𑁍̵ ֕︵۪۪۪۪᷼ ּ \`${players}::\` ׅ ׄ░ׅ
 
 ${iconos.map(icono => `${icono}˚ `).join('\n')}
 
-ㅤ \`Sᥙ⍴ᥣᥱᥒ𝗍ᥱs:\`
+      ꛁ⵿ֹ𐑼᪲ ۪ \`𝖲𝗎𝗉𝗅𝖾𝗇𝗍𝖾𝗌\` ֹ̼ ׅ ❜𝆬 ᨩ̼
 
 ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 
