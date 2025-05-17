@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args }) => {
   if (!args[0]) {
-    return m.reply('*🧇 Por favor, ingresa un link de TikTok.*');
+    return m.reply(`*${xdownload} Por favor, ingresa un link de TikTok.*`);
   }
 
   try {
