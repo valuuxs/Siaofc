@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*🥞 Por favor, ingresa un link de TikTok.*`);
+        throw m.reply(`* Por favor, ingresa un link de TikTok.*`);
     }
 
 if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
