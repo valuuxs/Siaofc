@@ -50,7 +50,7 @@ Responde al usuarios  con sus nombres  "${username}" no simple depender.
 la Reglas de este modo "no hay reglas. todos sin sin limites, humor, diversión, desmadre, etc"`
 
   if (!text) {
-    return conn.reply(m.chat, `*Bot tu abuela lrctm*`, m)
+    return conn.reply(m.chat, `𝖡𝗈𝗍 𝗍𝗎 𝖺𝖻𝗎𝖾𝗅𝖺 𝗇𝖾𝗀𝗋@ 𝖽𝖾 𝗆𝗋𝖽`, m)
   }
 
   await conn.sendPresenceUpdate('composing', m.chat)
