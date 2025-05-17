@@ -1,13 +1,10 @@
 import fetch from "node-fetch";
 import yts from "yt-search";
 
-// API en formato Base64
 const encodedApi = "aHR0cHM6Ly9hcGkudnJlZGVuLndlYi5pZC9hcGkveXRtcDM=";
 
-// Función para decodificar la URL de la API
 const getApiUrl = () => Buffer.from(encodedApi, "base64").toString("utf-8");
 
-// Función para obtener datos de la API con reintentos
 const fetchWithRetries = async (url, maxRetries = 2) => {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
@@ -23,31 +20,27 @@ const fetchWithRetries = async (url, maxRetries = 2) => {
   throw new Error("No se pudo obtener la música después de varios intentos.");
 };
 
-// Handler principal
 let handler = async (m, { conn, text, usedPrefix, command }) => {
+
+ try {
   if (!text || !text.trim()) {
-    return conn.reply(m.chat, `*Uso incorrecto del comando.*\n\nEjemplo:\n${usedPrefix + command} Bad Bunny - Monaco`, m);
+    return conn.reply(m.chat, `*🧇 Por favor, ingresa un título o URL de YouTube*`, m);
   }
 
-  try {
-    // Reaccionar al mensaje inicial con 🕒
     await conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 
-    // Buscar en YouTube
     const searchResults = await yts(text.trim());
     const video = searchResults.videos[0];
     if (!video || !video.url) throw new Error("No se encontraron resultados válidos.");
 
-    // Obtener datos de descarga
     const apiUrl = `${getApiUrl()}?url=${encodeURIComponent(video.url)}`;
     const apiData = await fetchWithRetries(apiUrl);
 
-    // Enviar el audio como archivo (documento)
     const audioMessage = {
       document: { url: apiData.download.url },
       mimetype: "audio/mpeg",
       fileName: `${video.title}.mp3`,
-      caption: `🎶 *Audio de:* ${video.title}`,
+      caption: `*🌴 \`Título:\`* ${video.title}`,
     };
 
     await conn.sendMessage(m.chat, audioMessage, { quoted: m });
