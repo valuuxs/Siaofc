@@ -4,7 +4,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
   if (!text) {
     return conn.reply(
       m.chat,
-      `*🧇 Por favor, ingresa un enlace o título dea canción para buscar en Spotify.*`,
+      `*🧇 Por favor, ingresa un enlace o título dea canción para buscar en Spotify.\n> *\`Ejemplo:\`*\n${usedPrefix + command} Milo J - M.A.I\n${usedPrefix + command} https://open.spotify.com/track/35ttE4t8lQZA2vuCYDg4G7*`,
       m
     );
   }
