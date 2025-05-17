@@ -40,7 +40,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       document: { url: apiData.download.url },
       mimetype: "audio/mpeg",
       fileName: `${video.title}.mp3`,
-      caption: `\`\`\`◜YouTube - MP3◞\`\`\`\n*${video.title}*`,
+      caption: `\`\`\`◜YouTube - MP3◞\`\`\`\n\n*${video.title}*`,
     };
 
     await conn.sendMessage(m.chat, audioMessage, { quoted: m });
