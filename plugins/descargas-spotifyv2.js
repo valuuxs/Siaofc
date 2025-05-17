@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) throw m.reply(`🧇 Por favor, ingresa el enlace o nombre de una canción de Spotify.`);
+if (!text) throw m.reply(`*📀 Por favor, ingresa el enlace o nombre de una canción de Spotify.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://open.spotify.com/track/0tCl47vT1ac7uzy4gaY0p3`);
 await m.react('🕒');
 let ouh = await fetch(`https://api.nekorinn.my.id/downloader/spotifyplay?q=${text}`)
 let gyh = await ouh.json()
