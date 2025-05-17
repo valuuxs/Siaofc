@@ -41,7 +41,7 @@ handler.command = /^(tt|tiktok|tk)$/i;
 
 export default handler
 
-async function tiktokdl(url) {
+async function await tiktokdl(url) {
     //let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`
     let tikwm = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`
     let response = await (await fetch(tikwm)).json()
