@@ -32,12 +32,12 @@ const handler = async (m, { conn, args, usedPrefix }) => {
             buttons: [
                 {
                     buttonId: `${usedPrefix}ytmp3 ${video.url}`,
-                    buttonText: { displayText: 'Audio' },
+                    buttonText: { displayText: '𝖠𝗎𝖽𝗂𝗈' },
                     type: 1,
                 },
                 {
                     buttonId: `${usedPrefix}ytmp4doc ${video.url}`,
-                    buttonText: { displayText: 'Vídeo' },
+                    buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈' },
                     type: 1,
                 }
             ],
