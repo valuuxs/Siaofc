@@ -8,7 +8,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
   if (!m.quoted) return conn.reply(m.chat, `*${xconverter} Responda a un sticker en movimiento que desee convertir en vídeo con el comando ${usedPrefix + command}*`, m);
   const mime = m.quoted.mimetype || '';
   
-  if (!/webp/.test(mime)) return conn.reply(m.chat, `*☕ Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
+  if (!/webp/.test(mime)) return conn.reply(m.chat, `*${xconverter} Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
   
   const media = await m.quoted.download();
   if (!media) return conn.reply(m.chat, '*❌ No se pudo descargar el archivo. Intente de nuevo.*', m);
