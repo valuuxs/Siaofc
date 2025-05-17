@@ -64,17 +64,16 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 2) {  
-        conn.reply(m.chat, `*[ 🤍 ] Proporciona una hora seguido el país y una modalidad.*
+        conn.reply(m.chat, `*${xff} Proporciona una hora seguido el país y una modalidad para crear una lista de interna.*
 *Usa AR para Argentina y PE para Perú.*
-
-*[ 💡 ] Ejemplo:* .${command} 20:00 pe Vv2`, m);
+> *\`Ejemplo:\`* ${usedPrefix + command} 21:00 ar clk`, m);
         return;
     }
 
     // Nueva validación para formato de 24 horas
     const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;  
     if (!horaRegex.test(args[0])) {  
-        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto.*', m);  
+        conn.reply(m.chat, '*⏰ El formato horario es incorrecto.*', m);  
         return;  
     }  
 
@@ -89,7 +88,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     };  
 
     if (!(pais in diferenciasHorarias)) {  
-        conn.reply(m.chat, '*[ ℹ️ ] País no válido. Usa AR para Argentina, PE para Perú.*', m);  
+        conn.reply(m.chat, '*⚠️ El país ingresado no es válido. Usa AR para Argentina y PE para Perú.*', m);  
         return;  
     }  
 
@@ -152,7 +151,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
             iconosB = ['🍬', '🍬', '🍬', '🍬', '🍬', '🍬'];
             break;
         default:
-            conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);
+            conn.reply(m.chat, '*❌ Comando no válido.*', m);
             return;
     }
 
@@ -168,10 +167,9 @@ ${iconosA.map(icono => `${icono} • `).join('\n')}
 ㅤ _ʚ Equipo B:_ ᭡
 ${iconosB.map(icono => `${icono} • `).join('\n')}
 
-*ᡣ𐭩 Organiza:* ${conn.getName(m.sender)}
-> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ`.trim();
+*ᡣ𐭩 Organiza:* ${conn.getName(m.sender)}`.trim();
 
-    conn.sendMessage(m.chat, { text: message }, { quoted: m });
+    conn.sendMessage(m.chat, { text: message }, { quoted: fkontak });
 };
 
 handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
