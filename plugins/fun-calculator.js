@@ -9,7 +9,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
   const descriptions = {
     gay: [
 "💙 Parece que solo te gusta un poco la fiesta arcoíris.",
-"🖤 ¡Eres más gay que un desfile del orgullo!",
+"🖤 Tu no eres amigo... ¡Tu eres amige! 💀",
 "💜 ¡Nivel DIOS! Ya ni necesitas salir del clóset, lo rompiste amige."
     ],
     lesbiana: [
