@@ -1,4 +1,3 @@
-
 import fetch from "node-fetch";
 import yts from "yt-search";
 
@@ -26,7 +25,9 @@ const fetchWithRetries = async (url, maxRetries = 2) => {
 
 // Handler principal
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text || !text.trim()) return;
+  if (!text || !text.trim()) {
+    return conn.reply(m.chat, `*Uso incorrecto del comando.*\n\nEjemplo:\n${usedPrefix + command} Bad Bunny - Monaco`, m);
+  }
 
   try {
     // Reaccionar al mensaje inicial con 🕒
@@ -35,7 +36,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     // Buscar en YouTube
     const searchResults = await yts(text.trim());
     const video = searchResults.videos[0];
-    if (!video) throw new Error("No se encontraron resultados.");
+    if (!video || !video.url) throw new Error("No se encontraron resultados válidos.");
 
     // Obtener datos de descarga
     const apiUrl = `${getApiUrl()}?url=${encodeURIComponent(video.url)}`;
@@ -59,10 +60,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     // Reaccionar al mensaje original con ❌
     await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } });
+    await conn.reply(m.chat, `No se pudo obtener el audio. Intenta con otro título o más tarde.`, m);
   }
 };
 
-// Cambia el Regex para que reconozca ".playdoc"
+// Comando
 handler.command = ['ytmp3doc'];
 handler.help = ['ytmp3doc'];
 handler.tags = ['descargas'];
