@@ -3,7 +3,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     if (args.length < 2) {  
         conn.reply(m.chat, `*${xff} Proporciona una hora seguido el país y una modalidad para crear una lista de VS.*
 *Usa AR para Argentina y PE para Perú.*
-> *\`Ejemplo:\`*  Ejemplo:* ${usedPrefix + command} 14 pe infinito`, m);
+> *\`Ejemplo:\`* ${usedPrefix + command} 14 pe infinito`, m);
         return;
     }
 
