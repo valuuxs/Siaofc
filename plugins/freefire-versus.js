@@ -116,7 +116,7 @@ ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `.trim();
 
-    conn.sendMessage(m.chat, { text: message }, { quoted: m });
+    conn.sendMessage(m.chat, { text: message }, { quoted: fkontak });
 };
 
 handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
