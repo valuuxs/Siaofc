@@ -1,5 +1,5 @@
 const handler = async (m, { conn, command, text }) => {
-  if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Menciona algún usuario.*`, m);
+  if (!text) return conn.reply(m.chat, `*${xfun} Por favor, menciona algún usuario.*`, m);
 
   const percentages = Math.floor(Math.random() * 501);
   const emojis = {
@@ -10,7 +10,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
     gay: [
 "💙 Parece que solo te gusta un poco la fiesta arcoíris.",
 "🖤 ¡Eres más gay que un desfile del orgullo!",
-"💜 ¡Nivel DIOS!* Ya ni necesitas salir del clóset, lo rompiste."
+"💜 ¡Nivel DIOS! Ya ni necesitas salir del clóset, lo rompiste amige."
     ],
     lesbiana: [
 "👻 Tal vez un par de maratones de series lésbicas ayuden.",
@@ -43,7 +43,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
     manca: [
-"🎮 ¿Porque eres así? Puta Mala",
+"🎮 ¿Porque eres así? Re Mala",
 "🥷 Anda a la cocina mejor no servís pa jugar",
 "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
@@ -58,19 +58,19 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "💖 Eres tan solicitado que ya tienes tarjeta VIP."
     ],
     prostituta: [
-"🙈 Tranquila que te voy hacer un oral.",
+"🙈 Tranquila que te voy a dar tu pingasaurio.",
 "🥵 ¿Lo haces por gusto verdad?",
-"💖 ¿Cuando hacemos un trío? bebé"
+"💖 ¿Cuando hacemos un trío? Nena"
     ],
     sinpoto: [
 "👀 ¿Seguro que no eres hombre con pelo largo?",
 "😹 Ni con cirugía te levantas ese autoestima",
-"🙉 Hasta un mosquito hace mas bulto que tu."
+"🙉 Hasta un mosquito hace más bulto que tú."
     ],
     sintetas: [
 "📭 Mas vacía que el buzón de alguien sin amigos.",
 "🌚 Da igual si estas defrente o de espalda, esque no hay diferencia.",
-"🫨 Se supone que la pubertad ayuda, ¿Qué pasó con tigo?"
+"🫨 Se supone que la pubertad ayuda, ¿Qué pasó contigo?"
     ],
     chipi: [
 "🤡 Lo tuyo no es mini, es edición limitada.",
@@ -96,9 +96,9 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 
   const cal = `*\`🤍 CALCULADORA 🤍\`*
 
-🌿 *Los cálculos han arrojado que* \`${text.toUpperCase()}\` es \`${percentages}%\` ${command} ${emoji}*
+🌿 *Los cálculos han arrojado que ${text.toUpperCase()} es* \`${percentages}%\` *${command} ${emoji}*
 
-• *${description}*
+*${description}*
 > *${response}*`.trim();
 
   async function loading() {
