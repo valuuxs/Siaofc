@@ -56,7 +56,7 @@ let handler = async (m, { conn, usedPrefix, args, command, text }) => {
             sentUrls.add(url);
 
             const isImage = /\.(jpe?g|png|webp|heic|tiff|bmp)(\?|$)/i.test(url);
-            const caption = `*🌴 \`Título:\`* ${title}*`;
+            const caption = `\`\`\`◜Instagram - Download◞\`\`\`\n\n*🌴 \`Título:\`* ${title}*`;
             if (isImage) {
                 await conn.sendMessage(
                     m.chat,
