@@ -1,11 +1,18 @@
 import axios from 'axios'
 import qs from 'qs'
-import yts from 'yt-search'
 
 async function searchYouTube(query) {
-  const { videos } = await yts(query)
-  if (!videos.length) throw new Error('Video no encontrado')
-  return videos[0].url
+  if (!query || !query.trim()) throw new Error('Búsqueda vacía')
+
+  const res = await axios.get('https://www.youtube.com/results', {
+    params: { search_query: query },
+    headers: { 'User-Agent': 'Mozilla/5.0' }
+  })
+
+  const videoId = res.data.match(/"videoId":"(.*?)"/)?.[1]
+  if (!videoId) throw new Error('Video no encontrado')
+
+  return `https://www.youtube.com/watch?v=${videoId}`
 }
 
 async function ssvidDownloader(url, forceType = null) {
