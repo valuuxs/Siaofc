@@ -7,7 +7,7 @@ import cheerio from "cheerio";
 
 const handler = async (m, { conn, usedPrefix, command, text }) => {
     if (!text) {
-        return m.reply(`*🥞 Por favor, ingresa un link de CapCut.*`);
+        return m.reply(`*${xdownload} Por favor, ingresa un link de CapCut.*`);
     }
 
     try {
