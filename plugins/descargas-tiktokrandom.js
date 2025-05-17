@@ -1,7 +1,7 @@
 //BY CRISS
 import axios from 'axios';
 
-const query = ['rolitas', 'rolitaschidas', 'musica', 'frases', 'cumbiasperu', 'phonk', 'barcelona', 'realmadrid'];
+const query = ['rolitas', 'musica', 'frases', 'cumbiasperu', 'phonk', 'barcelona', 'realmadrid'];
 
 let handler = async (m, { conn }) => {
     await m.react('📽️');
