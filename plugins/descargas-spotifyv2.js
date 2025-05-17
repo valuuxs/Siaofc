@@ -34,6 +34,6 @@ await m.react('✅');
 }
 handler.help = ['spv2 *<texto/link>*']
 handler.tags = ['descargas']
-handler.command = ['spotify2', 'spotifydl2', 'spdl2, 'sp2']
+handler.command = ['spotify2', 'spotifydl2', 'spdl2', 'sp2']
 
 export default handler
