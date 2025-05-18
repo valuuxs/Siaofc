@@ -1,11 +1,11 @@
 import { sticker } from '../lib/sticker.js'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  try {
-    if (!text) {
-      throw `*${usedPrefix + command} Por favor, ingresa un texto para realizar tu sticker.*`
-    }
 
+  try {
+if (!text) {
+    return conn.reply(m.chat, `*${usedPrefix + command} Por favor, ingresa un texto para realizar tu sticker.*`, m, rcanal)
+}
     const url = `https://api.nekorinn.my.id/maker/brat-v2?text=${encodeURIComponent(text)}`
     const stiker = await sticker(null, url, 'cmd by', 'kenisawaDev')
 
