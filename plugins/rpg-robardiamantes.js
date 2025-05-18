@@ -2,14 +2,14 @@ const ro = 30;
 const handler = async (m, {conn, usedPrefix, command}) => {
   const time = global.db.data.users[m.sender].lastrob2 + 7200000;
   if (new Date - global.db.data.users[m.sender].lastrob2 < 7200000) {
-  conn.reply(m.chat, `*[ ⏰ ] Debes esperar \`${msToTime(time - new Date())}\` para robar de nuevo.*`, m);
+  conn.reply(m.chat, `*⏰ Debes esperar \`${msToTime(time - new Date())}\` para volver a robar.*`, m);
   return;
   }
   let who;
   if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
   else who = m.chat;
   if (!who) {
-  conn.reply(m.chat, `*👤 Debes mencionar a alguien para intentar robarle.*`, m)
+  conn.reply(m.chat, `*${xrpg} Etiqueta a alguien para robar sus diamantes*`, m)
   return;
     };
   if (!(who in global.db.data.users)) { 
@@ -18,10 +18,10 @@ return;
   }
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.diamantes < rob) return conn.reply(m.chat, `🌿 @${who.split`@`[0]} no tiene suficientes *${moneda}* fuera del banco como para que valga la pena intentar robar.`, m, {mentions: [who]});
+  if (users.diamantes < rob) return conn.reply(m.chat, `*🌿 @${who.split`@`[0]} no tiene suficientes ${moneda} fuera del banco como para que valga la pena intentar robar.*`, m, {mentions: [who]});
   global.db.data.users[m.sender].diamantes += rob;
   global.db.data.users[who].diamantes -= rob;
-  conn.reply(m.chat, `*[ 💎 ] Le robaste \`${rob}\` Diamantes a @${who.split`@`[0]}*`, m, {mentions: [who]});
+  conn.reply(m.chat, `*💎 Le robaste \`${rob} Diamantes\` a @${who.split`@`[0]}*`, m, {mentions: [who]});
   global.db.data.users[m.sender].lastrob2 = new Date * 1;
 };
 handler.help = ['rob'];
