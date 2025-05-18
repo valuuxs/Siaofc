@@ -1,6 +1,6 @@
 var handler = async (m, { conn, text, usedPrefix, command }) => {
 
-if (!text) return conn.reply(m.chat, `*${xfun} Por favor, ingresa un texto a preguntar*\n> *\`Ejemplo:\`*  ${usedPrefix + command} Hoy se follan a la admin?`, m, fkontak, )
+if (!text) return conn.reply(m.chat, `*${xfun} Por favor, ingresa un texto a preguntar*\n> *\`Ejemplo:\`*  ${usedPrefix + command} Hoy se follan a la admin?`, m, rcanal )
 m.react('❔')
 await delay(1000 * 1)
 m.react('❓')
