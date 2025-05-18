@@ -33,7 +33,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 };
 
-handler.command = ['declaracion', 'dclarar', 'declararse', 'si', 'no'];
+handler.command = ['declararse', 'si', 'no'];
 handler.tags = ['fun'];
 handler.help = ['declaracion'];
 
