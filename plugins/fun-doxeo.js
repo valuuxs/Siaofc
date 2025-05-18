@@ -86,7 +86,7 @@ const handler = async (m, { conn, text }) => {
     PE: 'Perú',
     CO: 'Colombia',
     BR: 'Brasil',
-    CL: 'Chile',
+    CL: 'Chile 🇨🇱',
     VE: 'Venezuela',
     EC: 'Ecuador',
     BO: 'Bolivia',
@@ -134,10 +134,10 @@ const handler = async (m, { conn, text }) => {
   const end = performance.now();
   const speed = ((end - start) / 1000).toFixed(4);
 
-  const doxeo = `*[ ✔ ] 𝙿𝙴𝚁𝚂𝙾𝙽𝙰 𝙳𝙾𝚇𝚇𝙴𝙰𝙳𝙰 𝙲𝙾𝙽 𝙴𝚇𝙸𝚃𝙾*
-*⏳ 𝙳𝙾𝚇𝚇𝙴𝙰𝙳𝙾 𝙴𝙽: ${speed} segundos*
+  const doxeo = `*\`👨🏻‍💻DOXEO REALIZADO EXITOSAMENTE\`*
+> *Realizado en \`${speed} segundos\`
 
-*𝚁𝙴𝚂𝚄𝙻𝚃𝙰𝙳𝙾𝚂 𝙾𝙱𝚃𝙴𝙽𝙸𝙳𝙾𝚂:*
+*RESULTADOS OBTENIDOS - V5*
 
 *Nombre:* ${text}
 *País:* ${pais}
@@ -153,11 +153,13 @@ const handler = async (m, { conn, text }) => {
 *TCP PUERTOS ABIERTOS:* 80, 443, 22
 *UDP PUERTOS ABIERTOS:* 53, 67
 *Vendedor del router:* TP-Link Technologies Co., Ltd.
+*Buil ID:* RP3A.210720.052
+*Technology:* Li-ion
 *Dispositivo:* Android 12 - SMA-G998B
 *Conexión:* Fibra óptica
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
-*Nota: Esta información es generada automáticamente con fines de entretenimiento. No representa datos reales ni viola la privacidad de nadie.*`;
+*SHADOW ULTRA:* FREE VS`;
 
   await sleep(1000);
   await conn.sendMessage(m.chat, { text: doxeo, edit: sent.key, mentions: conn.parseMention(doxeo) });
