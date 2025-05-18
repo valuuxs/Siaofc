@@ -21,8 +21,8 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     m.react('✅')
   } catch (err) {
     console.error(err)
-    m.react('❌')
-    m.reply(`❌ Error: ${err.message}`)
+    m.react('✖️')
+    m.reply(`✖️ Error: ${err.message}`)
   }
 }
 
