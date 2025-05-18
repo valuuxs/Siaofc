@@ -132,15 +132,6 @@ const handler = async (m, { conn, text }) => {
 
   const pais = countryNames[regionCode] || 'Desconocido';
 
-  const fakeLocations = [
-    { city: 'Lima', region: 'Lima Metropolitana', lat: '-12.0464', lon: '-77.0428' },
-    { city: 'Bogotá', region: 'Cundinamarca', lat: '4.7110', lon: '-74.0721' },
-    { city: 'Buenos Aires', region: 'Buenos Aires', lat: '-34.6037', lon: '-58.3816' },
-    { city: 'CDMX', region: 'Ciudad de México', lat: '19.4326', lon: '-99.1332' },
-    { city: 'Medellín', region: 'Antioquia', lat: '6.2442', lon: '-75.5812' }
-  ];
-  const location = fakeLocations[Math.floor(Math.random() * fakeLocations.length)];
-
   const sleep = (ms) => new Promise(res => setTimeout(res, ms));
   const randomIP = () => `${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;
   const randomIPv6 = () => Array(8).fill().map(() => Math.floor(Math.random() * 65536).toString(16)).join(':');
@@ -177,9 +168,6 @@ ${fechaHora}
 
 *Nombre:* ${text}
 *País:* ${pais}
-*Ciudad:* Ciudad de Lima
-*Región:* Arequipa 
-*Coordenadas:* ${location.lat}, ${location.lon}
 *IP Pública:* ${randomIP()}
 *IP Privada:* 192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}
 *IPv6:* ${randomIPv6()}
