@@ -57,7 +57,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '⊱『💚𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥💚』⊰',
+                title: '෫໋ׅׄ𝆬🍃ິ⃨ 𝖱𝖾𝗀𝗂𝗌𝗍𝗋𝗈 - 𝖲𝗁𝖺𝖽𝗈𝗐 ׅ𝖴𝗅𝗍𝗋𝖺  ׄ ׄ𑁍̵ ֕︵۪۪۪۪᷼ ּ',
                 body: dev,
                 thumbnailUrl: 'https://files.catbox.moe/nwqdwh.jpg',
                 sourceUrl: 'https://whatsapp.com/channel/0029Vb1X1TDElah1FEQ4xm0K',
@@ -66,7 +66,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
                 renderLargerThumbnail: true
             }
         }
-    }, { quoted: m });
+    }, { quoted: fkontak });
 
 let chtxt = `👤 *𝚄𝚂𝙴𝚁:* ${m.pushName || 'Anónimo'}
 ☕ *𝚁𝙴𝙶𝙸𝚂𝚃𝚁𝙾:* ${user.name}
