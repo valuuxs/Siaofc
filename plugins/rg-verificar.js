@@ -12,7 +12,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
 
     if (user.registered === true) {
-        return m.reply(`*🍙 Ya te encuentras registrado.*\n\n*¿Quieres volver a registrarte?*\n\n*Use este comando para eliminar su registro*\n*\`${usedPrefix}unreg\`*`)
+        return m.reply(`*🍙 Ya te encuentras registrado en mi base de datos.*\n*Si deseas eliminar tu registro use la función \`#unreg\`*`)
     }
 
     if (!Reg.test(text)) return m.reply(`*🍙 Por favor, ingresa tu nombre y edad para registrarte en mi base de datos.*\n> *\`Ejemplo:\`*\n> ${usedPrefix + command} ${name2}.20`)
