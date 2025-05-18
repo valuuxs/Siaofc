@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
 let user = global.db.data.users[m.sender]
 
 user.registered = false
-return conn.reply(m.chat, `*🚮 Tu registro fue eliminado.*`, m, fkontak)
+return conn.reply(m.chat, `*🚮 Tu registro fue eliminado.*`, fkontak)
 
 }
 handler.help = ['unreg']
