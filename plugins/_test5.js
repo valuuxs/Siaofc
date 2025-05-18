@@ -49,11 +49,7 @@ const estilos = [
   { nombre: 'Fluffy Logo', id: 'fluffy-logo' },
   { nombre: 'Runner Logo', id: 'runner-logo' },
   { nombre: 'Smurfs Logo', id: 'smurfs-logo' },
-  { nombre: 'Graffiti Burn', id: 'graffiti-burn' },
-  { nombre: 'Sketch Name', id: 'sketch-name' },
-  { nombre: 'Graffiti', id: 'graffiti' },
-  { nombre: 'Chrome', id: 'chrome' },
-  { nombre: 'Alien Glow', id: 'alien-glow' }
+  { nombre: 'Sketch Name', id: 'sketch-name' }
 ]
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
