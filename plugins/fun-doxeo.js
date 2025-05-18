@@ -100,7 +100,7 @@ ${fechaHora}
 *Región:* ${location.region}
 *Latitud:* ${location.lat}
 *Longitud:* ${location.lon}
-*Ubicación en el mapa:* [Ver en Google Maps](${googleMapsUrl})
+*Ubicación:* ${googleMapsUrl}
 *IP Pública:* ${randomIP()}
 *IP Privada:* 192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}
 *IPv6:* ${randomIPv6()}
