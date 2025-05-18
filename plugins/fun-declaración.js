@@ -1,6 +1,7 @@
 /*import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
+
     if (command === 'declaracion') {
         if (!text) return m.reply(`${xfun} Por favor, ingresa el nombre de la persona a la que te le vas a declarar`);
 
@@ -45,9 +46,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     };
 
     if (command === 'declaracion') {
-        if (!text) {
-            return await conn.sendMessage(m.chat, { text: `${xfun} Ingresa el nombre de la persona a la que te le vas a declarar*` }, { quoted: fkontak });
-        }
+        if (!text) return m.reply(`${xfun} Por favor, ingresa el nombre de la persona a la que te le vas a declarar`);
 
         const imageUrl = 'https://files.catbox.moe/7pzvzf.jpg';
         const messageText = `Hola ${text} \nVengo a decirte que desde hace mucho me gustas, pero no fui capaz de demostrar amor y cariño. Te quiero pedir disculpas por mi comportamiento al dejarte de hablar. \nPero con el tiempo me di cuenta de que el error fue mío y quiero pedirte disculpas. \nExtraño los abrazos que nos dábamos, realmente quiero que me perdones y empezar otra vez. \n\n¿Me perdonas?\n\n*Responde*: .si para aceptar y .no para rechazar`;
