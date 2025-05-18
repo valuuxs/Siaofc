@@ -18,13 +18,13 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     if (!Reg.test(text)) return m.reply(`*🍙 Por favor, ingresa tu nombre y edad para registrarte en mi base de datos.*\n> *\`Ejemplo:\`*\n> ${usedPrefix + command} ${name2}.20`)
 
     let [_, name, splitter, age] = text.match(Reg)
-    if (!name) return m.reply('*[ ⚠️ ] El nombre no puede estar vacío pendejo.*')
-    if (!age) return m.reply('*[ ⚠️ ] La edad no puede estar vacía.*')
-    if (name.length >= 100) return m.reply('*[ ⚠️ ] El nombre es demasiado largo.*')
+    if (!name) return m.reply('*⚠️ El nombre no puede estar vacío pendejo.*')
+    if (!age) return m.reply('*⚠️ La edad no puede estar vacía.*')
+    if (name.length >= 100) return m.reply('*⚠️ El nombre es demasiado largo.*')
 
     age = parseInt(age)
-    if (age > 1000) return m.reply('*❌ Lᴀ Eᴅᴀᴅ Iɴɢʀᴇsᴀᴅᴀ ᴇs Iɴᴄᴏʀʀᴇᴄᴛᴀ*')
-    if (age < 5) return m.reply('*❌ Lᴀ Eᴅᴀᴅ Iɴɢʀᴇsᴀᴅᴀ ᴇs Iɴᴄᴏʀʀᴇᴄᴛᴀ*')
+    if (age > 1000) return m.reply('*👴🏻 Qué haces acá, no deberías estar en el cementerio?*')
+    if (age < 5) return m.reply('*👶🏻 Mirá el bebé quiere jugar al bot*')
 
     user.name = name.trim()
     user.age = age
