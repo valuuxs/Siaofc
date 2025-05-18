@@ -1,7 +1,7 @@
 const ro = 3000;
 const handler = async (m, {conn, usedPrefix, command}) => {
   const time = global.db.data.users[m.sender].lastrob + 7200000;
-  if (new Date - global.db.data.users[m.sender].lastrob < 7200000) throw `*⏰ Espera \`${msToTime(time - new Date())}\` para volver a robar*`;
+  if (new Date - global.db.data.users[m.sender].lastrob < 7200000) throw `*⏰ Debes esperar \`${msToTime(time - new Date())}\` para volver a robar*`;
   let who;
   if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
   else who = m.chat;
