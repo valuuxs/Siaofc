@@ -225,11 +225,6 @@ ${fechaHora}
 *Conexión:* Datos Móviles
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
-*Últimos sitios visitados:*
-- https://whatsapp.com
-- https://chatgpt.com
-- https://github.com
-
 *SHADOW ULTRA:* FREE CREDITS`;
 
   await sleep(1000);
