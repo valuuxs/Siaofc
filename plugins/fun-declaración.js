@@ -10,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (command === 'declararse') {
         if (!text) {
             return await conn.sendMessage(m.chat, { 
-                text: `*${xfun}declararse* Ingresa el nombre de la persona a la que te le vas a declarar.` 
+                text: `*${xfun} Por favor, ingresa el nombre de la persona a la que te le vas a declarar.*` 
             }, { quoted: fkontak });
         }
 
