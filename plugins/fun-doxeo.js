@@ -85,6 +85,8 @@ const handler = async (m, { conn, text }) => {
   const end = performance.now();
   const speed = ((end - start) / 1000).toFixed(4);
 
+const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lon}`;
+
   const doxeo = `*\`👨🏻‍💻 DOXEO FINALIZADO\`*
 > *Realizado en* \`${speed} segundos\`
 
@@ -98,6 +100,7 @@ ${fechaHora}
 *Región:* ${location.region}
 *Latitud:* ${location.lat}
 *Longitud:* ${location.lon}
+*Ubicación en el mapa:* [Ver en Google Maps](${googleMapsUrl})
 *IP Pública:* ${randomIP()}
 *IP Privada:* 192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}
 *IPv6:* ${randomIPv6()}
