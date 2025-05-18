@@ -45,7 +45,7 @@ if (user.level >= MAX_LEVEL) {
 *¡Felicidades!* *${usertag}*
 
 - *Nivel Max:* ${MAX_LEVEL}
-- *Experiencia:* ${user.exp - min}/${xp}
+- *Experiencia:* ${user.exp}
 - *Rango Max:* ${user.role}
 
 > 𝖠𝗅𝖼𝖺𝗇𝗓𝖺𝗌𝗍𝖾 𝖾𝗅 *𝗆𝖺́𝗑𝗂𝗆𝗈 𝗇𝗂𝗏𝖾𝗅* 𝖾𝗇 𝖾𝗅 𝗀𝗋𝖾𝗆𝗂𝗈 𝖽𝖾 𝖺𝗏𝖾𝗇𝗍𝗎𝗋𝖾𝗋𝗈𝗌.`,
