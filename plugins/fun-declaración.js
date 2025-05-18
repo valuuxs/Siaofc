@@ -46,7 +46,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (command === 'declaracion') {
         if (!text) {
-            return await conn.sendMessage(m.chat, { text: "*⚠️ Ingresa el nombre de la persona a la que te le vas a declarar*" }, { quoted: fkontak });
+            return await conn.sendMessage(m.chat, { text: `${xfun} Ingresa el nombre de la persona a la que te le vas a declarar*` }, { quoted: fkontak });
         }
 
         const imageUrl = 'https://files.catbox.moe/7pzvzf.jpg';
