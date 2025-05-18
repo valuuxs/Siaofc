@@ -3,7 +3,7 @@ import { sticker } from '../lib/sticker.js'
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text) {
-      throw `*Ejemplo de uso:*\n${usedPrefix + command} hola mundo`
+      throw `*${usedPrefix + command} Por favor, ingresa un texto para realizar tu sticker.*`
     }
 
     const url = `https://api.nekorinn.my.id/maker/brat-v2?text=${encodeURIComponent(text)}`
