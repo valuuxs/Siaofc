@@ -6,7 +6,7 @@ import PhoneNumber from 'awesome-phonenumber';
 import { performance } from 'perf_hooks';
 
 const handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`*⚠️ Por favor, menciona a la persona que deseas doxear.*`);
+  if (!text) return m.reply(`*${xfun} Por favor, menciona a la persona que deseas doxear.*`);
 
   const mentionedJid = m.mentionedJid && m.mentionedJid[0];
   if (!mentionedJid) return m.reply('*⚠️ Debes etiquetar a alguien.*');
