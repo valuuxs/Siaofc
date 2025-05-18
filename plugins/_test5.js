@@ -1,4 +1,4 @@
-
+/*
 import { sticker } from '../lib/sticker.js'
 
 const estilos = [
@@ -39,6 +39,53 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['flamestick <número_estilo> <texto>']
 handler.tags = ['sticker']
 handler.command = /^flamestick$/i
+handler.group = false
+
+export default handler*/
+
+import { sticker } from '../lib/sticker.js'
+
+const estilos = [
+  { nombre: 'Fluffy Logo', id: 'fluffy-logo' },
+  { nombre: 'Runner Logo', id: 'runner-logo' },
+  { nombre: 'Smurfs Logo', id: 'smurfs-logo' },
+  { nombre: 'Graffiti Burn', id: 'graffiti-burn' },
+  { nombre: 'Sketch Name', id: 'sketch-name' },
+  { nombre: 'Graffiti', id: 'graffiti' },
+  { nombre: 'Chrome', id: 'chrome' },
+  { nombre: 'Alien Glow', id: 'alien-glow' }
+]
+
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  try {
+    const index = parseInt(args[0]) - 1
+    const texto = args.slice(1).join(' ')
+
+    if (isNaN(index) || index < 0 || index >= estilos.length || !texto) {
+      let listado = estilos
+        .map((e, i) => `${i + 1}. *${e.nombre}*`)
+        .join('\n')
+      throw `*Uso correcto:*\n${usedPrefix + command} <número_estilo> <texto>\n\n*Estilos disponibles:*\n${listado}`
+    }
+
+    if (texto.length > 30) throw 'El texto es demasiado largo. Usa 30 caracteres o menos.'
+
+    const estilo = estilos[index].id
+    const url = `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=${estilo}&text=${encodeURIComponent(texto)}`
+    const stiker = await sticker(null, url, estilos[index].nombre, 'ShadowBot')
+
+    if (!stiker) throw 'No se pudo generar el sticker. Intenta con otro texto.'
+
+    await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+  } catch (e) {
+    console.error(e) // Mostrar detalles en consola para debug
+    m.reply(typeof e === 'string' ? e : 'Ocurrió un error al procesar tu solicitud. Intenta nuevamente.')
+  }
+}
+
+handler.help = ['flamestick <número_estilo> <texto>']
+handler.tags = ['sticker']
+handler.command = /^(flamestick|flame)$/i
 handler.group = false
 
 export default handler
