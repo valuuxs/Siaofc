@@ -10,8 +10,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (command === 'declararse') {
         if (!text) {
             return await conn.sendMessage(m.chat, { 
-                text: `*${usedPrefix}declararse* Ingresa el nombre de la persona a la que te le vas a declarar.` 
-            }, { quoted: m });
+                text: `*${xfun}declararse* Ingresa el nombre de la persona a la que te le vas a declarar.` 
+            }, { quoted: fkontak });
         }
 
         const imageUrl = 'https://files.catbox.moe/7pzvzf.jpg';
