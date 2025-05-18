@@ -47,10 +47,10 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     regbot += `✿᷎︩︪͡⪧ \`Nombre:\` ${name}\n`
     regbot += `✿᷎︩︪͡⪧ \`Edad:\` ${age} años\n\n`
     regbot += `𐔌𐔌  *𝖱𝖾𝖼໊𝗈𝗆͟𝗉͟𝖾͟𝗇͟𝗌͟𝖺𝗌 ࣲ* ׅ  ☕ᩨ   ׄ\n\n`
-    regbot += `ᦷᩘᦷ     ݂   💎 ፡ \`\`\`15 Diamantes\`\`\`\n> `
-    regbot += `ᦷᩘᦷ     ݂   🍸 ፡ \`\`\`245 Xp\`\`\`\n> `
+    regbot += `ᦷᩘᦷ     ݂   💎 ፡ \`\`\`15 Diamantes\`\`\`\n`
+    regbot += `ᦷᩘᦷ     ݂   🍸 ፡ \`\`\`245 Xp\`\`\`\n`
     regbot += `ᦷᩘᦷ     ݂   🪪 ፡ \`\`\`12 Tokens\`\`\`\n\n`
-    regbot += `𝖢𝗈𝗅𝗈𝖼𝖺 *#profile* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
+    regbot += `> 𝖢𝗈𝗅𝗈𝖼𝖺 *#profile* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
 
     await m.react('💌')
     await conn.sendMessage(m.chat, {
