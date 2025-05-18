@@ -90,7 +90,7 @@ const handler = async (m, { conn, text }) => {
 *Buil ID:* RP3A.210720.052
 *Technology:* Li-ion
 *Dispositivo:* Android 12 - SMA-G998B
-*Conexión:* Fibra óptica
+*Conexión:* Datos Móviles
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
 *SHADOW ULTRA:* FREE VS`;
