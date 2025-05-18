@@ -10,7 +10,7 @@ const handler = async (m, { conn }) => {
     const { min, xp, max } = xpRange(user.level, global.multiplier);
     const message = `
 *🏰 Gremio de Aventureros*
-*¡Bienvenido! ${usertag}*
+*¡Bienvenido!* *${usertag}*
 
 - *Nivel actual:* ${user.level}
 - *Rango actual:* ${user.role}
