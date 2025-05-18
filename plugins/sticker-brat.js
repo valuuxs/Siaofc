@@ -39,7 +39,7 @@ const handler = async (m, {
     }*/
 
 if (!text) {
-    return conn.reply(m.chat, '*🍪 Por favor, ingresa un texto para realizar tu sticker.*', m, rcanal)
+    return conn.reply(m.chat, `*${xsticker} Por favor, ingresa un texto para realizar tu sticker.*', m, rcanal)
 }
 
     try {
