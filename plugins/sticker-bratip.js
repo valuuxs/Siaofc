@@ -1,18 +1,27 @@
-
-import { sticker } from '../lib/sticker.js' 
+import { sticker } from '../lib/sticker.js'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw m.reply(`Ejemplo: ${usedPrefix + command} hola mundo`)
-  let url = `https://api.nekorinn.my.id/maker/brat-v2?text=${encodeURIComponent(text)}`
-  let stiker = await sticker(null, url, 'cmd by', 'kenisawaDev') 
-  
-  await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+  try {
+    if (!text) {
+      throw `*Ejemplo de uso:*\n${usedPrefix + command} hola mundo`
+    }
+
+    const url = `https://api.nekorinn.my.id/maker/brat-v2?text=${encodeURIComponent(text)}`
+    const stiker = await sticker(null, url, 'cmd by', 'kenisawaDev')
+
+    if (!stiker) throw 'Error al generar el sticker.'
+
+    await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+  } catch (err) {
+    console.error(err)
+    m.reply(typeof err === 'string' ? err : 'Ocurrió un error al generar el sticker.')
+  }
 }
 
-handler.help = ['brat <texto>']
+handler.help = ['brat2 <texto>']
 handler.tags = ['sticker']
 handler.command = /^brat2$/i
 handler.group = false
-//handler.limit = true
+// handler.limit = true
 
 export default handler
