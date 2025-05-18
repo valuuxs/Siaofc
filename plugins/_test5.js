@@ -19,13 +19,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       throw `*${xsticker} Por favor, ingresa el comando más la opcion y el texto.*\n> *\`Ejemplo:\`* ${usedPrefix + command} 2 Hello Word\n\n\`Estilos Disponibles:\`\n${listado}`
     }
 
-    if (texto.length > 30) throw 'El texto es demasiado largo. Usa 30 caracteres o menos.'
+    if (texto.length > 30) throw '*⚠️ El texto es demasiado largo. Usa 30 caracteres o menos.*'
 
     const estilo = estilos[index].id
     const url = `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=${estilo}&text=${encodeURIComponent(texto)}`
     const stiker = await sticker(null, url, estilos[index].nombre, 'Shadow Ultra - MD')
 
-    if (!stiker) throw 'No se pudo generar el sticker. Intenta con otro texto.'
+    if (!stiker) throw '*✖️ No se pudo generar el sticker. Intenta con otro texto.*'
 
     await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
   } catch (e) {
@@ -37,6 +37,5 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['flamestick <número_estilo> <texto>']
 handler.tags = ['sticker']
 handler.command = /^(flamestick|flame)$/i
-handler.group = false
 
 export default handler
