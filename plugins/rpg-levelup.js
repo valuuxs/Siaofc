@@ -41,7 +41,14 @@ if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir d
 
 if (user.level >= MAX_LEVEL) {
   return conn.sendMessage(m.chat, {
-    text: `🎖️ *¡Felicidades, ${name}!* Has alcanzado el *nivel máximo (${MAX_LEVEL})*. No puedes subir más, pero sigue interactuando para disfrutar del bot.`,
+    text: `*🏆 Nivel Máximo Alcanzado*
+*¡Felicidades!* *${name}*
+
+- *Nivel Max:* ${MAX_LEVEL}
+- *Rango Max:* ${user.role}
+- *Puntos de Exp:* Infinity
+
+> 𝖠𝗅𝖼𝖺𝗇𝗓𝖺𝗌𝗍𝖾 𝖾𝗅 *𝗆𝖺́𝗑𝗂𝗆𝗈 𝗇𝗂𝗏𝖾𝗅* 𝖾𝗇 𝖾𝗅 𝗀𝗋𝖾𝗆𝗂𝗈 𝖽𝖾 𝖺𝗏𝖾𝗇𝗍𝗎𝗋𝖾𝗋𝗈𝗌.`,
     mentions: [m.sender]
   }, { quoted: fkontak });
 }
