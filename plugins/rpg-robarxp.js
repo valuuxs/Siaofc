@@ -1,22 +1,22 @@
 const ro = 3000;
 const handler = async (m, {conn, usedPrefix, command}) => {
   const time = global.db.data.users[m.sender].lastrob + 7200000;
-  if (new Date - global.db.data.users[m.sender].lastrob < 7200000) throw `*⏱️¡Hey! Espera ${msToTime(time - new Date())} para volver a robar*`;
+  if (new Date - global.db.data.users[m.sender].lastrob < 7200000) throw `*⏰ Espera \`${msToTime(time - new Date())}\` para volver a robar*`;
   let who;
   if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
   else who = m.chat;
-  if (!who) throw `*[❗] Etiqueta a alguien para robar.*`;
-  if (!(who in global.db.data.users)) throw `*[❗] El usuario no se encuentra en mi base de datos.*`;
+  if (!who) throw `*${xrpg} Etiqueta a alguien para robar su experiencia.*`;
+  if (!(who in global.db.data.users)) throw `*⚠️ El usuario no se encuentra en mi base de datos.*`;
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.exp < rob) return m.reply(`😔 @${who.split`@`[0]} tiene menos de *${ro} xp*\nNo robes a un pobre v":`, null, {mentions: [who]});
+  if (users.exp < rob) return m.reply(`*😔 @${who.split`@`[0]} tiene menos de \`${ro} Xp\`*\n*No robes a un pobre v:*`, null, {mentions: [who]});
   global.db.data.users[m.sender].exp += rob;
   global.db.data.users[who].exp -= rob;
-  m.reply(`*‣ Robaste ${rob} XP a @${who.split`@`[0]}*`, null, {mentions: [who]});
+  m.reply(`*🏦 Robaste \`${rob} Xp\` a @${who.split`@`[0]}*`, null, {mentions: [who]});
   global.db.data.users[m.sender].lastrob = new Date * 1;
 };
 handler.help = ['rob'];
-handler.tags = ['econ'];
+handler.tags = ['rpg'];
 handler.command = ['robar', 'rob', 'robarxp'];
 export default handler;
 function msToTime(duration) {
