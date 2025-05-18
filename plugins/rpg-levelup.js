@@ -42,7 +42,7 @@ if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir d
 if (user.level >= MAX_LEVEL) {
   return conn.sendMessage(m.chat, {
     text: `*🏆 Nivel Máximo Alcanzado*
-*¡Felicidades!* *${name}*
+*¡Felicidades!* *${usertag}*
 
 - *Nivel Max:* ${MAX_LEVEL}
 - *Rango Max:* ${user.role}
