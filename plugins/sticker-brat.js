@@ -70,7 +70,7 @@ if (!text) {
         fs.unlinkSync(outputFilePath);
     } catch (error) {
         return conn.sendMessage(m.chat, {
-            text: `*✖️ Error de la API.*`,
+            text: '*✖️ Error de la API.*',
         }, {
             quoted: m
         });
