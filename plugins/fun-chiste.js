@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
     const chisteAleatorio = pickRandom(global.chiste);
     conn.reply(m.chat, `*Chiste:* ${chisteAleatorio}`, m);
   } else {
-    conn.reply(m.chat, "*[ ℹ️ ] No hay chistes disponibles.*", m);
+    conn.reply(m.chat, "*⚠️ No hay chistes disponibles.*", m);
   }
 };
 
