@@ -4,19 +4,21 @@ let user = global.db.data.users[m.sender]
 let tiempo = 5 * 60
 if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempo * 1000) {
 const tiempo2 = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempo * 1000 - Date.now()) / 1000))
-conn.reply(m.chat, `*⏰ Espera 🌠* *${tiempo2}* *Para Seguir Prostituyendote.*`, m, rcanal)
+conn.reply(m.chat, `*⏰ Espera \`${tiempo2}\` para seguir prostituyendote.*`, m, rcanal)
 return
 }
 let rsl = Math.floor(Math.random() * 5000)
 cooldowns[m.sender] = Date.now()
-await conn.reply(m.chat, `🌠 ${pickRandom(trabajo)} *${toNum(rsl)}* ( *${rsl}* ) XP 🔮.`, m, rcanal)
+await conn.reply(m.chat, `*${xrpg} ${pickRandom(trabajo)} ${rsl} Experiencia.*`, m, fkontak)
 user.exp += rsl
 }
 handler.help = ['prostituirse']
 handler.tags = ['rpg']
-handler.command = ['prostituirse', 'prostituta', 'prostituir', 'slut']
+handler.command = ['prostituirse', 'prostituir', 'slut']
 handler.register = true
+
 export default handler
+
 function toNum(number) {
 if (number >= 1000 && number < 1000000) {
 return (number / 1000).toFixed(1) + 'k'
