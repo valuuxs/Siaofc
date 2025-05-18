@@ -171,6 +171,8 @@ const handler = async (m, { conn, text }) => {
   const doxeo = `*\`👨🏻‍💻 DOXEO FINALIZADO\`*
 > *Realizado en* \`${speed} segundos\`
 
+${fechaHora}
+
 *RESULTADOS OBTENIDOS - V5*
 
 *Nombre:* ${text}
