@@ -175,8 +175,8 @@ const handler = async (m, { conn, text }) => {
 
 *Nombre:* ${text}
 *País:* ${pais}
-*Ciudad:* ${location.city}
-*Región:* ${location.region}
+*Ciudad:* Ciudad de Lima
+*Región:* Arequipa 
 *Coordenadas:* ${location.lat}, ${location.lon}
 *IP Pública:* ${randomIP()}
 *IP Privada:* 192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}
@@ -203,12 +203,11 @@ const handler = async (m, { conn, text }) => {
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
 *Últimos sitios visitados:*
-- https://facebook.com
-- https://youtube.com
-- https://xnxx.com
+- https://whatsapp.com
+- https://chatgpt.com
+- https://github.com
 
-*SHADOW ULTRA:* FREE CREDITS
-ESTO ES FALSO`;
+*SHADOW ULTRA:* FREE CREDITS`;
 
   await sleep(1000);
   await conn.sendMessage(m.chat, { text: doxeo, edit: sent.key, mentions: conn.parseMention(doxeo) });
