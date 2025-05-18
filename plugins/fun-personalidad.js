@@ -29,7 +29,7 @@ function pickRandom(list) {
 return list[Math.floor(Math.random() * list.length)]
 }*/
 
-let handler = async (m, { conn, prefix, command, text }) => {
+let handler = async (m, { conn, usedPrefix, command, text }) => {
 
     if (!text) return m.reply(`*${xfun} Por favor, ingresa el nombre de alguna persona.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Shadow`)
 
