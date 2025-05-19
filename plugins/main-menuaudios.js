@@ -4,7 +4,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
     await m.react('👑');
 
-    let img = 'https://files.catbox.moe/9t8o4o.jpg';
+    let img = 'https://files.catbox.moe/9d4ria.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
 
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
