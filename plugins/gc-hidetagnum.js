@@ -1,19 +1,19 @@
 const handler = async (m, { conn, args, participants, usedPrefix, command }) => {
   if (!args[0] || isNaN(args[0])) 
-    return m.reply(`*[ ℹ️ ] Ingrese algún prefijo de un país.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} 54`);
+    return m.reply(`*${xgc} Por favor, ingresa algún prefijo de un país.*\n> *\`Ejemplo:\`* ${usedPrefix + command} 54`);
 
   const prefijo = args[0].replace(/[+]/g, '');
   const mensaje = args.slice(1).join(' ') || '📢 ¡Atención!';
-  const textoMensaje = `☕ *Mensaje:* ${mensaje}`;
+  const textoMensaje = `🍄 *Mensaje:* ${mensaje}\n*ETIQUETAS:*`;
 
   const usuariosConPrefijo = participants
     .map((u) => u.id)
     .filter((v) => v !== conn.user.jid && v.startsWith(prefijo));
 
   if (usuariosConPrefijo.length === 0) 
-    return m.reply(`*[ ⚠️ ] No hay ningún número con el prefijo \`+${prefijo}\` en este grupo.*`);
+    return m.reply(`*⚠️ No hay ningún número con el prefijo \`+${prefijo}\` en este grupo.*`);
 
-  const listaUsuarios = usuariosConPrefijo.map((v) => '┋💙 @' + v.replace(/@.+/, '')).join('\n');
+  const listaUsuarios = usuariosConPrefijo.map((v) => '🌲 @' + v.replace(/@.+/, '')).join('\n');
 
   conn.reply(
     m.chat, 
