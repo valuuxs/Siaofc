@@ -10,12 +10,10 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
-︵᷼   MENÚ OWNER
-✿ *Hᴏʟᴀ ${taguser}*\n${saludo}
-
-> ꒰꛱Este menú sigue siendo desarrollado por *Cristian Escobar*
-
-↷✦; \`Comandos\` ❞ ☕︵᷼ 
+꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
+‎ ‎꒲꒲   ׄꕤ ׅ *𝖧𐐫𝗅⍺*  ׅ ෫ׄ᷼͝${taguser}  ಒ
+ ‎ ‎ ‎ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗈* ‎ ‎  ‎ ‎✿̮    ׅ  𝖺𝗅   ୂ  
+ ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
 `.trim();
 
     conn.sendMessage(m.chat, {
