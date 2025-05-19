@@ -133,7 +133,7 @@ ${fechaHora}
 
 handler.help = ['doxear'];
 handler.tags = ['fun'];
-handler.command = /^doxxeo|doxxear|doxeo|doxear|doxxing|doxing|dox$/i;
+handler.command = ['doxxeo', 'doxxear', 'doxeo', 'doxear', 'doxxing', 'doxing', 'doxx'];
 handler.group = true;
 
 export default handler;
