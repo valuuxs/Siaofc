@@ -41,57 +41,57 @@ const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5f
 ${readMore}
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
-𓂂𓏸  𐅹੭੭   *\`Mᧉ𝗇𝗎𝗌\`*   🍃ᩚ꤬ᰨᰍ
-ര ׄ 🍃˚ ${usedPrefix}menunsfw
-ര ׄ 🍃˚ ${usedPrefix}menuaudios
-ര ׄ 🍃˚ ${usedPrefix}menuff
-ര ׄ 🍃˚ ${usedPrefix}menuowner
-ര ׄ 🍃˚ ${usedPrefix}menulogos
+𓂂𓏸  𐅹੭੭   *\`Mᧉ𝗇𝗎𝗌\`*  ${xmenus} ᩚ꤬ᰨᰍ
+ര ׄ ${xmenus}˚ ${usedPrefix}menunsfw
+ര ׄ ${xmenus}˚ ${usedPrefix}menuaudios
+ര ׄ ${xmenus}˚ ${usedPrefix}menuff
+ര ׄ ${xmenus}˚ ${usedPrefix}menuowner
+ര ׄ ${xmenus}˚ ${usedPrefix}menulogos
 
-𓂂𓏸  𐅹੭੭   *\`𝖨𝗇ẜᨣ\`*   🫖ᩚ꤬ᰨᰍ
-ര ׄ 🫖˚ ${usedPrefix}totalf
-ര ׄ 🫖˚ ${usedPrefix}grupos
-ര ׄ 🫖˚ ${usedPrefix}sugerir
-ര ׄ 🫖˚ ${usedPrefix}report
-ര ׄ 🫖˚ ${usedPrefix}owner
-ര ׄ 🫖˚ ${usedPrefix}ping
-ര ׄ 🫖˚ ${usedPrefix}uptime
-ര ׄ 🫖˚ ${usedPrefix}horario
-ര ׄ 🫖˚ ${usedPrefix}precios
+𓂂𓏸  𐅹੭੭   *\`𝖨𝗇ẜᨣ\`*  ${xinfo} ᩚ꤬ᰨᰍ
+ര ׄ ${xinfo}˚ ${usedPrefix}totalf
+ര ׄ ${xinfo}˚ ${usedPrefix}grupos
+ര ׄ ${xinfo}˚ ${usedPrefix}sugerir
+ര ׄ ${xinfo}˚ ${usedPrefix}report
+ര ׄ ${xinfo}˚ ${usedPrefix}owner
+ര ׄ ${xinfo}˚ ${usedPrefix}ping
+ര ׄ ${xinfo}˚ ${usedPrefix}uptime
+ര ׄ ${xinfo}˚ ${usedPrefix}horario
+ര ׄ ${xinfo}˚ ${usedPrefix}precios
 
-𓂂𓏸  𐅹੭੭   *\`𝖮𝗇-𝖮ẜẜ\`*   🌿ᩚ꤬ᰨᰍ
-ര ׄ 🌿˚ ${usedPrefix}enable *opción*
-ര ׄ 🌿˚ ${usedPrefix}disable *opción*
-ര ׄ 🌿˚ ${usedPrefix}on *opción*
-ര ׄ 🌿˚ ${usedPrefix}off *opción*
-ര ׄ 🌿˚ ${usedPrefix}manual
+𓂂𓏸  𐅹੭੭   *\`𝖮𝗇-𝖮ẜẜ\`*  ${xnable} ᩚ꤬ᰨᰍ
+ര ׄ ${xnable}˚ ${usedPrefix}enable *opción*
+ര ׄ ${xnable}˚ ${usedPrefix}disable *opción*
+ര ׄ ${xnable}˚ ${usedPrefix}on *opción*
+ര ׄ ${xnable}˚ ${usedPrefix}off *opción*
+ര ׄ ${xnable}˚ ${usedPrefix}manual
 
-𓂂𓏸  𐅹੭੭   *\`𝖣ᨣ𝗐𝗇𝗅ᨣ𝖺𝖽\`*   📥ᩚ꤬ᰨᰍ
-ര ׄ 📥˚ ${usedPrefix}play *texto*
-ര ׄ 📥˚ ${usedPrefix}aplay *texto*
-ര ׄ 📥˚ ${usedPrefix}aplay2 *texto*
-ര ׄ 📥˚ ${usedPrefix}splay *texto*
-ര ׄ 📥˚ ${usedPrefix}ytmp4doc *texto*
-ര ׄ 📥˚ ${usedPrefix}ytmp3doc *texto*
-ര ׄ 📥˚ ${usedPrefix}apk *texto*
-ര ׄ 📥˚ ${usedPrefix}aptoide *texto*
-ര ׄ 📥˚ ${usedPrefix}modapk *texto*
-ര ׄ 📥˚ ${usedPrefix}pinterest *texto*
-ര ׄ 📥˚ ${usedPrefix}capcut *url*
-ര ׄ 📥˚ ${usedPrefix}pindl *url*
-ര ׄ 📥˚ ${usedPrefix}pinvid *url*
-ര ׄ 📥˚ ${usedPrefix}ytmp4 *url*
-ര ׄ 📥˚ ${usedPrefix}ytmp3 *url*
-ര ׄ 📥˚ ${usedPrefix}tiktok *url*
-ര ׄ 📥˚ ${usedPrefix}tiktok2 *url*
-ര ׄ 📥˚ ${usedPrefix}instagram *url*
-ര ׄ 📥˚ ${usedPrefix}facebook *url*
-ര ׄ 📥˚ ${usedPrefix}mediafire *url*
-ര ׄ 📥˚ ${usedPrefix}mega *url*
-ര ׄ 📥˚ ${usedPrefix}playstore *url*
-ര ׄ 📥˚ ${usedPrefix}xnxxdl *url*
-ര ׄ 📥˚ ${usedPrefix}xvideosdl *url*
-ര ׄ 📥˚ ${usedPrefix}pornhubdl *url*
+𓂂𓏸  𐅹੭੭   *\`𝖣ᨣ𝗐𝗇𝗅ᨣ𝖺𝖽\`* ${xdownload} ᩚ꤬ᰨᰍ
+ര ׄ ${xdownload}˚ ${usedPrefix}play *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}aplay *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}aplay2 *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}splay *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}ytmp4doc *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}ytmp3doc *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}apk *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}aptoide *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}modapk *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}pinterest *texto*
+ര ׄ ${xdownload}˚ ${usedPrefix}capcut *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}pindl *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}pinvid *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}ytmp4 *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}ytmp3 *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}tiktok *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}tiktok2 *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}instagram *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}facebook *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}mediafire *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}mega *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}playstore *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}xnxxdl *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}xvideosdl *url*
+ര ׄ ${xdownload}˚ ${usedPrefix}pornhubdl *url*
 
 𓂂𓏸  𐅹੭੭   *\`𝖲ᧉ𝖺ꭇ𝖼𝗁\`*   🔎ᩚ꤬ᰨᰍ
 ര ׄ 🔎˚ ${usedPrefix}scsearch *texto*
