@@ -107,7 +107,7 @@ await m.react('📭');
     let example = `${usedPrefix}apk WhatsApp`;
     return conn.sendMessage(
       m.chat,
-      { text: `*📪 Ingresa el nombre de una Apk que deseas descargar.*\n> *\`Ejemplo:\`* ${example}` },
+      { text: `*${xdownload} Ingresa el nombre de una Apk que deseas descargar.*\n> *\`Ejemplo:\`* ${example}` },
       { quoted: m }
     );
   }
