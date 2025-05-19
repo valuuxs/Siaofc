@@ -12,7 +12,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   if (users.exp < rob) return m.reply(`*😔 @${who.split`@`[0]} tiene menos de \`${ro} Xp\`*\n*No robes a un pobre v:*`, null, {mentions: [who]});
   global.db.data.users[m.sender].exp += rob;
   global.db.data.users[who].exp -= rob;
-  m.reply(`*🏦 Robaste \`${rob} Xp\` a @${who.split`@`[0]}*`, null, {mentions: [who]});
+  m.reply(`*🏦 Robaste \`${rob} Xp\` a* *@${who.split`@`[0]}*`, null, {mentions: [who]});
   global.db.data.users[m.sender].lastrob = new Date * 1;
 };
 handler.help = ['rob'];
