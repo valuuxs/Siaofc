@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
     let tiempo = 5 * 60
     if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempo * 1000) {
         let tiempo2 = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempo * 1000 - Date.now()) / 1000))
-        m.reply(`ℹ️ Debes esperar *${tiempo2}* para usar *#crime* de nuevo.`)
+        m.reply(`*⏰ Debes esperar \`${tiempo2}\` para hacer un crimen de nuevo.`)
         return
     }
     cooldowns[m.sender] = Date.now()
@@ -30,7 +30,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             users[senderId].diamantes += amountTaken
             users[randomUserId].diamantes -= amountTaken
             conn.sendMessage(m.chat, {
-                text: `✿ Entraste a una mansión y vendiste todos los focos que tenían, ganando *${amountTaken} 💎*.`,
+                text: `*${xrpg} Entraste a una mansión y vendiste todos los focos que tenían, ganando \`${amountTaken} Diamantes\` 💎*.`,
                 contextInfo: {
                     mentionedJid: [randomUserId],
                 }
@@ -39,14 +39,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         case 1:
             amountSubtracted = Math.min(Math.floor(Math.random() * (senderDiamantes - minAmount + 1)) + minAmount, maxAmount)
             users[senderId].diamantes -= amountSubtracted
-            conn.reply(m.chat, `✿ Estas pendejo, fallaste y perdiste *-${amountSubtracted} Diamantes*, pinche pendejo.`, m, rcanal)
+            conn.reply(m.chat, `*${xrpg} Estas pendejo, fallaste y perdiste \`${amountSubtracted} Diamantes\` pinche pendejo.*`, m)
             break
         case 2:
             let smallAmountTaken = Math.min(Math.floor(Math.random() * (randomUserDiamantes / 2 - minAmount + 1)) + minAmount, maxAmount)
             users[senderId].diamantes += smallAmountTaken
             users[randomUserId].diamantes -= smallAmountTaken
             conn.sendMessage(m.chat, {
-                text: `✿ Lograste Cometer Tu Crimen Con Éxito, Pero te descubrieron y solo lograste tomar *${smallAmountTaken} 💎*`,
+                text: `*${xrpg} Lograste Cometer tu crimen con éxito, pero te descubrieron y solo lograste tomar \`${smallAmountTaken} Diamantes\` 💎*`,
                 contextInfo: {
                     mentionedJid: [randomUserId],
                 }
@@ -56,7 +56,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             users[senderId].yenes += amountTaken
             users[randomUserId].yenes -= amountTaken
             conn.sendMessage(m.chat, {
-                text: `✿ Vendiste la contraseña del wifi de tu ex por *${amountTaken} 💎*.`,
+                text: `*${xrpg} Vendiste la contraseña del wifi de tu ex por \`${amountTaken} Diamantes\` 💎*.`,
                 contextInfo: {
                     mentionedJid: [randomUserId],
                 }
@@ -66,7 +66,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             users[senderId].diamantes += amountTaken
             users[randomUserId].diamantes -= amountTaken
             conn.sendMessage(m.chat, {
-                text: `✿ Con que haciendo maldades? Toma *${amountTaken} 💎* y no se lo digas a nadie.`,
+                text: `*${xrpg} Con que haciendo maldades? Toma \`${amountTaken} Diamantes\` y no se lo digas a nadie. 🤫*`,
                 contextInfo: {
                     mentionedJid: [randomUserId],
                 }
@@ -75,12 +75,12 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         case 5:
             amountSubtracted = Math.min(Math.floor(Math.random() * (senderDiamantes - minAmount + 1)) + minAmount, maxAmount)
             users[senderId].diamantes -= amountSubtracted
-            conn.reply(m.chat, `✿ Intentaste saquear una tienda y los chinos te corrieron 10 cuadras, perdiste *-${amountSubtracted} Diamantes* en el camino.`, m, rcanal)
+            conn.reply(m.chat, `*${xrpg} Intentaste saquear una tienda y los chinos te corrieron 10 cuadras, perdiste \`${amountSubtracted} Diamantes\` en el camino.*`, m)
             break
         case 6:
             amountSubtracted = Math.min(Math.floor(Math.random() * (senderDiamantes - minAmount + 1)) + minAmount, maxAmount)
             users[senderId].diamantes -= amountSubtracted
-            conn.reply(m.chat, `✿ Intentaste robarle a los admins pero hicieron que un vagabundo te violara, perdiendo *-${amountSubtracted} Diamantes*.`, m, rcanal)
+            conn.reply(m.chat, `*${xrpg} Intentaste robarle a los admins pero hicieron que un vagabundo te violara, perdiendo \`${amountSubtracted} Diamantes\` 💎*.`, m)
             break
     }
     global.db.write()
