@@ -35,7 +35,7 @@ const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5f
 *🆙 Versión:* 3.0.0
 
 *💎 Gemas:* ${diamantes}
-*💫 Exp:* ${exp}
+*🍸 Exp:* ${exp}
 *🫖 Nivel:* ${level}
 *🍢 Rango:* ${role}
 ${readMore}
