@@ -67,7 +67,7 @@ global.xowner = '☕'
 global.xia = '☁️'
 global.xfun = '🥯'
 global.xsticker = '🍪'
-global.xrpg = '💸'
+global.xrpg = '🍸'
 
 
 
