@@ -5,9 +5,9 @@ const font2 = {
   v: '🅅', w: '🅆', x: '🅇', y: '🅈', z: '🅉'
 }
 
-const handler = async (m, { conn, text }) => {
+const handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text.includes('|')) {
-    return m.reply(`Ejemplo:\n.reactch https://whatsapp.com/channel/abc/123|hola negros`)
+    return m.reply(`*${xtools} Por favor, ingresa el link del mensaje del canal y el texto.*\n> *\`Ejemplo:\`* ${usedPrefix + command} https://whatsapp.com/channel/abc/123 | Hola negros`)
   }
 
   let [link, ...messageParts] = text.split('|')
@@ -15,7 +15,7 @@ const handler = async (m, { conn, text }) => {
   const msg = messageParts.join('|').trim().toLowerCase()
 
   if (!link.startsWith("https://whatsapp.com/channel/")) {
-    return m.reply("Link no válido")
+    return m.reply("*⚠️ Link no válido*")
   }
 
   const emoji = msg.split('').map(c => c === ' ' ? '―' : (font2[c] || c)).join('')
@@ -24,7 +24,7 @@ const handler = async (m, { conn, text }) => {
     const [, , , , channelId, messageId] = link.split('/')
     const res = await conn.newsletterMetadata("invite", channelId)
     await conn.newsletterReactMessage(res.id, messageId, emoji)
-    m.reply(`✅ Reacción *${emoji}* Enviada a *${res.name}*.`)
+    m.reply(`*✅ Reacción ${emoji} Enviada a ${res.name}*.`)
   } catch (e) {
     console.error(e)
     m.reply("❌ Error!")
