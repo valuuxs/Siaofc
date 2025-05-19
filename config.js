@@ -29,7 +29,7 @@ global.author = 'By Criss'
 global.dev = '© 𝖯᥆𝗐ᥱ𝗋ᥱძ ᑲᥡ 𝖲ᥙᥒ𝖿ᥣᥲ𝗋ᥱ  ☂︎  𝖳ᥱᥲ𝗆'
 global.errorm = 'Error: ${error.message}'
 global.nombrebot = 'Shadow Bot - MD'
-global.textbot = `「 SHADOW BOT MD 」`
+global.textbot = `⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅա  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚`
 global.vs = '3.0.0'
 
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
