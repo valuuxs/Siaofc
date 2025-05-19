@@ -5,9 +5,10 @@ if (!(who in global.db.data.users)) return conn.reply(m.chat, '*⚠️ El usuari
 let user = global.db.data.users[who]
 await m.reply(`${who == m.sender ? `*${xrpg} Tienes \`${user.diamantes}\` Diamantes 💎 en tu Cartera*` : `*${xrpg} El usuario @${who.split('@')[0]} tiene \`${user.diamantes}\` Diamantes 💎 en su Cartera*`}. `, null, { mentions: [who] })}
 
-handler.help = ['estrellas']
+handler.help = ['diamantes']
 handler.tags = ['rpg']
 handler.command = ['wallet', 'cartera', 'diamantes', 'bal', 'coins']
 handler.register = true 
+handler.group = true
 
 export default handler
