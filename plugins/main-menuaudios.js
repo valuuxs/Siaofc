@@ -17,7 +17,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
 🌴 ⪧ \`BotName:\` Shadow Ultra - MD
 🖥️ ⪧ \`Platform:\` Linux
-🌿 ⪧ \`Type:\` NodeJs
+🚀 ⪧ \`Type:\` NodeJs
 📚 ⪧ \`Librería:\` Baileys
 
 ෨   *𝖮𝗐𝗇𝖾𝗋 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌*    𓈒𓏸    ☁︎ 
@@ -34,9 +34,6 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ゲ ${xowner} ${usedPrefix}unbanuser
 ゲ ${xowner} ${usedPrefix}dsowner
 ゲ ${xowner} ${usedPrefix}
-
-
-
 `.trim();
 
     conn.sendMessage(m.chat, {
