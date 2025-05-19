@@ -5,8 +5,9 @@
 import axios from "axios";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat,`🤍 Ejemplo: ${usedPrefix}${command} paisaje hermoso`, m, fake)
-  await m.react('🕓')
+  if (!text) return conn.reply(m.chat,`*${xia} Describe la imagen que deseas generar.*\n> *\`Ejemplo:\`*  ${usedPrefix}${command} Paisaje hermoso`, m)
+
+  await m.react('⌛')
 
   try {
     const result = await fluximg.create(text);
@@ -21,13 +22,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         { quoted: m }
       );
     } else {
-      throw new Error("No se pudo crear la imagen. Intentar otra vez.");
+      throw new Error("*✖️ No se pudo crear la imagen. Intentar otra vez.*");
     }
   } catch (error) {
     console.error(error);
     conn.reply(
       m.chat,
-      "Se produjo un error al crear la imagen.",
+      "*✖️ Se produjo un error al crear la imagen.*",
       m
     );
   }
