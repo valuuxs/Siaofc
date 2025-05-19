@@ -5,9 +5,6 @@ import sharp from 'sharp';
 import { tmpdir } from 'os';
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const xsticker = '🍪';
-const rcanal = null;
-const fkontak = m; // o como corresponda en tu contexto
 
 const fetchSticker = async (text, attempt = 1) => {
     try {
