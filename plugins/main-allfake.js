@@ -171,12 +171,21 @@ global.channelRD = await getRandomChannel()
 // global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "3876577197-120363302285079181@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: `${packname}`, orderTitle: 'Bang', thumbnail: icons, sellerJid: '0@s.whatsapp.net'}}}
 
 global.icono = [
-'https://files.catbox.moe/uho7vk.jpg',
-'https://files.catbox.moe/u1sgph.jpg',
-'https://files.catbox.moe/pk3xxk.jpg',
-'https://files.catbox.moe/yljhz1.jpg',
-'https://files.catbox.moe/qze4u2.jpg',
-'https://files.catbox.moe/gc6b94.jpg',
+"https://files.catbox.moe/uu9lz5.jpg",
+"https://files.catbox.moe/0a0e5s.jpg",
+"https://files.catbox.moe/xe4y9r.jpg",
+"https://files.catbox.moe/9pm5a8.jpg",
+"https://files.catbox.moe/qs0h5r.jpg",
+"https://files.catbox.moe/m78pwx.jpg",
+"https://files.catbox.moe/ninsr8.jpg",
+"https://files.catbox.moe/73bgpc.jpg",
+"https://files.catbox.moe/8aguf5.jpg",
+"https://files.catbox.moe/g48qfe.jpg",
+"https://files.catbox.moe/0gtahy.jpg",
+"https://files.catbox.moe/z2jdlo.jpg",
+"https://files.catbox.moe/814bhm.jpg",
+"https://files.catbox.moe/y5l3hq.jpg",
+"https://files.catbox.moe/kevttt.jpg",
 ].getRandom()
 
 global.urls = [
