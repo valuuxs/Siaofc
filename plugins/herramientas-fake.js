@@ -18,7 +18,6 @@ mentionedJid: conn.parseMention(real.join(sp).trim())
 handler.help = ['fake']
 handler.tags = ['herramientas']
 handler.command = /^(fake)$/
-handler.register = true 
 
 export default handler
 
