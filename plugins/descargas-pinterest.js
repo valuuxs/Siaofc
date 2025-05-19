@@ -33,7 +33,7 @@ async function dl(url) {
 
 let handler = async (m, { conn, text }) => {
   if (!text || !text.includes('https://')) {
-    return m.reply(`*🥞 Por favor, proporciona un enlace válido de Pinterest.*`);
+    return m.reply(`*${xdownload} Por favor, proporciona un enlace válido de Pinterest.*`);
   }
 
   try {
