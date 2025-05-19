@@ -18,7 +18,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
-        await m.react('☁️')
+        await m.react('🌾')
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/pk3xxk.jpg')
 
@@ -195,64 +195,64 @@ ${readMore}
 ര ׄ ${xgc}˚ ${usedPrefix}link
 ര ׄ ${xgc}˚ ${usedPrefix}fantasmas
 
-𓂂𓏸  𐅹੭੭   *\`𝖤ẜᧉ𝖼ƚ𝗌\`*   🪻ᩚ꤬ᰨᰍ
-ര ׄ 🪻˚ ${usedPrefix}bass *vid*
-ര ׄ 🪻˚ ${usedPrefix}blown *vid*
-ര ׄ 🪻˚ ${usedPrefix}deep *vid*
-ര ׄ 🪻˚ ${usedPrefix}earrape *vid*
-ര ׄ 🪻˚ ${usedPrefix}fast *vid*
-ര ׄ 🪻˚ ${usedPrefix}smooth *vid*
-ര ׄ 🪻˚ ${usedPrefix}tupai *vid*
-ര ׄ 🪻˚ ${usedPrefix}nightcore *vid*
-ര ׄ 🪻˚ ${usedPrefix}reverse *vid*
-ര ׄ 🪻˚ ${usedPrefix}robot *vid*
-ര ׄ 🪻˚ ${usedPrefix}slow *vid*
-ര ׄ 🪻˚ ${usedPrefix}squirrel *vid*
-ര ׄ 🪻˚ ${usedPrefix}chipmunk *vid*
-ര ׄ 🪻˚ ${usedPrefix}reverb *vid*
-ര ׄ 🪻˚ ${usedPrefix}chorus *vid*
-ര ׄ 🪻˚ ${usedPrefix}flanger *vid*
-ര ׄ 🪻˚ ${usedPrefix}distortion *vid*
-ര ׄ 🪻˚ ${usedPrefix}pitch *vid*
-ര ׄ 🪻˚ ${usedPrefix}highpass *vid*
-ര ׄ 🪻˚ ${usedPrefix}lowpass *vid*
-ര ׄ 🪻˚ ${usedPrefix}underwater *vid*
+𓂂𓏸  𐅹੭੭   *\`𝖤ẜᧉ𝖼ƚ𝗌\`*  ${xefects} ᩚ꤬ᰨᰍ
+ര ׄ ${xefects}˚ ${usedPrefix}bass *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}blown *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}deep *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}earrape *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}fast *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}smooth *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}tupai *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}nightcore *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}reverse *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}robot *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}slow *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}squirrel *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}chipmunk *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}reverb *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}chorus *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}flanger *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}distortion *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}pitch *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}highpass *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}lowpass *vid*
+ര ׄ ${xefects}˚ ${usedPrefix}underwater *vid*
 
-𓂂𓏸  𐅹੭੭   *\`𝖥𝗎𝗇\`*   🥯ᩚ꤬ᰨᰍ
-ര ׄ 🥯˚ ${usedPrefix}gay *@tag*
-ര ׄ 🥯˚ ${usedPrefix}lesbiana *@tag*
-ര ׄ 🥯˚ ${usedPrefix}pajero *@tag*
-ര ׄ 🥯˚ ${usedPrefix}pajera *@tag*
-ര ׄ 🥯˚ ${usedPrefix}puto *@tag*
-ര ׄ 🥯˚ ${usedPrefix}puta *@tag*
-ര ׄ 🥯˚ ${usedPrefix}manco *@tag*
-ര ׄ 🥯˚ ${usedPrefix}manca *@tag*
-ര ׄ 🥯˚ ${usedPrefix}rata *@tag*
-ര ׄ 🥯˚ ${usedPrefix}prostituto *@tag*
-ര ׄ 🥯˚ ${usedPrefix}prostituta *@tag*
-ര ׄ 🥯˚ ${usedPrefix}doxear *@tag*
-ര ׄ 🥯˚ ${usedPrefix}jalamela *@tag*
-ര ׄ 🥯˚ ${usedPrefix}simi *texto*
-ര ׄ 🥯˚ ${usedPrefix}pregunta *texto*
-ര ׄ 🥯˚ ${usedPrefix}genio *texto*
-ര ׄ 🥯˚ ${usedPrefix}top
-ര ׄ 🥯˚ ${usedPrefix}sorteo
-ര ׄ 🥯˚ ${usedPrefix}piropo
-ര ׄ 🥯˚ ${usedPrefix}chiste
-ര ׄ 🥯˚ ${usedPrefix}facto
-ര ׄ 🥯˚ ${usedPrefix}verdad
-ര ׄ 🥯˚ ${usedPrefix}pareja
-ര ׄ 🥯˚ ${usedPrefix}parejas
-ര ׄ 🥯˚ ${usedPrefix}love
-ര ׄ 🥯˚ ${usedPrefix}personalidad
+𓂂𓏸  𐅹੭੭   *\`𝖥𝗎𝗇\`*  ${xfun} ᩚ꤬ᰨᰍ
+ര ׄ ${xfun}˚ ${usedPrefix}gay *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}lesbiana *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}pajero *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}pajera *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}puto *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}puta *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}manco *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}manca *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}rata *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}prostituto *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}prostituta *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}doxear *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}jalamela *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}simi *texto*
+ര ׄ ${xfun}˚ ${usedPrefix}pregunta *texto*
+ര ׄ ${xfun}˚ ${usedPrefix}genio *texto*
+ര ׄ ${xfun}˚ ${usedPrefix}top
+ര ׄ ${xfun}˚ ${usedPrefix}sorteo
+ര ׄ ${xfun}˚ ${usedPrefix}piropo
+ര ׄ ${xfun}˚ ${usedPrefix}chiste
+ര ׄ ${xfun}˚ ${usedPrefix}facto
+ര ׄ ${xfun}˚ ${usedPrefix}verdad
+ര ׄ ${xfun}˚ ${usedPrefix}pareja
+ര ׄ ${xfun}˚ ${usedPrefix}parejas
+ര ׄ ${xfun}˚ ${usedPrefix}love
+ര ׄ ${xfun}˚ ${usedPrefix}personalidad
 
-𓂂𓏸  𐅹੭੭   *\`𝖩𝗎ᧉ𝗀ᨣ𝗌\`*   🐚ᩚ꤬ᰨᰍ
-ര ׄ 🐚˚ ${usedPrefix}pregunta *texto*
-ര ׄ 🐚˚ ${usedPrefix}ttt *texto*
-ര ׄ 🐚˚ ${usedPrefix}ptt *opción*
-ര ׄ 🐚˚ ${usedPrefix}delttt
-ര ׄ 🐚˚ ${usedPrefix}acertijo
-ര ׄ 🐚˚ ${usedPrefix}trivia
+𓂂𓏸  𐅹੭੭   *\`𝖩𝗎ᧉ𝗀ᨣ𝗌\`*  ${xgame} ᩚ꤬ᰨᰍ
+ര ׄ ${xgame}˚ ${usedPrefix}pregunta *texto*
+ര ׄ ${xgame}˚ ${usedPrefix}ttt *texto*
+ര ׄ ${xgame}˚ ${usedPrefix}ptt *opción*
+ര ׄ ${xgame}˚ ${usedPrefix}delttt
+ര ׄ ${xgame}˚ ${usedPrefix}acertijo
+ര ׄ ${xgame}˚ ${usedPrefix}trivia
 
 𓂂𓏸  𐅹੭੭   *\`𝖠𝗇ı𝗆ᧉ\`*  ${xanime} ᩚ꤬ᰨᰍ
 ര ׄ ${xanime}˚ ${usedPrefix}messi
@@ -294,10 +294,10 @@ ${readMore}
 ര ׄ ${xrpg}˚ ${usedPrefix}nivel
 ര ׄ ${xrpg}˚ ${usedPrefix}ruleta
 
-𓂂𓏸  𐅹੭੭   *\`𝖱ᧉ𝗀ı𝗌𝗍𝗋ᨣ\`*   🎣ᩚ꤬ᰨᰍ
-ര ׄ 🎣˚ ${usedPrefix}perfil
-ര ׄ 🎣˚ ${usedPrefix}reg
-ര ׄ 🎣˚ ${usedPrefix}unreg
+𓂂𓏸  𐅹੭੭   *\`𝖱ᧉ𝗀ı𝗌𝗍𝗋ᨣ\`*  ${xreg} ᩚ꤬ᰨᰍ
+ര ׄ ${xreg}˚ ${usedPrefix}perfil
+ര ׄ ${xreg}˚ ${usedPrefix}reg
+ര ׄ ${xreg}˚ ${usedPrefix}unreg
 
 𓂂𓏸  𐅹੭੭   *\`𝖮ɯ𝗇ᧉꭇ\`*  ${xowner} ᩚ꤬ᰨᰍ
 ര ׄ ${xowner}˚ ${usedPrefix}salir
@@ -318,7 +318,7 @@ ${readMore}
                 isForwarded: true,
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 💫',
+                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 🌤️',
                     thumbnailUrl: perfil,
                     mediaType: 1,
                     renderLargerThumbnail: false,
@@ -328,7 +328,7 @@ ${readMore}
             gifAttribution: 0
         }, { quoted: null })
     } catch (e) {
-        await m.reply(`*☕ Ocurrió un error al enviar el menú.*\n\n${e}`)
+        await m.reply(`*✖️ Ocurrió un error al enviar el menú.*\n\n${e}`)
     }
 }
 
