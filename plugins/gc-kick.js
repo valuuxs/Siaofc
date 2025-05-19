@@ -1,9 +1,9 @@
 let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) => {
   if (!global.db.data.settings[conn.user.jid].restrict)
 {
-return m.reply('*[ ⚠️ ] 𝙴𝙻 𝙾𝚆𝙽𝙴𝚁 𝚃𝙸𝙴𝙽𝙴 𝚁𝙴𝚂𝚃𝚁𝙸𝙽𝙶𝙸𝙳𝙾 (𝚎𝚗𝚊𝚋𝚕𝚎 𝚛𝚎𝚜𝚝𝚛𝚒𝚌𝚝 / 𝚍𝚒𝚜𝚊𝚋𝚕𝚎 𝚛𝚎𝚜𝚝𝚛𝚒𝚌𝚝) 𝙴𝙻 𝚄𝚂𝙾 𝙳𝙴 𝙴𝚂𝚃𝙴 𝙲𝙾𝙼𝙰𝙽𝙳𝙾*');
+return m.reply('*☕ El owner tiene restringido está opción*');
 }
-    let kickte = `*🍃 Menciona algún participante que desea eliminar del Grupo.*`
+    let kickte = `*${xgc} Menciona algún participante que desea eliminar del grupo.*`
 
     if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)})
 
