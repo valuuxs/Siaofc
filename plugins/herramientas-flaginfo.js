@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
 
 let handler = async(m, { conn, text, usedPrefix, command }) => {
 
-if (!text) return m.reply('*[ ℹ️ ] Ingresa el nombre del país.*');
+if (!text) return m.reply(`*${xtools} Por favor, ingresa el nombre de algún país.*`);
 
 try {
 let api = `https://delirius-apiofc.vercel.app/tools/flaginfo?query=${text}`;
