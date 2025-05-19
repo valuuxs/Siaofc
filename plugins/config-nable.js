@@ -774,6 +774,8 @@ ${usedPrefix + command} modoadmin
 ${usedPrefix + command} antilink`, m)
       throw false
   }
+
+/*
 await conn.sendMessage(m.chat, { 
   text: `` +
         `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
@@ -793,7 +795,17 @@ await conn.sendMessage(m.chat, {
   viewOnce: true,
   headerType: 1
 }, { quoted: fkontak });
-}
+}*/
+
+await conn.sendMessage(m.chat, {
+  buttons: [
+    { buttonId: isEnable ? `.off ${type}` : `.on ${type}`, buttonText: { displayText: isEnable ? '🔴 Off' : '🟢 On' }, type: 1 },
+    { buttonId: '.menu', buttonText: { displayText: 'Menú ☕' }, type: 1 }
+  ],
+  text: `*» OPCION |* ${type.toUpperCase()}\n*» ESTADO |* ${isEnable ? 'ON' : 'OFF'}\n*» PARA |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`,
+  footer: dev,
+  headerType: 1
+}, { quoted: fkontak });
 
 handler.help = ['enable', 'disable']
 handler.tags = ['nable', 'owner']
