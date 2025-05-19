@@ -15,13 +15,13 @@ const handler = async (m, {conn, isAdmin, isOwner, args, usedPrefix, command}) =
   }[(args[0] || '')];
   if (isClose === undefined) {
           const caption = `
-*🍃 Ingresa una opción válida seguido del número de horas.*
+*${xgc} Ingresa una opción válida seguido del número de horas.*
 
 > *\`Ejemplo:\`* 
 ${usedPrefix + command} *open 1*
 ${usedPrefix + command} *close 1*
 
-> ⍴ᥲrᥲ 𝗊ᥙᥱ ᥱᥣ grᥙ⍴᥆ ᥱs𝗍ᥱ *abierto/cerrado* ⍴᥆r ᥙᥒᥲ һ᥆rᥲ.
+> 𝖯𝖺𝗋𝖺 𝗊𝗎𝖾 𝖾𝗅 𝗀𝗋𝗎𝗉𝗈 𝖾𝗌𝗍𝖾́ *𝖺𝖻𝗂𝖾𝗋𝗍𝗈/𝖼𝖾𝗋𝗋𝖺𝖽𝗈* 𝗉𝗈𝗋 𝗎𝗇𝖺 𝗁𝗈𝗋𝖺.
 `;
     m.reply(caption);
           throw false;
