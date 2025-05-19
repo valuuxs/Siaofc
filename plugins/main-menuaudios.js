@@ -4,7 +4,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
     await m.react('👑');
 
-    let img = 'https://files.catbox.moe/onzb5l.jpg';
+    let img = 'https://files.catbox.moe/9t8o4o.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
 
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
@@ -23,7 +23,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
         isForwarded: true,
         forwardingScore: 999,
         externalAdReply: {
-          title: `${await conn.getName(m.sender)}, This is the Audios Menu. You can follow me on Instagram by clicking here`,
+          title: `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`,
           body: dev,
           thumbnail: await (await fetch(img)).buffer(),
           sourceUrl: insta,
