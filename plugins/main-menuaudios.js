@@ -33,7 +33,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ゲ ${xowner} ${usedPrefix}banuser
 ゲ ${xowner} ${usedPrefix}unbanuser
 ゲ ${xowner} ${usedPrefix}dsowner
-ゲ ${xowner} ${usedPrefix}
+ゲ ${xowner} ${usedPrefix}autoadmin 
 `.trim();
 
     conn.sendMessage(m.chat, {
