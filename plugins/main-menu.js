@@ -22,8 +22,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/pk3xxk.jpg')
 
-        //const videoUrl = 'https://files.catbox.moe/7ha109.mp4' // URL fija del video
-        const videoUrl = 'https://files.catbox.moe/3houc8.mp4'
+const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5fbi9s.mp4', 'https://files.catbox.moe/biggyj.mp4']
 
         let menu = `
 ㅤㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁ㅤㅤ𑁯🤍ᰍㅤㅤ⩁꯭ ͡  ͡ᩚ꯭ ꯭⩁
@@ -312,7 +311,7 @@ ${readMore}
 `.trim()
 
         await conn.sendMessage(m.chat, {
-            video: { url: videoUrl }, // Video fijo
+            video: { url: vid.getRandom() }, // Vid
             caption: menu,
             contextInfo: {
                 mentionedJid: [m.sender],
