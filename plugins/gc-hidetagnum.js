@@ -4,7 +4,7 @@ const handler = async (m, { conn, args, participants, usedPrefix, command }) => 
 
   const prefijo = args[0].replace(/[+]/g, '');
   const mensaje = args.slice(1).join(' ') || '📢 ¡Atención!';
-  const textoMensaje = `🍄 *Mensaje:* ${mensaje}\n*ETIQUETAS:*`;
+  const textoMensaje = `🍄 *Mensaje:* ${mensaje}\n\n*ETIQUETAS:*`;
 
   const usuariosConPrefijo = participants
     .map((u) => u.id)
@@ -17,7 +17,7 @@ const handler = async (m, { conn, args, participants, usedPrefix, command }) => 
 
   conn.reply(
     m.chat, 
-    `*MENSAJE ESPECIAL PARA \`+${prefijo}\` QUE ESTÁN EN ESTE GRUPO:*\n\n${textoMensaje}\n\n${listaUsuarios}`, 
+    `*MENSAJE ESPECIAL PARA \`+${prefijo}\` QUE ESTÁN EN ESTE GRUPO:*\n\n${textoMensaje}\n${listaUsuarios}`, 
     m, 
     { mentions: usuariosConPrefijo }
   );
