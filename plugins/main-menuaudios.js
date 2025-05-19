@@ -2,20 +2,20 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
-    await m.react('🔊');
+    await m.react('👑');
 
-    let img = 'https://files.catbox.moe/2xuz8m.jpg';
+    let img = 'https://files.catbox.moe/onzb5l.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
 
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
-︵᷼   MENÚ AUDIOS࣭
+︵᷼   MENÚ OWNER
 ✿ *Hᴏʟᴀ ${taguser}*\n${saludo}
 
 > ꒰꛱Este menú sigue siendo desarrollado por *Cristian Escobar*
 
-↷✦; \`Audios\` ❞ ☕︵᷼ 
+↷✦; \`Comandos\` ❞ ☕︵᷼ 
 `.trim();
 
     conn.sendMessage(m.chat, {
@@ -36,11 +36,11 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     }, { quoted: fkontak });
 
   } catch (e) {
-    conn.reply(m.chat, '❎ Error en el comando. Inténtalo más tarde.', m);
+    conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
   }
 };
 
-handler.command = /^(menuaudios)$/i;
+handler.command = /^(menuowner)$/i;
 handler.fail = null;
 
 export default handler;
