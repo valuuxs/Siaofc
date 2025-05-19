@@ -18,7 +18,7 @@ return;
   }
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.diamantes < rob) return conn.reply(m.chat, `*🌿 @${who.split`@`[0]} no tiene suficientes diamantes fuera del banco como para que valga la pena intentar robar.*`, m, {mentions: [who]});
+  if (users.diamantes < rob) return conn.reply(m.chat, `🌿 *@${who.split`@`[0]}* *no tiene suficientes diamantes fuera del banco como para que valga la pena intentar robar.*`, m, {mentions: [who]});
   global.db.data.users[m.sender].diamantes += rob;
   global.db.data.users[who].diamantes -= rob;
   conn.reply(m.chat, `*💎 Le robaste \`${rob} Diamantes\` a* *@${who.split`@`[0]}*`, m, {mentions: [who]});
