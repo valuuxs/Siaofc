@@ -24,7 +24,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
  try {
   if (!text || !text.trim()) {
-    return conn.reply(m.chat, `*🧇 Por favor, ingresa un título o URL de YouTube.*`, m);
+    return conn.reply(m.chat, `*${xdownload} Por favor, ingresa un título o URL de YouTube.*`, m);
   }
 
     await conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
