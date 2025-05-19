@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       console.error('Error: No image buffer available')
       return conn.reply(m.chat, '*✖️ Error: No se pudo descargar la imagen.*', m)
     }
-    const content = 'describe la imagen'
+    const content = 'describe'
 
     try {
       await conn.sendPresenceUpdate('composing', m.chat) // Indica que está escribiendo
