@@ -7,7 +7,7 @@ import path from 'path'
 var handler = async (m, { conn, usedPrefix }) => {
 
 if (global.conn.user.jid !== conn.user.jid) {
-return conn.reply(m.chat, '*☕ Utiliza este comando directamente en el número principal del Bot*', m, rcanal, )
+return conn.reply(m.chat, '*⚠️ Utiliza este comando directamente en el número principal del Bot*', m, rcanal, )
 }
 
 let chatId = m.isGroup ? [m.chat, m.sender] : [m.sender]
@@ -26,7 +26,7 @@ break
 }}}
 
 if (filesDeleted === 0) {
-await conn.reply(m.chat, '*🥯 No se encontró ningún archivo que incluya la ID del chat*', m)
+await conn.reply(m.chat, `*${xinfo} No se encontró ningún archivo que incluya la ID del chat*`, m)
 } else {
 await conn.reply(m.chat, `*🚮 Se eliminaron \`${filesDeleted}\` archivos de sesión*`, m)
 conn.reply(m.chat, `*👋🏻 ¡Hola! ¿Ahora me ves?*`, m)
