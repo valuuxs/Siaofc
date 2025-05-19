@@ -1,3 +1,4 @@
+/*
 import { tmpdir } from 'os'
 import path, { join } from 'path'
 import {
@@ -25,3 +26,4 @@ handler.command = /^(cleardb|cleardatabase|borrardb|eliminardb|borrardatabase|bo
 handler.exp = 500
 handler.rowner = true
 export default handler
+*/
