@@ -12,7 +12,8 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
     exp = exp || 'Desconocida';
     role = role || 'Aldeano';
 
-        const _uptime = process.uptime() * 1000;
+    const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+    const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
 
     let totalreg = Object.keys(global.db.data.users).length
