@@ -14,6 +14,29 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ‎ ‎꒲꒲  *𝖧𐐫𝗅⍺*  ׅ ෫ׄ᷼͝${taguser}  ಒ
  ‎ ‎ ‎ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗈* ‎ ‎  ‎ ‎✿̮    ׅ  𝖺𝗅   ୂ  
  ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
+
+🌴 ⪧ \`BotName:\` Shadow Ultra - MD
+🖥️ ⪧ \`Platform:\` Linux
+🌿 ⪧ \`Type:\` NodeJs
+📚 ⪧ \`Librería:\` Baileys
+
+෨   *𝖮𝗐𝗇𝖾𝗋 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌*    𓈒𓏸    ☁︎ 
+ゲ ${xowner} ${usedPrefix}update
+ゲ ${xowner} ${usedPrefix}leavegc
+ゲ ${xowner} ${usedPrefix}blocklist
+ゲ ${xowner} ${usedPrefix}grouplist
+ゲ ${xowner} ${usedPrefix}restart
+ゲ ${xowner} ${usedPrefix}join
+ゲ ${xowner} ${usedPrefix}chetar
+ゲ ${xowner} ${usedPrefix}banchat 
+ゲ ${xowner} ${usedPrefix}unbanchat
+ゲ ${xowner} ${usedPrefix}banuser
+ゲ ${xowner} ${usedPrefix}unbanuser
+ゲ ${xowner} ${usedPrefix}dsowner
+ゲ ${xowner} ${usedPrefix}
+
+
+
 `.trim();
 
     conn.sendMessage(m.chat, {
