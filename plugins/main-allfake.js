@@ -56,8 +56,9 @@ global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //EMOJIS DE CATEGORÍAS
-global.xanime = '🍚'
+global.xanime = '🥙'
 global.xsearch = '🌳'
+global.xtools = '🍚'
 global.xdownload = '🥞'
 global.xconverter = '🥮'
 global.xff = '🥧'
