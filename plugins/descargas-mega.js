@@ -12,7 +12,7 @@ function formatBytes(bytes, decimals = 2) {
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
   try {
-    if (!text) return conn.reply(m.chat,`*📥 Por favor, ingresa un enlace de Mega*`, null, { quoted: m });
+    if (!text) return conn.reply(m.chat,`*${xdownload} Por favor, ingresa un enlace de Mega*`, null, { quoted: m });
     m.react('⏳');
     const file = File.fromURL(text);
     await file.loadAttributes();
