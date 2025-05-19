@@ -74,4 +74,5 @@ handler.help = ['levelup'];
 handler.tags = ['xp'];
 handler.command = ['nivel', 'lvl', 'levelup', 'level'];
 handler.register = true;
+handler.group = true;
 export default handler;
