@@ -71,7 +71,7 @@ let handler = async (m, { conn, text, participants }) => {
 }
 handler.help = ['notify <txt>']
 handler.tags = ['gc']
-handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet|aviso)$/i
+handler.command = /^(nk)$/i
 handler.group = true
 handler.admin = true
 
