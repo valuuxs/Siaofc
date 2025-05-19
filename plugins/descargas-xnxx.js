@@ -7,7 +7,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 
   if (!args[0]) {
-    return m.reply(`*🫓 Por favor, ingresa un enlace válido de xnxx.*`);
+    return m.reply(`*🍁 Por favor, ingresa un enlace válido de xnxx.*`);
 }
   try {
     await m.react('⏳');
