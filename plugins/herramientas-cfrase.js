@@ -4,7 +4,7 @@ const handler = async (m, { text, usedPrefix, command, quoted }) => {
   const defaultSignature = '@frases_que_nadie_dijo';
   const name = m.name || 'Usuario Anonimo';
 
-  if (!text) return m.reply(`*${xtools} Por favor, ingresa el texto para crear la frase.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Hola mundo | https://example.com/pp.jpg*`);
+  if (!text) return m.reply(`*${xtools} Por favor, ingresa el texto para crear la frase.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Hola mundo | https://example.com/pp.jpg`);
 
   let [quoteText, ppUrl] = text.split('|').map(a => a.trim());
   if (!quoteText) return m.reply('Texto para la frase no definido.');
