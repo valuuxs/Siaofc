@@ -1,4 +1,4 @@
-import { sticker } from '../lib/sticker.js'
+/*import { sticker } from '../lib/sticker.js'
 
 const estilos = [
   { nombre: 'Fluffy Logo', id: 'fluffy-logo' },
@@ -37,5 +37,42 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['flamestick <número_estilo> <texto>']
 handler.tags = ['sticker']
 handler.command = /^(flamestick|flame)$/i
+
+export default handler*/
+
+
+import MessageType from '@whiskeysockets/baileys'
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
+
+let handler = async (m, { conn, text, participants }) => {
+  let users = participants.map(u => conn.decodeJid(u.id))
+  let q = m.quoted ? m.quoted : m
+  let c = m.quoted ? m.quoted : m.msg
+
+  const msg = conn.cMod(m.chat,
+    generateWAMessageFromContent(m.chat, {
+      [c.toJSON ? q.mtype : 'extendedTextMessage']: c.toJSON ? c.toJSON() : {
+        text: c || ''
+      }
+    }, {
+      userJid: conn.user.id
+    }),
+    text || q.text, conn.user.jid, { mentions: users }
+  )
+
+  await conn.fakeReply(
+    m.chat,
+    msg.message[q.mtype]?.text || text || '',
+    '0@s.whatsapp.net',
+    'Mención general',
+    'status@broadcast',
+    { mentions: users }
+  )
+}
+handler.help = ['notify <txt>']
+handler.tags = ['gc']
+handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet|aviso)$/i
+handler.group = true
+handler.admin = true
 
 export default handler
