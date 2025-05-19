@@ -3,7 +3,7 @@
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})(?:\s+([0-9]{1,3}))?/i
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`🌿 Por favor, ingresa el enlace del Grupo.*`)
+    if (!text) return m.reply(`${xowner} Por favor, ingresa el enlace del grupo.*`)
 
     try {
         let [_, code, expired] = text.match(linkRegex) || []
@@ -17,7 +17,7 @@ let handler = async (m, { conn, text }) => {
 let groupMetadata = await conn.groupMetadata(groupId).catch(() => null)
 if (groupMetadata) return m.reply(`*[ 🦈 ] Ya estoy en este grupo.*`)
 
-m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
+m.reply(`*✅ Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
 
 
         if (expired) {
@@ -27,7 +27,7 @@ m.reply(`*[ ✅ ] Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot 
             m.reply(`*⌛ Shadow permanecerá en el grupo durante \`${expired}\` días.*`)
         }
     } catch {
-        return m.reply(`*❌ Ocurrió un error al otrar al grupo.*`) 
+        return m.reply(`*✖️ Ocurrió un error al otrar al grupo.*`) 
     }
 }
 
