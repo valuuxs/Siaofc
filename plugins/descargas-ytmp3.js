@@ -135,7 +135,7 @@ const savetube = {
 };
 
 const handler = async (m, { conn, args }) => {
-  if (!args[0]) return m.reply(`*🧇 Ingresa una URL de un video o audio de YouTube*`);
+  if (!args[0]) return m.reply(`*${xdownload} Ingresa una URL de un video o audio de YouTube*`);
 
   let url = args[0];
   if (!savetube.isUrl(url)) return m.reply("*⚠️ Ingresa un link válido de YouTube.*");
