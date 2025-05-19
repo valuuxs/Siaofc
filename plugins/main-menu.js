@@ -258,7 +258,7 @@ ${readMore}
 ര ׄ ${xanime}˚ ${usedPrefix}messi
 ര ׄ ${xanime}˚ ${usedPrefix}cr7
 
-𓂂𓏸  𐅹੭੭   *\`LOGO\`*  ${xlogos} ᩚ꤬ᰨᰍ
+𓂂𓏸  𐅹੭੭   *\`𝖫ᨣ𝗀𑄙𝗌\`*  ${xlogos} ᩚ꤬ᰨᰍ
 ര ׄ ${xlogos}˚ ${usedPrefix}balogo
 
 𓂂𓏸  𐅹੭੭   *\`𝖦ıẜ𝗌-𝖭𝗌ẜɯ\`*  ${xnsfw} ᩚ꤬ᰨᰍ
