@@ -258,6 +258,9 @@ ${readMore}
 ര ׄ ${xanime}˚ ${usedPrefix}messi
 ര ׄ ${xanime}˚ ${usedPrefix}cr7
 
+𓂂𓏸  𐅹੭੭   *\`LOGO\`*  ${xlogos} ᩚ꤬ᰨᰍ
+ര ׄ ${xlogos}˚ ${usedPrefix}balogo
+
 𓂂𓏸  𐅹੭੭   *\`𝖦ıẜ𝗌-𝖭𝗌ẜɯ\`*  ${xnsfw} ᩚ꤬ᰨᰍ
 ര ׄ ${xnsfw}˚ ${usedPrefix}violar *@tag*
 ര ׄ ${xnsfw}˚ ${usedPrefix}follar *@tag*
