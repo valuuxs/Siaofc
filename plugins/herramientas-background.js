@@ -14,7 +14,7 @@ const handler = async (m, { conn }) => {
     const mime = (q.msg || q).mimetype || q.mediaType || ""
 
     if (!/^image\/(jpe?g|png)$/.test(mime)) {
-      return m.reply('🫧 Responde a una imagen')
+      return m.reply(`${xtools} Por favor, responde a una imagen para eliminar el fondo.*')
     }
 
     await m.react('👨🏻‍🔧')
