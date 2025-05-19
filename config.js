@@ -35,7 +35,7 @@ global.vs = '3.0.0'
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
 
 global.repobot = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
-global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
+global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
 global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
 global.insta = 'https://www.instagram.com/dev.criss_vx'
