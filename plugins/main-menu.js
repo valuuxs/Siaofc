@@ -261,42 +261,42 @@ ${readMore}
 ര ׄ ${xanime}˚ ${usedPrefix}cr7
 
 𓂂𓏸  𐅹੭੭   *\`𝖫ᨣ𝗀𑄙𝗌\`*  ${xlogos} ᩚ꤬ᰨᰍ
-ര ׄ ${xlogos}˚ ${usedPrefix}balogo
-ര ׄ ${xlogos}˚ ${usedPrefix}logocorazon
-ര ׄ ${xlogos}˚ ${usedPrefix}logochristmas
-ര ׄ ${xlogos}˚ ${usedPrefix}logopareja
-ര ׄ ${xlogos}˚ ${usedPrefix}logoglitch
-ര ׄ ${xlogos}˚ ${usedPrefix}logosad
-ര ׄ ${xlogos}˚ ${usedPrefix}logogaming
-ര ׄ ${xlogos}˚ ${usedPrefix}logosolitario
-ര ׄ ${xlogos}˚ ${usedPrefix}logodragonball
-ര ׄ ${xlogos}˚ ${usedPrefix}logoneon
-ര ׄ ${xlogos}˚ ${usedPrefix}logogatito
-ര ׄ ${xlogos}˚ ${usedPrefix}logochicagamer
-ര ׄ ${xlogos}˚ ${usedPrefix}logonaruto
-ര ׄ ${xlogos}˚ ${usedPrefix}logofuturista
-ര ׄ ${xlogos}˚ ${usedPrefix}logonube
-ര ׄ ${xlogos}˚ ${usedPrefix}logoangel
-ര ׄ ${xlogos}˚ ${usedPrefix}logomurcielago
-ര ׄ ${xlogos}˚ ${usedPrefix}logocielo
-ര ׄ ${xlogos}˚ ${usedPrefix}logograffiti3d
-ര ׄ ${xlogos}˚ ${usedPrefix}logomatrix
-ര ׄ ${xlogos}˚ ${usedPrefix}logohorror
-ര ׄ ${xlogos}˚ ${usedPrefix}logoalas
-ര ׄ ${xlogos}˚ ${usedPrefix}logoarmy
-ര ׄ ${xlogos}˚ ${usedPrefix}logopubg
-ര ׄ ${xlogos}˚ ${usedPrefix}logopubgfem
-ര ׄ ${xlogos}˚ ${usedPrefix}logolol
-ര ׄ ${xlogos}˚ ${usedPrefix}logoamongus
-ര ׄ ${xlogos}˚ ${usedPrefix}logovideopubg
-ര ׄ ${xlogos}˚ ${usedPrefix}logovideotiger
-ര ׄ ${xlogos}˚ ${usedPrefix}logovideointro
-ര ׄ ${xlogos}˚ ${usedPrefix}logovideogaming
-ര ׄ ${xlogos}˚ ${usedPrefix}logoguerrero
-ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaplayer
-ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaff
-ര ׄ ${xlogos}˚ ${usedPrefix}logoportadapubg
-ര ׄ ${xlogos}˚ ${usedPrefix}logoportadacounter
+ര ׄ ${xlogos}˚ ${usedPrefix}balogo *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logocorazon *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logochristmas  *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logopareja *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoglitch *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logosad *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logogaming *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logosolitario *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logodragonball *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoneon *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logogatito *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logochicagamer *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logonaruto *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logofuturista *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logonube *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoangel *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logomurcielago *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logocielo *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logograffiti3d *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logomatrix *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logohorror *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoalas *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoarmy *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logopubg *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logopubgfem *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logolol *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoamon *texto*gus
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideopubg *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideotiger *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideointro *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideogaming *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoguerrero *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaplayer *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaff *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadapubg *texto*
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadacounter *texto*
 
 𓂂𓏸  𐅹੭੭   *\`𝖦ıẜ𝗌-𝖭𝗌ẜɯ\`*  ${xnsfw} ᩚ꤬ᰨᰍ
 ര ׄ ${xnsfw}˚ ${usedPrefix}violar *@tag*
