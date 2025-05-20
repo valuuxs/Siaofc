@@ -27,7 +27,7 @@ m.reply(`*✅ Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en t
             m.reply(`*⌛ Shadow permanecerá en el grupo durante \`${expired}\` días.*`)
         }
     } catch {
-        return m.reply(`*✖️ Ocurrió un error al otrar al grupo.*`) 
+        return m.reply(`*✖️ Ocurrió un error al entrar al grupo.*`) 
     }
 }
 
