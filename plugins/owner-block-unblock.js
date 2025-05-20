@@ -1,28 +1,35 @@
-const handler = async (m, {text, conn, usedPrefix, command}) => {
+const handler = async (m, { text, conn, usedPrefix, command }) => {
 
   const why = `*${xowner} Por favor, menciona a la persona para bloquear / desbloquear*\n> *\`Ejemplo:\`* ${usedPrefix + command} @${m.sender.split('@')[0]}`;
-  const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
-  if (!who) conn.reply(m.chat, why, m, {mentions: [m.sender]});
-  const res = [];
-  switch (command) {
-    case 'blok': case 'block':
-      if (who) {
-        await conn.updateBlockStatus(who, 'block').then(() => {
-          res.push(who);
-        });
-      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
-      break;
-    case 'unblok': case 'unblock':
-      if (who) {
-        await conn.updateBlockStatus(who, 'unblock').then(() => {
-          res.push(who);
-        });
-      } else conn.reply(m.chat, why, m, {mentions: [m.sender]});
-      break;
+  const who = m.mentionedJid?.[0] || (m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false);
+
+  if (!who) return conn.reply(m.chat, why, m, { mentions: [m.sender] });
+
+  try {
+    const isBlocked = await conn.fetchBlocklist().then(list => list.includes(who));
+
+    if (command === 'block') {
+      if (isBlocked) {
+        return conn.reply(m.chat, `*❌ El usuario ya está bloqueado:* @${who.split('@')[0]}`, m, { mentions: [who] });
+      }
+      await conn.updateBlockStatus(who, 'block');
+      return conn.reply(m.chat, `*✅ Usuario bloqueado correctamente:* @${who.split('@')[0]}`, m, { mentions: [who] });
+    }
+
+    if (command === 'unblock') {
+      if (!isBlocked) {
+        return conn.reply(m.chat, `*❌ El usuario ya estaba desbloqueado:* @${who.split('@')[0]}`, m, { mentions: [who] });
+      }
+      await conn.updateBlockStatus(who, 'unblock');
+      return conn.reply(m.chat, `*✅ Usuario desbloqueado correctamente:* @${who.split('@')[0]}`, m, { mentions: [who] });
+    }
+  } catch (e) {
+    console.error(e);
+    return conn.reply(m.chat, '*Ocurrió un error al intentar procesar el comando.*', m);
   }
-  if (res[0]) conn.reply(m.chat, `*✅ Se usó correctamente el comando ${command} para el usuario* *${res ? `${res.map((v) => '@' + v.split('@')[0])}` : ''}*`, m, {mentions: res});
 };
-handler.command = ['block','unblock'];
+
+handler.command = ['block', 'unblock'];
 handler.rowner = true;
 
 export default handler;
