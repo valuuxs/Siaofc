@@ -25,7 +25,7 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
     }
   } catch (e) {
     console.error(e);
-    return conn.reply(m.chat, '*Ocurrió un error al intentar procesar el comando.*', m);
+    return conn.reply(m.chat, '*✖️ Ocurrió un error al intentar procesar el comando.*', m);
   }
 };
 
