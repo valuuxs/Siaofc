@@ -96,7 +96,6 @@ ${readMore}
 
 𓂂𓏸  𐅹੭੭   *\`𝖲ᧉ𝖺ꭇ𝖼𝗁\`*  ${xsearch} ᩚ꤬ᰨᰍ
 ര ׄ ${xsearch}˚ ${usedPrefix}scsearch *texto*
-ര ׄ ${xsearch}˚ ${usedPrefix}aplaysearch *texto*
 ര ׄ ${xsearch}˚ ${usedPrefix}ttsearch *texto*
 ര ׄ ${xsearch}˚ ${usedPrefix}ttsearch2 *texto*
 ര ׄ ${xsearch}˚ ${usedPrefix}ytsearch *texto*
@@ -109,9 +108,6 @@ ${readMore}
 ര ׄ ${xsearch}˚ ${usedPrefix}pornhubsearch *texto*
 ര ׄ ${xsearch}˚ ${usedPrefix}gnula *texto*
 ര ׄ ${xsearch}˚ ${usedPrefix}mercadolibre *texto*
-ര ׄ ${xsearch}˚ ${usedPrefix}ffstalk *id*
-ര ׄ ${xsearch}˚ ${usedPrefix}ttstalk *username*
-ര ׄ ${xsearch}˚ ${usedPrefix}igstalk *username*
 
 𓂂𓏸  𐅹੭੭   *\`𝖨𝗇ƚᧉ𝖨ı𝗀ᧉ𝗇𝖼ı𝖺𝗌\`*  ${xia} ᩚ꤬ᰨᰍ
 ര ׄ ${xia}˚ ${usedPrefix}luminai *texto*
