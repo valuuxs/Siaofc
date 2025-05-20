@@ -178,6 +178,7 @@ ${readMore}
 𓂂𓏸  𐅹੭੭   *\`𝖦ꭇ𝗎𝗉ᨣ𝗌\`*  ${xgc} ᩚ꤬ᰨᰍ
 ര ׄ ${xgc}˚ ${usedPrefix}add *número*
 ര ׄ ${xgc}˚ ${usedPrefix}grupo *abrir / cerrar*
+ര ׄ ${xgc}˚ ${usedPrefix}inactivos *list / kick*
 ര ׄ ${xgc}˚ ${usedPrefix}grouptime *tiempo*
 ര ׄ ${xgc}˚ ${usedPrefix}notify *texto*
 ര ׄ ${xgc}˚ Aviso *texto*
@@ -191,9 +192,9 @@ ${readMore}
 ര ׄ ${xgc}˚ ${usedPrefix}demote *@tag*
 ര ׄ ${xgc}˚ ${usedPrefix}kick *@tag*
 ര ׄ ${xgc}˚ ${usedPrefix}mute *@tag*
-ര ׄ ${xgc}˚ ${usedPrefix}inactivos *opción*
 ര ׄ ${xgc}˚ ${usedPrefix}tagnum *prefix*
 ര ׄ ${xgc}˚ ${usedPrefix}link
+ര ׄ ${xgc}˚ ${usedPrefix}delete
 ര ׄ ${xgc}˚ ${usedPrefix}fantasmas
 
 𓂂𓏸  𐅹੭੭   *\`𝖤ẜᧉ𝖼ƚ𝗌\`*  ${xefects} ᩚ꤬ᰨᰍ
