@@ -3,7 +3,7 @@
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})(?:\s+([0-9]{1,3}))?/i
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`${xowner} Por favor, ingresa el enlace del grupo.*`)
+    if (!text) return m.reply(`*${xowner} Por favor, ingresa el enlace del grupo.*`)
 
     try {
         let [_, code, expired] = text.match(linkRegex) || []
