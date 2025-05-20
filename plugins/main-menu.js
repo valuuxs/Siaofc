@@ -140,14 +140,9 @@ ${readMore}
 ര ׄ ${xfrases}˚ ${usedPrefix}fraseromantica
 
 𓂂𓏸  𐅹੭੭   *\`𝖢ᨣ𝗇𝗏ᧉ𝗋ƚᧉ𝗋𝗌\`*  ${xconverter} ᩚ꤬ᰨᰍ
-ര ׄ ${xconverter}˚ ${usedPrefix}tourl *img*
-ര ׄ ${xconverter}˚ ${usedPrefix}tourl *aud*
 ര ׄ ${xconverter}˚ ${usedPrefix}toptt *aud*
 ര ׄ ${xconverter}˚ ${usedPrefix}toptt *vid*
-ര ׄ ${xconverter}˚ ${usedPrefix}tourl *vid*
 ര ׄ ${xconverter}˚ ${usedPrefix}tomp3 *vid*
-ര ׄ ${xconverter}˚ ${usedPrefix}tovid *sticker*
-ര ׄ ${xconverter}˚ ${usedPrefix}toimg *sticker*
 
 𓂂𓏸  𐅹੭੭   *\`𝖳ᨣᨣ𝗅𝗌\`*  ${xtools} ᩚ꤬ᰨᰍ
 ര ׄ ${xtools}˚ ${usedPrefix}clima *texto*
@@ -155,14 +150,20 @@ ${readMore}
 ര ׄ ${xtools}˚ ${usedPrefix}read *texto*
 ര ׄ ${xtools}˚ ${usedPrefix}fake *texto + user + texto*
 ര ׄ ${xtools}˚ ${usedPrefix}traducir *idioma + texto*
+ര ׄ ${xtools}˚ ${usedPrefix}tourl *img / vid / aud*
+ര ׄ ${xtools}˚ ${usedPrefix}unblur *img*
 ര ׄ ${xtools}˚ ${usedPrefix}hd *img*
 ര ׄ ${xtools}˚ ${usedPrefix}remini *img*
 ര ׄ ${xtools}˚ ${usedPrefix}background *img*
 ര ׄ ${xtools}˚ ${usedPrefix}whatmusic *aud*
 ര ׄ ${xtools}˚ ${usedPrefix}whatmusic *vid*
 ര ׄ ${xtools}˚ ${usedPrefix}flag *país*
+ര ׄ ${xtools}˚ ${usedPrefix}cfrase *link + texto*
 ര ׄ ${xtools}˚ ${usedPrefix}inspect *link*
 ര ׄ ${xtools}˚ ${usedPrefix}inspeccionar *link*
+ര ׄ ${xtools}˚ ${usedPrefix}tiktokstalk *user*
+ര ׄ ${xtools}˚ ${usedPrefix}pinstalk *user*
+ര ׄ ${xtools}˚ ${usedPrefix}reactch
 ര ׄ ${xtools}˚ ${usedPrefix}nuevafotochannel
 ര ׄ ${xtools}˚ ${usedPrefix}nosilenciarcanal
 ര ׄ ${xtools}˚ ${usedPrefix}silenciarcanal
