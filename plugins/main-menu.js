@@ -319,6 +319,10 @@ ${readMore}
 ര ׄ ${xowner}˚ ${usedPrefix}join
 ര ׄ ${xowner}˚ ${usedPrefix}chetar
 ര ׄ ${xowner}˚ ${usedPrefix}unbanuser
+ര ׄ ${xowner}˚ ${usedPrefix}banchat
+ര ׄ ${xowner}˚ ${usedPrefix}unbanchat
+ര ׄ ${xowner}˚ ${usedPrefix}dsowner
+ര ׄ ${xowner}˚ ${usedPrefix}autoadmin
 `.trim()
 
         await conn.sendMessage(m.chat, {
