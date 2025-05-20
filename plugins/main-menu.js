@@ -262,6 +262,41 @@ ${readMore}
 
 𓂂𓏸  𐅹੭੭   *\`𝖫ᨣ𝗀𑄙𝗌\`*  ${xlogos} ᩚ꤬ᰨᰍ
 ര ׄ ${xlogos}˚ ${usedPrefix}balogo
+ര ׄ ${xlogos}˚ ${usedPrefix}logocorazon
+ര ׄ ${xlogos}˚ ${usedPrefix}logochristmas
+ര ׄ ${xlogos}˚ ${usedPrefix}logopareja
+ര ׄ ${xlogos}˚ ${usedPrefix}logoglitch
+ര ׄ ${xlogos}˚ ${usedPrefix}logosad
+ര ׄ ${xlogos}˚ ${usedPrefix}logogaming
+ര ׄ ${xlogos}˚ ${usedPrefix}logosolitario
+ര ׄ ${xlogos}˚ ${usedPrefix}logodragonball
+ര ׄ ${xlogos}˚ ${usedPrefix}logoneon
+ര ׄ ${xlogos}˚ ${usedPrefix}logogatito
+ര ׄ ${xlogos}˚ ${usedPrefix}logochicagamer
+ര ׄ ${xlogos}˚ ${usedPrefix}logonaruto
+ര ׄ ${xlogos}˚ ${usedPrefix}logofuturista
+ര ׄ ${xlogos}˚ ${usedPrefix}logonube
+ര ׄ ${xlogos}˚ ${usedPrefix}logoangel
+ര ׄ ${xlogos}˚ ${usedPrefix}logomurcielago
+ര ׄ ${xlogos}˚ ${usedPrefix}logocielo
+ര ׄ ${xlogos}˚ ${usedPrefix}logograffiti3d
+ര ׄ ${xlogos}˚ ${usedPrefix}logomatrix
+ര ׄ ${xlogos}˚ ${usedPrefix}logohorror
+ര ׄ ${xlogos}˚ ${usedPrefix}logoalas
+ര ׄ ${xlogos}˚ ${usedPrefix}logoarmy
+ര ׄ ${xlogos}˚ ${usedPrefix}logopubg
+ര ׄ ${xlogos}˚ ${usedPrefix}logopubgfem
+ര ׄ ${xlogos}˚ ${usedPrefix}logolol
+ര ׄ ${xlogos}˚ ${usedPrefix}logoamongus
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideopubg
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideotiger
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideointro
+ര ׄ ${xlogos}˚ ${usedPrefix}logovideogaming
+ര ׄ ${xlogos}˚ ${usedPrefix}logoguerrero
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaplayer
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadaff
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadapubg
+ര ׄ ${xlogos}˚ ${usedPrefix}logoportadacounter
 
 𓂂𓏸  𐅹੭੭   *\`𝖦ıẜ𝗌-𝖭𝗌ẜɯ\`*  ${xnsfw} ᩚ꤬ᰨᰍ
 ര ׄ ${xnsfw}˚ ${usedPrefix}violar *@tag*
