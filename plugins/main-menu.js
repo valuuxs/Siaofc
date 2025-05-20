@@ -289,7 +289,8 @@ ${readMore}
 ര ׄ ${xsticker}˚ ${usedPrefix}bratv *texto*
 ര ׄ ${xsticker}˚ ${usedPrefix}qc *texto*
 ര ׄ ${xsticker}˚ ${usedPrefix}dado
-ര ׄ ${xsticker}˚ ${usedPrefix}reloj
+ര ׄ ${xsticker}˚ ${usedPrefix}scat
+ര ׄ ${xsticker}˚ ${usedPrefix}wm
 
 𓂂𓏸  𐅹੭੭   *\`𝖱𝗉𝗀\`*  ${xrpg} ᩚ꤬ᰨᰍ
 ര ׄ ${xrpg}˚ ${usedPrefix}minar
