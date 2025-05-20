@@ -357,8 +357,14 @@ ${readMore}
 ര ׄ ${xowner}˚ ${usedPrefix}unbanuser
 ര ׄ ${xowner}˚ ${usedPrefix}banchat
 ര ׄ ${xowner}˚ ${usedPrefix}unbanchat
+ര ׄ ${xowner}˚ ${usedPrefix}block
+ര ׄ ${xowner}˚ ${usedPrefix}unblock
+ര ׄ ${xowner}˚ ${usedPrefix}creargc
+ര ׄ ${xowner}˚ ${usedPrefix}getplugin
+ര ׄ ${xowner}˚ ${usedPrefix}let
 ര ׄ ${xowner}˚ ${usedPrefix}dsowner
 ര ׄ ${xowner}˚ ${usedPrefix}autoadmin
+
 `.trim()
 
         await conn.sendMessage(m.chat, {
