@@ -231,8 +231,11 @@ ${readMore}
 ര ׄ ${xfun}˚ ${usedPrefix}rata *@tag*
 ര ׄ ${xfun}˚ ${usedPrefix}prostituto *@tag*
 ര ׄ ${xfun}˚ ${usedPrefix}prostituta *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}sinpoto *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}sintetas *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}chipi *@tag*
 ര ׄ ${xfun}˚ ${usedPrefix}doxear *@tag*
-ര ׄ ${xfun}˚ ${usedPrefix}jalamela *@tag*
+ര ׄ ${xfun}˚ ${usedPrefix}declararse *@tag*
 ര ׄ ${xfun}˚ ${usedPrefix}simi *texto*
 ര ׄ ${xfun}˚ ${usedPrefix}pregunta *texto*
 ര ׄ ${xfun}˚ ${usedPrefix}genio *texto*
@@ -288,9 +291,9 @@ ${readMore}
 ര ׄ ${xsticker}˚ ${usedPrefix}brat *texto*
 ര ׄ ${xsticker}˚ ${usedPrefix}bratv *texto*
 ര ׄ ${xsticker}˚ ${usedPrefix}qc *texto*
+ര ׄ ${xsticker}˚ ${usedPrefix}wm *texto*
 ര ׄ ${xsticker}˚ ${usedPrefix}dado
 ര ׄ ${xsticker}˚ ${usedPrefix}scat
-ര ׄ ${xsticker}˚ ${usedPrefix}wm
 
 𓂂𓏸  𐅹੭੭   *\`𝖱𝗉𝗀\`*  ${xrpg} ᩚ꤬ᰨᰍ
 ര ׄ ${xrpg}˚ ${usedPrefix}minar
