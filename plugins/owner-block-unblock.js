@@ -10,18 +10,18 @@ const handler = async (m, { text, conn, usedPrefix, command }) => {
 
     if (command === 'block') {
       if (isBlocked) {
-        return conn.reply(m.chat, `*❌ El usuario ya está bloqueado:* @${who.split('@')[0]}`, m, { mentions: [who] });
+        return conn.reply(m.chat, `*☁️ El usuario* *@${who.split('@')[0]}* *ya está bloqueado.*`, m, { mentions: [who] });
       }
       await conn.updateBlockStatus(who, 'block');
-      return conn.reply(m.chat, `*✅ Usuario bloqueado correctamente:* @${who.split('@')[0]}`, m, { mentions: [who] });
+      return conn.reply(m.chat, `*✅ El usuario* *@${who.split('@')[0]}* *fue bloqueado exitosamente.*`, m, { mentions: [who] });
     }
 
     if (command === 'unblock') {
       if (!isBlocked) {
-        return conn.reply(m.chat, `*❌ El usuario ya estaba desbloqueado:* @${who.split('@')[0]}`, m, { mentions: [who] });
+        return conn.reply(m.chat, `*☁️ El usuario* *@${who.split('@')[0]}* *ya estaba desbloqueado.*`, m, { mentions: [who] });
       }
       await conn.updateBlockStatus(who, 'unblock');
-      return conn.reply(m.chat, `*✅ Usuario desbloqueado correctamente:* @${who.split('@')[0]}`, m, { mentions: [who] });
+      return conn.reply(m.chat, `*✅ El usuario* *@${who.split('@')[0]}* fue desbloqueado con éxito.*`, m, { mentions: [who] });
     }
   } catch (e) {
     console.error(e);
