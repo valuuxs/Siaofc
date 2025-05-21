@@ -1,27 +1,37 @@
 const handler = async (m, { conn, text, args, usedPrefix, command }) => {
-//Si esta definido en otro code
-  const why = `*${xowner} Por favor, menciona a al usuario para agregar o quitar owner.*`;
 
-  const who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false;
-  if (!who) return conn.reply(m.chat, why, m, {mentions: [m.sender]});
+  const why = `*${xowner} Por favor, menciona al usuario para agregar o quitar owner.*`;
+  const who = m.mentionedJid[0] 
+    ? m.mentionedJid[0] 
+    : m.quoted 
+      ? m.quoted.sender 
+      : text 
+        ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' 
+        : false;
+  
+  if (!who) return conn.reply(m.chat, why, m, { mentions: [m.sender] });
+
   switch (command) {
     case 'addowner':
-      const nuevoNumero = who;
-      global.owner.push([nuevoNumero]);
-      await conn.reply(m.chat, `*✅ Listo Ya Está En La Lista De Owner El Usuario.*`, m);
+      if (global.owner.some(o => o[0] === who)) {
+        return conn.reply(m.chat, `*⚠️ El número ya es owner.*`, m);
+      }
+      global.owner.push([who]);
+      await conn.reply(m.chat, `*✅ Listo, el usuario ya es owner.*`, m);
       break;
+
     case 'delowner':
-      const numeroAEliminar = who;
-      const index = global.owner.findIndex(owner => owner[0] === numeroAEliminar);
+      const index = global.owner.findIndex(o => o[0] === who);
       if (index !== -1) {
         global.owner.splice(index, 1);
-        await conn.reply(m.chat, `${emoji2} Eliminado El Numero de la lista de owner correctamente.`, m);
+        await conn.reply(m.chat, `*✅ Número eliminado de la lista de owners.*`, m);
       } else {
-        await conn.reply(m.chat, `*☁️ El Numero No Está En La Lista De Owners.*`, m);
+        await conn.reply(m.chat, `*☁️ El número no está en la lista de owners.*`, m);
       }
       break;
   }
 };
-handler.command = ['addowner', 'delowner']
+
+handler.command = ['addowner', 'delowner'];
 handler.rowner = true;
 export default handler;
