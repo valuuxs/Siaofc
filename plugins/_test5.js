@@ -65,9 +65,9 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 
     const interactiveMessage = {
       body: {
-        text: `*—◉ Resultados obtenidos:* ${results.videos.length}\n*—◉ Video aleatorio:*\n*-› Título:* ${randomVideo.title}\n*-› Autor:* ${randomVideo.author.name}\n*-› Vistas:* ${randomVideo.views}\n*-› Enlace:* ${randomVideo.url}`.trim()
+        text: `*Resultados obtenidos:* ${results.videos.length}\n*◉ Video aleatorio:*\n*-› Título:* ${randomVideo.title}\n*-› Autor:* ${randomVideo.author.name}\n*-› Vistas:* ${randomVideo.views}\n*-› Enlace:* ${randomVideo.url}`.trim()
       },
-      footer: { text: `${global.wm}` },
+      footer: { text: dev },
       header: {
         title: '*< YouTube Search />*',
         hasMediaAttachment: true,
@@ -86,13 +86,13 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                     header: video.title,
                     title: video.author.name,
                     description: 'Descargar MP3',
-                    id: `${prefijo}play.1 ${video.url}`
+                    id: `.ytmp3 ${video.url}`
                   },
                   {
                     header: video.title,
                     title: video.author.name,
                     description: 'Descargar MP4',
-                    id: `${prefijo}play.2 ${video.url}`
+                    id: `.ytmp4doc ${video.url}`
                   }
                 ]
               }))
