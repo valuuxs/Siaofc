@@ -14,11 +14,10 @@ let url = await uploadImage(img)
 
 if (/image\/(jpe?g|png)/.test(mime)) {
 await conn.sendMessage(m.chat, { image: {url: url}, caption: ``, fileLength: `${text}`, mentions: [m.sender] }, { ephemeralExpiration: 24*3600, quoted: m})
-await m.react('✅')
 } else if (/video/.test(mime)) {
 return conn.sendMessage(m.chat, { video: {url: url}, caption: ``, fileLength: `${text}`, mentions: [m.sender] }, { ephemeralExpiration: 24*3600, quoted: m })
-await m.react('✅')
 }
+await m.react('✅')
 } catch {
 await m.react('✖️')
 }}
