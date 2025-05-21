@@ -14,7 +14,7 @@ const handler = async (m, { conn, text, args, usedPrefix, command }) => {
   switch (command) {
     case 'addowner':
       if (global.owner.some(o => o[0] === who)) {
-        return conn.reply(m.chat, `*⚠️ El número ya es owner.*`, m);
+        return conn.reply(m.chat, `*☁️ El número ya es owner.*`, m);
       }
       global.owner.push([who]);
       await conn.reply(m.chat, `*✅ Listo, el usuario ya es owner.*`, m);
