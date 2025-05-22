@@ -201,7 +201,7 @@ handler.tags = ['search'];
 handler.command = /^(ytx)$/i;
 export default handler;
 */
-
+/*
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import yts from 'yt-search';
 
@@ -269,4 +269,4 @@ const handler = async (m, { conn, text }) => {
 handler.help = ['ytsearch <texto>'];
 handler.tags = ['search'];
 handler.command = /^(ytx)$/i;
-export default handler;
+export default handler;*/
