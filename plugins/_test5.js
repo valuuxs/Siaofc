@@ -132,7 +132,6 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import yts from 'yt-search';
 
 const handler = async (m, { conn, text }) => {
-  const dev = 'Shadow Bot by Cristian Escobar'; // Personalízalo
 
   if (!text) throw '⚠️ *Debes ingresar el nombre de un video para buscar.*';
 
@@ -159,7 +158,7 @@ const handler = async (m, { conn, text }) => {
     },
     footer: { text: dev },
     header: {
-      title: '*< YouTube Search />*',
+      title: '```乂 YOUTUBE - SEARCH```',
       hasMediaAttachment: false
     },
     nativeFlowMessage: {
@@ -167,7 +166,7 @@ const handler = async (m, { conn, text }) => {
         {
           name: 'single_select',
           buttonParamsJson: JSON.stringify({
-            title: 'OPCIONES DISPONIBLES',
+            title: 'Opciones de Descarga',
             sections: videos.map(video => ({
               title: video.title,
               rows: [
