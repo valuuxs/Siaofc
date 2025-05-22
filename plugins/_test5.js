@@ -148,7 +148,7 @@ const handler = async (m, { conn, text }) => {
     m.chat,
     randomVideo.thumbnail,
     'video.jpg',
-    `*Resultados obtenidos:* ${results.videos.length}\n*◉ Video aleatorio:*\n*-› Título:* ${randomVideo.title}\n*-› Autor:* ${randomVideo.author.name}\n*-› Vistas:* ${randomVideo.views}\n*-› Enlace:* ${randomVideo.url}`,
+    `> *Resultados:* \`${results.videos.length}\`\n\n*${randomVideo.title}\n\n≡ 🌵 *\`Autor:\`* ${randomVideo.author.name}\n≡ 🍁 *\`Vistas:\`* ${randomVideo.views}\n≡ 🌿 *\`Enlace:\`* ${randomVideo.url}`,
     m
   );
 
