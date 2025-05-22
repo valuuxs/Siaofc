@@ -2,7 +2,7 @@ import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysoc
 import yts from 'yt-search';
 
 const handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) throw '*🌴 Por favor, ingresa un texto para buscar en Youtube.*\n> *`Ejemplo:`* ${usedPrefix + command} Bing Bang';
+  if (!text) throw `*🌴 Por favor, ingresa un texto para buscar en Youtube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Bing Bang`;
 
   const results = await yts(text);
   const videos = results.videos.slice(0, 10);
