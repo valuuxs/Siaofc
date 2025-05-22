@@ -71,13 +71,13 @@ const handler = async (m, { conn, text }) => {
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: `Duración: ${video.timestamp} | Vistas: ${video.views.toLocaleString()}`,
+                  description: `𝖣𝖾𝗌𝖼𝖺𝗋𝗀𝖺𝗋 𝖺𝗎𝖽𝗂𝗈 | Duración: ${video.timestamp}`,
                   id: `.ytmp3 ${video.url}`
                 },
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: `Duración: ${video.timestamp} | Publicado: ${video.ago}`,
+                  description: `𝖣𝖾𝗌𝖼𝖺𝗋𝗀𝖺𝗋 𝗏𝗂𝖽𝖾𝗈 | Duración: ${video.timestamp}`,
                   id: `.ytmp4doc ${video.url}`
                 }
               ]
@@ -94,8 +94,8 @@ const handler = async (m, { conn, text }) => {
   conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 };
 
-handler.help = ['ytx <texto>'];
-handler.tags = ['search'];
-handler.command = /^(ytm)$/i;
+handler.help = ['yts <texto>'];
+handler.tags = ['buscador'];
+handler.command = /^(yts|ytsearch)$/i;
 
 export default handler;
