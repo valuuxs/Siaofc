@@ -1,41 +1,8 @@
-/*import yts from 'yt-search'
-
-
-let handler = async(m, { conn, text, usedPrefix, command }) => {
-
-  if (!text) return conn.reply(m.chat, `*${xsearch} Por favor, ingresa un texto para buscar en Youtube.*\n> *\`Ejemplo:\`* .${command} Bing Bang`, m);
-
-  let results = await yts(text)
-  let tes = results.videos
-
-  if (!tes.length) throw '```⚠️ No se encontraron resultados.```'
-
-  let ms = tes.map(v => `
-° ${v.title}
-
-≡ 🌵 *\`Duración:\`* ${v.timestamp}
-≡ 🌴 *\`Publicado:\`* ${v.ago}
-≡ 🍁 *\`Vistas:\`* ${v.views.toLocaleString()}
-≡ 🌿 *\`Enlace:\`* ${v.url}
-`.trim()).join('\n________________________\n\n')
-
-  let teks = `\`\`\`乂 YOUTUBE - SEARCH\`\`\`\n\n${ms}`
-  teks += `\n\n> sʜᴀᴅᴏᴡ ᴜʟᴛʀᴀ ᴍᴅ`
-
-  conn.sendFile(m.chat, tes[0].image, 'yts.jpeg', teks, m)
-}
-
-handler.help = ['ytsearch'] 
-handler.tags = ['buscador']
-handler.command = ['ytsearch', 'yts']
-
-export default handler*/
-
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import yts from 'yt-search';
 
-const handler = async (m, { conn, text }) => {
-  if (!text) throw '⚠️ *Debes ingresar el nombre de un video para buscar.*';
+const handler = async (m, { conn, usedPrefix, command, text }) => {
+  if (!text) throw '🌴 Por favor, ingresa un texto para buscar en Youtube.*\n> *`Ejemplo:`* ${usedPrefix + command} Bing Bang';
 
   const results = await yts(text);
   const videos = results.videos.slice(0, 10);
