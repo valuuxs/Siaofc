@@ -40,7 +40,7 @@ handler.command = /^(flamestick|flame)$/i
 
 export default handler*/
 
-
+/*
 
 import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys'
 import yts from 'yt-search';
@@ -120,6 +120,81 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 
     conn.sendFile(m.chat, results.all[0].thumbnail, 'resultado.jpg', teks.trim(), m);
   }
+};
+
+handler.help = ['ytsearch <texto>'];
+handler.tags = ['search'];
+handler.command = /^(ytx)$/i;
+export default handler;*/
+
+
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import yts from 'yt-search';
+
+const handler = async (m, { conn, text }) => {
+  const dev = 'Shadow Bot by Cristian Escobar'; // Personalízalo
+
+  if (!text) throw '⚠️ *Debes ingresar el nombre de un video para buscar.*';
+
+  const results = await yts(text);
+  const videos = results.videos.slice(0, 10);
+
+  if (!videos.length) throw '⚠️ *No se encontraron resultados para tu búsqueda.*';
+
+  const randomIndex = Math.floor(Math.random() * videos.length);
+  const randomVideo = videos[randomIndex];
+
+  // Envía la imagen con info
+  await conn.sendFile(
+    m.chat,
+    randomVideo.thumbnail,
+    'video.jpg',
+    `*Resultados obtenidos:* ${results.videos.length}\n*◉ Video aleatorio:*\n*-› Título:* ${randomVideo.title}\n*-› Autor:* ${randomVideo.author.name}\n*-› Vistas:* ${randomVideo.views}\n*-› Enlace:* ${randomVideo.url}`,
+    m
+  );
+
+  const interactiveMessage = {
+    body: {
+      text: 'Selecciona una opción para descargar:'
+    },
+    footer: { text: dev },
+    header: {
+      title: '*< YouTube Search />*',
+      hasMediaAttachment: false
+    },
+    nativeFlowMessage: {
+      buttons: [
+        {
+          name: 'single_select',
+          buttonParamsJson: JSON.stringify({
+            title: 'OPCIONES DISPONIBLES',
+            sections: videos.map(video => ({
+              title: video.title,
+              rows: [
+                {
+                  header: video.title,
+                  title: video.author.name,
+                  description: 'Descargar MP3',
+                  id: `.ytmp3 ${video.url}`
+                },
+                {
+                  header: video.title,
+                  title: video.author.name,
+                  description: 'Descargar MP4',
+                  id: `.ytmp4doc ${video.url}`
+                }
+              ]
+            }))
+          })
+        }
+      ],
+      messageParamsJson: ''
+    }
+  };
+
+  const userJid = conn?.user?.jid || m.key.participant || m.chat;
+  const msg = generateWAMessageFromContent(m.chat, { interactiveMessage }, { userJid, quoted: m });
+  conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 };
 
 handler.help = ['ytsearch <texto>'];
