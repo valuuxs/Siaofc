@@ -6,7 +6,7 @@ import { fileTypeFromBuffer } from "file-type";
 const handler = async (m, { conn }) => {
 let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || "";
-  if (!mime) return m.reply("No media found", null, { quoted: fkontak });
+  if (!mime) return m.reply(`*${xtools} Por favor, responda a una imagen, vídeo, gif o sticker para convertir en enlace.*`, null, { quoted: fkontak });
   let media = await q.download();
 let link = await catbox(media);
   let caption = `📮 *L I N K :*
