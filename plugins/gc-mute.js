@@ -73,7 +73,7 @@ if (m.quoted) {
 } else if (m.mentionedJid && m.mentionedJid.length) {
   user = m.mentionedJid[0];
 } else {
-  return conn.reply(m.chat, `*${xgc} Por favor, menciona al usuario que desea mutar.*`, m);
+  return conn.reply(m.chat, `*${xgc} Por favor, menciona al usuario que desea mutar / desmutar.*`, m);
 }
 /*
 const ownerBot = global.owner[0][0] + '@s.whatsapp.net';
