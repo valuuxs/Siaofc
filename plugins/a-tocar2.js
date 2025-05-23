@@ -157,33 +157,3 @@ function convertTimeToSpanish(timeText) {
     .replace(/minute/, 'minuto').replace(/minutes/, 'minutos');
 }*/
 
-import fetch from 'node-fetch';
-
-const handler = async (m, { text, conn, command }) => {
-  if (!text) throw `*Uso correcto: ${command} Juan 3:16*`;
-
-  const url = `https://bible-api.com/${encodeURIComponent(text)}`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw '*No se encontró el versículo.*';
-    const json = await res.json();
-
-    if (!json.verses || !json.verses.length) throw '*Versículo no válido.*';
-
-    let result = `*${json.reference}* (${json.translation_name})\n\n`;
-    for (const v of json.verses) {
-      result += `*${v.verse}.* ${v.text.trim()}\n`;
-    }
-
-    await conn.reply(m.chat, result.trim(), m);
-  } catch (e) {
-    console.error(e);
-    throw '*Ocurrió un error al buscar el versículo.*';
-  }
-};
-
-handler.help = ['biblia <libro capítulo:versículo>'];
-handler.tags = ['religión'];
-handler.command = /^biblia$/i;
-
-export default handler;
