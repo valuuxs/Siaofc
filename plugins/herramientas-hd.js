@@ -31,7 +31,7 @@ const handler = async (m, { conn }) => {
 
     const enhanced = await upscaleImage(pene)
     await conn.sendFile(m.chat, enhanced, 'hd.jpg', '', m)
-    await conn.sendMessage(m.chat, { text: "✅ Imagen mejorada." }, { quoted: m })
+    //await conn.sendMessage(m.chat, { text: "✅ Imagen mejorada." }, { quoted: m })
 
   } catch (err) {
     conn.reply(m.chat, `*Error:* ${err.message}\n > 🕊️.`, m)
