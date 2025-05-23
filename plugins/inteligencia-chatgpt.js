@@ -4,6 +4,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, text }) => {
   if (!text) return conn.reply(m.chat, `${xia} Ingresa un texto para hablar con ChatGPT*`, m)
   try {
+    conn.sendPresenceUpdate('composing', m.chat) // Writing
     const endpoint = `https://vapis.my.id/api/openai?q=${encodeURIComponent(text)}`
     let apiRes = await fetch(endpoint)
     let json = await apiRes.json()
