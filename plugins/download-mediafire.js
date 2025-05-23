@@ -5,7 +5,7 @@ const mssg = {
     invalidLink: (platform) => `*❌ El enlace proporcionado no es válido de ${platform}. Por favor verifica el enlace.*`,
     error: '*⚠️ Ocurrió un error al intentar procesar la descarga.*',
     fileNotFound: '*❌ No se pudo encontrar el archivo en Mediafire. Asegúrate de que el enlace sea correcto.*',
-    fileTooLarge: '*ℹ️ El archivo es demasiado grande más de \`650 MB\`. No se puede procesar.*',
+    fileTooLarge: '*☁️ El archivo es demasiado grande más de \`650 MB\`. No se puede procesar.*',
     busy: '*⏳ El servidor está procesando otra solicitud. Por favor espere a que termine.*',
 };
 
