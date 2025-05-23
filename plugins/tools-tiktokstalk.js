@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let handler = async (m, { usedPrefix, command, conn, text }) => {
-  if (!text) return m.reply(`${xsearch} Por favor, ingresa un usuario de tiktok para Stalkear.\n> *\`Ejemplo:\`* ${usedPrefix + command} mrbeast`);
+  if (!text) return m.reply(`*${xtools} Por favor, ingresa un usuario de tiktok para Stalkear.*\n> *\`Ejemplo:\`* ${usedPrefix + command} mrbeast`);
 
   try {
     await m.react('⏳');
@@ -9,7 +9,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     let ress = await axios.get(`https://api.koboo.my.id/api/stalk/tiktok?username=${text}`)
     let res = ress.data
 
-    if (res.status !== 200) throw 'Error! No se encontró el usuario. Asegúrate de escribirlo correctamente.'
+    if (res.status !== 200) throw '*No se encontró el usuario. Asegúrate de escribirlo correctamente.*'
 
     let user = res.result.user
     let stats = res.result.stats
@@ -41,7 +41,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
     await m.react('✅')
 
   } catch (err) {
-    m.reply('*❌ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*')
+    m.reply('*✖️ Error: No se encontró el usuario o la API falló. Intenta nuevamente.*')
   }
 }
 
