@@ -3,11 +3,12 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, text }) => {
   if (!text) return conn.reply(m.chat, `*${xia} Por favor, ingresa una expresión matemática para resolver.*`, m)
   try {
+    conn.sendPresenceUpdate('composing', m.chat) // Writing
     const url = `https://api.nekorinn.my.id/ai/aimath?text=${encodeURIComponent(text)}`
     let res = await fetch(url)
     let json = await res.json()
     if (json.status && json.result) {
-      await m.reply(`*✅ \`Resultado:\`*\n${json.result}`)
+      await m.reply(`${json.result}`)
     } else {
       await m.reply(`*✖️ No se pudo resolver la expresión.*`)
     }
