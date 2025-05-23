@@ -31,8 +31,8 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     await m.react('✅')
   } catch (e) {
     console.error(e)
-    await conn.reply(m.chat, '```❌ Ocurrió un error al realizar la búsqueda.```', m)
-    await m.react('❌')
+    await conn.reply(m.chat, '```✖️ Ocurrió un error al realizar la búsqueda.```', m)
+    await m.react('✖️')
   }
 }
 
@@ -60,7 +60,7 @@ async function searchPornhub(search) {
 
     return { result }
   } catch (error) {
-    console.error('❌ Error al buscar en Pornhub:', error)
+    console.error('*✖️ Error al buscar en Pornhub:*', error)
     return { result: [] }
   }
 }
