@@ -62,10 +62,7 @@ mutedUsers = new Set(JSON.parse(data));
 mutedUsers = new Set();
 }
 
-let handler = async (m, { conn, usedPrefix, command, isAdmin, isBotAdmin }) => {
-
-if (!isBotAdmin) return conn.reply(m.chat, `*☁️ El bot necesita ser administrador.*`, m);
-if (!isAdmin) return conn.reply(m.chat, `*☁️ Solo los administradores pueden usar este comando.*`, m);
+let handler = async (m, { conn, usedPrefix, command }) => {
 
 let user;
 if (m.quoted) {
@@ -75,11 +72,7 @@ if (m.quoted) {
 } else {
   return conn.reply(m.chat, `*${xgc} Por favor, menciona al usuario que desea mutar / desmutar.*`, m);
 }
-/*
-const ownerBot = global.owner[0][0] + '@s.whatsapp.net';
-if (user === ownerBot) {
-return conn.reply(m.chat, `${emojis} No puedo mutear al propietario del bot.`, m);
-}*/
+
 const ownerBot = global.owner.map(owner => owner[0] + '@s.whatsapp.net');
 
 if (ownerBot.includes(user)) {
