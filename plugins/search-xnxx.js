@@ -14,7 +14,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${encodeURIComponent(text)}`);
     res = await response.json();
   } catch (e) {
-    return m.reply('❌ Error al conectar con la API.');
+    return m.reply('✖️ Error al conectar con la API.');
   }
 
   if (res.status !== 200) throw m.reply(`API Error: ${res.creator}`);
