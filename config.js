@@ -22,13 +22,12 @@ global.mods = ['51990841568', '51953587566']
 global.prems = ['51965911060']
 
 
-global.packname = 'ShadowUtra'
-global.botname = '(✦◠‿◠)ShadowBot-MD'
-global.wm = '⏤͟͟͞͞⋆⬪࣪ꥈ☕★ ׄ ꒱ Shadow ୭'
-global.author = 'By Criss'
+global.packname = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
+global.botname = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
+global.wm = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
+global.author = '𝖣𝖾𝗏.𝖢𝗋𝗂𝗌𝗌 ☕'
 global.dev = '© 𝖯᥆𝗐ᥱ𝗋ᥱძ ᑲᥡ 𝖲ᥙᥒ𝖿ᥣᥲ𝗋ᥱ  ☂︎  𝖳ᥱᥲ𝗆'
 global.errorm = 'Error: ${error.message}'
-global.nombrebot = 'Shadow Bot - MD'
 global.textbot = `⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅա  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚`
 global.vs = '3.0.0'
 
