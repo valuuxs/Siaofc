@@ -70,11 +70,16 @@ if (m.quoted) {
 } else if (m.mentionedJid && m.mentionedJid.length) {
   user = m.mentionedJid[0];
 } else {
-  return conn.reply(m.chat, `*${xgc} Por favor, menciona al usuario que desea mutar / desmutar.*`, m);
+  const msgError = command === 'mute'
+    ? `*${xgc} Por favor, menciona al usuario que desea mutear.*`
+    : `*${xgc} Por favor, menciona al usuario que desea desmutear.*`;
+  return conn.reply(m.chat, msgError, m);
 }
+/*
+  return conn.reply(m.chat, `*${xgc} Por favor, menciona al usuario que desea mutar / desmutar.*`, m);
+}*/
 
 const ownerBot = global.owner.map(owner => owner[0] + '@s.whatsapp.net');
-
 if (ownerBot.includes(user)) {
   return conn.reply(m.chat, `*☁️ No puedo mutar a mi propietario.*`, m);
 }
