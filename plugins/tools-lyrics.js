@@ -3,7 +3,7 @@ import axios from 'axios';
 const handler = async (m, { conn, text }) => {
     if (!text) return m.reply('Introduzca el título de la canción que desea buscar.');
 
-    await m.react('⌛');
+    await m.react('⌛'); // reacción de espera
 
     try {
         const res = await axios.get(`https://fastrestapis.fasturl.cloud/music/songlyrics-v1?text=${encodeURIComponent(text)}`);
@@ -37,8 +37,7 @@ const handler = async (m, { conn, text }) => {
             response += `\n📜 *Letra:*\n${plain_lyrics || 'Letra no disponible.'}`;
         }
 
-        // Armar el mensaje con botón
-        const msg = {
+        await conn.sendMessage(m.chat, {
             text: response,
             contextInfo: {
                 externalAdReply: {
@@ -50,21 +49,9 @@ const handler = async (m, { conn, text }) => {
                     renderLargerThumbnail: true,
                 }
             }
-        };
+        }, { quoted: m });
 
-        if (Youtube_URL) {
-            msg.buttons = [
-                {
-                    buttonId: '.nourl', // no hace nada
-                    buttonText: { displayText: 'Ver en YouTube' },
-                    type: 1, // Botón de texto
-                    urlButton: { displayText: 'Ver en YouTube', url: Youtube_URL }
-                }
-            ];
-        }
-
-        await conn.sendMessage(m.chat, msg, { quoted: m });
-        await m.react('✅');
+        await m.react('✅'); // éxito
 
     } catch (err) {
         console.error('Error al buscar la letra:', err.message);
