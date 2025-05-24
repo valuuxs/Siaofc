@@ -10,8 +10,8 @@ const handler = async (m, { conn, text }) => {
         const data = res.data;
 
         if (data.status !== 200 || !data.result || !data.result.answer) {
-            await m.react('❌');
-            return m.reply('Canción no encontrada o no se pudieron recuperar los datos.');
+            await m.react('✖️');
+            return m.reply('*✖️ Canción no encontrada o no se pudieron recuperar los datos.*');
         }
 
         const {
@@ -55,7 +55,7 @@ const handler = async (m, { conn, text }) => {
 
     } catch (err) {
         console.error('Error al buscar la letra:', err.message);
-        await m.react('❌');
+        await m.react('✖️');
         await m.reply('No se pudieron obtener los datos de las letras. Por favor, inténtelo de nuevo.');
     }
 };
