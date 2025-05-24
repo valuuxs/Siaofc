@@ -3,7 +3,7 @@ import axios from 'axios';
 const handler = async (m, { conn, text }) => {
     if (!text) return m.reply('Introduzca el título de la canción que desea buscar.');
 
-    await m.react('⌛'); // reacción de espera
+    await m.react('⌛');
 
     try {
         const res = await axios.get(`https://fastrestapis.fasturl.cloud/music/songlyrics-v1?text=${encodeURIComponent(text)}`);
@@ -51,7 +51,7 @@ const handler = async (m, { conn, text }) => {
             }
         }, { quoted: fkontak });
 
-        await m.react('✅'); // éxito
+        await m.react('✅');
 
     } catch (err) {
         console.error('Error al buscar la letra:', err.message);
