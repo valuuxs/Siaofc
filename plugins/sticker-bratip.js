@@ -11,17 +11,15 @@ if (!text) {
 
     if (!stiker) throw 'Error al generar el sticker.'
 
-    await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+    await conn.sendFile(m.chat, stiker, 'sticker.webp', '', fkontak)
   } catch (err) {
     console.error(err)
     m.reply(typeof err === 'string' ? err : 'Ocurrió un error al generar el sticker.')
   }
 }
 
-handler.help = ['brat2 <texto>']
+handler.help = ['brat <texto>']
 handler.tags = ['sticker']
-handler.command = /^brat2$/i
-handler.group = false
-// handler.limit = true
+handler.command = /^brat$/i
 
 export default handler
