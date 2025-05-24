@@ -1,8 +1,8 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
+const handler = async (m, { conn, text, command, usedPrefix }) => {
   if (!text) {
-    throw `*[❗] Ingresa el título de la canción que deseas buscar*\n\n*Ejemplo:* ${usedPrefix + command} perfect ed sheeran`;
+    throw `*[❗] Ingresa el nombre de la canción*\n\n*Ejemplo:* ${usedPrefix + command} someone like you`;
   }
 
   try {
@@ -10,54 +10,31 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const data = res.data;
 
     if (data.status !== 200 || !data.result?.answer) {
-      throw '*[❗] No se encontró la canción o no se pudo recuperar la letra.*';
+      throw '*[❗] No se encontró la canción o la letra no está disponible.*';
     }
 
     const {
-      song,
-      artist,
-      album,
-      plain_lyrics,
-      genre,
-      year,
-      Youtube_URL,
-      album_artwork_url,
+      song, artist, album, plain_lyrics,
+      genre, year, Youtube_URL
     } = data.result.answer;
 
-    const caption = `
-*🎵 Título:* ${song || 'Desconocido'}
-*🎤 Artista:* ${artist || 'Desconocido'}
-${album ? `*💿 Álbum:* ${album}` : ''}
-${genre ? `*🎼 Género:* ${genre}` : ''}
-${year ? `*📅 Año:* ${year}` : ''}
-${Youtube_URL ? `*📹 YouTube:* ${Youtube_URL}` : ''}
+    let mensaje = `🎵 *${song || 'Título desconocido'}* - ${artist || 'Artista desconocido'}\n`;
+    if (album) mensaje += `💿 Álbum: ${album}\n`;
+    if (genre) mensaje += `🎼 Género: ${genre}\n`;
+    if (year) mensaje += `📅 Año: ${year}\n`;
+    if (Youtube_URL) mensaje += `📹 YouTube: ${Youtube_URL}\n`;
+    mensaje += `\n📜 *Letra:*\n${plain_lyrics || 'Letra no disponible.'}`;
 
-*📜 Letra:*
-${plain_lyrics || 'No disponible.'}`.trim();
+    await conn.sendMessage(m.chat, { text: mensaje }, { quoted: m });
 
-    await conn.sendMessage(m.chat, {
-      text: caption,
-      contextInfo: {
-        externalAdReply: {
-          title: song || 'Letra de canción',
-          body: artist || 'Artista',
-          thumbnailUrl: album_artwork_url || null,
-          sourceUrl: Youtube_URL || null,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          showAdAttribution: true,
-        },
-      },
-    }, { quoted: m });
-
-  } catch (err) {
-    console.error(err);
-    throw '*[❗] Ocurrió un error al obtener la letra. Intenta nuevamente más tarde.*';
+  } catch (e) {
+    console.error(e);
+    throw '*[❗] Error al obtener la letra. Inténtalo más tarde.*';
   }
 };
 
-handler.help = ['letra <canción>'];
+handler.help = ['letra <nombre>'];
 handler.tags = ['music'];
 handler.command = /^letra|lyrics$/i;
 
-module.exports = handler;
+export default handler;
