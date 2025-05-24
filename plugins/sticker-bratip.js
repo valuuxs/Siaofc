@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!stiker) throw 'Error al generar el sticker.'
 
     await conn.sendFile(m.chat, stiker, 'sticker.webp', '', fkontak)
-    //await m.react('✅')
+    await m.react('✅')
   } catch (err) {
     console.error(err)
     await m.react('✖️')
