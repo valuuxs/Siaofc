@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
@@ -56,4 +56,4 @@ handler.command = ['brat'];
 handler.tags = ['sticker'];
 handler.help = ['brat'];
 
-export default handler;
+export default handler;*/
