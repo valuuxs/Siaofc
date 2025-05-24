@@ -49,7 +49,7 @@ const handler = async (m, { conn, text }) => {
                     renderLargerThumbnail: true,
                 }
             }
-        }, { quoted: m });
+        }, { quoted: fkontak });
 
         await m.react('✅'); // éxito
 
