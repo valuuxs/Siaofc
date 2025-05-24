@@ -38,7 +38,7 @@ else return m.reply(`*⚠️ La Url es incorrecta*`)
 console.error(e)
 if (!stiker) stiker = e
 } finally {
-if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: '𝖲𝗁͟ᥲ፝֟ძ𝗈𝗐  ⚡︎  𝖲𝗍𝗂ᥴ𝗄ᥱ𝗋ㅤ☕', body: `Shadow Bot MD`, mediaType: 2, sourceUrl: grupo, thumbnail: icons}}}, { quoted: fkontak })
+if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: '𝖲𝗁͟ᥲ፝֟ძ𝗈𝗐  ⚡︎  𝖲𝗍𝗂ᥴ𝗄ᥱ𝗋ㅤ☕', body: `Shadow Bot MD`, mediaType: 2, sourceUrl: grupo, thumbnail: icons}}}, { quoted: m })
 
 else return conn.reply(m.chat, `*${xsticker} La conversión ah fallado, por favor responde a un vídeo, imagen o gif lo cual será convertido en sticker.*`, m, rcanal)
 
