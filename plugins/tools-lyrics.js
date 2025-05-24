@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('Introduzca el título de la canción que desea buscar.');
+    if (!text) return m.reply('*${xtools} Por favor, ingrese el título de la canción que desea buscar la letra.*');
 
     await m.react('⌛');
 
@@ -25,16 +25,13 @@ const handler = async (m, { conn, text }) => {
             album_artwork_url,
         } = data.result.answer;
 
-        let response = `🎵 *${song || 'Título desconocido'}* - ${artist || 'Artista desconocido'}\n`;
-        if (album) response += `💿 Álbum: ${album}\n`;
-        if (genre) response += `🎼 Género: ${genre}\n`;
-        if (year) response += `📅 Año: ${year}\n`;
-        if (Youtube_URL) response += `📹 YouTube: ${Youtube_URL}\n`;
+        let response = `*${song || 'Título desconocido'} - ${artist || 'Artista desconocido'}*\n`;
+        if (album) response += `*🌲 \`Álbum:\`* ${album}\n`;
 
         if ((plain_lyrics || '').length > 4000) {
-            response += `\n📜 *Letra:*\nLa letra es demasiado larga para mostrar.`;
+            response += `*🌿 \`Letra:\`*\n> *La letra es demasiado larga para mostrar.*`;
         } else {
-            response += `\n📜 *Letra:*\n${plain_lyrics || 'Letra no disponible.'}`;
+            response += `*🌿 \`Letra:\`*\n${plain_lyrics || '> *Letra no disponible.*'}`;
         }
 
         await conn.sendMessage(m.chat, {
@@ -62,6 +59,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.help = ['letra'];
 handler.tags = ['music'];
-handler.command = /^(letra|lyrics)$/i;
+handler.command = /^(letra|lyrics|lirik|liric|lyric)$/i;
 
 export default handler;
