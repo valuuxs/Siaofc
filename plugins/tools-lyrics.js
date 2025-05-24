@@ -3,11 +3,14 @@ import axios from 'axios';
 const handler = async (m, { conn, text }) => {
     if (!text) return m.reply('Introduzca el título de la canción que desea buscar.');
 
+    await m.react('⌛');
+
     try {
         const res = await axios.get(`https://fastrestapis.fasturl.cloud/music/songlyrics-v1?text=${encodeURIComponent(text)}`);
         const data = res.data;
 
         if (data.status !== 200 || !data.result || !data.result.answer) {
+            await m.react('❌');
             return m.reply('Canción no encontrada o no se pudieron recuperar los datos.');
         }
 
@@ -20,7 +23,6 @@ const handler = async (m, { conn, text }) => {
             year,
             Youtube_URL,
             album_artwork_url,
-            related_songs,
         } = data.result.answer;
 
         let response = `🎵 *${song || 'Título desconocido'}* - ${artist || 'Artista desconocido'}\n`;
@@ -35,14 +37,8 @@ const handler = async (m, { conn, text }) => {
             response += `\n📜 *Letra:*\n${plain_lyrics || 'Letra no disponible.'}`;
         }
 
-        if (related_songs && related_songs.length) {
-            response += `\n\n🔗 *Canciones Relacionadas:*\n`;
-            related_songs.slice(0, 3).forEach((s, i) => {
-                response += `- ${s.title || 'Sin título'} por ${s.artist || 'Desconocido'}\n`;
-            });
-        }
-
-        await conn.sendMessage(m.chat, {
+        // Armar el mensaje con botón
+        const msg = {
             text: response,
             contextInfo: {
                 externalAdReply: {
@@ -54,16 +50,31 @@ const handler = async (m, { conn, text }) => {
                     renderLargerThumbnail: true,
                 }
             }
-        }, { quoted: m });
+        };
+
+        if (Youtube_URL) {
+            msg.buttons = [
+                {
+                    buttonId: '.nourl', // no hace nada
+                    buttonText: { displayText: 'Ver en YouTube' },
+                    type: 1, // Botón de texto
+                    urlButton: { displayText: 'Ver en YouTube', url: Youtube_URL }
+                }
+            ];
+        }
+
+        await conn.sendMessage(m.chat, msg, { quoted: m });
+        await m.react('✅');
 
     } catch (err) {
         console.error('Error al buscar la letra:', err.message);
+        await m.react('❌');
         await m.reply('No se pudieron obtener los datos de las letras. Por favor, inténtelo de nuevo.');
     }
 };
 
 handler.help = ['letra'];
 handler.tags = ['music'];
-handler.command = /^(letra|lyrics|lirik)$/i;
+handler.command = /^(letra|lyrics)$/i;
 
 export default handler;
