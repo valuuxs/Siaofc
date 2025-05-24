@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('*${xtools} Por favor, ingrese el título de la canción que desea buscar la letra.*');
+    if (!text) return m.reply(`*${xtools} Por favor, ingrese el título de la canción que desea buscar la letra.*`);
 
     await m.react('⌛');
 
