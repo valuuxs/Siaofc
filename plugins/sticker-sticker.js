@@ -5,6 +5,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 let stiker = false
 try {
+await m.react('☁️')
+
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || q.mediaType || ''
 if (/webp|image|video/g.test(mime)) {
