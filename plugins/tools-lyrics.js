@@ -31,7 +31,7 @@ const handler = async (m, { conn, text }) => {
         if ((plain_lyrics || '').length > 4000) {
             response += `*🌿 \`Letra:\`*\n> *La letra es demasiado larga para mostrar.*`;
         } else {
-            response += `*🌿 \`Letra:\`*\n${plain_lyrics || '> *Letra no disponible.*'}`;
+            response += `*🌿 \`Letra:\`*\n\n${plain_lyrics || '> *Letra no disponible.*'}`;
         }
 
         await conn.sendMessage(m.chat, {
