@@ -46,7 +46,7 @@ let handler = async (m, { conn }) => {
 
 handler.tag = ['info'];
 handler.help = ['p'];
-handler.command = ['p'];
+handler.command = ['px'];
 
 
 
