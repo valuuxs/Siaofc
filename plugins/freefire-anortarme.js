@@ -29,16 +29,25 @@ ${jugadoresText}
 
 ${suplentesText}`;
 
-    await conn.sendMessage(m.chat, {
-        text: mensajeActualizado,
-        mentions: [...sala.jugadores, ...sala.suplentes],
-        footer: 'Toca un botón para seguir anotándote:',
-        buttons: [
-            { buttonId: `${usedPrefix}anotarme jugador ${salaId}`, buttonText: { displayText: '✅ Anotarse' }, type: 1 },
-            { buttonId: `${usedPrefix}anotarme suplente ${salaId}`, buttonText: { displayText: '🕒 Suplente' }, type: 1 }
-        ],
-        headerType: 1
-    }, { quoted: m });
+
+conn.sendMessage(m.chat, { 
+    text: mensajeActualizado, 
+    mentions: [...sala.jugadores, ...sala.suplentes],
+    footer: 'Toca el botón para anotarte', 
+    buttons: [
+        {
+            buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
+            buttonText: { displayText: 'Jugador' },
+            type: 1
+        },
+        {
+            buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
+            buttonText: { displayText: 'Suplente' },
+            type: 1
+        }
+    ],
+    viewOnce: true
+}, { quoted: m });
 };
 
 handler.command = /^anotarme$/i;
