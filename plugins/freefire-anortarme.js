@@ -7,14 +7,14 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     }
 
     const sala = global.vsData[salaId];
-    const esJugador = tipo === 'jugador';
-    const lista = esJugador ? sala.jugadores : sala.suplentes;
 
-    // Evita duplicados en ambas listas
+    // Filtra al usuario de ambas listas
     sala.jugadores = sala.jugadores.filter(u => u !== m.sender);
     sala.suplentes = sala.suplentes.filter(u => u !== m.sender);
 
-    // Límite según íconos
+    const esJugador = tipo === 'jugador';
+
+    // Límite según el tipo de VS
     const maxJugadores = sala.titulo.includes('6VS6') ? 6 : 4;
     const maxSuplentes = 2;
 
@@ -23,7 +23,12 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     if (!esJugador && sala.suplentes.length >= maxSuplentes)
         return conn.reply(m.chat, '*⚠️ Lista de suplentes llena.*', m);
 
-    lista.push(m.sender);
+    // Agrega el usuario a la lista correspondiente
+    if (esJugador) {
+        sala.jugadores.push(m.sender);
+    } else {
+        sala.suplentes.push(m.sender);
+    }
 
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
     const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
