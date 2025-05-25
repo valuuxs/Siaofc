@@ -16,7 +16,7 @@ let handler = async (m, { conn }) => {
         ],
         viewOnce: true,
         headerType: 4
-    }, { quoted: m });
+    }, { quoted: fkontak });
 }
 
 handler.tag = ['test'];
