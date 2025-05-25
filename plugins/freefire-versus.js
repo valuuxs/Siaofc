@@ -124,3 +124,102 @@ handler.tags = ['ff'];
 handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
 
 export default handler;*/
+
+
+const handler = async (m, { text, conn, args, usedPrefix, command }) => { if (args.length < 2) { conn.reply(m.chat, *Proporciona una hora, país y modalidad.*\n> *Ejemplo:* ${usedPrefix + command} 14 pe infinito, m); return; }
+
+const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;
+if (!horaRegex.test(args[0])) {
+    conn.reply(m.chat, '*⏰ Formato de hora inválido.*', m);
+    return;
+}
+
+let [hora, minutos] = args[0].includes(':') ? args[0].split(':').map(Number) : [Number(args[0]), 0];
+const pais = args[1].toUpperCase();
+
+const diferenciasHorarias = {
+    CL: 2,
+    AR: 2,
+    PE: 0,
+};
+
+if (!(pais in diferenciasHorarias)) {
+    conn.reply(m.chat, '*⚠️ País no válido. Usa AR o PE.*', m);
+    return;
+}
+
+const diferenciaHoraria = diferenciasHorarias[pais];
+const formatTime = date => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });
+
+const horasEnPais = {};
+for (const key in diferenciasHorarias) {
+    const horaActual = new Date();
+    horaActual.setHours(hora, minutos, 0, 0);
+    const horaEnPais = new Date(horaActual.getTime() + 3600000 * (diferenciasHorarias[key] - diferenciaHoraria));
+    horasEnPais[key] = formatTime(horaEnPais);
+}
+
+const modalidad = args.slice(2).join(' ');
+m.react('🎮');
+
+let titulo = '', max = 0, icono = '';
+switch (command) {
+    case 'v4fem': case 'vsfem4': titulo = '4VS4 FEM'; icono = '🌸'; max = 4; break;
+    case 'v4masc': case 'vsmasc4': titulo = '4VS4 MASC'; icono = '🥥'; max = 4; break;
+    case 'v4mixto': case 'vsmixto4': titulo = '4VS4 MIXTO'; icono = '🍁'; max = 4; break;
+    case 'v6fem': case 'vsfem6': titulo = '6VS6 FEM'; icono = '🦋'; max = 6; break;
+    case 'v6masc': case 'vsmasc6': titulo = '6VS6 MASC'; icono = '🥞'; max = 6; break;
+    case 'v6mixto': case 'vsmixto6': titulo = '6VS6 MIXTO'; icono = '🥯'; max = 6; break;
+    default:
+        conn.reply(m.chat, '*❌ Comando inválido.*', m);
+        return;
+}
+
+if (!conn.vs) conn.vs = {};
+conn.vs[m.chat] = {
+    titulo,
+    modalidad,
+    icono,
+    max,
+    jugadores: [],
+    suplentes: [],
+    horas: horasEnPais
+};
+
+const vs = conn.vs[m.chat];
+
+const generarMensajeVS = () => {
+    return `ꆬꆬ       ݂    *${vs.titulo}*    🌹֟፝
+
+ത Modalidad: ${vs.modalidad} ത Hora: ${vs.horas.PE} 🇵🇪 ${vs.horas.AR} 🇦🇷
+
+࿙࿚ Jugadores: ${vs.jugadores.length}/${vs.max} ${vs.jugadores.map((u, i) => ${vs.icono} ${i + 1}. @${u.split('@')[0]}).join('\n') || '—'}
+
+ꛁ Suplentes: ${vs.suplentes.map((u, i) => ${vs.icono} ${i + 1}. @${u.split('@')[0]}).join('\n') || '—'}
+
+> © Shadow Bot`.trim(); };
+
+
+
+conn.sendMessage(m.chat, {
+    text: generarMensajeVS(),
+    mentions: [...vs.jugadores, ...vs.suplentes],
+    buttons: [
+        { buttonId: '.anotarme', buttonText: { displayText: 'Anotarme' }, type: 1 },
+        { buttonId: '.suplente', buttonText: { displayText: 'Suplente' }, type: 1 },
+    ]
+}, { quoted: m });
+
+};
+
+handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
+
+export default handler;
+
+const handlerAnotarme = async (m, { conn }) => { if (!conn.vs || !conn.vs[m.chat]) throw '❌ No hay un VS activo.'; const vs = conn.vs[m.chat]; const id = m.sender;
+
+if (vs.jugadores.includes(id) || vs.suplentes.includes(id)) {
+    throw '*⚠️ Ya estás anotado.*';
+}
+if (vs.jug
+
