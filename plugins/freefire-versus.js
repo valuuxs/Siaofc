@@ -240,15 +240,23 @@ ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `;
 
-    await conn.sendMessage(m.chat, {
-        text: mensaje,
-        footer: 'Toca un botón para anotarte:',
-        buttons: [
-            { buttonId: `${usedPrefix}anotarme jugador ${salaId}`, buttonText: { displayText: '✅ Anotarse' }, type: 1 },
-            { buttonId: `${usedPrefix}anotarme suplente ${salaId}`, buttonText: { displayText: '🕒 Suplente' }, type: 1 }
-        ],
-        headerType: 1
-    }, { quoted: m });
+conn.sendMessage(m.chat, { 
+    text: mensaje, 
+    footer: 'Toca el botón para anotarte', 
+    buttons: [
+        {
+            buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
+            buttonText: { displayText: 'Jugador' },
+            type: 1
+        },
+        {
+            buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
+            buttonText: { displayText: 'Suplente' },
+            type: 1
+        }
+    ],
+    viewOnce: true
+}, { quoted: m });
 };
 
 handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
