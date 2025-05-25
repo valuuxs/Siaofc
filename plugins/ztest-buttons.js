@@ -39,7 +39,7 @@ let handler = async (m, { conn }) => {
                 buttonText: { displayText: 'Owner' },
                 type: 1
             }
-        ],
+        ]
     }, { quoted: m });
 }
 
