@@ -1,4 +1,4 @@
-const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 2) {  
         conn.reply(m.chat, `*${xff} Proporciona una hora seguido el país y una modalidad para crear una lista de VS.*
@@ -123,4 +123,4 @@ handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'
 handler.tags = ['ff'];
 handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
 
-export default handler;
+export default handler;*/
