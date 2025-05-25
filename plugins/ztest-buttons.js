@@ -1,4 +1,4 @@
-
+/*
 //Buttons - Message Im Interactive
 
 let handler = async (m, { conn }) => {
@@ -25,7 +25,7 @@ handler.command = ['buttontest'];
 handler.diamantes = 1;
 
 export default handler;
-/*
+*/
 // Buttons Ix
 
 let handler = async (m, { conn }) => {
@@ -50,7 +50,7 @@ handler.command = ['p'];
 
 
 
-
+/*
 import yts from 'yt-search';
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'; // Importación necesaria
 
