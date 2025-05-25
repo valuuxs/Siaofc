@@ -1,5 +1,5 @@
 const handler = async (m, { args, conn, usedPrefix }) => {
-    const tipo = args[0];
+    const tipo = (args[0] || '').toLowerCase();
     const salaId = args[1];
 
     if (!tipo || !salaId || !global.vsData || !(salaId in global.vsData)) {
@@ -7,9 +7,23 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     }
 
     const sala = global.vsData[salaId];
-    const lista = tipo === 'jugador' ? sala.jugadores : sala.suplentes;
+    const esJugador = tipo === 'jugador';
+    const lista = esJugador ? sala.jugadores : sala.suplentes;
 
-    if (!lista.includes(m.sender)) lista.push(m.sender);
+    // Evita duplicados en ambas listas
+    sala.jugadores = sala.jugadores.filter(u => u !== m.sender);
+    sala.suplentes = sala.suplentes.filter(u => u !== m.sender);
+
+    // Límite según íconos
+    const maxJugadores = sala.titulo.includes('6VS6') ? 6 : 4;
+    const maxSuplentes = 2;
+
+    if (esJugador && sala.jugadores.length >= maxJugadores)
+        return conn.reply(m.chat, '*⚠️ Lista de jugadores llena.*', m);
+    if (!esJugador && sala.suplentes.length >= maxSuplentes)
+        return conn.reply(m.chat, '*⚠️ Lista de suplentes llena.*', m);
+
+    lista.push(m.sender);
 
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
     const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
@@ -29,25 +43,24 @@ ${jugadoresText}
 
 ${suplentesText}`;
 
-
-conn.sendMessage(m.chat, { 
-    text: mensajeActualizado, 
-    mentions: [...sala.jugadores, ...sala.suplentes],
-    footer: 'Toca el botón para anotarte', 
-    buttons: [
-        {
-            buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
-            buttonText: { displayText: 'Jugador' },
-            type: 1
-        },
-        {
-            buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
-            buttonText: { displayText: 'Suplente' },
-            type: 1
-        }
-    ],
-    viewOnce: true
-}, { quoted: m });
+    conn.sendMessage(m.chat, {
+        text: mensajeActualizado,
+        mentions: [...sala.jugadores, ...sala.suplentes],
+        footer: 'Toca el botón para anotarte',
+        buttons: [
+            {
+                buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
+                buttonText: { displayText: 'Jugador' },
+                type: 1
+            },
+            {
+                buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
+                buttonText: { displayText: 'Suplente' },
+                type: 1
+            }
+        ],
+        viewOnce: true
+    }, { quoted: m });
 };
 
 handler.command = /^anotarme$/i;
