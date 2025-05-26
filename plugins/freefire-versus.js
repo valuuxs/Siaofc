@@ -105,6 +105,8 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         titulo,
         modalidad,
         horasEnPais,
+        iconos,
+        iconos2,
     };
 
     const message = `ꆬꆬ       ݂    *${titulo}*    🌹֟፝  
