@@ -13,7 +13,6 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     const maxJugadores = sala.titulo.includes('6VS6') ? 6 : 4;
     const maxSuplentes = 2;
 
-    // Eliminar usuario si lo pide
     if (tipo === 'eliminarme') {
         const estaba = sala.jugadores.includes(m.sender) || sala.suplentes.includes(m.sender);
         sala.jugadores = sala.jugadores.filter(u => u !== m.sender);
@@ -22,7 +21,6 @@ const handler = async (m, { args, conn, usedPrefix }) => {
         return conn.reply(m.chat, mensaje, m);
     }
 
-    // Validación de duplicado
     const yaJugador = sala.jugadores.includes(m.sender);
     const yaSuplente = sala.suplentes.includes(m.sender);
 
@@ -31,13 +29,11 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     if (tipo === 'suplente' && yaSuplente)
         return conn.reply(m.chat, '*☁️ Ya estás registrado como suplente.*', m);
 
-    // Elimina si estaba en otra lista
+    // Quitar de ambas listas antes de agregar
     sala.jugadores = sala.jugadores.filter(u => u !== m.sender);
     sala.suplentes = sala.suplentes.filter(u => u !== m.sender);
 
-    // Registrar
-    const esJugador = tipo === 'jugador';
-    if (esJugador) {
+    if (tipo === 'jugador') {
         if (sala.jugadores.length >= maxJugadores)
             return conn.reply(m.chat, '*⚠️ Lista de jugadores llena.*', m);
         sala.jugadores.push(m.sender);
@@ -57,10 +53,6 @@ const handler = async (m, { args, conn, usedPrefix }) => {
         return `${icono}˚ @${u.split('@')[0]}`;
     }).join('\n');
 
-    const cupoJugadores = `${sala.jugadores.length}/${maxJugadores}`;
-    const cupoSuplentes = `${sala.suplentes.length}/${maxSuplentes}`;
-    const nombre = await conn.getName(m.sender);
-
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
   ത *𝖬𝗈𝖽𝖺𝗅𝗂𝖽𝖺𝖽:* ${sala.modalidad}
@@ -74,23 +66,21 @@ ${jugadoresText}
 
       ꛁ⵿ֹ𐑼᪲ ۪ \`𝖲𝗎𝗉𝗅𝖾𝗇𝗍𝖾𝗌\` ֹ̼ ׅ ❜𝆬 ᨩ̼
 
-${suplentesText}
+${suplentesText}`;
 
-\n*✍️ Último en anotarse:* ${nombre} (${tipo})`;
-
-    await conn.sendMessage(m.chat, {
+    conn.sendMessage(m.chat, {
         text: mensajeActualizado,
         mentions: [...sala.jugadores, ...sala.suplentes],
-        footer: 'Toca un botón para anotarte o salir',
+        footer: 'Toca el botón para anotarte o eliminarte',
         buttons: [
             {
                 buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
-                buttonText: { displayText: `Jugador (${cupoJugadores})` },
+                buttonText: { displayText: 'Jugador' },
                 type: 1
             },
             {
                 buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
-                buttonText: { displayText: `Suplente (${cupoSuplentes})` },
+                buttonText: { displayText: 'Suplente' },
                 type: 1
             },
             {
@@ -105,7 +95,6 @@ ${suplentesText}
 
 handler.command = /^anotarme$/i;
 export default handler;
-
 
 /*
 
