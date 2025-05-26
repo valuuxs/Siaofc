@@ -36,7 +36,7 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
     const suplentesText = sala.suplentes.map((u, i) => `${sala.icons2}. @${u.split('@')[0]}`).join('\n') || `${salas.icons2}`;
 */
-
+/*
 const jugadoresText = sala.icons1.map((icono, i) => {
     const user = sala.jugadores[i];
     return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
@@ -44,6 +44,16 @@ const jugadoresText = sala.icons1.map((icono, i) => {
 const suplentesText = sala.icons2.map((icono, i) => {
     const user = sala.suplentes[i];
     return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
+}).join('\n');*/
+
+const jugadoresText = sala.jugadores.map((u, i) => {
+    const icono = sala.icons1[i] || `${i + 1}.`; // ícono o número por defecto
+    return `${icono} @${u.split('@')[0]}`;
+}).join('\n');
+
+const suplentesText = sala.suplentes.map((u, i) => {
+    const icono = sala.icons2[i] || '•'; // ícono por defecto
+    return `${icono} @${u.split('@')[0]}`;
 }).join('\n');
 
 
