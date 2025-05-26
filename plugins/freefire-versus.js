@@ -1,4 +1,4 @@
-/*const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 2) {  
         conn.reply(m.chat, `*${xff} Proporciona una hora seguido el país y una modalidad para crear una lista de VS.*
@@ -7,7 +7,6 @@
         return;
     }
 
-    // Nueva validación para formato de 24 horas
     const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;  
     if (!horaRegex.test(args[0])) {  
         conn.reply(m.chat, '*⏰ El formato horario es incorrecto.*', m);  
@@ -45,7 +44,6 @@
     const modalidad = args.slice(2).join(' ');  
     m.react('🎮');  
 
-    // Configuración de la modalidad según el comando usado
     let titulo = '';
     let players = [];
     let iconos = [];
