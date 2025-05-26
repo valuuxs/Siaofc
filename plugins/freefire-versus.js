@@ -125,7 +125,7 @@ ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 > © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `;
 
 conn.sendMessage(m.chat, { 
-    text: mensaje, 
+    text: message, 
     footer: 'Toca el botón para anotarte', 
     buttons: [
         {
