@@ -118,7 +118,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
  ׄ߳𑁍̵ ֕︵۪۪۪۪᷼ ּ \`${players}::\` ׅ ׄ░ׅ
 
-${icons1.map(icono => `${icons1}˚ `).join('\n')}
+${icons1.map(icono => `${icono}˚ `).join('\n')}
 
       ꛁ⵿ֹ𐑼᪲ ۪ \`𝖲𝗎𝗉𝗅𝖾𝗇𝗍𝖾𝗌\` ֹ̼ ׅ ❜𝆬 ᨩ̼
 
