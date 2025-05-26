@@ -29,10 +29,10 @@
     } else {
         sala.suplentes.push(m.sender);
     }
-/*
+
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
     const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
-*/
+
 
 const jugadoresText = sala.jugadores.length
     ? sala.jugadores.map((u, i) => `${sala.iconos[i]} @${u.split('@')[0]}`).join('\n')
@@ -114,9 +114,17 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     } else {
         sala.suplentes.push(m.sender);
     }
-
+/*
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
-    const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
+    const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';*/
+
+const jugadoresText = sala.jugadores.length
+    ? sala.jugadores.map((u, i) => `${sala.iconos[i]} @${u.split('@')[0]}`).join('\n')
+    : sala.iconos.map(icono => `${icono} 𓍯`).join('  ');
+
+const suplentesText = sala.suplentes.length
+    ? sala.suplentes.map((u, i) => `${sala.iconos2[i]} @${u.split('@')[0]}`).join('\n')
+    : sala.iconos2.map(icono => `${icono} 𓍯`).join('  ');
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
