@@ -1,4 +1,4 @@
-/*const handler = async (m, { args, conn, usedPrefix }) => {
+./*const handler = async (m, { args, conn, usedPrefix }) => {
     const tipo = (args[0] || '').toLowerCase();
     const salaId = args[1];
 
@@ -120,11 +120,11 @@ const handler = async (m, { args, conn, usedPrefix }) => {
 
 const jugadoresText = sala.jugadores.length
     ? sala.jugadores.map((u, i) => `${sala.iconos[i]} @${u.split('@')[0]}`).join('\n')
-    : sala.iconos.map(icono => `${icono} 𓍯`).join('  ');
+    : sala.iconos.map(icono => `${icono}`).join('  ');
 
 const suplentesText = sala.suplentes.length
     ? sala.suplentes.map((u, i) => `${sala.iconos2[i]} @${u.split('@')[0]}`).join('\n')
-    : sala.iconos2.map(icono => `${icono} 𓍯`).join('  ');
+    : sala.iconos2.map(icono => `${icono}`).join('  ');
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
