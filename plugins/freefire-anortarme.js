@@ -45,8 +45,7 @@ const jugadoresText = sala.jugadores.map((u, i) => {
 const suplentesText = sala.suplentes.map((u, i) => {
     const icono = sala.icons2[i] || '🌿';
     return `${icono}˚ @${u.split('@')[0]}`;
-}).join('\n')
-  : sala.icons2.map(icono => `${icono}˚`).join('\n');
+}).join('\n') || `sala.icons2.map(icono => `${icono}˚`).join('\n')`;
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
