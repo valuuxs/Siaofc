@@ -34,7 +34,7 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     }
 /*
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
-    const suplentesText = sala.suplentes.map((u, i) => `${sala.icons2}. @${u.split('@')[0]}`).join('\n') || `${salas.icons2}`;
+    const suplentesText = sala.suplentes.map((u, i) => `${sala.icons2}. @${u.split('@')[0]}`).join('\n') : `${salas.icons2}`;
 */
 
 const jugadoresText = sala.jugadores.map((u, i) => {
