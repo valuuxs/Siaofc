@@ -797,15 +797,8 @@ await conn.sendMessage(m.chat, {
 }, { quoted: fkontak });
 }*/
 
-await conn.sendMessage(m.chat, {
-  buttons: [
-    { buttonId: isEnable ? `.off ${type}` : `.on ${type}`, buttonText: { displayText: isEnable ? '🔴 Off' : '🟢 On' }, type: 1 },
-    { buttonId: '.menu', buttonText: { displayText: 'Menú ☕' }, type: 1 }
-  ],
-  text: `*» OPCION |* ${type.toUpperCase()}\n*» ESTADO |* ${isEnable ? 'ON' : 'OFF'}\n*» PARA |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`,
-  footer: dev,
-  headerType: 1
-}, { quoted: fkontak });
+  conn.reply(m.chat, `*☁️ La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`, m)
+}
 
 handler.help = ['enable', 'disable']
 handler.tags = ['nable', 'owner']
