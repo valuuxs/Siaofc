@@ -39,13 +39,14 @@ const handler = async (m, { args, conn, usedPrefix }) => {
 
 const jugadoresText = sala.jugadores.map((u, i) => {
     const icono = sala.icons1[i] || `${i + 1}.`; // ícono o número por defecto
-    return `${icono} @${u.split('@')[0]}`;
+    return `${icono}˚ @${u.split('@')[0]}`;
 }).join('\n');
 
 const suplentesText = sala.suplentes.map((u, i) => {
     const icono = sala.icons2[i] || '🌿';
-    return `${icono} @${u.split('@')[0]}`;
-}).join('\n');
+    return `${icono}˚ @${u.split('@')[0]}`;
+}).join('\n') || `${icons2.map(icono => `${icono}˚ `).join('\n')}`;
+
 
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
