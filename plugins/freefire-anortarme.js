@@ -119,15 +119,15 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     const suplentesText = sala.suplentes.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || `${icono}`;
 */
 
+const jugadoresText = sala.icons1.map((icono, i) => {
+    const user = sala.jugadores[i];
+    return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
+}).join('\n');
 
-const jugadoresText = sala.jugadores.length
-    ? sala.jugadores.map((u, i) => `${sala.icons1[i]} @${u.split('@')[0]}`).join('\n')
-    : sala.icons1.map(icono => `${icono}`).join('\n');
-
-const suplentesText = sala.suplentes.length
-    ? sala.suplentes.map((u, i) => `${sala.icons2[i]} @${u.split('@')[0]}`).join('\n')
-    : sala.icons2.map(icono => `${icono}`).join('\n');
-
+const suplentesText = sala.icons2.map((icono, i) => {
+    const user = sala.suplentes[i];
+    return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
+}).join('\n');
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
