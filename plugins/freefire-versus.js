@@ -99,6 +99,16 @@
             return;
     }
 
+    const salaId = `vs_${m.chat}_${Date.now()}`;
+    global.vsData = global.vsData || {};
+    global.vsData[salaId] = {
+        jugadores: [],
+        suplentes: [],
+        titulo,
+        modalidad,
+        horasEnPais,
+    };
+
     const message = `ꆬꆬ       ݂    *${titulo}*    🌹֟፝  
 
   ത *𝖬𝗈𝖽𝖺𝗅𝗂𝖽𝖺𝖽:* ${modalidad}
@@ -114,17 +124,33 @@ ${iconos.map(icono => `${icono}˚ `).join('\n')}
 
 ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 
-> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `.trim();
+> © Տһᥲძᨣᥕ Ɓᨣƚ Uᥣ𝗍rᥲ `;
 
-    conn.sendMessage(m.chat, { text: message }, { quoted: fkontak });
+conn.sendMessage(m.chat, { 
+    text: mensaje, 
+    footer: 'Toca el botón para anotarte', 
+    buttons: [
+        {
+            buttonId: `${usedPrefix}anotarme jugador ${salaId}`,
+            buttonText: { displayText: 'Jugador' },
+            type: 1
+        },
+        {
+            buttonId: `${usedPrefix}anotarme suplente ${salaId}`,
+            buttonText: { displayText: 'Suplente' },
+            type: 1
+        }
+    ],
+    viewOnce: true
+}, { quoted: m });
 };
 
 handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'];
 handler.tags = ['ff'];
 handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
 
-export default handler;*/
-
+export default handler;
+/*
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     if (args.length < 2) {
         conn.reply(m.chat, `*Proporciona una hora seguido el país y una modalidad para crear una lista de VS.*
@@ -263,4 +289,4 @@ handler.help = ['inmixto4', 'inmixto6', 'inmasc4', 'inmasc6', 'infem4', 'infem6'
 handler.tags = ['ff'];
 handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
 
-export default handler;
+export default handler;*/
