@@ -32,20 +32,20 @@ const handler = async (m, { args, conn, usedPrefix }) => {
     } else {
         sala.suplentes.push(m.sender);
     }
-
+/*
     const jugadoresText = sala.jugadores.map((u, i) => `${i + 1}. @${u.split('@')[0]}`).join('\n') || '_Vacío_';
     const suplentesText = sala.suplentes.map((u, i) => `${sala.icons2}. @${u.split('@')[0]}`).join('\n') || `${salas.icons2}`;
-/*
+*/
 
 const jugadoresText = sala.icons1.map((icono, i) => {
     const user = sala.jugadores[i];
     return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
 }).join('\n');
-
 const suplentesText = sala.icons2.map((icono, i) => {
     const user = sala.suplentes[i];
     return user ? `${icono} @${user.split('@')[0]}` : `${icono}`;
-}).join('\n');*/
+}).join('\n');
+
 
     const mensajeActualizado = `ꆬꆬ       ݂    *${sala.titulo}*    🌹֟፝  
 
