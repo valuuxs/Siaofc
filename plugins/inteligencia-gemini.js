@@ -2,8 +2,8 @@ import fetch from 'node-fetch'
 var handler = async (m, { text,  usedPrefix, command }) => {
 if (!text) return conn.reply(m.chat, `*${xia} Ingrese una petición para que Gemini lo responda.*`, m)
 try {
-await m.react(rwait)
-conn.sendPresenceUpdate('composing', m.chat)
+
+    conn.sendPresenceUpdate('composing', m.chat) // Writing
 var apii = await fetch(`https://apis-starlights-team.koyeb.app/starlight/gemini?text=${text}`)
 var res = await apii.json()
 await m.reply(res.result)
