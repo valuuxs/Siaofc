@@ -56,11 +56,11 @@ global.avatar = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwEy
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.repobot = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
+global.github = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
 global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
-global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
+global.community = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
-global.insta = 'https://www.instagram.com/dev.criss_vx'
+global.ig = 'https://www.instagram.com/dev.criss_vx'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
