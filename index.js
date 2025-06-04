@@ -41,15 +41,15 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 //let require = createRequire(megu)
 let { say } = cfonts
 
-console.log(chalk.bold.redBright(`\n✰ Iniciando bot ✰\n`))
+console.log(chalk.bold.redBright(`\n☁️ Iniciando Sistema\n`))
 
-say('Jota', {
+say('Shadow Ultra - MD', {
 font: 'block',
 align: 'center',
 colors: ['magentaBright']
 })
 
-say(`Developed By Criss 🇦🇱`, {
+say(`Developed by Dev.Criss 🇦🇱`, {
 font: 'console',
 align: 'center',
 colors: ['blueBright']
@@ -125,7 +125,7 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${sessions}/creds.json`)) {
 do {
-opcion = await question(colores('⌨ Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
+opcion = await question(colores('🍁 Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
 
 if (!/^[1-2]$/.test(opcion)) {
 console.log(chalk.bold.redBright(`✦ No se permiten numeros que no sean 1 o 2, tampoco letras o símbolos especiales.`))
