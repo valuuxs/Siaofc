@@ -33,8 +33,7 @@ global.vs = '3.0.0'
 global.nameqr = 'ShadowUltra-MD'
 global.namebot = 'Shadow Ultra - MD'
 global.sessions = 'ShadowSession'
-global.jadi = 'JadiBots' 
-global.ShadowJadibts = true
+global.jadi = 'JadiBots'
 
 //─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 
