@@ -27,16 +27,6 @@ global.prems = []
 
 //─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 
-global.libreria = 'Baileys'
-global.baileys = 'V 6.7.16' 
-global.vs = '3.0.0'
-global.nameqr = 'ShadowUltra-MD'
-global.namebot = 'Shadow Ultra - MD'
-global.sessions = 'ShadowSession'
-global.jadi = 'JadiBots'
-
-//─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
-
 global.packname = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
 global.botname = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
 global.wm = '𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣'
@@ -54,7 +44,7 @@ global.moneda = 'Diamantes 💎'
 
 global.github = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
 global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
-global.community = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
+global.clubs = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
 global.ig = 'https://www.instagram.com/dev.criss_vx'
 
