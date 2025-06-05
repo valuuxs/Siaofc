@@ -44,7 +44,7 @@ global.moneda = 'Diamantes 💎'
 
 global.github = 'https://github.com/CrxstianEscobar/ShadowUltra-MD'
 global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
-global.clubs = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
+global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
 global.ig = 'https://www.instagram.com/dev.criss_vx'
 
