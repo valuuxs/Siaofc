@@ -106,7 +106,7 @@ global.creds = 'creds.json'
 global.authFile = global.sessions
 global.authFileJB  = global.jadi
 
-const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
+const {state, saveState, saveCreds} = await useMultiFileAuthState(authFile)
 const msgRetryCounterMap = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion()
@@ -222,7 +222,7 @@ conn.well = false
 if (!opts['test']) {
 if (global.db) setInterval(async () => {
 if (global.db.data) await global.db.write()
-if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp', global.authFileJB], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '2', '-type', 'f', '-delete'])))}, 30 * 1000)}
+if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp', authFileJB], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '2', '-type', 'f', '-delete'])))}, 30 * 1000)}
 if (opts['server']) (await import('./lib/server.js')).default(global.conn, PORT)
 async function getMessage(key) {
 if (store) {
@@ -428,7 +428,7 @@ unlinkSync(filePath)})
 }
 function purgeSession() {
 let prekey = []
-let directorio = readdirSync(`./${global.authFile}`)
+let directorio = readdirSync(`./${authFile}`)
 let filesFolderPreKeys = directorio.filter(file => {
 return file.startsWith('pre-key-')
 })
