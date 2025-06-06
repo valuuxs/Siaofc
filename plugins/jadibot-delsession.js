@@ -1,21 +1,27 @@
-import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch, rmSync, promises as fs} from "fs"
-import path, { join } from 'path'
+import { promises as fs } from "fs"
 
-let handler  = async (m, { conn: parentw, usedPrefix, command}, args) => {
+let handler = async (m, { conn: parentw }) => {
+  let who = m.mentionedJid && m.mentionedJid[0]
+    ? m.mentionedJid[0]
+    : m.fromMe
+    ? parentw.user.jid
+    : m.sender
 
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let uniqid = `${who.split`@`[0]}`
-let userS = `${conn.getName(who)}`
+  let uniqid = `${who.split`@`[0]}`
+  let dir = `./JadiBots/${uniqid}`
 
-try {
-await fs.rmdir("./JadiBots/" + uniqid, { recursive: true, force: true })
-await parentw.sendMessage(m.chat, { text: '*🚮 Sesión de SubBot eliminado con éxito.*' }, { quoted: fkontak })
-} catch(err) {
-if (err.code === 'ENOENT' && err.path === `./JadiBots/${uniqid}`) {
-await parentw.sendMessage(m.chat, { text: "*☁️ No cuentas con ninguna sesión de Subbot*" }, { quoted: fkontak })
-} else {
-await m.react(✖️)
-}}}
+  try {
+    await fs.rmdir(dir, { recursive: true, force: true })
+    await parentw.sendMessage(m.chat, { text: '*🚮 Sesión de SubBot eliminado con éxito.*' }, { quoted: fkontak })
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      await parentw.sendMessage(m.chat, { text: "*☁️ No cuentas con ninguna sesión de Subbot*" }, { quoted: fkontak })
+    } else {
+      await m.react('✖️')
+      console.error(err)
+    }
+  }
+}
 
 handler.tags = ['serbot']
 handler.help = ['delsession']
