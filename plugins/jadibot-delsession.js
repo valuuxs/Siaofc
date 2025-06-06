@@ -35,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 }
 
 handler.command = /^(deletesess?ion|eliminarsesion|borrarsesion|delsess?ion|cerrarsesion)$/i
-handler.private = true
+//handler.private = true
 handler.fail = null
 
 export default handler
