@@ -31,8 +31,14 @@ if (!bot.jadibotmd) return m.reply('*☕ Esta función se encuentra desactivada.
   if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
     return m.reply(`*☁️ Esta función solo puede ser usada desde el bot principal.*`);
   }
-
+/*
   async function serbot() {
+    let authFolderB = m.sender.split('@')[0];*/
+async function serbot() {
+    if (global.conns.length >= 15) {
+      return m.reply('*⚠️ Límite máximo de 15 Sub Bots alcanzado.*\nElimina uno con *#delsesion* antes de crear otro.');
+    }
+
     let authFolderB = m.sender.split('@')[0];
     const userFolderPath = `./JadiBots/${authFolderB}`;
 
