@@ -39,6 +39,7 @@ const vid = ['https://files.catbox.moe/39rx3n.mp4', 'https://files.catbox.moe/5f
 *🍸 Exp:* ${exp}
 *🫖 Nivel:* ${level}
 *🍢 Rango:* ${role}
+*☁️ Bot: ${botreal} / ${ofcbot}
 ${readMore}
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
