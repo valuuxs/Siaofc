@@ -29,7 +29,7 @@ if (!bot.jadibotmd) return m.reply('*☕ Esta función se encuentra desactivada.
   let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
   if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
-    return m.reply(`*☁️ Esta función solo puede ser usada desde el bot principal.*`);
+    return m.reply(`*☁️ Esta función solo puede ser usada desde el bot principal o desde el grupo oficial. 👇🏻\nhttps://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW*`);
   }
 /*
   async function serbot() {
