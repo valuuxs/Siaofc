@@ -19,7 +19,7 @@ let handler = async (m, { conn }) => {
    await conn.reply(m.chat, txt, m, rcanal)
 }
 
-handler.command = ['listjadibot', 'bots', 'listbots', 'subs']
+handler.command = ['totalbots', 'tbots']
 handler.help = ['bots']
 handler.tags = ['serbot']
 export default handler
