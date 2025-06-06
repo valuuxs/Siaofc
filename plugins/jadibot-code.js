@@ -28,14 +28,13 @@ if (!bot.jadibotmd) return m.reply('*☕ Esta función se encuentra desactivada.
 
   let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
-/*  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
-    return m.reply(`Este comando solo puede ser usado en el bot principal! wa.me/${global.conn.user.jid.split`@`[0]}?text=${usedPrefix}code`);
+  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
+    return m.reply(`*☁️ Esta función solo puede ser usada desde el bot principal.*`);
   }
-*/
 
   async function serbot() {
     let authFolderB = m.sender.split('@')[0];
-    const userFolderPath = `./CrowJadiBot/${authFolderB}`;
+    const userFolderPath = `./JadiBots/${authFolderB}`;
 
     if (!fs.existsSync(userFolderPath)) {
       fs.mkdirSync(userFolderPath, { recursive: true });
@@ -114,7 +113,7 @@ if (!bot.jadibotmd) return m.reply('*☕ Esta función se encuentra desactivada.
         global.conns.splice(i, 1);
         fs.rmdirSync(userFolderPath, { recursive: true });
         if (code !== DisconnectReason.connectionClosed) {
-          parent.sendMessage(m.chat, { text: "Conexión perdida.." }, { quoted: m });
+          parent.sendMessage(m.chat, { text: "*Conexión perdida..*" }, { quoted: fkontak });
         }
       }
 
@@ -128,7 +127,7 @@ if (!bot.jadibotmd) return m.reply('*☕ Esta función se encuentra desactivada.
         if (args[0]) return;
 
         await parent.reply(conn.user.jid, `La siguiente vez que se conecte envía el siguiente mensaje para iniciar sesión sin utilizar otro código `, m);
-        await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + " " + Buffer.from(fs.readFileSync(`./CrowJadiBot/${authFolderB}/creds.json`), "utf-8").toString("base64") }, { quoted: m });
+        await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + " " + Buffer.from(fs.readFileSync(`./JadiBots/${authFolderB}/creds.json`), "utf-8").toString("base64") }, { quoted: m });
       }
     }
 
