@@ -8,6 +8,6 @@ conn.ws.close()
 handler.command = handler.help = ['stop', 'byebot'];
 handler.tags = ['serbot'];
 handler.owner = true
-handler.private = true
+//handler.private = true
 handler.register = true
 export default handler
