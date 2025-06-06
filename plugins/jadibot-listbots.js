@@ -14,12 +14,12 @@ let handler = async (m, { conn }) => {
    })
 
    let totalUsers = uniqueUsers.size
-   let txt = `*☘️ Subs Activos:* \`${totalUsers || 0}\`*`
+   let txt = `*☘️ Subs Activos:* *\`${totalUsers || 0}\`*`
 
    await conn.reply(m.chat, txt, m, rcanal)
 }
 
-handler.command = ['listjadibot', 'bots', 'listbots']
+handler.command = ['listjadibot', 'bots', 'listbots', 'subs']
 handler.help = ['bots']
 handler.tags = ['serbot']
 export default handler
