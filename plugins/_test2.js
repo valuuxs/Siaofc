@@ -26,36 +26,3 @@ handler.owner = true;
 export default handler;*/
 
 
-
-const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) {
-    return m.reply(`*🌌 Ingresa un texto para generar una imagen.*\n\n*📌 Uso:*\n${usedPrefix + command} una galaxia sobre un castillo futurista`);
-  }
-
-  try {
-    const response = await fetch(`https://star-void-api.vercel.app/ai/pollinations?prompt=${encodeURIComponent(text)}`);
-    const json = await response.json();
-
-    if (!json.status || !json.result?.url) {
-      throw new Error('No se pudo generar la imagen.');
-    }
-
-    const imageUrl = json.result.url;
-    const caption = `🧠 *Prompt:* ${text}\n🎨 *Imagen generada con IA*`;
-
-    await conn.sendMessage(m.chat, {
-      image: { url: imageUrl },
-      caption
-    }, { quoted: m });
-
-  } catch (e) {
-    console.error(e);
-    m.reply('❌ Ocurrió un error al generar la imagen. Intenta con otro prompt.');
-  }
-};
-
-handler.help = ['polli', 'aiimg'].map(c => c + ' <texto>');
-handler.tags = ['ia', 'herramientas'];
-handler.command = /^polli|aiimg$/i;
-
-export default handler;
