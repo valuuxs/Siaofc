@@ -52,7 +52,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args }) => {
     if (!args[0]) {
-        return await m.reply(`*❗ Por favor, ingresa un link de TikTok.*`);
+        return await m.reply(`*${xdownload} Por favor, ingresa la url de TikTok.*`);
     }
 
     if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
