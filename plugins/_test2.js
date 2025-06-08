@@ -24,51 +24,31 @@ handler.command = /^testlive$/i;
 handler.owner = true;
 
 export default handler;*/
-import { randomBytes } from "crypto"
-import axios from "axios"
 
-let handler = async (m, { conn, text }) => {
-    if (!text) throw `${emoji} ¿Cómo puedo ayudarte hoy?`;
-    try {
-        conn.reply(m.chat, m);
-        let data = await chatGpt(text);
-        await conn.sendMessage(m.chat, { 
-            text: '*Demo:* ' + data
-        }, { quoted: m });
 
-    } catch (err) {
-        m.reply('error cik:/ ' + err);
-    }
-}
+import fetch from 'node-fetch';
 
-handler.help = ['demo *<texto>*'];
-handler.command = ['demo', 'openai'];
-handler.tags = ['ai'];
-handler.group = true;
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  if (!args[0]) {
+    return m.reply(`☕ *Debes escribir un prompt para generar la imagen.*\n\n📌 *Ejemplo:* ${usedPrefix + command} anime girl with sword`);
+  }
 
+  let prompt = encodeURIComponent(args.join(' '));
+  let url = `https://star-void-api.vercel.app/ai/pollinations?prompt=${prompt}`;
+
+  try {
+    m.react('🧠');
+    await conn.sendMessage(m.chat, {
+      image: { url },
+      caption: `🧠 *Imagen generada con Pollinations AI*\n\n🔍 *Prompt:* ${args.join(' ')}`
+    }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    m.reply('❌ Ocurrió un error al generar la imagen. Intenta nuevamente.');
+  }
+};
+
+handler.help = ['pollinations <texto>'];
+handler.tags = ['ai', 'imagen'];
+handler.command = ['pollinations', 'aiimg', 'imgai', 'generateimg'];
 export default handler;
-
-async function chatGpt(query) {
-    try {
-        const { id_ } = (await axios.post("https://chat.chatgptdemo.net/new_chat", { user_id: "crqryjoto2h3nlzsg" }, { headers: { "Content-Type": "application/json" } })).data;
-
-        const json = { "question": query, "chat_id": id_, "timestamp": new Date().getTime() };
-
-        const { data } = await axios.post("https://chat.chatgptdemo.net/chat_api_stream", json, { headers: { "Content-Type": "application/json" } });
-        const cek = data.split("data: ");
-
-        let res = [];
-
-        for (let i = 1; i < cek.length; i++) {
-            if (cek[i].trim().length > 0) {
-                res.push(JSON.parse(cek[i].trim()));
-            }
-        }
-
-        return res.map((a) => a.choices[0].delta.content).join("");
-
-    } catch (error) {
-        console.error("Error parsing JSON:", error);
-        return 404;
-    }
-}
