@@ -25,35 +25,30 @@ handler.owner = true;
 
 export default handler;*/
 
-// plugins/pollinations.js
-import fetch from 'node-fetch';
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-  if (!args.length) {
-    return m.reply(`⚠️ Usa un *prompt* para generar la imagen.\nEjemplo: *${usedPrefix + command} paisaje cyberpunk nocturno*`);
+
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) {
+    return m.reply(`*🌌 Ingresa un texto para generar una imagen.*\n\n*📌 Uso:*\n${usedPrefix + command} una galaxia sobre un castillo futurista`);
   }
-  let prompt = encodeURIComponent(args.join(' '));
-  let url = `https://star-void-api.vercel.app/ai/pollinations?prompt=${prompt}`;
 
   try {
-    m.react && await m.react('🧠');
-    let msg = await conn.sendMessage(m.chat, { image: { url }, caption: `🧠 *AI Image Generated*\n\n📝 *Prompt:* ${args.join(' ')}` }, { quoted: m });
+    const url = `https://star-void-api.vercel.app/ai/pollinations?prompt=${encodeURIComponent(text)}`;
+    const caption = `🧠 *Prompt:* ${text}\n🎨 *Imagen generada con IA*`;
 
-    // Si quieres, puedes agregar botones:
-    let buttons = [
-      { buttonId: `${usedPrefix + command} ${args.join(' ')}`, buttonText: { displayText: 'Regenerar' }, type: 1 },
-      { buttonId: 'menu', buttonText: { displayText: '📋 Menú' }, type: 1 }
-    ];
-    await conn.sendMessage(m.chat, { text: '¿Quieres otra?', footer: 'Shadow Ultra', buttons, headerType: 1 }, { quoted: msg });
+    await conn.sendMessage(m.chat, {
+      image: { url },
+      caption
+    }, { quoted: m });
 
   } catch (e) {
     console.error(e);
-    m.reply('❌ Ocurrió un error generando la imagen. Intenta más tarde.');
+    m.reply('❌ Ocurrió un error al generar la imagen. Intenta con otro prompt.');
   }
 };
 
-handler.help = ['pollinations <texto>'];
-handler.tags = ['ai'];
-handler.command = ['pollinations','aiimg','imgai','genimg'];
+handler.help = ['polli', 'aiimg'].map(c => c + ' <texto>');
+handler.tags = ['ia', 'herramientas'];
+handler.command = /^polli|aiimg$/i;
 
 export default handler;
