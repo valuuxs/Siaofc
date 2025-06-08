@@ -48,16 +48,15 @@ async function tiktokdl(url) {
     return response
 }*/
 
-
 import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args }) => {
     if (!args[0]) {
-        throw m.reply(`*❗ Por favor, ingresa un link de TikTok.*`);
+        return await m.reply(`*❗ Por favor, ingresa un link de TikTok.*`);
     }
 
     if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
-        throw m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrate de que sea un link de TikTok.*`);
+        return await m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrate de que sea un link de TikTok.*`);
     }
 
     try {
@@ -66,7 +65,7 @@ var handler = async (m, { conn, args }) => {
         const tiktokData = await tiktokdl(args[0]);
 
         if (!tiktokData || !tiktokData.data) {
-            throw m.reply("*❌ Error al obtener datos de la API.*");
+            return await m.reply("*❌ Error al obtener datos de la API.*");
         }
 
         const { play, wmplay, title } = tiktokData.data;
@@ -77,12 +76,12 @@ var handler = async (m, { conn, args }) => {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", info, m);
             await m.react('✅');
         } else {
-            throw m.reply("*❌ No se pudo descargar el video.*");
+            return await m.reply("*❌ No se pudo descargar el video.*");
         }
 
     } catch (error) {
         console.error(error);
-        conn.reply(m.chat, `*❌ Error:* ${error.message || error}`, m);
+        await conn.reply(m.chat, `*❌ Error:* ${error.message || error}`, m);
         await m.react('❌');
     }
 };
@@ -96,6 +95,5 @@ export default handler;
 async function tiktokdl(url) {
     const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`;
     const res = await fetch(api);
-    const json = await res.json();
-    return json;
+    return await res.json();
 }
