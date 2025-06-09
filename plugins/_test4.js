@@ -43,75 +43,104 @@ async function ttimg(link) {
     }
 }*/
 
-import fetch from 'node-fetch'
+
+
 import axios from 'axios'
 import cheerio from 'cheerio'
+import fetch from 'node-fetch'
 
-var handler = async (m, { conn, args }) => {
-    if (!args[0]) return m.reply(`*${xdownload} Por favor, ingresa la URL de TikTok.*`);
-    if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
-        return m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrate de que sea un link de TikTok.*`);
-    }
+let handler = async (m, { conn, args }) => {
+  const tiktok = args[0]
+  if (!tiktok) throw '🚩 Ingresa un enlace de TikTok junto al comando.'
 
-    await m.react('⏳');
+  // Detectar tipo de contenido (ft o video)
+  const tipo = await detectarTipo(tiktok)
 
+  if (tipo === 'ft') {
+    // Descargar imágenes usando API 1 (ttimg)
     try {
-        const url = args[0];
-        const videoData = await tiktokdl(url);
-
-        if (videoData && videoData.data && (videoData.data.play || videoData.data.wmplay)) {
-            const { play, wmplay, title } = videoData.data;
-            const videoURL = play || wmplay;
-            const info = `\`\`\`◜ TikTok - Video ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`;
-
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", info, m);
-            await m.react('✅');
-        } else {
-            // Si no hay video, intentar como imagen
-            const imgData = await ttimg(url);
-            if (Array.isArray(imgData.data) && imgData.data.length > 0) {
-                await m.reply('*🖼 Publicación detectada como imagen, enviando...*');
-                for (let img of imgData.data) {
-                    await conn.sendMessage(m.chat, { image: { url: img } }, { quoted: m });
-                }
-                await m.react('✅');
-            } else {
-                throw new Error(typeof imgData.data === 'string' ? imgData.data : '❌ No se pudo obtener contenido.');
-            }
-        }
-
-    } catch (error) {
-        console.error(error);
-        await conn.reply(m.chat, `*❌ Error:* ${error.message || error}`, m);
-        await m.react('❌');
+      const tioShadow = await ttimg(tiktok)
+      const result = tioShadow?.data
+      if (typeof result === 'string') throw result // mensaje de error
+      for (let d of result) {
+        await conn.sendMessage(m.chat, { image: { url: d } }, { quoted: m })
+      }
+    } catch (e) {
+      await m.reply(e.toString())
     }
-};
+  } else if (tipo === 'video') {
+    // Descargar video usando API 2 (tiktokdl)
+    try {
+      await m.react('⏳')
+      const tiktokData = await tiktokdl(tiktok)
+      if (!tiktokData || !tiktokData.data) throw '*❌ Error al obtener datos de la API.*'
 
-handler.help = ['tiktok <url>'];
-handler.tags = ['descargas'];
-handler.command = /^(tek|tiktok|tk)$/i;
-export default handler;
+      const { play, wmplay, title } = tiktokData.data
+      const videoURL = play || wmplay
+      const info = `\`\`\`◜ TikTok - Download ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`
 
-// ─────────────────────────────────────────────
-
-async function tiktokdl(url) {
-    const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`;
-    const res = await fetch(api);
-    return await res.json();
+      if (videoURL) {
+        await conn.sendFile(m.chat, videoURL, 'tiktok.mp4', info, m)
+        await m.react('✅')
+      } else {
+        await m.reply('*❌ No se pudo descargar el video.*')
+      }
+    } catch (error) {
+      console.error(error)
+      await m.reply(`*❌ Error:* ${error.message || error}`)
+      await m.react('❌')
+    }
+  } else {
+    await m.reply('🚩 No se pudo determinar el tipo de contenido TikTok.')
+  }
 }
 
+// Función para detectar tipo de contenido (ft o video)
+async function detectarTipo(link) {
+  try {
+    const res = await axios.get(link)
+    const html = res.data
+    if (html.includes('"photoPost":true') || html.includes('"photoMode":true')) {
+      return 'ft'
+    } else if (html.includes('"video":')) {
+      return 'video'
+    }
+    return 'desconocido'
+  } catch {
+    return 'desconocido'
+  }
+}
+
+// Función para descargar imágenes (ft) - API 1
 async function ttimg(link) {
-    try {
-        let url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`;
-        let response = await axios.get(url);
-        const html = response.data;
-        const $ = cheerio.load(html);
-        let imgSrc = [];
-        $('div.col-md-12 > img').each((i, el) => imgSrc.push($(el).attr('src')));
-        if (imgSrc.length === 0) return { data: '🚩 No se encontraron imágenes en el enlace proporcionado.' };
-        return { data: imgSrc };
-    } catch (error) {
-        console.error(error);
-        return { data: '🚩 No se obtuvo respuesta de la página, intenta más tarde.' };
+  try {
+    const url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`
+    const response = await axios.get(url)
+    const html = response.data
+    const $ = cheerio.load(html)
+    let imgSrc = []
+    $('div.col-md-12 > img').each((i, el) => {
+      imgSrc.push($(el).attr('src'))
+    })
+    if (imgSrc.length === 0) {
+      return { data: '🚩 No se encontraron imágenes en el enlace proporcionado.' }
     }
+    return { data: imgSrc }
+  } catch (error) {
+    console.log(error)
+    return { data: '🚩 No se obtuvo respuesta de la página, intenta más tarde.' }
+  }
 }
+
+// Función para descargar videos - API 2
+async function tiktokdl(url) {
+  const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`
+  const res = await fetch(api)
+  return await res.json()
+}
+
+handler.help = ['tiktok']
+handler.tags = ['downloader']
+handler.command = /^(tt|tiktok|tk)$/i
+
+export default handler
