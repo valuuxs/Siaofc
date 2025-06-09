@@ -47,82 +47,71 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-let handler = async (m, { conn, args, command }) => {
-    if (!args[0]) return await m.reply(`*🚩 Ingresa un enlace de TikTok.*`);
-    const url = args[0].trim();
-
-    if (!/^https?:\/\/(www\.)?(vt\.|vm\.|tiktok\.com)/i.test(url)) {
-        return await m.reply(`*⚠️ Enlace inválido. Asegúrate de que sea un link de TikTok.*`);
+var handler = async (m, { conn, args }) => {
+    if (!args[0]) return m.reply(`*${xdownload} Por favor, ingresa la URL de TikTok.*`);
+    if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
+        return m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrate de que sea un link de TikTok.*`);
     }
 
     await m.react('⏳');
 
     try {
-        const video = await tiktokdl(url);
-        const { play, wmplay, title } = video?.data || {};
+        const url = args[0];
+        const videoData = await tiktokdl(url);
 
-        if (play || wmplay) {
+        if (videoData && videoData.data && (videoData.data.play || videoData.data.wmplay)) {
+            const { play, wmplay, title } = videoData.data;
             const videoURL = play || wmplay;
-            const caption = `\`\`\`◜ TikTok - Video ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`;
-            await conn.sendFile(m.chat, videoURL, 'tiktok.mp4', caption, m);
+            const info = `\`\`\`◜ TikTok - Video ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`;
+
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", info, m);
             await m.react('✅');
-            return;
-        }
-
-    } catch (e) {
-        console.log('[TT-Video] Error:', e);
-    }
-
-    // Si no funcionó como video, intenta como galería
-    try {
-        const imageResult = await ttimg(url);
-        const images = imageResult?.data;
-
-        if (Array.isArray(images) && images.length) {
-            for (let img of images) {
-                await conn.sendMessage(m.chat, { image: { url: img } }, { quoted: m });
-            }
-            await m.react('🖼️');
-            return;
         } else {
-            throw new Error(typeof images === 'string' ? images : 'No se encontraron imágenes.');
+            // Si no hay video, intentar como imagen
+            const imgData = await ttimg(url);
+            if (Array.isArray(imgData.data) && imgData.data.length > 0) {
+                await m.reply('*🖼 Publicación detectada como imagen, enviando...*');
+                for (let img of imgData.data) {
+                    await conn.sendMessage(m.chat, { image: { url: img } }, { quoted: m });
+                }
+                await m.react('✅');
+            } else {
+                throw new Error(typeof imgData.data === 'string' ? imgData.data : '❌ No se pudo obtener contenido.');
+            }
         }
 
-    } catch (e) {
-        console.log('[TT-IMG] Error:', e);
-        await m.reply(`*❌ No se pudo obtener contenido del enlace.*\n\n${e.message || e}`);
+    } catch (error) {
+        console.error(error);
+        await conn.reply(m.chat, `*❌ Error:* ${error.message || error}`, m);
         await m.react('❌');
     }
 };
 
-handler.help = ['tiktok *<url>*'];
+handler.help = ['tiktok <url>'];
 handler.tags = ['descargas'];
-handler.command = /^(tt|tiktok|tks)$/i;
+handler.command = /^(tt|tiktok|tk)$/i;
 export default handler;
 
-// === Funciones auxiliares ===
+// ─────────────────────────────────────────────
 
 async function tiktokdl(url) {
     const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`;
     const res = await fetch(api);
-    if (!res.ok) throw new Error('Error al obtener video.');
     return await res.json();
 }
 
 async function ttimg(link) {
     try {
-        const url = `https://dlpanda.com/es?url=${encodeURIComponent(link)}&token=G7eRpMaa`;
-        const res = await axios.get(url);
-        const $ = cheerio.load(res.data);
-        const images = [];
-
-        $('div.col-md-12 > img').each((_, el) => {
-            const src = $(el).attr('src');
-            if (src) images.push(src);
-        });
-
-        return images.length ? { data: images } : { data: '🚩 No se encontraron imágenes en el enlace.' };
-    } catch (err) {
-        return { data: '🚩 No se pudo obtener imágenes, intenta más tarde.' };
+        let url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`;
+        let response = await axios.get(url);
+        const html = response.data;
+        const $ = cheerio.load(html);
+        let imgSrc = [];
+        $('div.col-md-12 > img').each((i, el) => imgSrc.push($(el).attr('src')));
+        if (imgSrc.length === 0) return { data: '🚩 No se encontraron imágenes en el enlace proporcionado.' };
+        return { data: imgSrc };
+    } catch (error) {
+        console.error(error);
+        return { data: '🚩 No se obtuvo respuesta de la página, intenta más tarde.' };
     }
 }
