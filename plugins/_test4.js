@@ -132,5 +132,5 @@ async function tiktokdl(url) {
 
 handler.help = ['tiktok <url>']
 handler.tags = ['downloader']
-handler.command = /^(tt|tiktok|tk)$/i
+handler.command = /^(tck)$/i
 export default handler
