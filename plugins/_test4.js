@@ -97,7 +97,7 @@ let handler = async (m, { conn, args, command }) => {
 
 handler.help = ['tiktok *<url>*'];
 handler.tags = ['descargas'];
-handler.command = /^(tt|tiktok|tk)$/i;
+handler.command = /^(tt|tiktok|tks)$/i;
 export default handler;
 
 // === Funciones auxiliares ===
