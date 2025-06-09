@@ -41,7 +41,7 @@ let handler = async (m, { conn, text }) => {
     const result = await dl(text);
     if (!result || !result.download) return m.reply('*❌ No se pudo obtener el contenido del enlace.*');
     const isVideo = result.download.endsWith('.mp4');
-    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: `\`\`\`◜Pinterest - Download◞\`\`\`\n\n*🌴 \`Title:\`* ${result.title || 'Sin Título'}\n\n> Cʀᴇᴅɪᴛs ᴛᴏ Nᴏᴠʌ Ȿᴘʌʀᴋ Cᴏʍʍᴜɴɪᴛʏ`
+    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: `\`\`\`◜Pinterest - Download◞\`\`\`\n\n*🌴 \`Title:\`* ${result.title || 'Sin Título'}\n\n> ${club}`
 }, { quoted: m });
     await m.react('✅');
   } catch (error) {
