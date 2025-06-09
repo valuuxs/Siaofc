@@ -42,87 +42,88 @@ async function ttimg(link) {
     }
 }*/
 
-
-
 import axios from 'axios'
 import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args }) => {
-  const tiktok = args[0]
-  if (!tiktok) return m.reply('🚩 Ingresa un enlace de TikTok.')
+  const link = args[0]
+  if (!link) return m.reply('🚩 Ingresa un enlace de TikTok.')
 
   try {
-    await m.react('🔎')
-    const tipo = await detectarTipo(tiktok)
+    await m.react('🔍')
+
+    // Detectar tipo
+    const tipo = await detectarTipo(link)
 
     if (tipo === 'ft') {
-      // 👉 Si es publicación de fotos, usa solo la API de Panda
-      const res = await ttimg(tiktok)
+      // ✅ FT - Imagen: usar Panda
+      const res = await ttimg(link)
       const { data } = res
-      if (typeof data === 'string') throw data // error personalizado
+      if (typeof data === 'string') throw data
       for (let img of data) {
         await conn.sendMessage(m.chat, { image: { url: img } }, { quoted: m })
       }
       await m.react('🖼️')
+
     } else if (tipo === 'video') {
-      // 👉 Si es video, usa solo la API de video (TikWM)
-      const res = await tiktokdl(tiktok)
+      // ✅ Video: usar TikWM
+      const res = await tiktokdl(link)
       const { data } = res || {}
-      if (!data) throw '*❌ No se pudo obtener datos del video.*'
-      
-      const { play, wmplay, title } = data
-      const videoURL = play || wmplay
+      if (!data || !data.play) throw '*❌ No se pudo obtener el video.*'
 
-      if (!videoURL || videoURL.endsWith('.mp3')) {
-        throw '*❌ El enlace parece ser solo de audio o está dañado.*'
-      }
+      const videoURL = data.play
+      const info = `🎬 *Descripción:*\n${data.title || 'Sin descripción'}`
 
-      const info = `\`\`\`◜ TikTok - Download ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`
       await conn.sendFile(m.chat, videoURL, 'tiktok.mp4', info, m)
       await m.react('✅')
+
     } else {
-      throw '🚩 No se pudo identificar si el TikTok es de fotos o video.'
+      // ❌ Otro tipo de contenido
+      throw '*❌ No se pudo determinar si el enlace es de video o imágenes.*'
     }
-  } catch (e) {
-    console.error(e)
-    await m.reply(typeof e === 'string' ? e : '*❌ Error interno.*')
+
+  } catch (err) {
+    console.error(err)
+    await m.reply(typeof err === 'string' ? err : '*❌ Ocurrió un error inesperado.*')
     await m.react('❌')
   }
 }
 
-// Detecta si es una publicación de fotos o video
+// Detecta si es FT (fotos) o video
 async function detectarTipo(link) {
   try {
-    const { data: html } = await axios.get(link, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const { data: html } = await axios.get(link, {
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    })
+
     if (html.includes('"photoMode":true') || html.includes('"photoPost":true')) return 'ft'
     if (html.includes('"video":') || html.includes('"videoData":')) return 'video'
-    return 'desconocido'
+    return 'otro'
   } catch {
-    return 'desconocido'
+    return 'otro'
   }
 }
 
-// API de imágenes (dlpanda)
+// API FT - dlpanda
 async function ttimg(link) {
   try {
     const url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`
     const res = await axios.get(url)
     const $ = cheerio.load(res.data)
-    const imgSrc = []
-    $('div.col-md-12 > img').each((i, el) => {
+    const imgs = []
+    $('div.col-md-12 > img').each((_, el) => {
       const src = $(el).attr('src')
-      if (src) imgSrc.push(src)
+      if (src) imgs.push(src)
     })
-    if (!imgSrc.length) return { data: '🚩 No se encontraron imágenes.' }
-    return { data: imgSrc }
-  } catch (err) {
-    console.error(err)
-    return { data: '🚩 Error al obtener las imágenes, intenta más tarde.' }
+    if (!imgs.length) return { data: '🚩 No se encontraron imágenes en el enlace.' }
+    return { data: imgs }
+  } catch (e) {
+    return { data: '🚩 Error al obtener las imágenes.' }
   }
 }
 
-// API de video (tikwm)
+// API video - TikWM
 async function tiktokdl(url) {
   const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`
   const res = await fetch(api)
@@ -131,5 +132,5 @@ async function tiktokdl(url) {
 
 handler.help = ['tiktok <url>']
 handler.tags = ['downloader']
-handler.command = /^(tesis)$/i
+handler.command = /^(tt|tiktok|tk)$/i
 export default handler
