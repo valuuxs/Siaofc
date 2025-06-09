@@ -89,7 +89,7 @@ var handler = async (m, { conn, args }) => {
 
 handler.help = ['tiktok <url>'];
 handler.tags = ['descargas'];
-handler.command = /^(tt|tiktok|tk)$/i;
+handler.command = /^(tek|tiktok|tk)$/i;
 export default handler;
 
 // ─────────────────────────────────────────────
