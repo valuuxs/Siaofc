@@ -43,65 +43,60 @@ async function ttimg(link) {
 }*/
 
 
+
 import axios from 'axios'
 import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args }) => {
   const tiktok = args[0]
-  if (!tiktok) throw '🚩 Ingresa un enlace de TikTok junto al comando.'
+  if (!tiktok) return m.reply('🚩 Ingresa un enlace de TikTok.')
 
-  const tipo = await detectarTipo(tiktok)
+  try {
+    await m.react('🔎')
+    const tipo = await detectarTipo(tiktok)
 
-  if (tipo === 'ft') {
-    // Solo usar API de imágenes
-    try {
-      const { data } = await ttimg(tiktok)
-      if (typeof data === 'string') throw data // mensaje de error
+    if (tipo === 'ft') {
+      // 👉 Si es publicación de fotos, usa solo la API de Panda
+      const res = await ttimg(tiktok)
+      const { data } = res
+      if (typeof data === 'string') throw data // error personalizado
       for (let img of data) {
         await conn.sendMessage(m.chat, { image: { url: img } }, { quoted: m })
       }
-    } catch (e) {
-      await m.reply(e.toString())
-    }
-  } else if (tipo === 'video') {
-    // Solo usar API de video
-    try {
-      await m.react('⏳')
+      await m.react('🖼️')
+    } else if (tipo === 'video') {
+      // 👉 Si es video, usa solo la API de video (TikWM)
       const res = await tiktokdl(tiktok)
       const { data } = res || {}
-      if (!data) throw '*❌ Error al obtener datos de la API.*'
-
+      if (!data) throw '*❌ No se pudo obtener datos del video.*'
+      
       const { play, wmplay, title } = data
       const videoURL = play || wmplay
 
-      // Si no hay video, no enviar nada
-      if (!videoURL || videoURL.includes('.mp3')) {
-        return await m.reply('*❌ No se encontró un video para descargar.*')
+      if (!videoURL || videoURL.endsWith('.mp3')) {
+        throw '*❌ El enlace parece ser solo de audio o está dañado.*'
       }
 
       const info = `\`\`\`◜ TikTok - Download ◞\`\`\`\n\n*📖 Descripción:*\n> ${title || 'Sin descripción'}`
       await conn.sendFile(m.chat, videoURL, 'tiktok.mp4', info, m)
       await m.react('✅')
-    } catch (error) {
-      console.error(error)
-      await m.reply(`*❌ Error:* ${error.message || error}`)
-      await m.react('❌')
+    } else {
+      throw '🚩 No se pudo identificar si el TikTok es de fotos o video.'
     }
-  } else {
-    await m.reply('🚩 No se pudo determinar si el enlace es de video o fotos.')
+  } catch (e) {
+    console.error(e)
+    await m.reply(typeof e === 'string' ? e : '*❌ Error interno.*')
+    await m.react('❌')
   }
 }
 
-// Detectar si es una publicación de fotos (ft) o video
+// Detecta si es una publicación de fotos o video
 async function detectarTipo(link) {
   try {
-    const { data: html } = await axios.get(link)
-    if (html.includes('"photoPost":true') || html.includes('"photoMode":true')) {
-      return 'ft'
-    } else if (html.includes('"video":')) {
-      return 'video'
-    }
+    const { data: html } = await axios.get(link, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    if (html.includes('"photoMode":true') || html.includes('"photoPost":true')) return 'ft'
+    if (html.includes('"video":') || html.includes('"videoData":')) return 'video'
     return 'desconocido'
   } catch {
     return 'desconocido'
@@ -116,7 +111,8 @@ async function ttimg(link) {
     const $ = cheerio.load(res.data)
     const imgSrc = []
     $('div.col-md-12 > img').each((i, el) => {
-      imgSrc.push($(el).attr('src'))
+      const src = $(el).attr('src')
+      if (src) imgSrc.push(src)
     })
     if (!imgSrc.length) return { data: '🚩 No se encontraron imágenes.' }
     return { data: imgSrc }
@@ -135,6 +131,5 @@ async function tiktokdl(url) {
 
 handler.help = ['tiktok <url>']
 handler.tags = ['downloader']
-handler.command = /^(tess)$/i
-
+handler.command = /^(tt|tiktok|tk)$/i
 export default handler
