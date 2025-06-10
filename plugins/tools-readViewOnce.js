@@ -21,36 +21,31 @@ handler.command = ['readviewonce', 'read', 'readvo', 'ver']
 
 export default handler;
 */
-
 // Mejorado por Criss
 
 let { downloadContentFromMessage } = (await import('@whiskeysockets/baileys'));
 
 let handler = async (m, { conn }) => {
-  if (!m.quoted) return conn.reply(m.chat, `*${xtools} Por favor, responde a una imagen ViewOnce (ver una sola vez)*.`, m)
-  if (!m?.quoted || !m?.quoted?.viewOnce) return conn.reply(m.chat, `*${xtools} Responde a una imagen ViewOnce (ver una sola vez)*`, m)
+  if (!m.quoted) return conn.reply(m.chat, `*${xtools} Por favor, responde a una imagen ViewOnce (ver una sola vez)*.`, m);
+  if (!m?.quoted || !m?.quoted?.viewOnce) return conn.reply(m.chat, `*${xtools} Responde a una imagen ViewOnce (ver una sola vez)*`, m);
 
-  // Reacción de espera
-  await m.react('⏳')
+  await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } }); // reacción de espera
 
   try {
-    let buffer = await m.quoted.download(false)
-
+    let buffer = await m.quoted.download(false);
     if (/videoMessage/.test(m.quoted.mtype)) {
-      await conn.sendFile(m.chat, buffer, 'media.mp4', m.quoted.caption || '', m)
+      await conn.sendFile(m.chat, buffer, 'media.mp4', m.quoted.caption || '', m);
     } else if (/imageMessage/.test(m.quoted.mtype)) {
-      await conn.sendFile(m.chat, buffer, 'media.jpg', m.quoted?.caption || '', m)
+      await conn.sendFile(m.chat, buffer, 'media.jpg', m.quoted?.caption || '', m);
     } else if (/audioMessage/.test(m.quoted.mtype)) {
-      await conn.sendFile(m.chat, buffer, 'audio.mp3', '', m, { mimetype: 'audio/mp3' })
+      await conn.sendFile(m.chat, buffer, 'audio.mp3', '', m, { mimetype: 'audio/mp3' });
     }
 
-    // Reacción de éxito
-    await m.react('✅')
-
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } }); // reacción de éxito
   } catch (e) {
-    console.error(e)
-    await m.react('❌')
-    conn.reply(m.chat, `*${xtools} Ocurrió un error al procesar el mensaje.*`, m)
+    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } }); // reacción de error
+    conn.reply(m.chat, '*Ocurrió un error al procesar el mensaje.*', m);
+    console.error(e);
   }
 }
 
