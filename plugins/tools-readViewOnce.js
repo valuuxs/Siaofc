@@ -1,4 +1,4 @@
-/*
+
 //Mejorado por Criss 
 
 let { downloadContentFromMessage } = (await import('@whiskeysockets/baileys'));
@@ -20,7 +20,7 @@ handler.command = ['readviewonce', 'read', 'readvo', 'ver']
 //handler.register = true 
 
 export default handler;
-*/
+/*
 // Mejorado por Criss
 
 let { downloadContentFromMessage } = (await import('@whiskeysockets/baileys'));
@@ -53,4 +53,4 @@ handler.help = ['read']
 handler.tags = ['herramientas']
 handler.command = ['readviewonce', 'read', 'readvo', 'ver'] 
 
-export default handler;
+export default handler;*/
