@@ -25,54 +25,47 @@ handler.owner = true;
 
 export default handler;*/
 
-import fetch from 'node-fetch';
+import yts from 'yt-search';
+import fetch from 'node-fetch'; // Usar 'node-fetch' correctamente
 
-const handler = async (m, { conn, args, usedPrefix, command }) => {
+const handler = async (m, { conn, args, text }) => {
+  if (!args[0]) return m.reply('*⚠️ Ingresa una URL de un video o audio de YouTube.*');
+
   const url = args[0];
-  if (!url || !/^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(url)) {
-    return await m.reply(`*❗ Uso incorrecto*\n\nEjemplo:\n${usedPrefix + command} https://youtube.com/watch?v=kLpH1nSLJSs`);
-  }
+  const ytRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+  if (!ytRegex.test(url)) return m.reply('⚠️ Ingresa un enlace válido de YouTube.');
 
   try {
-    const api = `https://nirkyy-dev.hf.space/api/v1/youtube-audio-v2?url=${encodeURIComponent(url)}`;
-    const res = await fetch(api);
+    await m.react('🕒');
 
-    if (!res.ok) {
-      throw `⚠️ Error ${res.status} al contactar la API.`;
-    }
+    const res = await fetch(`https://nirkyy-dev.hf.space/api/v1/youtube-audio-v2?url=${encodeURIComponent(url)}`);
+    if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
 
     const json = await res.json();
+    if (!json.data) return m.reply('❌ No se pudo obtener el audio. Intenta con otro enlace.');
 
-    if (!json.success || !json.data) {
-      throw '⚠️ No se pudo obtener el audio. Asegúrate de que el enlace sea válido.';
-    }
+    const search = await yts(text || url);
+    const vid = search.videos?.[0];
 
-    const audioUrl = json.data;
-
-    // Validar tamaño opcionalmente (WhatsApp permite hasta ~100 MB, pero se recomienda <16 MB para audio)
-    const head = await fetch(audioUrl, { method: 'HEAD' });
-    const contentLength = head.headers.get('content-length');
-    if (contentLength && Number(contentLength) > 16000000) {
-      throw '⚠️ El archivo de audio es muy grande para enviarlo por WhatsApp.';
-    }
+    const fileName = vid?.title ? `${vid.title}.mp3` : 'audio.mp3';
 
     await conn.sendMessage(m.chat, {
-      audio: { url: audioUrl },
+      audio: { url: json.data },
       mimetype: 'audio/mpeg',
-      fileName: 'yt-audio.mp3',
-      ptt: false
+      fileName
     }, { quoted: m });
 
-  } catch (err) {
-    console.error(err);
-    await m.reply(typeof err === 'string' ? err : '❌ Error al convertir el video.\n\nVerifica el enlace o intenta más tarde.');
+    await m.react('✅');
+
+  } catch (e) {
+    console.error('[YTMP3 ERROR]', e);
+    await m.react('✖️');
+    m.reply('⚠️ La descarga ha fallado. Es posible que el archivo sea muy pesado o que el enlace no sea válido.');
   }
 };
 
-handler.command = /^ytmp3v2$/i;
 handler.help = ['ytmp3 <url>'];
-handler.tags = ['downloader'];
+handler.command = ['ytmp3'];
+handler.tags = ['descargas'];
 
 export default handler;
-
-
