@@ -1,16 +1,23 @@
+// 🔄 Reemplaza TODO este bloque de importaciones
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { Boom } from '@hapi/boom';
 import pino from 'pino';
-import QRCode from 'qrcode';
-import makeWASocket, {
-  useMultiFileAuthState,
-  fetchLatestBaileysVersion,
-  makeCacheableSignalKeyStore,
-  DisconnectReason
-} from '@whiskeysockets/baileys';
+import qrcode from 'qrcode';
+import * as ws from 'ws';
 
+import { makeWASocket } from '../lib/simple.js'; // ✅ Usa tu versión personalizada
+
+const {
+  useMultiFileAuthState,
+  DisconnectReason,
+  makeCacheableSignalKeyStore,
+  fetchLatestBaileysVersion
+} = await import('@whiskeysockets/baileys');
+
+import util from 'util';
+const { child, spawn, exec } = await import('child_process');
+
+if (!(global.conns instanceof Array)) global.conns = [];
 // Necesario para __dirname en ESModules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
