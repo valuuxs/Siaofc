@@ -1,10 +1,9 @@
-// 🔄 Reemplaza TODO este bloque de importaciones
 import fs from 'fs';
 import path from 'path';
 import pino from 'pino';
 import qrcode from 'qrcode';
 import * as ws from 'ws';
-
+import { Boom } from '@hapi/boom';
 import { makeWASocket } from '../lib/simple.js'; // ✅ Usa tu versión personalizada
 
 const {
@@ -16,14 +15,16 @@ const {
 
 import util from 'util';
 const { child, spawn, exec } = await import('child_process');
+import { fileURLToPath } from 'url';
 
 if (!(global.conns instanceof Array)) global.conns = [];
+
 // Necesario para __dirname en ESModules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Nombre del bot
-//const botname = 'Azura Ultra 2.0';
+const botname = 'Shadow Bot';
 
 const handler = async (msg, { conn, command }) => {
   const usarPairingCode = ['sercode', 'code'].includes(command);
@@ -35,7 +36,11 @@ const handler = async (msg, { conn, command }) => {
 
   async function serbot() {
     try {
-      const number = msg.key?.participant || msg.key.remoteJid;
+      const number = msg.key?.participant || msg.key?.remoteJid;
+      if (!number) return await conn.sendMessage(msg.key.remoteJid, {
+        text: '❌ No se pudo identificar el número del usuario.'
+      }, { quoted: msg });
+
       const sessionDir = path.join(__dirname, '../subbots');
       const sessionPath = path.join(sessionDir, number);
       const rid = number.split('@')[0];
@@ -72,7 +77,7 @@ const handler = async (msg, { conn, command }) => {
             const code = await socky.requestPairingCode(rid);
             await conn.sendMessage(msg.key.remoteJid, {
               video: { url: 'https://cdn.russellxz.click/b0cbbbd3.mp4' },
-              caption: '🔐 *Código generado:*\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
+              caption: '🔐 *Código generado:*\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
               gifPlayback: true
             }, { quoted: msg });
             await sleep(1000);
@@ -80,7 +85,7 @@ const handler = async (msg, { conn, command }) => {
               text: '```' + code + '```'
             }, { quoted: msg });
           } else {
-            const qrImage = await QRCode.toBuffer(qr);
+            const qrImage = await qrcode.toBuffer(qr);
             await conn.sendMessage(msg.key.remoteJid, {
               image: qrImage,
               caption: '📲 Escanea este código QR desde *WhatsApp > Vincular dispositivo* para conectarte como subbot.'
@@ -137,7 +142,7 @@ const handler = async (msg, { conn, command }) => {
             break;
 
           case 'close': {
-            const reason = new Boom(lastDisconnect?.error)?.output.statusCode || lastDisconnect?.error?.output?.statusCode;
+            const reason = new Boom(lastDisconnect?.error)?.output?.statusCode || lastDisconnect?.error?.output?.statusCode;
             const messageError = DisconnectReason[reason] || `Código desconocido: ${reason}`;
 
             const eliminarSesion = () => {
@@ -151,7 +156,7 @@ const handler = async (msg, { conn, command }) => {
               case DisconnectReason.badSession:
               case DisconnectReason.loggedOut:
                 await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Sesión eliminada.*\n${messageError}\nUsa #serbot para volver a conectar.`
+                  text: `⚠️ *Sesión eliminada.*\n${messageError}\n\nUsa *#serbot* para volver a conectar.`
                 }, { quoted: msg });
                 eliminarSesion();
                 break;
