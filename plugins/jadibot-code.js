@@ -37,7 +37,7 @@ const handler = async (msg, { conn, command }) => {
         text: '❌ No se pudo identificar el número del usuario.'
       }, { quoted: msg });
 
-      const sessionDir = path.join(__dirname, '../subbots');
+      const sessionDir = path.join(__dirname, '../JadiBots');
       const sessionPath = path.join(sessionDir, number);
       const rid = number.split('@')[0];
 
