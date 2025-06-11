@@ -14,7 +14,7 @@ const {
 } = await import('@whiskeysockets/baileys');
 
 import util from 'util';
-const { child, spawn, exec } = await import('child_process');
+const { spawn } = await import('child_process');
 import { fileURLToPath } from 'url';
 
 if (!(global.conns instanceof Array)) global.conns = [];
@@ -33,9 +33,11 @@ const handler = async (msg, { conn, command }) => {
   async function serbot() {
     try {
       const number = msg.key?.participant || msg.key?.remoteJid;
-      if (!number) return await conn.sendMessage(msg.key.remoteJid, {
-        text: '❌ No se pudo identificar el número del usuario.'
-      }, { quoted: msg });
+      if (!number) {
+        return await conn.sendMessage(msg.key.remoteJid, {
+          text: '❌ No se pudo identificar el número del usuario.'
+        }, { quoted: msg });
+      }
 
       const sessionDir = path.join(__dirname, '../JadiBots');
       const sessionPath = path.join(sessionDir, number);
@@ -68,13 +70,13 @@ const handler = async (msg, { conn, command }) => {
       const maxReconnectionAttempts = 3;
       let conectado = false;
 
-      const checkTimeout = setTimeout(() => {
-        if (!conectado && !socky.user) {
+      const timeout = setTimeout(() => {
+        if (!conectado) {
           if (fs.existsSync(sessionPath)) {
             fs.rmSync(sessionPath, { recursive: true, force: true });
           }
           conn.sendMessage(msg.key.remoteJid, {
-            text: `⏱️ *Tiempo de espera agotado.*\nEl subbot no se conectó en los 2 minutos permitidos.\n\nIntenta nuevamente con *#serbot* o *#code*.`
+            text: '⏱️ *Tiempo de espera agotado.*\nEl subbot no se conectó en los 2 minutos permitidos.\n\nIntenta nuevamente con *#serbot* o *#code*.'
           }, { quoted: msg });
         }
       }, 2 * 60 * 1000);
@@ -82,21 +84,27 @@ const handler = async (msg, { conn, command }) => {
       socky.ev.on('connection.update', async ({ qr, connection, lastDisconnect }) => {
         if (qr && !sentCodeMessage) {
           if (usarPairingCode) {
-            const code = await socky.requestPairingCode(rid);
-            await conn.sendMessage(msg.key.remoteJid, {
-              video: { url: 'https://files.catbox.moe/6uao9h.mp4' },
-              caption: '🔐 *Código generado*\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
-              gifPlayback: true
-            }, { quoted: msg });
-            await sleep(1000);
-            await conn.sendMessage(msg.key.remoteJid, {
-              text: '```' + code + '```'
-            }, { quoted: msg });
+            try {
+              const code = await socky.requestPairingCode(rid);
+              await conn.sendMessage(msg.key.remoteJid, {
+                video: { url: 'https://files.catbox.moe/6uao9h.mp4' },
+                caption: '🔐 Código generado\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
+                gifPlayback: true
+              }, { quoted: msg });
+              await sleep(1000);
+              await conn.sendMessage(msg.key.remoteJid, {
+                text: '' + code + ''
+              }, { quoted: msg });
+            } catch (e) {
+              return await conn.sendMessage(msg.key.remoteJid, {
+                text: `❌ No se pudo generar el código de emparejamiento.\n${e.message}`
+              }, { quoted: msg });
+            }
           } else {
             const qrImage = await qrcode.toBuffer(qr);
             await conn.sendMessage(msg.key.remoteJid, {
               image: qrImage,
-              caption: '📲 Escanea este código QR desde *WhatsApp > Vincular dispositivo* para conectarte como subbot.'
+              caption: '📲 Escanea este código QR desde WhatsApp > Vincular dispositivo para conectarte como subbot.'
             }, { quoted: msg });
           }
           sentCodeMessage = true;
@@ -104,21 +112,19 @@ const handler = async (msg, { conn, command }) => {
 
         switch (connection) {
           case 'open':
-            if (!conectado) {
-              conectado = true;
-              clearTimeout(checkTimeout);
-              await conn.sendMessage(msg.key.remoteJid, {
-                text: `
-╭──〔 *SUBBOT CONECTADO* 〕──╮
-│ ✅ *Bienvenido a ${botname}*
-│ El bot se conectó exitosamente.
-╰───✦ *${botname}* ✦───╯`
-              }, { quoted: msg });
+            conectado = true;
+            clearTimeout(timeout);
 
-              await conn.sendMessage(msg.key.remoteJid, {
-                react: { text: '🔁', key: msg.key }
-              });
-            }
+            await conn.sendMessage(msg.key.remoteJid, {
+              text: `╭──〔 SUBBOT CONECTADO 〕──╮
+│ ✅ Bienvenido a ${botname}
+│ El bot se conectó exitosamente.
+╰───✦ ${botname} ✦───╯`
+            }, { quoted: msg });
+
+            await conn.sendMessage(msg.key.remoteJid, {
+              react: { text: '🔁', key: msg.key }
+            });
             break;
 
           case 'close': {
@@ -160,7 +166,7 @@ const handler = async (msg, { conn, command }) => {
               default:
                 await conn.sendMessage(msg.key.remoteJid, {
                   text: `╭───〔 *⚠️ SUBBOT* 〕───╮
-│⚠️ *Problema de conexión detectado:*
+│⚠️ Problema de conexión detectado:
 │ ${messageError}
 │ Intentando reconectar...
 │
@@ -168,7 +174,7 @@ const handler = async (msg, { conn, command }) => {
 │ #delbots
 │ y vuelve a intentar con:
 │ #serbot o #code
-╰────✦ *${botname}* ✦────╯`
+╰────✦ ${botname} ✦────╯`
                 }, { quoted: msg });
                 break;
             }
@@ -177,22 +183,13 @@ const handler = async (msg, { conn, command }) => {
         }
       });
 
-      // 🔄 Detectar conexión mediante cualquier mensaje recibido (modo pairing)
-      socky.ev.on('messages.upsert', async () => {
-        if (!conectado) {
-          conectado = true;
-          clearTimeout(checkTimeout);
-          await conn.sendMessage(msg.key.remoteJid, {
-            text: `
-╭─〔 *✅ CONECTADO* 〕─╮
-│ El subbot se vinculó exitosamente
-│ usando el código de emparejamiento.
-╰─✦ *${botname}* ✦─╯`
-          }, { quoted: msg });
+      socky.ev.on('creds.update', async () => {
+        try {
+          await saveCreds();
+        } catch (err) {
+          console.error('❌ Error guardando credenciales:', err);
         }
       });
-
-      socky.ev.on('creds.update', saveCreds);
 
     } catch (e) {
       console.error('❌ Error en serbot:', e);
