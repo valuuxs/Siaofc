@@ -29,7 +29,7 @@ if (!bot.jadibotmd) return m.reply('☕ Esta función se encuentra desactivada.'
 let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
 if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
-return m.reply(*☁️ Esta función solo puede ser usada desde el bot principal o desde el grupo oficial. 👇🏻\nhttps://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW*);
+return m.reply('*☁️ Esta función solo puede ser usada desde el bot principal o desde el grupo oficial. 👇🏻\nhttps://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW');
 }
 /*
 async function serbot() {
@@ -88,7 +88,7 @@ let conn = makeWASocket(connectionOptions);
 if (methodCode && !conn.authState.creds.registered) {  
   if (!phoneNumber) process.exit(0);  
   let cleanedNumber = phoneNumber.replace(/[^0-9]/g, '');  
-  setTimeout(async () => {  
+  //setTimeout(async () => {  
     let codeBot = await conn.requestPairingCode(cleanedNumber);  
     codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;  
         const txt = `
@@ -109,12 +109,13 @@ if (methodCode && !conn.authState.creds.registered) {
         *𝖼𝗈𝗇 𝗇𝗎́𝗆𝖾𝗋𝗈 𝖽𝖾 𝗍𝖾𝗅𝖾́𝖿𝗈𝗇𝗈*
 𑂯   ׁ  𝖯𝖾𝗀𝖺 𝖾𝗅 𝖼𝗈́𝖽𝗂𝗀𝗈 𝗒 𝗅𝗂𝗌𝗍𝗈.
 
-> Shadow Club
+> ${club}
 `;  
     await parent.reply(m.chat, txt, m);  
+  setTimeout(async () => {  
     await parent.reply(m.chat, codeBot, m);  
     rl.close();  
-  }, 3000);  
+  }, 4000);  
 }  
 
 conn.isInit = false;  
