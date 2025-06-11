@@ -210,6 +210,3 @@ export default handler;
 function sleep(ms) {
 return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-funciona, Pero no se si falta mejoras quitar lo innecesario mejorar el code
-
