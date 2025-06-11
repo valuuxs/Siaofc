@@ -116,7 +116,7 @@ const handler = async (msg, { conn, command, sock }) => {
 │
 │ Esto ayuda a establecer una conexión *estable y funcional*.
 │
-╰────✦ *Sky Ultra Plus* ✦────╯`
+╰────✦ *${botname}* ✦────╯`
             }, { quoted: msg });
 
             await conn.sendMessage(msg.key.remoteJid, {
@@ -178,7 +178,7 @@ Usa ${global.prefix}serbot para volver a conectar.`
 │
 │ Esto ayuda a establecer una conexión *estable y funcional*.
 │
-╰────✦ *Sky Ultra Plus* ✦────╯`
+╰────✦ *${botname}* ✦────╯`
                 }, { quoted: msg });
                 break;
             }
