@@ -142,8 +142,6 @@ if (!args[0] && !conn.authState.creds.registered) {
     console.error(e);
     await parent.reply(m.chat, '❌ Ocurrió un error al generar el código.', m);
   }
-
-  rl.close();
 }
 
   let handlerModule = await import('../handler.js');
