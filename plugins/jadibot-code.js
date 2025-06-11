@@ -103,41 +103,48 @@ const handler = async (m, { conn: _conn, args, usedPrefix, command }) => {
     }
   }
 
-  conn.connectionUpdate = connectionUpdate;
-  conn.credsUpdate = saveCreds;
-  conn.ev.on('connection.update', conn.connectionUpdate);
-  conn.ev.on('creds.update', conn.credsUpdate);
+conn.connectionUpdate = connectionUpdate;
+conn.credsUpdate = saveCreds;
+conn.ev.on('connection.update', conn.connectionUpdate);
+conn.ev.on('creds.update', conn.credsUpdate);
 
-  setInterval(() => {
-    if (!conn.user) {
-      try { conn.ws.close(); } catch { }
-      conn.ev.removeAllListeners();
-      const i = global.conns.indexOf(conn);
-      if (i >= 0) {
-        delete global.conns[i];
-        global.conns.splice(i, 1);
-      }
-    }
-  }, 60000);
-
-  // Si no está registrado aún, mostrar código de emparejamiento
-  if (!conn.authState.creds.registered && phoneNumber) {
-    setTimeout(async () => {
-      const codeBot = await conn.requestPairingCode(phoneNumber.replace(/[^0-9]/g, ''));
-      const codeFormatted = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
-
-      let txt = `┌  🜲  *Usa este Código para convertirte en un Sub Bot*\n`
-      txt += `│  ❀  Pasos\n`
-      txt += `│  ❀  *1* : Haga click en los 3 puntos\n`
-      txt += `│  ❀  *2* : Toque dispositivos vinculados\n`
-      txt += `│  ❀  *3* : Selecciona *Vincular con el número de teléfono*\n` 
-      txt += `└  ❀  *4* : Escriba el Código\n\n`
-      txt += `*❖ Nota:* Este Código solo funciona en el número en el que se solicitó.*`;
-
-      await parent.reply(m.chat, txt, m);
-      await parent.reply(m.chat, codeFormatted, m);
-    }, 3000);
+const cleanupInterval = setInterval(() => {
+  if (!conn.user || conn.connection === 'closed') {
+    try { conn.ws?.close(); } catch {}
+    conn.ev.removeAllListeners();
+    const i = global.conns.indexOf(conn);
+    if (i >= 0) global.conns.splice(i, 1);
+    clearInterval(cleanupInterval); // Detiene el ciclo de limpieza
   }
+}, 30000); // cada 30 segundos
+
+if (methodCode && !conn.authState.creds.registered) {
+  if (!phoneNumber) process.exit(0);
+
+  const cleanedNumber = phoneNumber.replace(/[^0-9]/g, '');
+
+  try {
+    const codeBot = await conn.requestPairingCode(cleanedNumber);
+    const codeFormatted = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
+
+    const txt = `┌  🜲  *Usa este Código para convertirte en un Sub Bot*
+│  ❀  Pasos
+│  ❀  *1* : Haga click en los 3 puntos
+│  ❀  *2* : Toque dispositivos vinculados
+│  ❀  *3* : Selecciona *Vincular con el número de teléfono*
+└  ❀  *4* : Escriba el Código
+
+*❖ Nota:* Este Código solo funciona en el número en el que se solicitó.*`;
+
+    await parent.reply(m.chat, txt, m);
+    await parent.reply(m.chat, codeFormatted, m);
+  } catch (e) {
+    console.error(e);
+    await parent.reply(m.chat, '❌ Ocurrió un error al generar el código.', m);
+  }
+
+  rl.close();
+}
 
   // Cargar handler del bot
   let handlerModule = await import('../handler.js');
