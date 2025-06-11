@@ -172,7 +172,7 @@ if (!args[0] && !conn.authState.creds.registered) {
 
 handler.help = ['code'];
 handler.tags = ['serbot'];
-handler.command = /^code|serbot --code|serbot$/i;
+handler.command = /^code|serbot$/i;
 handler.rowner = false;
 
 export default handler;
