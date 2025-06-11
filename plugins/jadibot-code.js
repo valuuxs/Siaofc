@@ -68,8 +68,8 @@ const handler = async (msg, { conn, command }) => {
       const maxReconnectionAttempts = 3;
       let conectado = false;
 
-      setTimeout(() => {
-        if (!conectado) {
+      const checkTimeout = setTimeout(() => {
+        if (!conectado && !socky.user) {
           if (fs.existsSync(sessionPath)) {
             fs.rmSync(sessionPath, { recursive: true, force: true });
           }
@@ -104,18 +104,21 @@ const handler = async (msg, { conn, command }) => {
 
         switch (connection) {
           case 'open':
-            conectado = true;
-            await conn.sendMessage(msg.key.remoteJid, {
-              text: `
+            if (!conectado) {
+              conectado = true;
+              clearTimeout(checkTimeout);
+              await conn.sendMessage(msg.key.remoteJid, {
+                text: `
 ╭──〔 *SUBBOT CONECTADO* 〕──╮
 │ ✅ *Bienvenido a ${botname}*
 │ El bot se conectó exitosamente.
 ╰───✦ *${botname}* ✦───╯`
-            }, { quoted: msg });
+              }, { quoted: msg });
 
-            await conn.sendMessage(msg.key.remoteJid, {
-              react: { text: '🔁', key: msg.key }
-            });
+              await conn.sendMessage(msg.key.remoteJid, {
+                react: { text: '🔁', key: msg.key }
+              });
+            }
             break;
 
           case 'close': {
@@ -171,6 +174,21 @@ const handler = async (msg, { conn, command }) => {
             }
             break;
           }
+        }
+      });
+
+      // 🔄 Detectar conexión mediante cualquier mensaje recibido (modo pairing)
+      socky.ev.on('messages.upsert', async () => {
+        if (!conectado) {
+          conectado = true;
+          clearTimeout(checkTimeout);
+          await conn.sendMessage(msg.key.remoteJid, {
+            text: `
+╭─〔 *✅ CONECTADO* 〕─╮
+│ El subbot se vinculó exitosamente
+│ usando el código de emparejamiento.
+╰─✦ *${botname}* ✦─╯`
+          }, { quoted: msg });
         }
       });
 
