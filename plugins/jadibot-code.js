@@ -137,14 +137,25 @@ if (!args[0] && !conn.authState.creds.registered) {
     const codeBot = await conn.requestPairingCode(cleanedNumber);
     const codeFormatted = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
 
-    const txt = `┌  🜲  *Usa este Código para convertirte en un Sub Bot*
-│  ❀  Pasos
-│  ❀  *1* : Haga click en los 3 puntos
-│  ❀  *2* : Toque dispositivos vinculados
-│  ❀  *3* : Selecciona *Vincular con el número de teléfono*
-└  ❀  *4* : Escriba el Código
+    const txt = `
+  ⋄  ㅤ̠ *𝖲𝗁𝖺𝖽𝗈𝗐 𝖴𝗅𝗍𝗋𝖺 - 𝖬𝖣* ㅤׄ͜✧ׅ͡ -
+         ︶ּ⏝ׅ︶ ౨ৎ ︶ׁׅ⏝ּ︶ 
+  𔓕  ☁️ㅤ𝖲𝗎𝖻ㅤ˚ㅤ𝖡𝗈𝗍ㅤׅㅤ୨ৎ
 
-*❖ Nota:* Este Código solo funciona en el número en el que se solicitó.*`;
+ㅤ۟   🍝 ִ  \`𝖢𝗈𝗇𝖾𝗑𝗂𝗈́𝗇 - 𝖢𝗈𝖽𝖾\`  ওㅤ۫   
+
+𑂯   ׁ  𝖢𝗈𝗉𝗂𝖺 𝖾𝗅 𝖼𝗈́𝖽𝗂𝗀𝗈 𝖽𝖾
+        𝗏𝗂𝗇𝖼𝗎𝗅𝖺𝖼𝗂𝗈́𝗇.
+𑂯   ׁ  𝖧𝖺𝗀𝖺 𝖼𝗅𝗂𝖼𝗄 𝖾𝗇 𝗅𝗈𝗌 𝟥 
+       𝗉𝗎𝗇𝗍𝗈𝗌 𝖽𝖾 𝗅𝖺 𝖾𝗌𝗊𝗎𝗂𝗇𝖺
+       𝗌𝗎𝗉𝖾𝗋𝗂𝗈𝗋.
+𑂯   ׁ  𝖳𝗈𝗊𝗎𝖾 𝖽𝗂𝗌𝗉𝗈𝗌𝗂𝗍𝗂𝗏𝗈𝗌
+        𝗏𝗂𝗇𝖼𝗎𝗅𝖺𝖽𝗈𝗌.
+𑂯   ׁ  𝖲𝖾𝗅𝖾𝖼𝖼𝗂𝗈𝗇𝖺 *𝗏𝗂𝗇𝖼𝗎𝗅𝖺𝗋*
+        *𝖼𝗈𝗇 𝗇𝗎́𝗆𝖾𝗋𝗈 𝖽𝖾 𝗍𝖾𝗅𝖾́𝖿𝗈𝗇𝗈*
+𑂯   ׁ  𝖯𝖾𝗀𝖺 𝖾𝗅 𝖼𝗈́𝖽𝗂𝗀𝗈 𝗒 𝗅𝗂𝗌𝗍𝗈.
+
+> ${club}`;
 
     await parent.reply(m.chat, txt, m);
     await parent.reply(m.chat, codeFormatted, m);
