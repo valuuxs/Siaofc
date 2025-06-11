@@ -88,7 +88,7 @@ let conn = makeWASocket(connectionOptions);
 if (methodCode && !conn.authState.creds.registered) {  
   if (!phoneNumber) process.exit(0);  
   let cleanedNumber = phoneNumber.replace(/[^0-9]/g, '');  
-  //setTimeout(async () => {  
+  setTimeout(async () => {  
     let codeBot = await conn.requestPairingCode(cleanedNumber);  
     codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;  
         const txt = `
@@ -112,10 +112,9 @@ if (methodCode && !conn.authState.creds.registered) {
 > ${club}
 `;  
     await parent.reply(m.chat, txt, m);  
-  setTimeout(async () => {  
     await parent.reply(m.chat, codeBot, m);  
     rl.close();  
-  }, 4000);  
+  }, 3000);  
 }  
 
 conn.isInit = false;  
