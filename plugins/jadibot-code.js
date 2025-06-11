@@ -109,12 +109,12 @@ if (methodCode && !conn.authState.creds.registered) {
         *𝖼𝗈𝗇 𝗇𝗎́𝗆𝖾𝗋𝗈 𝖽𝖾 𝗍𝖾𝗅𝖾́𝖿𝗈𝗇𝗈*
 𑂯   ׁ  𝖯𝖾𝗀𝖺 𝖾𝗅 𝖼𝗈́𝖽𝗂𝗀𝗈 𝗒 𝗅𝗂𝗌𝗍𝗈.
 
-> ${club}
+> Shadow Club
 `;  
     await parent.reply(m.chat, txt, m);  
     await parent.reply(m.chat, codeBot, m);  
     rl.close();  
-  }, 4000);  
+  }, 3000);  
 }  
 
 conn.isInit = false;  
