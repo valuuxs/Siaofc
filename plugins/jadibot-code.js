@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Nombre del bot
-const botname = 'Azura Ultra 2.0';
+//const botname = 'Azura Ultra 2.0';
 
 const handler = async (msg, { conn, command }) => {
   const usarPairingCode = ['sercode', 'code'].includes(command);
