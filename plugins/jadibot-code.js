@@ -2,9 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import pino from 'pino';
 import qrcode from 'qrcode';
-import { fileURLToPath } from 'url';
 import * as ws from 'ws';
-
+import { Boom } from '@hapi/boom';
 import { makeWASocket } from '../lib/simple.js';
 
 const {
@@ -16,6 +15,7 @@ const {
 
 import util from 'util';
 const { child, spawn, exec } = await import('child_process');
+import { fileURLToPath } from 'url';
 
 if (!(global.conns instanceof Array)) global.conns = [];
 
@@ -32,32 +32,17 @@ const handler = async (msg, { conn, command }) => {
 
   async function serbot() {
     try {
-      const number = msg.key?.participant || msg.key.remoteJid;
+      const number = msg.key?.participant || msg.key?.remoteJid;
+      if (!number) return await conn.sendMessage(msg.key.remoteJid, {
+        text: '❌ No se pudo identificar el número del usuario.'
+      }, { quoted: msg });
+
       const sessionDir = path.join(__dirname, '../subbots');
       const sessionPath = path.join(sessionDir, number);
       const rid = number.split('@')[0];
 
       if (!fs.existsSync(sessionDir)) {
         fs.mkdirSync(sessionDir, { recursive: true });
-      }
-
-      // 🧹 Limpieza de sesiones antiguas (más de 3 días)
-      try {
-        const diasMaximos = 3;
-        const ahora = Date.now();
-
-        for (const dir of fs.readdirSync(sessionDir)) {
-          const fullPath = path.join(sessionDir, dir);
-          if (!fs.lstatSync(fullPath).isDirectory()) continue;
-          const stats = fs.statSync(fullPath);
-          const edadDias = (ahora - stats.mtimeMs) / (1000 * 60 * 60 * 24);
-          if (edadDias > diasMaximos) {
-            fs.rmSync(fullPath, { recursive: true, force: true });
-            console.log(`🧹 Eliminada sesión inactiva: ${dir} (${edadDias.toFixed(1)} días)`);
-          }
-        }
-      } catch (e) {
-        console.error('Error al limpiar sesiones antiguas:', e);
       }
 
       await conn.sendMessage(msg.key.remoteJid, {
@@ -81,29 +66,26 @@ const handler = async (msg, { conn, command }) => {
 
       let reconnectionAttempts = 0;
       const maxReconnectionAttempts = 3;
+      let conectado = false;
 
-      // ⏱️ Tiempo máximo de espera (2 minutos) para conexión
-      const timeout = setTimeout(() => {
-        if (!socky.user) {
+      setTimeout(() => {
+        if (!conectado) {
           if (fs.existsSync(sessionPath)) {
             fs.rmSync(sessionPath, { recursive: true, force: true });
           }
           conn.sendMessage(msg.key.remoteJid, {
-            text: '⚠️ *Sesión eliminada por inactividad.*\nNo se detectó conexión en los primeros 2 minutos.'
+            text: `⏱️ *Tiempo de espera agotado.*\nEl subbot no se conectó en los 2 minutos permitidos.\n\nIntenta nuevamente con *#serbot* o *#code*.`
           }, { quoted: msg });
-          try {
-            socky.end();
-          } catch {}
         }
-      }, 2 * 60 * 1000); // 2 minutos
+      }, 2 * 60 * 1000);
 
       socky.ev.on('connection.update', async ({ qr, connection, lastDisconnect }) => {
         if (qr && !sentCodeMessage) {
           if (usarPairingCode) {
             const code = await socky.requestPairingCode(rid);
             await conn.sendMessage(msg.key.remoteJid, {
-              video: { url: 'https://cdn.russellxz.click/b0cbbbd3.mp4' },
-              caption: '🔐 *Código generado:*\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
+              video: { url: 'https://files.catbox.moe/6uao9h.mp4' },
+              caption: '🔐 *Código generado*\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
               gifPlayback: true
             }, { quoted: msg });
             await sleep(1000);
@@ -122,45 +104,13 @@ const handler = async (msg, { conn, command }) => {
 
         switch (connection) {
           case 'open':
-            clearTimeout(timeout);
+            conectado = true;
             await conn.sendMessage(msg.key.remoteJid, {
-              text: `╭───〔 *🤖 SUBBOT CONECTADO* 〕───╮
-│
+              text: `
+╭──〔 *SUBBOT CONECTADO* 〕──╮
 │ ✅ *Bienvenido a ${botname}*
-│
-│ Ya eres parte del mejor sistema de juegos RPG
-│
-│ 🛠️ Usa los siguientes comandos para comenzar:
-│
-│ #help
-│ #menu
-│
-│ ⚔️ Disfruta de las funciones del subbot
-│ y conquista el mundo digital
-│
-│ ℹ️ Por defecto, el subbot está en *modo privado*,
-│ lo que significa que *solo tú puedes usarlo*.
-│
-│ Usa el comando:
-│ #menu
-│ (para ver configuraciones y cómo hacer
-│ que otras personas puedan usarlo.)
-│
-│ ➕ Los prefijos por defecto son: *. y #*
-│ Si quieres cambiarlos, usa:
-│ #setprefix
-│
-│ 🔄 Si notas que el subbot *no responde al instante*
-│ o tarda mucho *aunque esté conectado*, no te preocupes.
-│ Puede ser un fallo temporal.
-│
-│ En ese caso, simplemente ejecuta:
-│ #delbots
-│ para eliminar tu sesión y luego vuelve a conectarte usando:
-│ #serbot o #code
-│ hasta que se conecte correctamente.
-│
-╰────✦ *${botname}* ✦────╯`
+│ El bot se conectó exitosamente.
+╰───✦ *${botname}* ✦───╯`
             }, { quoted: msg });
 
             await conn.sendMessage(msg.key.remoteJid, {
@@ -169,7 +119,7 @@ const handler = async (msg, { conn, command }) => {
             break;
 
           case 'close': {
-            const reason = lastDisconnect?.error?.output?.statusCode;
+            const reason = new Boom(lastDisconnect?.error)?.output?.statusCode || lastDisconnect?.error?.output?.statusCode;
             const messageError = DisconnectReason[reason] || `Código desconocido: ${reason}`;
 
             const eliminarSesion = () => {
@@ -183,7 +133,7 @@ const handler = async (msg, { conn, command }) => {
               case DisconnectReason.badSession:
               case DisconnectReason.loggedOut:
                 await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Sesión eliminada.*\n${messageError}\nUsa #serbot para volver a conectar.`
+                  text: `⚠️ *Sesión eliminada.*\n${messageError}\n\nUsa *#serbot* para volver a conectar.`
                 }, { quoted: msg });
                 eliminarSesion();
                 break;
