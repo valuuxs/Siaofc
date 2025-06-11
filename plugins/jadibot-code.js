@@ -2,9 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import pino from 'pino';
 import qrcode from 'qrcode';
+import { fileURLToPath } from 'url';
 import * as ws from 'ws';
-import { Boom } from '@hapi/boom';
-import { makeWASocket } from '../lib/simple.js'; // ✅ Usa tu versión personalizada
+
+import { makeWASocket } from '../lib/simple.js';
 
 const {
   useMultiFileAuthState,
@@ -15,16 +16,11 @@ const {
 
 import util from 'util';
 const { child, spawn, exec } = await import('child_process');
-import { fileURLToPath } from 'url';
 
 if (!(global.conns instanceof Array)) global.conns = [];
 
-// Necesario para __dirname en ESModules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Nombre del bot
-const botname = 'Shadow Bot';
 
 const handler = async (msg, { conn, command }) => {
   const usarPairingCode = ['sercode', 'code'].includes(command);
@@ -36,17 +32,32 @@ const handler = async (msg, { conn, command }) => {
 
   async function serbot() {
     try {
-      const number = msg.key?.participant || msg.key?.remoteJid;
-      if (!number) return await conn.sendMessage(msg.key.remoteJid, {
-        text: '❌ No se pudo identificar el número del usuario.'
-      }, { quoted: msg });
-
+      const number = msg.key?.participant || msg.key.remoteJid;
       const sessionDir = path.join(__dirname, '../subbots');
       const sessionPath = path.join(sessionDir, number);
       const rid = number.split('@')[0];
 
       if (!fs.existsSync(sessionDir)) {
         fs.mkdirSync(sessionDir, { recursive: true });
+      }
+
+      // 🧹 Limpieza de sesiones antiguas (más de 3 días)
+      try {
+        const diasMaximos = 3;
+        const ahora = Date.now();
+
+        for (const dir of fs.readdirSync(sessionDir)) {
+          const fullPath = path.join(sessionDir, dir);
+          if (!fs.lstatSync(fullPath).isDirectory()) continue;
+          const stats = fs.statSync(fullPath);
+          const edadDias = (ahora - stats.mtimeMs) / (1000 * 60 * 60 * 24);
+          if (edadDias > diasMaximos) {
+            fs.rmSync(fullPath, { recursive: true, force: true });
+            console.log(`🧹 Eliminada sesión inactiva: ${dir} (${edadDias.toFixed(1)} días)`);
+          }
+        }
+      } catch (e) {
+        console.error('Error al limpiar sesiones antiguas:', e);
       }
 
       await conn.sendMessage(msg.key.remoteJid, {
@@ -71,13 +82,28 @@ const handler = async (msg, { conn, command }) => {
       let reconnectionAttempts = 0;
       const maxReconnectionAttempts = 3;
 
+      // ⏱️ Tiempo máximo de espera (2 minutos) para conexión
+      const timeout = setTimeout(() => {
+        if (!socky.user) {
+          if (fs.existsSync(sessionPath)) {
+            fs.rmSync(sessionPath, { recursive: true, force: true });
+          }
+          conn.sendMessage(msg.key.remoteJid, {
+            text: '⚠️ *Sesión eliminada por inactividad.*\nNo se detectó conexión en los primeros 2 minutos.'
+          }, { quoted: msg });
+          try {
+            socky.end();
+          } catch {}
+        }
+      }, 2 * 60 * 1000); // 2 minutos
+
       socky.ev.on('connection.update', async ({ qr, connection, lastDisconnect }) => {
         if (qr && !sentCodeMessage) {
           if (usarPairingCode) {
             const code = await socky.requestPairingCode(rid);
             await conn.sendMessage(msg.key.remoteJid, {
               video: { url: 'https://cdn.russellxz.click/b0cbbbd3.mp4' },
-              caption: '🔐 *Código generado:*\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
+              caption: '🔐 *Código generado:*\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
               gifPlayback: true
             }, { quoted: msg });
             await sleep(1000);
@@ -96,6 +122,7 @@ const handler = async (msg, { conn, command }) => {
 
         switch (connection) {
           case 'open':
+            clearTimeout(timeout);
             await conn.sendMessage(msg.key.remoteJid, {
               text: `╭───〔 *🤖 SUBBOT CONECTADO* 〕───╮
 │
@@ -142,7 +169,7 @@ const handler = async (msg, { conn, command }) => {
             break;
 
           case 'close': {
-            const reason = new Boom(lastDisconnect?.error)?.output?.statusCode || lastDisconnect?.error?.output?.statusCode;
+            const reason = lastDisconnect?.error?.output?.statusCode;
             const messageError = DisconnectReason[reason] || `Código desconocido: ${reason}`;
 
             const eliminarSesion = () => {
@@ -156,7 +183,7 @@ const handler = async (msg, { conn, command }) => {
               case DisconnectReason.badSession:
               case DisconnectReason.loggedOut:
                 await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Sesión eliminada.*\n${messageError}\n\nUsa *#serbot* para volver a conectar.`
+                  text: `⚠️ *Sesión eliminada.*\n${messageError}\nUsa #serbot para volver a conectar.`
                 }, { quoted: msg });
                 eliminarSesion();
                 break;
