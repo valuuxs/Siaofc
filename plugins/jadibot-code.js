@@ -38,6 +38,16 @@ const handler = async (m, { conn: _conn, args, usedPrefix, command }) => {
     fs.mkdirSync(userFolderPath, { recursive: true });
   }
 
+const existingConnIndex = global.conns.findIndex(c => c.user?.id?.startsWith(phoneNumber));
+if (existingConnIndex !== -1) {
+  const existingConn = global.conns[existingConnIndex];
+  try {
+    existingConn.ws?.close();
+    existingConn.ev.removeAllListeners();
+  } catch {}
+  global.conns.splice(existingConnIndex, 1);
+}
+
   if (args[0]) {
     try {
       const data = Buffer.from(args[0], "base64").toString("utf-8");
