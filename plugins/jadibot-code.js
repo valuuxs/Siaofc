@@ -118,7 +118,7 @@ const cleanupInterval = setInterval(() => {
   }
 }, 30000); // cada 30 segundos
 
-if (methodCode && !conn.authState.creds.registered) {
+if (!args[0] && !conn.authState.creds.registered) {
   if (!phoneNumber) process.exit(0);
 
   const cleanedNumber = phoneNumber.replace(/[^0-9]/g, '');
@@ -146,7 +146,6 @@ if (methodCode && !conn.authState.creds.registered) {
   rl.close();
 }
 
-  // Cargar handler del bot
   let handlerModule = await import('../handler.js');
   conn.handler = handlerModule.handler.bind(conn);
   conn.ev.on('messages.upsert', conn.handler);
