@@ -1,209 +1,181 @@
-import fs from 'fs';
-import path from 'path';
-import pino from 'pino';
-import qrcode from 'qrcode';
-import * as ws from 'ws';
-import { Boom } from '@hapi/boom';
-import { makeWASocket } from '../lib/simple.js';
-
 const {
   useMultiFileAuthState,
   DisconnectReason,
+  fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
-  fetchLatestBaileysVersion
+  jidNormalizedUser
 } = await import('@whiskeysockets/baileys');
 
-import util from 'util';
-const { spawn } = await import('child_process');
-import { fileURLToPath } from 'url';
+import moment from 'moment-timezone';
+import NodeCache from 'node-cache';
+import readline from 'readline';
+import qrcode from "qrcode";
+import crypto from 'crypto';
+import fs from "fs";
+import pino from 'pino';
+import * as ws from 'ws';
+const { CONNECTING } = ws;
+import { Boom } from '@hapi/boom';
+import { makeWASocket } from '../lib/simple.js';
 
 if (!(global.conns instanceof Array)) global.conns = [];
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+let handler = async (m, { conn: _conn, args, usedPrefix, command }) => {
+  const bot = global.db.data.settings[_conn.user.jid] || {};
+  if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado Por Mi Creador');
 
-const handler = async (msg, { conn, command }) => {
-  const usarPairingCode = ['sercode', 'code'].includes(command);
-  let sentCodeMessage = false;
+  const parent = args[0] && args[0] === 'plz' ? _conn : await global.conn;
+  const phoneNumber = m.sender.split('@')[0];
+  const authFolder = `./CrowJadiBot/${phoneNumber}`;
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  if (!fs.existsSync(authFolder)) fs.mkdirSync(authFolder, { recursive: true });
+
+  // Si recibió un código en base64, lo guarda como creds.json
+  if (args[0] && args[0] !== 'plz') {
+    const decoded = Buffer.from(args[0], "base64").toString("utf-8");
+    fs.writeFileSync(`${authFolder}/creds.json`, JSON.stringify(JSON.parse(decoded), null, '\t'));
   }
 
-  async function serbot() {
-    try {
-      const number = msg.key?.participant || msg.key?.remoteJid;
-      if (!number) {
-        return await conn.sendMessage(msg.key.remoteJid, {
-          text: '❌ No se pudo identificar el número del usuario.'
-        }, { quoted: msg });
+  const { state, saveCreds } = await useMultiFileAuthState(authFolder);
+  const { version } = await fetchLatestBaileysVersion();
+  const msgRetryCounterCache = new NodeCache();
+
+  const conn = makeWASocket({
+    logger: pino({ level: 'silent' }),
+    printQRInTerminal: false,
+    browser: ["Ubuntu", "Chrome", "20.0.04"],
+    mobile: false,
+    auth: {
+      creds: state.creds,
+      keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" }))
+    },
+    msgRetryCounterCache,
+    getMessage: async () => null,
+    version,
+    markOnlineOnConnect: true,
+    generateHighQualityLinkPreview: true,
+  });
+
+  let isInit = true;
+
+  async function connectionUpdate(update) {
+    const { connection, lastDisconnect, isNewLogin } = update;
+    const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
+
+    if (isNewLogin) conn.isInit = true;
+
+    if (code && code !== DisconnectReason.loggedOut && conn?.ws?.socket == null) {
+      let i = global.conns.indexOf(conn);
+      if (i >= 0) {
+        delete global.conns[i];
+        global.conns.splice(i, 1);
+        if (fs.existsSync(authFolder)) fs.rmdirSync(authFolder, { recursive: true });
       }
-
-      const sessionDir = path.join(__dirname, '../JadiBots');
-      const sessionPath = path.join(sessionDir, number);
-      const rid = number.split('@')[0];
-
-      if (!fs.existsSync(sessionDir)) {
-        fs.mkdirSync(sessionDir, { recursive: true });
+      if (code !== DisconnectReason.connectionClosed) {
+        parent.sendMessage(m.chat, { text: "Conexión perdida..." }, { quoted: m });
       }
+    }
 
-      await conn.sendMessage(msg.key.remoteJid, {
-        react: { text: '⌛', key: msg.key }
-      });
+    if (global.db.data == null) loadDatabase?.();
 
-      const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
-      const { version } = await fetchLatestBaileysVersion();
-      const logger = pino({ level: 'silent' });
+    if (connection === 'open') {
+      conn.isInit = true;
+      global.conns.push(conn);
+      await parent.reply(m.chat, args[0] && args[0] !== 'plz' ? '✅ Sub Bot Conectado con éxito' : `✨ ¡Conexión exitosa a WhatsApp! Puedes volver a conectarte luego con *#code* sin volver a escanear el código.`, m);
 
-      const socky = makeWASocket({
-        version,
-        logger,
-        auth: {
-          creds: state.creds,
-          keys: makeCacheableSignalKeyStore(state.keys, logger)
-        },
-        printQRInTerminal: !usarPairingCode,
-        browser: ['Windows', 'Chrome']
-      });
+      await sleep(3000);
 
-      let reconnectionAttempts = 0;
-      const maxReconnectionAttempts = 3;
-      let conectado = false;
-
-      const timeout = setTimeout(() => {
-        if (!conectado) {
-          if (fs.existsSync(sessionPath)) {
-            fs.rmSync(sessionPath, { recursive: true, force: true });
-          }
-          conn.sendMessage(msg.key.remoteJid, {
-            text: '⏱️ *Tiempo de espera agotado.*\nEl subbot no se conectó en los 2 minutos permitidos.\n\nIntenta nuevamente con *#serbot* o *#code*.'
-          }, { quoted: msg });
-        }
-      }, 2 * 60 * 1000);
-
-      socky.ev.on('connection.update', async ({ qr, connection, lastDisconnect }) => {
-        if (qr && !sentCodeMessage) {
-          if (usarPairingCode) {
-            try {
-              const code = await socky.requestPairingCode(rid);
-              await conn.sendMessage(msg.key.remoteJid, {
-                video: { url: 'https://files.catbox.moe/6uao9h.mp4' },
-                caption: '🔐 Código generado\n\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:',
-                gifPlayback: true
-              }, { quoted: msg });
-              await sleep(1000);
-              await conn.sendMessage(msg.key.remoteJid, {
-                text: '' + code + ''
-              }, { quoted: msg });
-            } catch (e) {
-              return await conn.sendMessage(msg.key.remoteJid, {
-                text: `❌ No se pudo generar el código de emparejamiento.\n${e.message}`
-              }, { quoted: msg });
-            }
-          } else {
-            const qrImage = await qrcode.toBuffer(qr);
-            await conn.sendMessage(msg.key.remoteJid, {
-              image: qrImage,
-              caption: '📲 Escanea este código QR desde WhatsApp > Vincular dispositivo para conectarte como subbot.'
-            }, { quoted: msg });
-          }
-          sentCodeMessage = true;
-        }
-
-        switch (connection) {
-          case 'open':
-            conectado = true;
-            clearTimeout(timeout);
-
-            await conn.sendMessage(msg.key.remoteJid, {
-              text: `╭──〔 SUBBOT CONECTADO 〕──╮
-│ ✅ Bienvenido a ${botname}
-│ El bot se conectó exitosamente.
-╰───✦ ${botname} ✦───╯`
-            }, { quoted: msg });
-
-            await conn.sendMessage(msg.key.remoteJid, {
-              react: { text: '🔁', key: msg.key }
-            });
-            break;
-
-          case 'close': {
-            const reason = new Boom(lastDisconnect?.error)?.output?.statusCode || lastDisconnect?.error?.output?.statusCode;
-            const messageError = DisconnectReason[reason] || `Código desconocido: ${reason}`;
-
-            const eliminarSesion = () => {
-              if (fs.existsSync(sessionPath)) {
-                fs.rmSync(sessionPath, { recursive: true, force: true });
-              }
-            };
-
-            switch (reason) {
-              case 401:
-              case DisconnectReason.badSession:
-              case DisconnectReason.loggedOut:
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Sesión eliminada.*\n${messageError}\n\nUsa *#serbot* para volver a conectar.`
-                }, { quoted: msg });
-                eliminarSesion();
-                break;
-
-              case DisconnectReason.restartRequired:
-                if (reconnectionAttempts < maxReconnectionAttempts) {
-                  reconnectionAttempts++;
-                  await sleep(3000);
-                  await serbot();
-                  return;
-                }
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: '⚠️ *Reintentos de conexión fallidos.*'
-                }, { quoted: msg });
-                break;
-
-              case DisconnectReason.connectionReplaced:
-                console.log('ℹ️ Sesión reemplazada por otra instancia.');
-                break;
-
-              default:
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: `╭───〔 *⚠️ SUBBOT* 〕───╮
-│⚠️ Problema de conexión detectado:
-│ ${messageError}
-│ Intentando reconectar...
-│
-│ 🔄 Si el problema persiste, ejecuta:
-│ #delbots
-│ y vuelve a intentar con:
-│ #serbot o #code
-╰────✦ ${botname} ✦────╯`
-                }, { quoted: msg });
-                break;
-            }
-            break;
-          }
-        }
-      });
-
-      socky.ev.on('creds.update', async () => {
-        try {
-          await saveCreds();
-        } catch (err) {
-          console.error('❌ Error guardando credenciales:', err);
-        }
-      });
-
-    } catch (e) {
-      console.error('❌ Error en serbot:', e);
-      await conn.sendMessage(msg.key.remoteJid, {
-        text: `❌ *Error inesperado:* ${e.message}`
-      }, { quoted: msg });
+      if (!args[0] || args[0] === 'plz') {
+        await parent.reply(conn.user.jid, `💠 Guarda este mensaje para futuras conexiones:\n`, m);
+        const creds = fs.readFileSync(`${authFolder}/creds.json`);
+        const base64Creds = Buffer.from(creds).toString("base64");
+        await parent.sendMessage(conn.user.jid, { text: `${usedPrefix}${command} ${base64Creds}` }, { quoted: m });
+      }
     }
   }
 
-  await serbot();
+  conn.ev.on('connection.update', connectionUpdate);
+  conn.ev.on('creds.update', saveCreds);
+
+  // Generar código de emparejamiento si no está registrado
+  if (!conn.authState.creds.registered) {
+    setTimeout(async () => {
+      try {
+        const codeBot = await conn.requestPairingCode(phoneNumber);
+        const formattedCode = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
+
+        let txt = `┌  🜲  *Usa este Código para convertirte en un Sub Bot*\n`;
+        txt += `│  ❀  Pasos:\n`;
+        txt += `│  ❀  *1*: Toca los tres puntos de WhatsApp\n`;
+        txt += `│  ❀  *2*: Dispositivos vinculados\n`;
+        txt += `│  ❀  *3*: *Vincular con número de teléfono*\n`; 
+        txt += `└  ❀  *4*: Ingresa el código mostrado\n\n`;
+        txt += `*❖ Nota:* Este código solo sirve en el número que lo solicitó.`;
+
+        await parent.reply(m.chat, txt, m);
+        await parent.reply(m.chat, `📲 Código: *${formattedCode}*`, m);
+      } catch (e) {
+        console.error("Error al generar código:", e);
+        await parent.reply(m.chat, "❌ Error al generar el código de emparejamiento.", m);
+      }
+    }, 3000);
+  }
+
+  // Reinicio automático de sesión si se cae
+  setInterval(() => {
+    if (!conn.user) {
+      try { conn.ws.close(); } catch {}
+      conn.ev.removeAllListeners();
+      const i = global.conns.indexOf(conn);
+      if (i >= 0) global.conns.splice(i, 1);
+    }
+  }, 60_000);
+
+  // Cargar y vincular handler
+  let handlerModule = await import('../handler.js');
+  let creloadHandler = async (restart = false) => {
+    try {
+      const NewHandler = await import(`../handler.js?update=${Date.now()}`);
+      if (NewHandler?.handler) handlerModule = NewHandler;
+    } catch (e) {
+      console.error("❌ Error cargando handler:", e);
+    }
+
+    if (restart) {
+      try { conn.ws.close(); } catch {}
+      conn.ev.removeAllListeners();
+      conn = makeWASocket(connectionOptions);
+      isInit = true;
+    }
+
+    if (!isInit) {
+      conn.ev.off('messages.upsert', conn.handler);
+      conn.ev.off('connection.update', conn.connectionUpdate);
+      conn.ev.off('creds.update', conn.credsUpdate);
+    }
+
+    conn.handler = handlerModule.handler.bind(conn);
+    conn.connectionUpdate = connectionUpdate.bind(conn);
+    conn.credsUpdate = saveCreds.bind(conn, true);
+
+    conn.ev.on('messages.upsert', conn.handler);
+    conn.ev.on('connection.update', conn.connectionUpdate);
+    conn.ev.on('creds.update', conn.credsUpdate);
+
+    isInit = false;
+    return true;
+  };
+
+  await creloadHandler(false);
 };
 
-handler.command = ['sercode', 'code', 'jadibot', 'serbot', 'qr'];
-handler.tags = ['owner'];
-handler.help = ['serbot', 'code'];
+handler.help = ['code'];
+handler.tags = ['serbot'];
+handler.command = ['code', 'codep', 'sercode', 'serbot', 'jadibot', 'qrp'];
+handler.rowner = false;
 
 export default handler;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
