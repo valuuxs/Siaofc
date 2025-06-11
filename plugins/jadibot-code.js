@@ -37,7 +37,7 @@ const handler = async (m, { conn: _conn, args, usedPrefix, command }) => {
   if (!fs.existsSync(userFolderPath)) {
     fs.mkdirSync(userFolderPath, { recursive: true });
   }
-
+/*
 const existingConnIndex = global.conns.findIndex(c => c.user?.id?.startsWith(phoneNumber));
 if (existingConnIndex !== -1) {
   const existingConn = global.conns[existingConnIndex];
@@ -46,7 +46,7 @@ if (existingConnIndex !== -1) {
     existingConn.ev.removeAllListeners();
   } catch {}
   global.conns.splice(existingConnIndex, 1);
-}
+}*/
 
   if (args[0]) {
     try {
