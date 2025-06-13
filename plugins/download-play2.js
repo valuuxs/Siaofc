@@ -11,14 +11,14 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
   try {
     const search = await yts(text)
     if (!search.videos || !search.videos.length) {
-      await m.react('❌')
-      return m.reply('*❌ No se encontraron resultados.*')
+      await m.react('✖️')
+      return m.reply('*✖️ No se encontraron resultados.*')
     }
 
     const vid = search.videos[0]
     const { title, thumbnail, timestamp, views, ago, url, author, description } = vid
 
-    const captext = `\`\`\`◜Play2 - Download◞\`\`\`
+    const captext = `\`\`\`◜YTA - Download◞\`\`\`
 
 🌴 *\`Título:\`* ${title || 'no encontrado'}
 ⏰ *\`Duración:\`* ${timestamp || 'no encontrado'}
@@ -30,7 +30,7 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
     await conn.sendMessage(m.chat, {
       image: { url: thumbnail },
       caption: captext
-    }, { quoted: m })
+    }, { quoted: fkontak })
 
     const headers = {
       "accept": "*/*",
@@ -63,12 +63,12 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
       mimetype: 'audio/mp4'
     }, { quoted: m })
 
-    await m.react('✅') // Éxito
+    await m.react('✅')
 
   } catch (e) {
     console.error(e)
-    await m.react('❌') // Error
-    m.reply('⛔ Ocurrió un error al intentar descargar o enviar el audio.')
+    await m.react('✖️') // Error
+    m.reply('*⛔ Ocurrió un error al intentar descargar o enviar el audio.*')
   }
 }
 
