@@ -30,7 +30,7 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
     await conn.sendMessage(m.chat, {
       image: { url: thumbnail },
       caption: captext
-    }, { quoted: m })
+    }, { quoted: fkontak })
 
     const headers = {
       "accept": "*/*",
@@ -60,11 +60,11 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 
     await conn.sendMessage(m.chat, {
       video: { url: convert.downloadURL },
-      caption: `🎬 *${title}*\n📺 *YTV descargado exitosamente.*`,
+      caption: `🎬 *${title}*`,
       mimetype: 'video/mp4'
     }, { quoted: m })
 
-    await m.react('✅') // Éxito
+    await m.react('✅')
 
   } catch (e) {
     console.error(e)
@@ -76,7 +76,5 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 handler.help = ['ytv'].map(v => v + ' *<consulta>*')
 handler.tags = ['downloader']
 handler.command = /^ytv2$/i
-handler.register = false
-handler.disable = false
 
 export default handler
