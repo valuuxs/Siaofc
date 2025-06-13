@@ -46,7 +46,7 @@ ${description || 'sin descripción'}
     const init = await initRes.json()
 
     const id = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/))([^&?/]+)/)?.[1]
-    const format = isAudio ? 'mp3' : 'mp4'
+    const format = isAudio ? 'mp4' : 'mp4'
     const convertURL = `${init.convertURL}&v=${id}&f=${format}&_=${Math.random()}`
     const convertRes = await fetch(convertURL, { headers })
     const convert = await convertRes.json()
