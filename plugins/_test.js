@@ -65,7 +65,7 @@ ${description || 'sin descripción'}
 
     await conn.sendMessage(m.chat, {
       [isAudio ? 'audio' : 'video']: { url: convert.downloadURL },
-      mimetype: isAudio ? 'audio/mpeg' : 'video/mp4',
+      mimetype: isAudio ? 'audio/mp4' : 'video/mp4',
       fileName: filename
     }, { quoted: m })
 
