@@ -2,18 +2,23 @@ import yts from 'yt-search'
 import fetch from 'node-fetch'
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  try {
-    if (!text) throw m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Joji - Ew`)
+  if (!text) {
+    return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Joji - Ew`)
+  }
 
+  await m.react('⏳') // Reacción inicial (esperando)
+
+  try {
     const search = await yts(text)
-    if (!search.videos || !search.videos.length) throw m.reply('*❌ No se encontraron resultados.*')
+    if (!search.videos || !search.videos.length) {
+      await m.react('❌')
+      return m.reply('*❌ No se encontraron resultados.*')
+    }
 
     const vid = search.videos[0]
     const { title, thumbnail, timestamp, views, ago, url, author, description } = vid
 
-    await m.react('⏳')
-
-    let captext = `\`\`\`◜Play2 - Download◞\`\`\`
+    const captext = `\`\`\`◜Play2 - Download◞\`\`\`
 
 🌴 *\`Título:\`* ${title || 'no encontrado'}
 ⏰ *\`Duración:\`* ${timestamp || 'no encontrado'}
@@ -40,14 +45,13 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
     const id = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/))([^&?/]+)/)?.[1]
     if (!id) throw new Error('ID de video no encontrado.')
 
-    let format = 'mp4'
-    let convertURL = `${init.convertURL}&v=${id}&f=${format}&_=${Math.random()}`
+    const convertURL = `${init.convertURL}&v=${id}&f=mp4&_=${Math.random()}`
     const converts = await fetch(convertURL, { headers })
     const convert = await converts.json()
 
     let info = {}
     for (let i = 0; i < 3; i++) {
-      let progress = await fetch(convert.progressURL, { headers })
+      const progress = await fetch(convert.progressURL, { headers })
       info = await progress.json()
       if (info.progress === 3) break
     }
