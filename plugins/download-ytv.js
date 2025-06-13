@@ -11,8 +11,8 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
   try {
     const search = await yts(text)
     if (!search.videos || !search.videos.length) {
-      await m.react('❌')
-      return m.reply('*❌ No se encontraron resultados.*')
+      await m.react('✖️')
+      return m.reply('*✖️ No se encontraron resultados.*')
     }
 
     const vid = search.videos[0]
@@ -68,13 +68,13 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 
   } catch (e) {
     console.error(e)
-    await m.react('❌')
+    await m.react('✖️')
     m.reply('⛔ Ocurrió un error al intentar descargar o enviar el video.')
   }
 }
 
 handler.help = ['ytv'].map(v => v + ' *<consulta>*')
 handler.tags = ['downloader']
-handler.command = /^ytv2$/i
+handler.command = /^ytv$/i
 
 export default handler
