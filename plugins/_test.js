@@ -61,12 +61,9 @@ ${description || 'sin descripción'}
 
     if (!convert.downloadURL) throw '❌ Error al obtener el enlace de descarga.'
 
-    const filename = `${info.title || title}.${format}`
-
     await conn.sendMessage(m.chat, {
       [isAudio ? 'audio' : 'video']: { url: convert.downloadURL },
-      mimetype: isAudio ? 'audio/mp4' : 'video/mp4',
-      fileName: filename
+      mimetype: isAudio ? 'audio/mp4' : 'video/mp4'
     }, { quoted: m })
 
   } catch (err) {
