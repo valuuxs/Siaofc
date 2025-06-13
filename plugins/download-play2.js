@@ -73,7 +73,7 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 
 handler.help = ['play'].map(v => v + ' *<consulta>*')
 handler.tags = ['downloader']
-handler.command = /^(play|song|musica)$/i
+handler.command = /^(play2|song|musica)$/i
 handler.register = false
 handler.disable = false
 
