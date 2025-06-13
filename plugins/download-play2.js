@@ -3,10 +3,10 @@ import fetch from 'node-fetch'
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
   if (!text) {
-    return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Joji - Ew`)
+    return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Anna Carina & La única tropical Prohibido`)
   }
 
-  await m.react('⏳') // Reacción inicial (esperando)
+  await m.react('⏳')
 
   try {
     const search = await yts(text)
