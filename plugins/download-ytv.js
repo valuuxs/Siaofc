@@ -6,7 +6,7 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
     return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Blur - Song 2`)
   }
 
-  await m.react('⏳') // Reacción inicial (esperando)
+  await m.react('⏳')
 
   try {
     const search = await yts(text)
