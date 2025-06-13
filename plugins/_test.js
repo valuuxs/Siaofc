@@ -1,4 +1,4 @@
-import { googleImage } from '@bochilteam/scraper';
+/*import { googleImage } from '@bochilteam/scraper';
 import baileys from '@whiskeysockets/baileys';
 
 async function sendAlbumMessage(jid, medias, options = {}) {
@@ -71,4 +71,4 @@ handler.help = ['imagen <query>'];
 handler.tags = ['buscador', 'tools', 'descargas'];
 handler.command = ['gimagen', 'gimage', 'gimg'];
 
-export default handler;
+export default handler;*/
