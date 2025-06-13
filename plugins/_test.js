@@ -2,7 +2,7 @@ import yts from 'yt-search'
 import fetch from 'node-fetch'
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) return m.reply(`✧ Ejemplo de uso: ${usedPrefix + command} Joji - Glimpse of Us`)
+  if (!text) return m.reply(`🔥 Ejemplo de uso: ${usedPrefix + command} Joji - Glimpse of Us`)
 
   try {
     const search = await yts(text)
