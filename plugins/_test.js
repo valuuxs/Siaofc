@@ -2,7 +2,7 @@ import yts from 'yt-search'
 import fetch from 'node-fetch'
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) return m.reply(`🔥 Ejemplo de uso: ${usedPrefix + command} Joji - Glimpse of Us`)
+  if (!text) return m.reply(`✧ Ejemplo de uso: ${usedPrefix + command} Joji - Glimpse of Us`)
 
   try {
     const search = await yts(text)
@@ -61,10 +61,18 @@ ${description || 'sin descripción'}
 
     if (!convert.downloadURL) throw '❌ Error al obtener el enlace de descarga.'
 
-    await conn.sendMessage(m.chat, {
-      [isAudio ? 'audio' : 'video']: { url: convert.downloadURL },
-      mimetype: isAudio ? 'audio/mp4' : 'video/mp4'
-    }, { quoted: m })
+    // Envío del audio EXACTAMENTE igual que en el segundo código
+    if (isAudio) {
+      await conn.sendMessage(m.chat, {
+        audio: { url: convert.downloadURL },
+        mimetype: 'audio/mp4'
+      }, { quoted: m })
+    } else {
+      await conn.sendMessage(m.chat, {
+        video: { url: convert.downloadURL },
+        mimetype: 'video/mp4'
+      }, { quoted: m })
+    }
 
   } catch (err) {
     console.error(`[YT ${command.toUpperCase()} ERROR]`, err)
