@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
   if (!text) {
-    return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Blur - Song 2`)
+    return m.reply(`*${xdownload} Por favor, ingresa un título de YouTube.*\n> *\`Ejemplo:\`* ${usedPrefix + command} Joji - Ew`)
   }
 
   await m.react('⏳') // Reacción inicial (esperando)
@@ -16,13 +16,13 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
     }
 
     const vid = search.videos[0]
-    const { title, thumbnail, timestamp, views, ago, url, author } = vid
+    const { title, thumbnail, timestamp, views, ago, url, author, description } = vid
 
-    const captext = `\`\`\`◜YTV - Video Download◞\`\`\`
+    const captext = `\`\`\`◜Play2 - Download◞\`\`\`
 
-🎬 *\`Título:\`* ${title || 'no encontrado'}
-⏱ *\`Duración:\`* ${timestamp || 'no encontrado'}
-📹 *\`Canal:\`* ${author?.name || 'no encontrado'}
+🌴 *\`Título:\`* ${title || 'no encontrado'}
+⏰ *\`Duración:\`* ${timestamp || 'no encontrado'}
+👤 *\`Artista:\`* ${author?.name || 'no encontrado'}
 
 > ${dev}
 `
@@ -56,11 +56,10 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
       if (info.progress === 3) break
     }
 
-    if (!convert.downloadURL) throw new Error('No se pudo obtener el enlace del video.')
+    if (!convert.downloadURL) throw new Error('No se pudo obtener el enlace de descarga.')
 
     await conn.sendMessage(m.chat, {
-      video: { url: convert.downloadURL },
-      caption: `🎬 *${title}*\n📺 *YTV descargado exitosamente.*`,
+      audio: { url: convert.downloadURL },
       mimetype: 'video/mp4'
     }, { quoted: m })
 
@@ -68,14 +67,14 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 
   } catch (e) {
     console.error(e)
-    await m.react('❌')
-    m.reply('⛔ Ocurrió un error al intentar descargar o enviar el video.')
+    await m.react('❌') // Error
+    m.reply('⛔ Ocurrió un error al intentar descargar o enviar el audio.')
   }
 }
 
-handler.help = ['ytv'].map(v => v + ' *<consulta>*')
+handler.help = ['play2'].map(v => v + ' *<consulta>*')
 handler.tags = ['downloader']
-handler.command = /^ytv$/i
+handler.command = /^(play2|song|musica)$/i
 handler.register = false
 handler.disable = false
 
