@@ -139,6 +139,7 @@ switch(hour) {
 global.saludo = hour;
 
 // FECHA Y HORA EN FORMATO PERSONALIZADO (ZONA HORARIA PERÚ)
+/*
 var fecha = moment().tz('America/Lima');
 var diaSemana = fecha.locale('es').format('dddd'); // Día de la semana en español
 var dia = fecha.format('D'); // Día del mes
@@ -151,6 +152,16 @@ diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
 mes = mes.charAt(0).toUpperCase() + mes.slice(1);
 
 global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}`;
+*/
+
+const fecha = moment().tz('America/Lima').locale('es')
+let diaSemana = fecha.format('dddd')
+let mes = fecha.format('MMMM')
+diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1)
+mes = mes.charAt(0).toUpperCase() + mes.slice(1)
+
+global.fecha = `${diaSemana}, ${fecha.format('D')} de ${mes} del ${fecha.format('YYYY')}`
+global.hora = fecha.format('h:mm A')
 
 //TAGS & STICKERS
 global.nombre = conn.getName(m.sender)
