@@ -41,7 +41,7 @@ if (global.conns instanceof Array) {
 const MAX_SUBBOTS = 10;
 
 async function loadSubbots() {
-  const serbotFolders = fs.readdirSync('./' + jadi);
+  const serbotFolders = fs.readdirSync('./${jadi}' + jadi);
   let totalC = 0;
 
   for (const folder of serbotFolders) {
