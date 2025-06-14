@@ -55,11 +55,6 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
       }
     }, { quoted: fkontak });*/
 
-    //const res = await fetch(imgUrl);
-    if (!res.ok) throw new Error(`❌ Imagen no disponible (${res.status})`);
-    const buffer = await res.buffer();
-
-
   await conn.sendLuffy(m.chat, txt, shadow, text, img, img, insta, fkontak)
 
   } catch (e) {
