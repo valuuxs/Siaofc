@@ -356,20 +356,20 @@ const logos = {
 
 const handler = async (m, { conn, args, command }) => {
   const texto = args.join(' ').trim();
-  if (!texto) throw '[❗] 𝙄𝙉𝙂𝙍𝙀𝙎𝙀 𝙐𝙉 𝙏𝙀𝙓𝙏𝙊';
-  if (texto.length > 50) throw '[❗] 𝙀𝙇 𝙏𝙀𝙓𝙏𝙊 𝙀𝙎 𝙈𝙐𝙔 𝙇𝘼𝙍𝙂𝙊, 𝙈𝘼́𝙓𝙄𝙈𝙊 50 𝘾𝘼𝙍𝘼𝘾𝙏𝙀𝙍𝙀𝙎';
+  if (!texto) throw `${xlogos} Por favor, igresa un texto para elaborar su logo.*`;
+  if (texto.length > 50) throw '*⚠️ El texto es muy largo, máximo 50 carácteres*';
 
   const url = logos[command.toLowerCase()];
-  if (!url) throw `[❗] 𝘾𝙊𝙈𝘼𝙉𝘿𝙊 𝙉𝙊 𝙎𝙊𝙋𝙊𝙍𝙏𝘼𝘿𝙊: ${command}`;
+  if (!url) throw `*⚠️ Comando \`${command}\` no soportado.*`;
 
   try {
-    await conn.reply(m.chat, '[❗] 𝙀𝙇𝘼𝘽𝙊𝙍𝘼𝙉𝘿𝙊 𝙇𝙊𝙂𝙊, 𝙀𝙎𝙋𝙀𝙍𝙀...', m);
+    await m.react('🕑');
     const res = await new Maker().Ephoto360(url, [texto]);
-    if (!res?.imageUrl) throw '⚠️ No se pudo generar la imagen';
-    await conn.sendFile(m.chat, res.imageUrl, 'logo.jpg', '✨ 𝙇𝙤𝙜𝙤 𝙘𝙧𝙚𝙖𝙙𝙤 𝙘𝙤𝙣 𝙚𝙭𝙞𝙩𝙤!', m);
+    if (!res?.imageUrl) throw '*⚠️ No se pudo generar la imagen*';
+    await conn.sendFile(m.chat, res.imageUrl, 'logo.jpg', '*☁️ Logo creado con éxito.*', m);
   } catch (e) {
     console.error(e);
-    await conn.reply(m.chat, '[❗] 𝙊𝘾𝙐𝙍𝙍𝙄𝙊́ 𝙐𝙉 𝙀𝙍𝙍𝙊𝙍. 𝙄𝙉𝙏𝙀́𝙉𝙏𝙀𝙇𝙊 𝙈𝘼́𝙎 𝙏𝘼𝙍𝘿𝙀.', m);
+    await conn.reply(m.chat, '*✖️ Ocurrió un error, inténtalo más tarde.*', m);
   }
 };
 
