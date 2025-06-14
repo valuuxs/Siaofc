@@ -13,7 +13,6 @@ const handler = async (m, {conn, usedPrefix, text}) => {
  𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𑄙 ⍺𝗅 *𝖬𝖾𝗇𝗎́ 𝖫𝗈𝗀𑄈𝗌*
 
 ᦷᩘᦷ   ݂  \`ᴄᴏᴍᴀɴᴅᴏs\`  ፡ ܻ̯͛ᩘ${xlogos}
-
 ᰅ${xlogos}ᰍ ${usedPrefix}balogo *txt*
 ᰅ${xlogos}ᰍ ${usedPrefix}logocorazon *txt*
 ᰅ${xlogos}ᰍ ${usedPrefix}logochristmas  *txt*
