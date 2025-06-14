@@ -15,7 +15,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
 ᦷᩘᦷ   ݂  \`ᴄᴏᴍᴀɴᴅᴏs\`  ፡ ܻ̯͛ᩘ${xlogos}
 
 ᰅ${xlogos}ᰍ ${usedPrefix}balogo *txt*
-ᰅ${xlogosᰍ ${usedPrefix}logocorazon *txt*
+ᰅ${xlogos}ᰍ ${usedPrefix}logocorazon *txt*
 ᰅ${xlogos}ᰍ ${usedPrefix}logochristmas  *texto*
 ᰅ${xlogos}ᰍ ${usedPrefix}logopareja *texto*
 ᰅ${xlogos}ᰍ ${usedPrefix}logoglitch *texto*
