@@ -4,6 +4,11 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
     await m.react('👑');
 
+    const _uptime = process.uptime() * 1000;
+    const uptime = clockString(_uptime);
+
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
     const pp = 'https://files.catbox.moe/9d4ria.jpg';
     const img = await (await fetch(pp)).buffer()
     const shadow = '𝖬𝖾𝗇𝗎́ 𝖮𝗐𝗇𝖾𝗋';
@@ -21,8 +26,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 *📚 Librería:* Baileys
 *⏰ Uptime:* ${uptime}
 *🚀 Type:* NodeJs
-*🧇 Usuarios regs:*
-*🥞 Usuarios totales:*
+*🧇 Usuarios regs:* ${rtotalreg}
+*🥞 Usuarios totales:* ${totalreg}
 
 ෨   \`Lista de Comandos\`    𓈒𓏸    ☁︎ 
 𑂯 ׁ${xowner} ${usedPrefix}update
@@ -72,3 +77,9 @@ export default handler;
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
+function clockString(ms) {
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+}
