@@ -21,6 +21,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
  ‎ ‎ ‎ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*Bienvenido* ‎ ‎  ‎ ‎✿̮    ׅ  al   ୂ  
  ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
 
+> \`\`\`${date}\`\`\`
+
 *🌴 Nombre:* Shadow Ultra
 *☕ Creador:* Cristian
 *📚 Librería:* Baileys
