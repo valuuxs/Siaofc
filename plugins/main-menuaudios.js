@@ -10,30 +10,30 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
-꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
+ ꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
 ‎ ‎꒲꒲  *𝖧𐐫𝗅⍺*  ׅ ෫ׄ᷼͝${taguser}  ಒ
  ‎ ‎ ‎ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗈* ‎ ‎  ‎ ‎✿̮    ׅ  𝖺𝗅   ୂ  
  ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
 
-🌴 ⪧ \`BotName:\` Shadow Ultra - MD
-🖥️ ⪧ \`Platform:\` Linux
-🚀 ⪧ \`Type:\` NodeJs
-📚 ⪧ \`Librería:\` Baileys
+🌴 ⪧ *BotName:* Shadow Ultra
+🖥️ ⪧ *Platform:* Linux
+🚀 ⪧ *Type:* NodeJs
+📚 ⪧ *Librería:* Baileys
 
-෨   *𝖮𝗐𝗇𝖾𝗋 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌*    𓈒𓏸    ☁︎ 
-ゲ ${xowner} ${usedPrefix}update
-ゲ ${xowner} ${usedPrefix}leavegc
-ゲ ${xowner} ${usedPrefix}blocklist
-ゲ ${xowner} ${usedPrefix}grouplist
-ゲ ${xowner} ${usedPrefix}restart
-ゲ ${xowner} ${usedPrefix}join
-ゲ ${xowner} ${usedPrefix}chetar
-ゲ ${xowner} ${usedPrefix}banchat 
-ゲ ${xowner} ${usedPrefix}unbanchat
-ゲ ${xowner} ${usedPrefix}banuser
-ゲ ${xowner} ${usedPrefix}unbanuser
-ゲ ${xowner} ${usedPrefix}dsowner
-ゲ ${xowner} ${usedPrefix}autoadmin 
+෨   \`ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅs\`    𓈒𓏸    ☁︎ 
+𑂯 ׁ${xowner} ${usedPrefix}update
+𑂯 ׁ${xowner} ${usedPrefix}leavegc
+𑂯 ׁ${xowner} ${usedPrefix}blocklist
+𑂯 ׁ${xowner} ${usedPrefix}grouplist
+𑂯 ׁ${xowner} ${usedPrefix}restart
+𑂯 ׁ${xowner} ${usedPrefix}join
+𑂯 ׁ${xowner} ${usedPrefix}chetar
+𑂯 ׁ${xowner} ${usedPrefix}banchat 
+𑂯 ׁ${xowner} ${usedPrefix}unbanchat
+𑂯 ׁ${xowner} ${usedPrefix}banuser
+𑂯 ׁ${xowner} ${usedPrefix}unbanuser
+𑂯 ׁ${xowner} ${usedPrefix}dsowner
+𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
 `.trim();
 
     conn.sendMessage(m.chat, {
