@@ -60,7 +60,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const buffer = await res.buffer();
 
 
-  await conn.sendLuffy(m.chat, txt, shadow, text, imgUrl, imgUrl, insta, fkontak)
+  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, insta, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
