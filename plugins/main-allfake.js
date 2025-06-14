@@ -160,7 +160,7 @@ let mes = fecha.format('MMMM')
 diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1)
 mes = mes.charAt(0).toUpperCase() + mes.slice(1)
 
-global.fecha = `${diaSemana}, ${fecha.format('D')} de ${mes} del ${fecha.format('YYYY')}`
+global.date = `${diaSemana}, ${fecha.format('D')} de ${mes} del ${fecha.format('YYYY')}`
 global.hora = fecha.format('h:mm A')
 
 //TAGS & STICKERS
