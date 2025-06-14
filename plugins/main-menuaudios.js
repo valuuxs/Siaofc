@@ -6,7 +6,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     let img = 'https://files.catbox.moe/9d4ria.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
-    const shadow =
+    const shadow = '';
+    const txt = '${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.';
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
