@@ -5,6 +5,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     await m.react('👑');
 
     const imgUrl = 'https://files.catbox.moe/9d4ria.jpg';
+    const img = await (await fetch(pp)).buffer()
     const insta = 'https://instagram.com/dev.criss_vx';
     const shadow = 'Menú Owner';
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
