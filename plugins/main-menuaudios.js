@@ -6,7 +6,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     let img = 'https://files.catbox.moe/9d4ria.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
-
+    const shadow =
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `
@@ -35,7 +35,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 𑂯 ׁ${xowner} ${usedPrefix}dsowner
 𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
 `.trim();
-
+/*
     conn.sendMessage(m.chat, {
       text: text,
       contextInfo: {
@@ -51,7 +51,9 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
           renderLargerThumbnail: true
         }
       }
-    }, { quoted: fkontak });
+    }, { quoted: fkontak });*/
+
+  await conn.sendLuffy(m.chat, text, shadow, bienvenida, img, img, insta, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
