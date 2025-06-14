@@ -7,8 +7,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     let img = 'https://files.catbox.moe/9d4ria.jpg';
     let insta = 'https://instagram.com/dev.criss_vx';
     const shadow = '';
-    const txt = '${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.';
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+    const txt = '${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.';
 
     const text = `
  ꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
@@ -54,7 +54,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
       }
     }, { quoted: fkontak });*/
 
-  await conn.sendLuffy(m.chat, text, shadow, bienvenida, img, img, insta, fkontak)
+  await conn.sendLuffy(m.chat, txt, shadow, text, img, insta, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
