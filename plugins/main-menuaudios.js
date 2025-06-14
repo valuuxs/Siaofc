@@ -4,8 +4,8 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
     await m.react('👑');
 
-    let img = 'https://files.catbox.moe/9d4ria.jpg';
-    let insta = 'https://instagram.com/dev.criss_vx';
+    const imgUrl = 'https://files.catbox.moe/9d4ria.jpg';
+    const insta = 'https://instagram.com/dev.criss_vx';
     const shadow = 'Menú Owner';
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     //const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
@@ -55,7 +55,12 @@ const txt = `Welcome to my developer menu, follow me on Instagram, thank you ver
       }
     }, { quoted: fkontak });*/
 
-  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, insta, fkontak)
+    const res = await fetch(imgUrl);
+    if (!res.ok) throw new Error(`❌ Imagen no disponible (${res.status})`);
+    const buffer = await res.buffer();
+
+
+  await conn.sendLuffy(m.chat, txt, shadow, text, buffer, buffer, insta, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
