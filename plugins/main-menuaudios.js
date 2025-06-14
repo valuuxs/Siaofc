@@ -54,7 +54,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
       }
     }, { quoted: fkontak });*/
 
-  await conn.sendLuffy(m.chat, txt, shadow, text, img, insta, fkontak)
+  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, insta, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
