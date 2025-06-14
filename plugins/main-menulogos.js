@@ -69,10 +69,3 @@ handler.command = /^(menulogos|menu2)$/i;
 handler.fail = null;
 
 export default handler;
-
-function clockString(ms) {
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
-}
