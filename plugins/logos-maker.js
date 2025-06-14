@@ -362,6 +362,19 @@ const logos = {
   logomatrix: 'https://en.ephoto360.com/matrix-text-effect-154.html',
   logohorror: 'https://en.ephoto360.com/blood-writing-text-online-77.html',
   logoalas: 'https://en.ephoto360.com/the-effect-of-galaxy-angel-wings-289.html',
+  logoarmy:       'https://en.ephoto360.com/free-gaming-logo-maker-for-fps-game-team-546.html',
+  logopubg:       'https://en.ephoto360.com/pubg-logo-maker-cute-character-online-617.html',
+  logopubgfem:    'https://en.ephoto360.com/pubg-mascot-logo-maker-for-an-esports-team-612.html',
+  logolol:        'https://en.ephoto360.com/make-your-own-league-of-legends-wallpaper-full-hd-442.html',
+  logoamongus:    'https://en.ephoto360.com/create-a-cover-image-for-the-game-among-us-online-762.html',
+  logovideopubg:  'https://en.ephoto360.com/lightning-pubg-video-logo-maker-online-615.html',
+  logovideotiger: 'https://en.ephoto360.com/create-digital-tiger-logo-video-effect-723.html',
+  logovideointro: 'https://en.ephoto360.com/free-logo-intro-video-maker-online-558.html', logovideogaming:'https://en.ephoto360.com/create-elegant-rotation-logo-online-586.html',
+  logoguerrero:   'https://en.ephoto360.com/create-project-yasuo-logo-384.html',
+  logoportadaplayer: 'https://en.ephoto360.com/create-the-cover-game-playerunknown-s-battlegrounds-401.html',
+  logoportadaff:      'https://en.ephoto360.com/create-free-fire-facebook-cover-online-567.html',
+  logoportadapubg:    'https://en.ephoto360.com/create-facebook-game-pubg-cover-photo-407.html',
+  logoportadacounter: 'https://en.ephoto360.com/create-youtube-banner-game-cs-go-online-403.html'
 };
 
 const handler = async (m, { conn, args, command }) => {
