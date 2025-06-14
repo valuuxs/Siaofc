@@ -6,8 +6,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     const pp = 'https://files.catbox.moe/9d4ria.jpg';
     const img = await (await fetch(pp)).buffer()
-    const insta = 'https://instagram.com/dev.criss_vx';
-    const shadow = 'Menú Owner';
+    const shadow = '𝖬𝖾𝗇𝗎́ 𝖮𝗐𝗇𝖾𝗋';
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
 
@@ -22,7 +21,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 🚀 ⪧ *Type:* NodeJs
 📚 ⪧ *Librería:* Baileys
 
-෨   \`ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅs\`    𓈒𓏸    ☁︎ 
+෨   \`Comandos\`    𓈒𓏸    ☁︎ 
 𑂯 ׁ${xowner} ${usedPrefix}update
 𑂯 ׁ${xowner} ${usedPrefix}leavegc
 𑂯 ׁ${xowner} ${usedPrefix}blocklist
