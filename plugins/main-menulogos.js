@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 const handler = async (m, {conn, usedPrefix, text}) => {
 
   try {
-    await m.react ('🖼️');
-    const videoUrl = 'https://files.catbox.moe/g4yv7k.mp4'
+    await m.react ('🌴');
+    const videoUrl = 'https://files.catbox.moe/3i7ldi.mp4'
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const str = `
