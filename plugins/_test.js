@@ -1,9 +1,13 @@
 const handler = async (m, { conn }) => {
-  const who = m.mentionedJid && m.mentionedJid[0]
-    ? m.mentionedJid[0]
-    : m.fromMe
-    ? conn.user.jid
-    : m.sender;
+  let who;
+
+  if (m.quoted && m.quoted.sender) {
+    who = m.quoted.sender;
+  } else if (m.mentionedJid && m.mentionedJid[0]) {
+    who = m.mentionedJid[0];
+  } else {
+    who = m.fromMe ? conn.user.jid : m.sender;
+  }
 
   const avatarUrl = await conn.profilePictureUrl(who, 'image')
     .catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png');
@@ -16,6 +20,5 @@ const handler = async (m, { conn }) => {
 handler.help = ['gay'];
 handler.tags = ['maker'];
 handler.command = /^(gay2|gayp)$/i;
-handler.group = true;
 
 export default handler;
