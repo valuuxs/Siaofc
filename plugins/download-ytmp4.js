@@ -50,7 +50,7 @@ await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
 
 handler.help = ['play *<consulta>*'];
 handler.tags = ['downloader'];
-handler.command = /^(play|song|musica)$/i;
+handler.command = /^(play2|song|musica)$/i;
 
 handler.register = false
 handler.disable = false
