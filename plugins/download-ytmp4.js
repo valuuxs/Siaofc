@@ -58,7 +58,7 @@ ${wm}
 handler.help = ['playvideo *<consulta>*'];
 handler.tags = ['downloader'];
 handler.command = /^(playvideo|playvid)$/i;
-handler.register = true;
+handler.register = false;
 handler.disable = false;
 
 export default handler;
