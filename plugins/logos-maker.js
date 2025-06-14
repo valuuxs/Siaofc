@@ -352,6 +352,16 @@ const logos = {
   logodragonball: 'https://en.ephoto360.com/create-dragon-ball-style-text-effects-online-809.html',
   logoneon: 'https://en.ephoto360.com/create-impressive-neon-glitch-text-effects-online-768.html',
   logogatito: 'https://en.ephoto360.com/handwritten-text-on-foggy-glass-online-680.html',
+  logochicagamer: 'https://en.ephoto360.com/create-cute-girl-gamer-mascot-logo-online-687.html',
+  logonaruto: 'https://en.ephoto360.com/naruto-shippuden-logo-style-text-effect-online-808.html',
+  logofuturista: 'https://en.ephoto360.com/light-text-effect-futuristic-technology-style-648.html',
+  logonube: 'https://en.ephoto360.com/cloud-text-effect-139.html',
+  logoangel: 'https://en.ephoto360.com/angel-wing-effect-329.html',
+  logocielo: 'https://en.ephoto360.com/create-a-cloud-text-effect-in-the-sky-618.html',
+  logograffiti3d: 'https://en.ephoto360.com/text-graffiti-3d-208.html',
+  logomatrix: 'https://en.ephoto360.com/matrix-text-effect-154.html',
+  logohorror: 'https://en.ephoto360.com/blood-writing-text-online-77.html',
+  logoalas: 'https://en.ephoto360.com/the-effect-of-galaxy-angel-wings-289.html',
 };
 
 const handler = async (m, { conn, args, command }) => {
