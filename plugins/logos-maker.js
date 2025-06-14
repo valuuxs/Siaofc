@@ -339,86 +339,40 @@ handler.tags = ['fun']
 handler.command = /^logocorazon|logochristmas|logopareja|logoglitch|logosad|logogaming|logosolitario|logodragonball|logoneon|logogatito|logochicagamer|logonaruto|logofuturista|logonube|logoangel|logomurcielago|logocielo|logograffiti3d|logomatrix|logohorror|logoalas|logoarmy|logopubg|logopubgfem|logolol|logoamongus|logovideopubg|logovideotiger|logovideointro|logovideogaming|logoguerrero|logoportadaplayer|logoportadaff|logoportadapubg|logoportadacounter/i;
 export default handler;*/
 
-import fetch from 'node-fetch'
-import { ephoto } from '../lib/ephoto.js'
+import { Maker } from 'imagemaker.js';
 
-let handler = async (m, { text, command, conn }) => {
-  if (!text) return m.reply(`✳️ Ingresa un texto para crear el logo\n\n*Ejemplo:* ${command} Shadow Bot`)
+const logos = {
+  logocorazon: 'https://en.ephoto360.com/text-heart-flashlight-188.html',
+  logochristmas: 'https://en.ephoto360.com/christmas-effect-by-name-376.html',
+  logopareja: 'https://en.ephoto360.com/sunlight-shadow-text-204.html',
+  logoglitch: 'https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html',
+  logosad: 'https://en.ephoto360.com/write-text-on-wet-glass-online-589.html',
+  logogaming: 'https://en.ephoto360.com/make-team-logo-online-free-432.html',
+  logosolitario: 'https://en.ephoto360.com/create-typography-text-effect-on-pavement-online-774.html',
+  logodragonball: 'https://en.ephoto360.com/create-dragon-ball-style-text-effects-online-809.html',
+  logoneon: 'https://en.ephoto360.com/create-impressive-neon-glitch-text-effects-online-768.html',
+  logogatito: 'https://en.ephoto360.com/handwritten-text-on-foggy-glass-online-680.html',
+};
+
+const handler = async (m, { conn, args, command }) => {
+  const texto = args.join(' ').trim();
+  if (!texto) throw '[❗] 𝙄𝙉𝙂𝙍𝙀𝙎𝙀 𝙐𝙉 𝙏𝙀𝙓𝙏𝙊';
+  if (texto.length > 50) throw '[❗] 𝙀𝙇 𝙏𝙀𝙓𝙏𝙊 𝙀𝙎 𝙈𝙐𝙔 𝙇𝘼𝙍𝙂𝙊, 𝙈𝘼́𝙓𝙄𝙈𝙊 50 𝘾𝘼𝙍𝘼𝘾𝙏𝙀𝙍𝙀𝙎';
+
+  const url = logos[command.toLowerCase()];
+  if (!url) throw `[❗] 𝘾𝙊𝙈𝘼𝙉𝘿𝙊 𝙉𝙊 𝙎𝙊𝙋𝙊𝙍𝙏𝘼𝘿𝙊: ${command}`;
+
   try {
-    let url
-    switch (command) {
-      case 'logocorazon':
-        url = await ephoto('https://en.ephoto360.com/text-heart-flashlight-188.html', text)
-        break
-      case 'logochristmas':
-        url = await ephoto('https://en.ephoto360.com/christmas-effect-by-name-376.html', text)
-        break
-      case 'logopareja':
-        url = await ephoto('https://en.ephoto360.com/sunlight-shadow-text-204.html', text)
-        break
-      case 'logoglitch':
-        url = await ephoto('https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html', text)
-        break
-      case 'logosad':
-        url = await ephoto('https://en.ephoto360.com/write-text-on-wet-glass-online-589.html', text)
-        break
-      case 'logogaming':
-        url = await ephoto('https://en.ephoto360.com/make-team-logo-online-free-432.html', text)
-        break
-      case 'logosolitario':
-        url = await ephoto('https://en.ephoto360.com/create-typography-text-effect-on-pavement-online-774.html', text)
-        break
-      case 'logodragonball':
-        url = await ephoto('https://en.ephoto360.com/create-dragon-ball-style-text-effects-online-809.html', text)
-        break
-      case 'logoneon':
-        url = await ephoto('https://en.ephoto360.com/create-impressive-neon-glitch-text-effects-online-768.html', text)
-        break
-      case 'logogatito':
-        url = await ephoto('https://en.ephoto360.com/handwritten-text-on-foggy-glass-online-680.html', text)
-        break
-      case 'logopokemon':
-        url = await ephoto('https://en.ephoto360.com/create-a-pokemon-logo-style-online-free-184.html', text)
-        break
-      case 'logoff':
-        url = await ephoto('https://en.ephoto360.com/create-realistic-fire-text-effect-online-903.html', text)
-        break
-      case 'logometal':
-        url = await ephoto('https://en.ephoto360.com/create-metallic-text-effect-online-824.html', text)
-        break
-      case 'logohalloween':
-        url = await ephoto('https://en.ephoto360.com/create-halloween-text-effects-online-741.html', text)
-        break
-      case 'logoblood':
-        url = await ephoto('https://en.ephoto360.com/create-horror-blood-text-effect-online-843.html', text)
-        break
-      case 'logolove2':
-        url = await ephoto('https://en.ephoto360.com/create-love-neon-light-text-effect-online-803.html', text)
-        break
-      case 'logochocolate':
-        url = await ephoto('https://en.ephoto360.com/create-chocolate-text-effect-online-800.html', text)
-        break
-      default:
-        return m.reply('❌ Comando no reconocido.')
-    }
-
-    await conn.sendMessage(m.chat, {
-      image: { url },
-      caption: `✅ *Logo generado con éxito*\n*🖋 Texto:* ${text}\n*🔗 Efecto:* ${command}`
-    }, { quoted: m })
-
+    await conn.reply(m.chat, '[❗] 𝙀𝙇𝘼𝘽𝙊𝙍𝘼𝙉𝘿𝙊 𝙇𝙊𝙂𝙊, 𝙀𝙎𝙋𝙀𝙍𝙀...', m);
+    const res = await new Maker().Ephoto360(url, [texto]);
+    if (!res?.imageUrl) throw '⚠️ No se pudo generar la imagen';
+    await conn.sendFile(m.chat, res.imageUrl, 'logo.jpg', '✨ 𝙇𝙤𝙜𝙤 𝙘𝙧𝙚𝙖𝙙𝙤 𝙘𝙤𝙣 𝙚𝙭𝙞𝙩𝙤!', m);
   } catch (e) {
-    console.error(e)
-    m.reply('❌ Hubo un error al generar el logo. Intenta de nuevo más tarde.')
+    console.error(e);
+    await conn.reply(m.chat, '[❗] 𝙊𝘾𝙐𝙍𝙍𝙄𝙊́ 𝙐𝙉 𝙀𝙍𝙍𝙊𝙍. 𝙄𝙉𝙏𝙀́𝙉𝙏𝙀𝙇𝙊 𝙈𝘼́𝙎 𝙏𝘼𝙍𝘿𝙀.', m);
   }
-}
+};
 
-handler.command = [
-  'logocorazon', 'logochristmas', 'logopareja', 'logoglitch',
-  'logosad', 'logogaming', 'logosolitario', 'logodragonball',
-  'logoneon', 'logogatito', 'logopokemon', 'logoff', 'logometal',
-  'logohalloween', 'logoblood', 'logolove2', 'logochocolate'
-]
-
-export default handler
+handler.command = Object.keys(logos);
+export default handler;
 
