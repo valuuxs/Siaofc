@@ -2,63 +2,57 @@ import fetch from 'node-fetch'
 import yts from 'yt-search'
 
 let handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw m.reply(`✧ Ejemplo: ${usedPrefix}${command} Waguri Edit`);
+  if (!text) throw m.reply(`✧ Ejemplo: ${usedPrefix}${command} Joji - Ew`);
 
-  await conn.sendMessage(m.chat, { react: { text: '🕒', key: m.key }});
+ await conn.sendMessage(m.chat, { react: { text: '🕒', key: m.key }})
 
-  let results = await yts(text);
-  let tes = results.videos[0];
+    let results = await yts(text);
+    let tes = results.videos[0]
 
-  if (!tes) return m.reply(`✧ No se encontró ningún video con ese nombre.`);
-
-  const apiUrl = `https://www.apis-anomaki.zone.id/downloader/ytv?url=${encodeURIComponent(tes.url)}`;
+  const args = text.split(' ');
+  const videoUrl = args[0];
+  
+  const apiUrl = `https://www.apis-anomaki.zone.id/downloader/yta?url=${encodeURIComponent(tes.url)}`;
 
   try {
     const respuesta = await fetch(apiUrl);
-    const keni = await respuesta.json();
+    const keni = await respuesta.json()
+    const { downloadURL } = keni.result.data;
 
-    if (!keni.result || !keni.result.formats || !keni.result.formats.length)
-      return m.reply('✧ No se pudo obtener el video desde la API.');
+    if (!downloadURL) throw m.reply('No hay respuesta de la api.');
 
-    const { url, qualityLabel, fps } = keni.result.formats[0];
-    const { title } = keni.result;
-
-    if (!url || !/^https?:\/\//.test(url)) 
-      return m.reply('✧ Enlace del video no válido.');
 
     const caption = `
-*╭┈┈┈ ๑💮 PLAY VIDEO 💮๑ ┈┈╮*
+      *💮 PLAY AUDIO 💮*
+ 
+  ✧ : \`titulo;\` ${tes.title || 'no encontrado'}
+  ✧ : \`artista;\` ${tes.author.name || 'no encontrado'}
+  ✧ : \`duracion;\` ${tes.duration || 'no encontrado'}
+ 
+> ${wm}
+> Pedido de @${m.sender.split('@')[0]}`;
 
-📌 *Titulo:* ${tes.title || 'No encontrado'}
-⏱️ *Duración:* ${tes.duration || 'No encontrado'}
-📥 *Calidad:* ${qualityLabel || 'No encontrado'}
-🎞️ *FPS:* ${fps || 'No encontrado'}
-
-🧾 Pedido de: @${m.sender.split('@')[0]}
-${wm}
-*╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╯*`.trim();
+await conn.sendMessage(m.chat, { image: { url: tes.thumbnail }, caption: caption }, {quoted: m })
 
     await conn.sendMessage(m.chat, {
-      video: { url: url },
-      mimetype: "video/mp4",
-      fileName: title + `.mp4`,
-      caption,
+      audio: { url: downloadURL },
+      mimetype: "audio/mp4",
+      fileName: tes.title,
       mentions: [m.sender]
     }, { quoted: m });
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }});
+await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
 
   } catch (error) {
     console.error(`Error: ${error.message}`);
     await conn.sendMessage(m.chat, { react: { text: '❎', key: m.key }})
-    m.reply('✧ Ocurrió un error al intentar descargar el video.');
   }
 };
 
-handler.help = ['playvideo *<consulta>*'];
+handler.help = ['play *<consulta>*'];
 handler.tags = ['downloader'];
-handler.command = /^(playvideo|playvid)$/i;
-handler.register = false;
-handler.disable = false;
+handler.command = /^(play|song|musica)$/i;
+
+handler.register = false
+handler.disable = false
 
 export default handler;
