@@ -25,7 +25,7 @@ const handler = async (msg, { conn, command }) => {
   async function serbot() {
     try {
       const number = msg.key?.participant || msg.key.remoteJid;
-      const sessionDir = path.join(__dirname, "../SubBots");
+      const sessionDir = path.join(__dirname, "../JadiBots");
       const sessionPath = path.join(sessionDir, number);
       const rid = number.split("@")[0];
 
