@@ -36,7 +36,7 @@ let handler = async (m, { conn, command }) => {
       const user = jidNormalizedUser(jid); // ej: '521234567890@s.whatsapp.net'
       const jidClean = user.replace(/[@.:]/g, '_'); // ej: '521234567890_s_whatsapp_net'
 
-      const sessionDir = path.join(__dirname, '../../subbots');
+      const sessionDir = path.join(__dirname, '../JadiBots');
       const sessionPath = path.join(sessionDir, jidClean);
 
       if (!fs.existsSync(sessionDir)) fs.mkdirSync(sessionDir, { recursive: true });
