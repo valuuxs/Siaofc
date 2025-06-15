@@ -122,18 +122,16 @@ const handler = async (m, { conn }) => {
   const perfilUrl = await conn.profilePictureUrl(userId, 'image')
     .catch(() => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-  const {
-    description = 'Sin Descripción',
-    age = 'Desconocida',
-    birth = 'No especificado',
-    genre = 'No especificado',
-    exp = 0,
-    level = 0,
-    role = 'Sin Rango',
-    diamantes = 0,
-    bank = 0,
-    premium = false
-  } = user
+    let user = global.db.data.users[userId];
+    let name = conn.getName(userId);
+    let cumpleanos = user.birth || 'No especificado';
+    let genero = user.genre || 'No especificado';
+    let description = user.description || 'Sin Descripción';
+    let exp = user.exp || 0;
+    let nivel = user.level || 0;
+    let role = user.role || 'Sin Rango';
+    let diamond = user.diamantes || 0;
+    let bankDiamond = user.bank || 0;
 
 
   const isMarried = userId in global.db.data.marriages
@@ -164,7 +162,7 @@ const handler = async (m, { conn }) => {
     contextInfo: {
       mentionedJid: [userId],
       externalAdReply: {
-        title: '✧ Perfil de Usuario ✧',
+        title: 'Shadow Ultra - MD',
         body: club,
         thumbnailUrl: perfilUrl,
         mediaType: 1,
