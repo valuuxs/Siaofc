@@ -1,4 +1,4 @@
-import PhoneNumber from 'awesome-phonenumber'
+/*import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 import fs from 'fs';
 var handler = async (m, { conn }) => {
@@ -50,4 +50,4 @@ handler.help = ['profile']
 handler.register = true
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
-export default handler
+export default handler*/
