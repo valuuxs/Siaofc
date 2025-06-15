@@ -1,4 +1,4 @@
-/*let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
+let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
 export async function before(m, { isAdmin, isBotAdmin }) {
 if (m.isBaileys && m.fromMe)
@@ -25,8 +25,8 @@ await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 return !0
 
-}*/
-
+}
+/*
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
 // Función que detecta si el mensaje fue enviado por el propio bot
@@ -70,4 +70,4 @@ export async function before(m, { isAdmin, isBotAdmin }) {
   }
 
   return !0
-}
+}*/
