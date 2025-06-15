@@ -68,7 +68,7 @@ let handler = async (m, { conn, args }) => {
 Ꮺ *Rango:* ${role}
 
 ⛁ *Coins Cartera* » ${diamond.toLocaleString()} ${moneda}
-⛃ *Coins Banco* » ${bankCoins.toLocaleString()} ${moneda}
+⛃ *Coins Banco* » ${bankDiamond.toLocaleString()} ${moneda}
 ❁ *Premium* » ${user.premium ? '✅' : '❌'}
   `.trim();
 
