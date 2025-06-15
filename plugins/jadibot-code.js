@@ -30,11 +30,24 @@ let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
 if (!globalThis.db.data.settings[conn.user.jid].jadibotmd) return m.reply(`♡ Comando desactivado temporalmente.`)
 let time = global.db.data.users[m.sender].Subs + 120000
 if (new Date - global.db.data.users[m.sender].Subs < 120000) return conn.reply(m.chat, `${emoji} Debes esperar ${msToTime(time - new Date())} para volver a vincular un *Sub-Bot.*`, m)
-const subBots = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
+/*
+const subBots = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]*/
+if (!global.conns) global.conns = []
+
+const subBots = [
+  ...new Set(
+    global.conns.filter(
+      (conn) => conn?.user && conn?.ws?.socket?.readyState !== conn?.ws?.CLOSED
+    )
+  )
+]
 const subBotsCount = subBots.length
-if (subBotsCount === 30) {
-return m.reply(`${emoji2} No se han encontrado espacios para *Sub-Bots* disponibles.`)
+
+if (subBotsCount >= 30) {
+  return m.reply(`${emoji2} No se han encontrado espacios disponibles para nuevos *Sub-Bots*.`)
 }
+
+
 /*if (Object.values(global.conns).length === 30) {
 return m.reply(`${emoji2} No se han encontrado espacios para *Sub-Bots* disponibles.`)
 }*/
