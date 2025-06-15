@@ -94,6 +94,7 @@ handler.command = ['profile2', 'perfil2'];
 
 export default handler;*/
 
+
 import fs from 'fs'
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
@@ -117,22 +118,23 @@ const handler = async (m, { conn }) => {
 
   const userId = m.quoted?.sender || m.mentionedJid?.[0] || m.sender
   const user = global.db.data.users[userId] || {}
-  const name = await conn.getName(userId)
 
+  const name = await conn.getName(userId)
   const perfilUrl = await conn.profilePictureUrl(userId, 'image')
     .catch(() => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-    let user = global.db.data.users[userId];
-    let name = conn.getName(userId);
-    let cumpleanos = user.birth || 'No especificado';
-    let genero = user.genre || 'No especificado';
-    let description = user.description || 'Sin Descripción';
-    let exp = user.exp || 0;
-    let nivel = user.level || 0;
-    let role = user.role || 'Sin Rango';
-    let diamond = user.diamantes || 0;
-    let bankDiamond = user.bank || 0;
-
+  const cumpleanos = user.birth || 'No especificado'
+  const genero = user.genre || 'No especificado'
+  const description = user.description || 'Sin Descripción'
+  const exp = user.exp || 0
+  const nivel = user.level || 0
+  const role = user.role || 'Sin Rango'
+  const diamond = user.diamantes || 0
+  const bankDiamond = user.bank || 0
+  const premium = user.premium || false
+  const age = user.age || 'No especificada'
+  const moneda = '💎' // Puedes cambiarla si tienes una variable global
+  const club = 'Shadow Ultra' // Puedes personalizarlo o traerlo dinámico
 
   const isMarried = userId in global.db.data.marriages
   const partner = isMarried ? global.db.data.marriages[userId] : null
@@ -145,15 +147,15 @@ const handler = async (m, { conn }) => {
 > ${description}
 
 ∘🌿.• *Edad:* ${age}
-∘🌺.• *Cumpleaños:* ${birth}
+∘🌺.• *Cumpleaños:* ${cumpleanos}
 ∘💍.• *Casado/a con:* ${partnerName}
 
 ❀ *Experiencia:* ${exp.toLocaleString()}
-🜲 *Nivel:* ${level}
+🜲 *Nivel:* ${nivel}
 Ꮺ *Rango:* ${role}
 
-⛁ *Coins Cartera* » ${diamantes.toLocaleString()} ${moneda}
-⛃ *Coins Banco* » ${bank.toLocaleString()} ${moneda}
+⛁ *Coins Cartera* » ${diamond.toLocaleString()} ${moneda}
+⛃ *Coins Banco* » ${bankDiamond.toLocaleString()} ${moneda}
 ❁ *Premium* » ${premium ? '✅' : '❌'}
 `.trim()
 
