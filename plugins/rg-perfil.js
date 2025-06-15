@@ -79,7 +79,7 @@ const handler = async (m, { conn }) => {
 
 handler.help = ['profile2']
 handler.tags = ['rg']
-handler.command = ['profile2', 'perfil2']
+handler.command = ['profile', 'perfil']
 handler.register = true
 
 export default handler
