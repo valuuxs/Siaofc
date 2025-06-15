@@ -47,23 +47,25 @@ let handler = async (m, { conn, args }) => {
     let exp = user.exp || 0;
     let nivel = user.level || 0;
     let role = user.role || 'Sin Rango';
-    let coins = user.coin || 0;
-    let bankCoins = user.bank || 0;
+    let diamond = user.diamantes || 0;
+    let bankDiamond = user.bank || 0;
 
     let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg');
 
     let profileText = `
-「✿」 *Perfil* ◢@${userId.split('@')[0]}◤
-${description}
 
-✦ Edad » ${user.age || 'Desconocida'}
-♛ *Cumpleaños* » ${cumpleanos}
-⚥ *Género* » ${genero}
-♡ *Casado con* » ${pareja}
+=͟͟͞͞ ✿  *𝖯𝖾𝗋𝖿𝗂𝗅 𝖽𝖾𝗅 𝖴𝗌𝗎𝖺𝗋𝗂𝗈  ←╮*
+╰ ࣪ ˖ ∿ @${userId.split('@')[0]}
 
-☆ *Experiencia* » ${exp.toLocaleString()}
-❖ *Nivel* » ${nivel}
-✎ Rango » ${role}
+> ${description}
+
+∘🌿.• *Edad:* ${user.age || 'Desconocida'}
+∘🌺.• *Cumpleaños:* ${cumpleanos}
+∘🌾.• *Casado/a con:* ${pareja}
+
+❀ *Experiencia:* ${exp.toLocaleString()}
+🜲 *Nivel:* ${nivel}
+Ꮺ *Rango:* ${role}
 
 ⛁ *Coins Cartera* » ${coins.toLocaleString()} ${moneda}
 ⛃ *Coins Banco* » ${bankCoins.toLocaleString()} ${moneda}
@@ -76,14 +78,14 @@ ${description}
             mentionedJid: [userId],
             externalAdReply: {
                 title: '✧ Perfil de Usuario ✧',
-                body: dev,
+                body: club,
                 thumbnailUrl: perfil,
                 mediaType: 1,
                 showAdAttribution: true,
                 renderLargerThumbnail: true
             }
         }
-    }, { quoted: m });
+    }, { quoted: fkontak });
 };
 
 handler.help = ['profile'];
