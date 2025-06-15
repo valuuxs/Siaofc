@@ -1,173 +1,156 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { Boom } from '@hapi/boom';
+import moment from 'moment-timezone';
+import crypto from 'crypto';
+import readline from 'readline';
+import qrcode from 'qrcode';
 import pino from 'pino';
-import QRCode from 'qrcode';
+import { Boom } from '@hapi/boom';
+import * as ws from 'ws';
+const { CONNECTING } = ws;
+
+import { fileURLToPath } from 'url';
 import {
-  default as makeWASocket,
   useMultiFileAuthState,
+  DisconnectReason,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
-  DisconnectReason
+  jidNormalizedUser
 } from '@whiskeysockets/baileys';
+
+import { makeWASocket } from '../lib/simple.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const handler = async (msg, { conn, command }) => {
-  const usarPairingCode = ["sercode", "code"].includes(command);
+if (!(global.conns instanceof Array)) global.conns = [];
+
+let handler = async (m, { conn, command }) => {
+  const usarPairingCode = ['sercode', 'code'].includes(command);
   let sentCodeMessage = false;
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  const sleep = (ms) => new Promise(res => setTimeout(res, ms));
 
-  async function serbot() {
+  const iniciarSubBot = async () => {
     try {
-      const number = msg.key?.participant || msg.key.remoteJid;
-      const sessionDir = path.join(__dirname, "../JadiBots");
-      const sessionPath = path.join(sessionDir, number);
-      const rid = number.split("@")[0];
+      const jid = m.key.participant || m.key.remoteJid;
+      const user = jidNormalizedUser(jid); // ej: '521234567890@s.whatsapp.net'
+      const jidClean = user.replace(/[@.:]/g, '_'); // ej: '521234567890_s_whatsapp_net'
 
-      if (!fs.existsSync(sessionDir)) {
-        fs.mkdirSync(sessionDir, { recursive: true });
-      }
+      const sessionDir = path.join(__dirname, '../../subbots');
+      const sessionPath = path.join(sessionDir, jidClean);
+
+      if (!fs.existsSync(sessionDir)) fs.mkdirSync(sessionDir, { recursive: true });
 
       const sesiones = fs.readdirSync(sessionDir);
-      const maxSesiones = 10;
-
+      const maxSesiones = 100;
       if (sesiones.length >= maxSesiones) {
-        return await conn.sendMessage(msg.key.remoteJid, {
-          text: `🚫 *Límite alcanzado:*\nYa hay ${maxSesiones} subbots conectados.\n❌ No se pueden crear más por ahora.`
-        }, { quoted: msg });
+        return await conn.sendMessage(m.chat, {
+          text: `🚫 *Límite alcanzado:* Ya hay ${maxSesiones} subbots activos.`
+        }, { quoted: m });
       }
 
       const disponibles = maxSesiones - sesiones.length;
-      await conn.sendMessage(msg.key.remoteJid, {
-        text: `🆕 Nueva sesión iniciándose...\n💡 *Subbots disponibles:* ${disponibles} restantes.`
-      }, { quoted: msg });
-
-      await conn.sendMessage(msg.key.remoteJid, {
-        react: { text: '⌛', key: msg.key }
-      });
+      await conn.sendMessage(m.chat, {
+        text: `🆕 Iniciando nueva sesión...\n📊 *Subbots disponibles:* ${disponibles}`
+      }, { quoted: m });
 
       const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
       const { version } = await fetchLatestBaileysVersion();
-      const logger = pino({ level: "silent" });
+      const logger = pino({ level: 'silent' });
 
-      const socky = makeWASocket({
+      const sock = makeWASocket({
         version,
         logger,
+        browser: ['Ubuntu', 'Chrome'],
         auth: {
           creds: state.creds,
           keys: makeCacheableSignalKeyStore(state.keys, logger)
         },
-        printQRInTerminal: !usarPairingCode,
-        browser: ['Windows', 'Chrome']
+        printQRInTerminal: false
       });
 
       let reconnectionAttempts = 0;
-      const maxReconnectionAttempts = 3;
+      const maxRetries = 3;
 
-      socky.ev.on("connection.update", async ({ qr, connection, lastDisconnect }) => {
+      sock.ev.on('connection.update', async ({ connection, lastDisconnect, qr }) => {
         if (qr && !sentCodeMessage) {
           if (usarPairingCode) {
-            const code = await socky.requestPairingCode(rid);
-            await conn.sendMessage(msg.key.remoteJid, {
-              video: { url: "https://cdn.russellxz.click/b0cbbbd3.mp4" },
-              caption: "🔐 *Código generado:*\nAbre WhatsApp > Vincular dispositivo y pega el siguiente código:",
+            const code = await sock.requestPairingCode(user);
+            await conn.sendMessage(m.chat, {
+              video: { url: 'https://cdn.russellxz.click/b0cbbbd3.mp4' },
+              caption: '🔐 *Código generado:*\nPega este código en WhatsApp > Vincular dispositivo:',
               gifPlayback: true
-            }, { quoted: msg });
+            }, { quoted: m });
             await sleep(1000);
-            await conn.sendMessage(msg.key.remoteJid, {
-              text: "```" + code + "```"
-            }, { quoted: msg });
+            await conn.sendMessage(m.chat, {
+              text: '```' + code + '```'
+            }, { quoted: m });
           } else {
-            const qrImage = await QRCode.toBuffer(qr);
-            await conn.sendMessage(msg.key.remoteJid, {
+            const qrImage = await qrcode.toBuffer(qr);
+            await conn.sendMessage(m.chat, {
               image: qrImage,
-              caption: `📲 Escanea este código QR desde *WhatsApp > Vincular dispositivo* para conectarte como subbot.`
-            }, { quoted: msg });
+              caption: '📲 Escanea este QR desde *WhatsApp > Vincular dispositivo* para conectarte.'
+            }, { quoted: m });
           }
           sentCodeMessage = true;
         }
 
         switch (connection) {
-          case "open":
-            await conn.sendMessage(msg.key.remoteJid, {
-              text: `✅ WELCOME - SUB CONECTADO ES TEST HIJO DE PUTA`
-            }, { quoted: msg });
-
-            await conn.sendMessage(msg.key.remoteJid, {
-              react: { text: "🔁", key: msg.key }
-            });
+          case 'open':
+            await conn.sendMessage(m.chat, {
+              text: `🤖 *Subbot conectado exitosamente*\nBienvenido a tu subbot privado.\n\nUsa *${global.prefix}menu* para ver comandos.`
+            }, { quoted: m });
             break;
 
-          case "close": {
-            const reason = new Boom(lastDisconnect?.error)?.output.statusCode || lastDisconnect?.error?.output?.statusCode;
-            const messageError = DisconnectReason[reason] || `Código desconocido: ${reason}`;
+          case 'close': {
+            const statusCode = new Boom(lastDisconnect?.error)?.output?.statusCode || lastDisconnect?.error?.output?.statusCode;
+            const motivo = DisconnectReason[statusCode] || `Código desconocido: ${statusCode}`;
 
             const eliminarSesion = () => {
-              if (fs.existsSync(sessionPath)) {
-                fs.rmSync(sessionPath, { recursive: true, force: true });
-              }
+              if (fs.existsSync(sessionPath)) fs.rmSync(sessionPath, { recursive: true, force: true });
             };
 
-            switch (reason) {
-              case 401:
-              case DisconnectReason.badSession:
-              case DisconnectReason.loggedOut:
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Sesión eliminada.*\n${messageError}\nUsa ${global.prefix}serbot para volver a conectar.`
-                }, { quoted: msg });
-                eliminarSesion();
-                break;
-
-              case DisconnectReason.restartRequired:
-                if (reconnectionAttempts < maxReconnectionAttempts) {
-                  reconnectionAttempts++;
-                  await sleep(3000);
-                  await serbot();
-                  return;
-                }
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: `⚠️ *Reintentos de conexión fallidos.*`
-                }, { quoted: msg });
-                break;
-
-              case DisconnectReason.connectionReplaced:
-                console.log(`ℹ️ Sesión reemplazada por otra instancia.`);
-                break;
-
-              default:
-                await conn.sendMessage(msg.key.remoteJid, {
-                  text: `
-⚠️ *Problema de conexión detectado:*
- ${messageError}
-Intentando reconectar...`
-                }, { quoted: msg });
-                break;
+            if ([DisconnectReason.badSession, DisconnectReason.loggedOut, 401].includes(statusCode)) {
+              eliminarSesion();
+              await conn.sendMessage(m.chat, {
+                text: `⚠️ *Sesión finalizada.*\nMotivo: ${motivo}\nUsa nuevamente *${global.prefix}serbot* para reconectar.`
+              }, { quoted: m });
+            } else if (statusCode === DisconnectReason.restartRequired) {
+              if (reconnectionAttempts < maxRetries) {
+                reconnectionAttempts++;
+                await sleep(3000);
+                await iniciarSubBot();
+              } else {
+                await conn.sendMessage(m.chat, {
+                  text: '❌ *No se pudo reconectar después de varios intentos.*'
+                }, { quoted: m });
+              }
+            } else {
+              await conn.sendMessage(m.chat, {
+                text: `❌ *Conexión cerrada.*\nMotivo: ${motivo}`
+              }, { quoted: m });
             }
             break;
           }
         }
       });
 
-      socky.ev.on("creds.update", saveCreds);
+      sock.ev.on('creds.update', saveCreds);
 
     } catch (e) {
-      console.error("❌ Error en serbot:", e);
-      await conn.sendMessage(msg.key.remoteJid, {
-        text: `❌ *Error inesperado:* ${e.message}`
-      }, { quoted: msg });
+      console.error('[SUBBOT ERROR]', e);
+      await conn.sendMessage(m.chat, {
+        text: `❌ *Error:* ${e.message || e}`
+      }, { quoted: m });
     }
-  }
+  };
 
-  await serbot();
+  await iniciarSubBot();
 };
 
-handler.command = ['sercode', 'code', 'jadibot', 'serbot', 'qr'];
+handler.command = ['serbot', 'sercode', 'jadibot', 'code', 'qr'];
+handler.help = ['serbot', 'sercode'];
 handler.tags = ['owner'];
-handler.help = ['serbot', 'code'];
+handler.owner = true;
 
 export default handler;
