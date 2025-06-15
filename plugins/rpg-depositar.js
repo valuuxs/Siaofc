@@ -8,7 +8,7 @@ if (args[0] == 'all') {
 let count = parseInt(user.diamantes)
 user.diamantes -= count * 1
 user.bank += count * 1
-await m.reply(`*🏦 Depositaste \`${count} Diamantes\` al Banco.`)
+await m.reply(`*🏦 Depositaste \`${count} Diamantes\` al Banco.*`)
 return !0
 }
 if (!Number(args[0])) return m.reply('*⚠️ La cantidad deve ser un número.*')
