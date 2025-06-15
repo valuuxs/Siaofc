@@ -24,18 +24,18 @@ let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner }) => 
 
 const bot = global.db.data.settings[conn.user.jid] || {};
 
-if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado Por Mi Creador');
+if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado Por Mi Creador');
 
   let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
-/*  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
+  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
     return m.reply(`Este comando solo puede ser usado en el bot principal! wa.me/${global.conn.user.jid.split`@`[0]}?text=${usedPrefix}code`);
   }
-*/
+
 
   async function serbot() {
     let authFolderB = m.sender.split('@')[0];
-    const userFolderPath = `./CrowJadiBot/${authFolderB}`;
+    const userFolderPath = `./JadiBots/${authFolderB}`;
 
     if (!fs.existsSync(userFolderPath)) {
       fs.mkdirSync(userFolderPath, { recursive: true });
@@ -86,13 +86,8 @@ if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado P
       setTimeout(async () => {
         let codeBot = await conn.requestPairingCode(cleanedNumber);
         codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
-            let txt = `┌  🜲  *Usa este Código para convertirte en un Sub Bot*\n`
-            txt += `│  ❀  Pasos\n`
-            txt += `│  ❀  *1* : Haga click en los 3 puntos\n`
-            txt += `│  ❀  *2* : Toque dispositivos vinculados\n`
-            txt += `│  ❀  *3* : Selecciona *Vincular con el número de teléfono*\n` 
-            txt += `└  ❀  *4* : Escriba el Codigo\n\n`
-            txt += `*❖ Nota:* Este Código solo funciona en el número en el que se solicitó.`;
+            txt += `._.\n\n`
+            txt += `No tengo sencillo hijito`;
         await parent.reply(m.chat, txt, m);
         await parent.reply(m.chat, codeBot, m);
         rl.close();
