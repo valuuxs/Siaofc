@@ -99,9 +99,7 @@ import moment from 'moment-timezone';
 import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
 
-const moneda = '💎'; // Define tu símbolo de moneda aquí
-const club = 'Shadow Club'; // Personaliza el nombre de tu club
-const fkontak = { key: { participant: '0@s.whatsapp.net' }, message: { contactMessage: { displayName: 'Shadow Bot', vcard: '' } } };
+const fkontak2 = { key: { participant: '0@s.whatsapp.net' }, message: { contactMessage: { displayName: 'Shadow Ultra', vcard: '' } } };
 
 const loadMarriages = () => {
     if (fs.existsSync('./src/database/marry.json')) {
@@ -126,7 +124,6 @@ const handler = async (m, { conn, args }) => {
     const name = await conn.getName(userId);
     const cumpleanos = user.birth || 'No especificado';
     const genero = user.genre || 'No especificado';
-    const pareja = user.marry || 'Nadie';
     const description = user.description || 'Sin Descripción';
     const exp = user.exp || 0;
     const nivel = user.level || 0;
@@ -134,6 +131,9 @@ const handler = async (m, { conn, args }) => {
     const diamond = user.diamantes || 0;
     const bankDiamond = user.bank || 0;
 
+    let isMarried = who in global.db.data.marriages
+    let partner = isMarried ? global.db.data.marriages[who] : null
+    let partnerName = partner ? await conn.getName(partner) : 'Nadie'
     const perfil = await conn.profilePictureUrl(userId, 'image')
         .catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg');
 
@@ -145,7 +145,7 @@ const handler = async (m, { conn, args }) => {
 
 ∘🌿.• *Edad:* ${user.age || 'Desconocida'}
 ∘🌺.• *Cumpleaños:* ${cumpleanos}
-∘🌾.• *Casado/a con:* ${pareja}
+∘💍.• *Casado/a con:* ${isMarried ? partnerName : 'Nadie'}
 
 ❀ *Experiencia:* ${exp.toLocaleString()}
 🜲 *Nivel:* ${nivel}
@@ -169,7 +169,7 @@ const handler = async (m, { conn, args }) => {
                 renderLargerThumbnail: true
             }
         }
-    }, { quoted: fkontak });
+    }, { quoted: fkontak2 });
 };
 
 handler.help = ['profile'];
