@@ -1,40 +1,24 @@
-import { promises as fs } from "fs"
-import path from "path"
+import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch, rmSync, promises as fs} from "fs"
+import path, { join } from 'path'
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-  let parentw = conn
-  let who = m.mentionedJid && m.mentionedJid[0]
-    ? m.mentionedJid[0]
-    : m.fromMe
-    ? conn.user.jid
-    : m.sender
+let handler  = async (m, { conn: parentw, usedPrefix, command}, args) => {
 
-  let uniqid = `${who.split`@`[0]}`
-  let sessionPath = `./JadiBots/${uniqid}`
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let uniqid = `${who.split`@`[0]}`
+let userS = `${conn.getName(who)}`
 
-  // Solo permitir que el bot principal elimine sesiones
-  if (global.conn.user.jid !== conn.user.jid) {
-    let link = `https://api.whatsapp.com/send/?phone=${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}&type=phone_number&app_absent=0`
-    return conn.sendMessage(m.chat, {
-      text: `⚠️ Este comando solo puede ejecutarlo el *bot principal*.\n\n👉 Ejecuta el comando desde el bot principal:\n${link}`
-    }, { quoted: m })
-  }
-
-  try {
-    await fs.rm(sessionPath, { recursive: true, force: true })
-    await conn.sendMessage(m.chat, { text: '✅ Sesión de SubBot eliminada con éxito.' }, { quoted: m })
-    await conn.sendMessage(m.chat, { text: '🚪 SubBot cerrado correctamente.' }, { quoted: m })
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      await conn.sendMessage(m.chat, { text: '⚠️ No se encontró ninguna sesión activa para eliminar.' }, { quoted: m })
-    } else {
-      console.error('[❌ ERROR AL ELIMINAR SESIÓN]', err)
-      await conn.sendMessage(m.chat, { text: '❌ Ocurrió un error al intentar eliminar la sesión.' }, { quoted: m })
-    }
-  }
-}
-
-handler.command = /^(deletesess?ion|eliminarsesion|borrarsesion|delsess?ion|cerrarsesion)$/i
+try {
+await fs.rmdir("./JadiBots/" + uniqid, { recursive: true, force: true })
+await parentw.sendMessage(m.chat, { text: '🚩 Sub-Bot eliminado.' }, { quoted: fkontak })
+} catch(err) {
+if (err.code === 'ENOENT' && err.path === `./JadiBots/${uniqid}`) {
+await parentw.sendMessage(m.chat, { text: "🌠 No cuentas con ninguna sesión de Sub-Bot." }, { quoted: fkontak })
+} else {
+await m.react(error)
+}}}
+handler.tags = ['serbot']
+handler.help = ['delsession']
+handler.command = /^(deletesess?ion|eliminarsesion|borrarsesion|delsess?ion|cerrarsesion|delserbot|logout)$/i
 //handler.private = true
 handler.fail = null
 
