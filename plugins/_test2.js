@@ -133,8 +133,6 @@ const handler = async (m, { conn }) => {
   const bankDiamond = user.bank || 0
   const premium = user.premium || false
   const age = user.age || 'No especificada'
-  const moneda = '💎' // Puedes cambiarla si tienes una variable global
-  const club = 'Shadow Ultra' // Puedes personalizarlo o traerlo dinámico
 
   const isMarried = userId in global.db.data.marriages
   const partner = isMarried ? global.db.data.marriages[userId] : null
