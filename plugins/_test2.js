@@ -94,86 +94,91 @@ handler.command = ['profile2', 'perfil2'];
 
 export default handler;*/
 
-import fs from 'fs';
-import moment from 'moment-timezone';
-import PhoneNumber from 'awesome-phonenumber';
-import fetch from 'node-fetch';
+import fs from 'fs'
+import PhoneNumber from 'awesome-phonenumber'
+import fetch from 'node-fetch'
 
-const fkontak2 = { key: { participant: '0@s.whatsapp.net' }, message: { contactMessage: { displayName: 'Shadow Ultra', vcard: '' } } };
+const fkontak2 = {
+  key: { participant: '0@s.whatsapp.net' },
+  message: {
+    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
+  }
+}
 
 const loadMarriages = () => {
-    if (fs.existsSync('./src/database/marry.json')) {
-        const data = JSON.parse(fs.readFileSync('./src/database/marry.json', 'utf-8'));
-        global.db.data.marriages = data;
-    } else {
-        global.db.data.marriages = {};
-    }
-};
+  const path = './src/database/marry.json'
+  global.db.data.marriages = fs.existsSync(path)
+    ? JSON.parse(fs.readFileSync(path, 'utf-8'))
+    : {}
+}
 
-const handler = async (m, { conn, args }) => {
-    loadMarriages();
+const handler = async (m, { conn }) => {
+  loadMarriages()
 
-    let userId;
-    if (m.quoted?.sender) {
-        userId = m.quoted.sender;
-    } else {
-        userId = m.mentionedJid?.[0] || m.sender;
-    }
+  const userId = m.quoted?.sender || m.mentionedJid?.[0] || m.sender
+  const user = global.db.data.users[userId] || {}
+  const name = await conn.getName(userId)
 
-    const user = global.db.data.users[userId] || {};
-    const name = await conn.getName(userId);
-    const cumpleanos = user.birth || 'No especificado';
-    const genero = user.genre || 'No especificado';
-    const description = user.description || 'Sin Descripción';
-    const exp = user.exp || 0;
-    const nivel = user.level || 0;
-    const role = user.role || 'Sin Rango';
-    const diamond = user.diamantes || 0;
-    const bankDiamond = user.bank || 0;
+  const perfilUrl = await conn.profilePictureUrl(userId, 'image')
+    .catch(() => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-    let isMarried = who in global.db.data.marriages
-    let partner = isMarried ? global.db.data.marriages[who] : null
-    let partnerName = partner ? await conn.getName(partner) : 'Nadie'
-    const perfil = await conn.profilePictureUrl(userId, 'image')
-        .catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg');
+  const {
+    description = 'Sin Descripción',
+    age = 'Desconocida',
+    birth = 'No especificado',
+    genre = 'No especificado',
+    exp = 0,
+    level = 0,
+    role = 'Sin Rango',
+    diamantes = 0,
+    bank = 0,
+    premium = false
+  } = user
 
-    const profileText = `
+  const moneda = '💎'
+  const club = 'Shadow Bot MD'
+
+  const isMarried = userId in global.db.data.marriages
+  const partner = isMarried ? global.db.data.marriages[userId] : null
+  const partnerName = partner ? await conn.getName(partner) : 'Nadie'
+
+  const profileText = `
 =͟͟͞͞ ✿  *𝖯𝖾𝗋𝖿𝗂𝗅 𝖽𝖾𝗅 𝖴𝗌𝗎𝖺𝗋𝗂𝗈  ←╮*
 ╰ ࣪ ˖ ∿ @${userId.split('@')[0]}
 
 > ${description}
 
-∘🌿.• *Edad:* ${user.age || 'Desconocida'}
-∘🌺.• *Cumpleaños:* ${cumpleanos}
-∘💍.• *Casado/a con:* ${isMarried ? partnerName : 'Nadie'}
+∘🌿.• *Edad:* ${age}
+∘🌺.• *Cumpleaños:* ${birth}
+∘💍.• *Casado/a con:* ${partnerName}
 
 ❀ *Experiencia:* ${exp.toLocaleString()}
-🜲 *Nivel:* ${nivel}
+🜲 *Nivel:* ${level}
 Ꮺ *Rango:* ${role}
 
-⛁ *Coins Cartera* » ${diamond.toLocaleString()} ${moneda}
-⛃ *Coins Banco* » ${bankDiamond.toLocaleString()} ${moneda}
-❁ *Premium* » ${user.premium ? '✅' : '❌'}
-`.trim();
+⛁ *Coins Cartera* » ${diamantes.toLocaleString()} ${moneda}
+⛃ *Coins Banco* » ${bank.toLocaleString()} ${moneda}
+❁ *Premium* » ${premium ? '✅' : '❌'}
+`.trim()
 
-    await conn.sendMessage(m.chat, {
-        text: profileText,
-        contextInfo: {
-            mentionedJid: [userId],
-            externalAdReply: {
-                title: '✧ Perfil de Usuario ✧',
-                body: club,
-                thumbnailUrl: perfil,
-                mediaType: 1,
-                showAdAttribution: true,
-                renderLargerThumbnail: true
-            }
-        }
-    }, { quoted: fkontak2 });
-};
+  await conn.sendMessage(m.chat, {
+    text: profileText,
+    contextInfo: {
+      mentionedJid: [userId],
+      externalAdReply: {
+        title: '✧ Perfil de Usuario ✧',
+        body: club,
+        thumbnailUrl: perfilUrl,
+        mediaType: 1,
+        showAdAttribution: true,
+        renderLargerThumbnail: true
+      }
+    }
+  }, { quoted: fkontak2 })
+}
 
-handler.help = ['profile'];
-handler.tags = ['rg'];
-handler.command = ['profile2', 'perfil2'];
+handler.help = ['profile2']
+handler.tags = ['rg']
+handler.command = ['profile2', 'perfil2']
 
-export default handler;
+export default handler
