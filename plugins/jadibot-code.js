@@ -22,9 +22,9 @@ if (!(global.conns instanceof Array)) global.conns = [];
 
 let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner }) => {
 
-const bot = global.db.data.settings[conn.user.jid] || {};
+  const bot = global.db.data.settings[conn.user.jid] || {};
 
-if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado Por Mi Creador');
+  if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado Por Mi Creador');
 
   let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
@@ -32,6 +32,7 @@ if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado
     return m.reply(`Este comando solo puede ser usado en el bot principal! wa.me/${global.conn.user.jid.split`@`[0]}?text=${usedPrefix}code`);
   }
 
+  await m.react('⏳'); // REACCIÓN DE ESPERA
 
   async function serbot() {
     let authFolderB = m.sender.split('@')[0];
@@ -86,8 +87,7 @@ if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado
       setTimeout(async () => {
         let codeBot = await conn.requestPairingCode(cleanedNumber);
         codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
-            txt += `._.\n\n`
-            txt += `No tengo sencillo hijito`;
+        let txt = `._.\n\nNo tengo sencillo hijito`;
         await parent.reply(m.chat, txt, m);
         await parent.reply(m.chat, codeBot, m);
         rl.close();
@@ -109,6 +109,7 @@ if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado
         global.conns.splice(i, 1);
         fs.rmdirSync(userFolderPath, { recursive: true });
         if (code !== DisconnectReason.connectionClosed) {
+          await m.react('❌'); // REACCIÓN DE ERROR
           parent.sendMessage(m.chat, { text: "Conexión perdida.." }, { quoted: m });
         }
       }
@@ -116,6 +117,7 @@ if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado
       if (global.db.data == null) loadDatabase();
 
       if (connection == 'open') {
+        await m.react('✅'); // REACCIÓN DE ÉXITO
         conn.isInit = true;
         global.conns.push(conn);
         await parent.reply(m.chat, args[0] ? 'Conectado con éxito' : `❀ ᥴ᥆ᥒᥱᥴ𝗍ᥲძ᥆ ᥱ᥊і𝗍᥆sᥲmᥱᥒ𝗍ᥱ ᥲ ᥕһᥲ𝗍sᥲ⍴⍴, ᥣᥲ ⍴r᥆́᥊іmᥲ ᥎ᥱz 𝗊ᥙᥱ sᥱ ძᥱsᥴ᥆ᥒᥱᥴ𝗍ᥱ ᥙsᥱ *#delsesion* ᥡ ძᥱ ᥒᥙᥱ᥎᥆ *#code*.\n\n> ${dev}`, m);
