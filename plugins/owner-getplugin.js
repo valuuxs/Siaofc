@@ -24,12 +24,12 @@ const handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
   } finally {
     const { stdout, stderr } = o;
     if (stdout.trim()) {
-      // const aa = await conn.sendMessage(m.chat, { text: stdout }, { quoted: m });
-      await conn.sendMessage(m.chat, { document: fs.readFileSync(`./plugins/${text}.js`), mimetype: 'application/javascript', fileName: `${text}.js` }, { quoted: m });
+       const aa = await conn.sendMessage(m.chat, { text: stdout }, { quoted: m });
+     // await conn.sendMessage(m.chat, { document: fs.readFileSync(`./plugins/${text}.js`), mimetype: 'application/javascript', fileName: `${text}.js` }, { quoted: m });
     }
     if (stderr.trim()) {
-      // const aa2 = await conn.sendMessage(m.chat, { text: stderr }, { quoted: m });
-      await conn.sendMessage(m.chat, { document: fs.readFileSync(`./plugins/${text}.js`), mimetype: 'application/javascript', fileName: `${text}.js` }, { quoted: m });
+       const aa2 = await conn.sendMessage(m.chat, { text: stderr }, { quoted: m });
+    //  await conn.sendMessage(m.chat, { document: fs.readFileSync(`./plugins/${text}.js`), mimetype: 'application/javascript', fileName: `${text}.js` }, { quoted: m });
     }
   }
 };
