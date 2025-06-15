@@ -77,13 +77,13 @@ const handler = async (m, { conn }) => {
 ∘🌺.• *Cumpleaños:* ${cumpleanos}
 ∘💍.• *Casado/a con:* ${partnerName}
 
-❀ *Experiencia:* ${exp.toLocaleString()}
-🜲 *Nivel:* ${nivel}
-Ꮺ *Rango:* ${role}
+ᦷᩘᦷ *Experiencia:* ${exp.toLocaleString()}
+ᦷᩘᦷ *Nivel:* ${nivel}
+ᦷᩘᦷ *Rango:* ${role}
+ᦷᩘᦷ *Premium:* ${premium ? '✅' : '❌'}
 
-⛁ *Coins Cartera* » ${diamond.toLocaleString()} ${moneda}
-⛃ *Coins Banco* » ${bankDiamond.toLocaleString()} ${moneda}
-❁ *Premium* » ${premium ? '✅' : '❌'}
+💎 *Diamantes:* \`${diamond.toLocaleString()}\` 
+🏦 *Bank:* \`${bankDiamond.toLocaleString()}\`
 `.trim()
 
   await conn.sendMessage(m.chat, {
@@ -105,5 +105,6 @@ const handler = async (m, { conn }) => {
 handler.help = ['profile2']
 handler.tags = ['rg']
 handler.command = ['profile2', 'perfil2']
+handler.register = true
 
 export default handler
