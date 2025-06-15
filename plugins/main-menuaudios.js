@@ -11,17 +11,16 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
     const pp = 'https://files.catbox.moe/9d4ria.jpg';
     const img = await (await fetch(pp)).buffer()
-    const shadow = '𝖬𝖾𝗇𝗎́ 𝖮𝗐𝗇𝖾𝗋';
+    const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
 
     const text = `
  ꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
-‎ ‎꒲꒲  *Hola*  ׅ ෫ׄ᷼͝${taguser}  ಒ
- ‎ ‎ ‎ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*Bienvenido* ‎ ‎  ‎ ‎✿̮    ׅ  al   ୂ  
+  *Hola*  ׅ ෫ׄ᷼͝${taguser}  ಒ
+ ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*Bienvenido* ‎ ‎  ‎ ‎✿̮    ׅ  al   ୂ  
  ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
 
-> \`\`\`${date}\`\`\`
 
 *🌴 Nombre:* Shadow Ultra
 *☕ Creador:* Cristian
@@ -45,7 +44,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 𑂯 ׁ${xowner} ${usedPrefix}unbanuser
 𑂯 ׁ${xowner} ${usedPrefix}dsowner
 𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
-${club}
+>${club}
 `.trim();
 /*
     conn.sendMessage(m.chat, {
