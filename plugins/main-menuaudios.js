@@ -21,7 +21,6 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
  ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*Bienvenido* ‎ ‎  ‎ ‎✿̮    ׅ  al   ୂ  
  ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
 
-
 *🌴 Nombre:* Shadow Ultra
 *☕ Creador:* Cristian
 *📚 Librería:* Baileys
@@ -29,7 +28,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 *🚀 Type:* NodeJs
 *🧇 Usuarios regs:* ${rtotalreg}
 *🥞 Usuarios totales:* ${totalreg}
-
+${readMore}
 ෨   \`Lista de Comandos\`    𓈒𓏸    ☁︎ 
 𑂯 ׁ${xowner} ${usedPrefix}update
 𑂯 ׁ${xowner} ${usedPrefix}leavegc
@@ -44,7 +43,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 𑂯 ׁ${xowner} ${usedPrefix}unbanuser
 𑂯 ׁ${xowner} ${usedPrefix}dsowner
 𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
->${club}
+> ${club}
 `.trim();
 /*
     conn.sendMessage(m.chat, {
