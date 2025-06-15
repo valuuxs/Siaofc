@@ -151,6 +151,6 @@ let handler = async (m, { conn, command }) => {
 handler.command = ['serbot', 'sercode', 'jadibot', 'code', 'qr'];
 handler.help = ['serbot', 'sercode'];
 handler.tags = ['owner'];
-handler.owner = true;
+handler.owner = false;
 
 export default handler;
