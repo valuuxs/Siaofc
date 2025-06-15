@@ -24,18 +24,18 @@ let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner }) => 
 
 const bot = global.db.data.settings[conn.user.jid] || {};
 
-if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado Por Mi Creador');
+if (!bot.jadibotmd) return m.reply('☁️ Este Comando Se Encuentra Desactivado Por Mi Creador');
 
   let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn;
 
-/*  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
+  if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
     return m.reply(`Este comando solo puede ser usado en el bot principal! wa.me/${global.conn.user.jid.split`@`[0]}?text=${usedPrefix}code`);
   }
-*/
+
 
   async function serbot() {
     let authFolderB = m.sender.split('@')[0];
-    const userFolderPath = `./CrowJadiBot/${authFolderB}`;
+    const userFolderPath = `./JadiBots/${authFolderB}`;
 
     if (!fs.existsSync(userFolderPath)) {
       fs.mkdirSync(userFolderPath, { recursive: true });
@@ -128,7 +128,7 @@ if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado P
         if (args[0]) return;
 
         await parent.reply(conn.user.jid, `La siguiente vez que se conecte envía el siguiente mensaje para iniciar sesión sin utilizar otro código `, m);
-        await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + " " + Buffer.from(fs.readFileSync(`./CrowJadiBot/${authFolderB}/creds.json`), "utf-8").toString("base64") }, { quoted: m });
+        await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + " " + Buffer.from(fs.readFileSync(`./JadiBots/${authFolderB}/creds.json`), "utf-8").toString("base64") }, { quoted: m });
       }
     }
 
