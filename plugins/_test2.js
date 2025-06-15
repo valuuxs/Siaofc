@@ -135,8 +135,6 @@ const handler = async (m, { conn }) => {
     premium = false
   } = user
 
-  const moneda = '💎'
-  const club = 'Shadow Bot MD'
 
   const isMarried = userId in global.db.data.marriages
   const partner = isMarried ? global.db.data.marriages[userId] : null
