@@ -22,7 +22,7 @@ global.owner = [
 
 //─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 
-global.mods = []
+global.mods = ['593997174996']
 global.suittag = ['51927238856'] 
 global.prems = []
 
