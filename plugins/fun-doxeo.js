@@ -90,7 +90,9 @@ const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.
   const doxeo = `*\`👨🏻‍💻 DOXEO FINALIZADO\`*
 > *Realizado en* \`${speed} segundos\`
 
-${fechaHora}
+📆 *${date}*
+⏰ *${hora}*
+
 
 *RESULTADOS OBTENIDOS - V5*
 
@@ -133,7 +135,7 @@ ${fechaHora}
 
 handler.help = ['doxear'];
 handler.tags = ['fun'];
-handler.command = ['doxxeo', 'doxxear', 'doxeo', 'doxear', 'doxxing', 'doxing', 'doxx'];
+handler.command = ['doxxeo', 'doxxear', 'doxeo', 'doxear', 'doxxing', 'doxing', 'doxx', 'dox'];
 handler.group = true;
 
 export default handler;
