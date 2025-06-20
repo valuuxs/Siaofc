@@ -13,7 +13,6 @@ let handler = async (m, { conn }) => {
 }
 handler.help = ['ping']
 handler.tags = ['info']
-handler.command = ['ping']
-handler.register = true
+handler.command = ['ping', 'p']
 
 export default handler
