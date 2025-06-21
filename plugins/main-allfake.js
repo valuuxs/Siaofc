@@ -143,14 +143,14 @@ global.date = `${diaSemana}, ${fecha.format('D')} de ${mes} del ${fecha.format('
 global.hora = fecha.format('h:mm A')
 
 //TAGS & STICKERS
-global.nombre = await conn.getName(m.sender)
+global.usname = await conn.getName(m.sender)
 global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 
 global.packN = `協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  🍁 ࣪ ˖ ∿
 ↳ @shadows_club\n\n☁ 𝖡𝗈𝗍:\n↳ @Shadow Ultra\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:\n`;
-global.authN = `\n↳ @Criss`;
+global.authN = `\n↳ ${usname}`;
 
 //FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
