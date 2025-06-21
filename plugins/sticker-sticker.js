@@ -33,7 +33,7 @@ let handler = async (m, { conn, args }) => {
 
     } else if (args[0]) {
       if (!isValidUrl(args[0])) return m.reply('❌ La *URL* es inválida.')
-      stiker = await sticker(false, args[0], global.packname, global.author)
+      stiker = await sticker(false, args[0], global.packN, global.authN)
     } else {
       return m.reply(mensajeError)
     }
