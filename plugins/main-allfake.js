@@ -85,12 +85,12 @@ global.wait = '*⏳ Aguarde un momento...*';
 global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.';
 
 //ENLACES
-var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
-var github = 'https://github.com/CrxstianEscobar/ShadowBot-MD' 
+var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'  
+var github = 'https://github.com/CrxstianEscobar/ShadowUltra-MD' 
 var web = 'https://shadow-bot.vercel.app/' 
 let instagram = 'https://www.instagram.com/shadowbot.md'
 
-global.redes = [grupo, github, web, instagram].getRandom()
+global.redes = [group, github, web, instagram].getRandom()
 
 //IMAGEN
 let category = "imagen"
@@ -133,7 +133,6 @@ switch(hour) {
 global.saludo = hour;
 
 // FECHA Y HORA EN FORMATO PERSONALIZADO (ZONA HORARIA PERÚ)
-
 const fecha = moment().tz('America/Lima').locale('es')
 let diaSemana = fecha.format('dddd')
 let mes = fecha.format('MMMM')
