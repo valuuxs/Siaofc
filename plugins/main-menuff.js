@@ -57,7 +57,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
   }
 };
 
-handler.command = /^(menuowner)$/i;
+handler.command = /^(menuff|menufreefire|ff|ffcomandos|comandosff|comandosfreefire|freefire|freefir|freefiri)$/i;
 handler.fail = null;
 
 export default handler;
