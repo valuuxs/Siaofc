@@ -28,7 +28,7 @@ let handler = async (m, { conn, args }) => {
           return m.reply('❌ No se pudo obtener una URL válida del archivo.')
         }
 
-        stiker = await sticker(false, url, global.packname, global.author)
+        stiker = await sticker(false, url, global.packN, global.authN)
       }
 
     } else if (args[0]) {
