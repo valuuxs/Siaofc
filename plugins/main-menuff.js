@@ -1,17 +1,21 @@
 import fetch from 'node-fetch';
 
-const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
-
+const handler = async (m, { conn, usedPrefix, isPrems }) => {
   try {
-    //const img = './media/menus/Menu2.jpg';
-    const videoUrl = 'https://files.catbox.moe/siww4z.mp4'
-    const more = String.fromCharCode(8206);
-    const readMore = more.repeat(850);
+    await m.react('🎮');
+
+    const _uptime = process.uptime() * 1000;
+    const uptime = clockString(_uptime);
+    const pp = 'https://files.catbox.moe/9d4ria.jpg';
+    const img = await (await fetch(pp)).buffer()
+    const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+    const txt = `${await conn.getName(m.sender)}, Welcome to my game menu, follow me on Instagram, thank you very much.`;
 
-    const str = `> 👋🏻 ¡Hola!, ${taguser}
+    const text = `
+> 👋🏻 ¡Hola!, ${taguser}
 
-\`\`\`${fechaHora}\`\`\`
+\`\`\`${date}||{hora}\`\`\`
 
 ╭─• *MENÚ FREE FIRE*
 │ 𝘉𝘪𝘦𝘯𝘷𝘦𝘯𝘪𝘥𝘰
@@ -43,34 +47,26 @@ const handler = async (m, {conn, usedPrefix, text, isPrems}) => {
 ┃⚙️➺ .encuesta
 ┃⚙️➺ .sala
 ╰━━━━━━⋆★⋆━━━━━━⬣
+
 `.trim();
-/*
-    conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
-await conn.sendMessage(m.chat, { react: { text: '🎮', key: m.key } });*/
+  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)
 
-      await conn.sendMessage(m.chat, {
-            video: { url: videoUrl },
-            caption: str,
-            mentions: [m.sender],
-            gifPlayback: true
-        }, { quoted: fkontak })
-
-//await conn.sendMessage(m.chat, { react: { text: '😇', key: m.key } });
-
-  } catch {
-    conn.reply(m.chat,'*[ ℹ️ ] Error al enviar el video.*\n\n${e}', m);
+  } catch (e) {
+    conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);
   }
 };
 
-handler.command = /^(menuff|comandosff)$/i;
+handler.command = /^(menuowner)$/i;
 handler.fail = null;
 
 export default handler;
 
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
 function clockString(ms) {
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
