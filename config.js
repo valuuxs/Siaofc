@@ -18,11 +18,12 @@ global.owner = [
   ['5493865536185',  'Kenisawa (Colab)', true],
   ['90812788543600', 'Cris', true], //@lid
   ['51953857556', 'Undefined', true]
+  ['593997174996', 'idk', false]
 ];
 
 //─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 
-global.mods = ['593997174996']
+global.mods = ['']
 global.suittag = ['51927238856'] 
 global.prems = []
 
