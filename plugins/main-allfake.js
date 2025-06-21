@@ -80,7 +80,7 @@ global.xreg = '🪴'
 
 
 
-//MENSAJE DE ESPERA 
+//MENSAJES DE AVISOS
 global.wait = '*⏳ Aguarde un momento...*';
 global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.';
 
