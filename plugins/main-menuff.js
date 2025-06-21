@@ -15,7 +15,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const text = `
 > 👋🏻 ¡Hola!, ${taguser}
 
-\`\`\`${date}||{hora}\`\`\`
+\`\`\`${date}||${hora}\`\`\`
 
 ╭─• *MENÚ FREE FIRE*
 │ 𝘉𝘪𝘦𝘯𝘷𝘦𝘯𝘪𝘥𝘰
