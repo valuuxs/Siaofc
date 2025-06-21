@@ -149,7 +149,7 @@ var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 
 global.packN = `協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  🍁 ࣪ ˖ ∿
-↳ @shadows_club\n\n☁ 𝖡𝗈𝗍:\n↳ @Shadow Ultra\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:\n`;
+↳ @shadows_club\n☁ 𝖡𝗈𝗍:\n↳ @Shadow Ultra\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:`;
 global.authN = `\n↳ ${usname}`;
 
 //FAKES
