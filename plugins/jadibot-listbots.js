@@ -41,20 +41,19 @@ async function handler(m, { conn: stars, usedPrefix }) {
 
   const message = users.map((v, index) => {
     const jidNum = v.user.jid.replace(/[^0-9]/g, '')
-    return `╭─⬣「 ${packname} 」⬣
-│⁖ฺ۟̇࣪·֗٬̤⃟🤍 *${index + 1}.-* @${jidNum}
-│❀ *Link:* https://wa.me/${jidNum}
-│❀ *Nombre:* ${v.user.name || '𝚂𝚄𝙱-𝙱𝙾𝚃'}
-╰─⬣`
-  }).join('\n\n')
+    return `⪧ *\`${index + 1}.-\`* *SubBot - Shadow Ultra*
+ᦷᩘᦷ @${jidNum}
+🌴 *Nombre:* ${v.user.name || 'Desconocido'}
+🌿 *Link:* https://wa.me/${jidNum}`
+  }).join('\n')
 
   global.totalUsers = users.length
 
-  const responseMessage = `╭━〔 𝗦𝗨𝗕-𝗕𝗢𝗧𝗦 𝗝𝗔𝗗𝗜𝗕𝗢𝗧 🌹 〕⬣
-┃ *𝚃𝙾𝚃𝙰𝙻 𝙳𝙴 𝚂𝚄𝙱𝙱𝙾𝚃𝚂* : ${totalUsers || 0}
-╰━━━━━━━━━━━━⬣
+  const responseMessage = `
+*SHADOW - JADIBOT LIST*
+> *Total de Subs:* *\`${totalUsers || 0}\`*
 
-${message || 'No hay subbots activos.'}`.trim()
+${message || '*No hay Subs activos.*'}`.trim()
 
   await stars.sendMessage(m.chat, {
     text: responseMessage,
@@ -62,7 +61,7 @@ ${message || 'No hay subbots activos.'}`.trim()
   }, { quoted: fkontak })
 }
 
-handler.command = ['listjadibot', 'bots']
+handler.command = ['listjadibot', 'bots', 'subs']
 handler.help = ['bots']
 handler.tags = ['serbot']
 export default handler
