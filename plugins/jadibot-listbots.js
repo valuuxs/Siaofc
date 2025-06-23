@@ -45,7 +45,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
 ᦷᩘᦷ @${jidNum}
 🌴 *Nombre:* ${v.user.name || 'Desconocido'}
 🌿 *Link:* https://wa.me/${jidNum}`
-  }).join('\n')
+  }).join('\n\n')
 
   global.totalUsers = users.length
 
