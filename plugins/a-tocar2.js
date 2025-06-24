@@ -5,13 +5,13 @@ import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysoc
 const handler = async (m, { conn, args, usedPrefix }) => {
   if (!args[0]) return conn.reply(m.chat, 'Por favor ingresa un término de búsqueda', m);
 
-  await m.react('🕓');
+  await m.react('🎶');
   try {
     let query = args.join(" ");
     let searchResults = await searchVideos(query);
     let spotifyResults = await searchSpotify(query);
 
-    if (!searchResults.length && !spotifyResults.length) throw new Error('No se encontraron resultados.');
+    if (!searchResults.length && !spotifyResults.length) throw new Error('*✖️ No se encontraron resultados.*');
 
     let video = searchResults[0];
 
@@ -19,7 +19,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     try {
       thumbnail = await (await fetch(video.miniatura)).buffer();
     } catch (e) {
-      console.warn('No se pudo obtener la miniatura, usando imagen por defecto.');
+      console.warn('*✖️ No se pudo obtener la miniatura, usando imagen por defecto.*');
       thumbnail = await (await fetch('https://telegra.ph/file/36f2a1bd2aaf902e4d1ff.jpg')).buffer();
     }
 
