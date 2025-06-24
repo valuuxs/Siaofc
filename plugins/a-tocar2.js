@@ -1,4 +1,4 @@
-/*import yts from 'yt-search';
+import yts from 'yt-search';
 import fetch from 'node-fetch';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
@@ -155,5 +155,5 @@ function convertTimeToSpanish(timeText) {
     .replace(/day/, 'día').replace(/days/, 'días')
     .replace(/hour/, 'hora').replace(/hours/, 'horas')
     .replace(/minute/, 'minuto').replace(/minutes/, 'minutos');
-}*/
+}
 
