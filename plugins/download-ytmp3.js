@@ -1,4 +1,4 @@
-/*import axios from 'axios';
+import axios from 'axios';
 import crypto from 'crypto';
 
 const savetube = {
@@ -145,7 +145,7 @@ const handler = async (m, { conn, args }) => {
     let res = await savetube.download(url);
     if (!res.status) {
       await m.react('✖️');
-      return m.reply(`\`\`\`❌ Error:\`\`\` ${res.error}`);
+      return m.reply(`*❌ Error:*` ${res.error}`);
     }
 
     const { title, download } = res.result;
@@ -167,123 +167,4 @@ handler.help = ['ytmp3 *<url>*'];
 handler.command = ['ytmp3'];
 handler.tags = ['descargas'];
 
-export default handler;*/
-
-import axios from 'axios';
-import FormData from 'form-data';
-import crypto from 'crypto';
-
-const handler = async (m, { conn, args }) => {
-  if (!args[0]) return m.reply(`*Ingresa una URL de un video o audio de YouTube*`);
-
-  const url = args[0];
-
-  if (!youtubeScraper.isValidYouTubeUrl(url)) {
-    return m.reply(`*URL inválida, asegúrate de ingresar un enlace de YouTube válido.*`);
-  }
-
-  await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
-
-  try {
-    const mp3Result = await youtubeScraper.youtubeMp3(url);
-
-    if (!mp3Result.success) {
-      await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
-      return m.reply(`❌ Error: ${mp3Result.error.message}`);
-    }
-
-    console.log("Título:", mp3Result.data.title);
-    console.log("Enlace de descarga:", mp3Result.data.downloadUrl);
-
-    await conn.sendMessage(m.chat, {
-      audio: { url: mp3Result.data.downloadUrl },
-      mimetype: "audio/mp4",
-      fileName: mp3Result.data.title,
-      mentions: [m.sender]
-    }, { quoted: m });
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-
-  } catch (e) {
-    console.error(e);
-    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
-    m.reply(`❌ Ocurrió un error inesperado al procesar tu solicitud.`);
-  }
-};
-
-handler.help = ['ytmp3 *<url>*'];
-handler.command = ['ytmp3'];
-handler.tags = ['descargas'];
-
 export default handler;
-
-// === Clases de respuesta ===
-
-class Success {
-  constructor(data) {
-    this.success = true;
-    this.data = data;
-  }
-}
-
-class ErrorResponse {
-  constructor(error) {
-    this.success = false;
-    this.error = typeof error === 'string' ? { message: error } : error;
-  }
-}
-
-// === Funciones del scraper ===
-
-const youtubeScraper = {
-  youtubeMp3: async (url) => {
-    try {
-      if (!url || (!url.includes('youtube.com') && !url.includes('youtu.be'))) {
-        return new ErrorResponse("¡URL de YouTube no válida!");
-      }
-
-      const ds = new FormData();
-      ds.append("url", url);
-
-      const { data } = await axios.post(
-        "https://www.youtubemp3.ltd/convert",
-        ds,
-        {
-          headers: {
-            ...ds.getHeaders(),
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-          },
-          timeout: 45000
-        }
-      );
-
-      if (!data || !data.link) {
-        return new ErrorResponse("No se pudo obtener el enlace de descarga");
-      }
-
-      return new Success({
-        title: data.filename || "Título desconocido",
-        downloadUrl: data.link,
-        type: "mp3"
-      });
-
-    } catch (error) {
-      if (error.code === 'ECONNABORTED') {
-        return new ErrorResponse("Tiempo de espera agotado, inténtelo de nuevo más tarde");
-      }
-
-      return new ErrorResponse(error.response?.data?.message || error.message || "Fallo al convertir el video");
-    }
-  },
-
-  isValidYouTubeUrl: (url) => {
-    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-    return youtubeRegex.test(url);
-  },
-
-  extractVideoId: (url) => {
-    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-    const match = url.match(regex);
-    return match ? match[1] : null;
-  }
-};
