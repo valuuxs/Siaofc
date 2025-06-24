@@ -23,12 +23,14 @@ const handler = async (m, { conn, args, usedPrefix }) => {
       thumbnail = await (await fetch('https://telegra.ph/file/36f2a1bd2aaf902e4d1ff.jpg')).buffer();
     }
 
-    let messageText = `> *𝖸𝗈𝗎𝖳𝗎𝖻𝖾 𝖯𝗅𝖺𝗒 🧇.*\n\n`;
-    messageText += `${video.titulo}\n\n`;
-    messageText += `• *𝖣𝗎𝗋𝖺𝖼𝗂𝗈𝗇:* ${video.duracion || 'No disponible'}\n`;
-    messageText += `• *𝖠𝗎𝗍𝗈𝗋:* ${video.canal || 'Desconocido'}\n`;
-    messageText += `• *𝖯𝗎𝖻𝗅𝗂𝖼𝖺𝖽𝗈:* ${convertTimeToSpanish(video.publicado)}\n`;
-    messageText += `• *𝖫𝗂𝗇𝗄:* ${video.url}\n`;
+
+
+
+        let messageText = `\`\`\`◜YouTube - Download◞\`\`\`\n\n`;
+        messageText += `*${video.titulo}*\n\n`;
+        messageText += `≡ *⏳ \`Duración\`* ${video.duracion || 'No disponible'}\n`;
+        messageText += `≡ *🌴 \`Autor\`* ${video.canal || 'Desconocido'}\n`;
+        messageText += `≡ *🌵 \`Url\`* ${video.url}\n`;
 
     let ytSections = searchResults.slice(1, 11).map((v, index) => ({
       title: `${index + 1}┃ ${v.titulo}`,
@@ -69,12 +71,12 @@ const handler = async (m, { conn, args, usedPrefix }) => {
       buttons: [
         {
           buttonId: `${usedPrefix}ytmp3 ${video.url}`,
-          buttonText: { displayText: '🎧 𝖠𝗎𝖽𝗂𝗈' },
+          buttonText: { displayText: '𝖠𝗎𝖽𝗂𝗈' },
           type: 1,
         },
         {
           buttonId: `${usedPrefix}ytmp4 ${video.url}`,
-          buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈 🎥' },
+          buttonText: { displayText: '𝖵𝗂𝖽𝖾𝗈' },
           type: 1,
         },
         {
@@ -82,7 +84,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
           nativeFlowInfo: {
             name: 'single_select',
             paramsJson: JSON.stringify({
-              title: '𝖱𝖾𝗌𝗎𝗅𝗍𝖺𝖽𝗈𝗌  𝖸𝗈𝗎𝖳𝗎𝖻𝖾 🔍',
+              title: '𝖱𝖾𝗌𝗎𝗅𝗍𝖺𝖽𝗈𝗌  𝖸𝗈𝗎𝖳𝗎𝖻𝖾',
               sections: ytSections,
             }),
           },
@@ -92,7 +94,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
           nativeFlowInfo: {
             name: 'single_select',
             paramsJson: JSON.stringify({
-              title: '𝖱𝖾𝗌𝗎𝗅𝗍𝖺𝖽𝗈𝗌  𝖲𝗉𝗈𝗍𝗂𝖿𝗒 🔍',
+              title: '𝖱𝖾𝗌𝗎𝗅𝗍𝖺𝖽𝗈𝗌  𝖲𝗉𝗈𝗍𝗂𝖿𝗒',
               sections: spotifySections,
             }),
           },
