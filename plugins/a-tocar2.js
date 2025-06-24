@@ -62,7 +62,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     await conn.sendMessage(m.chat, {
       image: thumbnail,
       caption: messageText,
-      footer: 'ᴘʀᴇꜱɪᴏɴᴀ ᴇʟ ʙᴏᴛᴏɴ ᴘᴀʀᴀ ᴇʟ ᴛɪᴘᴏ ᴅᴇ ᴅᴇꜱᴄᴀʀɢᴀ.',
+      footer: club,
       contextInfo: {
         mentionedJid: [m.sender],
         forwardingScore: 999,
