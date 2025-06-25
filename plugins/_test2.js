@@ -28,7 +28,7 @@ handler.owner = true;
 import fetch from 'node-fetch';
 import fs from 'fs';
 import { fileTypeFromBuffer } from 'file-type';
-import StickerLy from '../lib/stickerly.js';
+import StickerLy from '../plugins/_stickerly.js';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   const userSession = global.stickerlySessions ||= {};
