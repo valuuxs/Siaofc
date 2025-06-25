@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 async function stickerlys(query) {
+  try {
+    if (!query) throw new Error('Ingrese el texto para buscar');
 
-try {
-if (!query) throw new Error('Ingrese El Texto Para Buscarlo ps');
-
-const response = await axios.post('https://api.sticker.ly/v4/stickerPack/smartSearch',
+    const response = await axios.post(
+      'https://api.sticker.ly/v4/stickerPack/smartSearch',
       {
         keyword: query,
         enabledKeywordSearch: true,
@@ -25,33 +25,32 @@ const response = await axios.post('https://api.sticker.ly/v4/stickerPack/smartSe
           'accept-encoding': 'gzip',
         },
       }
-    )
+    );
 
-const packs = response.data.result.stickerPacks.map((pack) => ({
-name: pack.name,
-author: pack.authorName,
-stickerCount: pack.resourceFiles.length,
-viewCount: pack.viewCount,
-exportCount: pack.exportCount,
-isPaid: pack.isPaid,
-isAnimated: pack.isAnimated,
-thumbnailUrl: `${pack.resourceUrlPrefix}${pack.resourceFiles[pack.trayIndex]}`,
-url: pack.shareUrl,
-}));
+    const packs = (response.data?.result?.stickerPacks || []).map((pack) => ({
+      name: pack.name,
+      author: pack.authorName,
+      stickerCount: pack.resourceFiles.length,
+      viewCount: pack.viewCount,
+      exportCount: pack.exportCount,
+      isPaid: pack.isPaid,
+      isAnimated: pack.isAnimated,
+      thumbnailUrl: `${pack.resourceUrlPrefix}${pack.resourceFiles[pack.trayIndex]}`,
+      url: pack.shareUrl,
+    }));
 
-return {
-creator: 'Pecausa',
-status: true,
-data: packs,
-}
-
-} catch (error) {
-return {
-creator: 'Pecausa',
-status: false,
-message: error.message,
-    }
+    return {
+      creator: 'Pecausa',
+      status: true,
+      data: packs,
+    };
+  } catch (error) {
+    return {
+      creator: 'Pecausa',
+      status: false,
+      message: error?.response?.data?.message || error.message || 'Error desconocido',
+    };
   }
 }
 
-export default stickerlys
+export default stickerlys;
