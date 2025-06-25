@@ -26,24 +26,35 @@ handler.owner = true;
 
 import stickerlys from './plugins/_stickerly.js'; // ajusta la ruta si está en otra carpeta
 
-const query = 'anime'; // Puedes cambiarlo por cualquier palabra clave
+const handler = async (m, { text, conn, usedPrefix, command }) => {
+  if (!text) {
+    return m.reply(`*✳️ Ejemplo de uso:*\n${usedPrefix + command} anime`);
+  }
 
-stickerlys(query)
-  .then(result => {
-    if (!result.status) {
-      console.error('❌ Error:', result.message);
-      return;
-    }
+  const res = await stickerlys(text);
 
-    console.log(`✅ Resultados encontrados para: "${query}"\n`);
+  if (!res.status || !res.data.length) {
+    return m.reply(`❌ No se encontraron resultados para *${text}*.`);
+  }
 
-    for (const pack of result.data) {
-      console.log(`📦 Nombre: ${pack.name}`);
-      console.log(`👤 Autor: ${pack.author}`);
-      console.log(`🧩 Stickers: ${pack.stickerCount}`);
-      console.log(`🌐 URL: ${pack.url}`);
-      console.log(`🖼️ Thumbnail: ${pack.thumbnailUrl}`);
-      console.log('---');
-    }
-  })
-  .catch(err => console.error('❌ Error inesperado:', err));
+  const packs = res.data.slice(0, 10); // Limitar a los primeros 10 packs
+  let txt = `*🔍 Resultados de Sticker.ly para:* "${text}"\n\n`;
+
+  for (const pack of packs) {
+    txt += `*📦 Nombre:* ${pack.name}\n`;
+    txt += `👤 Autor: ${pack.author}\n`;
+    txt += `🧩 Stickers: ${pack.stickerCount}\n`;
+    txt += `🌐 URL: ${pack.url}\n`;
+    txt += `🖼️ Thumbnail: ${pack.thumbnailUrl}\n`;
+    txt += `──────────────\n`;
+  }
+
+  m.reply(txt.trim());
+};
+
+handler.command = /^stickerly$/i;
+handler.help = ['stickerly <texto>'];
+handler.tags = ['internet'];
+handler.register = true;
+
+export default handler;
