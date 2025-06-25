@@ -24,7 +24,7 @@ handler.command = /^testlive$/i;
 handler.owner = true;
 */
 
-import stickerlys from './plugins/_stickerlys.js'; // ajusta la ruta si está en otra carpeta
+import stickerlys from './plugins/_stickerly.js'; // ajusta la ruta si está en otra carpeta
 
 const query = 'anime'; // Puedes cambiarlo por cualquier palabra clave
 
