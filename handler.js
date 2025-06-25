@@ -224,9 +224,11 @@ export async function handler(chatUpdate) {
                 await delay(time)
             }, time)
         }
-
+/*
         if (m.isBaileys)
-            return
+            return*/
+        if (m.fromMe || m.isBaileys || m.sender === this.user.jid) return
+
         m.exp += Math.ceil(Math.random() * 10)
 
         let usedPrefix
