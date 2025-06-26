@@ -144,8 +144,12 @@ console.log(chalk.bold.redBright(`No se permiten numeros que no sean 1 o 2, tamp
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${sessions}/creds.json`))
 } 
 
-console.info = () => {} 
-console.debug = () => {} 
+global.silencio = true
+
+if (global.silencio) {
+  console.info = () => {}
+  console.debug = () => {}
+}
 
 const connectionOptions = {
 logger: pino({ level: 'silent' }),
