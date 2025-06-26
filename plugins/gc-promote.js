@@ -27,7 +27,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
 };
 handler.help = ['*<@tag>*'].map((v) => 'promote ' + v);
 handler.tags = ['gc'];
-handler.command = /^(promote|promover|daradmin|darpoder|darpija)$/i;
+handler.command = /^(promote|promover|daradmin|darpoder|darpija|darteta|dartt)$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
