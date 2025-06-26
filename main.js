@@ -1,4 +1,4 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
+/*process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
 import './config.js' 
 import { createRequire } from 'module'
 import { setupMaster, fork } from 'cluster'
@@ -150,8 +150,7 @@ mobile: MethodMobile,
 browser: (opcion == '1' || methodCodeQR) 
   ? [global.namebot, 'Edge', '20.0.04'] 
   : ['Ubuntu', 'Chrome', '20.0.04'],
-/*
-browser: opcion == '1' ? ['ShadowUltra', 'Edge', '20.0.04'] : methodCodeQR ? ['ShadowUltra', 'Edge', '20.0.04'] : ["Ubuntu", "Chrome", "20.0.04"],*/
+
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -224,7 +223,7 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.green(`\n🌿 ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【• JOTA-BOT •】⸺⸺⸺⸺❒`))}
+console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【• SHADOW-BOT •】⸺⸺⸺⸺❒`))}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
@@ -517,4 +516,4 @@ const parsedNumber = phoneUtil.parseAndKeepRawInput(number)
 return phoneUtil.isValidNumber(parsedNumber)
 } catch (error) {
 return false
-}}
+}}*/
