@@ -32,7 +32,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
 
 handler.help = ['*<@tag>*'].map((v) => 'demote ' + v);
 handler.tags = ['gc'];
-handler.command = /^(demote|quitarpoder|quitaradmin|quitarpija|degradar)$/i;
+handler.command = /^(demote|quitarpoder|quitaradmin|quitarpija|degradar|quitarteta|quitartt|quitartta)$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
