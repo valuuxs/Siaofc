@@ -427,6 +427,23 @@ console.log(chalk.bold.red(`\n╭» ❍ ${jadi} ❍\n│→ OCURRIÓ UN ERROR\n�
 function purgeOldFiles() {
 const directories = [`./${sessions}/`, `./${jadi}/`]
 directories.forEach(dir => {
+
+if (existsSync(dir)) {
+  const files = readdirSync(dir)
+  files.forEach(file => {
+    if (file !== 'creds.json') {
+      const filePath = path.join(dir, file)
+      try {
+        unlinkSync(filePath)
+        console.log(chalk.green(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} BORRADO CON ÉXITO\n╰― ⌫ ♻`))
+      } catch (err) {
+        console.log(chalk.red(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} NO SE LOGRÓ BORRAR\n╰― ⌫ ✘\n${err}`))
+      }
+    }
+  })
+}
+/*
+
 readdirSync(dir, (err, files) => {
 if (err) throw err
 files.forEach(file => {
@@ -439,7 +456,7 @@ console.log(chalk.bold.red(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} NO SE LOGRÓ
 console.log(chalk.bold.green(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} BORRADO CON ÉXITO\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))
 } }) }
 }) }) }) }
-
+*/
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
 console[methodName] = function() {
