@@ -466,14 +466,12 @@ arguments[0] = ""
 originalConsoleMethod.apply(console, arguments)
 }}
 
-
 setInterval(async () => {
-  if (stopped !== 'close' && conn && conn.user) {
-    await clearTmp()
-    console.log(chalk.bold.cyanBright(`\n🧹 Limpieza de archivos temporales completada`))
-  }
-}, 1000 * 60 * 15) // cada 15 min
+  if (!conn?.user || conn?.ws?.readyState !== 1) return // solo ejecuta si el bot está conectado
 
+  await clearTmp()
+  console.log(chalk.cyanBright(`\n🧹 Limpieza automática de archivos temporales completada`))
+}, 1000 * 60 * 15) // cada 15 minutos
 /*
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
