@@ -452,10 +452,19 @@ arguments[0] = ""
 originalConsoleMethod.apply(console, arguments)
 }}
 
+
+setInterval(async () => {
+  if (stopped !== 'close' && conn && conn.user) {
+    await clearTmp()
+    console.log(chalk.bold.cyanBright(`\n🧹 Limpieza de archivos temporales completada`))
+  }
+}, 1000 * 60 * 15) // cada 15 min
+
+/*
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await clearTmp()
-console.log(chalk.bold.cyanBright(`\n╭» ❍ MULTIMEDIA ❍\n│→ ARCHIVOS DE LA CARPETA TMP ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 4) // 4 min 
+console.log(chalk.bold.cyanBright(`\n╭» ❍ MULTIMEDIA ❍\n│→ ARCHIVOS DE LA CARPETA TMP ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 4) // 4 min */
 
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
