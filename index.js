@@ -489,10 +489,19 @@ setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeSessionSB()}, 1000 * 60 * 10) 
 
+// Limpieza automática cada 10 minutos
+setInterval(async () => {
+  if (!conn?.user || conn?.ws?.readyState !== 1) return // evita ejecutar si el bot está desconectado
+
+  await purgeOldFiles()
+  console.log(chalk.cyanBright(`\n╭» ❍ ARCHIVOS ❍\n│→ ARCHIVOS RESIDUALES ELIMINADOS AUTOMÁTICAMENTE\n╰― ⌫ ♻`))
+}, 1000 * 60 * 10) // cada 10 minutos
+
+/*
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeOldFiles()
-console.log(chalk.bold.cyanBright(`\n╭» ❍ ARCHIVOS ❍\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 10)
+console.log(chalk.bold.cyanBright(`\n╭» ❍ ARCHIVOS ❍\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 10)*/
 
 _quickTest().then(() => conn.logger.info(chalk.bold(`✦  H E C H O\n`.trim()))).catch(console.error)
 
