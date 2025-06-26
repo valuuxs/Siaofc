@@ -39,17 +39,16 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n💻 Iniciando Sistema...\n`))
 
-say('Shadow\nBot\nMD', {
-font: 'block',
-align: 'center',
-colors: ['magentaBright']
-})
-
-say(`Powered By Shadow′s Club 🌹`, {
-font: 'console',
-align: 'center',
-colors: ['blueBright']
-})
+say('Jota - MD', {
+  font: 'chrome',
+  align: 'center',
+  gradient: ['red', 'magenta']
+});
+say(`Developed By Shadow's Club 🌹`, {
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']
+});
 
 protoType()
 serialize()
