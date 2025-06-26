@@ -379,7 +379,7 @@ const [ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find] = test;
 const s = global.support = {ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find};
 Object.freeze(global.support);
 }
-
+/*
 function clearTmp() {
 const tmpDir = join(__dirname, 'tmp')
 const filenames = readdirSync(tmpDir)
@@ -441,21 +441,7 @@ if (existsSync(dir)) {
     }
   })
 }
-/*
 
-readdirSync(dir, (err, files) => {
-if (err) throw err
-files.forEach(file => {
-if (file !== 'creds.json') {
-const filePath = path.join(dir, file);
-unlinkSync(filePath, err => {
-if (err) {
-console.log(chalk.bold.red(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} NO SE LOGRÓ BORRAR\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ✘\n` + err))
-} else {
-console.log(chalk.bold.green(`\n╭» ❍ ARCHIVO ❍\n│→ ${file} BORRADO CON ÉXITO\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))
-} }) }
-}) }) }) }
-*/
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
 console[methodName] = function() {
@@ -472,11 +458,6 @@ setInterval(async () => {
   await clearTmp()
   console.log(chalk.cyanBright(`\n🧹 Limpieza automática de archivos temporales completada`))
 }, 1000 * 60 * 15) // cada 15 minutos
-/*
-setInterval(async () => {
-if (stopped === 'close' || !conn || !conn.user) return
-await clearTmp()
-console.log(chalk.bold.cyanBright(`\n╭» ❍ MULTIMEDIA ❍\n│→ ARCHIVOS DE LA CARPETA TMP ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 4) // 4 min */
 
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
@@ -494,12 +475,111 @@ setInterval(async () => {
   await purgeOldFiles()
   console.log(chalk.cyanBright(`\n╭» ❍ ARCHIVOS ❍\n│→ ARCHIVOS RESIDUALES ELIMINADOS AUTOMÁTICAMENTE\n╰― ⌫ ♻`))
 }, 1000 * 60 * 10) // cada 10 minutos
+*/
 
-/*
+// Limpieza de carpeta temporal
+function clearTmp() {
+  const tmpDir = join(__dirname, 'tmp')
+  if (!existsSync(tmpDir)) return
+  const files = readdirSync(tmpDir)
+  for (const file of files) {
+    const filePath = join(tmpDir, file)
+    try {
+      unlinkSync(filePath)
+    } catch (e) {}
+  }
+}
+
+// Elimina archivos pre-key en ./sessions/
+function purgeSession() {
+  const dir = `./${sessions}`
+  if (!existsSync(dir)) return
+  const files = readdirSync(dir).filter(file => file.startsWith('pre-key-'))
+  for (const file of files) {
+    try {
+      unlinkSync(path.join(dir, file))
+    } catch (e) {}
+  }
+}
+
+// Elimina pre-keys de subbots en ./jadi/*
+function purgeSessionSB() {
+  try {
+    const baseDir = `./${jadi}/`
+    if (!existsSync(baseDir)) return
+
+    const directories = readdirSync(baseDir).filter(name => {
+      return statSync(path.join(baseDir, name)).isDirectory()
+    })
+
+    let totalEliminados = 0
+
+    directories.forEach(folder => {
+      const fullPath = path.join(baseDir, folder)
+      const files = readdirSync(fullPath).filter(f => f.startsWith('pre-key-') || (f !== 'creds.json'))
+      files.forEach(file => {
+        try {
+          unlinkSync(path.join(fullPath, file))
+          totalEliminados++
+        } catch (e) {}
+      })
+    })
+
+    if (totalEliminados > 0) {
+      console.log(chalk.cyanBright(`\n♻️ JADI → ${totalEliminados} archivos eliminados de sub-bots`))
+    } else {
+      console.log(chalk.green(`\n♻️ JADI → Nada que eliminar`))
+    }
+
+  } catch (err) {
+    console.log(chalk.red(`\n❌ ERROR en purgeSessionSB:\n${err}`))
+  }
+}
+
+// Elimina todo menos creds.json en ./sessions y ./jadi/
+function purgeOldFiles() {
+  const directories = [`./${sessions}/`, `./${jadi}/`]
+
+  for (const dir of directories) {
+    if (!existsSync(dir)) continue
+    const files = readdirSync(dir)
+
+    for (const file of files) {
+      if (file === 'creds.json') continue
+      const filePath = path.join(dir, file)
+
+      try {
+        unlinkSync(filePath)
+        console.log(chalk.green(`\n⌫ ARCHIVO → ${file} borrado en ${dir}`))
+      } catch (err) {
+        console.log(chalk.red(`\n✘ ERROR → No se pudo borrar ${file} en ${dir}\n${err}`))
+      }
+    }
+  }
+}
+
+// === INTERVALOS DE LIMPIEZA ===
+
+// 🧹 LIMPIEZA DE ARCHIVOS TEMPORALES CADA 15 MINUTOS
 setInterval(async () => {
-if (stopped === 'close' || !conn || !conn.user) return
-await purgeOldFiles()
-console.log(chalk.bold.cyanBright(`\n╭» ❍ ARCHIVOS ❍\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ⌫ ♻`))}, 1000 * 60 * 10)*/
+  if (!conn?.user || conn?.ws?.readyState !== 1) return
+  clearTmp()
+  console.log(chalk.cyanBright(`\n🧹 TMP → Limpieza automática completada`))
+}, 1000 * 60 * 15) // 15 min
+
+// ♻️ LIMPIEZA DE SESIONES, SUBBOTS Y RESIDUOS CADA 30 MINUTOS
+setInterval(async () => {
+  if (!conn?.user || conn?.ws?.readyState !== 1) return
+
+  purgeSession()
+  console.log(chalk.cyanBright(`\n♻️ SESSIONS → Prekeys eliminados`))
+
+  purgeSessionSB()
+
+  purgeOldFiles()
+  console.log(chalk.cyanBright(`\n♻️ SESSIONS & JADI → Archivos residuales eliminados`))
+
+}, 1000 * 60 * 30) // 30 min
 
 _quickTest().then(() => conn.logger.info(chalk.bold(`✦  H E C H O\n`.trim()))).catch(console.error)
 
