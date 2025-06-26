@@ -1,4 +1,4 @@
-/*import axios from 'axios'
+import axios from 'axios'
 import cheerio from 'cheerio'
 let handler = async (m, { conn, text: tiktok, args, command, usedPrefix}) => {
 if (!tiktok) throw '🚩 Ingresa un enlace de una publicación de fotos de TikTok junto al comando.'  
@@ -40,4 +40,4 @@ async function ttimg(link) {
         console.lo (error);
         return { data: '🚩 No se obtuvo respuesta de la página, intenta más tarde.'}
     }
-}*/
+}
