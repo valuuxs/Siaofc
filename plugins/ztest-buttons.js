@@ -1,4 +1,4 @@
-
+/*
 //Buttons - Message Im Interactive
 
 let handler = async (m, { conn }) => {
@@ -24,7 +24,7 @@ handler.help = ['p'];
 handler.command = ['buttontest'];
 handler.diamantes = 1;
 
-export default handler;
+export default handler;*/
 /*
 // Buttons Ix
 
