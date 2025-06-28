@@ -49,7 +49,7 @@ handler.command = ['setprimary'];
 handler.group = true;
 handler.admin = true;
 
-export default handler;*
+export default handler;*/
 
 import ws from 'ws';
 
