@@ -62,7 +62,7 @@ import fetch from 'node-fetch'
 import { Sticker } from 'wa-sticker-formatter'
 
 let handler = async (m, { conn, text, command }) => {
-  if (!text) return m.reply(`Ejemplo: .${command} Waguri`)
+  if (!text) return m.reply(`Ejemplo: .${command} Gatitos`)
 
   try {
     const searchRes = await fetch(`https://zenzxz.dpdns.org/search/stickerlysearch?query=${encodeURIComponent(text)}`)
