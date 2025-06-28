@@ -189,6 +189,14 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       bot.autobio = isEnable
       break
 
+  case 'autoaceptar': 
+    case 'aceptarnuevos':
+      if (!m.isGroup) {
+      if (!isOwner) {
+
+         global.dfail('group', m, conn)
+         throw false
+
   case 'jadibotmd':
     case 'serbot':
     case 'subbots':
