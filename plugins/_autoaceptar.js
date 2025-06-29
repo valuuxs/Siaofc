@@ -1,4 +1,4 @@
-let handler = m => m
+/*let handler = m => m
 
 handler.before = async function (m, {conn, isAdmin, isBotAdmin}) {
 if (!m.isGroup) return !1
@@ -16,4 +16,4 @@ if (chat.autoAceptar && !isAdmin) {
             if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)) {
                 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 }}
-export default handler
+export default handler*/
