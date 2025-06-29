@@ -128,9 +128,9 @@ export async function handler(chatUpdate) {
                     chat.autolevelup = false
                 if (!('autoresponder' in chat)) 
                     chat.autoresponder = false
-                if (!('autoAceptar' in chat)) 
+                if (!('autoaceptar' in chat)) 
                     chat.autoAceptar = false
-                if (!('autoRechazar' in chat)) 
+                if (!('autorechazar' in chat)) 
                     chat.autoRechazar = false
                 if (!('antiBot' in chat))
                      chat.antiBot = false
