@@ -127,10 +127,7 @@ global.packN = `協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  🍁 ࣪ ˖ ∿
 global.authN = `\n↳ @${usname}`;
 
 //FAKES
-
-/*global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318267632676@newsletter', newsletterName: "˚₊·͟͟͟͟͟͟͞͞͞͞͞͞𝑺𝒖𝒏𝒇𝒍𝒂𝒓𝒆 - 𝑻𝒆𝒂𝒎 ೃ࿔₊•", serverMessageId: -1 }
-}}, { quoted: m }*/
-
+/*
 global.fake = {
   contextInfo: {
     isForwarded: true,
@@ -140,7 +137,7 @@ global.fake = {
       serverMessageId: -1
     }
   }
-}
+}*/
 
 //ID CANALES
 global.idchannel = '120363357231409846@newsletter'
@@ -172,8 +169,8 @@ global.urls = [
 ];
 let gifUrl = urls[Math.floor(Math.random() * urls.length)];
 
-//global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: textbot, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
-global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, }, }
+global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: textbot, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
+//global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, }, }
 
 
 export default handler
