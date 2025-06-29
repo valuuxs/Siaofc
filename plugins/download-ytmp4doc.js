@@ -16,7 +16,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let size = await getSize(json.url);
     let sizeStr = size ? await formatSize(size) : 'Desconocido';
 
-    const cap = `\`\`\`◜YouTube - MP4◞\`\`\`\n\n*${json.title}*\n≡ *🌴 \`URL:\`* ${args[0]}\n≡ *⚖️ \`Peso:\`* ${sizeStr}`;
+    const cap = `🌴 *${json.title}*\n\n> ${club}`;
 
 //FORMAS DE ENVIO 
 
