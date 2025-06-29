@@ -65,7 +65,7 @@ handler.tags = ['downloader']
 handler.command = /^(keni)$/i
 handler.disable = false
 
-export default handler*/
+export default handler
 
 import fetch from 'node-fetch';
 
@@ -104,4 +104,4 @@ let handler = async (m, { conn, args, text, command }) => {
 
 handler.command = ['ytmp4', 'ymp4'];
 
-export default handler;
+export default handler;*/
