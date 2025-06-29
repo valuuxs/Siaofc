@@ -58,14 +58,14 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     await conn.sendMessage(m.chat, { react: { text: '❎', key: m.key }})
     await m.reply('❎ Error al obtener el audio. Intenta nuevamente.')
   }
-}*/
+}
 
 handler.help = ['play *<texto>*']
 handler.tags = ['downloader']
 handler.command = /^(keni)$/i
 handler.disable = false
 
-export default handler
+export default handler*/
 
 import fetch from 'node-fetch';
 
