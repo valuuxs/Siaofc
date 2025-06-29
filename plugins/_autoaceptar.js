@@ -24,7 +24,7 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin }) {
   if (!m.isGroup) return !1
   let chat = global.db.data.chats[m.chat] || {}
 
-  if (chat.autoAceptar && !isAdmin) {
+  if (chat.autoaceptar && !isAdmin) {
     if (!isBotAdmin) return !0
 
     const latinPrefix = '5' // Aceptar solo números que empiezan con 5
