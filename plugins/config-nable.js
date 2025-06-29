@@ -286,25 +286,7 @@ ${usedPrefix + command} subbots`, fkontak)
       throw false
   }
 
-await conn.sendMessage(m.chat, { 
-  text: `` +
-        `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
-        `*» 𝗘𝗦𝗧𝗔𝗗𝗢 |* ${isEnable ? 'ON' : 'OFF'}\n` +
-        `*» 𝗣𝗔𝗥𝗔 |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`, 
-  footer: dev, 
-  buttons: [
-    { 
-      buttonId: isEnable ? `.off ${type}` : `.on ${type}`, 
-      buttonText: { displayText: isEnable ? '🔴 Off' : '🟢 On' } 
-    },
-    { 
-      buttonId: ".menu", 
-      buttonText: { displayText: 'Menú ☕' } 
-    }
-  ],
-  viewOnce: true,
-  headerType: 1
-}, { quoted: fkontak });
+  conn.reply(m.chat, `*☕ 𝖫𝖺 𝗈𝗉𝖼𝗂𝗈́𝗇 *${type}* 𝗌𝖾 *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖡𝗈𝗍' : isUser ? '' : '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖢𝗁𝖺𝗍'}`, m, fkontak)
 }
 
 handler.help = ['enable', 'disable']
