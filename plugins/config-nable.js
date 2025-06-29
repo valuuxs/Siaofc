@@ -89,6 +89,20 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     chat.nsfw = isEnable          
     break
 
+case 'autoaceptar':
+case 'aceptarnuevos':
+  if (m.isGroup) {
+    if (!(isAdmin || isOwner)) {
+      global.dfail('admin', m, conn)
+      throw false
+    }
+    chat.autoaceptar = isEnable
+  } else {
+    global.dfail('group', m, conn)
+    throw false
+  }
+  break
+
  case 'modoadmin':
     case 'soloadmin':
       if (m.isGroup) {
@@ -188,16 +202,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
       bot.autobio = isEnable
       break
-
-    case 'autoaceptar':
-    case 'aceptarnuevos':
-        isAll = true
-        if (!isOwner) {
-            global.dfail('rowner', m, conn)
-            throw false
-        }
-        bot.autoaceptar = isEnable
-        break
 
   case 'jadibotmd':
     case 'serbot':
