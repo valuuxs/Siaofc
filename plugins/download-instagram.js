@@ -18,7 +18,7 @@ let handler = async (m, { args, conn }) => {
   }
 }
 
-handler.command = ['instagram', 'ig', 'instagram2', 'ig2']
+handler.command = ['instagram', 'ig']
 handler.tags = ['downloader']
 handler.help = ['instagram', 'ig']
 
