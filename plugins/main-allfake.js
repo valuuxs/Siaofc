@@ -162,7 +162,6 @@ global.idchannel = '120363357231409846@newsletter'
 global.canalIdM = ["120363357231409846@newsletter", "120363357231409846@newsletter", "120363357231409846@newsletter"]
 global.canalNombreM = ["⏤͟͟͞͞𝖲𝗁ᥲძ𝗈ա  ⚡︎  𝖴𝗅𝗍𝗋𝖺 ۵࿐", "𝑺𝒉𝒂𝒅𝒐𝒘 𝑼𝒍𝒕𝒓𝒂 - 𝑴𝑫", "⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅա  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚"]
 global.channelRD = await getRandomChannel()
-// global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "3876577197-120363302285079181@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: `${packname}`, orderTitle: 'Bang', thumbnail: icons, sellerJid: '0@s.whatsapp.net'}}}
 
 global.icono = [
 "https://files.catbox.moe/uu9lz5.jpg",
