@@ -9,7 +9,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     try {
         let searchResults = await searchVideos(args.join(" "));
 
-        if (!searchResults.length) throw new Error('*❌ No se encontraron resultados.*');
+        if (!searchResults.length) throw new Error('*✖️ No se encontraron resultados.*');
 
         let video = searchResults[0];
         let thumbnail = await (await fetch(video.miniatura)).buffer();
@@ -23,7 +23,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
         await conn.sendMessage(m.chat, {
             image: thumbnail,
             caption: messageText,
-            footer: dev,
+            footer: club,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
