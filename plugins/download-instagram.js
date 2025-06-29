@@ -1,28 +1,45 @@
-import { igdl } from "ruhend-scraper"
+import fetch from 'node-fetch';
 
-let handler = async (m, { args, conn }) => {
-  if (!args[0]) {
-    return conn.reply(m.chat, '*🥞 Por favor, ingresa un link de Instagram.*', m)
-  }
+let handler = async (m, { conn, usedPrefix, command, args }) => {
   try {
-    await m.react('⏳️')
-    let res = await igdl(args[0])
-    let data = res.data
-    for (let media of data) {
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      await conn.sendFile(m.chat, media.url, 'instagram.mp4', '\`\`\`◜Instagram - Download◞\`\`\`\n\n> © Powered by Shadow Ultra\n> Video downloaded successfully')
+    if (!args || !args[0]) {
+      return conn.reply(m.chat, `*${xdownload} Por favor, ingresa una URL válida de Instagram.*`, m);
     }
-  } catch {
-    await m.react('❌')
-    conn.reply(m.chat, '*❌ Ocurrió un error.*')
+
+    if (!args[0].match(/(https:\/\/www.instagram.com)/gi)) {
+      return conn.reply(m.chat, `*⚠️ Ingresa una URL válida.*`, m);
+    }
+
+    m.react('🕒');
+    const old = new Date();
+
+    const res = await fetch(`https://api.sylphy.xyz/download/instagram?url=${encodeURIComponent(args[0])}&apikey=Sylphiette's`);
+    const json = await res.json();
+
+    if (!json.status || !json.result?.dl) {
+      return conn.reply(m.chat, `Error al obtener el video.\n\n${JSON.stringify(json, null, 2)}`, m);
+    }
+
+    const { caption, username, like, comment, isVideo, dl } = json.result;
+
+    await conn.sendFile(m.chat, dl, 'instagram.mp4', 
+`
+\`\`\`◜Instagram - Download◞\`\`\`
+
+👤 *@${username}*
+> ${caption || 'Sin descripción'}`, m);
+
+  } catch (e) {
+    return conn.reply(m.chat, `Error: ${e.message}`, m);
   }
-}
+};
 
-handler.command = ['instagram', 'ig']
-handler.tags = ['downloader']
-handler.help = ['instagram', 'ig']
+handler.help = ['instagram'];
+handler.command = ['ig', 'instagram'];
+handler.tags = ['download'];
 
-export default handler
+export default handler;
+
 /*
 
 import axios from 'axios';
