@@ -286,7 +286,7 @@ ${usedPrefix + command} subbots`, fkontak)
       throw false
   }
 
-  conn.reply(m.chat, `☕ 𝖫𝖺 𝗈𝗉𝖼𝗂𝗈́𝗇 *${type}* 𝗌𝖾 *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖡𝗈𝗍' : isUser ? '' : '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖢𝗁𝖺𝗍'}`, m, fkontak)
+  conn.reply(m.chat, `☕ 𝖫𝖺 𝗈𝗉𝖼𝗂𝗈́𝗇 *${type}* 𝗌𝖾 *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖡𝗈𝗍' : isUser ? '' : '𝗉𝖺𝗋𝖺 𝖾𝗌𝗍𝖾 𝖢𝗁𝖺𝗍'}`, fkontak)
 }
 
 handler.help = ['enable', 'disable']
