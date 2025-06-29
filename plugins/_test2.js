@@ -23,7 +23,7 @@ handler.tags = ['test'];
 handler.command = /^testlive$/i;
 handler.owner = true;
 
-*/
+
 import fetch from 'node-fetch';
 
 let handler = async(m, { conn, args, text }) => {
@@ -41,4 +41,4 @@ m.react(done)
 
 handler.command = ['ytmp4', 'ymp4']
 
-export default handler;
+export default handler;*/
