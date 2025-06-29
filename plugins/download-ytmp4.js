@@ -58,7 +58,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     await conn.sendMessage(m.chat, { react: { text: '❎', key: m.key }})
     await m.reply('❎ Error al obtener el audio. Intenta nuevamente.')
   }
-}
+}*/
 
 handler.help = ['play *<texto>*']
 handler.tags = ['downloader']
@@ -104,4 +104,4 @@ let handler = async (m, { conn, args, text, command }) => {
 
 handler.command = ['ytmp4', 'ymp4'];
 
-export default handler;*/
+export default handler;
