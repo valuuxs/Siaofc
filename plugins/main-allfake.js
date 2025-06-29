@@ -161,7 +161,6 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 global.idchannel = '120363357231409846@newsletter'
 global.canalIdM = ["120363357231409846@newsletter", "120363357231409846@newsletter", "120363357231409846@newsletter"]
 global.canalNombreM = ["⏤͟͟͞͞𝖲𝗁ᥲძ𝗈ա  ⚡︎  𝖴𝗅𝗍𝗋𝖺 ۵࿐", "𝑺𝒉𝒂𝒅𝒐𝒘 𝑼𝒍𝒕𝒓𝒂 - 𝑴𝑫", "⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅա  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚"]
-global.channelRD = await getRandomChannel()
 
 global.icono = [
 "https://files.catbox.moe/uu9lz5.jpg",
@@ -187,9 +186,11 @@ global.urls = [
 ];
 let gifUrl = urls[Math.floor(Math.random() * urls.length)];
 
+;(async () => {
+global.channelRD = await getRandomChannel()
 global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: textbot, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
-
 global.rcanal2 = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, }, }
+})()
 
 export default handler
 
