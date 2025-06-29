@@ -22,7 +22,7 @@ handler.help = ['testlive <mensaje>'];
 handler.tags = ['test'];
 handler.command = /^testlive$/i;
 handler.owner = true;
-*/
+
 
 import fetch from 'node-fetch';
 
@@ -41,4 +41,4 @@ m.react(done)
 
 handler.command = ['ytmp4', 'ymp4']
 
-export default handler;
+export default handler;*/
