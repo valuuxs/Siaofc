@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, usedPrefix, command, args }) => {
   try {
     if (!args || !args[0]) {
-      return conn.reply(m.chat, `${xdlownload} Ejemplo de uso: ${usedPrefix}${command} https://www.instagram.com/p/CK0tLXyAzEI`, m);
+      return conn.reply(m.chat, `${xdownload} Ejemplo de uso: ${usedPrefix}${command} https://www.instagram.com/p/CK0tLXyAzEI`, m);
     }
 
     if (!args[0].match(/(https:\/\/www.instagram.com)/gi)) {
