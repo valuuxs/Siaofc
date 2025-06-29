@@ -286,7 +286,6 @@ ${usedPrefix + command} subbots`, fkontak)
       throw false
   }
 
-/*
 await conn.sendMessage(m.chat, { 
   text: `` +
         `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
@@ -306,9 +305,7 @@ await conn.sendMessage(m.chat, {
   viewOnce: true,
   headerType: 1
 }, { quoted: fkontak });
-}*/
-
-conn.reply(m.chat, `*☕ La opción ${type} fue ${isEnable ? 'activada' : 'desactivada'} exitosamente para ${isAll ? 'este Bot*' : isUser ? '*este usuario*' : '*este chat.*'}`, m)
+}
 
 handler.help = ['enable', 'disable']
 handler.tags = ['nable', 'owner']
