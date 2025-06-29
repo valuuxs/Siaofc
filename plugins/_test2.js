@@ -23,3 +23,22 @@ handler.tags = ['test'];
 handler.command = /^testlive$/i;
 handler.owner = true;
 */
+
+import fetch from 'node-fetch';
+
+let handler = async(m, { conn, args, text }) => {
+
+if (!text) return m.reply(`《★》Ingresa Un Link De YouTube\n> *Ejemplo:* https://youtube.com/shorts/ZisXJqH1jtw?si=0RZacIJU5zhoCmWh`);
+
+m.react(rwait);
+
+const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${text}&type=video&quality=480p&apikey=GataDios`)
+const json = await response.json()
+
+await conn.sendMessage(m.chat, { video: { url: json.data.url }, mimetype: "video/mp4", caption: `${dev}`, }, { quoted: m })
+m.react(done)
+}
+
+handler.command = ['ytv', 'ytmp4', 'ymp4']
+
+export default handler;
