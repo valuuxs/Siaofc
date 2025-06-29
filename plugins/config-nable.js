@@ -308,7 +308,7 @@ await conn.sendMessage(m.chat, {
 }, { quoted: fkontak });
 }*/
 
-  conn.reply(m.chat, `*🌿 La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`, m)
+  conn.reply(m.chat, `*☕ La opción ${type} fue `\${isEnable ? 'activada' : 'desactivada'}\` exitosamente para ${isAll ? 'este Bot\`\`\`' : isUser ? '' : 'este chat.*'}`, m)
 }
 
 handler.help = ['enable', 'disable']
