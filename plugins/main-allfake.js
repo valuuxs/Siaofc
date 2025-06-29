@@ -54,31 +54,6 @@ global.emoji4 = '🍨'
 global.emoji5 = '🍃'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
-//EMOJIS DE CATEGORÍAS
-global.xanime = '🍮'
-global.xmenus = '🍪'
-global.xnable = '🧋'
-global.xefects = '🥥'
-global.xfrases = '🍯'
-global.xgame = '🌹'
-global.xsearch = '🌳'
-global.xtools = '🍚'
-global.xdownload = '🥞'
-global.xconverter = '🪾'
-global.xlist = '📑'
-global.xff = '🥧'
-global.xlogos = '🖼️'
-global.xgc = '🍃'
-global.xinfo = '☁️'
-global.xnsfw = '🪼'
-global.xowner = '☕'
-global.xia = '💭'
-global.xfun = '🥯'
-global.xsticker = '🫓'
-global.xrpg = '🍙'
-global.xreg = '🪴'
-
-
 
 //MENSAJES DE AVISOS
 global.wait = '*⏳ Aguarde un momento...*';
