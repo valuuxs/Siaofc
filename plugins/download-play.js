@@ -16,9 +16,9 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
 
         let messageText = `\`\`\`◜YouTube - Download◞\`\`\`\n\n`;
         messageText += `*${video.titulo}*\n\n`;
-        messageText += `≡ *⏳ \`Duración\`* ${video.duracion || 'No disponible'}\n`;
-        messageText += `≡ *🌴 \`Autor\`* ${video.canal || 'Desconocido'}\n`;
-        messageText += `≡ *🌵 \`Url\`* ${video.url}\n`;
+        messageText += `≡ *⏰ Duración:* ${video.duracion || 'No disponible'}\n`;
+        messageText += `≡ *👤 Autor:* ${video.canal || 'Desconocido'}\n`;
+        messageText += `≡ *☁️ Url:* ${video.url}\n`;
 
         await conn.sendMessage(m.chat, {
             image: thumbnail,
@@ -49,13 +49,13 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     } catch (e) {
         console.error(e);
         await m.react('✖️');
-        conn.reply(m.chat, '*☁ Error al buscar el video.*', m);
+        conn.reply(m.chat, '*✖️ Video no encontrado en Youtube.*', m);
     }
 };
 
 handler.help = ['play'];
 handler.tags = ['descargas'];
-handler.command = ['play'];
+handler.command = ['play', 'play2'];
 export default handler;
 
 async function searchVideos(query) {
