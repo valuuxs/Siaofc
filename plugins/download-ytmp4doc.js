@@ -18,7 +18,11 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
 
     const cap = `\`\`\`◜YouTube - MP4◞\`\`\`\n\n*${json.title}*\n≡ *🌴 \`URL:\`* ${args[0]}\n≡ *⚖️ \`Peso:\`* ${sizeStr}`;
 
-    conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" });
+//FORMAS DE ENVIO 
+
+conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m);
+
+    //conn.sendFile(m.chat, await (await fetch(json.url)).buffer(), `${json.title}.mp4`, cap, m, null, { asDocument: true, mimetype: "video/mp4" });
 
     m.react('✅');
   } catch (e) {
