@@ -86,11 +86,10 @@ global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> 
 
 //ENLACES
 var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'  
-var github = 'https://github.com/CrxstianEscobar/ShadowUltra-MD' 
 var web = 'https://shadow-bot.vercel.app/' 
 let instagram = 'https://www.instagram.com/shadowbot.md'
 
-global.redes = [group, github, web, instagram].getRandom()
+global.redes = [group, web, instagram].getRandom()
 
 //IMAGEN
 let category = "imagen"
