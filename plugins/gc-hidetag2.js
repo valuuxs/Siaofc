@@ -6,7 +6,7 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
 const fkontak2 = {
   key: { fromMe: false, participant: '0@s.whatsapp.net' },
   message: {
-    conversation: 'Shadow Ultra'
+    conversation: '𝗠𝗲𝗻𝗰𝗶𝗼́𝗻 𝗱𝗲 𝘂𝗻 𝗔𝗱𝗺𝗶𝗻'
   }
 }
 
