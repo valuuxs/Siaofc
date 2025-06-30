@@ -4,11 +4,12 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
   try {
 
 const fkontak2 = {
-  key: { participant: '0@s.whatsapp.net' },
+  key: { fromMe: false, participant: '0@s.whatsapp.net' },
   message: {
-    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
+    conversation: 'Shadow Ultra'
   }
 }
+
     const users = participants.map((u) => conn.decodeJid(u.id));
     const q = m.quoted ? m.quoted : m || m.text || m.sender;
     const c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender;
