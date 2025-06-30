@@ -2,28 +2,11 @@ import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
   try {
-/*
+
 const fkontak2 = {
   key: { fromMe: false, participant: '0@s.whatsapp.net' },
   message: {
     conversation: '𝖠𝗏𝗂𝗌𝗈 𝖽𝖾𝗅 𝖠𝖽𝗆𝗂𝗇'
-  }
-}*/
-
-//const img = ''
-
-const fkontak2 = {
-  key: {
-    fromMe: false,
-    participant: '0@s.whatsapp.net',
-    remoteJid: 'status@broadcast' // simula mensaje del sistema
-  },
-  message: {
-    imageMessage: {
-      mimetype: 'image/jpeg',
-      caption: '🛡️ Shadow Ultra',
-      jpegThumbnail: fs.readFileSync('./src/catalogo.jpg') // Ruta de tu ícono personalizado
-    }
   }
 }
 
