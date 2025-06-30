@@ -116,7 +116,7 @@ const handler = async (m, { conn, text, participants }) => {
           contextInfo: {
             mentionedJid: users,
             externalAdReply: {
-              thumbnail: imagen1,
+              thumbnail: 'https://files.catbox.moe/rbwbyk.jpg',
               sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW',
               title: 'ShadowBot Notifica',
               body: 'Notificación global'
