@@ -68,7 +68,7 @@ END:VCARD`,
 };
 
 // Miniatura para el AdReply
-const imagen1 = fs.readFileSync('./media/thumb.jpg'); // Imagen de ejemplo para AdReply
+const imagen1 = fs.readFileSync('./src/catalogo.jpg'); // Imagen de ejemplo para AdReply
 
 const handler = async (m, { conn, text, participants }) => {
   const users = participants.map(u => conn.decodeJid(u.id));
