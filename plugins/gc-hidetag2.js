@@ -41,10 +41,10 @@ handler.group = true;
 handler.admin = false;
 export default handler;*/
 
+
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 
-// Contacto personalizado con imagen y nombre
 const fkontak = {
   key: {
     fromMe: false,
@@ -59,16 +59,13 @@ BEGIN:VCARD
 VERSION:3.0
 FN:Notificación del Admin
 ORG:ShadowBot;
-TEL;type=CELL;type=VOICE;waid=51999999999:+51 999 999 999
-END:VCARD`,
-      thumbnail: fs.readFileSync('./media/admin.jpg'), // Imagen personalizada
-      jpegThumbnail: fs.readFileSync('./media/admin.jpg')
+TEL;type=CELL;type=VOICE;waid=1234567890:+51 123 456 789
+END:VCARD`
     }
   }
 };
 
-// Miniatura para el AdReply
-const imagen1 = fs.readFileSync('./src/catalogo.jpg'); // Imagen de ejemplo para AdReply
+const imagen1 = 'https://files.catbox.moe/rbwbyk.jpg';
 
 const handler = async (m, { conn, text, participants }) => {
   const users = participants.map(u => conn.decodeJid(u.id));
@@ -81,9 +78,7 @@ const handler = async (m, { conn, text, participants }) => {
 
   try {
     const msgType = quoted ? quoted.mtype : 'extendedTextMessage';
-    const msgContent = quoted
-      ? await m.getQuotedObj().then(q => q.message[msgType])
-      : { text: content.text || htextos };
+    const msgContent = quoted ? await m.getQuotedObj().then(q => q.message[msgType]) : { text: content.text || htextos };
 
     const msg = conn.cMod(
       m.chat,
@@ -116,10 +111,8 @@ const handler = async (m, { conn, text, participants }) => {
           contextInfo: {
             mentionedJid: users,
             externalAdReply: {
-              thumbnail: 'https://files.catbox.moe/rbwbyk.jpg',
-              sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW',
-              title: 'ShadowBot Notifica',
-              body: 'Notificación global'
+              thumbnail: imagen1,
+              sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
             }
           }
         }
@@ -136,4 +129,3 @@ handler.group = true;
 handler.admin = false;
 
 export default handler;
-
