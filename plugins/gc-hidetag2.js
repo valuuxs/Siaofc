@@ -2,14 +2,28 @@ import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
   try {
-
+/*
 const fkontak2 = {
   key: { fromMe: false, participant: '0@s.whatsapp.net' },
   message: {
     conversation: '𝖠𝗏𝗂𝗌𝗈 𝖽𝖾𝗅 𝖠𝖽𝗆𝗂𝗇'
   }
-}
+}*/
 
+const fkontak2 = {
+  key: {
+    fromMe: false,
+    participant: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast' // simula mensaje del sistema
+  },
+  message: {
+    imageMessage: {
+      mimetype: 'image/jpeg',
+      caption: 'aviso del admin',
+      jpegThumbnail: 'https://files.catbox.moe/wztakp.png',
+    }
+  }
+}
     const users = participants.map((u) => conn.decodeJid(u.id));
     const q = m.quoted ? m.quoted : m || m.text || m.sender;
     const c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender;
