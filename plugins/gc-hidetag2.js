@@ -10,6 +10,9 @@ const fkontak2 = {
   }
 }*/
 
+const response = await fetch('https://files.catbox.moe/wztakp.png');
+const buffer = await response.buffer();
+
 const fkontak2 = {
   key: {
     fromMe: false,
@@ -20,10 +23,12 @@ const fkontak2 = {
     imageMessage: {
       mimetype: 'image/jpeg',
       caption: 'aviso del admin',
-      jpegThumbnail: 'https://files.catbox.moe/wztakp.png',
+      jpegThumbnail: buffer // ahora es un Buffer, no una URL
     }
   }
-}
+};
+
+
     const users = participants.map((u) => conn.decodeJid(u.id));
     const q = m.quoted ? m.quoted : m || m.text || m.sender;
     const c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender;
