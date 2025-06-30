@@ -50,33 +50,40 @@ handler.group = true;
 handler.admin = false;
 export default handler;*/
 
+
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
 
 const handler = async (m, { conn, text, participants }) => {
-  const users = participants.map(u => conn.decodeJid(u.id))
-  const fkontak2 = {
-    key: { fromMe: false, participant: '0@s.whatsapp.net' },
-    message: {
-      conversation: ' 𝖠𝗏𝗂𝗌𝗈 𝖽𝖾𝗅 𝖠𝖽𝗆𝗂𝗇'
+  try {
+    const users = participants.map(u => conn.decodeJid(u.id))
+    const fkontak2 = {
+      key: { fromMe: false, participant: '0@s.whatsapp.net' },
+      message: { conversation: ' 𝖠𝗏𝗂𝗌𝗈 𝖽𝖾𝗅 𝖠𝖽𝗆𝗂𝗇' }
     }
-  }
 
-  const q = m.quoted ? m.quoted : m
-  const c = m.quoted ? await m.getQuotedObj() : m.msg
-  const msg = conn.cMod(
-    m.chat,
-    generateWAMessageFromContent(m.chat, {
-      [q.mtype || 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' }
+    const q = m.quoted ? m.quoted : m
+    const c = m.quoted ? await m.getQuotedObj() : m.msg
+
+    const msg = generateWAMessageFromContent(m.chat, {
+      [q.mtype || 'extendedTextMessage']: m.quoted
+        ? c.message[q.mtype]
+        : { text: '' }
     }, {
-      quoted: fkontak2,
       userJid: conn.user.id
-    }),
-    text || q.text,
-    conn.user.jid,
-    { mentions: users }
-  )
+    })
 
-  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+    msg.message[q.mtype || 'extendedTextMessage'].contextInfo = {
+      mentionedJid: users
+    }
+
+    await conn.relayMessage(m.chat, msg.message, {
+      messageId: msg.key.id,
+      quoted: fkontak2
+    })
+
+  } catch {
+    m.reply('❌ Ocurrió un error. Usa el comando de nuevo.')
+  }
 }
 
 handler.help = ['Aviso *<txt>*']
