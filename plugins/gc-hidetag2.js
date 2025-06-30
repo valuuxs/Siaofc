@@ -1,4 +1,4 @@
-/*import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
+import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
   try {
@@ -48,49 +48,4 @@ handler.command = /^(viso)$/i;
 handler.customPrefix = /a|A/i;
 handler.group = true;
 handler.admin = false;
-export default handler;*/
-
-
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-
-const handler = async (m, { conn, text, participants }) => {
-  try {
-    const users = participants.map(u => conn.decodeJid(u.id))
-    const fkontak2 = {
-      key: { fromMe: false, participant: '0@s.whatsapp.net' },
-      message: { conversation: ' 𝖠𝗏𝗂𝗌𝗈 𝖽𝖾𝗅 𝖠𝖽𝗆𝗂𝗇' }
-    }
-
-    const q = m.quoted ? m.quoted : m
-    const c = m.quoted ? await m.getQuotedObj() : m.msg
-
-    const msg = generateWAMessageFromContent(m.chat, {
-      [q.mtype || 'extendedTextMessage']: m.quoted
-        ? c.message[q.mtype]
-        : { text: '' }
-    }, {
-      userJid: conn.user.id
-    })
-
-    msg.message[q.mtype || 'extendedTextMessage'].contextInfo = {
-      mentionedJid: users
-    }
-
-    await conn.relayMessage(m.chat, msg.message, {
-      messageId: msg.key.id,
-      quoted: fkontak2
-    })
-
-  } catch {
-    m.reply('❌ Ocurrió un error. Usa el comando de nuevo.')
-  }
-}
-
-handler.help = ['Aviso *<txt>*']
-handler.tags = ['gc']
-handler.command = /^(viso)$/i
-handler.customPrefix = /a|A/i
-handler.group = true
-handler.admin = false
-
-export default handler
+export default handler;
