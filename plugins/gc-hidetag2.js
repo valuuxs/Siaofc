@@ -10,6 +10,8 @@ const fkontak2 = {
   }
 }*/
 
+//const img = ''
+
 const fkontak2 = {
   key: {
     fromMe: false,
@@ -20,7 +22,7 @@ const fkontak2 = {
     imageMessage: {
       mimetype: 'image/jpeg',
       caption: '🛡️ Shadow Ultra',
-      jpegThumbnail: fs.readFileSync('./media/shadow.jpg') // Ruta de tu ícono personalizado
+      jpegThumbnail: fs.readFileSync('./src/catalogo.jpg') // Ruta de tu ícono personalizado
     }
   }
 }
@@ -53,7 +55,7 @@ const fkontak2 = {
       var mediax = await quoted.download?.();
       conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, {quoted: fkontak2});
     } else {
-      await conn.relayMessage(m.chat, {extendedTextMessage: {text: `${masss}\n${htextos}\n`, ...{contextInfo: {mentionedJid: users, externalAdReply: {thumbnail: imagen1, sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'}}}}}, {});
+      await conn.relayMessage(m.chat, {extendedTextMessage: {text: `${masss}\n${htextos}\n`, ...{contextInfo: {mentionedJid: users, externalAdReply: {thumbnail: img, sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'}}}}}, {});
     }
   }
 };
