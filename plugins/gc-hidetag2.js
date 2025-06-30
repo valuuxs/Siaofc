@@ -10,9 +10,6 @@ const fkontak2 = {
   }
 }*/
 
-const response = await fetch('https://files.catbox.moe/wztakp.png');
-const buffer = await response.buffer();
-
 const fkontak2 = {
   key: {
     fromMe: false,
@@ -22,12 +19,11 @@ const fkontak2 = {
   message: {
     imageMessage: {
       mimetype: 'image/jpeg',
-      caption: 'aviso del admin',
-      jpegThumbnail: buffer // ahora es un Buffer, no una URL
+      caption: '🛡️ Shadow Ultra',
+      jpegThumbnail: fs.readFileSync('./media/shadow.jpg') // Ruta de tu ícono personalizado
     }
   }
-};
-
+}
 
     const users = participants.map((u) => conn.decodeJid(u.id));
     const q = m.quoted ? m.quoted : m || m.text || m.sender;
