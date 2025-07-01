@@ -142,7 +142,7 @@ global.fake = {
 
 //ID CANALES
 global.idchannel = '120363357231409846@newsletter'
-global.canalIdM = ["120363357231409846@newsletter", "120363357231409846@newsletter", "120363357231409846@newsletter"]
+global.canalIdM = ["120363357231409846@newsletter", "120363318267632676@newsletter", "120363377595441592@newsletter"]
 global.canalNombreM = [" 𐚁 ֹ ִ 𝖲𝗁⍺𝖽𑄈𝗐′𝗌 𝖢𝗅𝗎𝖻 ୧ ֹ ִ🌹ᩚ꤬ᰍ", "ꘓꘓ   ໒🌤️ؑ   𝖲𝗎𝗇ẜ𝗅⍺𝗋𝖾   𝖳𝖾⍺𑜀  ୭", "⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅ𝗐  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚"]
 global.channelRD = await getRandomChannel()
 
