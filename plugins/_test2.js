@@ -41,12 +41,13 @@ m.react(done)
 
 handler.command = ['ytmp4', 'ymp4']*/
 
+
 const handler = async (m, { conn, text }) => {
   const canalJid = '120363318267632676@newsletter';
   
-  // Validar que haya un mensaje citado o texto explícito
+  // ✅ Validar que haya un mensaje citado o texto proporcionado
   if (!m.quoted && !text) {
-    return conn.reply(m.chat, '*⚠️ Responde a un mensaje que contenga imagen, video, sticker, audio o texto, o escribe texto después del comando.*', m);
+    return conn.reply(m.chat, '*⚠️ Responde a un mensaje que contenga imagen, video, sticker o texto, o escribe texto después del comando.*', m);
   }
 
   const q = m.quoted || m;
@@ -67,7 +68,6 @@ const handler = async (m, { conn, text }) => {
       content = { sticker: media };
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
       const mensaje = q.text || text || '';
-      // Validación extra por si `q.text` es solo el comando
       if (!mensaje || mensaje.trim() === handler.command[0]) {
         return conn.reply(m.chat, '⚠️ No se detectó texto válido para enviar al canal.', m);
       }
@@ -86,3 +86,10 @@ const handler = async (m, { conn, text }) => {
     return conn.reply(m.chat, '❌ Error al procesar o enviar al canal.', m);
   }
 };
+
+handler.help = ['send2channel'];
+handler.tags = ['tools'];
+handler.command = ['send2channel', 'enviarcanal', 'reenviar', 'publicar'];
+handler.rowner = true;
+
+export default handler;
