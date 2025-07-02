@@ -44,7 +44,7 @@ handler.command = ['ytmp4', 'ymp4']
 export default handler;*/
 
 const handler = async (m, { conn }) => {
-  const canalJid = '120363021234567890@g.us'; // 🔁 Reemplaza con tu canal real
+  const canalJid = '120363318267632676@newsletter'; // 🔁 Reemplaza con tu canal real
 
   const q = m.quoted ? m.quoted : m;
 
