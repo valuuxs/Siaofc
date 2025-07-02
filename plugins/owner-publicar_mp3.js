@@ -1,4 +1,4 @@
-/*import { toAudio } from '../lib/converter.js';
+import { toAudio } from '../lib/converter.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
   const canalJid = '120363318267632676@newsletter';
@@ -29,11 +29,11 @@ const handler = async (m, { conn, usedPrefix, command }) => {
   // 📤 Channel
   await conn.sendMessage(canalJid, audioMessage, { quoted: fkontak });
 
-  await conn.reply(m.chat, '*✅ Audio enviado correctamente al canal.*', m);
+  await conn.reply(m.chat, '*✅ Audio publicado en el canal*', m);
 };
 
-handler.help = ['ptt'];
-handler.command = ['publicar', 'publicarmp3', 'publimp3'];
+handler.help = ['publicar2'];
+handler.command = ['publicar2', 'publicarmp3', 'publimp3'];
 handler.rowner = true;
 
-export default handler;*/
+export default handler;
