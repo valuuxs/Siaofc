@@ -43,47 +43,51 @@ handler.command = ['ytmp4', 'ymp4']
 
 export default handler;*/
 
-const handler = async (m, { conn }) => {
-  const canalJid = '120363318267632676@newsletter'; // 📨 JID del canal
+
+const handler = async (m, { conn, text }) => {
+  const canalJid = '120363318267632676@newsletter';
   const q = m.quoted ? m.quoted : m;
 
-  if (!q || !q.mtype) {
-    return conn.reply(m.chat, '⚠️ Responde a una imagen, video o sticker que quieras enviar al canal.', m);
-  }
+  if (!q) return conn.reply(m.chat, `*${xowner} Responde a un mensaje que contenga imagen, video, sticker, audio o texto.*`, m);
 
-  const type = q.mtype;
-
-  if (!['imageMessage', 'videoMessage', 'stickerMessage'].includes(type)) {
-    return conn.reply(m.chat, '⚠️ Solo se permiten imágenes, videos o stickers.', m);
-  }
+  const type = q.mtype || '';
+  const mime = q?.mime || q?.mimetype || '';
 
   try {
-    const media = await q.download();
-    if (!media) throw 'No se pudo descargar el archivo.';
+    let content;
 
-    // Arma el mensaje según el tipo
-    let content = {};
     if (type === 'imageMessage') {
-      content = { image: media, caption: '📷 Imagen reenviada al canal.' };
+      const media = await q.download();
+      content = { image: media };
     } else if (type === 'videoMessage') {
-      content = { video: media, caption: '🎥 Video reenviado al canal.' };
+      const media = await q.download();
+      content = { video: media };
     } else if (type === 'stickerMessage') {
+      const media = await q.download();
       content = { sticker: media };
+    } else if (type === 'audioMessage') {
+      const media = await q.download();
+      content = { audio: media, mimetype: 'audio/mpeg', ptt: q.ptt || false };
+    } else if (type === 'conversation' || type === 'extendedTextMessage') {
+      const mensaje = q.text || text || '';
+      if (!mensaje) throw 'hola xd';
+      content = { text: `${mensaje}` };
+    } else {
+      return conn.reply(m.chat, '*⚠️ Solo se permiten imágenes, videos, stickers, audios o texto.*', m);
     }
 
     await conn.sendMessage(canalJid, content);
+    return conn.reply(m.chat, '✅ Contenido enviado correctamente al canal.', m);
 
-    return conn.reply(m.chat, '✅ Archivo enviado correctamente al canal.', m);
   } catch (e) {
     console.error(e);
-    return conn.reply(m.chat, '❌ Ocurrió un error al enviar al canal.', m);
+    return conn.reply(m.chat, '*❌ Error al procesar o enviar al canal.*', m);
   }
 };
 
 handler.help = ['send2channel'];
 handler.tags = ['tools'];
-handler.command = ['send2channel', 'enviarcanal', 'reenviar'];
+handler.command = ['send2channel', 'enviarcanal', 'reenviar', 'publicar'];
 handler.group = false;
-handler.admin = false;
 
 export default handler;
