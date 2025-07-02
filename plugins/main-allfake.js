@@ -66,6 +66,7 @@ let instagram = 'https://www.instagram.com/shadowbot.md'
 
 global.redes = [group, web, instagram].getRandom()
 
+/*
 //IMAGEN
 let category = "imagen"
 const db = './src/database/db.json'
@@ -75,6 +76,7 @@ const randomlink = db_.links[category][random]
 const response = await fetch(randomlink)
 const rimg = await response.buffer()
 global.icons = rimg
+*/
 
 //TIEMPO
 var ase = moment().tz('America/Lima'); // Cambia 'America/Lima' por la zona horaria deseada
