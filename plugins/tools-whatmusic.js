@@ -120,17 +120,17 @@ let { title, artists, album, genres, release_date } = info
 let txt = `
 \`\`\`乂 RESULTADO - ACRCLOUD\`\`\`
 
-≡ 🌴 Título: ${title}
-≡ 👤 Artista: ${artists?.map(v => v.name).join(', ') || 'Desconocido'}
-≡ 🌿 Álbum: ${album?.name || 'Desconocido'}
-≡ 🌵 Género: ${genres?.map(v => v.name).join(', ') || 'Desconocido'}
-≡ 🌳 Lanzamiento: ${release_date || 'Desconocido'}
+≡ 🌴 *Título:* ${title}
+≡ 👤 *Artista:* ${artists?.map(v => v.name).join(', ') || 'Desconocido'}
+≡ 🌿 *Álbum:* ${album?.name || 'Desconocido'}
+≡ 🌵 *Género:* ${genres?.map(v => v.name).join(', ') || 'Desconocido'}
+≡ 🌳 *Lanzamiento:* ${release_date || 'Desconocido'}
 `.trim()
 
 m.reply(txt)
 
 } catch (e) {
-let msg = typeof e === 'string' ? e : *✖️ Error:* ${e.message || e}
+let msg = typeof e === 'string' ? e : `*✖️ Error:* ${e.message || e}`
 m.reply(msg)
 } finally {
 if (file) {
