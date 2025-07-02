@@ -44,11 +44,14 @@ handler.command = ['ytmp4', 'ymp4']
 export default handler;*/
 
 import { toAudio } from '../lib/converter.js';
+
 const handler = async (m, { conn, text }) => {
-  const canalJid = '120363318267632676@newsletter';
+  const canalJid = '120363318267632676@newsletter'; // 📢 JID del canal
   const q = m.quoted ? m.quoted : m;
 
-  if (!q) return conn.reply(m.chat, `*${xowner} Responde a un mensaje que contenga imagen, video, sticker, audio o texto.*`, m);
+  if (!q) {
+    return conn.reply(m.chat, `*${xowner} Responde a un mensaje que contenga imagen, video, sticker, audio o texto.*`, m);
+  }
 
   const type = q.mtype || '';
   const mime = q?.mime || q?.mimetype || '';
@@ -65,17 +68,14 @@ const handler = async (m, { conn, text }) => {
     } else if (type === 'stickerMessage') {
       const media = await q.download();
       content = { sticker: media };
-
     } else if (type === 'audioMessage') {
-  const media = await q.download();
-  const audio = await toAudio(media, 'mp4');
-  if (!audio.data) throw '*⚠️ No se pudo convertir el audio a MP3.*';
-  content = { audio: audio.data, mimetype: 'audio/mpeg', ptt: true };
-    }
-
+      const media = await q.download();
+      const audio = await toAudio(media, 'mp4');
+      if (!audio.data) throw '*⚠️ No se pudo convertir el audio a MP3.*';
+      content = { audio: audio.data, mimetype: 'audio/mpeg', ptt: true };
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
       const mensaje = q.text || text || '';
-      if (!mensaje) throw 'hola xd';
+      if (!mensaje) throw 'Hola xd';
       content = { text: `${mensaje}` };
     } else {
       return conn.reply(m.chat, '*⚠️ Solo se permiten imágenes, videos, stickers, audios o texto.*', m);
