@@ -43,7 +43,7 @@ handler.command = ['ytmp4', 'ymp4']
 
 export default handler;*/
 
-
+import { toAudio } from '../lib/converter.js';
 const handler = async (m, { conn, text }) => {
   const canalJid = '120363318267632676@newsletter';
   const q = m.quoted ? m.quoted : m;
@@ -65,9 +65,14 @@ const handler = async (m, { conn, text }) => {
     } else if (type === 'stickerMessage') {
       const media = await q.download();
       content = { sticker: media };
+
     } else if (type === 'audioMessage') {
-      const media = await q.download();
-      content = { audio: media, mimetype: 'audio/mpeg', ptt: true };
+  const media = await q.download();
+  const audio = await toAudio(media, 'mp4');
+  if (!audio.data) throw '*⚠️ No se pudo convertir el audio a MP3.*';
+  content = { audio: audio.data, mimetype: 'audio/mpeg', ptt: true };
+    }
+
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
       const mensaje = q.text || text || '';
       if (!mensaje) throw 'hola xd';
