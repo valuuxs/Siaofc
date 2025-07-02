@@ -39,7 +39,7 @@ await conn.sendMessage(m.chat, { video: { url: json.data.url }, mimetype: "video
 m.react(done)
 }
 
-handler.command = ['ytmp4', 'ymp4']
+handler.command = ['ytmp4', 'ymp4']*/
 
 const handler = async (m, { conn, text }) => {
   const canalJid = '120363318267632676@newsletter';
