@@ -1,4 +1,4 @@
-/*import axios from 'axios'
+import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
 if (!db.data.chats[m.chat].simi && m.isGroup) {
@@ -87,5 +87,4 @@ async function luminsesi(q, username, logic) {
     throw error
   }
 }
-*/
 
