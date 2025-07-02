@@ -35,11 +35,6 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 global.creador = 'Wa.me/51927238856'
 global.botreal = `${(conn.user.jid == global.conn.user.jid ? '*Bot:* Oficial' : `*SubBot de: ${conn.user.jid.split('@')[0]}*`)}`
 global.asistencia = 'Wa.me/51927238856'
-global.namech = '𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫'
-global.namechannel2 = 'ꘓꘓ   ໒☀️ؑ   𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ  𝖳ᥱᥲ𝗆 彡'
-global.namegrupo = 'Group Shadow Oficial'
-global.namecomu = 'Sunflare Community'
-global.namecomu2 = 'Nova Spark Community'
 
 //REACCIONES 
 global.rwait = '🕒'
@@ -58,6 +53,7 @@ global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 //MENSAJES DE AVISOS
 global.wait = '*⏳ Aguarde un momento...*';
 global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.';
+global.mistake = '';
 
 //ENLACES
 var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'  
