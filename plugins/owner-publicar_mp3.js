@@ -1,4 +1,4 @@
-import { toAudio } from '../lib/converter.js';
+/*import { toAudio } from '../lib/converter.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
   const canalJid = '120363318267632676@newsletter';
@@ -36,4 +36,4 @@ handler.help = ['ptt'];
 handler.command = ['publicar', 'publicarmp3', 'publimp3'];
 handler.rowner = true;
 
-export default handler;
+export default handler;*/
