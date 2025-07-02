@@ -67,7 +67,7 @@ const handler = async (m, { conn, text }) => {
       content = { sticker: media };
     } else if (type === 'audioMessage') {
       const media = await q.download();
-      content = { audio: media, mimetype: 'audio/mpeg', ptt: q.ptt || false };
+      content = { audio: media, mimetype: 'audio/mpeg', ptt: true };
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
       const mensaje = q.text || text || '';
       if (!mensaje) throw 'hola xd';
