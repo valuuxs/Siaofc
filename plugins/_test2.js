@@ -44,32 +44,22 @@ handler.command = ['ytmp4', 'ymp4']
 export default handler;*/
 
 const handler = async (m, { conn }) => {
-  const canalJid = '120363318267632676@newsletter'; // 🔁 Reemplaza con tu canal real
+  const canalJid = '120363318267632676@newsletter'; // Reemplaza con tu canal real
 
   const q = m.quoted ? m.quoted : m;
 
+  if (!q) {
+    return conn.reply(m.chat, '⚠️ Responde al mensaje que deseas publicar en el canal.', m);
+  }
+
   try {
-    // 🛡️ Verifica si el bot es miembro del grupo/canal
-    const groupMetadata = await conn.groupMetadata(canalJid);
-    const isBotParticipant = groupMetadata.participants?.some(p => p.id === conn.user.jid);
+    // Reenviar cualquier tipo de mensaje (texto, imagen, video, audio, etc.)
+    await conn.copyNForward(canalJid, q, true);
 
-    if (!isBotParticipant) {
-      return conn.reply(m.chat, '❌ No puedo enviar al canal porque no soy miembro o no tengo permisos.', m);
-    }
-
-    if (!q) {
-      return conn.reply(m.chat, '⚠️ Responde al mensaje que deseas publicar en el canal.', m);
-    }
-
-    // 📤 Reenviar mensaje al canal
-    await conn.forwardMessage(canalJid, q);
-
-    // ✅ Confirmación al usuario
-    await conn.reply(m.chat, '✅ Publicado correctamente en el canal.', m);
-
+    await conn.reply(m.chat, '✅ Mensaje publicado correctamente en el canal.', m);
   } catch (e) {
     console.error('[publicar -> canal]', e);
-    return conn.reply(m.chat, '❌ Ocurrió un error al intentar publicar en el canal.', m);
+    return conn.reply(m.chat, '❌ Ocurrió un error al intentar publicar en el canal.\nAsegúrate de que el bot esté agregado como miembro del canal.', m);
   }
 };
 
