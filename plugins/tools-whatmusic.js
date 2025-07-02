@@ -118,7 +118,7 @@ let info = res.metadata.music[0]
 let { title, artists, album, genres, release_date } = info  
 
 let txt = `
-```乂 RESULTADO - ACRCLOUD```
+\`\`\`乂 RESULTADO - ACRCLOUD\`\`\`
 
 ≡ 🌴 Título: ${title}
 ≡ 👤 Artista: ${artists?.map(v => v.name).join(', ') || 'Desconocido'}
