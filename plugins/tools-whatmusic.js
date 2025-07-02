@@ -80,17 +80,15 @@ let handler = async (m) => {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || ''
 if (!/audio|video/.test(mime)) {
-return m.reply(*${xtools} Por favor, responde a un audio o video para identificar la música.*)
+return m.reply(`*${xtools} Por favor, responde a un audio o video para identificar la música.*`)
 }
 
 let file = ''
 try {
-await m.react('🔍') // Reacción de "procesando"
+await m.react('🔍')
 
 let media = await q.download()  
 if (!media) throw '*✖️ No se pudo descargar el archivo de audio/video.*'  
-
-
 
 let dur = (q.seconds || 5)
 if (dur < 5) return m.reply('*⚠️ El audio/video debe durar al menos 5 segundos.*')
@@ -132,7 +130,7 @@ let txt = `
 m.reply(txt)
 
 } catch (e) {
-let msg = typeof e === 'string' ? e : *❌ Error:* ${e.message || e}
+let msg = typeof e === 'string' ? e : *✖️ Error:* ${e.message || e}
 m.reply(msg)
 } finally {
 if (file) {
