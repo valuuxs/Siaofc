@@ -7,7 +7,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
   const mime = (q || q.msg).mimetype || q.mediaType || '';
 
   if (!/video|audio/.test(mime)) {
-    return conn.reply(m.chat, `*${xconverter} Responda al video o nota de voz con el comando .ptt para convertirlo en nota de voz.*`, m);
+    return conn.reply(m.chat, `*${xowner} Responda al video o audio para publicarlo directamente en el canal como mp3.*`, m);
   }
 
   const media = await q.download();
