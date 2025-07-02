@@ -53,7 +53,7 @@ global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 //MENSAJES DE AVISOS
 global.wait = '*⏳ Aguarde un momento...*';
 global.hotw = '*🔥 El contenido* `+18` *está desactivado para este chat.*\n> Use *enable nsfw* para activarlo.';
-global.mistake = '';
+global.mistake = '*✖️ Error en el comando*\n*Por favor, intenta nuevamente más tarde. Si esto persiste envia:*\n> #report El comando (comando) no funciona.';
 
 //ENLACES
 var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'  
