@@ -44,27 +44,46 @@ handler.command = ['ytmp4', 'ymp4']
 export default handler;*/
 
 const handler = async (m, { conn }) => {
-  const canalJid = '120363318267632676@newsletter'; // Reemplaza con tu canal real
-
+  const canalJid = '120363318267632676@newsletter'; // 📨 JID del canal
   const q = m.quoted ? m.quoted : m;
 
-  if (!q) {
-    return conn.reply(m.chat, '⚠️ Responde al mensaje que deseas publicar en el canal.', m);
+  if (!q || !q.mtype) {
+    return conn.reply(m.chat, '⚠️ Responde a una imagen, video o sticker que quieras enviar al canal.', m);
+  }
+
+  const type = q.mtype;
+
+  if (!['imageMessage', 'videoMessage', 'stickerMessage'].includes(type)) {
+    return conn.reply(m.chat, '⚠️ Solo se permiten imágenes, videos o stickers.', m);
   }
 
   try {
-    // Reenviar cualquier tipo de mensaje (texto, imagen, video, audio, etc.)
-    await conn.copyNForward(canalJid, q, true);
+    const media = await q.download();
+    if (!media) throw 'No se pudo descargar el archivo.';
 
-    await conn.reply(m.chat, '✅ Mensaje publicado correctamente en el canal.', m);
+    // Arma el mensaje según el tipo
+    let content = {};
+    if (type === 'imageMessage') {
+      content = { image: media, caption: '📷 Imagen reenviada al canal.' };
+    } else if (type === 'videoMessage') {
+      content = { video: media, caption: '🎥 Video reenviado al canal.' };
+    } else if (type === 'stickerMessage') {
+      content = { sticker: media };
+    }
+
+    await conn.sendMessage(canalJid, content);
+
+    return conn.reply(m.chat, '✅ Archivo enviado correctamente al canal.', m);
   } catch (e) {
-    console.error('[publicar -> canal]', e);
-    return conn.reply(m.chat, '❌ Ocurrió un error al intentar publicar en el canal.\nAsegúrate de que el bot esté agregado como miembro del canal.', m);
+    console.error(e);
+    return conn.reply(m.chat, '❌ Ocurrió un error al enviar al canal.', m);
   }
 };
 
-handler.help = ['publicar'];
-handler.command = ['publicar'];
+handler.help = ['send2channel'];
+handler.tags = ['tools'];
+handler.command = ['send2channel', 'enviarcanal', 'reenviar'];
 handler.group = false;
+handler.admin = false;
 
 export default handler;
