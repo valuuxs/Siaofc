@@ -1,11 +1,6 @@
 const handler = async (m, { conn, text }) => {
   const canalJid = '120363318267632676@newsletter';
 
-  // ✅ Validar que haya un mensaje citado o texto proporcionado
-  if (!m.quoted && !text) {
-    return conn.reply(m.chat, '⚠️ Responde a un mensaje que contenga imagen, video, sticker o texto, o escribe texto después del comando.', m);
-  }
-
   const q = m.quoted || m;
   const type = q.mtype || '';
 
@@ -19,14 +14,13 @@ const handler = async (m, { conn, text }) => {
     } else if (type === 'stickerMessage') {
       content = { sticker: await q.download() };
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
-      // ✅ Si se cita un mensaje, usamos ese texto. Si no, usamos `text` que ya está limpio.
-      const mensaje = m.quoted ? (q.text || '') : text;
-      if (!mensaje) {
+      const mensaje = m.quoted?.text || text;
+      if (!mensaje.trim()) {
         return conn.reply(m.chat, '⚠️ No se detectó texto válido para enviar al canal.', m);
       }
-      content = { text: mensaje };
+      content = { text: mensaje.trim() };
     } else {
-      return conn.reply(m.chat, '⚠️ Solo se permiten imágenes, videos, stickers o texto.', m);
+      return conn.reply(m.chat, '⚠️ Responde a un mensaje con imagen, video, sticker o texto, o escribe texto después del comando.', m);
     }
 
     const res = await conn.sendMessage(canalJid, content);
