@@ -40,7 +40,7 @@ m.react(done)
 }
 
 handler.command = ['ytmp4', 'ymp4']*/
-
+/*
 
 const handler = async (m, { conn, text }) => {
   const canalJid = '120363318267632676@newsletter';
@@ -97,4 +97,4 @@ handler.tags = ['tools'];
 handler.command = ['send2channel', 'enviarcanal', 'reenviar', 'publicar'];
 handler.rowner = true;
 
-export default handler;
+export default handler;*/
