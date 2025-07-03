@@ -8,33 +8,22 @@ const handler = async (m, { conn, text }) => {
 
   const q = m.quoted || m;
   const type = q.mtype || '';
-  const mime = q?.mime || q?.mimetype || '';
 
   try {
     let content;
 
     if (type === 'imageMessage') {
-      const media = await q.download();
-      content = { image: media };
+      content = { image: await q.download() };
     } else if (type === 'videoMessage') {
-      const media = await q.download();
-      content = { video: media };
+      content = { video: await q.download() };
     } else if (type === 'stickerMessage') {
-      const media = await q.download();
-      content = { sticker: media };
+      content = { sticker: await q.download() };
     } else if (type === 'conversation' || type === 'extendedTextMessage') {
-      let mensaje = m.quoted ? (q.text || '') : (text || '');
-
-      // Si no se responde a un mensaje y hay texto, limpiar comando manualmente
-      if (!m.quoted && m.body) {
-        const usedCommand = m.body.trim().split(/\s+/)[0]; // ej: .publicar
-        mensaje = m.body.slice(usedCommand.length).trim(); // eliminar el comando del texto
-      }
-
+      // ✅ Si se cita un mensaje, usamos ese texto. Si no, usamos `text` que ya está limpio.
+      const mensaje = m.quoted ? (q.text || '') : text;
       if (!mensaje) {
         return conn.reply(m.chat, '⚠️ No se detectó texto válido para enviar al canal.', m);
       }
-
       content = { text: mensaje };
     } else {
       return conn.reply(m.chat, '⚠️ Solo se permiten imágenes, videos, stickers o texto.', m);
