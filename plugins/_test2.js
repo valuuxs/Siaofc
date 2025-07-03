@@ -77,11 +77,12 @@ const handler = async (m, { conn, text }) => {
     }
 
     const res = await conn.sendMessage(canalJid, content);
+
+    if (!res?.key?.id) throw '❌ El contenido no se pudo enviar (respuesta inválida).';
 /*
-    if (!res?.key?.id) throw '❌ El contenido no se pudo enviar (respuesta inválida).';*/
    if (!res?.key?.id) {
   return conn.reply(m.chat, '❌ El contenido no se pudo enviar.\nAsegúrate de que el bot esté *agregado* al canal y tenga *permisos de administrador*.', m);
-}
+}*/
 
     return conn.reply(m.chat, '*✅ Contenido enviado correctamente al canal.*', m);
 
