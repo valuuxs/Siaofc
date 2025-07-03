@@ -37,7 +37,7 @@ const handler = async (m, { conn, text }) => {
 
 handler.help = ['send2channel'];
 handler.tags = ['tools'];
-handler.command = ['send2channel', 'enviarcanal', 'reenviar', 'publicar'];
+handler.command = ['send', 'enviarcanal', 'reenviar', 'publicar'];
 handler.rowner = true;
 
 export default handler;
