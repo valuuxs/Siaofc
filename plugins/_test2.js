@@ -79,10 +79,6 @@ const handler = async (m, { conn, text }) => {
     const res = await conn.sendMessage(canalJid, content);
 
     if (!res?.key?.id) throw '❌ El contenido no se pudo enviar (respuesta inválida).';
-/*
-   if (!res?.key?.id) {
-  return conn.reply(m.chat, '❌ El contenido no se pudo enviar.\nAsegúrate de que el bot esté *agregado* al canal y tenga *permisos de administrador*.', m);
-}*/
 
     return conn.reply(m.chat, '*✅ Contenido enviado correctamente al canal.*', m);
 
@@ -98,3 +94,25 @@ handler.command = ['send2channel', 'enviarcanal', 'reenviar', 'publicar'];
 handler.rowner = true;
 
 export default handler;*/
+
+import fetch from 'node-fetch'
+let handler = async (m, { conn, command, args }) => {
+if (!args[0]) return conn.reply(m.chat, '🍬 *Ingrese el Link de una página.*', m, rcanal)
+try {
+await m.react(rwait)
+conn.reply(m.chat, '🍭 Buscando su información....', m, {
+contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
+title: packname,
+body: dev,
+previewType: 0, thumbnail: icons, 
+sourceUrl: channel }}})
+let ss = await (await fetch(`https://image.thum.io/get/fullpage/${args[0]}`)).buffer()
+conn.sendFile(m.chat, ss, 'error.png', args[0], fkontak)
+await m.react(done)
+} catch {
+return conn.reply(m.chat, '⚠️ Ocurrió un error.', m, fake)
+await m.react(error)}}
+handler.help = ['ssweb', 'ss']
+handler.tags = ['tools']
+handler.command = ['ssweb', 'ss']
+export default handler
