@@ -61,14 +61,13 @@ export default handler;*/
 let handler = async (m, { conn, args }) => {
     let who;
 
-    // Si se pasaron palabras, unir todo y limpiar
     if (args.length > 0) {
-        let input = args.join('').replace(/\D/g, ''); // une y limpia
-        if (input.length < 8) return m.reply('❌ Número inválido. Asegúrate de ingresar un número completo.');
+        let input = args.join('').replace(/\D/g, '');
+        if (input.length < 8) return m.reply('*✖️ Número inválido. Asegúrate de ingresar un número completo.*');
 
         let exists = await conn.onWhatsApp(input + '@s.whatsapp.net');
         if (!exists || !exists[0]?.exists) {
-            return m.reply(`❌ El número *+${input}* no está registrado en WhatsApp.`);
+            return m.reply(`✖️ *El número +${input} no está registrado en WhatsApp.*`);
         }
 
         who = exists[0].jid;
@@ -77,7 +76,7 @@ let handler = async (m, { conn, args }) => {
     } else if (m.mentionedJid?.[0]) {
         who = m.mentionedJid[0];
     } else {
-        return m.reply('❗ Debes responder a un mensaje, etiquetar a un usuario o ingresar un número válido.\n\nEjemplo:\n- .pfp @usuario\n- .pfp +51987654321');
+        return m.reply(`*${xsticker} Debes responder a un mensaje, etiquetar a un usuario o ingresar un número válido.*`);
     }
 
     let name;
