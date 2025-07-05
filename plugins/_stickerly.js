@@ -1,45 +1,24 @@
-import { youtubedl } from '@bochilteam/scraper';
+import fetch from 'node-fetch';
 
-const handler = async (m, { conn, args }) => {
-  if (!args[0]) return m.reply(`*❗ Ingresa una URL de un video de YouTube*`);
+let handler = async (m, { conn, args }) => {
 
-  const url = args[0];
-  if (!url.match(/(youtu\.be|youtube\.com)/i)) {
-    return m.reply('*⚠️ Ingresa un link válido de YouTube.*');
-  }
+if (!args[0]) return m.reply(`🍭 Ingresa Un Link De YouTube.`);
 
-  try {
-    await m.react('🕒');
-    const res = await youtubedl(url, {
-      quality: '128kbps',
-      type: 'audio'
-    });
+m.react('🕒')
+let api = await(await fetch(`https://api.neoxr.eu/api/youtube?url=${args[0]}&type=audio&quality=128kbps&apikey=GataDios`)).json();
 
-    const audio = res.audio?.url;
-    const title = res.title || 'audio';
-    const thumbnail = res.thumbnail || `https://i.ytimg.com/vi/${res.videoId}/maxresdefault.jpg`;
+// if (!api?.result?.dl_url) return m.reply('No Se  Encontraron Resultados');
 
-    if (!audio) {
-      await m.react('✖️');
-      return m.reply('*❌ No se pudo obtener el audio.*');
-    }
+/* let txt = `「✦」𝗧𝗶𝘁𝘂𝗹𝗼: ${api.result.result.title}`;
+conn.reply(m.chat, txt, m, rcanal);
+*/
 
-    await conn.sendMessage(m.chat, {
-      audio: { url: audio },
-      mimetype: 'audio/mpeg',
-      fileName: `${title}.mp3`
-    }, { quoted: m });
+conn.sendMessage(m.chat, { audio: { url: api.data.url }, mimetype: 'audio/mpeg' }, { quoted: m });
+m.react(done)
+ }
 
-    await m.react('✅');
-  } catch (err) {
-    await m.react('✖️');
-    console.error(err);
-    m.reply('*⚠️ La descarga ha fallado. Puede que el video esté bloqueado o muy pesado.*');
-  }
-};
-
-handler.help = ['ytmp3 *<url>*'];
-handler.command = ['ytes'];
-handler.tags = ['descargas'];
+handler.help = ['ytmp3'];
+handler.tag = ['descargas'];
+handler.command = ['ytesx'];
 
 export default handler;
