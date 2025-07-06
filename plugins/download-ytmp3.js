@@ -11,7 +11,7 @@ const savetube = {
     download: "/download"
   },
   headers: {
-    'accept': '*/*',
+    'accept': '🦤',
     'content-type': 'application/json',
     'origin': 'https://yt.savetube.me',
     'referer': 'https://yt.savetube.me/',
