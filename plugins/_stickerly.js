@@ -89,7 +89,7 @@ const handler = async (m, { conn, text, command }) => {
       await conn.sendMessage(m.chat, {
         document: { url: downloadUrl },
         mimetype: 'audio/mpeg',
-        fileName
+        ptt: false;
       }, { quoted: m });
     } else {
       return m.reply(`❌ No se pudo descargar el audio.`);
