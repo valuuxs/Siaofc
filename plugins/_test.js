@@ -33,7 +33,7 @@ m.reply(`${e.message}`);
     }
 }
 
-handler.command = /^(prompttovideo|ptovideo|videoprompt)$/i
+handler.command = /^(prompttovideo|ptovideo|videoprompt|iavid)$/i
 handler.register = true
 handler.limit = true
 
