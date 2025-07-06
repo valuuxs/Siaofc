@@ -34,7 +34,5 @@ m.reply(`${e.message}`);
 }
 
 handler.command = /^(prompttovideo|ptovideo|videoprompt|iavid)$/i
-handler.register = true
-handler.limit = true
 
 export default handler
