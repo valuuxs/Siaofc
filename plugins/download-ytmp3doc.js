@@ -35,13 +35,31 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     const apiUrl = `${getApiUrl()}?url=${encodeURIComponent(video.url)}`;
     const apiData = await fetchWithRetries(apiUrl);
-
+/*
     const audioMessage = {
       document: { url: apiData.download.url },
       mimetype: "audio/mpeg",
       fileName: `${video.title}.mp3`,
       caption: `\`\`\`◜YouTube - MP3◞\`\`\`\n\n*${video.title}*`,
-    };
+    };*/
+
+const audioMessage = {
+  audio: { url: apiData.download.url },
+  mimetype: "audio/mpeg",
+  ptt: false, // pon true si quieres que se envíe como nota de voz
+  fileName: `${video.title}.mp3`,
+  contextInfo: {
+    externalAdReply: {
+      title: video.title,
+      body: 'YouTube - MP3',
+      thumbnailUrl: video.thumbnail,
+      mediaType: 2,
+      mediaUrl: video.url,
+      sourceUrl: video.url,
+      showAdAttribution: true,
+    },
+  },
+};
 
     await conn.sendMessage(m.chat, audioMessage, { quoted: m });
 
