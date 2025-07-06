@@ -1,3 +1,4 @@
+/*
 import fetch from "node-fetch";
 import yts from "yt-search";
 
@@ -34,7 +35,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!video || !video.url) throw new Error("No se encontraron resultados válidos.");
 
     const apiUrl = `${getApiUrl()}?url=${encodeURIComponent(video.url)}`;
-    const apiData = await fetchWithRetries(apiUrl);
+    const apiData = await fetchWithRetries(apiUrl);*/
 /*
     const audioMessage = {
       document: { url: apiData.download.url },
@@ -42,7 +43,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       fileName: `${video.title}.mp3`,
       caption: `\`\`\`◜YouTube - MP3◞\`\`\`\n\n*${video.title}*`,
     };*/
-
+/*
 const audioMessage = {
   audio: { url: apiData.download.url },
   mimetype: "audio/mpeg",
@@ -80,4 +81,4 @@ handler.command = ['ytmp3doc'];
 handler.help = ['ytmp3doc'];
 handler.tags = ['descargas'];
 
-export default handler;
+export default handler;*/
