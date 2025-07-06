@@ -85,12 +85,19 @@ const handler = async (m, { conn, text, command }) => {
     if (downloadUrl) {
       const cleanTitle = title.replace(/[^\w\s-]/gi, '').trim().slice(0, 50).replace(/\s+/g, '_');
       const fileName = `${cleanTitle}.${format}`;
-
+/*
       await conn.sendMessage(m.chat, {
         document: { url: downloadUrl },
         mimetype: 'audio/mpeg',
         ptt: false;
-      }, { quoted: m });
+      }, { quoted: m });*/
+
+await conn.sendMessage(m.chat, {
+  audio: { url: downloadUrl },
+  mimetype: 'audio/mpeg',
+  ptt: false // true si quieres que sea nota de voz
+}, { quoted: m });
+
     } else {
       return m.reply(`❌ No se pudo descargar el audio.`);
     }
