@@ -11,7 +11,7 @@ const savetube = {
     download: "/download"
   },
   headers: {
-    'accept': '🦤',
+    'accept': '*/*',
     'content-type': 'application/json',
     'origin': 'https://yt.savetube.me',
     'referer': 'https://yt.savetube.me/',
@@ -163,8 +163,9 @@ handler.help = ['ytmp3 *<url>*'];
 handler.command = ['ytmp3'];
 handler.tags = ['descargas'];
 
-export default handler;*/
+export default handler;
 
+/*
 import fetch from "node-fetch";
 import yts from "yt-search";
 
@@ -236,4 +237,4 @@ handler.command = ['ytmp3'];
 handler.help = ['ytmp3'];
 handler.tags = ['descargas'];
 
-export default handler;
+export default handler;*/
