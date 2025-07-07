@@ -27,7 +27,7 @@ const handler = async (m, { conn, text }) => {
 
     if (!res?.key?.id) throw '❌ El contenido no se pudo enviar (respuesta inválida).';
 
-    return conn.reply(m.chat, '*✅ Contenido enviado correctamente al canal.*', m);
+    return conn.reply(m.chat, '*✅ Contenido enviado correctamente al canal.*\nhttps://whatsapp.com/channel/0029Vafxnat8qIzxOjUrwP41', m, rcanal);
 
   } catch (e) {
     console.error('[ERROR EN PUBLICAR]:', e);
