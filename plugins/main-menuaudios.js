@@ -16,7 +16,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
 
     const text = `
-🌐 *Menú Audios del Bot*
+🌐 *\`Menú Audios del Bot\`*
 ────────────────────────────
 👤 *Usuario:* ${taguser}
 🔰 *Rol:* ${role}
@@ -26,19 +26,19 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
 ${readMore}
    \`Lista de Comandos\` 
-╰➤ ׄ ׁ${xowner} ${usedPrefix}update
-╰➤ ׄ ׁ${xowner} ${usedPrefix}leavegc
-╰➤ ׄ ׁ${xowner} ${usedPrefix}blocklist
-╰➤ ׄ ׁ${xowner} ${usedPrefix}grouplist
-╰➤ ׄ ׁ${xowner} ${usedPrefix}restart
-╰➤ ׄ ׁ${xowner} ${usedPrefix}join
-╰➤ ׄ ׁ${xowner} ${usedPrefix}chetar
-╰➤ ׄ ׁ${xowner} ${usedPrefix}banchat 
-╰➤ ׄ ׁ${xowner} ${usedPrefix}unbanchat
-╰➤ ׄ ׁ${xowner} ${usedPrefix}banuser
-╰➤ ׄ ׁ${xowner} ${usedPrefix}unbanuser
-╰➤ ׄ ׁ${xowner} ${usedPrefix}dsowner
-╰➤ ׄ ׁ${xowner} ${usedPrefix}autoadmin 
+╰➤ ׁ${xowner} ${usedPrefix}update
+╰➤ ׁ${xowner} ${usedPrefix}leavegc
+╰➤ ׁ${xowner} ${usedPrefix}blocklist
+╰➤ ׁ${xowner} ${usedPrefix}grouplist
+╰➤ ׁ${xowner} ${usedPrefix}restart
+╰➤ ׁ${xowner} ${usedPrefix}join
+╰➤ ׁ${xowner} ${usedPrefix}chetar
+╰➤ ׁ${xowner} ${usedPrefix}banchat 
+╰➤ ׁ${xowner} ${usedPrefix}unbanchat
+╰➤ ׁ${xowner} ${usedPrefix}banuser
+╰➤ ׁ${xowner} ${usedPrefix}unbanuser
+╰➤ ׁ${xowner} ${usedPrefix}dsowner
+╰➤ ׁ${xowner} ${usedPrefix}autoadmin 
 > ${club}
 `.trim();
     /*

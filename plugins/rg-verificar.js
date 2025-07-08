@@ -43,10 +43,10 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `𐙚ㅤ *𝖱𝖾︩𝗀𝗂𝗌𝗍𝗋𝗈* ㅤﾉㅤ *𝖢𝗈𝗆𝗉𝗅𝖾ł𝗈* ㅤᗝ̵\nㅤ꒰       ֹ      ﹙᷼͝sʜᴀᴅᴏᴡ᷼͝﹚       ִ       ꒱\n\n`
+    let regbot = `𐙚ㅤ *Registro* ㅤﾉㅤ *Completo* ㅤᗝ̵\nㅤ@𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔\n\n`
     regbot += `✿᷎︩︪͡⪧ \`Nombre:\` ${name}\n`
     regbot += `✿᷎︩︪͡⪧ \`Edad:\` ${age} años\n\n`
-    regbot += `𐔌𐔌  *𝖱𝖾𝖼໊𝗈𝗆͟𝗉͟𝖾͟𝗇͟𝗌͟𝖺𝗌 ࣲ* ׅ  ☕ᩨ   ׄ\n\n`
+    regbot += `𐔌𐔌  *Recompensa ࣲ* ׅ  ☕ᩨ  \n\n`
     regbot += `ᦷᩘᦷ     ݂   💎 ፡ \`\`\`15 Diamantes\`\`\`\n`
     regbot += `ᦷᩘᦷ     ݂   🍸 ፡ \`\`\`245 Xp\`\`\`\n`
     regbot += `ᦷᩘᦷ     ݂   🎫 ፡ \`\`\`12 Tokens\`\`\`\n\n`
@@ -57,10 +57,10 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '෫໋ׅׄ𝆬🍃ິ⃨ 𝖱𝖾𝗀𝗂𝗌𝗍𝗋𝗈 - 𝖲𝗁𝖺𝖽𝗈𝗐 ׅ𝖴𝗅𝗍𝗋𝖺  ׄ ׄ𑁍̵ ֕︵۪۪۪۪᷼ ּ',
+                title: '෫໋ׅׄ𝆬🍃ິ⃨ 𝖱𝖾𝗀𝗂𝗌𝗍𝗋𝗈 - 𝖲𝗁𝖺𝖽𝗈𝗐 ׅ𝖴𝗅𝗍𝗋𝖺 𑁍̵ ֕︵۪۪۪۪᷼ ּ',
                 body: club,
                 thumbnailUrl: 'https://files.catbox.moe/nwqdwh.jpg',
-                sourceUrl: 'https://whatsapp.com/channel/0029Vb1X1TDElah1FEQ4xm0K',
+                sourceUrl: 'https://whatsapp.com/channel/0029Vb4TKBCD38CNEkfHdj1z',
                 mediaType: 1,
                 showAdAttribution: true,
                 renderLargerThumbnail: true

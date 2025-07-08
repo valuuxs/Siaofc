@@ -26,7 +26,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         const vid = ['https://files.catbox.moe/qmhhxy.png', 'https://files.catbox.moe/qmhhxy.png', 'https://files.catbox.moe/qmhhxy.png']
 
         let menu = `
-🌐 *Menú Principal del Bot*
+🌐 *\`Menú Principal\`*
 ────────────────────────────
 👤 *Usuario:* ${taguser}
 🔰 *Rol:* ${role}
@@ -34,7 +34,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 💎 *Gemas:* ${diamantes}
 ⏱️ *Activo:* ${uptime}
 👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
-${readMore}
+
 🎴 *\`Menús\`* ${xmenus}
 ╰➤ ${xmenus} ${usedPrefix}menunsfw
 ╰➤ ${xmenus} ${usedPrefix}menuaudios
@@ -370,7 +370,7 @@ ${readMore}
                 isForwarded: true,
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 🌤️',
+                    title: 'KɪʟʟᴢN\nPᴏʀɴʜᴜʙ: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔',
                     thumbnailUrl: perfil,
                     mediaType: 1,
                     renderLargerThumbnail: false,

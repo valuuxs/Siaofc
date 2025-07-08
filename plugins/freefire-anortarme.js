@@ -60,7 +60,7 @@ const handler = async (m, { args, conn, usedPrefix }) => {
 
 ㅤㅤㅤ࿙࿚ㅤׅㅤ࿙࿚࿙࿚ㅤׅㅤ࿙࿚
 
- ׄ߳𑁍̵ ֕︵۪۪۪۪᷼ ּ \`𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌:\` ׅ ׄ░ׅ
+߳𑁍̵ ֕︵۪۪۪۪᷼ ּ \`𝖩𝗎𝗀𝖺𝖽𝗈𝗋𝖾𝗌:\` ׅ░ׅ
 
 ${jugadoresText}
 
