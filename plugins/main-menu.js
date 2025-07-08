@@ -3,7 +3,6 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 import { promises } from 'fs'
 import { join } from 'path'
-
 let handler = async (m, { conn, usedPrefix, text, command }) => {
     try {
         let { exp, diamantes, level, role } = global.db.data.users[m.sender]
@@ -11,20 +10,13 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         let name = await conn.getName(m.sender)
         exp = exp || 'Desconocida';
         role = role || 'Aldeano';
-
         const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
         const _uptime = process.uptime() * 1000;
         const uptime = clockString(_uptime);
-
         let totalreg = Object.keys(global.db.data.users).length
         let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
-
         await m.react('🌹')
-        let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-        let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/qmhhxy.png')
-
-        const vid = ['https://files.catbox.moe/qmhhxy.png']
-
+        const imageUrl = 'https://files.catbox.moe/qmhhxy.png';
         let menu = `
 🌐 *\`Menú Principal\`*
 ────────────────────────────
@@ -33,7 +25,6 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
 📈 *Nivel:* ${level} (${exp} XP)
 💎 *Gemas:* ${diamantes}
 ⏱️ *Activo:* ${uptime}
-👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
 
 🎴 *\`Menús\`* ${xmenus}
 ╰➤ ${xmenus} ${usedPrefix}menunsfw
@@ -360,23 +351,19 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
 ╰➤ ${xowner} ${usedPrefix}autoadmin
 > ${club}
 `.trim()
-
         await conn.sendMessage(m.chat, {
-            image: { url: perfil }, // Enviar solo la imagen
+            image: { url: imageUrl }, // Enviar siempre la imagen especificada
             caption: menu,
         }, { quoted: null })
     } catch (e) {
         await m.reply(`*✖️ Ocurrió un error al enviar el menú.*\n\n${e}`)
     }
 }
-
 handler.help = ['menuff'];
 handler.tags = ['main'];
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
 handler.fail = null;
-
 export default handler;
-
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 function clockString(ms) {
