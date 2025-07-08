@@ -33,21 +33,11 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 > ${club}
 `.trim();
 
-    // Botón de enlace al grupo de ventas
-    const button = [
-      {
-        buttonText: { displayText: 'ÚNETE A NUESTRO GRUPO DE VENTAS' },
-        type: 1,
-        urlButton: { displayText: 'Grupo de Ventas', url: 'https://chat.whatsapp.com/HqhAoXS8TCcJIn0KrbJZKz' },
-      },
-    ];
-
-    // Enviamos la imagen con el mensaje y el botón usando m.key.remoteJid
+    // Enviamos la imagen con el mensaje sin botón usando m.key.remoteJid
     await conn.sendMessage(m.key.remoteJid, { // Asegúrate de usar m.key.remoteJid
       image: { url: imageUrl },  // Usamos la imagen como contenido
       caption: str,
       mentions: [m.sender], // Etiquetamos al usuario que ejecutó el comando
-      buttons: button, // Agregamos el botón de enlace
     });
 
   } catch (e) {
