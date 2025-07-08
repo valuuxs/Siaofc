@@ -13,7 +13,6 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 *🌴 Nombre:* MvrcoSexo
 *☕ Creador:* MvrcoSex
 *📚 Librería:* Baileys
-*⏰ Uptime:* ${uptime}
 *🚀 Type:* NodeJs
 *🧇 Usuarios regs:* ${rtotalreg}
 *🥞 Usuarios totales:* ${totalreg}
