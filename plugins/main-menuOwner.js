@@ -9,36 +9,37 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
-    const pp = 'https://files.catbox.moe/9d4ria.jpg';
+    const pp = 'https://files.catbox.moe/qmhhxy.png';
     const img = await (await fetch(pp)).buffer()
     const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
 
     const text = `
-🌐 *\`Menú Audios del Bot\`*
+🌐 *\`Menú Owner\`*
 ────────────────────────────
-👤 *Usuario:* ${taguser}
-🔰 *Rol:* ${role}
-📈 *Nivel:* ${level} (${exp} XP)
-💎 *Gemas:* ${diamantes}
-⏱️ *Activo:* ${uptime}
-👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
+*🌴 Nombre:* MvrcoSexo
+*☕ Creador:* MvrcoSex
+*📚 Librería:* Baileys
+*⏰ Uptime:* ${uptime}
+*🚀 Type:* NodeJs
+*🧇 Usuarios regs:* ${rtotalreg}
+*🥞 Usuarios totales:* ${totalreg}
 ${readMore}
-   \`Lista de Comandos\` 
-╰➤ ׁ${xowner} ${usedPrefix}update
-╰➤ ׁ${xowner} ${usedPrefix}leavegc
-╰➤ ׁ${xowner} ${usedPrefix}blocklist
-╰➤ ׁ${xowner} ${usedPrefix}grouplist
-╰➤ ׁ${xowner} ${usedPrefix}restart
-╰➤ ׁ${xowner} ${usedPrefix}join
-╰➤ ׁ${xowner} ${usedPrefix}chetar
-╰➤ ׁ${xowner} ${usedPrefix}banchat 
-╰➤ ׁ${xowner} ${usedPrefix}unbanchat
-╰➤ ׁ${xowner} ${usedPrefix}banuser
-╰➤ ׁ${xowner} ${usedPrefix}unbanuser
-╰➤ ׁ${xowner} ${usedPrefix}dsowner
-╰➤ ׁ${xowner} ${usedPrefix}autoadmin 
+\`Lista de Comandos\`
+𑂯 ׁ${xowner} ${usedPrefix}update
+𑂯 ׁ${xowner} ${usedPrefix}leavegc
+𑂯 ׁ${xowner} ${usedPrefix}blocklist
+𑂯 ׁ${xowner} ${usedPrefix}grouplist
+𑂯 ׁ${xowner} ${usedPrefix}restart
+𑂯 ׁ${xowner} ${usedPrefix}join
+𑂯 ׁ${xowner} ${usedPrefix}chetar
+𑂯 ׁ${xowner} ${usedPrefix}banchat 
+𑂯 ׁ${xowner} ${usedPrefix}unbanchat
+𑂯 ׁ${xowner} ${usedPrefix}banuser
+𑂯 ׁ${xowner} ${usedPrefix}unbanuser
+𑂯 ׁ${xowner} ${usedPrefix}dsowner
+𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
 > ${club}
 `.trim();
     /*

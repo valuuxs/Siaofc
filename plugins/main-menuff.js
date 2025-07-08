@@ -10,18 +10,12 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const img = await (await fetch(pp)).buffer()
     const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
-    const txt = `${await conn.getName(m.sender)}, Welcome to my game menu, follow me on Instagram, thank you very much.`;
+    const txt = `${await conn.getName(m.sender)}, Sigueme en instagram como: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔.`;
 
     const text = `
-🌐 *Menú FREE FIRE del Bot*
+🌐 *\`Menú Free Fire\`*
 ────────────────────────────
-👤 *Usuario:* ${taguser}
-🔰 *Rol:* ${role}
-📈 *Nivel:* ${level} (${exp} XP)
-💎 *Gemas:* ${diamantes}
-⏱️ *Activo:* ${uptime}
-👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
-${readMore}
+\`\`\`${date}||${hora}\`\`\`
 
 ╭╼[ *LISTAS DE VS INTERNOS*]
 ┃ ⓘ 𝐶𝑜𝑙𝑜𝑐𝑎 𝑙𝑎 ℎ𝑜𝑟𝑎 𝑦 𝑒𝑙 𝑝𝑎𝑖𝑠 𝑠𝑒𝑔𝑢𝑖𝑑𝑜
@@ -34,7 +28,7 @@ ${readMore}
 ┃🪻➺ .inmixto6
 ╰━━━━━━⋆★⋆━━━━━━⬣
 
-╭╼[ *MAPAS*]
+╭╼[ *MAPAS DE FREE FIRE*]
 ┃🗼➺ .bermuda
 ┃🏝️➺ .purgatorio
 ┃🏜️➺ .kalahari
