@@ -1,8 +1,3 @@
-/*Pinterest Download
-Imagen & Vídeo
-Powered by Cristian Escobar
-https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n*/
-
 import axios from 'axios';
 import cheerio from 'cheerio';
 import baileys from '@whiskeysockets/baileys';
@@ -41,8 +36,9 @@ let handler = async (m, { conn, text }) => {
     const result = await dl(text);
     if (!result || !result.download) return m.reply('*❌ No se pudo obtener el contenido del enlace.*');
     const isVideo = result.download.endsWith('.mp4');
-    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: `\`\`\`◜Pinterest - Download◞\`\`\`\n\n*🌴 \`Title:\`* ${result.title || 'Sin Título'}\n\n> ${club}`
-}, { quoted: m });
+    await conn.sendMessage(m.chat, {
+      [isVideo ? 'video' : 'image']: { url: result.download }, caption: `\`\`\`◜Pinterest - Download◞\`\`\`\n\n*🌴 \`Title:\`* ${result.title || 'Sin Título'}\n\n> ${club}`
+    }, { quoted: m });
     await m.react('✅');
   } catch (error) {
     console.error(error);

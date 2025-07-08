@@ -7,7 +7,7 @@ let apkSession = new Map();
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   // Rama: Comando inicial .apk con término de búsqueda
   if (command === 'apk' && text) {
-await m.react('📭');
+    await m.react('📭');
     /*const reactionMessage = await conn.sendMessage(
       m.chat,
       { text: `🔍 Buscando la aplicación...` },
@@ -93,7 +93,7 @@ await m.react('📭');
         document: { url: downloadUrl },
         mimetype: "application/vnd.android.package-archive",
         fileName: `${app.name}.apk`,
-        caption: `> Shadow Ultra - MD`
+        caption: `> Pᴏʀɴʜᴜʙ: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔`
       },
       { quoted: m }
     );

@@ -6,7 +6,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let type = (args[0] || '').toLowerCase()
   let isAll = false, isUser = false
   switch (type) {
-  case 'welcome':
+    case 'welcome':
     case 'bv':
     case 'bienvenida':
       if (!m.isGroup) {
@@ -21,28 +21,28 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.welcome = isEnable
       break
 
-  case 'antiPrivate':
+    case 'antiPrivate':
     case 'antiprivado':
     case 'antipriv':
-     isAll = true
-        if (!isOwner) {
-          global.dfail('rowner', m, conn)
-          throw false
+      isAll = true
+      if (!isOwner) {
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.antiPrivate = isEnable
       break
 
-  case 'restrict':
+    case 'restrict':
     case 'restringir':
-     isAll = true
-        if (!isOwner) {
-          global.dfail('rowner', m, conn)
-          throw false
+      isAll = true
+      if (!isOwner) {
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.restrict = isEnable
       break
 
- case 'antibot':
+    case 'antibot':
     case 'antibots':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -53,7 +53,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.antiBot = isEnable
       break
 
- case 'antisubbots':
+    case 'antisubbots':
     case 'antisub':
     case 'antisubot':
     case 'antibot2':
@@ -66,7 +66,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.antiBot2 = isEnable
       break
 
- case 'antifake':
+    case 'antifake':
     case 'antifakes':
     case 'antiarabes':
     case 'antiarab':
@@ -79,31 +79,32 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.onlyLatinos = isEnable
       break
 
- case 'nsfw':
-      case 'modohorny':
-       if (m.isGroup) {
-         if (!(isAdmin || isOwner)) {
-           global.dfail('admin', m, conn)
-            throw false
-           }}
-    chat.nsfw = isEnable          
-    break
+    case 'nsfw':
+    case 'modohorny':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.nsfw = isEnable
+      break
 
-case 'autoaceptar':
-case 'aceptarnuevos':
-  if (m.isGroup) {
-    if (!(isAdmin || isOwner)) {
-      global.dfail('admin', m, conn)
-      throw false
-    }
-    chat.autoaceptar = isEnable
-  } else {
-    global.dfail('group', m, conn)
-    throw false
-  }
-  break
+    case 'autoaceptar':
+    case 'aceptarnuevos':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+        chat.autoaceptar = isEnable
+      } else {
+        global.dfail('group', m, conn)
+        throw false
+      }
+      break
 
- case 'modoadmin':
+    case 'modoadmin':
     case 'soloadmin':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -114,18 +115,18 @@ case 'aceptarnuevos':
       chat.modoadmin = isEnable
       break
 
- case 'autoread':
+    case 'autoread':
     case 'autoleer':
     case 'autover':
       isAll = true
-       if (!isROwner) {
-         global.dfail('rowner', m, conn)
-         throw false
+      if (!isROwner) {
+        global.dfail('rowner', m, conn)
+        throw false
       }
       global.opts['autoread'] = isEnable
       break
 
-  case 'antiver':
+    case 'antiver':
     case 'antiocultar':
     case 'antiviewonce':
       if (!m.isGroup) {
@@ -140,7 +141,7 @@ case 'aceptarnuevos':
       chat.antiver = isEnable
       break
 
-  case 'reaction':
+    case 'reaction':
     case 'reaccion':
     case 'emojis':
       if (!m.isGroup) {
@@ -155,7 +156,7 @@ case 'aceptarnuevos':
       chat.reaction = isEnable
       break
 
-  case 'audios':
+    case 'audios':
     case 'audiosbot':
     case 'botaudios':
       if (!m.isGroup) {
@@ -170,51 +171,52 @@ case 'aceptarnuevos':
       chat.audios = isEnable
       break
 
-  case 'antiSpam':
+    case 'antiSpam':
     case 'antispam':
     case 'antispamosos':
-     isAll = true
+      isAll = true
       if (!isOwner) {
-      global.dfail('rowner', m, conn)
-      throw false
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.antiSpam = isEnable
       break
 
-   case 'antidelete': 
-     case 'antieliminar': 
-     case 'delete':
+    case 'antidelete':
+    case 'antieliminar':
+    case 'delete':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
-       global.dfail('admin', m, conn)
-       throw false
-     }}
-     chat.delete = isEnable
-     break
-
-  case 'autobio':
-    case 'status':
-    case 'bio':
-     isAll = true
-        if (!isOwner) {
-          global.dfail('rowner', m, conn)
+          global.dfail('admin', m, conn)
           throw false
         }
+      }
+      chat.delete = isEnable
+      break
+
+    case 'autobio':
+    case 'status':
+    case 'bio':
+      isAll = true
+      if (!isOwner) {
+        global.dfail('rowner', m, conn)
+        throw false
+      }
       bot.autobio = isEnable
       break
 
-  case 'jadibotmd':
+    case 'jadibotmd':
     case 'serbot':
     case 'subbots':
-     isAll = true
-        if (!isOwner) {
-          global.dfail('rowner', m, conn)
-          throw false
+      isAll = true
+      if (!isOwner) {
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.jadibotmd = isEnable
       break
 
-  case 'detect':
+    case 'detect':
     case 'configuraciones':
     case 'avisodegp':
       if (!m.isGroup) {
@@ -229,7 +231,7 @@ case 'aceptarnuevos':
       chat.detect = isEnable
       break
 
-  case 'simi':
+    case 'simi':
     case 'chatbot':
     case 'simsimi':
       if (!m.isGroup) {
@@ -246,9 +248,9 @@ case 'aceptarnuevos':
 
     case 'document':
     case 'documento':
-    isUser = true
-    user.useDocument = isEnable
-    break
+      isUser = true
+      user.useDocument = isEnable
+      break
 
     case 'antilink':
       if (m.isGroup) {
@@ -263,7 +265,7 @@ case 'aceptarnuevos':
       if (!/[01]/.test(command)) return conn.reply(m.chat, `
 \`𝗙𝘂𝗻𝗰𝗶𝗼𝗻𝗲𝘀 𝗗𝗶𝘀𝗽𝗼𝗻𝗶𝗯𝗹𝗲𝘀\`
 
-*ゲ◜៹ 𝖠𝖽𝗆𝗂𝗇𝗂𝗌𝗍𝗋𝖺𝖽𝗈𝗋𝖾𝗌 ៹◞ゲ*
+*𝙰𝚍𝚖𝚒𝚗𝚒𝚜𝚝𝚛𝚊𝚍𝚘𝚛𝚎𝚜*
 
 ${usedPrefix + command} welcome 
 ${usedPrefix + command} antibot
@@ -279,7 +281,7 @@ ${usedPrefix + command} audios
 ${usedPrefix + command} detect
 ${usedPrefix + command} chatbot
 
-*ゲ◜៹ 𝖣𝖾𝗌𝖺𝗋𝗋𝗈𝗅𝗅𝖺𝖽𝗈𝗋 ៹◞ゲ*
+*𝙳𝚎𝚟𝚎𝚕𝚘𝚙𝚎𝚛*
 
 ${usedPrefix + command} antispam
 ${usedPrefix + command} antiprivado

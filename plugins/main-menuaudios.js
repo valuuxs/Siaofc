@@ -16,54 +16,50 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const txt = `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`;
 
     const text = `
- ꡴ㅤ   ︵ᤢ⏜   ᷃ᩚ   ☕᪶     ᷃ᩚ ⏜ᤢ︵    ㅤ᪬
-  *Hola*  ׅ ෫ׄ᷼͝${taguser}  ಒ
- ‎ ‎ ‎ ‎౨ৎ  ‎ ‎ ‎ ‎*Bienvenido* ‎ ‎  ‎ ‎✿̮    ׅ  al   ୂ  
- ⿻    *𝖬𝖾𝗇𝗎*    ෨    *𝖮𝗐𝗇𝖾𝗋*    𑇙ᰍ
-
-*🌴 Nombre:* Shadow Ultra
-*☕ Creador:* Cristian
-*📚 Librería:* Baileys
-*⏰ Uptime:* ${uptime}
-*🚀 Type:* NodeJs
-*🧇 Usuarios regs:* ${rtotalreg}
-*🥞 Usuarios totales:* ${totalreg}
+🌐 *Menú Audios del Bot*
+────────────────────────────
+👤 *Usuario:* ${taguser}
+🔰 *Rol:* ${role}
+📈 *Nivel:* ${level} (${exp} XP)
+💎 *Gemas:* ${diamantes}
+⏱️ *Activo:* ${uptime}
+👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
 ${readMore}
-෨   \`Lista de Comandos\`    𓈒𓏸    ☁︎ 
-𑂯 ׁ${xowner} ${usedPrefix}update
-𑂯 ׁ${xowner} ${usedPrefix}leavegc
-𑂯 ׁ${xowner} ${usedPrefix}blocklist
-𑂯 ׁ${xowner} ${usedPrefix}grouplist
-𑂯 ׁ${xowner} ${usedPrefix}restart
-𑂯 ׁ${xowner} ${usedPrefix}join
-𑂯 ׁ${xowner} ${usedPrefix}chetar
-𑂯 ׁ${xowner} ${usedPrefix}banchat 
-𑂯 ׁ${xowner} ${usedPrefix}unbanchat
-𑂯 ׁ${xowner} ${usedPrefix}banuser
-𑂯 ׁ${xowner} ${usedPrefix}unbanuser
-𑂯 ׁ${xowner} ${usedPrefix}dsowner
-𑂯 ׁ${xowner} ${usedPrefix}autoadmin 
+   \`Lista de Comandos\` 
+╰➤ ׄ ׁ${xowner} ${usedPrefix}update
+╰➤ ׄ ׁ${xowner} ${usedPrefix}leavegc
+╰➤ ׄ ׁ${xowner} ${usedPrefix}blocklist
+╰➤ ׄ ׁ${xowner} ${usedPrefix}grouplist
+╰➤ ׄ ׁ${xowner} ${usedPrefix}restart
+╰➤ ׄ ׁ${xowner} ${usedPrefix}join
+╰➤ ׄ ׁ${xowner} ${usedPrefix}chetar
+╰➤ ׄ ׁ${xowner} ${usedPrefix}banchat 
+╰➤ ׄ ׁ${xowner} ${usedPrefix}unbanchat
+╰➤ ׄ ׁ${xowner} ${usedPrefix}banuser
+╰➤ ׄ ׁ${xowner} ${usedPrefix}unbanuser
+╰➤ ׄ ׁ${xowner} ${usedPrefix}dsowner
+╰➤ ׄ ׁ${xowner} ${usedPrefix}autoadmin 
 > ${club}
 `.trim();
-/*
-    conn.sendMessage(m.chat, {
-      text: text,
-      contextInfo: {
-        mentionedJid: conn.parseMention(text),
-        isForwarded: true,
-        forwardingScore: 999,
-        externalAdReply: {
-          title: `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`,
-          body: dev,
-          thumbnail: await (await fetch(img)).buffer(),
-          sourceUrl: insta,
-          mediaType: 1,
-          renderLargerThumbnail: true
-        }
-      }
-    }, { quoted: fkontak });*/
+    /*
+        conn.sendMessage(m.chat, {
+          text: text,
+          contextInfo: {
+            mentionedJid: conn.parseMention(text),
+            isForwarded: true,
+            forwardingScore: 999,
+            externalAdReply: {
+              title: `${await conn.getName(m.sender)}, Welcome to my developer menu, follow me on Instagram, thank you very much.`,
+              body: dev,
+              thumbnail: await (await fetch(img)).buffer(),
+              sourceUrl: insta,
+              mediaType: 1,
+              renderLargerThumbnail: true
+            }
+          }
+        }, { quoted: fkontak });*/
 
-  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)
+    await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);

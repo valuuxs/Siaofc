@@ -35,7 +35,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 ╰━━━━━━━━━━━━━━━━━━⬣
 ⌬ *Enlace:* ${tes.url}
 ⌬ *Pedido por:* ${mention}
-⌬ *Shadow Bot - MD*
+⌬ *𝙼𝚟𝚛𝚌𝚘 𝚂𝚎𝚡𝚘*
 `.trim()
 
     await conn.sendMessage(m.chat, {

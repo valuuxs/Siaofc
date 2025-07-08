@@ -6,23 +6,22 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
-    const pp = 'https://files.catbox.moe/9d4ria.jpg';
+    const pp = 'https://files.catbox.moe/uh0iki.jpg';
     const img = await (await fetch(pp)).buffer()
     const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const txt = `${await conn.getName(m.sender)}, Welcome to my game menu, follow me on Instagram, thank you very much.`;
 
     const text = `
-> 👋🏻 ¡Hola!, ${taguser}
-
-\`\`\`${date}||${hora}\`\`\`
-
-╭─• *MENÚ FREE FIRE*
-│ 𝘉𝘪𝘦𝘯𝘷𝘦𝘯𝘪𝘥𝘰
-│ 𝘚𝘶𝘮𝘦́𝘳𝘨𝘦𝘵𝘦 𝘦𝘯 𝘦𝘴𝘵𝘢
-│ 𝘢𝘷𝘦𝘯𝘵𝘶𝘳𝘢 𝘥𝘦𝘭 𝘤𝘢𝘵𝘢́𝘭𝘰𝘨𝘰 
-│ 𝘥𝘦 𝘧𝘳𝘦𝘦 𝘧𝘪𝘳𝘦.
-╰─────────────•
+🌐 *Menú FREE FIRE del Bot*
+────────────────────────────
+👤 *Usuario:* ${taguser}
+🔰 *Rol:* ${role}
+📈 *Nivel:* ${level} (${exp} XP)
+💎 *Gemas:* ${diamantes}
+⏱️ *Activo:* ${uptime}
+👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
+${readMore}
 
 ╭╼[ *LISTAS DE VS INTERNOS*]
 ┃ ⓘ 𝐶𝑜𝑙𝑜𝑐𝑎 𝑙𝑎 ℎ𝑜𝑟𝑎 𝑦 𝑒𝑙 𝑝𝑎𝑖𝑠 𝑠𝑒𝑔𝑢𝑖𝑑𝑜
@@ -35,7 +34,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ┃🪻➺ .inmixto6
 ╰━━━━━━⋆★⋆━━━━━━⬣
 
-╭╼[ *MAPAS DE FREE FIRE*]
+╭╼[ *MAPAS*]
 ┃🗼➺ .bermuda
 ┃🏝️➺ .purgatorio
 ┃🏜️➺ .kalahari
@@ -50,7 +49,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
 `.trim();
 
-  await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)
+    await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)
 
   } catch (e) {
     conn.reply(m.chat, '✖️ Error en el comando. Inténtalo más tarde.', m);

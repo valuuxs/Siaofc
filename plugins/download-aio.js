@@ -61,17 +61,17 @@ X(Twitter) Video/Photo Downloader
 Vimeo Video Downloader
 VK(VKontakte) Video Downloader
 Xiaohongshu(RedNote) Video/Photo Downloader\`\`\``);
- try {
-            if (!args[0]) return m.reply("[✧] Por favor envía el enlace del la plataforma que deseas descargar!")
-            const keni = await rednoteDownloader.download(args[0]);
-            console.log(JSON.stringify(keni, null, 2));
-            let { result, source } = keni;
-            let { title, duration } = result;
-            let { url, quality } = result.downloadUrls[1];
-            if (!keni.result || !result.downloadUrls) {
-                return m.reply("[✧] No se pudo descargar el contenido de TikTok");
-            }
-            const caption = `*💎 ANY VIDEO DOWNLOADER 💎*
+  try {
+    if (!args[0]) return m.reply("[✧] Por favor envía el enlace del la plataforma que deseas descargar!")
+    const keni = await rednoteDownloader.download(args[0]);
+    console.log(JSON.stringify(keni, null, 2));
+    let { result, source } = keni;
+    let { title, duration } = result;
+    let { url, quality } = result.downloadUrls[1];
+    if (!keni.result || !result.downloadUrls) {
+      return m.reply("[✧] No se pudo descargar el contenido de TikTok");
+    }
+    const caption = `*💎 MVRCO VIDEO DOWNLOADER 💎*
 
   ✧ : \`titulo;\` ${title || 'no encontrado'}
   ✧ : \`plataforma;\` ${source || 'no encontrado'}
@@ -81,9 +81,9 @@ Xiaohongshu(RedNote) Video/Photo Downloader\`\`\``);
 > url: ${args[0]}
 > ${wm}`
 
-            if (keni.result.downloadUrls[1].extension === "mp4") {
-                const videoUrl = keni.result.downloadUrls[1].url
-                await conn.sendMessage(
+    if (keni.result.downloadUrls[1].extension === "mp4") {
+      const videoUrl = keni.result.downloadUrls[1].url
+      await conn.sendMessage(
         m.chat,
         {
           video: { url: url },
@@ -94,13 +94,13 @@ Xiaohongshu(RedNote) Video/Photo Downloader\`\`\``);
         },
         { quoted: m }
       );
-            } else {
-                m.reply("[✧] Formato de contenido no reconocido");
-            }
-      if (keni.result.downloadUrls[2].extension === "mp3") {
-            const AudioUrl = keni.result.downloadUrls[2].url
-            
-                await conn.sendMessage(
+    } else {
+      m.reply("[✧] Formato de contenido no reconocido");
+    }
+    if (keni.result.downloadUrls[2].extension === "mp3") {
+      const AudioUrl = keni.result.downloadUrls[2].url
+
+      await conn.sendMessage(
         m.chat,
         {
           audio: { url: AudioUrl },
@@ -110,14 +110,14 @@ Xiaohongshu(RedNote) Video/Photo Downloader\`\`\``);
         },
         { quoted: m }
       );
-      }
-        } catch (err) {
-            console.log(err)
-        }
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }
 handler.help = ['anydownloaser <url>'];
 handler.tags = ['downloader'];
-handler.command = ["aio","anydownloaser","allinone"];
+handler.command = ["aio", "anydownloaser", "allinone"];
 
 export default handler
 
@@ -125,33 +125,33 @@ const rednoteDownloader = {
   getToken: async function () {
     const req = await fetch("https://anydownloader.com/en/xiaohongshu-videos-and-photos-downloader");
     if (!req.ok) return null;
-    
+
     const res = await req.text();
     const $ = cheerio.load(res);
     const token = $("#token").val();
-    
+
     return {
       token
     };
   },
-  
+
   calculateHash: function (url, salt) {
     return btoa(url) + (url.length + 1_000) + btoa(salt)
   },
-  
+
   download: async function (url) {
     const conf = await rednoteDownloader.getToken();
     if (!conf) return { error: "No se pudo obtener el token de la web.", result: {} };
-    
+
     const { token } = conf;
-    
+
     const hash = rednoteDownloader.calculateHash(url, "aio-dl");
-    
+
     const data = new URLSearchParams();
     data.append('url', url);
     data.append('token', token);
     data.append('hash', hash);
-    
+
     const req = await fetch(`https://anydownloader.com/wp-json/aio-dl/video-data/`, {
       method: "POST",
       headers: {
@@ -173,9 +173,9 @@ const rednoteDownloader = {
       },
       body: data
     });
-    
+
     if (!req.ok) return { error: "Se produjo un error al realizar la solicitud", result: {} };
-    
+
     let json;
     try {
       json = await req.json();
@@ -183,7 +183,7 @@ const rednoteDownloader = {
       console.error(e);
       return { error: e.message, result: {} };
     }
-    
+
     return {
       input_url: url,
       source: json.source,

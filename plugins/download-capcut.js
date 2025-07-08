@@ -1,7 +1,3 @@
-/* 
-- Downloader CapCut By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
 import fetch from "node-fetch";
 import cheerio from "cheerio";
 
@@ -56,7 +52,7 @@ async function capcutdl(url) {
             throw new Error('Algunos elementos importantes no se encontraron en la página.');
         }
 
-        return {            
+        return {
             title: title,
             date: date,
             pengguna: uses,

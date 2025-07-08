@@ -9,7 +9,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let name2 = conn.getName(m.sender)
     let whe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : m.sender
 
-    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
+    let perfil = await conn.profilePictureUrl(whe, 'image').catch(_ => 'https://files.catbox.moe/jbecfc.jpg')
 
     if (user.registered === true) {
         return m.reply(`*🍚 Ya te encuentras registrado en mi base de datos.*\n*Si deseas eliminar tu registro use la función \`#unreg\`*`)
@@ -33,7 +33,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     global.db.data.users[m.sender].money += 600
     global.db.data.users[m.sender].diamantes += 15
     global.db.data.users[m.sender].exp += 245
-    global.db.data.users[m.sender].joincount += 5    
+    global.db.data.users[m.sender].joincount += 5
 
     let who;
     if (m.quoted && m.quoted.sender) {
@@ -68,7 +68,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         }
     }, { quoted: fkontak });
 
-let chtxt = `👤 *𝚄𝚂𝙴𝚁:* ${m.pushName || 'Anónimo'}
+    let chtxt = `👤 *𝚄𝚂𝙴𝚁:* ${m.pushName || 'Anónimo'}
 ☕ *𝚁𝙴𝙶𝙸𝚂𝚃𝚁𝙾:* ${user.name}
 🤍 *𝙴𝙳𝙰𝙳:* ${user.age} años
 📝 *𝙳𝙴𝚂𝙲:* ${user.descripcion}
@@ -76,7 +76,7 @@ let chtxt = `👤 *𝚄𝚂𝙴𝚁:* ${m.pushName || 'Anónimo'}
 ⤷ ${sn}`;
 
     let channelID = '120363384854309225@newsletter';
-        await conn.sendMessage(channelID, {
+    await conn.sendMessage(channelID, {
         text: chtxt,
         contextInfo: {
             externalAdReply: {

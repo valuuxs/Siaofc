@@ -13,7 +13,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   try {
     // Mensaje inicial informando al usuario que se está descargando el video
     //conn.reply(message.chat, wait, message);
-      await message.react('⏳');
+    await message.react('⏳');
 
     // Realizar la búsqueda de TikTok
     let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text);
@@ -27,7 +27,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     for (let result of selectedResults) {
       results.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Shadow Ultra - MD' }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN' }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           title: result.title,
           hasMediaAttachment: true,
