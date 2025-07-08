@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
 
 // Variables necesarias
-const readMore = '\n\nEn caso de adquirir, unete a mi grupo de ventas'; // Texto adicional
 const xowner = '🔱'; // Prefijo que usas para los comandos del owner, cámbialo si es necesario
 
 const handler = async (m, { conn, usedPrefix, text }) => {
@@ -17,7 +16,6 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 *🌴 Nombre:* MvrcoSexo
 *☕ Creador:* @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔
 *📞 Número Creador:* 56983073328
-${readMore}
 \`Lista de Comandos\`
 ╰➤ ׁ${xowner} ${usedPrefix}update
 ╰➤ ׁ${xowner} ${usedPrefix}leavegc
@@ -32,7 +30,7 @@ ${readMore}
 ╰➤ ׁ${xowner} ${usedPrefix}unbanuser
 ╰➤ ׁ${xowner} ${usedPrefix}dsowner
 ╰➤ ׁ${xowner} ${usedPrefix}autoadmin 
-> ${club}
+> ${club}  <!-- Esta variable 'club' debe estar definida en otro lugar -->
 `.trim();
 
     // Botón de enlace al grupo de ventas
@@ -50,7 +48,7 @@ ${readMore}
       caption: str,
       mentions: [m.sender], // Etiquetamos al usuario que ejecutó el comando
       buttons: button, // Agregamos el botón de enlace
-    }, { quoted: fkontak }); // Añadimos la variable fkontak si se usa
+    });
 
   } catch (e) {
     // Capturamos cualquier error que ocurra y enviamos una respuesta
