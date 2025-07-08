@@ -16,7 +16,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
     newlink = `*⛓️‍💥 El enlace del grupo ha sido restablecido por:*\n*${usuario}*`
 
-    status = `*☕ El grupo ha sido ${m.messageStubParameters[0] == 'on' ? '`cerrado` 🔒' : '`abierto` 🔓'}*\n*Por: ${usuario}*\n\n🌷 Ahora ${m.messageStubParameters[0] == 'on' ? '*solo admins*' : '*todos*'} pueden enviar mensaje...`
+    status = `*☕ El grupo ha sido ${m.messageStubParameters[0] == 'on' ? '`cerrado` 🔒' : '`abierto` 🔓'}*\n*Por:* *${usuario}*\n\n🌷 Ahora ${m.messageStubParameters[0] == 'on' ? '*solo admins*' : '*todos*'} pueden enviar mensaje...`
 
     admingp = `*@${m.messageStubParameters[0].split`@`[0]} Ahora es admin del grupo. 👻*\n\n*☕ Acción hecha por:*\n*${usuario}*`
 
