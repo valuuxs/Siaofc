@@ -14,7 +14,7 @@ const handler = async (m, { conn }) => {
   }, 0);
 
   conn.sendMessage(m.chat, {
-    text: `*${xinfo} ¡El poder está en tus manos!*\n*Bienvenido ${taguser}*\n\n*Este bot cuenta con \`${totalf}\` comandos disponibles para ti. ¿Tienes alguna sugerencia para mejorar nuestra experiencia? ¡Usa el comando \`.sugerir\` para saber que idea tienes!*\n\n> ${club}
+    text: `*${xinfo} ¡El poder está en tus manos!*\n*Bienvenido* *${taguser}*\n\n*Este bot cuenta con \`${totalf}\` comandos disponibles para ti. ¿Tienes alguna sugerencia para mejorar nuestra experiencia? ¡Usa el comando \`.sugerir\` para saber que idea tienes!*\n\n> ${club}
 `,
     mentions: [m.sender]
   }, { quoted: fkontak });
