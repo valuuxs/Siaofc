@@ -15,7 +15,7 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 ────────────────────────────
 *🌴 Nombre:* MvrcoSexo
 *☕ Creador:* @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔
-*📞 Número Creador:* 56983073328
+*📞 Número Creador:* +56983073328
 \`Lista de Comandos\`
 ╰➤ ׁ${xowner} ${usedPrefix}update
 ╰➤ ׁ${xowner} ${usedPrefix}leavegc
