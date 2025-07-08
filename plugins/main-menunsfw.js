@@ -10,7 +10,6 @@ const handler = async (m, { conn, usedPrefix, text }) => {
     const str = `
 🌐 *\`Menú NSFW\`*
 ────────────────────────────
-\`\`\`${fechaHora}\`\`\`
 
 *\`Buscadores\`*
 ╰➤ .xnxxsearch *texto*
