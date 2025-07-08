@@ -6,17 +6,22 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
-    const pp = 'https://files.catbox.moe/qmhhxy.png';
+    const pp = 'https://files.catbox.moe/uh0iki.jpg';
     const img = await (await fetch(pp)).buffer()
     const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
-    const txt = `${await conn.getName(m.sender)}, Bienvenido, sigueme en mi ig: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔.`;
+    const txt = `${await conn.getName(m.sender)}, Welcome to my game menu, follow me on Instagram, thank you very much.`;
 
     const text = `
-🌐 *\`Menú Free Fire\`*
+🌐 *Menú FREE FIRE del Bot*
 ────────────────────────────
-
-\`\`\`${date}||${hora}\`\`\`
+👤 *Usuario:* ${taguser}
+🔰 *Rol:* ${role}
+📈 *Nivel:* ${level} (${exp} XP)
+💎 *Gemas:* ${diamantes}
+⏱️ *Activo:* ${uptime}
+👥 *Usuarios registrados:* ${rtotalreg}/${totalreg}
+${readMore}
 
 ╭╼[ *LISTAS DE VS INTERNOS*]
 ┃ ⓘ 𝐶𝑜𝑙𝑜𝑐𝑎 𝑙𝑎 ℎ𝑜𝑟𝑎 𝑦 𝑒𝑙 𝑝𝑎𝑖𝑠 𝑠𝑒𝑔𝑢𝑖𝑑𝑜
@@ -29,7 +34,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ┃🪻➺ .inmixto6
 ╰━━━━━━⋆★⋆━━━━━━⬣
 
-╭╼[ *MAPAS DE FREE FIRE*]
+╭╼[ *MAPAS*]
 ┃🗼➺ .bermuda
 ┃🏝️➺ .purgatorio
 ┃🏜️➺ .kalahari
