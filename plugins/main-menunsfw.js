@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 const handler = async (m, { conn, usedPrefix, text }) => {
 
   try {
-    await m.react('🌴');
+    await m.react('🔞');
     const imageUrl = 'https://files.catbox.moe/qmhhxy.png'; // Cambié la URL al enlace de la imagen
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
@@ -87,7 +87,7 @@ const handler = async (m, { conn, usedPrefix, text }) => {
   }
 };
 
-handler.command = /^(menulogos|menu2)$/i;
+handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu+18|menucaliente|menuporno|pornomenu|menuxxx)$/i;
 handler.fail = null;
 
 export default handler;
