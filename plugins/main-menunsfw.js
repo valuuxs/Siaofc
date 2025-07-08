@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 const handler = async (m, { conn, usedPrefix, text }) => {
 
   try {
-    await m.react('🌴');
+    await m.react('🔥');
     const videoUrl = 'https://files.catbox.moe/qmhhxy.png'
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
