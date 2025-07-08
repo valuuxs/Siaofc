@@ -4,7 +4,7 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 
   try {
     await m.react('🌴');
-    const videoUrl = 'https://files.catbox.moe/qmhhxy.png'
+    const imageUrl = 'https://files.catbox.moe/qmhhxy.png'; // Cambié la URL al enlace de la imagen
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const str = `
@@ -52,11 +52,10 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 `.trim();
 
     await conn.sendMessage(m.chat, {
-      video: { url: videoUrl },
+      image: { url: imageUrl },  // Cambié "video" por "image"
       caption: str,
       mentions: [m.sender],
-      gifPlayback: true
-    }, { quoted: fkontak })
+    }, { quoted: fkontak });
 
   } catch (e) {
     conn.reply(m.chat, `*❌ Error al enviar el menú.*\n${e}`, m);
