@@ -48,7 +48,6 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
 ╰➤ ${xnable} ${usedPrefix}disable *opción*
 ╰➤ ${xnable} ${usedPrefix}on *opción*
 ╰➤ ${xnable} ${usedPrefix}off *opción*
-╰➤ ${xnable} ${usedPrefix}manual
 
 ⬇️ *\`Download\`* ${xdownload}
 ╰➤ ${xdownload} ${usedPrefix}play *texto*
