@@ -30,7 +30,7 @@ const handler = async (m, { conn, usedPrefix, text }) => {
 ╰➤ ׁ${xowner} ${usedPrefix}unbanuser
 ╰➤ ׁ${xowner} ${usedPrefix}dsowner
 ╰➤ ׁ${xowner} ${usedPrefix}autoadmin 
-> ${club}  <!-- Esta variable 'club' debe estar definida en otro lugar -->
+> ${club}
 `.trim();
 
     // Botón de enlace al grupo de ventas
@@ -42,8 +42,8 @@ const handler = async (m, { conn, usedPrefix, text }) => {
       },
     ];
 
-    // Enviamos la imagen con el mensaje y el botón
-    await conn.sendMessage(m.chat, {
+    // Enviamos la imagen con el mensaje y el botón usando m.key.remoteJid
+    await conn.sendMessage(m.key.remoteJid, { // Asegúrate de usar m.key.remoteJid
       image: { url: imageUrl },  // Usamos la imagen como contenido
       caption: str,
       mentions: [m.sender], // Etiquetamos al usuario que ejecutó el comando
