@@ -40,7 +40,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
 ┃⚙️➺ .encuesta
 ┃⚙️➺ .sala
 ╰━━━━━━⋆★⋆━━━━━━⬣
-
+> ${club}
 `.trim();
 
     await conn.sendLuffy(m.chat, txt, shadow, text, img, img, ig, fkontak)

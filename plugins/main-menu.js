@@ -4,7 +4,7 @@ import { xpRange } from '../lib/levelling.js'
 import { promises } from 'fs'
 import { join } from 'path'
 
-let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+let handler = async (m, { conn, usedPrefix, text, command }) => {
     try {
         let { exp, diamantes, level, role } = global.db.data.users[m.sender]
         let { min, xp, max } = xpRange(level, global.multiplier)
@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
         let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
         let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/qmhhxy.png')
 
-        const vid = ['https://files.catbox.moe/qmhhxy.png', 'https://files.catbox.moe/qmhhxy.png', 'https://files.catbox.moe/qmhhxy.png']
+        const vid = ['https://files.catbox.moe/qmhhxy.png']
 
         let menu = `
 🌐 *\`Menú Principal\`*
@@ -358,25 +358,12 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 ╰➤ ${xowner} ${usedPrefix}let
 ╰➤ ${xowner} ${usedPrefix}dsowner
 ╰➤ ${xowner} ${usedPrefix}autoadmin
-
+> ${club}
 `.trim()
 
         await conn.sendMessage(m.chat, {
-            video: { url: vid.getRandom() }, // Vid
+            image: { url: perfil }, // Enviar solo la imagen
             caption: menu,
-            contextInfo: {
-                mentionedJid: [m.sender],
-                isForwarded: true,
-                forwardingScore: 999,
-                externalAdReply: {
-                    title: 'KɪʟʟᴢN\nPᴏʀɴʜᴜʙ: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔',
-                    thumbnailUrl: perfil,
-                    mediaType: 1,
-                    renderLargerThumbnail: false,
-                },
-            },
-            gifPlayback: true,
-            gifAttribution: 0
         }, { quoted: null })
     } catch (e) {
         await m.reply(`*✖️ Ocurrió un error al enviar el menú.*\n\n${e}`)
