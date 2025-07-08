@@ -75,8 +75,8 @@ const handler = async (m, { conn, usedPrefix, text, isPrems }) => {
 ╰➤ .pene
 ╰➤ .porno
 ╰➤ .pechos
-
-> Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN`.trim();
+> ${club}
+`.trim();
 
               conn.sendMessage(m.chat, { image: { url: img }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
