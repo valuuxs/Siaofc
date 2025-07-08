@@ -41,7 +41,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
 
   const message = users.map((v, index) => {
     const jidNum = v.user.jid.replace(/[^0-9]/g, '')
-    return `⪧ *\`${index + 1}.-\`* *SubBot - Shadow Ultra*
+    return `⪧ *\`${index + 1}.-\`* *SubBot - Mvrco Sexo*
 ᦷᩘᦷ @${jidNum}
 🌴 *Nombre:* ${v.user.name || 'Desconocido'}
 🌿 *Link:* https://wa.me/${jidNum}`
@@ -50,7 +50,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
   global.totalUsers = users.length
 
   const responseMessage = `
-*SHADOW - JADIBOT LIST*
+*MVRCOSEX - JADIBOT LIST*
 > *Total de Subs:* *\`${totalUsers || 0}\`*
 
 ${message || '*No hay Subs activos.*'}`.trim()

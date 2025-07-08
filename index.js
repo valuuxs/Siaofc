@@ -231,7 +231,7 @@ async function connectionUpdate(update) {
     }
   }
   if (connection == 'open') {
-    console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【• SHADOW-BOT •】⸺⸺⸺⸺❒`))
+    console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN】⸺⸺⸺⸺❒`))
   }
   let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
   if (connection === 'close') {

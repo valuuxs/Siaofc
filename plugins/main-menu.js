@@ -51,7 +51,6 @@ let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, com
 ╰➤ ${xinfo} ${usedPrefix}ping
 ╰➤ ${xinfo} ${usedPrefix}uptime
 ╰➤ ${xinfo} ${usedPrefix}horario
-╰➤ ${xinfo} ${usedPrefix}precios
 
 ⚙️ *\`On/Off\`* ${xnable}
 ╰➤ ${xnable} ${usedPrefix}enable *opción*

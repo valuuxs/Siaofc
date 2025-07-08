@@ -42,7 +42,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
       var mediax = await quoted.download?.();
       conn.sendMessage(m.chat, { sticker: mediax, mentions: users }, { quoted: fkontak2 });
     } else {
-      await conn.relayMessage(m.chat, { extendedTextMessage: { text: `${masss}\n${htextos}\n`, ...{ contextInfo: { mentionedJid: users, externalAdReply: { thumbnail: img, sourceUrl: 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW' } } } } }, {});
+      await conn.relayMessage(m.chat, { extendedTextMessage: { text: `${masss}\n${htextos}\n`, ...{ contextInfo: { mentionedJid: users, externalAdReply: { thumbnail: img, sourceUrl: 'https://chat.whatsapp.com/HqhAoXS8TCcJIn0KrbJZKz' } } } } }, {});
     }
   }
 };

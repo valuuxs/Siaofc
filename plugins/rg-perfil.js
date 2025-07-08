@@ -6,7 +6,7 @@ import fetch from 'node-fetch'
 const fkontak2 = {
   key: { participant: '0@s.whatsapp.net' },
   message: {
-    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
+    contactMessage: { displayName: ' Mvrco Sexo', vcard: '' }
   }
 }
 

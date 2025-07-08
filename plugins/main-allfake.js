@@ -57,9 +57,9 @@ handler.all = async function (m) {
   global.mistake = '*✖️ Error en el comando*\n*Por favor, intenta nuevamente más tarde. Si esto persiste envia:*\n> #report El comando (comando) no funciona.';
 
   //ENLACES
-  var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
+  var group = 'https://chat.whatsapp.com/HqhAoXS8TCcJIn0KrbJZKz'
   var web = 'https://shadow-bot.vercel.app/'
-  let instagram = 'https://www.instagram.com/shadowbot.md'
+  let instagram = 'https://www.instagram.com/ineffable.mvrco'
 
   global.redes = [group, web, instagram].getRandom()
 

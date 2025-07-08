@@ -85,7 +85,7 @@ const handler = async (m, { conn, text }) => {
   const end = performance.now();
   const speed = ((end - start) / 1000).toFixed(4);
 
-const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lon}`;
+  const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lon}`;
 
   const doxeo = `*\`👨🏻‍💻 DOXEO FINALIZADO\`*
 > *Realizado en* \`${speed} segundos\`
@@ -127,7 +127,7 @@ const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.
 *Conexión:* Datos Móviles
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
-*SHADOW ULTRA:* FREE CREDITS`;
+*Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN* FREE CREDITS`;
 
   await sleep(1000);
   await conn.sendMessage(m.chat, { text: doxeo, edit: sent.key, mentions: conn.parseMention(doxeo) });
