@@ -43,21 +43,21 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `𐙚ㅤ *Registro* ㅤﾉㅤ *Completo* ㅤᗝ̵\nㅤ@𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔\n\n`
-    regbot += `✿᷎︩︪͡⪧ \`Nombre:\` ${name}\n`
-    regbot += `✿᷎︩︪͡⪧ \`Edad:\` ${age} años\n\n`
-    regbot += `𐔌𐔌  *Recompensa ࣲ* ׅ  ☕ᩨ  \n\n`
-    regbot += `ᦷᩘᦷ     ݂   💎 ፡ \`\`\`15 Diamantes\`\`\`\n`
-    regbot += `ᦷᩘᦷ     ݂   🍸 ፡ \`\`\`245 Xp\`\`\`\n`
-    regbot += `ᦷᩘᦷ     ݂   🎫 ፡ \`\`\`12 Tokens\`\`\`\n\n`
-    regbot += `> 𝖢𝗈𝗅𝗈𝖼𝖺 *#profile* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
+    let regbot = `𝔄ㅤ *Registro* ㅤ▯ㅤ *Confirmado* ㅤᗝ̵\nㅤ@𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔\n\n`
+    regbot += `✧⃝ᓚ⩺ \`Nombre:\` ${name}\n`
+    regbot += `✧⃝ᓚ⩺ \`Edad:\` ${age} años\n\n`
+    regbot += `⧫⧫  *Premio ࣲ* 🌿🪶  \n\n`
+    regbot += `🍀𐐯𐐮     𝓡   💎 ፡ \`\`\`25 Diamantes\`\`\`\n`
+    regbot += `🍀𐐯𐐮     𝓡   🍸 ፡ \`\`\`350 Xp\`\`\`\n`
+    regbot += `🍀𐐯𐐮     𝓡   🎫 ፡ \`\`\`20 Tokens\`\`\`\n\n`
+    regbot += `> 𝖢𝗈𝗅𝗈𝖼𝖺 *#perfil* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
 
     await m.react('💌')
     await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '෫໋ׅׄ𝆬🍃ິ⃨ 𝖱𝖾𝗀𝗂𝗌𝗍𝗋𝗈 - 𝖲𝗁𝖺𝖽𝗈𝗐 ׅ𝖴𝗅𝗍𝗋𝖺 𑁍̵ ֕︵۪۪۪۪᷼ ּ',
+                title: 'Pᴏʀɴʜᴜʙ: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔',
                 body: club,
                 thumbnailUrl: 'https://files.catbox.moe/nwqdwh.jpg',
                 sourceUrl: 'https://whatsapp.com/channel/0029Vb4TKBCD38CNEkfHdj1z',
