@@ -43,14 +43,14 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
 
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `𝔄ㅤ *Registro* ㅤ▯ㅤ *Confirmado* ㅤᗝ̵\nㅤ@𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔\n\n`
+    let regbot = `*Registro* ㅤﾉㅤ *Completo*\nㅤ@𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔\n\n`
     regbot += `✧⃝ᓚ⩺ \`Nombre:\` ${name}\n`
     regbot += `✧⃝ᓚ⩺ \`Edad:\` ${age} años\n\n`
-    regbot += `⧫⧫  *Premio ࣲ* 🌿🪶  \n\n`
-    regbot += `🍀𐐯𐐮     𝓡   💎 ፡ \`\`\`25 Diamantes\`\`\`\n`
-    regbot += `🍀𐐯𐐮     𝓡   🍸 ፡ \`\`\`350 Xp\`\`\`\n`
-    regbot += `🍀𐐯𐐮     𝓡   🎫 ፡ \`\`\`20 Tokens\`\`\`\n\n`
-    regbot += `> 𝖢𝗈𝗅𝗈𝖼𝖺 *#perfil* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
+    regbot += `✧⃝ᓚ⩺  *Recompensa ࣲ* ׅ  ☕ᩨ  \n\n`
+    regbot += `✧⃝ᓚ⩺     ݂   💎 ፡ \`\`\`15 Diamantes\`\`\`\n`
+    regbot += `✧⃝ᓚ⩺     ݂   🍸 ፡ \`\`\`245 Xp\`\`\`\n`
+    regbot += `✧⃝ᓚ⩺     ݂   🎫 ፡ \`\`\`12 Tokens\`\`\`\n\n`
+    regbot += `> 𝖢𝗈𝗅𝗈𝖼𝖺 *#profile* 𝗉𝖺𝗋𝖺 𝗏𝖾𝗋 𝗍𝗎 𝗉𝖾𝗋𝖿𝗂𝗅`
 
     await m.react('💌')
     await conn.sendMessage(m.chat, {
@@ -81,7 +81,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         contextInfo: {
             externalAdReply: {
                 title: "☕ 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 - 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎",
-                body: '🥳 ¡ᥙᥒ ᥙsᥙᥲrі᥆ ᥒᥙᥱ᥎᥆ ᥱᥒ mі ᑲᥲsᥱ ძᥱ ძᥲ𝗍᥆s!',
+                body: '🥳 ¡Un nuevo usuario en mi base de datos!',
                 thumbnailUrl: perfil,
                 sourceUrl: redes,
                 mediaType: 1,
@@ -96,4 +96,4 @@ handler.help = ['reg']
 handler.tags = ['rg']
 handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar']
 
-export default handler
+export default handler@
