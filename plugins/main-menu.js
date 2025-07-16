@@ -35,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         let menu = `
 🌐 *\`Menú Principal\`*
 ────────────────────────────
-👤 *Usuario:* ${userId.split('@')[0]}
+👤 *Usuario:* ${taguser}  // Usamos el taguser correctamente
 🔰 *Rol:* ${role}
 📈 *Nivel:* ${level} (${exp} XP)
 💎 *Gemas:* ${diamantes}
