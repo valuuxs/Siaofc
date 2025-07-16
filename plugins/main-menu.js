@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 import { promises } from 'fs'
 import { join } from 'path'
+
 let handler = async (m, { conn, usedPrefix, text, command }) => {
     try {
         let { exp, diamantes, level, role } = global.db.data.users[m.sender]
@@ -10,7 +11,7 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         let name = await conn.getName(m.sender)
         exp = exp || 'Desconocida';
         role = role || 'Aldeano';
-        const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+        const user = '@' + m.sender.split('@s.whatsapp.net')[0]; // Se cambió de taguser a user
         const _uptime = process.uptime() * 1000;
         const uptime = clockString(_uptime);
         let totalreg = Object.keys(global.db.data.users).length
