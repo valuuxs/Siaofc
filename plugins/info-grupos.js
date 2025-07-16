@@ -1,25 +1,24 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
 
-let grupos = `*¡Hola!, te invito a unirte a los grupos oficiales del Bot para convivir con la comunidad oficial* 🌹
+   let grupos = `*¡Hola!, te invito a unirte a mis grupos oficiales!*
 
-✑ 𝖦𝗋𝗎𝗉𝗈 𝖮𝖿𝗂𝖼𝗂𝖺𝗅 𝖲𝗁𝖺𝖽𝗈𝗐
+✑ 𝗚𝗿𝘂𝗽𝗼 𝗱𝗲 𝘃𝗲𝗻𝘁𝗮𝘀
 ✎${grupo}
 
-✑ 𝖢𝗅𝗎𝖻/𝖢𝗈𝗆𝗆𝗎𝗇𝗂𝗍𝗒 
-   𝖲𝗁𝖺𝖽𝗈𝗐𝗌 𝖢𝗅𝗎𝖻
+✑ 𝗚𝗿𝘂𝗽𝗼 𝗱𝗲 𝗖𝗼𝗺𝗽𝗿𝗮 𝘆 𝗩𝗲𝗻𝘁𝗮𝘀
 ✎${comu}
 
-✑ 𝖢𝖺𝗇𝖺𝗅𝖾𝗌 𝖮𝖿𝗂𝖼𝗂𝖺𝗅𝖾𝗌
+✑ 𝗖𝗮𝗻𝗮𝗹 𝗱𝗲 𝗥𝗲𝗳𝗲𝗿𝗲𝗻𝗰𝗶𝗮𝘀
 ✎ ${channel}
 
-✑ 𝖨𝗇𝗌𝗍𝖺𝗀𝗋𝖺𝗆
+✑ 𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺
 ✎ ${ig}
 
 > ${dev}`
 
-let img = 'https://files.catbox.moe/un3h2c.jpg';
+   let img = 'https://files.catbox.moe/6j2znh.jpg';
 
-conn.sendMessage(m.chat, { image: { url: img }, caption: grupos }, { quoted: fkontak });
+   conn.sendMessage(m.chat, { image: { url: img }, caption: grupos }, { quoted: fkontak });
 }
 
 handler.help = ['grupos']
