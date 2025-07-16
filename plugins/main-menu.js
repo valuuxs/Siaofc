@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         role = role || 'Aldeano';
 
         // Aquí obtenemos la mención correcta para WhatsApp
-        const taguser = `@${m.sender.split('@')[0]}`;
+        const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 
         const _uptime = process.uptime() * 1000;
         const uptime = clockString(_uptime);
