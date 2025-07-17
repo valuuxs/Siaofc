@@ -11,7 +11,10 @@ let handler = async (m, { conn, text, participants }) => {
     let isMedia = /image|video|sticker|audio/.test(mime);
 
     // Texto de respuesta
-    const htextos = text || '*Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN*'; // Texto predeterminado
+    const htextos = text || '*¡Hola! 😸*'; // Texto predeterminado
+
+    // Obtener la descripción de la cita si está disponible
+    let description = quoted.text || htextos; // Si el archivo citado tiene un texto, se usa; de lo contrario, se usa htextos.
 
     // Si es un video citado
     if (isMedia && quoted.mtype === 'videoMessage') {
@@ -20,7 +23,7 @@ let handler = async (m, { conn, text, participants }) => {
         video: mediax, // Enviamos el video descargado
         mentions: users, // Mencionamos a los usuarios
         mimetype: 'video/mp4', // Tipo MIME para video
-        caption: htextos // El texto o descripción que acompaña el video
+        caption: description // El texto o descripción que acompaña el video
       }, { quoted: m });
 
     }
@@ -30,7 +33,7 @@ let handler = async (m, { conn, text, participants }) => {
       conn.sendMessage(m.chat, {
         image: mediax, // Enviamos la imagen descargada
         mentions: users, // Mencionamos a los usuarios
-        caption: htextos // El texto o descripción que acompaña la imagen
+        caption: description // El texto o descripción que acompaña la imagen
       }, { quoted: m });
 
     }
@@ -65,7 +68,7 @@ let handler = async (m, { conn, text, participants }) => {
       // Enviamos el mensaje con texto y la imagen externa como miniatura
       await conn.relayMessage(m.chat, {
         extendedTextMessage: {
-          text: `${masss}\n${htextos}\n`,
+          text: `${masss}\n${description}\n`,
           contextInfo: {
             mentionedJid: users,
             externalAdReply: {
