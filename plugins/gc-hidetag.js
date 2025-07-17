@@ -11,27 +11,26 @@ let handler = async (m, { conn, text, participants }) => {
     let isMedia = /image|video|sticker|audio/.test(mime);
 
     // Texto de respuesta
-    const htextos = text || '*¡Hola! 😸*'; // Texto predeterminado
+    const htextos = text || '*Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN*'; // Texto predeterminado
 
-    // Si es una imagen citada
-    if (isMedia && quoted.mtype === 'imageMessage') {
-      var mediax = await quoted.download?.(); // Descargar la imagen
+    // Si es un video citado
+    if (isMedia && quoted.mtype === 'videoMessage') {
+      var mediax = await quoted.download?.(); // Descargar el video
       conn.sendMessage(m.chat, {
-        image: mediax,
-        mentions: users,
-        caption: htextos, // El texto que acompaña la imagen
-        mentions: users
+        video: mediax, // Enviamos el video descargado
+        mentions: users, // Mencionamos a los usuarios
+        mimetype: 'video/mp4', // Tipo MIME para video
+        caption: htextos // El texto o descripción que acompaña el video
       }, { quoted: m });
 
     }
-    // Si es un video citado
-    else if (isMedia && quoted.mtype === 'videoMessage') {
-      var mediax = await quoted.download?.(); // Descargar el video
+    // Si es una imagen citada
+    else if (isMedia && quoted.mtype === 'imageMessage') {
+      var mediax = await quoted.download?.(); // Descargar la imagen
       conn.sendMessage(m.chat, {
-        video: mediax,
-        mentions: users,
-        mimetype: 'video/mp4',
-        caption: htextos
+        image: mediax, // Enviamos la imagen descargada
+        mentions: users, // Mencionamos a los usuarios
+        caption: htextos // El texto o descripción que acompaña la imagen
       }, { quoted: m });
 
     }
@@ -39,10 +38,10 @@ let handler = async (m, { conn, text, participants }) => {
     else if (isMedia && quoted.mtype === 'audioMessage') {
       var mediax = await quoted.download?.(); // Descargar el audio
       conn.sendMessage(m.chat, {
-        audio: mediax,
-        mentions: users,
-        mimetype: 'audio/mpeg',
-        fileName: `Hidetag.mp3`
+        audio: mediax, // Enviamos el audio descargado
+        mentions: users, // Mencionamos a los usuarios
+        mimetype: 'audio/mpeg', // Tipo MIME para audio
+        fileName: `Hidetag.mp3` // Nombre del archivo de audio
       }, { quoted: m });
 
     }
@@ -50,8 +49,8 @@ let handler = async (m, { conn, text, participants }) => {
     else if (isMedia && quoted.mtype === 'stickerMessage') {
       var mediax = await quoted.download?.(); // Descargar el sticker
       conn.sendMessage(m.chat, {
-        sticker: mediax,
-        mentions: users
+        sticker: mediax, // Enviamos el sticker descargado
+        mentions: users // Mencionamos a los usuarios
       }, { quoted: m });
 
     }
