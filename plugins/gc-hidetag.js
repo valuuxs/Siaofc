@@ -11,7 +11,7 @@ let handler = async (m, { conn, text, participants }) => {
     let isMedia = /image|video|sticker|audio/.test(mime);
 
     // Texto de respuesta
-    const htextos = text || '*¡Hola! 😸*'; // Texto predeterminado
+    const htextos = text || '*Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN*'; // Texto predeterminado
 
     // Obtener la descripción de la cita si está disponible
     let description = quoted.text || htextos; // Si el archivo citado tiene un texto, se usa; de lo contrario, se usa htextos.
