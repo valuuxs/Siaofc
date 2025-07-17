@@ -6,17 +6,14 @@ import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, text, command }) => {
     try {
-        // Definir userId como el ID del usuario que envía el mensaje
-        const userId = m.sender;
-
-        let { exp, diamantes, level, role } = global.db.data.users[userId]
+        let { exp, diamantes, level, role } = global.db.data.users[m.sender]
         let { min, xp, max } = xpRange(level, global.multiplier)
-        let name = await conn.getName(userId) // Usamos userId en lugar de m.sender
+        let name = await conn.getName(m.sender)
         exp = exp || 'Desconocida';
         role = role || 'Aldeano';
 
         // Aquí obtenemos la mención correcta para WhatsApp
-        const taguser = '@' + userId.split('@s.whatsapp.net')[0];
+        const user = `@${m.sender.split('@')[0]}`;
 
         const _uptime = process.uptime() * 1000;
         const uptime = clockString(_uptime);
@@ -24,18 +21,11 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
         await m.react('🌹')
 
-        // Usamos userId para comprobar si está casado
-        const isMarried = userId in global.db.data.marriages;
-        const partner = isMarried ? global.db.data.marriages[userId] : null;
-        const partnerName = partner ? await conn.getName(partner) : 'Nadie';
-
-        const imageUrl = 'https://files.catbox.moe/091d8i.jpg';
-
-        // Ahora usamos userId para mostrar en el menú
+        const imageUrl = 'https://files.catbox.moe/zxwd04.jpg';
         let menu = `
 🌐 *\`Menú Principal\`*
 ────────────────────────────
-👤 *Usuario:* ${taguser}
+👤 *Usuario:* ${user}
 🔰 *Rol:* ${role}
 📈 *Nivel:* ${level} (${exp} XP)
 💎 *Gemas:* ${diamantes}
