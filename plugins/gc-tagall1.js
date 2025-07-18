@@ -7,12 +7,12 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
     throw false;
   }
   const pesan = args.join` `;
-  const oi = `𝙀𝙏𝙄𝙌𝙐𝙀𝙏𝘼𝙎:* ${pesan}`;
-  let teks = `> *Yᴏᴜʀ Pᴏᴛᴇɴᴛɪᴀʟ Is Iɴғɪɴɪᴛᴇ, Dᴀʀᴇ Tᴏ Exᴘʟᴏʀᴇ Iᴛ 💋*\n\n *${oi}\n\n➥ _*@ineffable.mvrco:*_\n`;
+  const oi = `── 𝑬𝑻𝑰𝑸𝑼𝑬𝑻𝑨 ${pesan}`;
+  let teks = `𝑨𝑪𝑻𝑰𝑽𝑬𝑵𝑺𝑬 𝑶 𝑪𝑼𝑷𝑶 👋🏻\n\n *${oi}\n\n\n`;
   for (const mem of participants) {
-    teks += `*💗 ➸* @${mem.id.split('@')[0]}\n`;
+    teks += `▌@${mem.id.split('@')[0]}\n`;
   }
-  teks += `*└KɪʟʟBᴏᴛ ⇝@ineffable.mvrco*`;
+  teks += `◥ 𝑺𝒊𝒂 𝑩𝒐𝒕 ◤`;
   conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
 };
 handler.help = ['todos *<txt>*'];

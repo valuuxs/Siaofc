@@ -27,7 +27,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     for (let result of selectedResults) {
       results.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN' }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'BY:SiaBot' }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           title: result.title,
           hasMediaAttachment: true,

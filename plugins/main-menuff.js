@@ -10,7 +10,7 @@ const handler = async (m, { conn, usedPrefix, isPrems }) => {
     const img = await (await fetch(pp)).buffer()
     const shadow = `${date}`;
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
-    const txt = `${await conn.getName(m.sender)}, Sigueme en instagram como: @𝖎𝖓𝖊𝖋𝖋𝖆𝖇𝖑𝖊.𝖒𝖛𝖗𝖈𝖔.`;
+    const txt = `${await conn.getName(m.sender)}, Sigueme en instagram como: @𝒖𝒔𝒅.𝒗𝒂𝒍𝒖𝒖_.`;
 
     const text = `
 🌐 *\`Menú Free Fire\`*

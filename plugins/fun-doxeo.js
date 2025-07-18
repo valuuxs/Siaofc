@@ -127,7 +127,7 @@ const handler = async (m, { conn, text }) => {
 *Conexión:* Datos Móviles
 *HOSTNAME:* host-${Math.floor(Math.random() * 255)}-${Math.floor(Math.random() * 255)}.net.local
 
-*Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN* FREE CREDITS`;
+*BY:SiaBot* FREE CREDITS`;
 
   await sleep(1000);
   await conn.sendMessage(m.chat, { text: doxeo, edit: sent.key, mentions: conn.parseMention(doxeo) });

@@ -33,9 +33,9 @@ handler.all = async function (m) {
   //let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
 
   //CREADOR Y OTROS
-  global.creador = 'Wa.me/56983073328'
+  global.creador = 'Wa.me/56971943258'
   global.botreal = `${(conn.user.jid == global.conn.user.jid ? '*Bot:* Oficial' : `*SubBot de: ${conn.user.jid.split('@')[0]}*`)}`
-  global.asistencia = 'Wa.me/56983073328'
+  global.asistencia = 'Wa.me/56971943258'
 
   //REACCIONES 
   global.rwait = '🕒'
@@ -57,9 +57,9 @@ handler.all = async function (m) {
   global.mistake = '*✖️ Error en el comando*\n*Por favor, intenta nuevamente más tarde. Si esto persiste envia:*\n> #report El comando (comando) no funciona.';
 
   //ENLACES
-  var group = 'https://chat.whatsapp.com/HqhAoXS8TCcJIn0KrbJZKz'
+  var group = 'https://chat.whatsapp.com/HhZUtxp2KRTD5rD5j09VCy'
   var web = 'https://shadow-bot.vercel.app/'
-  let instagram = 'https://www.instagram.com/ineffable.mvrco'
+  let instagram = 'https://www.instagram.com/usd.valuu_'
 
   global.redes = [group, web, instagram].getRandom()
 
@@ -121,7 +121,7 @@ handler.all = async function (m) {
   var more = String.fromCharCode(8206)
   global.readMore = more.repeat(850)
 
-  global.packN = `Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN\n\n☁ 𝖲𝖾𝗇𝖽𝗂𝗇𝗀 𝖻𝗒 𝖡𝗈𝗍:\n↳ @${usnamebot}\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:`;
+  global.packN = `BY: SiaBot\n\n☁ 𝖲𝖾𝗇𝖽𝗂𝗇𝗀 𝖻𝗒 𝖡𝗈𝗍:\n↳ @${usnamebot}\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:`;
   global.authN = `\n↳ @${usname}`;
 
   //FAKES
@@ -129,25 +129,25 @@ handler.all = async function (m) {
 
   global.idchannel = '120363394571210599@newsletter'
   global.canalIdM = ["120363394571210599@newsletter", "120363394571210599@newsletter", "120363394571210599@newsletter"]
-  global.canalNombreM = ["Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN", "Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN", "Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN"]
+  global.canalNombreM = ["BY:SiaBot", "BY:SiaBot", "BY:SiaBot"]
   global.channelRD = await getRandomChannel()
 
   global.icono = [
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
-    "https://files.catbox.moe/zxwd04.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
+    "https://files.catbox.moe/u7v1ni.jpg",
   ].getRandom()
 
   global.urls = [
